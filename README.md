@@ -1,6 +1,17 @@
 # Hardware Design Lab
 
-Full-cycle hardware device designs — from concept to PCB blueprints to production software. Each device lives in its own subfolder with complete 4-phase engineering documentation.
+Full-cycle, open-source hardware device designs — from concept to KiCad schematics to production firmware to companion mobile apps. Every device is fully open: schematics, board layouts, C/Python firmware, and React Native apps. Each device lives in its own subfolder with complete deliverables.
+
+## What's Inside Every Device
+
+Every device folder contains the full stack — not just docs, but real buildable artifacts:
+
+| Category | Files | Description |
+|---|---|---|
+| **Engineering Docs** | `phase1_conceptual_architecture.md` → `phase4_software_stack.md` | 4-phase design process: requirements, BOM & netlists, PCB layout rules, software stack |
+| **KiCad Schematics** | `kicad/*.kicad_pro`, `*.kicad_sch`, `*.kicad_pcb` | Full schematic with real component symbols, net labels, power flags, and board outline with placed footprints |
+| **C/Python Firmware** | `firmware/main.c`, `registers.h`, `board.h`, `drivers/`, `Makefile` | Production-quality MCU firmware — init code, drivers with DMA, USB descriptors, wire protocol |
+| **React Native App** | `app/App.js`, `screens/`, `components/`, `utils/protocol.js`, `package.json` | Companion mobile app for device control, configuration, and status display |
 
 ## Design Methodology
 
@@ -17,8 +28,8 @@ Every device follows the same rigorous 4-phase process:
 
 | # | Device | Status | Description |
 |---|---|---|---|
-| 1 | [`eag-7000/`](eag-7000/) — Edge AI Gateway | ✅ Complete | i.MX8MP + Hailo-8 NPU, 30 TOPS, fanless industrial, 2×2.5GbE, CAN-FD |
-| 2 | *More designs added over time by automated cron* | ⏳ | Complex hardware devices with full 4-phase documentation |
+| 1 | [`eag-7000/`](eag-7000/) — Edge AI Gateway | ✅ Docs complete, KiCad/firmware/app pending | i.MX8MP + Hailo-8 NPU, 30 TOPS, fanless industrial, 2×2.5GbE, CAN-FD |
+| 2 | *More designs added over time by automated cron* | ⏳ | Complex hardware devices with full open stack |
 
 ---
 
@@ -50,5 +61,9 @@ A high-performance, fanless industrial Edge AI Gateway for real-time ML inferenc
 
 ## License
 
-Hardware design files: CERN-OHL-S v2  
-Software: GPL-2.0 (kernel drivers), MIT (userspace tools)
+| Component | License |
+|---|---|
+| Hardware design (KiCad) | CERN-OHL-S v2 |
+| C firmware & drivers | GPL-2.0 |
+| Python tools & scripts | MIT |
+| React Native companion apps | MIT |
