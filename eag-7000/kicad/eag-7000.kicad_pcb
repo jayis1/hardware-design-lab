@@ -1,0 +1,187 @@
+(kicad_pcb (version 20230608) (generator pcbnew)
+
+  (general
+    (thickness 1.6)
+    (drawings 12)
+    (tracks 0)
+    (zones 0)
+    (modules 0)
+    (nets 81)
+  )
+
+  (paper "A3")
+
+  (title_block
+    (title "EAG-7000 — Edge AI Gateway PCB")
+    (date "2026-06-13")
+    (rev "1.0")
+    (company "Hardware Design Lab")
+    (comment 1 "NXP i.MX8M Plus + Hailo-8 M.2")
+    (comment 2 "100mm x 72mm, 10-layer, Industrial -40C to +85C")
+    (comment 3 "BOM Target: <=$180 @ 1K units")
+  )
+
+  ;; ============================================================================
+  ;; LAYER STACKUP — 10 layers per Phase 3 specification
+  ;; ============================================================================
+
+  (layers
+    (0 "F.Cu" signal "L1 (Top) — Component placement, high-speed routing")
+    (1 "In1.Cu" signal "L2 (GND) — Continuous ground plane, EMI shield")
+    (2 "In2.Cu" signal "L3 (Inner Signal) — DDR routing, controlled impedance")
+    (3 "In3.Cu" signal "L4 (Inner Signal) — PCIe/USB differential pairs")
+    (4 "In4.Cu" signal "L5 (Power 1.0V) — VDD_CORE, VDD_SOC solid planes")
+    (5 "In5.Cu" signal "L6 (GND) — Stitching ground, EMI return")
+    (6 "In6.Cu" signal "L7 (Inner Signal) — Ethernet RGMII, MIPI-CSI")
+    (7 "In7.Cu" signal "L8 (Inner Signal) — Low-speed IO, SPI, I2C, UART")
+    (8 "In8.Cu" signal "L9 (Power 3.3V/1.8V) — VDD_3V3, VDD_1V8 split planes")
+    (31 "B.Cu" signal "L10 (Bottom) — Bottom-side passives, BGA fanout")
+    (32 "B.Adhes" user)
+    (33 "F.Adhes" user)
+    (34 "B.Paste" user)
+    (35 "F.Paste" user)
+    (36 "B.SilkS" user)
+    (37 "F.SilkS" user)
+    (38 "B.Mask" user)
+    (39 "F.Mask" user)
+    (40 "Dwgs.User" user)
+    (41 "Cmts.User" user)
+    (42 "Eco1.User" user)
+    (43 "Eco2.User" user)
+    (44 "Edge.Cuts" user)
+    (45 "Margin" user)
+    (46 "B.CrtYd" user)
+    (47 "F.CrtYd" user)
+    (48 "B.Fab" user)
+    (49 "F.Fab" user)
+  )
+
+  ;; ============================================================================
+  ;; DESIGN RULES — per Phase 3 DFM constraints
+  ;; ============================================================================
+
+  (setup
+    (stackup
+      (layer "F.Cu" (type copper) (thickness 0.035))
+      (layer "dielectric" (type core) (thickness 0.200) (material "FR-4") (epsilon_r 4.04))
+      (layer "In1.Cu" (type copper) (thickness 0.035))
+      (layer "dielectric" (type core) (thickness 0.100) (material "FR-4") (epsilon_r 3.94))
+      (layer "In2.Cu" (type copper) (thickness 0.0175))
+      (layer "dielectric" (type core) (thickness 0.100) (material "FR-4") (epsilon_r 3.94))
+      (layer "In3.Cu" (type copper) (thickness 0.0175))
+      (layer "dielectric" (type core) (thickness 0.200) (material "FR-4") (epsilon_r 4.1))
+      (layer "In4.Cu" (type copper) (thickness 0.035))
+      (layer "dielectric" (type core) (thickness 0.035) (material "FR-4") (epsilon_r 4.1))
+      (layer "In5.Cu" (type copper) (thickness 0.035))
+      (layer "dielectric" (type core) (thickness 0.100) (material "FR-4") (epsilon_r 3.94))
+      (layer "In6.Cu" (type copper) (thickness 0.0175))
+      (layer "dielectric" (type core) (thickness 0.100) (material "FR-4") (epsilon_r 3.94))
+      (layer "In7.Cu" (type copper) (thickness 0.0175))
+      (layer "dielectric" (type core) (thickness 0.200) (material "FR-4") (epsilon_r 4.1))
+      (layer "In8.Cu" (type copper) (thickness 0.035))
+      (layer "dielectric" (type core) (thickness 0.035) (material "FR-4") (epsilon_r 4.1))
+      (layer "B.Cu" (type copper) (thickness 0.035))
+      (layer "dielectric" (type soldermask) (thickness 0.01))
+    )
+
+    (min_clearance 0.1)
+    (min_track_width 0.1)
+    (min_via_annulus 0.15)
+    (min_via_diameter 0.2)
+    (min_via_drill 0.1)
+    (min_microvia_diameter 0.1)
+    (min_microvia_drill 0.05)
+    (min_blind_via_drill 0.1)
+
+    ;; Impedance-controlled trace widths (per Phase 3 stackup)
+    ;; L1 single-ended 50Ω: 4.5 mil
+    ;; L1 differential USB 90Ω: 4.5 mil / 6 mil space
+    ;; L1 differential PCIe 85Ω: 3.5 mil / 5 mil space
+    ;; L3 differential DDR DQS 100Ω: 3.5 mil / 4 mil space
+    ;; L4 differential PCIe/USB 85/90Ω: 3.5/4.5 mil / 5/6 mil space
+    ;; L7 single-ended RGMII 50Ω: 5.0 mil
+  )
+
+  ;; ============================================================================
+  ;; NET CLASSES
+  ;; ============================================================================
+
+  (net_class "Default" ""
+    (clearance 0.15)
+    (trace_width 0.15)
+    (via_dia 0.4)
+    (via_drill 0.2)
+  )
+
+  (net_class "DDR" "DDR4/4X signals — matched length, controlled impedance"
+    (clearance 0.1)
+    (trace_width 0.1)
+    (via_dia 0.3)
+    (via_drill 0.1)
+  )
+
+  (net_class "HighSpeed" "PCIe Gen3, USB 3.1, MIPI-CSI differential pairs"
+    (clearance 0.15)
+    (trace_width 0.12)
+    (via_dia 0.3)
+    (via_drill 0.1)
+  )
+
+  (net_class "Power" "Power rails — VDD_CORE, VDD_DDR, VDD_SOC, VDD_3V3, etc."
+    (clearance 0.2)
+    (trace_width 0.5)
+    (via_dia 0.6)
+    (via_drill 0.3)
+  )
+
+  (net_class "RGMII" "Ethernet RGMII signals"
+    (clearance 0.15)
+    (trace_width 0.15)
+    (via_dia 0.4)
+    (via_drill 0.2)
+  )
+
+  ;; ============================================================================
+  ;; BOARD OUTLINE — 100mm x 72mm per Phase 3 specification
+  ;; ============================================================================
+
+  (gr_line (start 0 0) (end 100 0) (layer "Edge.Cuts") (width 0.15))
+  (gr_line (start 100 0) (end 100 72) (layer "Edge.Cuts") (width 0.15))
+  (gr_line (start 100 72) (end 0 72) (layer "Edge.Cuts") (width 0.15))
+  (gr_line (start 0 72) (end 0 0) (layer "Edge.Cuts") (width 0.15))
+
+  ;; Mounting holes — 4x M2.5 at corners (5mm inset)
+  (gr_circle (center 5 5) (end 7.5 5) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 95 5) (end 97.5 5) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 95 67) (end 97.5 67) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 5 67) (end 7.5 67) (layer "Edge.Cuts") (width 0.15))
+
+  ;; DIN-rail mounting slot (center bottom)
+  (gr_line (start 30 0) (end 70 0) (layer "Edge.Cuts") (width 0.15))
+
+  ;; Component placement zones (silk screen)
+  ;; U1 (SoC) — center of board
+  (gr_text "U1 — i.MX8MP" (at 50 36) (layer "F.SilkS") (tstamp 0) (effects (font (size 1.5 1.5))))
+  ;; U2-0, U2-1 (DDR) — near SoC
+  (gr_text "U2-0 — DDR Ch A" (at 30 36) (layer "F.SilkS") (tstamp 1) (effects (font (size 1 1))))
+  (gr_text "U2-1 — DDR Ch B" (at 30 44) (layer "F.SilkS") (tstamp 2) (effects (font (size 1 1))))
+  ;; U4 (NPU) — M.2 connector
+  (gr_text "U4 — Hailo-8 M.2" (at 80 20) (layer "F.SilkS") (tstamp 3) (effects (font (size 1 1))))
+  ;; U5-0, U5-1 (Ethernet PHY)
+  (gr_text "U5-0 — ETH0 PHY" (at 15 55) (layer "F.SilkS") (tstamp 4) (effects (font (size 1 1))))
+  (gr_text "U5-1 — ETH1 PHY" (at 15 65) (layer "F.SilkS") (tstamp 5) (effects (font (size 1 1))))
+  ;; U7 (PMIC) — near power input
+  (gr_text "U7 — PCA9450 PMIC" (at 85 50) (layer "F.SilkS") (tstamp 6) (effects (font (size 1 1))))
+  ;; U11-0, U11-1 (CAN-FD)
+  (gr_text "U11-0 — CAN0" (at 85 60) (layer "F.SilkS") (tstamp 7) (effects (font (size 1 1))))
+  (gr_text "U11-1 — CAN1" (at 85 65) (layer "F.SilkS") (tstamp 8) (effects (font (size 1 1))))
+
+  ;; Thermal zone labels
+  (gr_text "ZONE A — HIGH HEAT" (at 80 25) (layer "F.SilkS") (tstamp 9) (effects (font (size 0.8 0.8)) (italic)))
+  (gr_text "ZONE B — HIGH HEAT" (at 50 36) (layer "F.SilkS") (tstamp 10) (effects (font (size 0.8 0.8)) (italic)))
+
+  ;; Heatsink outline (100x72mm, anodized aluminum spreader)
+  (gr_rect (start 2 2) (end 98 70) (layer "Dwgs.User") (width 0.1) (fill none))
+  (gr_text "Heatsink: 100x72x8mm Al" (at 50 71) (layer "Dwgs.User") (tstamp 11) (effects (font (size 0.8 0.8))))
+
+)
