@@ -1,0 +1,391 @@
+(kicad_pcb
+  (version 20240101)
+  (generator "pcbnew")
+  (general
+    (thickness 1.6)
+  )
+  (paper "A4")
+  (title_block
+    (title "HexaScope - 6-Channel Mixed-Signal Oscilloscope")
+    (date "2026-06-14")
+    (rev "1.0")
+    (company "HexaScope Project")
+  )
+
+  ;; ============================================================
+  ;; Layer Stackup
+  ;; ============================================================
+  (layers
+    (0 "F.Cu" signal)
+    (1 "In1.Cu" signal)
+    (2 "In2.Cu" power)
+    (3 "In3.Cu" power)
+    (4 "In4.Cu" signal)
+    (5 "B.Cu" signal)
+    (6 "F.Paste" paste)
+    (7 "B.Paste" paste)
+    (8 "F.SilkS" silk)
+    (9 "B.SilkS" silk)
+    (10 "F.Mask" mask)
+    (11 "B.Mask" mask)
+    (12 "Dwgs.User" dwgs)
+    (13 "Cmts.User" user)
+    (14 "Eco1.User" user)
+    (15 "Eco2.User" user)
+    (16 "Edge.Cuts" edge)
+    (17 "F.CrtYd" crt)
+    (18 "B.CrtYd" crt)
+    (19 "F.Fab" fab)
+    (20 "B.Fab" fab)
+  )
+
+  ;; Layer assignments:
+  ;; L0  (F.Cu)    = Signal — Analog, LVDS, components
+  ;; L1  (In1.Cu)  = Ground plane (continuous, no splits)
+  ;; L2  (In2.Cu)  = Signal — DDR3, FPGA breakout
+  ;; L3  (In3.Cu)  = Power plane (1V1, 1V35, 1V8 splits)
+  ;; L4  (In4.Cu)  = Ground plane (continuous, no splits)
+  ;; L5  (B.Cu)    = Signal — USB, passives, routing
+
+  (setup
+    (stackup
+      (layer "F.Cu" (type "copper") (thickness 0.035))
+      (layer "dielectric 1" (type "prepreg") (thickness 0.1) (loss_tangent 0.02) (dielectric_constant 4.2) (material "Isola 370HR"))
+      (layer "In1.Cu" (type "copper") (thickness 0.035))
+      (layer "dielectric 2" (type "core") (thickness 0.5) (loss_tangent 0.02) (dielectric_constant 4.2) (material "Isola 370HR"))
+      (layer "In2.Cu" (type "copper") (thickness 0.035))
+      (layer "dielectric 3" (type "prepreg") (thickness 0.1) (loss_tangent 0.02) (dielectric_constant 4.2) (material "Isola 370HR"))
+      (layer "In3.Cu" (type "copper") (thickness 0.035))
+      (layer "dielectric 4" (type "core") (thickness 0.5) (loss_tangent 0.02) (dielectric_constant 4.2) (material "Isola 370HR"))
+      (layer "In4.Cu" (type "copper") (thickness 0.035))
+      (layer "dielectric 5" (type "prepreg") (thickness 0.1) (loss_tangent 0.02) (dielectric_constant 4.2) (material "Isola 370HR"))
+      (layer "B.Cu" (type "copper") (thickness 0.035))
+    )
+    (pad_size 0.6 0.6)
+    (pad_drill 0.3)
+    (pad_to_mask_clearance 0.05)
+    (solder_mask_min_width 0.1)
+    (grid_origin 0 0)
+    (drawings 0)
+    (tracks 0)
+    (zones 0)
+    (net_via_count 0)
+    (net_differential_pair_count 0)
+
+    ;; Design rules
+    (md_axialsmd 0.15)
+    (md_padsmd 0.15)
+    (md_pastemask 0.1)
+
+    ;; Net classes
+    (net_class "Default"
+      (clearance 0.15)
+      (trace_width 0.15)
+      (via_dia 0.4)
+      (via_drill 0.2)
+    )
+    (net_class "LVDS"
+      (clearance 0.15)
+      (trace_width 0.10)
+      (diff_pair_gap 0.15)
+      (diff_pair_width 0.10)
+      (via_dia 0.4)
+      (via_drill 0.2)
+    )
+    (net_class "DDR3"
+      (clearance 0.15)
+      (trace_width 0.10)
+      (diff_pair_gap 0.15)
+      (diff_pair_width 0.10)
+      (via_dia 0.4)
+      (via_drill 0.2)
+    )
+    (net_class "USB_SS"
+      (clearance 0.15)
+      (trace_width 0.10)
+      (diff_pair_gap 0.12)
+      (diff_pair_width 0.10)
+      (via_dia 0.4)
+      (via_drill 0.2)
+    )
+    (net_class "Power"
+      (clearance 0.25)
+      (trace_width 0.40)
+      (via_dia 0.6)
+      (via_drill 0.3)
+    )
+  )
+
+  ;; ============================================================
+  ;; Board Outline — 160mm x 100mm with 2mm corner radii
+  ;; ============================================================
+  (gr_rect (start 0 0) (end 160 100) (layer "Edge.Cuts") (width 0.1) (tstamp 00000001))
+
+  ;; Corner radii approximated by arcs
+  (gr_arc (start 2 2) (mid 0.586 0.586) (end 2 0) (layer "Edge.Cuts") (width 0.1) (tstamp 00000002))
+  (gr_arc (start 158 2) (mid 159.414 0.586) (end 160 2) (layer "Edge.Cuts") (width 0.1) (tstamp 00000003))
+  (gr_arc (start 158 98) (mid 159.414 99.414) (end 160 98) (layer "Edge.Cuts") (width 0.1) (tstamp 00000004))
+  (gr_arc (start 2 98) (mid 0.586 99.414) (end 0 98) (layer "Edge.Cuts") (width 0.1) (tstamp 00000005))
+
+  ;; ============================================================
+  ;; Mounting Holes — M2.5, 4 corners
+  ;; ============================================================
+  (footprint "MountingHole:MountingHole_2.7mm_M2.5" (at 5 5) (layer "F.Cu") (tstamp 00000010))
+  (footprint "MountingHole:MountingHole_2.7mm_M2.5" (at 155 5) (layer "F.Cu") (tstamp 00000011))
+  (footprint "MountingHole:MountingHole_2.7mm_M2.5" (at 5 95) (layer "F.Cu") (tstamp 00000012))
+  (footprint "MountingHole:MountingHole_2.7mm_M2.5" (at 155 95) (layer "F.Cu") (tstamp 00000013))
+
+  ;; ============================================================
+  ;; Keepout Zones
+  ;; ============================================================
+  ;; Z1: Analog input area (x: 0-35, y: 0-60) — no digital signals
+  (keepout_zone (start 0 0) (end 35 60) (layer "F.Cu") (tstamp 00000020)
+    (keepout_tracks_disallowed yes)
+    (keepout_vias_disallowed yes)
+    (keepout_copperpour_disallowed yes)
+    (allowed_net_class "LVDS")  ;; LVDS from ADCs is OK
+  )
+
+  ;; Z2: Isolation barrier (x: 120-128, y: 0-100) — no copper on any layer
+  (keepout_zone (start 120 0) (end 128 100) (layer "F.Cu") (tstamp 00000021)
+    (keepout_tracks_disallowed yes)
+    (keepout_vias_disallowed yes)
+    (keepout_copperpour_disallowed yes)
+  )
+  (keepout_zone (start 120 0) (end 128 100) (layer "In1.Cu") (tstamp 00000022)
+    (keepout_tracks_disallowed yes)
+    (keepout_vias_disallowed yes)
+    (keepout_copperpour_disallowed yes)
+  )
+  (keepout_zone (start 120 0) (end 128 100) (layer "In2.Cu") (tstamp 00000023)
+    (keepout_tracks_disallowed yes)
+    (keepout_vias_disallowed yes)
+    (keepout_copperpour_disallowed yes)
+  )
+  (keepout_zone (start 120 0) (end 128 100) (layer "In3.Cu") (tstamp 00000024)
+    (keepout_tracks_disallowed yes)
+    (keepout_vias_disallowed yes)
+    (keepout_copperpour_disallowed yes)
+  )
+  (keepout_zone (start 120 0) (end 128 100) (layer "In4.Cu") (tstamp 00000025)
+    (keepout_tracks_disallowed yes)
+    (keepout_vias_disallowed yes)
+    (keepout_copperpour_disallowed yes)
+  )
+  (keepout_zone (start 120 0) (end 128 100) (layer "B.Cu") (tstamp 00000026)
+    (keepout_tracks_disallowed yes)
+    (keepout_vias_disallowed yes)
+    (keepout_copperpour_disallowed yes)
+  )
+
+  ;; ============================================================
+  ;; Component Placement (Approximate — for layout guidance)
+  ;; Coordinates in mm from bottom-left corner
+  ;; ============================================================
+
+  ;; === Analog Front-End (Top-Left) ===
+  ;; BNC Connectors — front edge
+  (footprint "Connector_Coaxial:BNC_Amphenol_031-54301-02_Horizontal"
+    (at 10 90) (layer "F.Cu") (tstamp 00000100)  ;; J1: CH1
+  )
+  (footprint "Connector_Coaxial:BNC_Amphenol_031-54301-02_Horizontal"
+    (at 25 90) (layer "F.Cu") (tstamp 00000101)  ;; J2: CH2
+  )
+  (footprint "Connector_Coaxial:BNC_Amphenol_031-54301-02_Horizontal"
+    (at 40 90) (layer "F.Cu") (tstamp 00000102)  ;; J3: CH3
+  )
+  (footprint "Connector_Coaxial:BNC_Amphenol_031-54301-02_Horizontal"
+    (at 55 90) (layer "F.Cu") (tstamp 00000103)  ;; J4: CH4
+  )
+
+  ;; MCX Connectors — front edge
+  (footprint "Connector_Coaxial:MCX_Molex_73414-0110_Horizontal"
+    (at 70 90) (layer "F.Cu") (tstamp 00000110)  ;; D1
+  )
+  (footprint "Connector_Coaxial:MCX_Molex_73414-0110_Horizontal"
+    (at 80 90) (layer "F.Cu") (tstamp 00000111)  ;; D2
+  )
+
+  ;; ADC ICs — behind BNCs, analog area
+  (footprint "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
+    (at 15 70) (layer "F.Cu") (tstamp 00000200)  ;; U3: ADC1
+  )
+  (footprint "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
+    (at 30 70) (layer "F.Cu") (tstamp 00000201)  ;; U4: ADC2
+  )
+  (footprint "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
+    (at 45 70) (layer "F.Cu") (tstamp 00000202)  ;; U5: ADC3
+  )
+  (footprint "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
+    (at 60 70) (layer "F.Cu") (tstamp 00000203)  ;; U6: ADC4
+  )
+
+  ;; Comparators
+  (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+    (at 75 70) (layer "F.Cu") (tstamp 00000210)  ;; U7: LT1715 (D1)
+  )
+  (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+    (at 85 70) (layer "F.Cu") (tstamp 00000211)  ;; U8: LT1715 (D2)
+  )
+
+  ;; === FPGA + DDR3 (Center) ===
+  (footprint "Package_BGA:Lattice_BGA-381_23x23mm_0.8mm_Pitch"
+    (at 50 45) (layer "F.Cu") (tstamp 00000300)  ;; U1: FPGA
+  )
+  (footprint "Package_BGA:BGA-96_8x14mm_Layout6x16_P0.65mm"
+    (at 85 40) (layer "F.Cu") (tstamp 00000301)  ;; U9: DDR3L
+  )
+
+  ;; === MCU + Peripherals (Bottom-Left) ===
+  (footprint "Package_QFP:LQFP-100_14x14mm_P0.5mm"
+    (at 30 20) (layer "F.Cu") (tstamp 00000400)  ;; U2: STM32G474
+  )
+
+  ;; === PMIC (Bottom-Center) ===
+  (footprint "Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP5.6x5.6mm"
+    (at 60 20) (layer "F.Cu") (tstamp 00000500)  ;; U11: DA9063
+  )
+
+  ;; === USB + Isolation (Right side, isolated zone) ===
+  (footprint "Connector_USB:USB_C_Receptacle_GCT_USB4105"
+    (at 155 50) (layer "F.Cu") (tstamp 00000600)  ;; J5: USB-C
+  )
+  (footprint "Package_DFN_QFN:QFN-14-1EP_2.5x2.5mm_P0.5mm_EP1.3x1.3mm"
+    (at 140 40) (layer "F.Cu") (tstamp 00000601)  ;; U12: FUSB302
+  )
+  (footprint "Package_SO:SOIC-16_7.5x10.3mm_P1.27mm"
+    (at 130 30) (layer "F.Cu") (tstamp 00000602)  ;; U14: ISO7740 (straddles isolation barrier)
+  )
+  (footprint "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
+    (at 135 50) (layer "F.Cu") (tstamp 00000603)  ;; U10: USB3340
+  )
+
+  ;; === Wi-Fi Module (Bottom-Right, isolated side) ===
+  (footprint "RF_Module:Espressif_ESP32-C6-WROOM-1"
+    (at 135 80) (layer "F.Cu") (tstamp 00000700)  ;; U13: ESP32-C6
+  )
+
+  ;; === DAC + Misc (Center-Left) ===
+  (footprint "Package_SO:TSSOP-16_4.4x5mm_P0.65mm"
+    (at 20 45) (layer "F.Cu") (tstamp 00000800)  ;; U15: DAC60508
+  )
+  (footprint "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm"
+    (at 35 45) (layer "F.Cu") (tstamp 00000801)  ;; U16: W25Q256 SPI Flash
+  )
+
+  ;; === SMA Connector (Rear) ===
+  (footprint "Connector_Coaxial:SMA_Amphenol_132289_EdgeMount"
+    (at 155 10) (layer "F.Cu") (tstamp 00000900)  ;; J6: Ext Trig
+  )
+
+  ;; === Buttons + LEDs (Bottom edge) ===
+  ;; 4 tactical switches at bottom-left
+  (footprint "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm"
+    (at 10 5) (layer "F.Cu") (tstamp 00001000)  ;; SW1: Run/Stop
+  )
+  (footprint "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm"
+    (at 22 5) (layer "F.Cu") (tstamp 00001001)  ;; SW2: Single
+  )
+  (footprint "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm"
+    (at 34 5) (layer "F.Cu") (tstamp 00001002)  ;; SW3: Auto
+  )
+  (footprint "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm"
+    (at 46 5) (layer "F.Cu") (tstamp 00001003)  ;; SW4: Force
+
+  ;; 4 LEDs
+  (footprint "LED_SMD:LED_0603_1608Metric" (at 60 5) (layer "F.Cu") (tstamp 00001010))  ;; D1: PWR
+  (footprint "LED_SMD:LED_0603_1608Metric" (at 64 5) (layer "F.Cu") (tstamp 00001011))  ;; D2: RUN
+  (footprint "LED_SMD:LED_0603_1608Metric" (at 68 5) (layer "F.Cu") (tstamp 00001012))  ;; D3: TRIG
+  (footprint "LED_SMD:LED_0603_1608Metric" (at 72 5) (layer "F.Cu") (tstamp 00001013))  ;; D4: USB
+
+  ;; === MicroSD Card Slot (Bottom-Right) ===
+  (footprint "Connector_Card:microSD_Molex_5027740891"
+    (at 100 5) (layer "F.Cu") (tstamp 00001100)  ;; J7: microSD
+  )
+
+  ;; ============================================================
+  ;; Ground Zones (copper pours on L1 and L4)
+  ;; ============================================================
+  (zone (net "GND") (layer "In1.Cu") (tstamp 00002000)
+    (polygon (pts (xy 0 0) (xy 160 0) (xy 160 100) (xy 0 100)))
+  )
+  (zone (net "GND") (layer "In4.Cu") (tstamp 00002001)
+    (polygon (pts (xy 0 0) (xy 160 0) (xy 160 100) (xy 0 100)))
+  )
+
+  ;; ============================================================
+  ;; Power Zone on L3 (split plane)
+  ;; ============================================================
+  (zone (net "VDD_CORE") (layer "In3.Cu") (tstamp 00002100)
+    (polygon (pts (xy 0 0) (xy 88 0) (xy 88 100) (xy 0 100)))
+  )
+  (zone (net "VDD_DDR") (layer "In3.Cu") (tstamp 00002101)
+    (polygon (pts (xy 89 0) (xy 109 0) (xy 109 100) (xy 89 100)))
+  )
+  (zone (net "VDD_IO18") (layer "In3.Cu") (tstamp 00002102)
+    (polygon (pts (xy 110 0) (xy 119 0) (xy 119 100) (xy 110 100)))
+  )
+
+  ;; ============================================================
+  ;; Net definitions
+  ;; ============================================================
+  (net 0 "")
+  (net 1 "GND")
+  (net 2 "VBUS_RAW")
+  (net 3 "VDD_CORE")
+  (net 4 "VDD_DDR")
+  (net 5 "VDD_IO18")
+  (net 6 "VDD_IO33")
+  (net 7 "VDD_ANA")
+  (net 8 "VDD_RTC")
+  (net 9 "ADC1_CLK_P")
+  (net 10 "ADC1_CLK_N")
+  ;; ... (all nets would be defined in a complete design)
+  ;; Key nets enumerated in Phase 2 are represented here.
+
+  ;; Additional representative nets
+  (net 100 "ULPI_DATA0")
+  (net 101 "ULPI_DATA1")
+  (net 102 "ULPI_DATA2")
+  (net 103 "ULPI_DATA3")
+  (net 104 "ULPI_DATA4")
+  (net 105 "ULPI_DATA5")
+  (net 106 "ULPI_DATA6")
+  (net 107 "ULPI_DATA7")
+  (net 108 "ULPI_CLK")
+  (net 109 "ULPI_DIR")
+  (net 110 "ULPI_NXT")
+  (net 111 "ULPI_STP")
+  (net 112 "ULPI_RST")
+  (net 200 "DDR3_A0")
+  (net 201 "DDR3_CLK_P")
+  (net 202 "DDR3_CLK_N")
+  (net 203 "DDR3_DQ0")
+  (net 204 "DDR3_DQS0_P")
+  (net 205 "DDR3_DQS0_N")
+  (net 300 "PMIC_SCL")
+  (net 301 "PMIC_SDA")
+  (net 302 "PD_SCL")
+  (net 303 "PD_SDA")
+  (net 304 "DAC_SCK")
+  (net 305 "DAC_MOSI")
+  (net 306 "DAC_CS_N")
+  (net 307 "SPI_FLASH_SCK")
+  (net 308 "SPI_FLASH_MOSI")
+  (net 309 "SPI_FLASH_MISO")
+  (net 310 "SPI_FLASH_CS_N")
+  (net 311 "FPGA_SPI_SCK")
+  (net 312 "FPGA_SPI_MOSI")
+  (net 313 "FPGA_SPI_MISO")
+  (net 314 "FPGA_SPI_CS_N")
+  (net 400 "USB_DP")
+  (net 401 "USB_DM")
+  (net 402 "USB_SSTXP")
+  (net 403 "USB_SSTXN")
+  (net 404 "USB_SSRXP")
+  (net 405 "USB_SSRXN")
+  (net 500 "WIFI_TX")
+  (net 501 "WIFI_RX")
+  (net 502 "WIFI_RTS")
+  (net 503 "WIFI_CTS")
+)

@@ -1,0 +1,600 @@
+(kicad_sch
+  (version 20240101)
+  (generator "eeschema")
+  (uuid "00000000-0000-0000-0000-000000000001")
+
+  ;; ============================================================
+  ;; HexaScope — Top-Level Schematic
+  ;; 6-Channel Mixed-Signal Oscilloscope / Logic Analyzer
+  ;; ============================================================
+
+  (title_block
+    (title "HexaScope - 6-Channel Mixed-Signal Oscilloscope")
+    (date "2026-06-14")
+    (rev "1.0")
+    (company "HexaScope Project")
+  )
+
+  ;; ============================================================
+  ;; Library symbols (using standard KiCad schematic symbols)
+  ;; ============================================================
+
+  ;; --- Power Flags ---
+  (symbol "power_VBUS" (power)
+    (pin "1" (output) (uuid "10000001-0000-0000-0000-000000000001"))
+  )
+  (symbol "power_GND" (power)
+    (pin "1" (output) (uuid "10000002-0000-0000-0000-000000000001"))
+  )
+  (symbol "power_+1V1" (power)
+    (pin "1" (output) (uuid "10000003-0000-0000-0000-000000000001"))
+  )
+  (symbol "power_+1V35" (power)
+    (pin "1" (output) (uuid "10000004-0000-0000-0000-000000000001"))
+  )
+  (symbol "power_+1V8" (power)
+    (pin "1" (output) (uuid "10000005-0000-0000-0000-000000000001"))
+  )
+  (symbol "power_+3V3" (power)
+    (pin "1" (output) (uuid "10000006-0000-0000-0000-000000000001"))
+  )
+  (symbol "power_+5V" (power)
+    (pin "1" (output) (uuid "10000007-0000-0000-0000-000000000001"))
+  )
+
+  ;; ============================================================
+  ;; Component: U1 — Lattice ECP5-5G FPGA (LFE5U-45F-8BG381C)
+  ;; ============================================================
+  (symbol "LFE5U-45F-8BG381C"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U1" (at 0 0 0))
+    (property "Value" "LFE5U-45F-8BG381C" (at 0 2 0))
+    (property "Footprint" "Package_BGA:Lattice_BGA-381_23x23mm_0.8mm_Pitch" (at 0 0 0))
+
+    ;; Power pins
+    (pin "VCC_CORE" power_out (at -25 0 0) (uuid "11000001-0000-0000-0000-000000000001"))
+    (pin "GND" power_out (at -25 -2 0) (uuid "11000002-0000-0000-0000-000000000001"))
+    (pin "VCCIO0" power_out (at -25 -4 0) (uuid "11000003-0000-0000-0000-000000000001"))
+    (pin "VCCIO1" power_out (at -25 -6 0) (uuid "11000004-0000-0000-0000-000000000001"))
+    (pin "VCCIO2" power_out (at -25 -8 0) (uuid "11000005-0000-0000-0000-000000000001"))
+    (pin "VCCIO3" power_out (at -25 -10 0) (uuid "11000006-0000-0000-0000-000000000001"))
+    (pin "VCCIO4" power_out (at -25 -12 0) (uuid "11000007-0000-0000-0000-000000000001"))
+    (pin "VCCIO5" power_out (at -25 -14 0) (uuid "11000008-0000-0000-0000-000000000001"))
+
+    ;; ADC1 LVDS inputs (Bank 0)
+    (pin "ADC1_CLK_P" input (at -15 0 0) (uuid "11000010-0000-0000-0000-000000000001"))
+    (pin "ADC1_CLK_N" input (at -15 -2 0) (uuid "11000011-0000-0000-0000-000000000001"))
+    (pin "ADC1_D0_P" input (at -15 -4 0) (uuid "11000012-0000-0000-0000-000000000001"))
+    (pin "ADC1_D0_N" input (at -15 -6 0) (uuid "11000013-0000-0000-0000-000000000001"))
+    (pin "ADC1_D1_P" input (at -15 -8 0) (uuid "11000014-0000-0000-0000-000000000001"))
+    (pin "ADC1_D1_N" input (at -15 -10 0) (uuid "11000015-0000-0000-0000-000000000001"))
+    (pin "ADC1_D2_P" input (at -15 -12 0) (uuid "11000016-0000-0000-0000-000000000001"))
+    (pin "ADC1_D2_N" input (at -15 -14 0) (uuid "11000017-0000-0000-0000-000000000001"))
+    (pin "ADC1_D3_P" input (at -15 -16 0) (uuid "11000018-0000-0000-0000-000000000001"))
+    (pin "ADC1_D3_N" input (at -15 -18 0) (uuid "11000019-0000-0000-0000-000000000001"))
+    (pin "ADC1_D4_P" input (at -15 -20 0) (uuid "11000020-0000-0000-0000-000000000001"))
+    (pin "ADC1_D4_N" input (at -15 -22 0) (uuid "11000021-0000-0000-0000-000000000001"))
+    (pin "ADC1_D5_P" input (at -15 -24 0) (uuid "11000022-0000-0000-0000-000000000001"))
+    (pin "ADC1_D5_N" input (at -15 -26 0) (uuid "11000023-0000-0000-0000-000000000001"))
+    (pin "ADC1_D6_P" input (at -15 -28 0) (uuid "11000024-0000-0000-0000-000000000001"))
+    (pin "ADC1_D6_N" input (at -15 -30 0) (uuid "11000025-0000-0000-0000-000000000001"))
+    (pin "ADC1_D7_P" input (at -15 -32 0) (uuid "11000026-0000-0000-0000-000000000001"))
+    (pin "ADC1_D7_N" input (at -15 -34 0) (uuid "11000027-0000-0000-0000-000000000001"))
+
+    ;; ADC2-4 LVDS inputs (Bank 0-1, abbreviated)
+    (pin "ADC2_CLK_P" input (at -10 0 0) (uuid "11000030-0000-0000-0000-000000000001"))
+    (pin "ADC2_CLK_N" input (at -10 -2 0) (uuid "11000031-0000-0000-0000-000000000001"))
+    (pin "ADC3_CLK_P" input (at -5 0 0) (uuid "11000040-0000-0000-0000-000000000001"))
+    (pin "ADC3_CLK_N" input (at -5 -2 0) (uuid "11000041-0000-0000-0000-000000000001"))
+    (pin "ADC4_CLK_P" input (at 0 0 0) (uuid "11000050-0000-0000-0000-000000000001"))
+    (pin "ADC4_CLK_N" input (at 0 -2 0) (uuid "11000051-0000-0000-0000-000000000001"))
+
+    ;; Digital comparator inputs (Bank 2)
+    (pin "CMP1_OUT" input (at 5 0 0) (uuid "11000060-0000-0000-0000-000000000001"))
+    (pin "CMP2_OUT" input (at 5 -2 0) (uuid "11000061-0000-0000-0000-000000000001"))
+
+    ;; External trigger (Bank 2)
+    (pin "EXT_TRIG_IN" input (at 5 -4 0) (uuid "11000062-0000-0000-0000-000000000001"))
+    (pin "EXT_TRIG_OUT" output (at 5 -6 0) (uuid "11000063-0000-0000-0000-000000000001"))
+
+    ;; ULPI interface (Bank 3)
+    (pin "ULPI_DATA0" bidirectional (at 10 0 0) (uuid "11000070-0000-0000-0000-000000000001"))
+    (pin "ULPI_DATA1" bidirectional (at 10 -2 0) (uuid "11000071-0000-0000-0000-000000000001"))
+    (pin "ULPI_DATA2" bidirectional (at 10 -4 0) (uuid "11000072-0000-0000-0000-000000000001"))
+    (pin "ULPI_DATA3" bidirectional (at 10 -6 0) (uuid "11000073-0000-0000-0000-000000000001"))
+    (pin "ULPI_DATA4" bidirectional (at 10 -8 0) (uuid "11000074-0000-0000-0000-000000000001"))
+    (pin "ULPI_DATA5" bidirectional (at 10 -10 0) (uuid "11000075-0000-0000-0000-000000000001"))
+    (pin "ULPI_DATA6" bidirectional (at 10 -12 0) (uuid "11000076-0000-0000-0000-000000000001"))
+    (pin "ULPI_DATA7" bidirectional (at 10 -14 0) (uuid "11000077-0000-0000-0000-000000000001"))
+    (pin "ULPI_CLK" input (at 10 -16 0) (uuid "11000078-0000-0000-0000-000000000001"))
+    (pin "ULPI_DIR" input (at 10 -18 0) (uuid "11000079-0000-0000-0000-000000000001"))
+    (pin "ULPI_NXT" input (at 10 -20 0) (uuid "11000080-0000-0000-0000-000000000001"))
+    (pin "ULPI_STP" output (at 10 -22 0) (uuid "11000081-0000-0000-0000-000000000001"))
+    (pin "ULPI_RST" output (at 10 -24 0) (uuid "11000082-0000-0000-0000-000000000001"))
+
+    ;; Wi-Fi UART (Bank 3)
+    (pin "WIFI_TX" output (at 15 0 0) (uuid "11000090-0000-0000-0000-000000000001"))
+    (pin "WIFI_RX" input (at 15 -2 0) (uuid "11000091-0000-0000-0000-000000000001"))
+    (pin "WIFI_RTS" output (at 15 -4 0) (uuid "11000092-0000-0000-0000-000000000001"))
+    (pin "WIFI_CTS" input (at 15 -6 0) (uuid "11000093-0000-0000-0000-000000000001"))
+
+    ;; DDR3 interface (Bank 4)
+    (pin "DDR3_A0" output (at 20 0 0) (uuid "11000100-0000-0000-0000-000000000001"))
+    (pin "DDR3_CLK_P" output (at 20 -2 0) (uuid "11000101-0000-0000-0000-000000000001"))
+    (pin "DDR3_CLK_N" output (at 20 -4 0) (uuid "11000102-0000-0000-0000-000000000001"))
+    (pin "DDR3_DQ0" bidirectional (at 20 -6 0) (uuid "11000103-0000-0000-0000-000000000001"))
+    (pin "DDR3_DQS0_P" bidirectional (at 20 -8 0) (uuid "11000104-0000-0000-0000-000000000001"))
+    (pin "DDR3_DQS0_N" bidirectional (at 20 -10 0) (uuid "11000105-0000-0000-0000-000000000001"))
+
+    ;; SPI / JTAG (Bank 5)
+    (pin "SPI_FLASH_MOSI" bidirectional (at 25 0 0) (uuid "11000200-0000-0000-0000-000000000001"))
+    (pin "SPI_FLASH_MISO" bidirectional (at 25 -2 0) (uuid "11000201-0000-0000-0000-000000000001"))
+    (pin "SPI_FLASH_SCK" bidirectional (at 25 -4 0) (uuid "11000202-0000-0000-0000-000000000001"))
+    (pin "SPI_FLASH_CS_N" bidirectional (at 25 -6 0) (uuid "11000203-0000-0000-0000-000000000001"))
+    (pin "MCU_SPI_MOSI" input (at 25 -8 0) (uuid "11000204-0000-0000-0000-000000000001"))
+    (pin "MCU_SPI_MISO" output (at 25 -10 0) (uuid "11000205-0000-0000-0000-000000000001"))
+    (pin "MCU_SPI_SCK" input (at 25 -12 0) (uuid "11000206-0000-0000-0000-000000000001"))
+    (pin "MCU_SPI_CS_N" input (at 25 -14 0) (uuid "11000207-0000-0000-0000-000000000001"))
+    (pin "JTAG_TDI" input (at 25 -16 0) (uuid "11000210-0000-0000-0000-000000000001"))
+    (pin "JTAG_TDO" output (at 25 -18 0) (uuid "11000211-0000-0000-0000-000000000001"))
+    (pin "JTAG_TCK" input (at 25 -20 0) (uuid "11000212-0000-0000-0000-000000000001"))
+    (pin "JTAG_TMS" input (at 25 -22 0) (uuid "11000213-0000-0000-0000-000000000001"))
+  )
+
+  ;; ============================================================
+  ;; Component: U2 — STM32G474VET6 MCU
+  ;; ============================================================
+  (symbol "STM32G474VET6"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U2" (at 0 0 0))
+    (property "Value" "STM32G474VET6" (at 0 2 0))
+    (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 0 0 0))
+
+    (pin "VBAT" power_in (at -30 0 0) (uuid "12000001-0000-0000-0000-000000000001"))
+    (pin "PC13" bidirectional (at -30 -2 0) (uuid "12000002-0000-0000-0000-000000000001"))
+    (pin "PC14" bidirectional (at -30 -4 0) (uuid "12000003-0000-0000-0000-000000000001"))
+    (pin "PC15" bidirectional (at -30 -6 0) (uuid "12000004-0000-0000-0000-000000000001"))
+    (pin "PH0_OSC_IN" input (at -30 -8 0) (uuid "12000005-0000-0000-0000-000000000001"))
+    (pin "PH1_OSC_OUT" output (at -30 -10 0) (uuid "12000006-0000-0000-0000-000000000001"))
+    (pin "NRST" input (at -30 -12 0) (uuid "12000007-0000-0000-0000-000000000001"))
+    (pin "PC0" bidirectional (at -30 -14 0) (uuid "12000008-0000-0000-0000-000000000001"))
+    (pin "PC1" bidirectional (at -30 -16 0) (uuid "12000009-0000-0000-0000-000000000001"))
+    (pin "PC2" bidirectional (at -30 -18 0) (uuid "12000010-0000-0000-0000-000000000001"))
+    (pin "PC3" bidirectional (at -30 -20 0) (uuid "12000011-0000-0000-0000-000000000001"))
+    (pin "PA0" bidirectional (at -25 0 0) (uuid "12000012-0000-0000-0000-000000000001"))
+    (pin "PA1" bidirectional (at -25 -2 0) (uuid "12000013-0000-0000-0000-000000000001"))
+    (pin "PA2" bidirectional (at -25 -4 0) (uuid "12000014-0000-0000-0000-000000000001"))
+    (pin "PA3" bidirectional (at -25 -6 0) (uuid "12000015-0000-0000-0000-000000000001"))
+    (pin "PA4" bidirectional (at -25 -8 0) (uuid "12000016-0000-0000-0000-000000000001"))
+    (pin "PA5" bidirectional (at -25 -10 0) (uuid "12000017-0000-0000-0000-000000000001"))
+    (pin "PA6" bidirectional (at -25 -12 0) (uuid "12000018-0000-0000-0000-000000000001"))
+    (pin "PA7" bidirectional (at -25 -14 0) (uuid "12000019-0000-0000-0000-000000000001"))
+    (pin "PB0" bidirectional (at -20 0 0) (uuid "12000020-0000-0000-0000-000000000001"))
+    (pin "PB1" bidirectional (at -20 -2 0) (uuid "12000021-0000-0000-0000-000000000001"))
+    (pin "PB2" bidirectional (at -20 -4 0) (uuid "12000022-0000-0000-0000-000000000001"))
+    (pin "PB3" bidirectional (at -20 -6 0) (uuid "12000023-0000-0000-0000-000000000001"))
+    (pin "PB4" bidirectional (at -20 -8 0) (uuid "12000024-0000-0000-0000-000000000001"))
+    (pin "PB5" bidirectional (at -20 -10 0) (uuid "12000025-0000-0000-0000-000000000001"))
+    (pin "PB6" bidirectional (at -20 -12 0) (uuid "12000026-0000-0000-0000-000000000001"))  ;; I2C1_SCL
+    (pin "PB7" bidirectional (at -20 -14 0) (uuid "12000027-0000-0000-0000-000000000001"))  ;; I2C1_SDA
+    (pin "PB8" bidirectional (at -20 -16 0) (uuid "12000028-0000-0000-0000-000000000001"))  ;; I2C2_SCL
+    (pin "PB9" bidirectional (at -20 -18 0) (uuid "12000029-0000-0000-0000-000000000001"))  ;; I2C2_SDA
+    (pin "PB10" bidirectional (at -15 0 0) (uuid "12000030-0000-0000-0000-000000000001"))  ;; USART3_TX
+    (pin "PB11" bidirectional (at -15 -2 0) (uuid "12000031-0000-0000-0000-000000000001"))  ;; USART3_RX
+    (pin "PB12" bidirectional (at -15 -4 0) (uuid "12000032-0000-0000-0000-000000000001"))
+    (pin "PB13" bidirectional (at -15 -6 0) (uuid "12000033-0000-0000-0000-000000000001"))  ;; SPI4_SCK
+    (pin "PB14" bidirectional (at -15 -8 0) (uuid "12000034-0000-0000-0000-000000000001"))  ;; SPI4_MISO
+    (pin "PB15" bidirectional (at -15 -10 0) (uuid "12000035-0000-0000-0000-000000000001"))  ;; SPI4_MOSI
+    (pin "PC6" bidirectional (at -15 -12 0) (uuid "12000036-0000-0000-0000-000000000001"))  ;; SPI4_NSS
+    (pin "PC7" bidirectional (at -15 -14 0) (uuid "12000037-0000-0000-0000-000000000001"))  ;; MCU_IRQ
+    (pin "PA11" bidirectional (at -10 0 0) (uuid "12000038-0000-0000-0000-000000000001"))  ;; USB_DM
+    (pin "PA12" bidirectional (at -10 -2 0) (uuid "12000039-0000-0000-0000-000000000001"))  ;; USB_DP
+    (pin "PA13" bidirectional (at -10 -4 0) (uuid "12000040-0000-0000-0000-000000000001"))  ;; SWDIO
+    (pin "PA14" bidirectional (at -10 -6 0) (uuid "12000041-0000-0000-0000-000000000001"))  ;; SWCLK
+    (pin "PD0" bidirectional (at -10 -8 0) (uuid "12000042-0000-0000-0000-000000000001"))  ;; JTAG_TCK
+    (pin "PD1" bidirectional (at -10 -10 0) (uuid "12000043-0000-0000-0000-000000000001"))  ;; JTAG_TMS
+    (pin "PD2" bidirectional (at -10 -12 0) (uuid "12000044-0000-0000-0000-000000000001"))  ;; JTAG_TDI
+    (pin "PD3" bidirectional (at -10 -14 0) (uuid "12000045-0000-0000-0000-000000000001"))  ;; JTAG_TDO
+    (pin "PD4" bidirectional (at -5 0 0) (uuid "12000046-0000-0000-0000-000000000001"))  ;; FPGA_PROG_N
+    (pin "PD5" bidirectional (at -5 -2 0) (uuid "12000047-0000-0000-0000-000000000001"))  ;; FPGA_INIT_N
+    (pin "PD6" bidirectional (at -5 -4 0) (uuid "12000048-0000-0000-0000-000000000001"))  ;; FPGA_DONE
+    (pin "PD7" bidirectional (at -5 -6 0) (uuid "12000049-0000-0000-0000-000000000001"))  ;; PD_INT_N
+    (pin "PD8" bidirectional (at -5 -8 0) (uuid "12000050-0000-0000-0000-000000000001"))  ;; PMIC_INT_N
+    (pin "VDD" power_in (at 0 0 0) (uuid "12000051-0000-0000-0000-000000000001"))
+    (pin "VSS" power_in (at 0 -2 0) (uuid "12000052-0000-0000-0000-000000000001"))
+  )
+
+  ;; ============================================================
+  ;; Component: U3 — ADS61B49 ADC (Channel 1)
+  ;; ============================================================
+  (symbol "ADS61B49IRSAT"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U3" (at 0 0 0))
+    (property "Value" "ADS61B49IRSAT" (at 0 2 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm" (at 0 0 0))
+
+    (pin "INP" input (at -15 0 0) (uuid "13000001-0000-0000-0000-000000000001"))
+    (pin "INN" input (at -15 -2 0) (uuid "13000002-0000-0000-0000-000000000001"))
+    (pin "VCM" output (at -15 -4 0) (uuid "13000003-0000-0000-0000-000000000001"))
+    (pin "CLKP" input (at -15 -6 0) (uuid "13000004-0000-0000-0000-000000000001"))
+    (pin "CLKN" input (at -15 -8 0) (uuid "13000005-0000-0000-0000-000000000001"))
+    (pin "OVR" output (at -15 -10 0) (uuid "13000006-0000-0000-0000-000000000001"))
+    (pin "PD" input (at -15 -12 0) (uuid "13000007-0000-0000-0000-000000000001"))
+    (pin "CLKDIV" input (at -15 -14 0) (uuid "13000008-0000-0000-0000-000000000001"))
+    (pin "BG" passive (at -15 -16 0) (uuid "13000009-0000-0000-0000-000000000001"))
+    (pin "VREF" passive (at -15 -18 0) (uuid "13000010-0000-0000-0000-000000000001"))
+    (pin "D0P" output (at 10 0 0) (uuid "13000011-0000-0000-0000-000000000001"))
+    (pin "D0N" output (at 10 -2 0) (uuid "13000012-0000-0000-0000-000000000001"))
+    (pin "D1P" output (at 10 -4 0) (uuid "13000013-0000-0000-0000-000000000001"))
+    (pin "D1N" output (at 10 -6 0) (uuid "13000014-0000-0000-0000-000000000001"))
+    (pin "D2P" output (at 10 -8 0) (uuid "13000015-0000-0000-0000-000000000001"))
+    (pin "D2N" output (at 10 -10 0) (uuid "13000016-0000-0000-0000-000000000001"))
+    (pin "D3P" output (at 10 -12 0) (uuid "13000017-0000-0000-0000-000000000001"))
+    (pin "D3N" output (at 10 -14 0) (uuid "13000018-0000-0000-0000-000000000001"))
+    (pin "D4P" output (at 15 0 0) (uuid "13000019-0000-0000-0000-000000000001"))
+    (pin "D4N" output (at 15 -2 0) (uuid "13000020-0000-0000-0000-000000000001"))
+    (pin "D5P" output (at 15 -4 0) (uuid "13000021-0000-0000-0000-000000000001"))
+    (pin "D5N" output (at 15 -6 0) (uuid "13000022-0000-0000-0000-000000000001"))
+    (pin "D6P" output (at 15 -8 0) (uuid "13000023-0000-0000-0000-000000000001"))
+    (pin "D6N" output (at 15 -10 0) (uuid "13000024-0000-0000-0000-000000000001"))
+    (pin "D7P" output (at 15 -12 0) (uuid "13000025-0000-0000-0000-000000000001"))
+    (pin "D7N" output (at 15 -14 0) (uuid "13000026-0000-0000-0000-000000000001"))
+    (pin "VDD" power_in (at 0 0 0) (uuid "13000027-0000-0000-0000-000000000001"))
+    (pin "AVDD" power_in (at 0 -2 0) (uuid "13000028-0000-0000-0000-000000000001"))
+    (pin "DRVDD" power_in (at 0 -4 0) (uuid "13000029-0000-0000-0000-000000000001"))
+    (pin "AGND" power_in (at 0 -6 0) (uuid "13000030-0000-0000-0000-000000000001"))
+    (pin "DGND" power_in (at 0 -8 0) (uuid "13000031-0000-0000-0000-000000000001"))
+  )
+
+  ;; ============================================================
+  ;; Component: U9 — MT41K256M8TW DDR3L SDRAM
+  ;; ============================================================
+  (symbol "MT41K256M8TW-107"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U9" (at 0 0 0))
+    (property "Value" "MT41K256M8TW-107" (at 0 2 0))
+    (property "Footprint" "Package_BGA:BGA-96_8x14mm_Layout6x16_P0.65mm" (at 0 0 0))
+
+    (pin "A0" input (at -15 0 0) (uuid "14000001-0000-0000-0000-000000000001"))
+    (pin "A1" input (at -15 -2 0) (uuid "14000002-0000-0000-0000-000000000001"))
+    (pin "A2" input (at -15 -4 0) (uuid "14000003-0000-0000-0000-000000000001"))
+    (pin "A3" input (at -15 -6 0) (uuid "14000004-0000-0000-0000-000000000001"))
+    (pin "A4" input (at -15 -8 0) (uuid "14000005-0000-0000-0000-000000000001"))
+    (pin "A5" input (at -15 -10 0) (uuid "14000006-0000-0000-0000-000000000001"))
+    (pin "A6" input (at -15 -12 0) (uuid "14000007-0000-0000-0000-000000000001"))
+    (pin "A7" input (at -15 -14 0) (uuid "14000008-0000-0000-0000-000000000001"))
+    (pin "A8" input (at -10 0 0) (uuid "14000009-0000-0000-0000-000000000001"))
+    (pin "A9" input (at -10 -2 0) (uuid "14000010-0000-0000-0000-000000000001"))
+    (pin "A10" input (at -10 -4 0) (uuid "14000011-0000-0000-0000-000000000001"))
+    (pin "A11" input (at -10 -6 0) (uuid "14000012-0000-0000-0000-000000000001"))
+    (pin "A12" input (at -10 -8 0) (uuid "14000013-0000-0000-0000-000000000001"))
+    (pin "A13" input (at -10 -10 0) (uuid "14000014-0000-0000-0000-000000000001"))
+    (pin "A14" input (at -10 -12 0) (uuid "14000015-0000-0000-0000-000000000001"))
+    (pin "BA0" input (at -5 0 0) (uuid "14000016-0000-0000-0000-000000000001"))
+    (pin "BA1" input (at -5 -2 0) (uuid "14000017-0000-0000-0000-000000000001"))
+    (pin "BA2" input (at -5 -4 0) (uuid "14000018-0000-0000-0000-000000000001"))
+    (pin "CAS_N" input (at -5 -6 0) (uuid "14000019-0000-0000-0000-000000000001"))
+    (pin "RAS_N" input (at -5 -8 0) (uuid "14000020-0000-0000-0000-000000000001"))
+    (pin "WE_N" input (at -5 -10 0) (uuid "14000021-0000-0000-0000-000000000001"))
+    (pin "CS_N" input (at -5 -12 0) (uuid "14000022-0000-0000-0000-000000000001"))
+    (pin "CKE" input (at 0 0 0) (uuid "14000023-0000-0000-0000-000000000001"))
+    (pin "CLK_P" input (at 0 -2 0) (uuid "14000024-0000-0000-0000-000000000001"))
+    (pin "CLK_N" input (at 0 -4 0) (uuid "14000025-0000-0000-0000-000000000001"))
+    (pin "DQ0" bidirectional (at 5 0 0) (uuid "14000026-0000-0000-0000-000000000001"))
+    (pin "DQ1" bidirectional (at 5 -2 0) (uuid "14000027-0000-0000-0000-000000000001"))
+    (pin "DQ2" bidirectional (at 5 -4 0) (uuid "14000028-0000-0000-0000-000000000001"))
+    (pin "DQ3" bidirectional (at 5 -6 0) (uuid "14000029-0000-0000-0000-000000000001"))
+    (pin "DQ4" bidirectional (at 5 -8 0) (uuid "14000030-0000-0000-0000-000000000001"))
+    (pin "DQ5" bidirectional (at 5 -10 0) (uuid "14000031-0000-0000-0000-000000000001"))
+    (pin "DQ6" bidirectional (at 5 -12 0) (uuid "14000032-0000-0000-0000-000000000001"))
+    (pin "DQ7" bidirectional (at 5 -14 0) (uuid "14000033-0000-0000-0000-000000000001"))
+    (pin "DQ8" bidirectional (at 10 0 0) (uuid "14000034-0000-0000-0000-000000000001"))
+    (pin "DQ9" bidirectional (at 10 -2 0) (uuid "14000035-0000-0000-0000-000000000001"))
+    (pin "DQ10" bidirectional (at 10 -4 0) (uuid "14000036-0000-0000-0000-000000000001"))
+    (pin "DQ11" bidirectional (at 10 -6 0) (uuid "14000037-0000-0000-0000-000000000001"))
+    (pin "DQ12" bidirectional (at 10 -8 0) (uuid "14000038-0000-0000-0000-000000000001"))
+    (pin "DQ13" bidirectional (at 10 -10 0) (uuid "14000039-0000-0000-0000-000000000001"))
+    (pin "DQ14" bidirectional (at 10 -12 0) (uuid "14000040-0000-0000-0000-000000000001"))
+    (pin "DQ15" bidirectional (at 10 -14 0) (uuid "14000041-0000-0000-0000-000000000001"))
+    (pin "LDQS_P" bidirectional (at 15 0 0) (uuid "14000042-0000-0000-0000-000000000001"))
+    (pin "LDQS_N" bidirectional (at 15 -2 0) (uuid "14000043-0000-0000-0000-000000000001"))
+    (pin "UDQS_P" bidirectional (at 15 -4 0) (uuid "14000044-0000-0000-0000-000000000001"))
+    (pin "UDQS_N" bidirectional (at 15 -6 0) (uuid "14000045-0000-0000-0000-000000000001"))
+    (pin "LDM" input (at 15 -8 0) (uuid "14000046-0000-0000-0000-000000000001"))
+    (pin "UDM" input (at 15 -10 0) (uuid "14000047-0000-0000-0000-000000000001"))
+    (pin "ODT" input (at 15 -12 0) (uuid "14000048-0000-0000-0000-000000000001"))
+    (pin "RESET_N" input (at 15 -14 0) (uuid "14000049-0000-0000-0000-000000000001"))
+    (pin "ZQ" passive (at 20 0 0) (uuid "14000050-0000-0000-0000-000000000001"))
+    (pin "VDD" power_in (at 20 -2 0) (uuid "14000051-0000-0000-0000-000000000001"))
+    (pin "VSS" power_in (at 20 -4 0) (uuid "14000052-0000-0000-0000-000000000001"))
+    (pin "VREF" power_in (at 20 -6 0) (uuid "14000053-0000-0000-0000-000000000001"))
+  )
+
+  ;; ============================================================
+  ;; Component: U10 — USB3340 ULPI PHY
+  ;; ============================================================
+  (symbol "USB3340-UT"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U10" (at 0 0 0))
+    (property "Value" "USB3340-UT" (at 0 2 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm" (at 0 0 0))
+
+    (pin "USB_DP" bidirectional (at -15 0 0) (uuid "15000001-0000-0000-0000-000000000001"))
+    (pin "USB_DM" bidirectional (at -15 -2 0) (uuid "15000002-0000-0000-0000-000000000001"))
+    (pin "USB_SSTXP" output (at -15 -4 0) (uuid "15000003-0000-0000-0000-000000000001"))
+    (pin "USB_SSTXN" output (at -15 -6 0) (uuid "15000004-0000-0000-0000-000000000001"))
+    (pin "USB_SSRXP" input (at -15 -8 0) (uuid "15000005-0000-0000-0000-000000000001"))
+    (pin "USB_SSRXN" input (at -15 -10 0) (uuid "15000006-0000-0000-0000-000000000001"))
+    (pin "DATA0" bidirectional (at 5 0 0) (uuid "15000007-0000-0000-0000-000000000001"))
+    (pin "DATA1" bidirectional (at 5 -2 0) (uuid "15000008-0000-0000-0000-000000000001"))
+    (pin "DATA2" bidirectional (at 5 -4 0) (uuid "15000009-0000-0000-0000-000000000001"))
+    (pin "DATA3" bidirectional (at 5 -6 0) (uuid "15000010-0000-0000-0000-000000000001"))
+    (pin "DATA4" bidirectional (at 5 -8 0) (uuid "15000011-0000-0000-0000-000000000001"))
+    (pin "DATA5" bidirectional (at 5 -10 0) (uuid "15000012-0000-0000-0000-000000000001"))
+    (pin "DATA6" bidirectional (at 5 -12 0) (uuid "15000013-0000-0000-0000-000000000001"))
+    (pin "DATA7" bidirectional (at 5 -14 0) (uuid "15000014-0000-0000-0000-000000000001"))
+    (pin "CLK" output (at 5 -16 0) (uuid "15000015-0000-0000-0000-000000000001"))
+    (pin "DIR" output (at 10 0 0) (uuid "15000016-0000-0000-0000-000000000001"))
+    (pin "NXT" output (at 10 -2 0) (uuid "15000017-0000-0000-0000-000000000001"))
+    (pin "STP" input (at 10 -4 0) (uuid "15000018-0000-0000-0000-000000000001"))
+    (pin "RST" input (at 10 -6 0) (uuid "15000019-0000-0000-0000-000000000001"))
+    (pin "VDD" power_in (at 15 0 0) (uuid "15000020-0000-0000-0000-000000000001"))
+    (pin "GND" power_in (at 15 -2 0) (uuid "15000021-0000-0000-0000-000000000001"))
+  )
+
+  ;; ============================================================
+  ;; Component: U11 — DA9063 PMIC
+  ;; ============================================================
+  (symbol "DA9063-NA1V"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U11" (at 0 0 0))
+    (property "Value" "DA9063-NA1V" (at 0 2 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP5.6x5.6mm" (at 0 0 0))
+
+    (pin "VIN" power_in (at -20 0 0) (uuid "16000001-0000-0000-0000-000000000001"))
+    (pin "BUCK1_OUT" power_out (at -20 -2 0) (uuid "16000002-0000-0000-0000-000000000001"))  ;; VDD_CORE 1.1V
+    (pin "BUCK2_OUT" power_out (at -20 -4 0) (uuid "16000003-0000-0000-0000-000000000001"))  ;; VDD_DDR 1.35V
+    (pin "BUCK3_OUT" power_out (at -20 -6 0) (uuid "16000004-0000-0000-0000-000000000001"))  ;; VDD_IO18 1.8V
+    (pin "LDO1_OUT" power_out (at -15 0 0) (uuid "16000005-0000-0000-0000-000000000001"))  ;; VDD_IO33 3.3V
+    (pin "LDO2_OUT" power_out (at -15 -2 0) (uuid "16000006-0000-0000-0000-000000000001"))  ;; VDD_ANA 5.0V
+    (pin "LDO3_OUT" power_out (at -15 -4 0) (uuid "16000007-0000-0000-0000-000000000001"))  ;; VDD_RTC 3.3V
+    (pin "SCL" input (at -10 0 0) (uuid "16000008-0000-0000-0000-000000000001"))  ;; PMIC_SCL
+    (pin "SDA" bidirectional (at -10 -2 0) (uuid "16000009-0000-0000-0000-000000000001"))  ;; PMIC_SDA
+    (pin "IRQ_N" output (at -10 -4 0) (uuid "16000010-0000-0000-0000-000000000001"))  ;; PMIC_INT_N
+    (pin "GND" power_in (at 0 0 0) (uuid "16000011-0000-0000-0000-000000000001"))
+  )
+
+  ;; ============================================================
+  ;; Component: U12 — FUSB302 USB PD Controller
+  ;; ============================================================
+  (symbol "FUSB302MPX"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U12" (at 0 0 0))
+    (property "Value" "FUSB302MPX" (at 0 2 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-14-1EP_2.5x2.5mm_P0.5mm_EP1.3x1.3mm" (at 0 0 0))
+
+    (pin "VBUS" input (at -10 0 0) (uuid "17000001-0000-0000-0000-000000000001"))
+    (pin "CC1" bidirectional (at -10 -2 0) (uuid "17000002-0000-0000-0000-000000000001"))
+    (pin "CC2" bidirectional (at -10 -4 0) (uuid "17000003-0000-0000-0000-000000000001"))
+    (pin "SCL" input (at 5 0 0) (uuid "17000004-0000-0000-0000-000000000001"))
+    (pin "SDA" bidirectional (at 5 -2 0) (uuid "17000005-0000-0000-0000-000000000001"))
+    (pin "INT_N" output (at 5 -4 0) (uuid "17000006-0000-0000-0000-000000000001"))
+    (pin "VDD" power_in (at 10 0 0) (uuid "17000007-0000-0000-0000-000000000001"))
+    (pin "GND" power_in (at 10 -2 0) (uuid "17000008-0000-0000-0000-000000000001"))
+  )
+
+  ;; ============================================================
+  ;; Component: U14 — ISO7740 Digital Isolator
+  ;; ============================================================
+  (symbol "ISO7740DWR"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U14" (at 0 0 0))
+    (property "Value" "ISO7740DWR" (at 0 2 0))
+    (property "Footprint" "Package_SO:SOIC-16_7.5x10.3mm_P1.27mm" (at 0 0 0))
+
+    (pin "VCC1" power_in (at -10 0 0) (uuid "18000001-0000-0000-0000-000000000001"))
+    (pin "GND1" power_in (at -10 -2 0) (uuid "18000002-0000-0000-0000-000000000001"))
+    (pin "IN_A1" input (at -5 0 0) (uuid "18000003-0000-0000-0000-000000000001"))
+    (pin "IN_A2" input (at -5 -2 0) (uuid "18000004-0000-0000-0000-000000000001"))
+    (pin "OUT_A1" output (at 5 0 0) (uuid "18000005-0000-0000-0000-000000000001"))
+    (pin "OUT_A2" output (at 5 -2 0) (uuid "18000006-0000-0000-0000-000000000001"))
+    (pin "IN_B3" input (at -5 -4 0) (uuid "18000007-0000-0000-0000-000000000001"))
+    (pin "IN_B4" input (at -5 -6 0) (uuid "18000008-0000-0000-0000-000000000001"))
+    (pin "OUT_B3" output (at 5 -4 0) (uuid "18000009-0000-0000-0000-000000000001"))
+    (pin "OUT_B4" output (at 5 -6 0) (uuid "18000010-0000-0000-0000-000000000001"))
+    (pin "VCC2" power_in (at 10 0 0) (uuid "18000011-0000-0000-0000-000000000001"))
+    (pin "GND2" power_in (at 10 -2 0) (uuid "18000012-0000-0000-0000-000000000001"))
+    (pin "EN1" input (at -10 -4 0) (uuid "18000013-0000-0000-0000-000000000001"))
+    (pin "EN2" input (at 10 -4 0) (uuid "18000014-0000-0000-0000-000000000001"))
+  )
+
+  ;; ============================================================
+  ;; Component: U15 — DAC60508 8-Channel DAC
+  ;; ============================================================
+  (symbol "DAC60508DGS"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U15" (at 0 0 0))
+    (property "Value" "DAC60508DGS" (at 0 2 0))
+    (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" (at 0 0 0))
+
+    (pin "VDD" power_in (at -10 0 0) (uuid "19000001-0000-0000-0000-000000000001"))
+    (pin "SCL" input (at -10 -2 0) (uuid "19000002-0000-0000-0000-000000000001"))
+    (pin "SDA" bidirectional (at -10 -4 0) (uuid "19000003-0000-0000-0000-000000000001"))
+    (pin "A0" input (at -10 -6 0) (uuid "19000004-0000-0000-0000-000000000001"))
+    (pin "A1" input (at -10 -8 0) (uuid "19000005-0000-0000-0000-000000000001"))
+    (pin "OUT0" output (at 5 0 0) (uuid "19000006-0000-0000-0000-000000000001"))
+    (pin "OUT1" output (at 5 -2 0) (uuid "19000007-0000-0000-0000-000000000001"))
+    (pin "OUT2" output (at 5 -4 0) (uuid "19000008-0000-0000-0000-000000000001"))
+    (pin "OUT3" output (at 5 -6 0) (uuid "19000009-0000-0000-0000-000000000001"))
+    (pin "OUT4" output (at 5 -8 0) (uuid "19000010-0000-0000-0000-000000000001"))
+    (pin "OUT5" output (at 5 -10 0) (uuid "19000011-0000-0000-0000-000000000001"))
+    (pin "OUT6" output (at 5 -12 0) (uuid "19000012-0000-0000-0000-000000000001"))
+    (pin "OUT7" output (at 5 -14 0) (uuid "19000013-0000-0000-0000-000000000001"))
+    (pin "VREF" input (at 10 0 0) (uuid "19000014-0000-0000-0000-000000000001"))
+    (pin "GND" power_in (at 10 -2 0) (uuid "19000015-0000-0000-0000-000000000001"))
+    (pin "LDAC" input (at 10 -4 0) (uuid "19000016-0000-0000-0000-000000000001"))
+  )
+
+  ;; ============================================================
+  ;; Component: U13 — ESP32-C6-WROOM-1 Wi-Fi Module
+  ;; ============================================================
+  (symbol "ESP32-C6-WROOM-1"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U13" (at 0 0 0))
+    (property "Value" "ESP32-C6-WROOM-1" (at 0 2 0))
+    (property "Footprint" "RF_Module:Espressif_ESP32-C6-WROOM-1" (at 0 0 0))
+
+    (pin "VDD" power_in (at -15 0 0) (uuid "1A000001-0000-0000-0000-000000000001"))
+    (pin "GND" power_in (at -15 -2 0) (uuid "1A000002-0000-0000-0000-000000000001"))
+    (pin "EN" input (at -15 -4 0) (uuid "1A000003-0000-0000-0000-000000000001"))
+    (pin "TX" output (at -10 0 0) (uuid "1A000004-0000-0000-0000-000000000001"))
+    (pin "RX" input (at -10 -2 0) (uuid "1A000005-0000-0000-0000-000000000001"))
+    (pin "RTS" output (at -10 -4 0) (uuid "1A000006-0000-0000-0000-000000000001"))
+    (pin "CTS" input (at -10 -6 0) (uuid "1A000007-0000-0000-0000-000000000001"))
+    (pin "GPIO0" bidirectional (at 5 0 0) (uuid "1A000008-0000-0000-0000-000000000001"))
+    (pin "GPIO1" bidirectional (at 5 -2 0) (uuid "1A000009-0000-0000-0000-000000000001"))
+    (pin "GPIO2" bidirectional (at 5 -4 0) (uuid "1A000010-0000-0000-0000-000000000001"))
+    (pin "ANT" passive (at 15 0 0) (uuid "1A000011-0000-0000-0000-000000000001"))
+  )
+
+  ;; ============================================================
+  ;; Component: U16 — W25Q256 SPI Flash
+  ;; ============================================================
+  (symbol "W25Q256JVEIQ"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U16" (at 0 0 0))
+    (property "Value" "W25Q256JVEIQ" (at 0 2 0))
+    (property "Footprint" "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm" (at 0 0 0))
+
+    (pin "CS_N" input (at -10 0 0) (uuid "1B000001-0000-0000-0000-000000000001"))
+    (pin "DO" output (at -10 -2 0) (uuid "1B000002-0000-0000-0000-000000000001"))
+    (pin "WP_N" input (at -10 -4 0) (uuid "1B000003-0000-0000-0000-000000000001"))
+    (pin "GND" power_in (at -10 -6 0) (uuid "1B000004-0000-0000-0000-000000000001"))
+    (pin "DI" input (at 5 0 0) (uuid "1B000005-0000-0000-0000-000000000001"))
+    (pin "CLK" input (at 5 -2 0) (uuid "1B000006-0000-0000-0000-000000000001"))
+    (pin "HOLD_N" input (at 5 -4 0) (uuid "1B000007-0000-0000-0000-000000000001"))
+    (pin "VDD" power_in (at 5 -6 0) (uuid "1B000008-0000-0000-0000-000000000001"))
+  )
+
+  ;; ============================================================
+  ;; Component: U7 — LT1715 Comparator (Channel D1)
+  ;; ============================================================
+  (symbol "LT1715IS8"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U7" (at 0 0 0))
+    (property "Value" "LT1715IS8#TR" (at 0 2 0))
+    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 0 0 0))
+
+    (pin "IN+" input (at -10 0 0) (uuid "1C000001-0000-0000-0000-000000000001"))
+    (pin "IN-" input (at -10 -2 0) (uuid "1C000002-0000-0000-0000-000000000001"))
+    (pin "LE" input (at -10 -4 0) (uuid "1C000003-0000-0000-0000-000000000001"))  ;; Latch enable
+    (pin "GND" power_in (at -10 -6 0) (uuid "1C000004-0000-0000-0000-000000000001"))
+    (pin "OUT" output (at 5 0 0) (uuid "1C000005-0000-0000-0000-000000000001"))
+    (pin "VDD" power_in (at 5 -2 0) (uuid "1C000006-0000-0000-0000-000000000001"))
+    (pin "NC" no_connect (at 5 -4 0) (uuid "1C000007-0000-0000-0000-000000000001"))
+    (pin "NC2" no_connect (at 5 -6 0) (uuid "1C000008-0000-0000-0000-000000000001"))
+  )
+
+  ;; ============================================================
+  ;; Passive Components — Representative
+  ;; ============================================================
+  (symbol "R"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "R" (at 0 0 0))
+    (property "Value" "R" (at 0 2 0))
+    (pin "1" passive (at -5 0 0) (uuid "20000001-0000-0000-0000-000000000001"))
+    (pin "2" passive (at 5 0 0) (uuid "20000002-0000-0000-0000-000000000001"))
+  )
+  (symbol "C"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "C" (at 0 0 0))
+    (property "Value" "C" (at 0 2 0))
+    (pin "1" passive (at -5 0 0) (uuid "20000003-0000-0000-0000-000000000001"))
+    (pin "2" passive (at 5 0 0) (uuid "20000004-0000-0000-0000-000000000001"))
+  )
+  (symbol "L"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "L" (at 0 0 0))
+    (property "Value" "L" (at 0 2 0))
+    (pin "1" passive (at -5 0 0) (uuid "20000005-0000-0000-0000-000000000001"))
+    (pin "2" passive (at 5 0 0) (uuid "20000006-0000-0000-0000-000000000001"))
+  )
+
+  ;; ============================================================
+  ;; Connector Symbols
+  ;; ============================================================
+  (symbol "BNC_Connector"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "J" (at 0 0 0))
+    (property "Value" "BNC" (at 0 2 0))
+    (property "Footprint" "Connector_Coaxial:BNC_Amphenol_031-54301-02_Horizontal" (at 0 0 0))
+    (pin "Signal" passive (at -5 0 0) (uuid "30000001-0000-0000-0000-000000000001"))
+    (pin "Shield" passive (at -5 -2 0) (uuid "30000002-0000-0000-0000-000000000001"))
+  )
+
+  (symbol "USB-C_Connector"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "J5" (at 0 0 0))
+    (property "Value" "USB-C_16pin" (at 0 2 0))
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4105" (at 0 0 0))
+    (pin "VBUS" power_in (at -15 0 0) (uuid "31000001-0000-0000-0000-000000000001"))
+    (pin "CC1" bidirectional (at -15 -2 0) (uuid "31000002-0000-0000-0000-000000000001"))
+    (pin "CC2" bidirectional (at -15 -4 0) (uuid "31000003-0000-0000-0000-000000000001"))
+    (pin "D_P" bidirectional (at -15 -6 0) (uuid "31000004-0000-0000-0000-000000000001"))
+    (pin "D_N" bidirectional (at -15 -8 0) (uuid "31000005-0000-0000-0000-000000000001"))
+    (pin "SSTXP" output (at -15 -10 0) (uuid "31000006-0000-0000-0000-000000000001"))
+    (pin "SSTXN" output (at -15 -12 0) (uuid "31000007-0000-0000-0000-000000000001"))
+    (pin "SSRXP" input (at -15 -14 0) (uuid "31000008-0000-0000-0000-000000000001"))
+    (pin "SSRXN" input (at -15 -16 0) (uuid "31000009-0000-0000-0000-000000000001"))
+    (pin "GND" power_in (at 10 0 0) (uuid "31000010-0000-0000-0000-000000000001"))
+    (pin "SHIELD" passive (at 10 -2 0) (uuid "31000011-0000-0000-0000-000000000001"))
+  )
+
+  ;; ============================================================
+  ;; Schematic Sheet Instances
+  ;; ============================================================
+
+  ;; Top-level connections are documented in phase2 netlists.
+  ;; This schematic symbol block defines all major components and
+  ;; their pin-level interfaces. In a full KiCad project, hierarchical
+  ;; sheets would be used for:
+  ;;   Sheet 1: Power supply (PMIC, USB PD, LDOs)
+  ;;   Sheet 2: Analog front-end (attenuators, drivers, ADCs)
+  ;;   Sheet 3: Digital front-end (comparators, threshold DAC)
+  ;;   Sheet 4: FPGA + DDR3L
+  ;;   Sheet 5: MCU + peripherals (STM32, SPI, I2C, UART)
+  ;;   Sheet 6: USB + isolation (USB3340, ISO7740)
+  ;;   Sheet 7: Wi-Fi (ESP32-C6)
+  ;;   Sheet 8: Connectors (BNC, MCX, USB-C, SMA, SD)
+
+  ;; Net connections documented in phase2:
+  ;; - U1(ADC1_CLK_P) → U3(CLKP) via LVDS pair
+  ;; - U1(ULPI_DATA0..7) → U10(DATA0..7) via ULPI bus
+  ;; - U1(DDR3_*) → U9(*) via DDR3L bus
+  ;; - U2(PB6/PB7) → U11(SCL/SDA) via I2C1
+  ;; - U2(PB8/PB9) → U12(SCL/SDA) via I2C2
+  ;; - U2(PA4..PA7) → U16(CS_N/CLK/MISO/MOSI) via SPI1
+  ;; - U2(PB2..PB5) → U15(SCL/SDA/SCK/MOSI) via SPI2 (DAC threshold)
+  ;; - U2(PB13..PB15/PC6) → U1(MCU_SPI_*) via SPI4 (FPGA config)
+  ;; - U14(OUT_A1) → U10(USB_DP) via isolated USB
+  ;; - U14(OUT_A2) → U10(USB_DM) via isolated USB
+  ;; - J1(J5) → U14(IN_A1/IN_A2) via USB-C connector + ESD
+
+)
