@@ -1,0 +1,369 @@
+(kicad_pcb (version 20231022) (generator "vortex-sdr-design")
+
+  (general
+    (thickness 1.6)
+    (drawings 14)
+    (tracks 0)
+    (zones 0)
+    (nets 85)
+  )
+
+  (page "Custom")
+  (title_block
+    (title "Vortex-SDR Portable SDR Spectrum Analyzer")
+    (date "2026-06-14")
+    (rev "1.0")
+    (company "Vortex Instruments")
+  )
+
+  ;; ========================================
+  ;; LAYER STACKUP
+  ;; ========================================
+
+  (layer_stack
+    (layer "F.Cu" (type "copper") (thickness 0.035))
+    (layer "F.Paste" (type "paste"))
+    (layer "F.SilkS" (type "silk"))
+    (layer "F.Mask" (type "mask"))
+    (layer "In1.Cu" (type "copper") (thickness 0.0175))
+    (layer "In2.Cu" (type "copper") (thickness 0.0175))
+    (layer "B.Mask" (type "mask"))
+    (layer "B.SilkS" (type "silk"))
+    (layer "B.Paste" (type "paste"))
+    (layer "B.Cu" (type "copper") (thickness 0.035))
+  )
+
+  (stackup
+    (layer "F.Cu" (material "Copper") (thickness 0.035) (dielectric_constant 1))
+    (layer "Prepreg1" (material "FR-4 370HR") (thickness 0.10) (dielectric_constant 4.4) (loss_tangent 0.013))
+    (layer "In1.Cu" (material "Copper") (thickness 0.0175) (dielectric_constant 1) (role "GND plane"))
+    (layer "Core1" (material "FR-4 370HR") (thickness 0.50) (dielectric_constant 4.4) (loss_tangent 0.013))
+    (layer "In2.Cu" (material "Copper") (thickness 0.0175) (dielectric_constant 1) (role "Power plane VDD_3V3 + VDD_1V8"))
+    (layer "Prepreg2" (material "FR-4 370HR") (thickness 0.10) (dielectric_constant 4.4) (loss_tangent 0.013))
+    (layer "B.Cu" (material "Copper") (thickness 0.035) (dielectric_constant 1))
+  )
+
+  ;; ========================================
+  ;; BOARD OUTLINE (120 x 75 mm)
+  ;; ========================================
+
+  (gr_rect (start 0 0) (end 120 75) (layer "Edge.Cuts") (width 0.15) (fill none))
+
+  ;; Mounting holes (M2.5, 3.5mm from edges)
+  (gr_circle (center 3.5 3.5) (end 4.75 3.5) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 116.5 3.5) (end 117.75 3.5) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 3.5 71.5) (end 4.75 71.5) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 116.5 71.5) (end 117.75 71.5) (layer "Edge.Cuts") (width 0.15))
+
+  ;; Board labels
+  (gr_text "VORTEX-SDR" (at 60 37.5) (layer "F.SilkS") (effects (font (size 2 2) (thickness 0.3))))
+  (gr_text "REV 1.0" (at 60 40) (layer "F.SilkS") (effects (font (size 1 1) (thickness 0.2))))
+  (gr_text "RF INPUT" (at 2 37.5) (layer "F.SilkS") (effects (font (size 0.8 0.8) (thickness 0.15))))
+  (gr_text "USB-C" (at 118 50) (layer "F.SilkS") (effects (font (size 0.8 0.8) (thickness 0.15))))
+  (gr_text "BAT" (at 30 3) (layer "F.SilkS") (effects (font (size 0.8 0.8) (thickness 0.15))))
+
+  ;; ========================================
+  ;; ZONE DIVIDERS (silk screen)
+  ;; ========================================
+
+  ;; RF zone divider
+  (gr_line (start 70 0) (end 70 75) (layer "F.SilkS") (width 0.1) (style dash))
+
+  ;; ========================================
+  ;; NET CLASSES
+  ;; ========================================
+
+  (net_class "Default" ""
+    (clearance 0.10)
+    (trace_width 0.15)
+    (via_dia 0.40)
+    (via_drill 0.20)
+  )
+  (net_class "Power" "VDD_3V3 VDD_1V8 VDD_3V3A VDD_RF VSRC GND NET_VBAT"
+    (clearance 0.15)
+    (trace_width 0.30)
+    (via_dia 0.60)
+    (via_drill 0.30)
+  )
+  (net_class "RF_50" "NET_RF_IN NET_LNA_OUT NET_MIXER_RF_P NET_MIXER_RF_N NET_IF_P NET_IF_N NET_SAW_OUT NET_ADC_IN NET_LO_P NET_LO_N"
+    (clearance 0.25)
+    (trace_width 0.35)
+    (via_dia 0.40)
+    (via_drill 0.20)
+  )
+  (net_class "LVDS_100" "NET_ADC_D0_P NET_ADC_D0_N NET_ADC_D1_P NET_ADC_D1_N NET_ADC_CLK_P NET_ADC_CLK_N"
+    (clearance 0.10)
+    (trace_width 0.10)
+    (via_dia 0.40)
+    (via_drill 0.20)
+    (diff_pair_gap 0.15)
+    (diff_pair_width 0.10)
+  )
+  (net_class "USB_90" "NET_USB_DP NET_USB_DM"
+    (clearance 0.10)
+    (trace_width 0.20)
+    (via_dia 0.40)
+    (via_drill 0.20)
+    (diff_pair_gap 0.15)
+    (diff_pair_width 0.20)
+  )
+  (net_class "HighSpeed" "NET_SPI1_SCK NET_SPI1_MOSI NET_SPI1_MISO NET_SPI2_SCK NET_SPI2_MOSI NET_SPI3_SCK NET_SPI3_MOSI NET_SPI3_MISO"
+    (clearance 0.10)
+    (trace_width 0.15)
+    (via_dia 0.40)
+    (via_drill 0.20)
+  )
+
+  ;; ========================================
+  ;; FOOTPRINT PLACEMENTS
+  ;; ========================================
+
+  ;; RF Section (left side of board)
+
+  ;; J1 - SMA RF Input (left edge, center)
+  (footprint "Connector_Coaxial:SMA_Amphenol_142-0701-801_EdgeLaunch" (at 0 37.5)
+    (reference "J1")
+    (value "SMA_Edge")
+  )
+
+  ;; U6 - LNA (near SMA input)
+  (footprint "Package_TO_SOT_SMD:SOT-89" (at 15 37.5)
+    (reference "U6")
+    (value "SPF5189Z")
+  )
+
+  ;; U4 - Mixer
+  (footprint "Package_DFN_QFN:LFCSP-24_4x4mm_P0.5mm" (at 30 40)
+    (reference "U4")
+    (value "ADL5801ACPZ")
+  )
+
+  ;; U14 - SAW Filter
+  (footprint "Filter_SMD:SMD-3x3" (at 45 40)
+    (reference "U14")
+    (value "TA1099EC8110")
+  )
+
+  ;; U16 - OPA364 ADC Driver
+  (footprint "Package_TO_SOT_SMD:SOT-23-5" (at 55 40)
+    (reference "U16")
+    (value "OPA364")
+  )
+
+  ;; U3 - ADC
+  (footprint "Package_QFP:LQFP-64_10x10mm_P0.5mm" (at 55 55)
+    (reference "U3")
+    (value "AD9645BCZ-80")
+  )
+
+  ;; U5 - PLL
+  (footprint "Package_DFN_QFN:LFCSP-32_5x5mm_P0.5mm" (at 25 60)
+    (reference "U5")
+    (value "ADF4351BCPZ")
+  )
+
+  ;; Y4 - 25 MHz TCXO (near PLL)
+  (footprint "Oscillator:SMD_5x3.2mm" (at 15 65)
+    (reference "Y4")
+    (value "25.000MHz")
+  )
+
+  ;; Y3 - 61.44 MHz TCXO (near ADC)
+  (footprint "Oscillator:SMD_5x3.2mm" (at 45 55)
+    (reference "Y3")
+    (value "61.44MHz")
+  )
+
+  ;; Digital Section (right side of board)
+
+  ;; U1 - MCU (center-right)
+  (footprint "Package_QFP:LQFP-144_20x20mm_P0.5mm" (at 90 40)
+    (reference "U1")
+    (value "STM32H743ZIT6")
+  )
+
+  ;; U2 - FPGA (near MCU, ADC side)
+  (footprint "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm" (at 75 55)
+    (reference "U2")
+    (value "iCE40UP5K-SG48")
+  )
+
+  ;; U12 - Flash (near MCU)
+  (footprint "Package_SO:SOP-8_5.3mm" (at 100 30)
+    (reference "U12")
+    (value "W25Q256JVEQ")
+  )
+
+  ;; U10 - BLE Module (upper right)
+  (footprint "RF_Bluetooth:nRF52832-MK" (at 100 65)
+    (reference "U10")
+    (value "nRF52832-MK")
+  )
+
+  ;; U11 - Display connector (bottom edge)
+  (footprint "Connector_FFC-FPC:Hirose_FH12-20S-0.5SH" (at 60 72.5)
+    (reference "U11")
+    (value "ILI9341_TFT_2.8in")
+  )
+
+  ;; U19 - Touch controller
+  (footprint "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" (at 50 65)
+    (reference "U19")
+    (value "XPT2046TS")
+  )
+
+  ;; Power Section (lower left)
+
+  ;; U7 - Buck regulator
+  (footprint "Package_SON:VQFN-8-1EP_2x2mm" (at 20 20)
+    (reference "U7")
+    (value "TPS62A02")
+  )
+
+  ;; U8 - LDO 1.8V
+  (footprint "Package_TO_SOT_SMD:SOT-23-5" (at 35 20)
+    (reference "U8")
+    (value "TLV75518")
+  )
+
+  ;; U9 - LDO 3.3V analog
+  (footprint "Package_TO_SOT_SMD:SOT-23-5" (at 35 28)
+    (reference "U9")
+    (value "TLV75533")
+  )
+
+  ;; U13 - Battery charger
+  (footprint "Package_SSOP:MSOP-10_3x3mm" (at 20 10)
+    (reference "U13")
+    (value "MCP73871")
+  )
+
+  ;; J2 - USB-C connector (right edge)
+  (footprint "Connector_USB:USB_C_16pin_12401832E4" (at 120 50)
+    (reference "J2")
+    (value "USB-C_2.0")
+  )
+
+  ;; J3 - Battery connector (top edge)
+  (footprint "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm" (at 30 0)
+    (reference "J3")
+    (value "JST-PH_2pin")
+  )
+
+  ;; J4 - SWD debug header (top right)
+  (footprint "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm" (at 115 5)
+    (reference "J4")
+    (value "SWD_5pin")
+  )
+
+  ;; Buttons (bottom edge)
+  (footprint "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H2.5mm" (at 60 5)
+    (reference "SW1")
+    (value "CENTER")
+  )
+  (footprint "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H2.5mm" (at 68 5)
+    (reference "SW2")
+    (value "UP")
+  )
+  (footprint "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H2.5mm" (at 76 5)
+    (reference "SW3")
+    (value "DOWN")
+  )
+  (footprint "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H2.5mm" (at 84 5)
+    (reference "SW4")
+    (value "LEFT")
+  )
+  (footprint "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H2.5mm" (at 92 5)
+    (reference "SW5")
+    (value "RIGHT")
+  )
+  (footprint "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H2.5mm" (at 100 5)
+    (reference "SW6")
+    (value "MENU")
+  )
+
+  ;; LEDs (top edge, right side)
+  (footprint "LED_SMD:LED_0603_1608Metric" (at 110 3)
+    (reference "LED1")
+    (value "Green")
+  )
+  (footprint "LED_SMD:LED_0603_1608Metric" (at 110 6)
+    (reference "LED2")
+    (value "Red")
+  )
+
+  ;; U17 - ESD protection (near USB-C)
+  (footprint "Package_DFN_QFN:USON-10_2.5x1mm" (at 115 55)
+    (reference "U17")
+    (value "TPD4E05U06")
+  )
+
+  ;; ========================================
+  ;; ZONES
+  ;; ========================================
+
+  ;; Ground zone on In1.Cu (solid ground plane)
+  (zone (net "GND") (net_name "GND") (layer "In1.Cu") (uuid "00000000-0000-0000-0000-000000000001")
+    (hatch full 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.1)
+    (fill yes (thermal_gap 0.3) (thermal_bridge_width 0.3))
+    (polygon
+      (pts
+        (xy 0 0) (xy 120 0) (xy 120 75) (xy 0 75)
+      )
+    )
+  )
+
+  ;; Power zone on In2.Cu (split: left half = VDD_3V3, right half = VDD_1V8)
+  (zone (net "VDD_3V3") (net_name "VDD_3V3") (layer "In2.Cu") (uuid "00000000-0000-0000-0000-000000000002")
+    (hatch full 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.1)
+    (fill yes (thermal_gap 0.3) (thermal_bridge_width 0.3))
+    (polygon
+      (pts
+        (xy 0 0) (xy 70 0) (xy 70 75) (xy 0 75)
+      )
+    )
+  )
+
+  (zone (net "VDD_1V8") (net_name "VDD_1V8") (layer "In2.Cu") (uuid "00000000-0000-0000-0000-000000000003")
+    (hatch full 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.1)
+    (fill yes (thermal_gap 0.3) (thermal_bridge_width 0.3))
+    (polygon
+      (pts
+        (xy 70 0) (xy 120 0) (xy 120 75) (xy 70 75)
+      )
+    )
+  )
+
+  ;; Top copper ground pour (stitched to In1)
+  (zone (net "GND") (net_name "GND") (layer "F.Cu") (uuid "00000000-0000-0000-0000-000000000004")
+    (hatch full 0.5)
+    (connect_pads (clearance 0.3))
+    (min_thickness 0.1)
+    (fill yes (thermal_gap 0.4) (thermal_bridge_width 0.4))
+    (polygon
+      (pts
+        (xy 0 0) (xy 120 0) (xy 120 75) (xy 0 75)
+      )
+    )
+  )
+
+  ;; Bottom copper ground pour (stitched to In1)
+  (zone (net "GND") (net_name "GND") (layer "B.Cu") (uuid "00000000-0000-0000-0000-000000000005")
+    (hatch full 0.5)
+    (connect_pads (clearance 0.3))
+    (min_thickness 0.1)
+    (fill yes (thermal_gap 0.4) (thermal_bridge_width 0.4))
+    (polygon
+      (pts
+        (xy 0 0) (xy 120 0) (xy 120 75) (xy 0 75)
+      )
+    )
+  )
+
+)

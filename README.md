@@ -29,7 +29,8 @@ Every device follows the same rigorous 4-phase process:
 | # | Device | Status | Description |
 |---|---|---|---|
 | 1 | [`eag-7000/`](eag-7000/) — Edge AI Gateway | ✅ Docs complete, KiCad/firmware/app pending | i.MX8MP + Hailo-8 NPU, 30 TOPS, fanless industrial, 2×2.5GbE, CAN-FD |
-| 2 | *More designs added over time by automated cron* | ⏳ | Complex hardware devices with full open stack |
+| 2 | [`chronos-rtk/`](chronos-rtk/) — Dual-Frequency RTK GNSS Receiver | ✅ Complete | ZED-F9P + STM32L4 + LoRa mesh, cm-level positioning, 868/915 MHz ISM |
+| 3 | [`vortex-sdr/`](vortex-sdr/) — Portable SDR Spectrum Analyzer | ✅ Complete | STM32H743 + iCE40UP5K FPGA + ADF4351 PLL, 100kHz–6GHz, dual-FFT waterfall |
 
 ---
 
@@ -58,6 +59,33 @@ A high-performance, fanless industrial Edge AI Gateway for real-time ML inferenc
 3. **eMMC boot** over SD card — vibration reliability in industrial environments
 4. **Hailo-8 M.2** accelerator — 26 TOPS at 2.5W, best TOPS/W in form factor
 5. **Dual CAN-FD via SPI** (MCP2518FD) — M4F handles real-time fieldbus with <1ms response
+
+## Vortex-SDR — Portable SDR Spectrum Analyzer
+
+A portable, handheld spectrum analyzer covering 100 kHz to 6 GHz with dual-channel FFT, real-time waterfall display, capacitive touchscreen, and BLE companion app. Designed for RF engineers, ham radio operators, and EMC compliance testing.
+
+### System Specifications
+
+| Parameter | Value |
+|---|---|
+| **Frequency Range** | 100 kHz – 6 GHz (dual-conversion superheterodyne) |
+| **MCU** | STM32H743ZIT6 — Cortex-M7 @ 480 MHz, 1MB Flash, 1MB RAM |
+| **FPGA** | Lattice iCE40UP5K — FFT/waterfall acceleration |
+| **PLL Synthesizer** | ADF4351 — 35 MHz to 4.4 GHz (6 GHz with ADF5002 prescaler) |
+| **ADC** | AD9645 — 14-bit, 61.44 MSPS dual-channel |
+| **Display** | ILI9341 — 2.8" 320×240 TFT with capacitive touch |
+| **BLE** | nRF52840 — 2 Mbps BLE 5.0 companion link |
+| **Power** | 3.7V LiPo (TPS62A02 buck + AMS1117 LDO), USB-C charging |
+| **Form Factor** | 120mm × 75mm × 18mm, handheld |
+| **Operating Temp** | -20°C to +55°C (commercial) |
+
+### Key Design Decisions
+
+1. **STM32H743** over STM32F4 — Cortex-M7 @ 480 MHz for real-time FFT processing, dual-issue FPU
+2. **iCE40UP5K FPGA** for FFT offload — 5280 LUTs, on-chip RAM for windowing and averaging
+3. **Dual-conversion architecture** — 1st LO (ADF4351) + 10.7 MHz IF for image rejection
+4. **AD9645 dual ADC** — simultaneous I/Q sampling, 14-bit resolution for dynamic range
+5. **Battery-powered with USB-C** — TPS62A02 2A buck for efficiency, MCP73871 charger
 
 ## License
 
