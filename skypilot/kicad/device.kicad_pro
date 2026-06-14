@@ -1,0 +1,187 @@
+(kicad_pro (version 20231127)
+
+  (general
+    (thickness 1.0)
+    (legacy_symbol_path "")
+  )
+
+  (paper "A4")
+
+  (title_block
+    (title "SkyPilot — Dual-IMU Drone FC with LTE")
+    (date "2026-06-14")
+    (rev "1.0")
+    (company "Hardware Design Lab")
+    (comment 1 "45x45mm, 6-layer, STM32H743VIT6")
+  )
+
+  (layers
+    (0 "F.Cu" signal)
+    (1 "In1.Cu" signal)
+    (2 "In2.Cu" signal)
+    (3 "In3.Cu" signal)
+    (4 "In4.Cu" signal)
+    (31 "B.Cu" signal)
+    (32 "B.Adhes" user)
+    (33 "F.Adhes" user)
+    (34 "B.Paste" user)
+    (35 "F.Paste" user)
+    (36 "B.SilkS" user)
+    (37 "F.SilkS" user)
+    (38 "B.Mask" user)
+    (39 "F.Mask" user)
+    (40 "Dwgs.User" user)
+    (41 "Cmts.User" user)
+    (44 "Edge.Cuts" user)
+    (45 "Margin" user)
+    (46 "B.CrtYd" user)
+    (47 "F.CrtYd" user)
+    (48 "B.Fab" user)
+    (49 "F.Fab" user)
+  )
+
+  (setup
+    (stackup
+      (layer "F.Cu" (type "copper") (thickness 0.035))
+      (layer "dielectric 1" (type "prepreg") (thickness 0.1) (material "Isola 370HR") (epsilon_r 4.2) (loss_tangent 0.015))
+      (layer "In1.Cu" (type "copper") (thickness 0.0175))
+      (layer "dielectric 2" (type "core") (thickness 0.21) (material "Isola 370HR") (epsilon_r 4.2) (loss_tangent 0.015))
+      (layer "In2.Cu" (type "copper") (thickness 0.0175))
+      (layer "dielectric 3" (type "prepreg") (thickness 0.1) (material "Isola 370HR") (epsilon_r 4.2) (loss_tangent 0.015))
+      (layer "In3.Cu" (type "copper") (thickness 0.0175))
+      (layer "dielectric 4" (type "core") (thickness 0.21) (material "Isola 370HR") (epsilon_r 4.2) (loss_tangent 0.015))
+      (layer "In4.Cu" (type "copper") (thickness 0.0175))
+      (layer "dielectric 5" (type "prepreg") (thickness 0.1) (material "Isola 370HR") (epsilon_r 4.2) (loss_tangent 0.015))
+      (layer "B.Cu" (type "copper") (thickness 0.035))
+    )
+    (pad_to_mask_clearance 0.05)
+    (solder_mask_min_width 0.1)
+    (pcb_finish "ENIG")
+    (copper_weight "1oz outer, 0.5oz inner")
+  )
+
+  (net_class "Default" ""
+    (clearance 0.1)
+    (trace_width 0.15)
+    (via_dia 0.4)
+    (via_drill 0.2)
+    (via_min_dia 0.4)
+    (via_min_drill 0.2)
+    (uvia_dia 0.4)
+    (uvia_drill 0.2)
+  )
+
+  (net_class "Power"
+    (clearance 0.2)
+    (trace_width 0.4)
+    (via_dia 0.6)
+    (via_drill 0.3)
+  )
+
+  (net_class "HighSpeed"
+    (clearance 0.15)
+    (trace_width 0.1)
+    (via_dia 0.4)
+    (via_drill 0.2)
+  )
+
+  (net_class "RF"
+    (clearance 0.3)
+    (trace_width 0.15)
+    (via_dia 0.4)
+    (via_drill 0.2)
+  )
+
+  (net_class "DShot"
+    (clearance 0.15)
+    (trace_width 0.2)
+    (via_dia 0.4)
+    (via_drill 0.2)
+  )
+
+  (nets
+    ; Power
+    (net "VBAT_RAW" (class "Power"))
+    (net "5V_BEC" (class "Power"))
+    (net "3V3" (class "Power"))
+    (net "1V8" (class "Power"))
+    (net "GND" (class "Power"))
+    (net "VBAT_RTC" (class "Power"))
+    ; SPI1 - ICM-42688-P
+    (net "SPI1_SCK" (class "HighSpeed"))
+    (net "SPI1_MISO" (class "HighSpeed"))
+    (net "SPI1_MOSI" (class "HighSpeed"))
+    (net "SPI1_NSS" (class "HighSpeed"))
+    (net "IMU1_INT1" (class "Default"))
+    (net "IMU1_INT2" (class "Default"))
+    ; SPI2 - BMI270
+    (net "SPI2_SCK" (class "HighSpeed"))
+    (net "SPI2_MISO" (class "HighSpeed"))
+    (net "SPI2_MOSI" (class "HighSpeed"))
+    (net "SPI2_NSS" (class "HighSpeed"))
+    (net "IMU2_INT1" (class "Default"))
+    (net "IMU2_INT2" (class "Default"))
+    ; SPI4 - Flash
+    (net "SPI4_SCK" (class "HighSpeed"))
+    (net "SPI4_MISO" (class "HighSpeed"))
+    (net "SPI4_MOSI" (class "HighSpeed"))
+    (net "SPI4_NSS" (class "Default"))
+    ; I2C1
+    (net "I2C1_SCL" (class "Default"))
+    (net "I2C1_SDA" (class "Default"))
+    (net "BARO_INT" (class "Default"))
+    ; UART1 - GNSS
+    (net "GNSS_TX" (class "Default"))
+    (net "GNSS_RX" (class "Default"))
+    (net "GNSS_RST" (class "Default"))
+    ; UART4 - Companion
+    (net "COMP_TX" (class "Default"))
+    (net "COMP_RX" (class "Default"))
+    ; UART8 - LTE
+    (net "UART8_TX" (class "Default"))
+    (net "UART8_RX" (class "Default"))
+    (net "UART8_RTS" (class "Default"))
+    (net "UART8_CTS" (class "Default"))
+    (net "LTE_PWR_ON" (class "Default"))
+    (net "LTE_STATUS" (class "Default"))
+    ; USB
+    (net "USB_DP" (class "HighSpeed"))
+    (net "USB_DM" (class "HighSpeed"))
+    ; DShot Motor Outputs
+    (net "MOTOR1" (class "DShot"))
+    (net "MOTOR2" (class "DShot"))
+    (net "MOTOR3" (class "DShot"))
+    (net "MOTOR4" (class "DShot"))
+    (net "MOTOR5" (class "DShot"))
+    (net "MOTOR6" (class "DShot"))
+    (net "MOTOR7" (class "DShot"))
+    (net "MOTOR8" (class "DShot"))
+    (net "MOTOR9" (class "DShot"))
+    (net "MOTOR10" (class "DShot"))
+    (net "MOTOR11" (class "DShot"))
+    (net "MOTOR12" (class "DShot"))
+    ; ADC
+    (net "ADC_BATT" (class "Default"))
+    (net "ADC_CURR" (class "Default"))
+    ; RF
+    (net "LTE_RF" (class "RF"))
+    (net "GNSS_RF" (class "RF"))
+    ; LEDs & Buttons
+    (net "LED_POWER" (class "Default"))
+    (net "LED_STATUS" (class "Default"))
+    (net "LED_LTE" (class "Default"))
+    (net "BTN_RESET" (class "Default"))
+    (net "BTN_BOOT" (class "Default"))
+    ; FDCAN
+    (net "FDCAN_TX" (class "Default"))
+    (net "FDCAN_RX" (class "Default"))
+  )
+
+  (design_rules
+    (min_track_width 0.1)
+    (min_via_diameter 0.4)
+    (min_via_drill 0.2)
+    (min_clearance 0.1)
+    (min_annular_width 0.15)
+  )
+)

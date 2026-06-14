@@ -1,0 +1,490 @@
+(kicad_pcb (version 20231127) (generator "skypilot-pcb")
+
+  (general
+    (thickness 1.0)
+  )
+
+  (paper "A4")
+  (title_block
+    (title "SkyPilot — Dual-IMU Drone FC with LTE")
+    (date "2026-06-14")
+    (rev "1.0")
+    (company "Hardware Design Lab")
+  )
+
+  (layers
+    (0 "F.Cu" signal)
+    (1 "In1.Cu" signal "GND")
+    (2 "In2.Cu" signal "PWR")
+    (3 "In3.Cu" signal "SIG")
+    (4 "In4.Cu" signal "GND2")
+    (31 "B.Cu" signal)
+    (32 "B.Adhes" user)
+    (33 "F.Adhes" user)
+    (34 "B.Paste" user)
+    (35 "F.Paste" user)
+    (36 "B.SilkS" user "B.Silkscreen")
+    (37 "F.SilkS" user "F.Silkscreen")
+    (38 "B.Mask" user)
+    (39 "F.Mask" user)
+    (40 "Dwgs.User" user "User.Drawings")
+    (41 "Cmts.User" user "User.Comments")
+    (44 "Edge.Cuts" user)
+    (45 "Margin" user)
+    (46 "B.CrtYd" user "B.Courtyard")
+    (47 "F.CrtYd" user "F.Courtyard")
+    (48 "B.Fab" user)
+    (49 "F.Fab" user)
+  )
+
+  (setup
+    (pad_to_mask_clearance 0.05)
+    (solder_mask_min_width 0.1)
+    (aux_axis_origin 0 0)
+    (grid_origin 0 0)
+  )
+
+  ; ==========================================
+  ; BOARD OUTLINE — 45mm × 45mm
+  ; ==========================================
+  (gr_rect (start 0 0) (end 45 45) (layer "Edge.Cuts") (width 0.15) (uuid "E0000001"))
+  ; Mounting holes — 30.5mm square pattern, M3
+  (gr_circle (center 7.25 7.25) (end 8.85 7.25) (layer "Edge.Cuts") (width 0.15) (uuid "E0000002"))  ; Top-left
+  (gr_circle (center 37.75 7.25) (end 39.35 7.25) (layer "Edge.Cuts") (width 0.15) (uuid "E0000003"))  ; Top-right
+  (gr_circle (center 7.25 37.75) (end 8.85 37.75) (layer "Edge.Cuts") (width 0.15) (uuid "E0000004"))  ; Bottom-left
+  (gr_circle (center 37.75 37.75) (end 39.35 37.75) (layer "Edge.Cuts") (width 0.15) (uuid "E0000005"))  ; Bottom-right
+
+  ; Corner radius markers
+  (gr_arc (start 1.5 0) (mid 0 0) (end 0 1.5) (layer "Edge.Cuts") (width 0.15) (uuid "E0000010"))
+  (gr_arc (start 43.5 0) (mid 45 0) (end 45 1.5) (layer "Edge.Cuts") (width 0.15) (uuid "E0000011"))
+  (gr_arc (start 45 43.5) (mid 45 45) (end 43.5 45) (layer "Edge.Cuts") (width 0.15) (uuid "E0000012"))
+  (gr_arc (start 1.5 45) (mid 0 45) (end 0 43.5) (layer "Edge.Cuts") (width 0.15) (uuid "E0000013"))
+
+  ; ==========================================
+  ; KEEPOUT ZONES
+  ; ==========================================
+
+  ; Barometer keepout — no traces within 5mm of BMP390 center
+  (gr_text "BARO KEEPOUT — NO SWITCHING TRACES WITHIN 5mm" (at 22.5 35) (layer "Dwgs.User") (uuid "K0000001"))
+
+  ; RF keepout — no copper within 3mm of RF traces
+  (gr_text "RF KEEPOUT — NO TRACES WITHIN 3mm OF LTE/GNSS RF" (at 35 27) (layer "Dwgs.User") (uuid "K0000002"))
+
+  ; ==========================================
+  ; SILKSCREEN MARKINGS
+  ; ==========================================
+  (gr_text "SkyPilot FC v1.0" (at 22.5 2) (layer "F.SilkS") (uuid "S0000001"))
+  (gr_text "M1 M2 M3 M4" (at 10 0.5) (layer "F.SilkS") (uuid "S0000002"))
+  (gr_text "M5 M6 M7 M8" (at 35 0.5) (layer "F.SilkS") (uuid "S0000003"))
+  (gr_text "M9 M10 M11 M12" (at 10 44) (layer "B.SilkS") (uuid "S0000004"))
+  (gr_text "USB" (at 2 22) (layer "F.SilkS") (uuid "S0000005"))
+  (gr_text "LTE" (at 40 43) (layer "F.SilkS") (uuid "S0000006"))
+  (gr_text "GNSS" (at 35 43) (layer "F.SilkS") (uuid "S0000007"))
+
+  ; ==========================================
+  ; VIA STITCHING PATTERN (ground pour)
+  ; ==========================================
+  (gr_text "GROUND VIA STITCH — 1 via per 2mm² in ground pour" (at 22.5 42) (layer "Dwgs.User") (uuid "V0000001"))
+
+  ; ==========================================
+  ; COMPONENT PLACEMENT (Top Layer - F.Cu)
+  ; ==========================================
+
+  ; U1 — STM32H743VIT6 — Center of board
+  (footprint "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 22.5 22.5)
+    (uuid "FP-U1")
+    (reference "U1")
+    (value "STM32H743VIT6")
+    (property "LCSC" "")
+    (property "MFR" "STMicroelectronics")
+    (pad "1" smd rect (at -7.625 -6) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U1-1"))
+    (pad "2" smd rect (at -7.625 -5.5) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U1-2"))
+    ; ... (remaining 98 pads defined in production schematic)
+    (pad "100" smd rect (at -7.625 7) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U1-100"))
+    ; Exposed pad (thermal)
+    (pad "101" smd rect (at 0 0) (size 7 7) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U1-EP"))
+    (zone (net "GND") (net_name "GND") (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (uuid "Z-U1-GND"))
+  )
+
+  ; U2 — ICM-42688-P — Left of STM32 (close to CG)
+  (footprint "Sensor_InvenSense:ICM-42688-P_LGA-14_2.5x3mm" (at 13 20)
+    (uuid "FP-U2")
+    (reference "U2")
+    (value "ICM-42688-P")
+    (pad "1" smd rect (at -1 -0.75) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U2-1"))
+    (pad "2" smd rect (at -1 -0.25) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U2-2"))
+    (pad "3" smd rect (at -1 0.25) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U2-3"))
+    (pad "4" smd rect (at -1 0.75) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U2-4"))
+    (pad "5" smd rect (at 1 -0.75) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U2-5"))
+    (pad "6" smd rect (at 1 -0.25) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U2-6"))
+    (pad "7" smd rect (at 1 0.25) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U2-7"))
+    (pad "8" smd rect (at 1 0.75) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U2-8"))
+    ; Center thermal pad
+    (pad "9" smd rect (at 0 0) (size 1.2 1.2) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U2-9"))
+  )
+
+  ; U3 — BMI270 — Below ICM-42688 (also close to CG)
+  (footprint "Sensor_Bosch:Bosch_LGA-14_2.5x3mm" (at 13 25)
+    (uuid "FP-U3")
+    (reference "U3")
+    (value "BMI270")
+    (pad "1" smd rect (at -1 -0.75) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U3-1"))
+    (pad "2" smd rect (at -1 -0.25) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U3-2"))
+    ; ... (remaining pads)
+    (pad "14" smd rect (at 1 0.75) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U3-14"))
+  )
+
+  ; U4 — BMP390 — Right of STM32, near center
+  (footprint "Sensor_Bosch:Bosch_LGA-10_2x2mm" (at 30 18)
+    (uuid "FP-U4")
+    (reference "U4")
+    (value "BMP390")
+    (pad "1" smd rect (at -0.75 -0.5) (size 0.25 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U4-1"))
+    ; ... (remaining pads)
+    (pad "10" smd rect (at 0.75 0.5) (size 0.25 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U4-10"))
+  )
+  ; Barometer vent hole (Ø0.5mm through all layers)
+  (gr_circle (center 30 18) (end 30.25 18) (layer "Edge.Cuts") (width 0.1) (uuid "VH-BMP"))
+
+  ; U5 — SAM-M10Q — Bottom-right quadrant
+  (footprint "RF_Module_u-blox:SAM-M10Q_LCC-24_9.7x10.1mm" (at 36 34)
+    (uuid "FP-U5")
+    (reference "U5")
+    (value "SAM-M10Q")
+    (pad "1" smd rect (at -4.35 -3.75) (size 0.8 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U5-1"))
+    ; ... (remaining 24 pads)
+    (pad "24" smd rect (at 4.35 3.75) (size 0.8 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U5-24"))
+  )
+
+  ; U6 — LARA-R6401 — Bottom-left quadrant
+  (footprint "RF_Module_u-blox:LARA-R6_LGA-171_16x26mm" (at 10 35)
+    (uuid "FP-U6")
+    (reference "U6")
+    (value "LARA-R6401")
+    (pad "33" smd rect (at -6 -6) (size 0.8 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U6-33"))
+    (pad "95" smd rect (at 6 -2) (size 0.8 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U6-95"))
+    (pad "96" smd rect (at 6 -1) (size 0.8 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U6-96"))
+    (pad "97" smd rect (at 6 0) (size 0.8 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U6-97"))
+    (pad "98" smd rect (at 6 1) (size 0.8 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U6-98"))
+    (pad "103" smd rect (at -6 4) (size 0.8 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U6-103"))
+    (pad "140" smd rect (at 7 5) (size 1.5 1.0) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U6-140"))
+    ; Large ground pad under module
+    (pad "GND" smd rect (at 0 0) (size 12 20) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U6-GND"))
+  )
+
+  ; U7 — ESP32-H2 — Right side
+  (footprint "RF_Module_Espressif:ESP32-H2_QFN-32_5x5mm" (at 35 15)
+    (uuid "FP-U7")
+    (reference "U7")
+    (value "ESP32-H2")
+    (pad "1" smd rect (at -2 -2) (size 0.2 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U7-1"))
+    ; ... (remaining 32 pads + center pad)
+    (pad "33" smd rect (at 0 0) (size 3.5 3.5) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U7-33"))
+  )
+
+  ; U8 — TPS65294 — Bottom-center (power area)
+  (footprint "Package_DFN_QFN:VQFN-24_4x4mm_P0.5mm" (at 22.5 38)
+    (uuid "FP-U8")
+    (reference "U8")
+    (value "TPS65294")
+    (pad "1" smd rect (at -1.5 -1.75) (size 0.25 0.5) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U8-1"))
+    ; ... (remaining 24 pads)
+    (pad "25" smd rect (at 0 0) (size 2.4 2.4) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U8-25"))
+  )
+
+  ; U9 — TLV75533 (3.3V LDO)
+  (footprint "Package_TO_SOT_SMD:SOT-23-5" (at 28 40)
+    (uuid "FP-U9")
+    (reference "U9")
+    (value "TLV75533PDBV")
+    (pad "1" smd rect (at -0.95 -1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U9-1"))
+    (pad "2" smd rect (at 0 -1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U9-2"))
+    (pad "3" smd rect (at 0.95 -1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U9-3"))
+    (pad "4" smd rect (at 0.95 1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U9-4"))
+    (pad "5" smd rect (at -0.95 1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U9-5"))
+  )
+
+  ; U10 — TLV75518 (1.8V LDO)
+  (footprint "Package_TO_SOT_SMD:SOT-23-5" (at 32 40)
+    (uuid "FP-U10")
+    (reference "U10")
+    (value "TLV75518PDBV")
+    (pad "1" smd rect (at -0.95 -1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U10-1"))
+    (pad "2" smd rect (at 0 -1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U10-2"))
+    (pad "3" smd rect (at 0.95 -1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U10-3"))
+    (pad "4" smd rect (at 0.95 1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U10-4"))
+    (pad "5" smd rect (at -0.95 1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U10-5"))
+  )
+
+  ; U11 — RV-3032-7 (RTC)
+  (footprint "Crystal:MicroCrystal_SO8-3.7x2.5mm" (at 30 22)
+    (uuid "FP-U11")
+    (reference "U11")
+    (value "RV-3032-7")
+    (pad "1" smd rect (at -1.5 -1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U11-1"))
+    (pad "2" smd rect (at -0.5 -1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U11-2"))
+    (pad "3" smd rect (at 0.5 -1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U11-3"))
+    (pad "4" smd rect (at 1.5 -1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U11-4"))
+    (pad "5" smd rect (at 1.5 1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U11-5"))
+    (pad "6" smd rect (at 0.5 1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U11-6"))
+    (pad "7" smd rect (at -0.5 1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U11-7"))
+    (pad "8" smd rect (at -1.5 1.2) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U11-8"))
+  )
+
+  ; U12 — W25Q128JVS (SPI Flash)
+  (footprint "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm" (at 30 27)
+    (uuid "FP-U12")
+    (reference "U12")
+    (value "W25Q128JVS")
+    (pad "1" smd rect (at -3.2 -1.9) (size 0.6 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U12-1"))
+    (pad "2" smd rect (at -1.9 -1.9) (size 0.6 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U12-2"))
+    (pad "3" smd rect (at -0.65 -1.9) (size 0.6 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U12-3"))
+    (pad "4" smd rect (at 0.65 -1.9) (size 0.6 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U12-4"))
+    (pad "5" smd rect (at 1.9 -1.9) (size 0.6 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U12-5"))
+    (pad "6" smd rect (at 3.2 -1.9) (size 0.6 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U12-6"))
+  )
+
+  ; U13 — TPS22917 (Load Switch)
+  (footprint "Package_TO_SOT_SMD:SOT-23-6" (at 16 35)
+    (uuid "FP-U13")
+    (reference "U13")
+    (value "TPS22917")
+    (pad "1" smd rect (at -0.95 -1.3) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U13-1"))
+    (pad "2" smd rect (at 0 -1.3) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U13-2"))
+    (pad "3" smd rect (at 0.95 -1.3) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U13-3"))
+    (pad "4" smd rect (at 0.95 1.3) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U13-4"))
+    (pad "5" smd rect (at 0 1.3) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U13-5"))
+    (pad "6" smd rect (at -0.95 1.3) (size 0.6 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "P-U13-6"))
+  )
+
+  ; ==========================================
+  ; CONNECTORS
+  ; ==========================================
+
+  ; J1 — USB-C 2.0 receptacle (left edge)
+  (footprint "Connector_USB:USB_C_Receptacle_Amphenol_10137065" (at 0 22.5)
+    (uuid "FP-J1")
+    (reference "J1")
+    (value "USB-C_2.0")
+  )
+
+  ; J2 — 40-pin JST-SH (left edge, below USB)
+  (footprint "Connector_JST:JST_SH_SM40B-SRSS-TB_1x40-1MP_P1.00mm_Horizontal" (at 0 35)
+    (uuid "FP-J2")
+    (reference "J2")
+    (value "JST-SH_40pin")
+  )
+
+  ; J3 — u.FL LTE antenna (bottom edge, near LARA-R6)
+  (footprint "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical" (at 10 45)
+    (uuid "FP-J3")
+    (reference "J3")
+    (value "u.FL_LTE")
+  )
+
+  ; J4 — u.FL GNSS antenna (bottom edge, near SAM-M10Q)
+  (footprint "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical" (at 36 45)
+    (uuid "FP-J4")
+    (reference "J4")
+    (value "u.FL_GNSS")
+  )
+
+  ; ==========================================
+  ; MOTOR PADS (DShot1200)
+  ; ==========================================
+
+  ; M1-M4 on top edge
+  (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm" (at 8 1) (uuid "FP-M1") (reference "M1") (value "Motor1"))
+  (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm" (at 14 1) (uuid "FP-M2") (reference "M2") (value "Motor2"))
+  (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm" (at 20 1) (uuid "FP-M3") (reference "M3") (value "Motor3"))
+  (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm" (at 26 1) (uuid "FP-M4") (reference "M4") (value "Motor4"))
+
+  ; M5-M8 on right edge
+  (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm" (at 44 12) (uuid "FP-M5") (reference "M5") (value "Motor5"))
+  (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm" (at 44 17) (uuid "FP-M6") (reference "M6") (value "Motor6"))
+  (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm" (at 44 22) (uuid "FP-M7") (reference "M7") (value "Motor7"))
+  (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm" (at 44 27) (uuid "FP-M8") (reference "M8") (value "Motor8"))
+
+  ; M9-M12 on bottom edge (bottom side)
+  (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm" (at 26 44) (uuid "FP-M9") (reference "M9") (value "Motor9"))
+  (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm" (at 20 44) (uuid "FP-M10") (reference "M10") (value "Motor10"))
+  (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm" (at 14 44) (uuid "FP-M11") (reference "M11") (value "Motor11"))
+  (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm" (at 8 44) (uuid "FP-M12") (reference "M12") (value "Motor12"))
+
+  ; ==========================================
+  ; PASSIVE COMPONENTS (representative placement)
+  ; ==========================================
+
+  ; Decoupling caps near U1 (STM32H743) — shown as reference placement
+  ; C1-C6: 100nF 0402 near VDD pins
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 19 16) (uuid "FP-C1") (reference "C1") (value "100nF"))
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 26 16) (uuid "FP-C2") (reference "C2") (value "100nF"))
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 19 29) (uuid "FP-C3") (reference "C3") (value "100nF"))
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 26 29) (uuid "FP-C4") (reference "C4") (value "100nF"))
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 16 22) (uuid "FP-C5") (reference "C5") (value "100nF"))
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 29 22) (uuid "FP-C6") (reference "C6") (value "100nF"))
+
+  ; C7-C8: Bulk 4.7µF and 1µF near U1
+  (footprint "Capacitor_SMD:C_0603_1608Metric" (at 17 16) (uuid "FP-C7") (reference "C7") (value "4.7µF"))
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 28 16) (uuid "FP-C8") (reference "C8") (value "1µF"))
+
+  ; ICM-42688 decoupling
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 11 18) (uuid "FP-C20") (reference "C20") (value "100nF"))
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 11 22) (uuid "FP-C21") (value "1µF"))
+
+  ; BMI270 decoupling
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 11 24) (uuid "FP-C22") (reference "C22") (value "100nF"))
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 11 27) (uuid "FP-C23") (reference "C23") (value "1µF"))
+
+  ; BMP390 decoupling
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 32 16) (uuid "FP-C24") (reference "C24") (value "100nF"))
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 32 20) (uuid "FP-C25") (reference "C25") (value "1µF"))
+
+  ; LARA-R6 bulk decoupling (4× 100nF + 2× 10µF + 1× 100µF)
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 8 31) (uuid "FP-C26") (reference "C26") (value "100nF"))
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 6 31) (uuid "FP-C27") (reference "C27") (value "100nF"))
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 8 33) (uuid "FP-C28") (reference "C28") (value "100nF"))
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at 6 33) (uuid "FP-C29") (reference "C29") (value "100nF"))
+  (footprint "Capacitor_SMD:C_0603_1608Metric" (at 5 30) (uuid "FP-C30") (reference "C30") (value "10µF"))
+  (footprint "Capacitor_SMD:C_0603_1608Metric" (at 5 32) (uuid "FP-C31") (reference "C31") (value "10µF"))
+  (footprint "Capacitor_SMD:C_1206_3216Metric" (at 3 32) (uuid "FP-C32") (reference "C32") (value "100µF"))
+
+  ; I2C pull-ups
+  (footprint "Resistor_SMD:R_0402_1005Metric" (at 28 16) (uuid "FP-R7") (reference "R7") (value "4.7kΩ"))
+  (footprint "Resistor_SMD:R_0402_1005Metric" (at 28 18) (uuid "FP-R8") (reference "R8") (value "4.7kΩ"))
+
+  ; Battery voltage divider
+  (footprint "Resistor_SMD:R_0402_1005Metric" (at 5 38) (uuid "FP-R5") (reference "R5") (value "10kΩ"))
+  (footprint "Resistor_SMD:R_0402_1005Metric" (at 5 40) (uuid "FP-R6") (reference "R6") (value "1.5kΩ"))
+
+  ; LEDs
+  (footprint "LED_SMD:LED_0603_1608Metric" (at 3 42) (uuid "FP-LED1") (reference "LED1") (value "Red"))
+  (footprint "LED_SMD:LED_0603_1608Metric" (at 5 42) (uuid "FP-LED2") (reference "LED2") (value "Green"))
+  (footprint "LED_SMD:LED_0603_1608Metric" (at 7 42) (uuid "FP-LED3") (reference "LED3") (value "Blue"))
+
+  ; Buttons
+  (footprint "Button_Switch_SMD:SW_Push_1P1T_NO_3x4mm" (at 40 5) (uuid "FP-SW1") (reference "SW1") (value "Reset"))
+  (footprint "Button_Switch_SMD:SW_Push_1P1T_NO_3x4mm" (at 40 9) (uuid "FP-SW2") (reference "SW2") (value "Boot"))
+
+  ; Crystals
+  (footprint "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm" (at 17 14) (uuid "FP-Y1") (reference "Y1") (value "24MHz"))
+  (footprint "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm" (at 27 14) (uuid "FP-Y2") (reference "Y2") (value "32.768kHz"))
+
+  ; ==========================================
+  ; ROUTING — Critical nets (representative)
+  ; ==========================================
+
+  ; SPI1 traces (STM32 → ICM-42688): ≤25mm, 50Ω, length-matched ±2mm
+  (segment (start 18 21) (end 13 20.75) (width 0.15) (layer "F.Cu") (net "SPI1_SCK") (uuid "R-0001"))
+  (segment (start 18 21.5) (end 13 20.25) (width 0.15) (layer "F.Cu") (net "SPI1_MOSI") (uuid "R-0002"))
+  (segment (start 13 19.75) (end 18 21.75) (width 0.15) (layer "F.Cu") (net "SPI1_MISO") (uuid "R-0003"))
+  (segment (start 18 20.5) (end 13 19.25) (width 0.15) (layer "F.Cu") (net "SPI1_NSS") (uuid "R-0004"))
+
+  ; SPI2 traces (STM32 → BMI270): ≤25mm, 50Ω
+  (segment (start 18 25) (end 13 25.25) (width 0.15) (layer "F.Cu") (net "SPI2_SCK") (uuid "R-0005"))
+
+  ; I2C1 traces (STM32 → BMP390/RTC)
+  (segment (start 18 23) (end 30 19) (width 0.15) (layer "F.Cu") (net "I2C1_SCL") (uuid "R-0006"))
+  (segment (start 18 23.5) (end 30 19.5) (width 0.15) (layer "F.Cu") (net "I2C1_SDA") (uuid "R-0007"))
+
+  ; UART8 traces (STM32 → LARA-R6)
+  (segment (start 18 27) (end 10 33) (width 0.15) (layer "F.Cu") (net "UART8_TX") (uuid "R-0008"))
+  (segment (start 16 35) (end 10 33) (width 0.15) (layer "F.Cu") (net "UART8_RX") (uuid "R-0009"))
+
+  ; UART1 traces (STM32 → SAM-M10Q GNSS)
+  (segment (start 18 24) (end 32 34) (width 0.15) (layer "F.Cu") (net "GNSS_TX") (uuid "R-0010"))
+  (segment (start 34 34) (end 18 24.5) (width 0.15) (layer "F.Cu") (net "GNSS_RX") (uuid "R-0011"))
+
+  ; USB traces (90Ω differential, length-matched ±0.5mm)
+  (segment (start 2 22.5) (end 18 22) (width 0.10) (layer "F.Cu") (net "USB_DP") (uuid "R-0012"))
+  (segment (start 2 22.5) (end 18 22.5) (width 0.10) (layer "F.Cu") (net "USB_DM") (uuid "R-0013"))
+
+  ; LTE RF trace (50Ω coplanar waveguide, ≤15mm, no vias)
+  (segment (start 16 35) (end 10 45) (width 0.15) (layer "F.Cu") (net "LTE_RF") (uuid "R-0014"))
+
+  ; GNSS RF trace (50Ω coplanar waveguide, ≤15mm, no vias)
+  (segment (start 40.35 34) (end 36 45) (width 0.15) (layer "F.Cu") (net "GNSS_RF") (uuid "R-0015"))
+
+  ; ==========================================
+  ; GROUND POURS
+  ; ==========================================
+
+  ; L2 — Continuous ground plane (In1.Cu)
+  (zone (net "GND") (net_name "GND") (layers "In1.Cu") (uuid "Z-GND-L2")
+    (hatch full 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (thermal_gap 0.3) (thermal_bridge_width 0.3))
+    (polygon (pts (xy 0.5 0.5) (xy 44.5 0.5) (xy 44.5 44.5) (xy 0.5 44.5)))
+  )
+
+  ; L5 — Continuous ground plane (In4.Cu)
+  (zone (net "GND") (net_name "GND") (layers "In4.Cu") (uuid "Z-GND-L5")
+    (hatch full 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (thermal_gap 0.3) (thermal_bridge_width 0.3))
+    (polygon (pts (xy 0.5 0.5) (xy 44.5 0.5) (xy 44.5 44.5) (xy 0.5 44.5)))
+  )
+
+  ; L3 — Power plane splits (In2.Cu)
+  (zone (net "3V3") (net_name "3V3") (layers "In2.Cu") (uuid "Z-3V3")
+    (hatch full 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (thermal_gap 0.3) (thermal_bridge_width 0.3))
+    (polygon (pts (xy 12 10) (xy 35 10) (xy 35 42) (xy 12 42)))
+  )
+  (zone (net "5V_BEC") (net_name "5V_BEC") (layers "In2.Cu") (uuid "Z-5V")
+    (hatch full 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (thermal_gap 0.3) (thermal_bridge_width 0.3))
+    (polygon (pts (xy 0.5 36) (xy 11 36) (xy 11 44.5) (xy 0.5 44.5)))
+  )
+
+  ; L1 — Top ground pour (F.Cu)
+  (zone (net "GND") (net_name "GND") (layers "F.Cu") (uuid "Z-GND-F")
+    (hatch full 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (thermal_gap 0.3) (thermal_bridge_width 0.3))
+    (polygon (pts (xy 0.5 0.5) (xy 44.5 0.5) (xy 44.5 44.5) (xy 0.5 44.5)))
+  )
+
+  ; L6 — Bottom ground pour (B.Cu)
+  (zone (net "GND") (net_name "GND") (layers "B.Cu") (uuid "Z-GND-B")
+    (hatch full 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (thermal_gap 0.3) (thermal_bridge_width 0.3))
+    (polygon (pts (xy 0.5 0.5) (xy 44.5 0.5) (xy 44.5 44.5) (xy 0.5 44.5)))
+  )
+
+  ; ==========================================
+  ; THERMAL VIAS under ICs
+  ; ==========================================
+
+  ; STM32H743 exposed pad — 4× thermal vias to ground planes
+  (via (at 22 21) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND") (uuid "TV-1"))
+  (via (at 23 21) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND") (uuid "TV-2"))
+  (via (at 22 23) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND") (uuid "TV-3"))
+  (via (at 23 23) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND") (uuid "TV-4"))
+
+  ; LARA-R6 ground pad — 8× thermal vias
+  (via (at 8 33) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In2.Cu" "In4.Cu" "B.Cu") (net "GND") (uuid "TV-5"))
+  (via (at 10 33) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In2.Cu" "In4.Cu" "B.Cu") (net "GND") (uuid "TV-6"))
+  (via (at 12 33) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In2.Cu" "In4.Cu" "B.Cu") (net "GND") (uuid "TV-7"))
+  (via (at 8 37) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In2.Cu" "In4.Cu" "B.Cu") (net "GND") (uuid "TV-8"))
+  (via (at 10 37) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In2.Cu" "In4.Cu" "B.Cu") (net "GND") (uuid "TV-9"))
+  (via (at 12 37) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In2.Cu" "In4.Cu" "B.Cu") (net "GND") (uuid "TV-10"))
+  (via (at 10 35) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In2.Cu" "In4.Cu" "B.Cu") (net "GND") (uuid "TV-11"))
+  (via (at 12 35) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In2.Cu" "In4.Cu" "B.Cu") (net "GND") (uuid "TV-12"))
+
+  ; ==========================================
+  ; DESIGN RULES NOTE
+  ; ==========================================
+  (gr_text "SKYPILOT FC v1.0\n45x45mm 6L 1.0mm ENIG\nSTM32H743 + ICM-42688 + BMI270\nSAM-M10Q + LARA-R6\n12CH DShot1200 | 4G/LTE Telemetry"
+    (at 22.5 22.5 0) (layer "B.SilkS") (uuid "T-BACK"))
+
+)

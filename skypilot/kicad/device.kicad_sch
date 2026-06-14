@@ -1,0 +1,794 @@
+(kicad_sch (version 20231127) (generator "skypilot-schematic")
+
+  (uuid "00000000-0000-0000-0000-000000000001")
+
+  (title "SkyPilot — Dual-IMU Drone FC with LTE")
+  (date "2026-06-14")
+  (rev "1.0")
+  (company "Hardware Design Lab")
+
+  ; ============================
+  ; LIBRARIES
+  ; ============================
+  (lib_symbols
+    (symbol "STM32H743VIT6"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U1" (at 0 0 0) (layer "F.SilkS"))
+      (property "Value" "STM32H743VIT6" (at 0 5 0) (layer "F.SilkS"))
+      (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 0 0 0))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h743vi.pdf")
+      (symbol_name "STM32H743VIT6")
+    )
+
+    (symbol "ICM-42688-P"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U2" (at 0 0 0) (layer "F.SilkS"))
+      (property "Value" "ICM-42688-P" (at 0 5 0) (layer "F.SilkS"))
+      (property "Footprint" "Sensor_InvenSense:ICM-42688-P_LGA-14_2.5x3mm" (at 0 0 0))
+      (property "Datasheet" "https://invensense.tdk.com/wp-content/uploads/2021/03/DS-000292-ICM-42688-P-v1.0.pdf")
+      (symbol_name "ICM-42688-P")
+    )
+
+    (symbol "BMI270"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U3" (at 0 0 0) (layer "F.SilkS"))
+      (property "Value" "BMI270" (at 0 5 0) (layer "F.SilkS"))
+      (property "Footprint" "Sensor_Bosch:Bosch_LGA-14_2.5x3mm" (at 0 0 0))
+      (property "Datasheet" "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmi270-ds000.pdf")
+      (symbol_name "BMI270")
+    )
+
+    (symbol "BMP390"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U4" (at 0 0 0) (layer "F.SilkS"))
+      (property "Value" "BMP390" (at 0 5 0) (layer "F.SilkS"))
+      (property "Footprint" "Sensor_Bosch:Bosch_LGA-10_2x2mm" (at 0 0 0))
+      (property "Datasheet" "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp390-ds001.pdf")
+      (symbol_name "BMP390")
+    )
+
+    (symbol "SAM-M10Q"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U5" (at 0 0 0) (layer "F.SilkS"))
+      (property "Value" "SAM-M10Q" (at 0 5 0) (layer "F.SilkS"))
+      (property "Footprint" "RF_Module_u-blox:SAM-M10Q_LCC-24_9.7x10.1mm" (at 0 0 0))
+      (property "Datasheet" "https://content.u-blox.com/sites/default/files/SAM-M10_DataSheet_UBX-22001669.pdf")
+      (symbol_name "SAM-M10Q")
+    )
+
+    (symbol "LARA-R6401"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U6" (at 0 0 0) (layer "F.SilkS"))
+      (property "Value" "LARA-R6401" (at 0 5 0) (layer "F.SilkS"))
+      (property "Footprint" "RF_Module_u-blox:LARA-R6_LGA-171_16x26mm" (at 0 0 0))
+      (property "Datasheet" "https://content.u-blox.com/sites/default/files/LARA-R6_DataSheet_UBX-22001668.pdf")
+      (symbol_name "LARA-R6401")
+    )
+
+    (symbol "ESP32-H2"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U7" (at 0 0 0) (layer "F.SilkS"))
+      (property "Value" "ESP32-H2" (at 0 5 0) (layer "F.SilkS"))
+      (property "Footprint" "RF_Module_Espressif:ESP32-H2_QFN-32_5x5mm" (at 0 0 0))
+      (property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-h2_datasheet_en.pdf")
+      (symbol_name "ESP32-H2")
+    )
+
+    (symbol "TPS65294"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U8" (at 0 0 0) (layer "F.SilkS"))
+      (property "Value" "TPS65294" (at 0 5 0) (layer "F.SilkS"))
+      (property "Footprint" "Package_DFN_QFN:VQFN-24_4x4mm_P0.5mm" (at 0 0 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps65294.pdf")
+      (symbol_name "TPS65294")
+    )
+
+    (symbol "TLV75533PDBV"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U9" (at 0 0 0) (layer "F.SilkS"))
+      (property "Value" "TLV75533PDBV" (at 0 5 0) (layer "F.SilkS"))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 0 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tlv755p.pdf")
+      (symbol_name "TLV75533")
+    )
+
+    (symbol "TLV75518PDBV"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U10" (at 0 0 0) (layer "F.SilkS"))
+      (property "Value" "TLV75518PDBV" (at 0 5 0) (layer "F.SilkS"))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 0 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tlv755p.pdf")
+      (symbol_name "TLV75518")
+    )
+
+    (symbol "RV-3032-7"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U11" (at 0 0 0) (layer "F.SilkS"))
+      (property "Value" "RV-3032-7" (at 0 5 0) (layer "F.SilkS"))
+      (property "Footprint" "Crystal:MicroCrystal_SO8-3.7x2.5mm" (at 0 0 0))
+      (property "Datasheet" "https://www.microcrystal.com/fileadmin/Media/Products/RTC/Datasheet-RV-3032-C7.pdf")
+      (symbol_name "RV-3032-7")
+    )
+
+    (symbol "W25Q128JVS"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U12" (at 0 0 0) (layer "F.SilkS"))
+      (property "Value" "W25Q128JVS" (at 0 5 0) (layer "F.SilkS"))
+      (property "Footprint" "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm" (at 0 0 0))
+      (property "Datasheet" "https://www.winbond.com/hq/product/code-storage-flash-memory/serial-nor-flash/")
+      (symbol_name "W25Q128JVS")
+    )
+
+    (symbol "TPS22917"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U13" (at 0 0 0) (layer "F.SilkS"))
+      (property "Value" "TPS22917" (at 0 5 0) (layer "F.SilkS"))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6" (at 0 0 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps22917.pdf")
+      (symbol_name "TPS22917")
+    )
+  )
+
+  ; ============================
+  ; POWER SECTION
+  ; ============================
+
+  ; Battery input connector (2-pin pad)
+  (symbol (lib_id "Connector_Generic:Conn_01x02") (at 20.32 15.24 0)
+    (uuid "10000001-0000-0000-0000-000000000001")
+    (property "Reference" "J5" (at 20.32 12.7 0))
+    (property "Value" "Battery_Input" (at 20.32 20.32 0))
+    (pin "1" (uuid "10000001-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "10000001-0000-0000-0000-000000000003"))
+  )
+  (wire (pts (xy 20.32 15.24) (xy 25.4 15.24)) (uuid "10000002"))
+  (wire (pts (xy 20.32 17.78) (xy 25.4 17.78)) (uuid "10000003"))
+  (net "VBAT_RAW" (uuid "10000004"))
+  (net "GND" (uuid "10000005"))
+
+  ; TPS65294 Buck-Boost (7-26V → 5V/3A)
+  (symbol (lib_id "TPS65294") (at 40.64 20.32 0)
+    (uuid "20000001-0000-0000-0000-000000000001")
+    (property "Reference" "U8" (at 40.64 12.7 0))
+    (property "Value" "TPS65294" (at 40.64 22.86 0))
+    (pin "1" (uuid "20000001-0000-0000-0000-000000000002")) ; VIN
+    (pin "9" (uuid "20000001-0000-0000-0000-000000000003")) ; VOUT
+    (pin "2" (uuid "20000001-0000-0000-0000-000000000004")) ; EN
+    (pin "3" (uuid "20000001-0000-0000-0000-000000000005")) ; PGND
+    (pin "4" (uuid "20000001-0000-0000-0000-000000000006")) ; SW
+    (pin "5" (uuid "20000001-0000-0000-0000-000000000007")) ; BST
+    (pin "6" (uuid "20000001-0000-0000-0000-000000000008")) ; VCC
+    (pin "7" (uuid "20000001-0000-0000-0000-000000000009")) ; FB
+    (pin "8" (uuid "20000001-0000-0000-0000-00000000000A")) ; SS
+    (pin "10" (uuid "20000001-0000-0000-0000-00000000000B")) ; AGND
+    (pin "11" (uuid "20000001-0000-0000-0000-00000000000C")) ; PGOOD
+    (pin "12" (uuid "20000001-0000-0000-0000-00000000000D")) ; SYNC
+  )
+  ; VIN → VBAT_RAW
+  (wire (pts (xy 25.4 15.24) (xy 30.48 15.24)) (uuid "20000010"))
+  (wire (pts (xy 30.48 15.24) (xy 30.48 20.32)) (uuid "20000011"))
+  (wire (pts (xy 30.48 20.32) (xy 40.64 20.32)) (uuid "20000012"))
+
+  ; 5V_BECP output
+  (net "5V_BEC" (uuid "20000020"))
+  (wire (pts (xy 50.8 20.32) (xy 55.88 20.32)) (uuid "20000021"))
+
+  ; Decoupling on VIN
+  (symbol (lib_id "Device:C") (at 30.48 25.4 0)
+    (uuid "20000030-0000-0000-0000-000000000001")
+    (property "Reference" "C1" (at 30.48 22.86 0))
+    (property "Value" "10µF" (at 30.48 27.94 0))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 30.48 25.4 0))
+    (pin "1" (uuid "20000030-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "20000030-0000-0000-0000-000000000003"))
+  )
+
+  ; TLV75533 — 3.3V/1.5A LDO
+  (symbol (lib_id "TLV75533PDBV") (at 63.5 20.32 0)
+    (uuid "30000001-0000-0000-0000-000000000001")
+    (property "Reference" "U9" (at 63.5 15.24 0))
+    (property "Value" "TLV75533PDBV" (at 63.5 25.4 0))
+    (pin "1" (uuid "30000001-0000-0000-0000-000000000002")) ; VIN
+    (pin "2" (uuid "30000001-0000-0000-0000-000000000003")) ; GND
+    (pin "3" (uuid "30000001-0000-0000-0000-000000000004")) ; EN
+    (pin "4" (uuid "30000001-0000-0000-0000-000000000005")) ; NC
+    (pin "5" (uuid "30000001-0000-0000-0000-000000000006")) ; VOUT
+  )
+  (net "3V3" (uuid "30000010"))
+  ; VIN → 5V_BEC
+  (wire (pts (xy 55.88 20.32) (xy 63.5 20.32)) (uuid "30000011"))
+  ; VOUT → 3V3 net
+  (wire (pts (xy 73.66 20.32) (xy 78.74 20.32)) (uuid "30000012"))
+
+  ; TLV75518 — 1.8V/500mA LDO
+  (symbol (lib_id "TLV75518PDBV") (at 63.5 35.56 0)
+    (uuid "40000001-0000-0000-0000-000000000001")
+    (property "Reference" "U10" (at 63.5 30.48 0))
+    (property "Value" "TLV75518PDBV" (at 63.5 40.64 0))
+    (pin "1" (uuid "40000001-0000-0000-0000-000000000002")) ; VIN
+    (pin "2" (uuid "40000001-0000-0000-0000-000000000003")) ; GND
+    (pin "3" (uuid "40000001-0000-0000-0000-000000000004")) ; EN
+    (pin "4" (uuid "40000001-0000-0000-0000-000000000005")) ; NC
+    (pin "5" (uuid "40000001-0000-0000-0000-000000000006")) ; VOUT
+  )
+  (net "1V8" (uuid "40000010"))
+  ; VIN → 5V_BEC
+  (wire (pts (xy 55.88 20.32) (xy 55.88 35.56)) (uuid "40000011"))
+  (wire (pts (xy 55.88 35.56) (xy 63.5 35.56)) (uuid "40000012"))
+  ; VOUT → 1V8 net
+  (wire (pts (xy 73.66 35.56) (xy 78.74 35.56)) (uuid "40000013"))
+
+  ; Decoupling capacitors for 3V3
+  (symbol (lib_id "Device:C") (at 78.74 25.4 0)
+    (uuid "30000020-0000-0000-0000-000000000001")
+    (property "Reference" "C10" (at 78.74 22.86 0))
+    (property "Value" "100nF" (at 78.74 27.94 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+    (pin "1" (uuid "30000020-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "30000020-0000-0000-0000-000000000003"))
+  )
+  (symbol (lib_id "Device:C") (at 83.82 25.4 0)
+    (uuid "30000021-0000-0000-0000-000000000001")
+    (property "Reference" "C11" (at 83.82 22.86 0))
+    (property "Value" "1µF" (at 83.82 27.94 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+    (pin "1" (uuid "30000021-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "30000021-0000-0000-0000-000000000003"))
+  )
+
+  ; ============================
+  ; STM32H743 MAIN PROCESSOR
+  ; ============================
+
+  (symbol (lib_id "STM32H743VIT6") (at 127 76.2 0)
+    (uuid "50000001-0000-0000-0000-000000000001")
+    (property "Reference" "U1" (at 127 50.8 0))
+    (property "Value" "STM32H743VIT6" (at 127 104.14 0))
+    (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm")
+    (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h743vi.pdf")
+    ; Power pins
+    (pin "VDD" (uuid "50000001-0000-0000-0000-000000000010"))     ; 3V3
+    (pin "VDDA" (uuid "50000001-0000-0000-0000-000000000011"))    ; 3V3 filtered
+    (pin "VBAT" (uuid "50000001-0000-0000-0000-000000000012"))    ; VBAT_RTC
+    (pin "VSS" (uuid "50000001-0000-0000-0000-000000000013"))     ; GND
+    (pin "VREF+" (uuid "50000001-0000-0000-0000-000000000014"))   ; 3V3 filtered
+    ; SPI1 pins
+    (pin "PA4" (uuid "50000001-0000-0000-0000-000000000020"))     ; SPI1_NSS → ICM-42688 CS
+    (pin "PA5" (uuid "50000001-0000-0000-0000-000000000021"))     ; SPI1_SCK → ICM-42688 SCK
+    (pin "PA6" (uuid "50000001-0000-0000-0000-000000000022"))     ; SPI1_MISO ← ICM-42688 SDO
+    (pin "PA7" (uuid "50000001-0000-0000-0000-000000000023"))     ; SPI1_MOSI → ICM-42688 SDI
+    ; SPI2 pins
+    (pin "PC4" (uuid "50000001-0000-0000-0000-000000000030"))     ; SPI2_NSS → BMI270 CSB
+    (pin "PC5" (uuid "50000001-0000-0000-0000-000000000031"))     ; SPI2_SCK → BMI270 SCK
+    (pin "PB13" (uuid "50000001-0000-0000-0000-000000000032"))    ; SPI2_MISO ← BMI270 SDO
+    (pin "PB14" (uuid "50000001-0000-0000-0000-000000000033"))    ; SPI2_MOSI → BMI270 SDI
+    ; I2C1 pins
+    (pin "PB5" (uuid "50000001-0000-0000-0000-000000000040"))     ; I2C1_SDA → BMP390, RTC
+    (pin "PB6" (uuid "50000001-0000-0000-0000-000000000041"))     ; I2C1_SCL → BMP390, RTC
+    ; UART1 pins
+    (pin "PB7" (uuid "50000001-0000-0000-0000-000000000050"))     ; UART1_RX ← GNSS TXD
+    (pin "PB8" (uuid "50000001-0000-0000-0000-000000000051"))     ; UART1_TX → GNSS RXD
+    ; UART8 pins
+    (pin "PC9" (uuid "50000001-0000-0000-0000-000000000060"))     ; UART8_RX ← LARA-R6 TXD
+    (pin "PC10" (uuid "50000001-0000-0000-0000-000000000061"))    ; UART8_TX → LARA-R6 RXD
+    (pin "PD14" (uuid "50000001-0000-0000-0000-000000000062"))    ; UART8_RTS → LARA-R6 RTS
+    (pin "PD15" (uuid "50000001-0000-0000-0000-000000000063"))    ; UART8_CTS ← LARA-R6 CTS
+    ; USB pins
+    (pin "PA11" (uuid "50000001-0000-0000-0000-000000000070"))    ; USB_DM
+    (pin "PA12" (uuid "50000001-0000-0000-0000-000000000071"))    ; USB_DP
+    ; DShot outputs
+    (pin "PE8" (uuid "50000001-0000-0000-0000-000000000080"))     ; MOTOR1 (TIM1_CH2)
+    (pin "PE9" (uuid "50000001-0000-0000-0000-000000000081"))     ; MOTOR2 (TIM1_CH3)
+    (pin "PE10" (uuid "50000001-0000-0000-0000-000000000082"))    ; MOTOR3 (TIM1_CH3)
+    (pin "PE11" (uuid "50000001-0000-0000-0000-000000000083"))    ; MOTOR4 (TIM1_CH4)
+    (pin "PE12" (uuid "50000001-0000-0000-0000-000000000084"))    ; MOTOR5 (TIM1_CH1N)
+    (pin "PE13" (uuid "50000001-0000-0000-0000-000000000085"))    ; MOTOR6 (TIM1_CH2N)
+    (pin "PE14" (uuid "50000001-0000-0000-0000-000000000086"))    ; MOTOR7 (TIM1_CH3N)
+    (pin "PB0" (uuid "50000001-0000-0000-0000-000000000087"))     ; MOTOR8 (TIM3_CH3)
+    (pin "PB1" (uuid "50000001-0000-0000-0000-000000000088"))     ; MOTOR9 (TIM3_CH4)
+    (pin "PA10" (uuid "50000001-0000-0000-0000-000000000089"))    ; MOTOR10 (TIM8_CH1)
+    (pin "PB11" (uuid "50000001-0000-0000-0000-00000000008A"))    ; MOTOR11 (TIM2_CH4)
+    (pin "PB10" (uuid "50000001-0000-0000-0000-00000000008B"))    ; MOTOR12 (TIM2_CH3)
+    ; Control pins
+    (pin "PD2" (uuid "50000001-0000-0000-0000-000000000090"))     ; LED_POWER
+    (pin "PE7" (uuid "50000001-0000-0000-0000-000000000091"))     ; LED_STATUS
+    (pin "PD1" (uuid "50000001-0000-0000-0000-000000000092"))     ; LED_LTE
+    (pin "PD3" (uuid "50000001-0000-0000-0000-000000000093"))     ; BTN_RESET
+    (pin "PD4" (uuid "50000001-0000-0000-0000-000000000094"))     ; BTN_BOOT
+    (pin "PA0" (uuid "50000001-0000-0000-0000-000000000095"))     ; ADC_BATT / LTE_PWR_ON
+    (pin "PA1" (uuid "50000001-0000-0000-0000-000000000096"))     ; ADC_CURR
+    ; Debug/programming
+    (pin "PA13" (uuid "50000001-0000-0000-0000-000000000097"))    ; SWDIO
+    (pin "PA14" (uuid "50000001-0000-0000-0000-000000000098"))    ; SWCLK
+    ; SPI4 pins
+    (pin "PE1" (uuid "50000001-0000-0000-0000-000000000099"))     ; SPI4_NSS → W25Q128 CS
+    (pin "PE2" (uuid "50000001-0000-0000-0000-00000000009A"))     ; SPI4_SCK
+    (pin "PE3" (uuid "50000001-0000-0000-0000-00000000009B"))     ; SPI4_MISO
+    (pin "PE4" (uuid "50000001-0000-0000-0000-00000000009C"))     ; SPI4_MOSI
+    ; Interrupt inputs
+    (pin "PB3" (uuid "50000001-0000-0000-0000-0000000000A0"))     ; IMU1_INT1
+    (pin "PD11" (uuid "50000001-0000-0000-0000-0000000000A1"))    ; IMU1_INT2
+    (pin "PB4" (uuid "50000001-0000-0000-0000-0000000000A2"))     ; IMU2_INT1
+    (pin "PD12" (uuid "50000001-0000-0000-0000-0000000000A3"))    ; IMU2_INT2
+    (pin "PE0" (uuid "50000001-0000-0000-0000-0000000000A4"))     ; BARO_INT
+    ; LTE/GNSS control
+    (pin "PD7" (uuid "50000001-0000-0000-0000-0000000000A5"))     ; GNSS_RST
+    (pin "PD9" (uuid "50000001-0000-0000-0000-0000000000A6"))     ; LTE_STATUS
+    ; UART4 pins
+    (pin "PB15" (uuid "50000001-0000-0000-0000-0000000000A7"))    ; UART4_TX → ESP32-H2 RX
+    (pin "PD8" (uuid "50000001-0000-0000-0000-0000000000A8"))     ; UART4_RX ← ESP32-H2 TX
+    ; FDCAN
+    (pin "PB9" (uuid "50000001-0000-0000-0000-0000000000A9"))     ; FDCAN1_TX
+    (pin "PD0" (uuid "50000001-0000-0000-0000-0000000000AA"))     ; FDCAN1_RX
+    ; Debug UART
+    (pin "PD5" (uuid "50000001-0000-0000-0000-0000000000AB"))     ; USART2_TX
+    (pin "PD6" (uuid "50000001-0000-0000-0000-0000000000AC"))     ; USART2_RX
+  )
+
+  ; ============================
+  ; ICM-42688-P (Primary IMU)
+  ; ============================
+
+  (symbol (lib_id "ICM-42688-P") (at 190.5 55.88 0)
+    (uuid "60000001-0000-0000-0000-000000000001")
+    (property "Reference" "U2" (at 190.5 48.26 0))
+    (property "Value" "ICM-42688-P" (at 190.5 63.5 0))
+    (property "Footprint" "Sensor_InvenSense:ICM-42688-P_LGA-14_2.5x3mm")
+    (pin "1" (uuid "60000001-0000-0000-0000-000000000010")) ; VDDIO → 3V3
+    (pin "2" (uuid "60000001-0000-0000-0000-000000000011")) ; SCL/SCK → SPI1_SCK (PA5)
+    (pin "3" (uuid "60000001-0000-0000-0000-000000000012")) ; SDA/SDI → SPI1_MOSI (PA7)
+    (pin "4" (uuid "60000001-0000-0000-0000-000000000013")) ; AD0/SDO → SPI1_MISO (PA6)
+    (pin "5" (uuid "60000001-0000-0000-0000-000000000014")) ; nCS → SPI1_NSS (PA4)
+    (pin "6" (uuid "60000001-0000-0000-0000-000000000015")) ; INT1 → PB3
+    (pin "7" (uuid "60000001-0000-0000-0000-000000000016")) ; INT2 → PD11
+    (pin "8" (uuid "60000001-0000-0000-0000-000000000017")) ; GND
+    (pin "9" (uuid "60000001-0000-0000-0000-000000000018")) ; RESV → GND
+    (pin "10" (uuid "60000001-0000-0000-0000-000000000019")) ; GND
+    (pin "11" (uuid "60000001-0000-0000-0000-00000000001A")) ; VDD → 1V8
+    (pin "12" (uuid "60000001-0000-0000-0000-00000000001B")) ; RESV → GND
+    (pin "13" (uuid "60000001-0000-0000-0000-00000000001C")) ; GND
+    (pin "14" (uuid "60000001-0000-0000-0000-00000000001D")) ; VDDIO → 3V3
+  )
+  ; SPI1 connections
+  (wire (pts (xy 149.86 55.88) (xy 180.34 55.88)) (uuid "60000010")) ; SPI1_SCK
+  (wire (pts (xy 149.86 58.42) (xy 180.34 58.42)) (uuid "60000011")) ; SPI1_MOSI
+  (wire (pts (xy 180.34 60.96) (xy 149.86 60.96)) (uuid "60000012")) ; SPI1_MISO
+  (wire (pts (xy 149.86 53.34) (xy 180.34 53.34)) (uuid "60000013")) ; SPI1_NSS
+
+  ; ICM-42688 decoupling
+  (symbol (lib_id "Device:C") (at 175.26 48.26 0)
+    (uuid "60000020-0000-0000-0000-000000000001")
+    (property "Reference" "C20" (at 175.26 45.72 0))
+    (property "Value" "100nF" (at 175.26 50.8 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+    (pin "1" (uuid "60000020-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "60000020-0000-0000-0000-000000000003"))
+  )
+  (symbol (lib_id "Device:C") (at 175.26 68.58 0)
+    (uuid "60000021-0000-0000-0000-000000000001")
+    (property "Reference" "C21" (at 175.26 66.04 0))
+    (property "Value" "1µF" (at 175.26 71.12 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+    (pin "1" (uuid "60000021-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "60000021-0000-0000-0000-000000000003"))
+  )
+
+  ; ============================
+  ; BMI270 (Secondary IMU)
+  ; ============================
+
+  (symbol (lib_id "BMI270") (at 190.5 83.82 0)
+    (uuid "70000001-0000-0000-0000-000000000001")
+    (property "Reference" "U3" (at 190.5 76.2 0))
+    (property "Value" "BMI270" (at 190.5 91.44 0))
+    (property "Footprint" "Sensor_Bosch:Bosch_LGA-14_2.5x3mm")
+    (pin "1" (uuid "70000001-0000-0000-0000-000000000010")) ; VDDIO → 3V3
+    (pin "2" (uuid "70000001-0000-0000-0000-000000000011")) ; SDI → SPI2_MOSI (PB14)
+    (pin "3" (uuid "70000001-0000-0000-0000-000000000012")) ; SDO → SPI2_MISO (PB13)
+    (pin "4" (uuid "70000001-0000-0000-0000-000000000013")) ; CSB → SPI2_NSS (PC4)
+    (pin "5" (uuid "70000001-0000-0000-0000-000000000014")) ; SCK → SPI2_SCK (PC5)
+    (pin "6" (uuid "70000001-0000-0000-0000-000000000015")) ; INT2 → PD12
+    (pin "7" (uuid "70000001-0000-0000-0000-000000000016")) ; INT1 → PB4
+    (pin "8" (uuid "70000001-0000-0000-0000-000000000017")) ; GND
+    (pin "9" (uuid "70000001-0000-0000-0000-000000000018")) ; GND
+    (pin "10" (uuid "70000001-0000-0000-0000-000000000019")) ; VDD → 1V8
+    (pin "11" (uuid "70000001-0000-0000-0000-00000000001A")) ; GND
+    (pin "12" (uuid "70000001-0000-0000-0000-00000000001B")) ; RESV → GND
+    (pin "13" (uuid "70000001-0000-0000-0000-00000000001C")) ; GND
+    (pin "14" (uuid "70000001-0000-0000-0000-00000000001D")) ; VDDIO → 3V3
+  )
+
+  ; ============================
+  ; BMP390 (Barometer)
+  ; ============================
+
+  (symbol (lib_id "BMP390") (at 190.5 104.14 0)
+    (uuid "80000001-0000-0000-0000-000000000001")
+    (property "Reference" "U4" (at 190.5 99.06 0))
+    (property "Value" "BMP390" (at 190.5 109.22 0))
+    (property "Footprint" "Sensor_Bosch:Bosch_LGA-10_2x2mm")
+    (pin "1" (uuid "80000001-0000-0000-0000-000000000010")) ; VDDIO → 3V3
+    (pin "2" (uuid "80000001-0000-0000-0000-000000000011")) ; GND
+    (pin "3" (uuid "80000001-0000-0000-0000-000000000012")) ; SDA → I2C1_SDA (PB5)
+    (pin "4" (uuid "80000001-0000-0000-0000-000000000013")) ; SCL → I2C1_SCL (PB6)
+    (pin "5" (uuid "80000001-0000-0000-0000-000000000014")) ; VDD → 3V3
+    (pin "6" (uuid "80000001-0000-0000-0000-000000000015")) ; GND
+    (pin "7" (uuid "80000001-0000-0000-0000-000000000016")) ; INT → PE0
+    (pin "8" (uuid "80000001-0000-0000-0000-000000000017")) ; GND
+    (pin "9" (uuid "80000001-0000-0000-0000-000000000018")) ; GND
+    (pin "10" (uuid "80000001-0000-0000-0000-000000000019")) ; VDDIO → 3V3
+  )
+
+  ; ============================
+  ; SAM-M10Q (GNSS)
+  ; ============================
+
+  (symbol (lib_id "SAM-M10Q") (at 248.92 55.88 0)
+    (uuid "90000001-0000-0000-0000-000000000001")
+    (property "Reference" "U5" (at 248.92 43.18 0))
+    (property "Value" "SAM-M10Q" (at 248.92 68.58 0))
+    (property "Footprint" "RF_Module_u-blox:SAM-M10Q_LCC-24_9.7x10.1mm")
+    (pin "11" (uuid "90000001-0000-0000-0000-000000000010")) ; RESET_N → PD7
+    (pin "14" (uuid "90000001-0000-0000-0000-000000000011")) ; RXD ← PB8
+    (pin "15" (uuid "90000001-0000-0000-0000-000000000012")) ; TXD → PB7
+    (pin "12" (uuid "90000001-0000-0000-0000-000000000013")) ; VCC → 3V3
+    (pin "22" (uuid "90000001-0000-0000-0000-000000000014")) ; GND
+    (pin "23" (uuid "90000001-0000-0000-0000-000000000015")) ; V_BCKP → CR1225
+    (pin "24" (uuid "90000001-0000-0000-0000-000000000016")) ; RF_IN → J4 (u.FL)
+  )
+  ; Antenna connector
+  (symbol (lib_id "Connector:Conn_Coaxial_uFL") (at 274.32 55.88 0)
+    (uuid "90000010-0000-0000-0000-000000000001")
+    (property "Reference" "J4" (at 274.32 50.8 0))
+    (property "Value" "u.FL_GNSS" (at 274.32 60.96 0))
+    (property "Footprint" "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical")
+    (pin "1" (uuid "90000010-0000-0000-0000-000000000002")) ; Signal
+    (pin "2" (uuid "90000010-0000-0000-0000-000000000003")) ; Shield
+  )
+
+  ; ============================
+  ; LARA-R6401 (LTE Modem)
+  ; ============================
+
+  (symbol (lib_id "LARA-R6401") (at 248.92 88.9 0)
+    (uuid "A0000001-0000-0000-0000-000000000001")
+    (property "Reference" "U6" (at 248.92 68.58 0))
+    (property "Value" "LARA-R6401" (at 248.92 109.22 0))
+    (property "Footprint" "RF_Module_u-blox:LARA-R6_LGA-171_16x26mm")
+    (pin "33" (uuid "A0000001-0000-0000-0000-000000000010")) ; VCC → VBAT_DIRECT
+    (pin "103" (uuid "A0000001-0000-0000-0000-000000000011")) ; VCC → VBAT_DIRECT
+    (pin "95" (uuid "A0000001-0000-0000-0000-000000000012")) ; CTS → PD15
+    (pin "96" (uuid "A0000001-0000-0000-0000-000000000013")) ; RTS ← PD14
+    (pin "97" (uuid "A0000001-0000-0000-0000-000000000014")) ; TXD → PC9
+    (pin "98" (uuid "A0000001-0000-0000-0000-000000000015")) ; RXD ← PC10
+    (pin "100" (uuid "A0000001-0000-0000-0000-000000000016")) ; PWR_ON ← PA0
+    (pin "110" (uuid "A0000001-0000-0000-0000-000000000017")) ; RESET_N → 3V3 pull-up
+    (pin "121" (uuid "A0000001-0000-0000-0000-000000000018")) ; GPIO1 → PD9
+    (pin "140" (uuid "A0000001-0000-0000-0000-000000000019")) ; RF_ANT → J3 (u.FL)
+    (pin "1" (uuid "A0000001-0000-0000-0000-00000000001A"))  ; GND
+    (pin "167" (uuid "A0000001-0000-0000-0000-00000000001B")) ; GND
+  )
+  ; LTE antenna connector
+  (symbol (lib_id "Connector:Conn_Coaxial_uFL") (at 274.32 88.9 0)
+    (uuid "A0000010-0000-0000-0000-000000000001")
+    (property "Reference" "J3" (at 274.32 83.82 0))
+    (property "Value" "u.FL_LTE" (at 274.32 93.98 0))
+    (property "Footprint" "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical")
+    (pin "1" (uuid "A0000010-0000-0000-0000-000000000002")) ; Signal
+    (pin "2" (uuid "A0000010-0000-0000-0000-000000000003")) ; Shield
+  )
+  ; TPS22917 load switch for LTE modem power
+  (symbol (lib_id "TPS22917") (at 220.98 76.2 0)
+    (uuid "A0000020-0000-0000-0000-000000000001")
+    (property "Reference" "U13" (at 220.98 71.12 0))
+    (property "Value" "TPS22917" (at 220.98 81.28 0))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6")
+    (pin "1" (uuid "A0000020-0000-0000-0000-000000000002")) ; VIN → VBAT_RAW
+    (pin "2" (uuid "A0000020-0000-0000-0000-000000000003")) ; GND
+    (pin "3" (uuid "A0000020-0000-0000-0000-000000000004")) ; ON → GPIO
+    (pin "4" (uuid "A0000020-0000-0000-0000-000000000005")) ; CT
+    (pin "5" (uuid "A0000020-0000-0000-0000-000000000006")) ; VOUT → LARA-R6 VCC
+    (pin "6" (uuid "A0000020-0000-0000-0000-000000000007")) ; NC
+  )
+
+  ; ============================
+  ; ESP32-H2 (Companion Computer)
+  ; ============================
+
+  (symbol (lib_id "ESP32-H2") (at 190.5 129.54 0)
+    (uuid "B0000001-0000-0000-0000-000000000001")
+    (property "Reference" "U7" (at 190.5 121.92 0))
+    (property "Value" "ESP32-H2" (at 190.5 137.16 0))
+    (property "Footprint" "RF_Module_Espressif:ESP32-H2_QFN-32_5x5mm")
+    (pin "21" (uuid "B0000001-0000-0000-0000-000000000010")) ; RX ← PB15 (UART4_TX)
+    (pin "22" (uuid "B0000001-0000-0000-0000-000000000011")) ; TX → PD8 (UART4_RX)
+    (pin "1" (uuid "B0000001-0000-0000-0000-000000000012"))  ; VDD → 1V8
+    (pin "15" (uuid "B0000001-0000-0000-0000-000000000013")) ; GND
+  )
+
+  ; ============================
+  ; CONNECTORS
+  ; ============================
+
+  ; USB-C Connector
+  (symbol (lib_id "Connector_Generic:Conn_01x04") (at 25.4 96.52 0)
+    (uuid "C0000001-0000-0000-0000-000000000001")
+    (property "Reference" "J1" (at 25.4 91.44 0))
+    (property "Value" "USB-C_2.0" (at 25.4 104.14 0))
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_Amphenol_10137065")
+    (pin "1" (uuid "C0000001-0000-0000-0000-000000000002")) ; VBUS
+    (pin "2" (uuid "C0000001-0000-0000-0000-000000000003")) ; DP → PA12
+    (pin "3" (uuid "C0000001-0000-0000-0000-000000000004")) ; DM → PA11
+    (pin "4" (uuid "C0000001-0000-0000-0000-000000000005")) ; GND
+  )
+
+  ; 40-pin JST-SH I/O connector
+  (symbol (lib_id "Connector_Generic:Conn_01x40") (at 25.4 119.38 0)
+    (uuid "C0000010-0000-0000-0000-000000000001")
+    (property "Reference" "J2" (at 25.4 68.58 0))
+    (property "Value" "JST-SH_40pin_0.8mm" (at 25.4 172.72 0))
+    (property "Footprint" "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal")
+    (pin "1" (uuid "C0000010-0000-0000-0000-000000000002"))  ; SWDIO → PA13
+    (pin "2" (uuid "C0000010-0000-0000-0000-000000000003"))  ; SWCLK → PA14
+    ; ... (remaining 38 pins defined in full schematic)
+  )
+
+  ; Motor output pads (12× DShot)
+  ; Motor 1 (PE8 / TIM1_CH2)
+  (symbol (lib_id "Connector_Generic:Conn_01x01") (at 274.32 127 0)
+    (uuid "D0000001-0000-0000-0000-000000000001")
+    (property "Reference" "M1" (at 274.32 124.46 0))
+    (property "Value" "Motor_1" (at 274.32 129.54 0))
+    (property "Footprint" "TestPoint:TestPoint_Pad_2.0x2.0mm")
+    (pin "1" (uuid "D0000001-0000-0000-0000-000000000002"))
+  )
+  ; Motor 2 (PE9 / TIM1_CH3)
+  (symbol (lib_id "Connector_Generic:Conn_01x01") (at 274.32 132.08 0)
+    (uuid "D0000002-0000-0000-0000-000000000001")
+    (property "Reference" "M2" (at 274.32 129.54 0))
+    (property "Value" "Motor_2" (at 274.32 134.62 0))
+    (property "Footprint" "TestPoint:TestPoint_Pad_2.0x2.0mm")
+    (pin "1" (uuid "D0000002-0000-0000-0000-000000000002"))
+  )
+  ; Motor 3-12 similarly defined...
+  ; Omitted for brevity — full schematic has all 12 motor pads
+
+  ; ============================
+  ; PASSIVE COMPONENTS
+  ; ============================
+
+  ; I2C pull-ups (4.7kΩ)
+  (symbol (lib_id "Device:R") (at 160.02 96.52 90)
+    (uuid "E0000001-0000-0000-0000-000000000001")
+    (property "Reference" "R7" (at 160.02 93.98 90))
+    (property "Value" "4.7kΩ" (at 160.02 99.06 90))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+    (pin "1" (uuid "E0000001-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "E0000001-0000-0000-0000-000000000003"))
+  )
+  (symbol (lib_id "Device:R") (at 160.02 101.6 90)
+    (uuid "E0000002-0000-0000-0000-000000000001")
+    (property "Reference" "R8" (at 160.02 99.06 90))
+    (property "Value" "4.7kΩ" (at 160.02 104.14 90))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+    (pin "1" (uuid "E0000002-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "E0000002-0000-0000-0000-000000000003"))
+  )
+
+  ; SPI pull-ups (10kΩ)
+  (symbol (lib_id "Device:R") (at 165.1 55.88 90)
+    (uuid "E0000010-0000-0000-0000-000000000001")
+    (property "Reference" "R10" (at 165.1 53.34 90))
+    (property "Value" "10kΩ" (at 165.1 58.42 90))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+    (pin "1" (uuid "E0000010-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "E0000010-0000-0000-0000-000000000003"))
+  )
+
+  ; Battery voltage divider (10kΩ / 1.5kΩ)
+  (symbol (lib_id "Device:R") (at 35.56 38.1 0)
+    (uuid "E0000020-0000-0000-0000-000000000001")
+    (property "Reference" "R5" (at 35.56 35.56 0))
+    (property "Value" "10kΩ" (at 35.56 40.64 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+    (pin "1" (uuid "E0000020-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "E0000020-0000-0000-0000-000000000003"))
+  )
+  (symbol (lib_id "Device:R") (at 35.56 48.26 0)
+    (uuid "E0000021-0000-0000-0000-000000000001")
+    (property "Reference" "R6" (at 35.56 45.72 0))
+    (property "Value" "1.5kΩ" (at 35.56 50.8 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+    (pin "1" (uuid "E0000021-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "E0000021-0000-0000-0000-000000000003"))
+  )
+
+  ; USB CC pull-downs (5.1kΩ)
+  (symbol (lib_id "Device:R") (at 33.02 96.52 0)
+    (uuid "E0000030-0000-0000-0000-000000000001")
+    (property "Reference" "R19" (at 33.02 93.98 0))
+    (property "Value" "5.1kΩ" (at 33.02 99.06 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+    (pin "1" (uuid "E0000030-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "E0000030-0000-0000-0000-000000000003"))
+  )
+  (symbol (lib_id "Device:R") (at 33.02 101.6 0)
+    (uuid "E0000031-0000-0000-0000-000000000001")
+    (property "Reference" "R20" (at 33.02 99.06 0))
+    (property "Value" "5.1kΩ" (at 33.02 104.14 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+    (pin "1" (uuid "E0000031-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "E0000031-0000-0000-0000-000000000003"))
+  )
+
+  ; Ferrite beads
+  (symbol (lib_id "Device:Ferrite_Bead") (at 55.88 20.32 90)
+    (uuid "F0000001-0000-0000-0000-000000000001")
+    (property "Reference" "FB1" (at 55.88 17.78 90))
+    (property "Value" "BLM21PG221SN1" (at 55.88 22.86 90))
+    (property "Footprint" "Inductor_SMD:L_0805_2012Metric")
+    (pin "1" (uuid "F0000001-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "F0000001-0000-0000-0000-000000000003"))
+  )
+
+  ; LEDs
+  (symbol (lib_id "Device:LED") (at 25.4 142.24 0)
+    (uuid "G0000001-0000-0000-0000-000000000001")
+    (property "Reference" "LED1" (at 25.4 139.7 0))
+    (property "Value" "Red" (at 25.4 144.78 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric")
+    (pin "1" (uuid "G0000001-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "G0000001-0000-0000-0000-000000000003"))
+  )
+  (symbol (lib_id "Device:LED") (at 35.56 142.24 0)
+    (uuid "G0000002-0000-0000-0000-000000000001")
+    (property "Reference" "LED2" (at 35.56 139.7 0))
+    (property "Value" "Green" (at 35.56 144.78 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric")
+    (pin "1" (uuid "G0000002-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "G0000002-0000-0000-0000-000000000003"))
+  )
+  (symbol (lib_id "Device:LED") (at 45.72 142.24 0)
+    (uuid "G0000003-0000-0000-0000-000000000001")
+    (property "Reference" "LED3" (at 45.72 139.7 0))
+    (property "Value" "Blue" (at 45.72 144.78 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric")
+    (pin "1" (uuid "G0000003-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "G0000003-0000-0000-0000-000000000003"))
+  )
+
+  ; LED current limiting resistors (1kΩ)
+  (symbol (lib_id "Device:R") (at 25.4 134.62 0)
+    (uuid "G0000010-0000-0000-0000-000000000001")
+    (property "Reference" "R30" (at 25.4 132.08 0))
+    (property "Value" "1kΩ" (at 25.4 137.16 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+    (pin "1" (uuid "G0000010-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "G0000010-0000-0000-0000-000000000003"))
+  )
+  (symbol (lib_id "Device:R") (at 35.56 134.62 0)
+    (uuid "G0000011-0000-0000-0000-000000000001")
+    (property "Reference" "R31" (at 35.56 132.08 0))
+    (property "Value" "1kΩ" (at 35.56 137.16 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+    (pin "1" (uuid "G0000011-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "G0000011-0000-0000-0000-000000000003"))
+  )
+  (symbol (lib_id "Device:R") (at 45.72 134.62 0)
+    (uuid "G0000012-0000-0000-0000-000000000001")
+    (property "Reference" "R32" (at 45.72 132.08 0))
+    (property "Value" "1kΩ" (at 45.72 137.16 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+    (pin "1" (uuid "G0000012-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "G0000012-0000-0000-0000-000000000003"))
+  )
+
+  ; Buttons
+  (symbol (lib_id "Switch:SW_Push") (at 25.4 152.4 0)
+    (uuid "H0000001-0000-0000-0000-000000000001")
+    (property "Reference" "SW1" (at 25.4 149.86 0))
+    (property "Value" "Reset" (at 25.4 154.94 0))
+    (property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_3x4mm")
+    (pin "1" (uuid "H0000001-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "H0000001-0000-0000-0000-000000000003"))
+  )
+  (symbol (lib_id "Switch:SW_Push") (at 38.1 152.4 0)
+    (uuid "H0000002-0000-0000-0000-000000000001")
+    (property "Reference" "SW2" (at 38.1 149.86 0))
+    (property "Value" "Boot" (at 38.1 154.94 0))
+    (property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_3x4mm")
+    (pin "1" (uuid "H0000002-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "H0000002-0000-0000-0000-000000000003"))
+  )
+
+  ; RTC (RV-3032-7)
+  (symbol (lib_id "RV-3032-7") (at 190.5 116.84 0)
+    (uuid "I0000001-0000-0000-0000-000000000001")
+    (property "Reference" "U11" (at 190.5 111.76 0))
+    (property "Value" "RV-3032-7" (at 190.5 121.92 0))
+    (property "Footprint" "Crystal:MicroCrystal_SO8-3.7x2.5mm")
+    (pin "1" (uuid "I0000001-0000-0000-0000-000000000010")) ; VDD → 3V3
+    (pin "2" (uuid "I0000001-0000-0000-0000-000000000011")) ; GND
+    (pin "3" (uuid "I0000001-0000-0000-0000-000000000012")) ; SDA → I2C1_SDA (PB5)
+    (pin "4" (uuid "I0000001-0000-0000-0000-000000000013")) ; SCL → I2C1_SCL (PB6)
+    (pin "5" (uuid "I0000001-0000-0000-0000-000000000014")) ; CLK
+    (pin "6" (uuid "I0000001-0000-0000-0000-000000000015")) ; INT
+    (pin "7" (uuid "I0000001-0000-0000-0000-000000000016")) ; VBACKUP → CR1225
+    (pin "8" (uuid "I0000001-0000-0000-0000-000000000017")) ; EVI
+  )
+
+  ; W25Q128 SPI Flash
+  (symbol (lib_id "W25Q128JVS") (at 190.5 144.78 0)
+    (uuid "J0000001-0000-0000-0000-000000000001")
+    (property "Reference" "U12" (at 190.5 139.7 0))
+    (property "Value" "W25Q128JVS" (at 190.5 149.86 0))
+    (property "Footprint" "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm")
+    (pin "1" (uuid "J0000001-0000-0000-0000-000000000010")) ; CS → PE1
+    (pin "2" (uuid "J0000001-0000-0000-0000-000000000011")) ; DO → PE3 (SPI4_MISO)
+    (pin "3" (uuid "J0000001-0000-0000-0000-000000000012")) ; WP → 3V3
+    (pin "4" (uuid "J0000001-0000-0000-0000-000000000013")) ; GND
+    (pin "5" (uuid "J0000001-0000-0000-0000-000000000014")) ; DI → PE4 (SPI4_MOSI)
+    (pin "6" (uuid "J0000001-0000-0000-0000-000000000015")) ; CLK → PE2 (SPI4_SCK)
+    (pin "7" (uuid "J0000001-0000-0000-0000-000000000016")) ; HOLD → 3V3
+    (pin "8" (uuid "J0000001-0000-0000-0000-000000000017")) ; VCC → 3V3
+  )
+
+  ; ============================
+  ; CRYSTALS
+  ; ============================
+
+  (symbol (lib_id "Device:Crystal") (at 104.14 60.96 0)
+    (uuid "K0000001-0000-0000-0000-000000000001")
+    (property "Reference" "Y1" (at 104.14 58.42 0))
+    (property "Value" "24MHz" (at 104.14 63.5 0))
+    (property "Footprint" "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm")
+    (pin "1" (uuid "K0000001-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "K0000001-0000-0000-0000-000000000003"))
+  )
+  ; Load capacitors for Y1 (12pF)
+  (symbol (lib_id "Device:C") (at 99.06 66.04 0)
+    (uuid "K0000010-0000-0000-0000-000000000001")
+    (property "Reference" "C30" (at 99.06 63.5 0))
+    (property "Value" "12pF" (at 99.06 68.58 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+    (pin "1" (uuid "K0000010-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "K0000010-0000-0000-0000-000000000003"))
+  )
+  (symbol (lib_id "Device:C") (at 109.22 66.04 0)
+    (uuid "K0000011-0000-0000-0000-000000000001")
+    (property "Reference" "C31" (at 109.22 63.5 0))
+    (property "Value" "12pF" (at 109.22 68.58 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+    (pin "1" (uuid "K0000011-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "K0000011-0000-0000-0000-000000000003"))
+  )
+
+  (symbol (lib_id "Device:Crystal") (at 104.14 73.66 0)
+    (uuid "K0000002-0000-0000-0000-000000000001")
+    (property "Reference" "Y2" (at 104.14 71.12 0))
+    (property "Value" "32.768kHz" (at 104.14 76.2 0))
+    (property "Footprint" "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm")
+    (pin "1" (uuid "K0000002-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "K0000002-0000-0000-0000-000000000003"))
+  )
+
+  ; ============================
+  ; POWER SYMBOLS
+  ; ============================
+
+  (power (net "VBAT_RAW" (uuid "P0000001")))
+  (power (net "5V_BEC" (uuid "P0000002")))
+  (power (net "3V3" (uuid "P0000003")))
+  (power (net "1V8" (uuid "P0000004")))
+  (power (net "GND" (uuid "P0000005")))
+  (power (net "VBAT_RTC" (uuid "P0000006")))
+
+  ; ============================
+  ; TEXT ANNOTATIONS
+  ; ============================
+
+  (text "SkyPilot — Dual-IMU Drone FC with 4G/LTE Telemetry\n45mm × 45mm, 6-layer, 1.0mm\nSTM32H743VIT6 + ICM-42688-P + BMI270 + SAM-M10Q + LARA-R6401\nRev 1.0 — 2026-06-14"
+    (at 127 170.18 0)
+    (uuid "T0000001-0000-0000-0000-000000000001")
+  )
+)
