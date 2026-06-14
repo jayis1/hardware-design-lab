@@ -1,0 +1,430 @@
+(kicad_pcb (version 20240101) (generator "pcbnew")
+
+  (general
+    (thickness 1.6)
+    (drawings 12)
+    (tracks 0)
+    (zones 0)
+    (nets 45)
+  )
+
+  (page "Custom")
+  (title_block
+    (title "NeuroLink - 32-Channel Biosignal Acquisition System")
+    (date "2026-06-14")
+    (rev "1.0")
+    (company "Hardware Design Lab")
+  )
+
+  (layers
+    (0 "F.Cu" signal)
+    (1 "In1.Cu" signal "GND")
+    (2 "In2.Cu" signal "High-Speed")
+    (3 "In3.Cu" signal "Power3V3")
+    (4 "In4.Cu" signal "Power1V8")
+    (5 "In5.Cu" signal "High-Speed2")
+    (6 "In6.Cu" signal "GND2")
+    (31 "B.Cu" signal)
+    (32 "B.Adhes" user)
+    (33 "F.Adhes" user)
+    (34 "B.Paste" user)
+    (35 "F.Paste" user)
+    (36 "B.SilkS" user)
+    (37 "F.SilkS" user)
+    (38 "B.Mask" user)
+    (39 "F.Mask" user)
+    (40 "Dwgs.User" user)
+    (41 "Cmts.User" user)
+    (42 "Eco1.User" user)
+    (43 "Eco2.User" user)
+    (44 "Edge.Cuts" user)
+    (45 "Margin" user)
+    (46 "B.CrtYd" user)
+    (47 "F.CrtYd" user)
+    (48 "B.Fab" user)
+    (49 "F.Fab" user)
+  )
+
+  (setup
+    (stackup
+      (layer 0 "F.Cu" (copper_foil 0.035))
+      (layer "PP1" (material "FR-4") (thickness 0.10) (dielectric_constant 4.5))
+      (layer 1 "In1.Cu" (copper_foil 0.035))
+      (layer "Core1" (material "FR-4 IT-180A") (thickness 0.20) (dielectric_constant 4.5))
+      (layer 2 "In2.Cu" (copper_foil 0.0175))
+      (layer "PP2" (material "FR-4") (thickness 0.12) (dielectric_constant 4.5))
+      (layer 3 "In3.Cu" (copper_foil 0.035))
+      (layer "Core2" (material "FR-4 IT-180A") (thickness 0.50) (dielectric_constant 4.5))
+      (layer 4 "In4.Cu" (copper_foil 0.035))
+      (layer "PP3" (material "FR-4") (thickness 0.12) (dielectric_constant 4.5))
+      (layer 5 "In5.Cu" (copper_foil 0.0175))
+      (layer "Core3" (material "FR-4 IT-180A") (thickness 0.20) (dielectric_constant 4.5))
+      (layer 6 "In6.Cu" (copper_foil 0.035))
+      (layer "PP4" (material "FR-4") (thickness 0.10) (dielectric_constant 4.5))
+      (layer 31 "B.Cu" (copper_foil 0.035))
+      (last_copper 8)
+    )
+
+    (pad_drill 0.2)
+    (pad_size 0.4 0.4)
+
+    (aux_axis_origin (x 0) (y 0))
+    (grid_origin (x 0) (y 0))
+
+    (pcbplotparams
+      (layerselection 0x00000000)
+      (plot_on_all_layers 0)
+      (subtractmaskfromsilk 0)
+      (outputformat 1)
+      (mirror 0)
+      (drillshape 0)
+      (scaleselection 1)
+      (outputdirectory "gerbers/")
+    )
+  )
+
+  (net_class "Default" ""
+    (clearance 0.15)
+    (trace_width 0.15)
+    (via_dia 0.4)
+    (via_drill 0.2)
+    (uvia_dia 0.25)
+    (uvia_drill 0.1)
+    (diff_pair_width 0.10)
+    (diff_pair_gap 0.15)
+  )
+
+  (net_class "Power" ""
+    (clearance 0.20)
+    (trace_width 0.40)
+    (via_dia 0.6)
+    (via_drill 0.3)
+  )
+
+  (net_class "USB" ""
+    (clearance 0.20)
+    (trace_width 0.15)
+    (via_dia 0.4)
+    (via_drill 0.2)
+    (diff_pair_width 0.15)
+    (diff_pair_gap 0.25)
+  )
+
+  (net_class "DDR" ""
+    (clearance 0.10)
+    (trace_width 0.10)
+    (via_dia 0.25)
+    (via_drill 0.1)
+    (diff_pair_width 0.10)
+    (diff_pair_gap 0.15)
+  )
+
+  (net_class "Analog" ""
+    (clearance 0.20)
+    (trace_width 0.15)
+    (via_dia 0.4)
+    (via_drill 0.2)
+  )
+
+  (nets
+    (net 0 "")
+    (net 1 "VDD_3V3")
+    (net 2 "VDD_1V8")
+    (net 3 "VDD_1V2")
+    (net 4 "VDDA_3V3")
+    (net 5 "VREF_2V5")
+    (net 6 "VBUS_5V")
+    (net 7 "VSYS")
+    (net 8 "VBAT")
+    (net 9 "GND")
+    (net 10 "AGND")
+    (net 11 "USB_DP")
+    (net 12 "USB_DM")
+    (net 13 "ADS_SCLK")
+    (net 14 "ADS_DIN")
+    (net 15 "ADS_DOUT")
+    (net 16 "ADS_CS_N")
+    (net 17 "ADS_START")
+    (net 18 "ADS_DRDY")
+    (net 19 "ADS_MCLK")
+    (net 20 "ADS_RESET_N")
+    (net 21 "FPGA_SCK")
+    (net 22 "FPGA_DI")
+    (net 23 "FPGA_DO")
+    (net 24 "FPGA_CS_N")
+    (net 25 "FPGA_RESET_N")
+    (net 26 "FPGA_CDONE")
+    (net 27 "FPGA_IRQ_N")
+    (net 28 "BLE_TX")
+    (net 29 "BLE_RX")
+    (net 30 "IMU_SDA")
+    (net 31 "IMU_SCL")
+    (net 32 "PMIC_SDA")
+    (net 33 "PMIC_SCL")
+    (net 34 "QSPI_CS_N")
+    (net 35 "QSPI_CLK")
+    (net 36 "QSPI_D0")
+    (net 37 "QSPI_D1")
+    (net 38 "QSPI_D2")
+    (net 39 "QSPI_D3")
+    (net 40 "LED0_R")
+    (net 41 "LED0_G")
+    (net 42 "LED0_B")
+    (net 43 "CH_PD")
+    (net 44 "USB_VBUS_EN")
+    (net 45 "TEMP_ALERT_N")
+  )
+
+  ;; ============================================================
+  ;; BOARD OUTLINE (85mm × 54mm, 2mm corner radius)
+  ;; ============================================================
+
+  (gr_rect (start 0 0) (end 85 54) (angle 0) (layer "Edge.Cuts") (width 0.05))
+  (gr_arc (start 2 2) (mid 0.59 0.59) (end 2 0) (layer "Edge.Cuts") (width 0.05))
+  (gr_arc (start 83 2) (mid 84.41 0.59) (end 85 2) (layer "Edge.Cuts") (width 0.05))
+  (gr_arc (start 83 52) (mid 84.41 53.41) (end 83 54) (layer "Edge.Cuts") (width 0.05))
+  (gr_arc (start 2 52) (mid 0.59 53.41) (end 0 52) (layer "Edge.Cuts") (width 0.05))
+
+  ;; ============================================================
+  ;; KEEPOUT ZONES
+  ;; ============================================================
+
+  ;; Analog keepout (left 25mm, all layers — digital routing prohibited)
+  (gr_rect (start 0 0) (end 25 54) (layer "Dwgs.User") (width 0.1))
+  (gr_text "ANALOG ZONE — No digital routing" (at 12.5 27) (layer "Dwgs.User")
+    (font (size 1 1) (thickness 0.1)))
+
+  ;; Antenna keepout (5mm radius around nRF antenna area)
+  (gr_circle (center 75 15) (radius 5) (layer "Dwgs.User") (width 0.1))
+  (gr_text "ANT KEEPOUT" (at 75 15) (layer "Dwgs.User")
+    (font (size 0.5 0.5) (thickness 0.05)))
+
+  ;; USB isolation slot (between ADuM3160 primary and secondary)
+  (gr_line (start 38 10) (end 38 35) (layer "Dwgs.User") (width 0.1))
+  (gr_text "ISOLATION SLOT" (at 38 22.5) (layer "Dwgs.User")
+    (font (size 0.5 0.5) (thickness 0.05)))
+
+  ;; Crystal keepout zones
+  (gr_rect (start 44 96) (end 48 107) (layer "Dwgs.User") (width 0.1))
+  (gr_rect (start 44 114) (end 48 125) (layer "Dwgs.User") (width 0.1))
+  (gr_text "XTAL KEEPOUT" (at 46 101.5) (layer "Dwgs.User")
+    (font (size 0.5 0.5) (thickness 0.05)))
+
+  ;; ============================================================
+  ;; MOUNTING HOLES (M2, 4 corners)
+  ;; ============================================================
+
+  (footprint "MountingHole:MountingHole_2.2mm_M2_Pad"
+    (at 3 3)
+    (uuid m0001-0000-0000-0000-000000000001)
+    (pad "1" thru_hole circle (at 0 0) (size 4) (drill 2.2) (layers "*.Cu" "*.Mask"))
+  )
+  (footprint "MountingHole:MountingHole_2.2mm_M2_Pad"
+    (at 82 3)
+    (uuid m0002-0000-0000-0000-000000000001)
+    (pad "1" thru_hole circle (at 0 0) (size 4) (drill 2.2) (layers "*.Cu" "*.Mask"))
+  )
+  (footprint "MountingHole:MountingHole_2.2mm_M2_Pad"
+    (at 3 51)
+    (uuid m0003-0000-0000-0000-000000000001)
+    (pad "1" thru_hole circle (at 0 0) (size 4) (drill 2.2) (layers "*.Cu" "*.Mask"))
+  )
+  (footprint "MountingHole:MountingHole_2.2mm_M2_Pad"
+    (at 82 51)
+    (uuid m0004-0000-0000-0000-000000000001)
+    (pad "1" thru_hole circle (at 0 0) (size 4) (drill 2.2) (layers "*.Cu" "*.Mask"))
+  )
+
+  ;; ============================================================
+  ;; COMPONENT PLACEMENT (approximate coordinates)
+  ;; ============================================================
+
+  ;; USB-C Connector (bottom-right)
+  (footprint "Connector_USB:USB_C_Receptacle_Amphenol_12401832E422A"
+    (at 78 48) (uuid c0001-0000-0000-0000-000000000001)
+  )
+
+  ;; ADuM3160 USB Isolator
+  (footprint "Package_SO:SOIC-16W_7.5x10.3mm_P1.27mm"
+    (at 55 25) (uuid c0002-0000-0000-0000-000000000001)
+  )
+
+  ;; TPD4E05U06 ESD (USB side)
+  (footprint "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
+    (at 38 41) (uuid c0003-0000-0000-0000-000000000001)
+  )
+
+  ;; BQ25895 Battery Charger
+  (footprint "Package_DFN_QFN:WQFN-24-1EP_4x4mm_P0.5mm"
+    (at 89 25) (uuid c0004-0000-0000-0000-000000000001)
+  )
+
+  ;; TPS62821 (3.3V buck)
+  (footprint "Package_SON:WSON-6-1EP_2x2mm_P0.65mm"
+    (at 124 25) (uuid c0005-0000-0000-0000-000000000001)
+  )
+
+  ;; TPS62822 (1.8V buck)
+  (footprint "Package_SON:WSON-6-1EP_2x2mm_P0.65mm"
+    (at 124 48) (uuid c0006-0000-0000-0000-000000000001)
+  )
+
+  ;; LP5907-1.2 (1.2V LDO)
+  (footprint "Package_SON:SOT-23-5"
+    (at 160 25) (uuid c0007-0000-0000-0000-000000000001)
+  )
+
+  ;; LP5907-2.5 (2.5V LDO)
+  (footprint "Package_SON:SOT-23-5"
+    (at 160 48) (uuid c0008-0000-0000-0000-000000000001)
+  )
+
+  ;; STM32H743ZIT6 (center of board)
+  (footprint "Package_QFP:LQFP-144_20x20mm_P0.5mm"
+    (at 50 30) (uuid c0010-0000-0000-0000-000000000001)
+  )
+
+  ;; ADS1299 #1-#4 (left side, analog zone)
+  (footprint "Package_QFP:TQFP-64_10x10mm_P0.5mm"
+    (at 5 5) (uuid c0020-0000-0000-0000-000000000001)
+  )
+  (footprint "Package_QFP:TQFP-64_10x10mm_P0.5mm"
+    (at 5 18) (uuid c0021-0000-0000-0000-000000000001)
+  )
+  (footprint "Package_QFP:TQFP-64_10x10mm_P0.5mm"
+    (at 5 31) (uuid c0022-0000-0000-0000-000000000001)
+  )
+  (footprint "Package_QFP:TQFP-64_10x10mm_P0.5mm"
+    (at 5 44) (uuid c0023-0000-0000-0000-000000000001)
+  )
+
+  ;; ADS1299 #5-#8 (left side, lower analog zone)
+  (footprint "Package_QFP:TQFP-64_10x10mm_P0.5mm"
+    (at 16 5) (uuid c0024-0000-0000-0000-000000000001)
+  )
+  (footprint "Package_QFP:TQFP-64_10x10mm_P0.5mm"
+    (at 16 18) (uuid c0025-0000-0000-0000-000000000001)
+  )
+  (footprint "Package_QFP:TQFP-64_10x10mm_P0.5mm"
+    (at 16 31) (uuid c0026-0000-0000-0000-000000000001)
+  )
+  (footprint "Package_QFP:TQFP-64_10x10mm_P0.5mm"
+    (at 16 44) (uuid c0027-0000-0000-0000-000000000001)
+  )
+
+  ;; iCE40UP5K FPGA (near MCU)
+  (footprint "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.15x5.15mm"
+    (at 38 30) (uuid c0040-0000-0000-0000-000000000001)
+  )
+
+  ;; DDR3L Memory
+  (footprint "Package_BGA:FBGA-96_8x13mm_Layout0.8x0.8mm"
+    (at 60 35) (uuid c0060-0000-0000-0000-000000000001)
+  )
+
+  ;; nRF52840 BLE Module (upper-right)
+  (footprint "RF_Module:E73-2G4M08S1EX"
+    (at 75 15) (uuid c0050-0000-0000-0000-000000000001)
+  )
+
+  ;; W25Q128 QSPI Flash
+  (footprint "Package_SON:WSON-8-1EP_6x5mm_P1.27mm"
+    (at 42 42) (uuid c0070-0000-0000-0000-000000000001)
+  )
+
+  ;; LSM6DSOX IMU
+  (footprint "Package_LGA:LGA-14_2.5x3mm_P0.5mm"
+    (at 30 45) (uuid c0080-0000-0000-0000-000000000001)
+  )
+
+  ;; TMP117 Temperature Sensor
+  (footprint "Package_SON:SOT-563-6"
+    (at 35 45) (uuid c0090-0000-0000-0000-000000000001)
+  )
+
+  ;; Electrode Connectors (left edge)
+  (footprint "Connector_Samtec:Samtec_FLE-120-02-G-DV_2x20_P0.50mm_Vertical"
+    (at -1 13) (uuid c0100-0000-0000-0000-000000000001)
+  )
+  (footprint "Connector_Samtec:Samtec_FLE-120-02-G-DV_2x20_P0.50mm_Vertical"
+    (at -1 40) (uuid c0101-0000-0000-0000-000000000001)
+  )
+
+  ;; MicroSD Card Slot (bottom-center)
+  (footprint "Connector_Card:MicroSD_Hirose_DM3AT-SF-PEJM5"
+    (at 50 51) (uuid c0110-0000-0000-0000-000000000001)
+  )
+
+  ;; RGB LED (top center)
+  (footprint "LED_SMD:LED_RGB_1210"
+    (at 42 5) (uuid c0130-0000-0000-0000-000000000001)
+  )
+
+  ;; ============================================================
+  ;; ZONE DEFINITIONS
+  ;; ============================================================
+
+  ;; Ground plane on L2 (In1.Cu) — solid fill
+  (zone (net 9) (net_name "GND") (layer "In1.Cu") (uuid z0001-0000-0000-0000-000000000001)
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (mode solid))
+    (polygon (pts (xy 0 0) (xy 85 0) (xy 85 54) (xy 0 54)))
+  )
+
+  ;; Ground plane on L7 (In6.Cu) — solid fill
+  (zone (net 9) (net_name "GND") (layer "In6.Cu") (uuid z0002-0000-0000-0000-000000000001)
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (mode solid))
+    (polygon (pts (xy 0 0) (xy 85 0) (xy 85 54) (xy 0 54)))
+  )
+
+  ;; 3.3V power plane on L4 (In3.Cu)
+  (zone (net 1) (net_name "VDD_3V3") (layer "In3.Cu") (uuid z0003-0000-0000-0000-000000000001)
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (mode solid))
+    (polygon (pts (xy 28 0) (xy 85 0) (xy 85 54) (xy 28 54)))
+  )
+
+  ;; 1.8V power island on L4 (In3.Cu) — DDR region
+  (zone (net 2) (net_name "VDD_1V8") (layer "In3.Cu") (uuid z0004-0000-0000-0000-000000000001)
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (mode solid))
+    (polygon (pts (xy 55 28) (xy 70 28) (xy 70 44) (xy 55 44)))
+  )
+
+  ;; 1.2V power plane on L5 (In4.Cu)
+  (zone (net 3) (net_name "VDD_1V2") (layer "In4.Cu") (uuid z0005-0000-0000-0000-000000000001)
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (mode solid))
+    (polygon (pts (xy 40 20) (xy 60 20) (xy 60 40) (xy 40 40)))
+  )
+
+  ;; Analog ground zone on L1 (F.Cu) — left analog section
+  (zone (net 10) (net_name "AGND") (layer "F.Cu") (uuid z0006-0000-0000-0000-000000000001)
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (mode solid))
+    (polygon (pts (xy 0 0) (xy 25 0) (xy 25 54) (xy 0 54)))
+  )
+
+  ;; Bottom ground pour on L8 (B.Cu)
+  (zone (net 9) (net_name "GND") (layer "B.Cu") (uuid z0007-0000-0000-0000-000000000001)
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (mode solid))
+    (polygon (pts (xy 0 0) (xy 85 0) (xy 85 54) (xy 0 54)))
+  )
+
+)

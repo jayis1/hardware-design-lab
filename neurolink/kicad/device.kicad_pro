@@ -1,0 +1,129 @@
+(kicad_pro (version 20240101)
+
+  (general
+    (project "NeuroLink")
+  )
+
+  (net_class "Default" ""
+    (clearance 0.15)
+    (trace_width 0.15)
+    (via_dia 0.40)
+    (via_drill 0.20)
+    (diff_pair_gap 0.15)
+    (diff_pair_width 0.10)
+  )
+
+  (net_class "Power" ""
+    (clearance 0.20)
+    (trace_width 0.40)
+    (via_dia 0.60)
+    (via_drill 0.30)
+  )
+
+  (net_class "High-Speed" ""
+    (clearance 0.20)
+    (trace_width 0.15)
+    (via_dia 0.40)
+    (via_drill 0.20)
+    (diff_pair_gap 0.15)
+    (diff_pair_width 0.10)
+  )
+
+  (net_class "USB" ""
+    (clearance 0.20)
+    (trace_width 0.15)
+    (via_dia 0.40)
+    (via_drill 0.20)
+    (diff_pair_gap 0.25)
+    (diff_pair_width 0.15)
+  )
+
+  (net_class "DDR" ""
+    (clearance 0.10)
+    (trace_width 0.10)
+    (via_dia 0.25)
+    (via_drill 0.10)
+    (diff_pair_gap 0.15)
+    (diff_pair_width 0.10)
+  )
+
+  (net_class "Analog" ""
+    (clearance 0.20)
+    (trace_width 0.15)
+    (via_dia 0.40)
+    (via_drill 0.20)
+  )
+
+  (design_settings
+    (defaults
+      (board_outline_width 0.05)
+      (solder_mask_clearance 0.05)
+      (solder_mask_min_width 0.08)
+      (silk_line_width 0.12)
+      (silk_text_height 0.80)
+      (silk_text_thickness 0.12)
+    )
+    (aux_design_origin
+      (x 0) (y 0)
+    )
+    (pad_size
+      (width 0.60) (height 0.60)
+    )
+  )
+
+  (pcb_params
+    (layer_count 8)
+    (copper_thickness
+      (layer 1 0.035)   ; L1 top, 1oz
+      (layer 2 0.035)   ; L2 GND, 1oz
+      (layer 3 0.0175)  ; L3, 1/2oz
+      (layer 4 0.035)   ; L4 power, 1oz
+      (layer 5 0.035)   ; L5 power, 1oz
+      (layer 6 0.0175)  ; L6 DDR, 1/2oz
+      (layer 7 0.035)   ; L7 GND, 1oz
+      (layer 8 0.035)   ; L8 bottom, 1oz
+    )
+    (board_thickness 1.6)
+  )
+
+  (rules
+    (min_clearance 0.08)
+    (min_track_width 0.08)
+    (min_via_annular 0.10)
+    (min_via_diameter 0.25)
+    (min_via_drill 0.10)
+    (min_micro_via_diameter 0.25)
+    (min_micro_via_drill 0.10)
+    (min_hole_clearance 0.20)
+    (min_edge_clearance 0.50)
+  )
+
+  (net_rules
+    (net "VDD_3V3" (class "Power"))
+    (net "VDD_1V8" (class "Power"))
+    (net "VDD_1V2" (class "Power"))
+    (net "VDDA_3V3" (class "Power"))
+    (net "VREF_2V5" (class "Power"))
+    (net "VBUS_5V" (class "Power"))
+    (net "VSYS" (class "Power"))
+    (net "VBAT" (class "Power"))
+    (net "GND" (class "Power"))
+    (net "AGND" (class "Analog"))
+    (net "USB_DP" (class "USB"))
+    (net "USB_DM" (class "USB"))
+    (net "DDR_CLK_P" (class "DDR"))
+    (net "DDR_CLK_N" (class "DDR"))
+    (net "DDR_DQS0_P" (class "DDR"))
+    (net "DDR_DQS0_N" (class "DDR"))
+    (net "DDR_DQS1_P" (class "DDR"))
+    (net "DDR_DQS1_N" (class "DDR"))
+    (net "ADS_SCLK" (class "High-Speed"))
+    (net "ADS_DIN" (class "High-Speed"))
+    (net "ADS_DOUT" (class "High-Speed"))
+    (net "ADS_CS_N" (class "High-Speed"))
+    (net "FPGA_SCK" (class "High-Speed"))
+    (net "FPGA_DI" (class "High-Speed"))
+    (net "FPGA_DO" (class "High-Speed"))
+    (net "FPGA_CS_N" (class "High-Speed"))
+  )
+)

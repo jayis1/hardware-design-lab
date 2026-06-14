@@ -1,0 +1,471 @@
+(kicad_sch (version 20240101) (generator "eeschema")
+
+  (uuid c0a00000-0000-0000-0000-000000000001)
+
+  (title "NeuroLink - 32-Channel Biosignal Acquisition System")
+  (date "2026-06-14")
+  (rev "1.0")
+  (company "Hardware Design Lab")
+
+  (lib_symbols)
+
+  ;; ============================================================
+  ;; POWER SECTION
+  ;; ============================================================
+
+  ;; USB-C Input
+  (symbol (lib_id "Connector:USB_C_Receptacle") (at 20.32 25.4 0) (unit 1)
+    (uuid a0000001-0000-0000-0000-000000000001)
+    (property "Reference" "J1" (at 20.32 15.24 0))
+    (property "Value" "USB_C_Receptacle_12401832E422A" (at 20.32 17.78 0))
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_Amphenol_12401832E422A" (at 20.32 25.4 0))
+    (pin "VBUS" (uuid a0000001-0000-0000-0000-000000000010))
+    (pin "CC1" (uuid a0000001-0000-0000-0000-000000000011))
+    (pin "CC2" (uuid a0000001-0000-0000-0000-000000000012))
+    (pin "D+" (uuid a0000001-0000-0000-0000-000000000013))
+    (pin "D-" (uuid a0000001-0000-0000-0000-000000000014))
+    (pin "SBU1" (uuid a0000001-0000-0000-0000-000000000015))
+    (pin "SBU2" (uuid a0000001-0000-0000-0000-000000000016))
+    (pin "SHIELD" (uuid a0000001-0000-0000-0000-000000000017))
+  )
+
+  ;; USB Digital Isolator
+  (symbol (lib_id "Isolator:ADuM3160") (at 53.34 25.4 0) (unit 1)
+    (uuid a0000002-0000-0000-0000-000000000001)
+    (property "Reference" "U21" (at 53.34 12.7 0))
+    (property "Value" "ADuM3160BRWZ" (at 53.34 15.24 0))
+    (property "Footprint" "Package_SO:SOIC-16W_7.5x10.3mm_P1.27mm" (at 53.34 25.4 0))
+    (pin "VDD1" (uuid a0000002-0000-0000-0000-000000000001))
+    (pin "GND1" (uuid a0000002-0000-0000-0000-000000000002))
+    (pin "VIA" (uuid a0000002-0000-0000-0000-000000000003))
+    (pin "VIB" (uuid a0000002-0000-0000-0000-000000000004))
+    (pin "VOA" (uuid a0000002-0000-0000-0000-000000000005))
+    (pin "VOB" (uuid a0000002-0000-0000-0000-000000000006))
+    (pin "VDD2" (uuid a0000002-0000-0000-0000-000000000007))
+    (pin "GND2" (uuid a0000002-0000-0000-0000-000000000008))
+  )
+
+  ;; ESD Protection on USB
+  (symbol (lib_id "Power_Protection:TPD4E05U06") (at 38.1 40.64 0) (unit 1)
+    (uuid a0000003-0000-0000-0000-000000000001)
+    (property "Reference" "U22" (at 38.1 33.02 0))
+    (property "Value" "TPD4E05U06DQAR" (at 38.1 35.56 0))
+    (property "Footprint" "Package_SON:USON-10_2.5x1.0mm_P0.5mm" (at 38.1 40.64 0))
+  )
+
+  ;; Battery Charger / Power Path
+  (symbol (lib_id "Battery_Management:BQ25895") (at 88.9 25.4 0) (unit 1)
+    (uuid a0000004-0000-0000-0000-000000000001)
+    (property "Reference" "U16" (at 88.9 10.16 0))
+    (property "Value" "BQ25895RTWR" (at 88.9 12.7 0))
+    (property "Footprint" "Package_DFN_QFN:WQFN-24-1EP_4x4mm_P0.5mm" (at 88.9 25.4 0))
+  )
+
+  ;; 3.3V Buck Converter
+  (symbol (lib_id "Regulator_Switching:TPS62821") (at 124.46 25.4 0) (unit 1)
+    (uuid a0000005-0000-0000-0000-000000000001)
+    (property "Reference" "U17" (at 124.46 17.78 0))
+    (property "Value" "TPS62821DGCT" (at 124.46 20.32 0))
+    (property "Footprint" "Package_SON:WSON-6-1EP_2x2mm_P0.65mm" (at 124.46 25.4 0))
+  )
+
+  ;; 1.8V Buck Converter
+  (symbol (lib_id "Regulator_Switching:TPS62822") (at 124.46 48.26 0) (unit 1)
+    (uuid a0000006-0000-0000-0000-000000000001)
+    (property "Reference" "U18" (at 124.46 40.64 0))
+    (property "Value" "TPS62822DGCT" (at 124.46 43.18 0))
+    (property "Footprint" "Package_SON:WSON-6-1EP_2x2mm_P0.65mm" (at 124.46 48.26 0))
+  )
+
+  ;; 1.2V LDO (MCU Core)
+  (symbol (lib_id "Regulator_Linear:LP5907") (at 160.02 25.4 0) (unit 1)
+    (uuid a0000007-0000-0000-0000-000000000001)
+    (property "Reference" "U19" (at 160.02 17.78 0))
+    (property "Value" "LP5907SNX-1.2" (at 160.02 20.32 0))
+    (property "Footprint" "Package_SON:SOT-23-5" (at 160.02 25.4 0))
+  )
+
+  ;; 2.5V LDO (VREF)
+  (symbol (lib_id "Regulator_Linear:LP5907") (at 160.02 48.26 0) (unit 1)
+    (uuid a0000008-0000-0000-0000-000000000001)
+    (property "Reference" "U20" (at 160.02 40.64 0))
+    (property "Value" "LP5907SNX-2.5" (at 160.02 43.18 0))
+    (property "Footprint" "Package_SON:SOT-23-5" (at 160.02 48.26 0))
+  )
+
+  ;; Power Nets
+  (net (code 1) (name "VBUS_5V") (node "a0000001-0010" "a0000004-001"))
+  (net (code 2) (name "VSYS") (node "a0000004-002"))
+  (net (code 3) (name "VBAT") (node "a0000004-003"))
+  (net (code 4) (name "VDD_3V3") (node "a0000005-001" "a0000010-023" "a0000010-136"))
+  (net (code 5) (name "VDD_1V8") (node "a0000006-001"))
+  (net (code 6) (name "VDD_1V2") (node "a0000007-001"))
+  (net (code 7) (name "VDDA_3V3") (node "a0000008-001" "a0000010-138"))
+  (net (code 8) (name "VREF_2V5") (node "a0000008-002"))
+  (net (code 9) (name "GND") (node "a0000002-002" "a0000002-008" "a0000003-001"))
+  (net (code 10) (name "AGND"))
+
+  ;; ============================================================
+  ;; MAIN MCU SECTION
+  ;; ============================================================
+
+  (symbol (lib_id "MCU_ST_STM32H7:STM32H743ZITx") (at 195.58 101.6 0) (unit 1)
+    (uuid a0000010-0000-0000-0000-000000000001)
+    (property "Reference" "U1" (at 195.58 55.88 0))
+    (property "Value" "STM32H743ZIT6" (at 195.58 58.42 0))
+    (property "Footprint" "Package_QFP:LQFP-144_20x20mm_P0.5mm" (at 195.58 101.6 0))
+    ;; Key pins annotated with net names
+    (pin "PA4/SPI1_NSS" (uuid a0000010-0000-0000-0000-000000000004) (net "ADS_CS_N"))
+    (pin "PA5/SPI1_SCK" (uuid a0000010-0000-0000-0000-000000000005) (net "ADS_SCLK"))
+    (pin "PA6/SPI1_MISO" (uuid a0000010-0000-0000-0000-000000000006) (net "ADS_DOUT"))
+    (pin "PA7/SPI1_MOSI" (uuid a0000010-0000-0000-0000-000000000007) (net "ADS_DIN"))
+    (pin "PA8/GPIO" (uuid a0000010-0000-0000-0000-000000000008) (net "ADS_START"))
+    (pin "PA9/USART1_TX" (uuid a0000010-0000-0000-0000-000000000009) (net "BLE_RX"))
+    (pin "PA10/USART1_RX" (uuid a0000010-0000-0000-0000-000000000010) (net "BLE_TX"))
+    (pin "PA11/USB_HS_DM" (uuid a0000010-0000-0000-0000-000000000107) (net "USB_DM"))
+    (pin "PA12/USB_HS_DP" (uuid a0000010-0000-0000-0000-000000000108) (net "USB_DP"))
+    (pin "PB0/GPIO" (uuid a0000010-0000-0000-0000-000000000022) (net "FPGA_RESET_N"))
+    (pin "PB1/GPIO" (uuid a0000010-0000-0000-0000-000000000023) (net "FPGA_CDONE"))
+    (pin "PB10/SPI2_SCK" (uuid a0000010-0000-0000-0000-000000000034) (net "FPGA_SCK"))
+    (pin "PB12/SPI2_NSS" (uuid a0000010-0000-0000-0000-000000000037) (net "FPGA_CS_N"))
+    (pin "PB14/SPI2_MISO" (uuid a0000010-0000-0000-0000-000000000035) (net "FPGA_DO"))
+    (pin "PB15/SPI2_MOSI" (uuid a0000010-0000-0000-0000-000000000036) (net "FPGA_DI"))
+    (pin "PC0/I2C1_SDA" (uuid a0000010-0000-0000-0000-000000000042) (net "IMU_SDA"))
+    (pin "PC1/I2C1_SCL" (uuid a0000010-0000-0000-0000-000000000043) (net "IMU_SCL"))
+    (pin "PC4/I2C2_SDA" (uuid a0000010-0000-0000-0000-000000000044) (net "PMIC_SDA"))
+    (pin "PC5/I2C2_SCL" (uuid a0000010-0000-0000-0000-000000000045) (net "PMIC_SCL"))
+    (pin "PD7/GPIO" (uuid a0000010-0000-0000-0000-000000000068) (net "ADS_DRDY"))
+    (pin "PE8/EXTI" (uuid a0000010-0000-0000-0000-000000000014) (net "FPGA_IRQ_N"))
+    (pin "PE15/GPIO" (uuid a0000010-0000-0000-0000-000000000087) (net "CH_PD"))
+    (pin "PH4/GPIO" (uuid a0000010-0000-0000-0000-000000000096) (net "USB_VBUS_EN"))
+    (pin "VDD" (uuid a0000010-0000-0000-0000-000000000136) (net "VDD_3V3"))
+    (pin "VDDA" (uuid a0000010-0000-0000-0000-000000000138) (net "VDDA_3V3"))
+    (pin "VSS" (uuid a0000010-0000-0000-0000-000000000137) (net "GND"))
+    (pin "VREF+" (uuid a0000010-0000-0000-0000-000000000139) (net "VREF_2V5"))
+  )
+
+  ;; ============================================================
+  ;; ADS1299 DAISY CHAIN (8 devices)
+  ;; ============================================================
+
+  ;; ADS1299 #1 (U4) — Channels 1-4 (plus 4 more, 8 per device)
+  (symbol (lib_id "Analog_ADC:ADS1299IPAG") (at 279.4 50.8 0) (unit 1)
+    (uuid a0000020-0000-0000-0000-000000000001)
+    (property "Reference" "U4" (at 279.4 33.02 0))
+    (property "Value" "ADS1299IPAG" (at 279.4 35.56 0))
+    (property "Footprint" "Package_QFP:TQFP-64_10x10mm_P0.5mm" (at 279.4 50.8 0))
+    (pin "CS" (uuid a0000020-0000-0000-0000-000000000003) (net "ADS_CS_N"))
+    (pin "SCLK" (uuid a0000020-0000-0000-0000-000000000008) (net "ADS_SCLK"))
+    (pin "DIN" (uuid a0000020-0000-0000-0000-000000000006) (net "ADS_DIN"))
+    (pin "DOUT" (uuid a0000020-0000-0000-0000-000000000007) (net "ADS_DOUT_U4"))
+    (pin "DRDY" (uuid a0000020-0000-0000-0000-000000000005) (net "ADS_DRDY"))
+    (pin "START" (uuid a0000020-0000-0000-0000-000000000004) (net "ADS_START"))
+    (pin "DAISY_IN" (uuid a0000020-0000-0000-0000-000000000001) (net "GND")) ;; First in chain, tie low
+    (pin "CLK" (uuid a0000020-0000-0000-0000-000000000002) (net "ADS_MCLK"))
+    (pin "RESET" (uuid a0000020-0000-0000-0000-000000000040) (net "ADS_RESET_N"))
+    (pin "PDB" (uuid a0000020-0000-0000-0000-000000000010) (net "CH_PD"))
+    (pin "AVDD" (uuid a0000020-0000-0000-0000-000000000025) (net "VDDA_3V3"))
+    (pin "AVSS" (uuid a0000020-0000-0000-0000-000000000026) (net "AGND"))
+    (pin "DVDD" (uuid a0000020-0000-0000-0000-000000000023) (net "VDD_3V3"))
+    (pin "DGND" (uuid a0000020-0000-0000-0000-000000000027) (net "GND"))
+    (pin "VREF" (uuid a0000020-0000-0000-0000-000000000011) (net "VREF_2V5"))
+    (pin "CLKSEL" (uuid a0000020-0000-0000-0000-000000000039) (net "VDD_3V3"))
+    (pin "MODE" (uuid a0000020-0000-0000-0000-000000000009) (net "GND"))
+  )
+
+  ;; ADS1299 #2 (U5) — Daisy chain from U4
+  (symbol (lib_id "Analog_ADC:ADS1299IPAG") (at 340.36 50.8 0) (unit 1)
+    (uuid a0000021-0000-0000-0000-000000000001)
+    (property "Reference" "U5" (at 340.36 33.02 0))
+    (property "Value" "ADS1299IPAG" (at 340.36 35.56 0))
+    (property "Footprint" "Package_QFP:TQFP-64_10x10mm_P0.5mm" (at 340.36 50.8 0))
+    (pin "DAISY_IN" (uuid a0000021-0000-0000-0000-000000000001) (net "ADS_DOUT_U4"))
+    (pin "DOUT" (uuid a0000021-0000-0000-0000-000000000007) (net "ADS_DOUT_U5"))
+    (pin "CS" (net "ADS_CS_N"))
+    (pin "SCLK" (net "ADS_SCLK"))
+    (pin "DIN" (net "ADS_DIN"))
+    (pin "START" (net "ADS_START"))
+    (pin "RESET" (net "ADS_RESET_N"))
+    (pin "DRDY" (net "ADS_DRDY"))
+    (pin "CLK" (net "ADS_MCLK"))
+    (pin "AVDD" (net "VDDA_3V3"))
+    (pin "AVSS" (net "AGND"))
+    (pin "DVDD" (net "VDD_3V3"))
+    (pin "DGND" (net "GND"))
+    (pin "VREF" (net "VREF_2V5"))
+    (pin "CLKSEL" (net "VDD_3V3"))
+    (pin "MODE" (net "GND"))
+    (pin "PDB" (net "CH_PD"))
+  )
+
+  ;; ADS1299 #3–#8 follow same pattern (abbreviated for clarity)
+  ;; U6 through U11 — identical connections, daisy-chained DOUT→DAISY_IN
+  ;; U11 DOUT → STM32 PA6 (SPI1_MISO) via R4 (33Ω)
+
+  ;; ESD Protection for electrodes (per group of 4 channels)
+  (symbol (lib_id "Power_Protection:TPD4E05U06") (at 279.4 88.9 0) (unit 1)
+    (uuid a0000030-0000-0000-0000-000000000001)
+    (property "Reference" "U23" (at 279.4 81.28 0))
+    (property "Value" "TPD4E05U06DQAR" (at 279.4 83.82 0))
+    (property "Footprint" "Package_SON:USON-10_2.5x1.0mm_P0.5mm" (at 279.4 88.9 0))
+  )
+
+  ;; ============================================================
+  ;; FPGA DSP COPROCESSOR
+  ;; ============================================================
+
+  (symbol (lib_id "FPGA_Lattice:iCE40UP5K-SG48") (at 195.58 177.8 0) (unit 1)
+    (uuid a0000040-0000-0000-0000-000000000001)
+    (property "Reference" "U2" (at 195.58 160.02 0))
+    (property "Value" "iCE40UP5K-SG48" (at 195.58 162.56 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.15x5.15mm" (at 195.58 177.8 0))
+    (pin "IOT_37A/SPI_SS" (uuid a0000040-0000-0000-0000-000000000002) (net "FPGA_CS_N"))
+    (pin "IOT_37B/SPI_SCK" (uuid a0000040-0000-0000-0000-000000000003) (net "FPGA_SCK"))
+    (pin "IOT_36A/SPI_DI" (uuid a0000040-0000-0000-0000-000000000004) (net "FPGA_DI"))
+    (pin "IOT_36B/SPI_DO" (uuid a0000040-0000-0000-0000-000000000005) (net "FPGA_DO"))
+    (pin "CDONE" (uuid a0000040-0000-0000-0000-000000000041) (net "FPGA_CDONE"))
+    (pin "CRESET_B" (uuid a0000040-0000-0000-0000-000000000042) (net "FPGA_RESET_N"))
+    (pin "VCC" (uuid a0000040-0000-0000-0000-000000000008) (net "VDD_1V2"))
+    (pin "VCCIO_0" (uuid a0000040-0000-0000-0000-000000000001) (net "VDD_3V3"))
+    (pin "VCCIO_1" (uuid a0000040-0000-0000-0000-000000000013) (net "VDD_3V3"))
+    (pin "VCCIO_2" (uuid a0000040-0000-0000-0000-000000000039) (net "VDD_1V8"))
+    (pin "VPP_2V5" (uuid a0000040-0000-0000-0000-000000000040) (net "VDD_2V5"))
+    (pin "IOT_49/IRQ" (uuid a0000040-0000-0000-0000-000000000014) (net "FPGA_IRQ_N"))
+  )
+
+  ;; ============================================================
+  ;; BLE MODULE
+  ;; ============================================================
+
+  (symbol (lib_id "RF_Module:E73-2G4M08S1EX") (at 88.9 177.8 0) (unit 1)
+    (uuid a0000050-0000-0000-0000-000000000001)
+    (property "Reference" "U3" (at 88.9 160.02 0))
+    (property "Value" "E73-2G4M08S1EX (nRF52840)" (at 88.9 162.56 0))
+    (property "Footprint" "RF_Module:E73-2G4M08S1EX" (at 88.9 177.8 0))
+    (pin "VDD" (uuid a0000050-0000-0000-0000-000000000001) (net "VDD_3V3"))
+    (pin "GND" (uuid a0000050-0000-0000-0000-000000000002) (net "GND"))
+    (pin "P0.05/RX" (uuid a0000050-0000-0000-0000-000000000003) (net "BLE_TX"))
+    (pin "P0.06/TX" (uuid a0000050-0000-0000-0000-000000000004) (net "BLE_RX"))
+    (pin "P0.07/CTS" (uuid a0000050-0000-0000-0000-000000000005) (net "BLE_CTS"))
+    (pin "P0.08/RTS" (uuid a0000050-0000-0000-0000-000000000006) (net "BLE_RTS"))
+    (pin "P0.09/RST" (uuid a0000050-0000-0000-0000-000000000007) (net "BLE_RST_N"))
+    (pin "P0.10/IRQ" (uuid a0000050-0000-0000-0000-000000000008) (net "BLE_IRQ"))
+    (pin "ANT" (uuid a0000050-0000-0000-0000-000000000013) (net "ANT_2.4G"))
+  )
+
+  ;; ============================================================
+  ;; DDR3L MEMORY
+  ;; ============================================================
+
+  (symbol (lib_id "Memory_RAM:IS43TR16256BL") (at 279.4 177.8 0) (unit 1)
+    (uuid a0000060-0000-0000-0000-000000000001)
+    (property "Reference" "U14" (at 279.4 160.02 0))
+    (property "Value" "IS43TR16256BL-107K" (at 279.4 162.56 0))
+    (property "Footprint" "Package_BGA:FBGA-96_8x13mm_Layout0.8x0.8mm" (at 279.4 177.8 0))
+    (pin "VDD" (uuid a0000060-0000-0000-0000-000000000001) (net "VDD_1V8"))
+    (pin "VREF" (uuid a0000060-0000-0000-0000-000000000002) (net "DDR_VREF"))
+    (pin "VSS" (uuid a0000060-0000-0000-0000-000000000003) (net "GND"))
+  )
+
+  ;; ============================================================
+  ;; QSPI BOOT FLASH
+  ;; ============================================================
+
+  (symbol (lib_id "Memory_Flash:W25Q128JVE") (at 124.46 177.8 0) (unit 1)
+    (uuid a0000070-0000-0000-0000-000000000001)
+    (property "Reference" "U15" (at 124.46 170.18 0))
+    (property "Value" "W25Q128JVEIQ" (at 124.46 172.72 0))
+    (property "Footprint" "Package_SON:WSON-8-1EP_6x5mm_P1.27mm" (at 124.46 177.8 0))
+    (pin "CS" (uuid a0000070-0000-0000-0000-000000000001) (net "QSPI_CS_N"))
+    (pin "CLK" (uuid a0000070-0000-0000-0000-000000000002) (net "QSPI_CLK"))
+    (pin "D0" (uuid a0000070-0000-0000-0000-000000000003) (net "QSPI_D0"))
+    (pin "D1" (uuid a0000070-0000-0000-0000-000000000004) (net "QSPI_D1"))
+    (pin "D2" (uuid a0000070-0000-0000-0000-000000000005) (net "QSPI_D2"))
+    (pin "D3" (uuid a0000070-0000-0000-0000-000000000006) (net "QSPI_D3"))
+    (pin "VDD" (uuid a0000070-0000-0000-0000-000000000007) (net "VDD_3V3"))
+    (pin "VSS" (uuid a0000070-0000-0000-0000-000000000008) (net "GND"))
+  )
+
+  ;; ============================================================
+  ;; IMU (6-axis Accelerometer + Gyroscope)
+  ;; ============================================================
+
+  (symbol (lib_id "Sensor_Motion:LSM6DSOXTR") (at 50.8 177.8 0) (unit 1)
+    (uuid a0000080-0000-0000-0000-000000000001)
+    (property "Reference" "U24" (at 50.8 170.18 0))
+    (property "Value" "LSM6DSOXTR" (at 50.8 172.72 0))
+    (property "Footprint" "Package_LGA:LGA-14_2.5x3mm_P0.5mm" (at 50.8 177.8 0))
+    (pin "SDA" (uuid a0000080-0000-0000-0000-000000000001) (net "IMU_SDA"))
+    (pin "SCL" (uuid a0000080-0000-0000-0000-000000000002) (net "IMU_SCL"))
+    (pin "VDD" (uuid a0000080-0000-0000-0000-000000000003) (net "VDD_3V3"))
+    (pin "VDDIO" (uuid a0000080-0000-0000-0000-000000000004) (net "VDD_3V3"))
+    (pin "GND" (uuid a0000080-0000-0000-0000-000000000005) (net "GND"))
+  )
+
+  ;; ============================================================
+  ;; TEMPERATURE SENSOR
+  ;; ============================================================
+
+  (symbol (lib_id "Sensor_Temperature:TMP117AIDRVR") (at 50.8 200.66 0) (unit 1)
+    (uuid a0000090-0000-0000-0000-000000000001)
+    (property "Reference" "U25" (at 50.8 193.04 0))
+    (property "Value" "TMP117AIDRVR" (at 50.8 195.58 0))
+    (property "Footprint" "Package_SON:SOT-563-6" (at 50.8 200.66 0))
+    (pin "SDA" (uuid a0000090-0000-0000-0000-000000000001) (net "PMIC_SDA"))
+    (pin "SCL" (uuid a0000090-0000-0000-0000-000000000002) (net "PMIC_SCL"))
+    (pin "VDD" (uuid a0000090-0000-0000-0000-000000000003) (net "VDD_3V3"))
+    (pin "GND" (uuid a0000090-0000-0000-0000-000000000004) (net "GND"))
+    (pin "ALERT" (uuid a0000090-0000-0000-0000-000000000005) (net "TEMP_ALERT_N"))
+  )
+
+  ;; ============================================================
+  ;; ELECTRODE CONNECTORS
+  ;; ============================================================
+
+  (symbol (lib_id "Connector:Conn_02x20_Edge") (at 340.36 101.6 0) (unit 1)
+    (uuid a0000100-0000-0000-0000-000000000001)
+    (property "Reference" "J2" (at 340.36 76.2 0))
+    (property "Value" "FLE-120-02-G-DV" (at 340.36 78.74 0))
+    (property "Footprint" "Connector_Samtec:Samtec_FLE-120-02-G-DV_2x20_P0.50mm_Vertical" (at 340.36 101.6 0))
+    ;; 40 pins connecting to 8 ADS1299 channels (32 differential + 8 bias/reference)
+  )
+
+  (symbol (lib_id "Connector:Conn_02x20_Edge") (at 340.36 152.4 0) (unit 1)
+    (uuid a0000101-0000-0000-0000-000000000001)
+    (property "Reference" "J3" (at 340.36 127 0))
+    (property "Value" "FLE-120-02-G-DV" (at 340.36 129.54 0))
+    (property "Footprint" "Connector_Samtec:Samtec_FLE-120-02-G-DV_2x20_P0.50mm_Vertical" (at 340.36 152.4 0))
+  )
+
+  ;; ============================================================
+  ;; MICROSD SLOT
+  ;; ============================================================
+
+  (symbol (lib_id "Connector:MicroSD_Card_Slot") (at 124.46 101.6 0) (unit 1)
+    (uuid a0000110-0000-0000-0000-000000000001)
+    (property "Reference" "J4" (at 124.46 88.9 0))
+    (property "Value" "DM3AT-SF-PEJM5" (at 124.46 91.44 0))
+    (property "Footprint" "Connector_Card:MicroSD_Hirose_DM3AT-SF-PEJM5" (at 124.46 101.6 0))
+    (pin "D0" (uuid a0000110-0000-0000-0000-000000000001) (net "SD_D0"))
+    (pin "D1" (uuid a0000110-0000-0000-0000-000000000002) (net "SD_D1"))
+    (pin "D2" (uuid a0000110-0000-0000-0000-000000000003) (net "SD_D2"))
+    (pin "D3" (uuid a0000110-0000-0000-0000-000000000004) (net "SD_D3"))
+    (pin "CMD" (uuid a0000110-0000-0000-0000-000000000005) (net "SD_CMD"))
+    (pin "CLK" (uuid a0000110-0000-0000-0000-000000000006) (net "SD_CLK"))
+    (pin "VDD" (uuid a0000110-0000-0000-0000-000000000007) (net "VDD_3V3"))
+    (pin "GND" (uuid a0000110-0000-0000-0000-000000000008) (net "GND"))
+  )
+
+  ;; ============================================================
+  ;; CRYSTALS
+  ;; ============================================================
+
+  (symbol (lib_id "Device:Crystal") (at 45.72 101.6 0) (unit 1)
+    (uuid a0000120-0000-0000-0000-000000000001)
+    (property "Reference" "Y1" (at 45.72 95.25 0))
+    (property "Value" "27 MHz" (at 45.72 97.79 0))
+    (property "Footprint" "Crystal:Crystal_SMD_ABM8-2Pin_3.2x2.5mm" (at 45.72 101.6 0))
+  )
+
+  (symbol (lib_id "Device:Crystal") (at 45.72 119.38 0) (unit 1)
+    (uuid a0000121-0000-0000-0000-000000000001)
+    (property "Reference" "Y2" (at 45.72 113.03 0))
+    (property "Value" "32.768 kHz" (at 45.72 115.57 0))
+    (property "Footprint" "Crystal:Crystal_SMD_ABS07-2Pin_3.2x1.5mm" (at 45.72 119.38 0))
+  )
+
+  ;; ============================================================
+  ;; RGB LEDS
+  ;; ============================================================
+
+  (symbol (lib_id "Device:LED_RGB") (at 195.58 25.4 0) (unit 1)
+    (uuid a0000130-0000-0000-0000-000000000001)
+    (property "Reference" "D1" (at 195.58 17.78 0))
+    (property "Value" "LED_RGB_CLV1A-FKB" (at 195.58 20.32 0))
+    (property "Footprint" "LED_SMD:LED_RGB_1210" (at 195.58 25.4 0))
+    (pin "R" (uuid a0000130-0000-0000-0000-000000000001) (net "LED0_R"))
+    (pin "G" (uuid a0000130-0000-0000-0000-000000000002) (net "LED0_G"))
+    (pin "B" (uuid a0000130-0000-0000-0000-000000000003) (net "LED0_B"))
+    (pin "A" (uuid a0000130-0000-0000-0000-000000000004) (net "VDD_3V3"))
+  )
+
+  ;; ============================================================
+  ;; PASSIVE COMPONENTS (Key Decoupling)
+  ;; ============================================================
+
+  ;; Series resistors for SPI buses (33Ω, 0402)
+  (symbol (lib_id "Device:R") (at 265.43 45.72 0) (unit 1)
+    (uuid a0000200-0000-0000-0000-000000000001)
+    (property "Reference" "R1" (at 265.43 43.18 0))
+    (property "Value" "33Ω" (at 265.43 45.72 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 265.43 45.72 0))
+    (property "Net" "ADS_CS_N")
+  )
+
+  ;; Pull-up resistors (10kΩ, 0402)
+  (symbol (lib_id "Device:R") (at 265.43 55.88 0) (unit 1)
+    (uuid a0000201-0000-0000-0000-000000000001)
+    (property "Reference" "R20" (at 265.43 53.34 0))
+    (property "Value" "10kΩ" (at 265.43 55.88 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 265.43 55.88 0))
+  )
+
+  ;; Decoupling capacitors (100nF, 0402) — representative
+  (symbol (lib_id "Device:C") (at 285.75 68.58 0) (unit 1)
+    (uuid a0000210-0000-0000-0000-000000000001)
+    (property "Reference" "C1" (at 285.75 66.04 0))
+    (property "Value" "100nF" (at 285.75 68.58 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 285.75 68.58 0))
+  )
+
+  ;; Bulk capacitor (10µF, 0805)
+  (symbol (lib_id "Device:C") (at 285.75 76.2 0) (unit 1)
+    (uuid a0000211-0000-0000-0000-000000000001)
+    (property "Reference" "C20" (at 285.75 73.66 0))
+    (property "Value" "10µF" (at 285.75 76.2 0))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 285.75 76.2 0))
+  )
+
+  ;; Ferrite bead for analog supply isolation
+  (symbol (lib_id "Device:FerriteBead") (at 285.75 83.82 0) (unit 1)
+    (uuid a0000220-0000-0000-0000-000000000001)
+    (property "Reference" "FB1" (at 285.75 81.28 0))
+    (property "Value" "600Ω@100MHz" (at 285.75 83.82 0))
+    (property "Footprint" "Inductor_SMD:L_0603_1608Metric" (at 285.75 83.82 0))
+  )
+
+  ;; USB CC pull-downs (5.1kΩ)
+  (symbol (lib_id "Device:R") (at 20.32 38.1 0) (unit 1)
+    (uuid a0000230-0000-0000-0000-000000000001)
+    (property "Reference" "R28" (at 20.32 35.56 0))
+    (property "Value" "5.1kΩ" (at 20.32 38.1 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 20.32 38.1 0))
+    (property "Net" "USB_CC1")
+  )
+
+  (symbol (lib_id "Device:R") (at 25.4 38.1 0) (unit 1)
+    (uuid a0000231-0000-0000-0000-000000000001)
+    (property "Reference" "R29" (at 25.4 35.56 0))
+    (property "Value" "5.1kΩ" (at 25.4 38.1 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 25.4 38.1 0))
+    (property "Net" "USB_CC2")
+  )
+
+  ;; I2C pull-ups (4.7kΩ)
+  (symbol (lib_id "Device:R") (at 50.8 185.42 0) (unit 1)
+    (uuid a0000240-0000-0000-0000-000000000001)
+    (property "Reference" "R31" (at 50.8 182.88 0))
+    (property "Value" "4.7kΩ" (at 50.8 185.42 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 50.8 185.42 0))
+    (property "Net" "IMU_SDA")
+  )
+
+  (symbol (lib_id "Device:R") (at 53.34 185.42 0) (unit 1)
+    (uuid a0000241-0000-0000-0000-000000000001)
+    (property "Reference" "R32" (at 53.34 182.88 0))
+    (property "Value" "4.7kΩ" (at 53.34 185.42 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 53.34 185.42 0))
+    (property "Net" "IMU_SCL")
+  )
+
+)
