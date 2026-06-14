@@ -1,0 +1,288 @@
+(kicad_pcb (version 20231022) (generator "chronos-rtk-design")
+
+  (general
+    (thickness 1.6)
+    (drawings 12)
+    (tracks 0)
+    (zones 0)
+    (nets 55)
+  )
+
+  (page "Custom")
+  (title_block
+    (title "Chronos-RTK High-Precision RTK GNSS Receiver")
+    (date "2026-06-14")
+    (rev "1.0")
+    (company "Chronos Systems")
+  )
+
+  ;; ========================================
+  ;; LAYER STACKUP
+  ;; ========================================
+
+  (layer_stack
+    (layer "F.Cu" (type "copper") (thickness 0.035))
+    (layer "F.Paste" (type "paste"))
+    (layer "F.SilkS" (type "silk"))
+    (layer "F.Mask" (type "mask"))
+    (layer "In1.Cu" (type "copper") (thickness 0.0175))
+    (layer "In2.Cu" (type "copper") (thickness 0.0175))
+    (layer "In3.Cu" (type "copper") (thickness 0.0175))
+    (layer "In4.Cu" (type "copper") (thickness 0.0175))
+    (layer "B.Mask" (type "mask"))
+    (layer "B.SilkS" (type "silk"))
+    (layer "B.Paste" (type "paste"))
+    (layer "B.Cu" (type "copper") (thickness 0.035))
+  )
+
+  (stackup
+    (layer "F.Cu" (material "Copper") (thickness 0.035) (dielectric_constant 1))
+    (layer "Prepreg1" (material "FR-4 370HR") (thickness 0.10) (dielectric_constant 4.4) (loss_tangent 0.013))
+    (layer "In1.Cu" (material "Copper") (thickness 0.0175) (dielectric_constant 1) (role "GND plane"))
+    (layer "Core1" (material "FR-4 370HR") (thickness 0.50) (dielectric_constant 4.4) (loss_tangent 0.013))
+    (layer "In2.Cu" (material "Copper") (thickness 0.0175) (dielectric_constant 1) (role "Power plane VDD_3V3"))
+    (layer "Prepreg2" (material "FR-4 370HR") (thickness 0.10) (dielectric_constant 4.4) (loss_tangent 0.013))
+    (layer "In3.Cu" (material "Copper") (thickness 0.0175) (dielectric_constant 1) (role "Power plane VSRC/VDD_1V8"))
+    (layer "Core2" (material "FR-4 370HR") (thickness 0.50) (dielectric_constant 4.4) (loss_tangent 0.013))
+    (layer "In4.Cu" (material "Copper") (thickness 0.0175) (dielectric_constant 1) (role "GND plane"))
+    (layer "Prepreg3" (material "FR-4 370HR") (thickness 0.10) (dielectric_constant 4.4) (loss_tangent 0.013))
+    (layer "B.Cu" (material "Copper") (thickness 0.035) (dielectric_constant 1))
+  )
+
+  ;; ========================================
+  ;; BOARD OUTLINE (70mm x 45mm)
+  ;; ========================================
+
+  (gr_rect (start 0 0) (end 70 45) (layer "Edge.Cuts") (width 0.15) (fill none))
+
+  ;; Mounting holes (M2.5, 3.5mm from corners)
+  (gr_circle (center 3.5 3.5) (end 4.75 3.5) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 66.5 3.5) (end 67.75 3.5) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 3.5 41.5) (end 4.75 41.5) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 66.5 41.5) (end 67.75 41.5) (layer "Edge.Cuts") (width 0.15))
+
+  ;; ========================================
+  ;; KEEPOUT ZONES
+  ;; ========================================
+
+  ;; GNSS antenna keepout zone (no copper, 5mm radius around MCX)
+  (zone_keepout (start 0 0) (end 10 15) (layer "F.Cu")
+    (comment "GNSS antenna keepout - no copper pour")
+  )
+
+  ;; LoRa antenna keepout zone (no copper, 5mm radius around SMA)
+  (zone_keepout (start 60 30) (end 70 45) (layer "F.Cu")
+    (comment "LoRa antenna keepout - no copper pour")
+  )
+
+  ;; ========================================
+  ;; NET CLASSES (from .kicad_pro)
+  ;; ========================================
+
+  (net_class "Default" ""
+    (clearance 0.10)
+    (trace_width 0.15)
+    (via_dia 0.40)
+    (via_drill 0.20)
+  )
+  (net_class "Power" ""
+    (clearance 0.15)
+    (trace_width 0.30)
+    (via_dia 0.60)
+    (via_drill 0.30)
+  )
+  (net_class "RF_50" ""
+    (clearance 0.25)
+    (trace_width 0.35)
+    (via_dia 0.40)
+    (via_drill 0.20)
+  )
+  (net_class "USB_90" ""
+    (clearance 0.10)
+    (trace_width 0.20)
+    (via_dia 0.40)
+    (via_drill 0.20)
+    (diff_pair_gap 0.15)
+    (diff_pair_width 0.20)
+  )
+
+  ;; ========================================
+  ;; COMPONENT PLACEMENT
+  ;; ========================================
+
+  ;; USB-C connector - top edge center
+  (module "Connector_USB:USB_C_Molex_1054500101" (at 35 2) (layer "F.Cu")
+    (fp_text reference "J1" (at 0 -2))
+  )
+
+  ;; STM32G474RET6 - center of board
+  (module "Package_QFP:LQFP-64_10x10mm_P0.5mm" (at 35 22) (layer "F.Cu")
+    (fp_text reference "U2" (at 0 -6))
+  )
+
+  ;; ZED-F9P GNSS receiver - lower left
+  (module "RF_Module:ublox_ZED-F9P" (at 15 32) (layer "F.Cu")
+    (fp_text reference "U1" (at 0 -4))
+  )
+
+  ;; SX1262 LoRa transceiver - lower right
+  (module "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" (at 55 35) (layer "F.Cu")
+    (fp_text reference "U3" (at 0 -3))
+  )
+
+  ;; W25Q128 SPI flash - right of MCU
+  (module "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm" (at 50 15) (layer "F.Cu")
+    (fp_text reference "U4" (at 0 -3.5))
+  )
+
+  ;; TPS62A02 buck converter - top left
+  (module "Package_SON:VQFN-8-1EP_2x2mm" (at 15 8) (layer "F.Cu")
+    (fp_text reference "U6" (at 0 -2))
+  )
+
+  ;; TLV75518 LDO - near ZED-F9P
+  (module "Package_TO_SOT_SMD:SOT-23-5" (at 8 25) (layer "F.Cu")
+    (fp_text reference "U7" (at 0 -2))
+  )
+
+  ;; MCP73871 charger - top right
+  (module "Package_SSOP:MSOP-10_3x3mm" (at 55 8) (layer "F.Cu")
+    (fp_text reference "U8" (at 0 -2.5))
+  )
+
+  ;; MCX connector - bottom left edge
+  (module "Connector_Coaxial:MCX_Jack_Edge_Mount" (at 5 45) (layer "F.Cu")
+    (fp_text reference "J3" (at 0 -2))
+  )
+
+  ;; SMA connector - bottom right edge
+  (module "Connector_Coaxial:SMA_Jack_Edge_Mount" (at 65 45) (layer "F.Cu")
+    (fp_text reference "J2" (at 0 -2))
+  )
+
+  ;; JST-PH battery connector - right edge
+  (module "Connector_JST:JST_PH_S4B-PH-SM4_1x04-1MP_P2.00mm" (at 68 25) (layer "F.Cu")
+    (fp_text reference "J4" (at 0 -3))
+  )
+
+  ;; SSD1306 OLED flex connector - left edge
+  (module "Connector_FFC:FPC_0.5mm_6pin" (at 0 22) (layer "F.Cu")
+    (fp_text reference "OLED1" (at 0 -2))
+  )
+
+  ;; BME280 - near OLED connector
+  (module "Package_LGA:Bosch_LGA-8_2.5x2.5mm" (at 5 18) (layer "F.Cu")
+    (fp_text reference "U9" (at 0 -2))
+  )
+
+  ;; Crystal Y2 (32 MHz)
+  (module "Crystal:Crystal_SMD_HC49-SD" (at 42 12) (layer "F.Cu")
+    (fp_text reference "Y2" (at 0 -3))
+  )
+
+  ;; Crystal Y1 (32.768 kHz)
+  (module "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm" (at 28 28) (layer "F.Cu")
+    (fp_text reference "Y1" (at 0 -2))
+  )
+
+  ;; TCXO Y3 (32 MHz for SX1262)
+  (module "Oscillator:Oscillator_SMD_TXC_7.0x5.0mm" (at 58 28) (layer "F.Cu")
+    (fp_text reference "Y3" (at 0 -4))
+  )
+
+  ;; Buttons SW1-3
+  (module "Button_Switch_SMD:SW_Push_1P1T_6x6mm" (at 20 12) (layer "F.Cu")
+    (fp_text reference "SW1" (at 0 -2))
+  )
+  (module "Button_Switch_SMD:SW_Push_1P1T_6x6mm" (at 25 12) (layer "F.Cu")
+    (fp_text reference "SW2" (at 0 -2))
+  )
+  (module "Button_Switch_SMD:SW_Push_1P1T_6x6mm" (at 30 12) (layer "F.Cu")
+    (fp_text reference "SW3" (at 0 -2))
+  )
+
+  ;; LEDs
+  (module "LED_SMD:LED_0603_1608Metric" (at 40 38) (layer "F.Cu")
+    (fp_text reference "LED1" (at 0 -1.5))
+  )
+  (module "LED_SMD:LED_0603_1608Metric" (at 43 38) (layer "F.Cu")
+    (fp_text reference "LED2" (at 0 -1.5))
+  )
+  (module "LED_SMD:LED_0603_1608Metric" (at 46 38) (layer "F.Cu")
+    (fp_text reference "LED3" (at 0 -1.5))
+  )
+
+  ;; ========================================
+  ;; DESIGN RULES
+  ;; ========================================
+
+  (design_rules
+    (min_clearance 0.10)
+    (min_track_width 0.10)
+    (min_via_diameter 0.40)
+    (min_via_drill 0.20)
+    (min_microvia_diameter 0.25)
+    (min_microvia_drill 0.10)
+    (min_hole_to_hole 0.50)
+    (min_silk_text_thickness 0.12)
+    (solder_mask_clearance 0.05)
+    (solder_mask_min_bridge 0.10)
+    (solder_paste_clearance 0)
+    (solder_paste_ratio -0.02)
+  )
+
+  ;; ========================================
+  ;; THERMAL VIA PATTERNS
+  ;; ========================================
+
+  ;; ZED-F9P thermal vias (9 vias under center pad)
+  (via (at 13 30) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 14 30) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 15 30) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 13 31) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 14 31) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 15 31) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 13 32) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 14 32) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 15 32) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+
+  ;; TPS62A02 thermal vias (4 vias)
+  (via (at 14.5 7.5) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 15.5 7.5) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 14.5 8.5) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 15.5 8.5) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+
+  ;; SX1262 thermal vias (6 vias)
+  (via (at 54 34) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 55 34) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 56 34) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 54 36) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 55 36) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+  (via (at 56 36) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu" "In4.Cu" "B.Cu") (net "GND"))
+
+  ;; ========================================
+  ;; GROUND PLANE ZONES
+  ;; ========================================
+
+  (zone (net "GND") (layer "In1.Cu") (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill yes (thermal_gap 0.3) (thermal_bridge_width 0.3))
+    (polygon (pts (xy 0 0) (xy 70 0) (xy 70 45) (xy 0 45)))
+  )
+
+  (zone (net "GND") (layer "In4.Cu") (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill yes (thermal_gap 0.3) (thermal_bridge_width 0.3))
+    (polygon (pts (xy 0 0) (xy 70 0) (xy 70 45) (xy 0 45)))
+  )
+
+  (zone (net "VDD_3V3") (layer "In2.Cu") (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill yes (thermal_gap 0.5) (thermal_bridge_width 0.5))
+    (polygon (pts (xy 10 5) (xy 60 5) (xy 60 40) (xy 10 40)))
+  )
+
+)

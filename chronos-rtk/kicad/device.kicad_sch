@@ -1,0 +1,565 @@
+(kicad_sch (version 20231022) (generator "chronos-rtk-design")
+
+  (title_block
+    (title "Chronos-RTK High-Precision RTK GNSS Receiver")
+    (date "2026-06-14")
+    (rev "1.0")
+    (company "Chronos Systems")
+    (comment 1 "Dual-frequency L1/L2 RTK Receiver Board")
+  )
+
+  ;; ========================================
+  ;; POWER TREE
+  ;; ========================================
+
+  ;; VSRC net (5V from USB or battery)
+  (symbol (lib_id "power:VSRC") (at 25.4 25.4) (name "VSRC") )
+
+  ;; U6 - TPS62A02 Step-down converter (5V -> 3.3V)
+  (symbol (lib_id "Regulator_Switching:TPS62A0229RNM") (at 63.5 30.48) (name "U6")
+    (property "Value" "TPS62A02")
+    (property "Footprint" "Package_SON:VQFN-8-1EP_2x2mm")
+    (pin "VIN" (name "VIN") (type power_in) (number "1"))
+    (pin "EN" (name "EN") (type input) (number "2"))
+    (pin "SW" (name "SW") (type output) (number "3"))
+    (pin "GND" (name "GND") (type power_in) (number "4"))
+    (pin "FB" (name "FB") (type input) (number "5"))
+    (pin "MODE" (name "MODE") (type input) (number "6"))
+    (pin "VOUT" (name "VOUT") (type power_out) (number "7"))
+    (pin "PG" (name "PG") (type output) (number "8"))
+    (pin "PAD" (name "GND") (type power_in) (number "9"))
+    (wire (net "VSRC") (pin "1") (pin "1"))
+    (wire (net "VDD_3V3") (pin "7") (pin "7"))
+    (wire (net "GND") (pin "4") (pin "4"))
+  )
+
+  ;; L1 - 10uH inductor for TPS62A02
+  (symbol (lib_id "Device:L") (at 76.2 27.94) (name "L1")
+    (property "Value" "10uH")
+    (property "Footprint" "Inductor_SMD:L_Bourns_SRN4018")
+    (wire (net "NET_SW") (pin "1") (pin "1"))
+    (wire (net "VDD_3V3") (pin "2") (pin "2"))
+  )
+
+  ;; C18 - 22uF output bulk cap
+  (symbol (lib_id "Device:C") (at 86.36 35.56) (name "C18")
+    (property "Value" "22uF")
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric")
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "GND") (pin "2") (pin "2"))
+  )
+
+  ;; U7 - TLV75518 LDO (3.3V -> 1.8V)
+  (symbol (lib_id "Regulator_Linear:TLV75518PDBV") (at 63.5 50.8) (name "U7")
+    (property "Value" "TLV75518")
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5")
+    (pin "IN" (name "IN") (type power_in) (number "1"))
+    (pin "GND" (name "GND") (type power_in) (number "2"))
+    (pin "EN" (name "EN") (type input) (number "3"))
+    (pin "NC" (name "NC") (type no_connect) (number "4"))
+    (pin "OUT" (name "OUT") (type power_out) (number "5"))
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "VDD_1V8") (pin "5") (pin "5"))
+    (wire (net "GND") (pin "2") (pin "2"))
+    (wire (net "VDD_3V3") (pin "3") (pin "3"))  ;; EN tied to 3V3
+  )
+
+  ;; U8 - MCP73871 LiPo charger
+  (symbol (lib_id "Battery_Management:MCP73871T-2CCI") (at 25.4 55.88) (name "U8")
+    (property "Value" "MCP73871")
+    (property "Footprint" "Package_SSOP:MSOP-10_3x3mm")
+    (pin "V_IN" (name "V_IN") (type power_in) (number "1"))
+    (pin "V_BAT" (name "V_BAT") (type power_out) (number "10"))
+    (pin "GND" (name "GND") (type power_in) (number "3"))
+    (pin "CE#" (name "CE#") (type input) (number "2"))
+    (pin "STAT1" (name "STAT1") (type output) (number "4"))
+    (pin "STAT2" (name "STAT2") (type output) (number "5"))
+    (pin "PROG" (name "PROG") (type input) (number "8"))
+    (wire (net "VSRC") (pin "1") (pin "1"))
+    (wire (net "NET_VBAT") (pin "10") (pin "10"))
+    (wire (net "GND") (pin "3") (pin "3"))
+    (wire (net "NET_CHARGE_EN") (pin "2") (pin "2"))
+    (wire (net "NET_CHARGE_STAT") (pin "4") (pin "4"))
+    (wire (net "NET_CHARGE_STAT2") (pin "5") (pin "5"))
+  )
+
+  ;; FB1 - Ferrite bead for VDDA
+  (symbol (lib_id "Device:Ferrite_Bead") (at 104.14 30.48) (name "FB1")
+    (property "Value" "600R@100MHz")
+    (property "Footprint" "Inductor_SMD:L_0402_1005Metric")
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "VDD_3V3A") (pin "2") (pin "2"))
+  )
+
+  ;; ========================================
+  ;; MCU - STM32G474RET6
+  ;; ========================================
+
+  (symbol (lib_id "MCU_ST_STM32G4:STM32G474RET6") (at 165.1 88.9) (name "U2")
+    (property "Value" "STM32G474RET6")
+    (property "Footprint" "Package_QFP:LQFP-64_10x10mm_P0.5mm")
+
+    ;; Power pins
+    (pin "1" (name "VBAT") (type power_in) (net "VDD_3V3"))
+    (pin "54" (name "VDD") (type power_in) (net "VDD_3V3"))
+    (pin "55" (name "VSS") (type power_in) (net "GND"))
+    (pin "56" (name "VDDA") (type power_in) (net "VDD_3V3A"))
+    (pin "57" (name "VREF+") (type power_in) (net "VDD_3V3A"))
+    (pin "58" (name "VSSA") (type power_in) (net "GND"))
+    (pin "59" (name "VDD") (type power_in) (net "VDD_3V3"))
+    (pin "61" (name "VDD") (type power_in) (net "VDD_3V3"))
+    (pin "63" (name "VDD") (type power_in) (net "VDD_3V3"))
+    (pin "64" (name "VDD") (type power_in) (net "VDD_3V3"))
+
+    ;; GPIO / UART
+    (pin "14" (name "PA2/USART1_TX") (type bidirectional) (net "NET_UART1_TX"))
+    (pin "15" (name "PA3/USART1_RX") (type bidirectional) (net "NET_UART1_RX"))
+
+    ;; SPI1 - Flash
+    (pin "16" (name "PA4/SPI1_NSS") (type bidirectional) (net "NET_SPI1_NSS"))
+    (pin "17" (name "PA5/SPI1_SCK") (type bidirectional) (net "NET_SPI1_SCK"))
+    (pin "18" (name "PA6/SPI1_MISO") (type bidirectional) (net "NET_SPI1_MISO"))
+    (pin "19" (name "PA7/SPI1_MOSI") (type bidirectional) (net "NET_SPI1_MOSI"))
+
+    ;; SPI2 - LoRa
+    (pin "12" (name "PA0/SPI2_SCK") (type bidirectional) (net "NET_SPI2_SCK"))
+    (pin "13" (name "PA1/SPI2_NSS") (type bidirectional) (net "NET_SPI2_NSS"))
+    (pin "45" (name "PC3/SPI2_MOSI") (type bidirectional) (net "NET_SPI2_MOSI"))
+
+    ;; I2C1
+    (pin "25" (name "PB10/I2C1_SCL") (type bidirectional) (net "NET_I2C_SCL"))
+    (pin "26" (name "PB11/I2C1_SDA") (type bidirectional) (net "NET_I2C_SDA"))
+
+    ;; USB
+    (pin "36" (name "PA9/OTG_FS_VBUS") (type input) (net "NET_VBUS"))
+    (pin "38" (name "PA11/OTG_FS_DM") (type bidirectional) (net "NET_USB_DM"))
+    (pin "39" (name "PA12/OTG_FS_DP") (type bidirectional) (net "NET_USB_DP"))
+
+    ;; LoRa control
+    (pin "20" (name "PC4") (type input) (net "NET_LORA_BUSY"))
+    (pin "21" (name "PC5") (type output) (net "NET_LORA_RST"))
+    (pin "22" (name "PB0") (type input) (net "NET_LORA_DIO1"))
+
+    ;; GNSS control
+    (pin "24" (name "PB2") (type output) (net "NET_GNSS_RST"))
+    (pin "30" (name "PB15") (type input) (net "NET_GNSS_PPS"))
+    (pin "32" (name "PC7") (type output) (net "NET_GNSS_SAFE"))
+    (pin "33" (name "PC8") (type input) (net "NET_GNSS_INT"))
+
+    ;; LEDs
+    (pin "27" (name "PB12") (type output) (net "NET_LED_R"))
+    (pin "28" (name "PB13") (type output) (net "NET_LED_G"))
+    (pin "29" (name "PB14") (type output) (net "NET_LED_B"))
+
+    ;; Buttons
+    (pin "3" (name "PC13") (type input) (net "NET_RTC_INT"))
+    (pin "4" (name "PC14") (type input) (net "NET_BTN_MODE"))
+    (pin "5" (name "PC15") (type input) (net "NET_BTN_SEL"))
+    (pin "10" (name "PC2") (type input) (net "NET_BTN_ACT"))
+
+    ;; OLED
+    (pin "51" (name "PB7") (type output) (net "NET_OLED_RST"))
+
+    ;; Power control
+    (pin "47" (name "PB3") (type output) (net "NET_POWER_EN"))
+    (pin "48" (name "PB4") (type output) (net "NET_CHARGE_EN"))
+    (pin "49" (name "PB5") (type input) (net "NET_CHARGE_STAT"))
+    (pin "50" (name "PB6") (type input) (net "NET_CHARGE_STAT2"))
+
+    ;; Debug
+    (pin "40" (name "PA13/SWDIO") (type bidirectional) (net "NET_SWDIO"))
+    (pin "41" (name "PA14/SWDCLK") (type input) (net "NET_SWCLK"))
+
+    ;; ADC
+    (pin "8" (name "PC0/ADC") (type analog) (net "NET_VBAT_SENSE"))
+    (pin "9" (name "PC1/ADC") (type analog) (net "NET_TEMP_SENSE"))
+
+    ;; Flash control
+    (pin "42" (name "PA15") (type output) (net "NET_FLASH_WP"))
+    (pin "46" (name "PD2") (type output) (net "NET_FLASH_HOLD"))
+
+    ;; Crystal
+    (pin "5" (name "PF0/OSC_IN") (type input) (net "NET_XTAL32_IN"))
+    (pin "6" (name "PF1/OSC_OUT") (type output) (net "NET_XTAL32_OUT"))
+
+    ;; Reset
+    (pin "7" (name "NRST") (type input) (net "NET_RST"))
+
+    ;; USB ID
+    (pin "37" (name "PA10/OTG_FS_ID") (type bidirectional) (net "GND"))
+  )
+
+  ;; ========================================
+  ;; GNSS - ZED-F9P
+  ;; ========================================
+
+  (symbol (lib_id "RF_GNSS:ublox_ZED-F9P") (at 266.7 45.72) (name "U1")
+    (property "Value" "ZED-F9P")
+    (property "Footprint" "RF_Module:ublox_ZED-F9P")
+    (pin "1" (name "VCC") (type power_in) (net "VDD_3V3"))
+    (pin "2" (name "VCC_RF") (type power_in) (net "VDD_1V8"))
+    (pin "3" (name "GND") (type power_in) (net "GND"))
+    (pin "4" (name "TX1") (type output) (net "NET_UART1_RX"))
+    (pin "5" (name "RX1") (type input) (net "NET_UART1_TX"))
+    (pin "6" (name "TIMEPULSE") (type output) (net "NET_GNSS_PPS"))
+    (pin "8" (name "RESET_N") (type input) (net "NET_GNSS_RST"))
+    (pin "9" (name "SAFEBOOT_N") (type input) (net "NET_GNSS_SAFE"))
+    (pin "10" (name "LNA_EN") (type output) (net "NET_LNA_EN"))
+    (pin "11" (name "INT") (type output) (net "NET_GNSS_INT"))
+    (pin "15" (name "RF_IN") (type input) (net "NET_GNSS_RF_IN"))
+    (pin "17" (name "VDD_3V3") (type power_in) (net "VDD_3V3"))
+  )
+
+  ;; J3 - MCX connector for GNSS antenna
+  (symbol (lib_id "Connector:CONSMA003.062") (at 297.18 50.8) (name "J3")
+    (property "Value" "MCX_GNSS")
+    (property "Footprint" "Connector_Coaxial:MCX_Jack_Edge_Mount")
+    (pin "1" (name "Signal") (type passive) (net "NET_GNSS_RF_IN"))
+    (pin "2" (name "Shield") (type passive) (net "GND"))
+  )
+
+  ;; C10 - DC blocking cap on RF path
+  (symbol (lib_id "Device:C") (at 284.48 50.8) (name "C10")
+    (property "Value" "56pF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+    (wire (net "NET_GNSS_RF_IN") (pin "1") (pin "1"))
+    (wire (net "NET_GNSS_RF_LINE") (pin "2") (pin "2"))
+  )
+
+  ;; ========================================
+  ;; LORA - SX1262
+  ;; ========================================
+
+  (symbol (lib_id "RF_Module:Semtech_SX1262") (at 266.7 106.68) (name "U3")
+    (property "Value" "SX1262IMLTRT")
+    (property "Footprint "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm")
+    (pin "2" (name "VDD_IN") (type power_in) (net "VDD_3V3"))
+    (pin "3" (name "VDD_IO") (type power_in) (net "VDD_3V3"))
+    (pin "4" (name "SCK") (type input) (net "NET_SPI2_SCK"))
+    (pin "5" (name "MISO") (type output) (net "NET_SPI2_MISO"))
+    (pin "6" (name "MOSI") (type input) (net "NET_SPI2_MOSI"))
+    (pin "7" (name "NSS") (type input) (net "NET_SPI2_NSS"))
+    (pin "8" (name "BUSY") (type output) (net "NET_LORA_BUSY"))
+    (pin "9" (name "DIO1") (type output) (net "NET_LORA_DIO1"))
+    (pin "10" (name "NRST") (type input) (net "NET_LORA_RST"))
+    (pin "12" (name "DCC_SW") (type output) (net "NET_DCC_SW"))
+    (pin "13" (name "VDD_PA") (type power_in) (net "VDD_3V3"))
+    (pin "14" (name "VR_PA") (type output) (net "NET_VR_PA"))
+    (pin "16" (name "RFI_HP") (type bidirectional) (net "NET_LORA_RF_IN"))
+    (pin "19" (name "TCXO_IN") (type input) (net "NET_TCXO_OUT"))
+    (pin "21" (name "VDD_TCXO") (type power_in) (net "VDD_3V3"))
+    (pin "22" (name "DIO2") (type output) (net "NET_LORA_ANT_SW"))
+    (pin "23" (name "DIO3") (type output) (net "NET_LORA_TCXO_EN"))
+    (pin "1,11,17,18,20,24" (name "GND") (type power_in) (net "GND"))
+  )
+
+  ;; Y3 - 32MHz TCXO for SX1262
+  (symbol (lib_id "Device:Crystal_GND3") (at 289.56 99.06) (name "Y3")
+    (property "Value" "32MHz_TCXO")
+    (property "Footprint" "Oscillator:Oscillator_SMD_TXC_7.0x5.0mm")
+    (pin "1" (name "OUT") (type output) (net "NET_TCXO_OUT"))
+    (pin "2" (name "GND") (type power_in) (net "GND"))
+    (pin "3" (name "VDD") (type power_in) (net "VDD_3V3"))
+    (pin "4" (name "NC") (type no_connect))
+  )
+
+  ;; J2 - SMA connector for LoRa antenna
+  (symbol (lib_id "Connector:CONSMA003.062") (at 297.18 111.76) (name "J2")
+    (property "Value" "SMA_LoRa")
+    (property "Footprint" "Connector_Coaxial:SMA_Jack_Edge_Mount")
+    (pin "1" (name "Signal") (type passive) (net "NET_LORA_RF_IN"))
+    (pin "2" (name "Shield") (type passive) (net "GND"))
+  )
+
+  ;; LoRa matching network
+  (symbol (lib_id "Device:L") (at 279.4 111.76) (name "L_match1")
+    (property "Value" "3.3nH")
+    (property "Footprint" "Inductor_SMD:L_0402_1005Metric")
+    (wire (net "NET_LORA_RF_IN") (pin "1") (pin "1"))
+  )
+  (symbol (lib_id "Device:C") (at 279.4 116.84) (name "C_match1")
+    (property "Value" "2.2pF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+    (wire (net "GND") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Device:C") (at 287.02 116.84) (name "C_match2")
+    (property "Value" "2.7pF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+    (wire (net "GND") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Device:L") (at 287.02 111.76) (name "L_match2")
+    (property "Value" "4.7nH")
+    (property "Footprint" "Inductor_SMD:L_0402_1005Metric")
+    (wire (net "NET_LORA_ANT") (pin "2") (pin "2"))
+  )
+
+  ;; ========================================
+  ;; SPI FLASH - W25Q128
+  ;; ========================================
+
+  (symbol (lib_id "Memory_Flash:W25Q128JVSIM") (at 190.5 160.02) (name "U4")
+    (property "Value" "W25Q128JVSIM")
+    (property "Footprint" "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm")
+    (pin "1" (name "CS#") (type input) (net "NET_SPI1_NSS"))
+    (pin "2" (name "DO") (type output) (net "NET_SPI1_MISO"))
+    (pin "3" (name "WP#") (type input) (net "NET_FLASH_WP"))
+    (pin "4" (name "GND") (type power_in) (net "GND"))
+    (pin "5" (name "DI") (type input) (net "NET_SPI1_MOSI"))
+    (pin "6" (name "CLK") (type input) (net "NET_SPI1_SCK"))
+    (pin "7" (name "HOLD#") (type input) (net "NET_FLASH_HOLD"))
+    (pin "8" (name "VDD") (type power_in) (net "VDD_3V3"))
+  )
+
+  ;; C17 - W25Q128 decoupling
+  (symbol (lib_id "Device:C") (at 200.66 160.02) (name "C17")
+    (property "Value" "100nF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "GND") (pin "2") (pin "2"))
+  )
+
+  ;; ========================================
+  ;; OLED - SSD1306
+  ;; ========================================
+
+  (symbol (lib_id "Display_OLED:SSD1306") (at 63.5 165.1) (name "U5")
+    (property "Value" "SSD1306_128x64_I2C")
+    (property "Footprint" "Display_OLED:OLED_128x64_I2C_Flex")
+    (pin "1" (name "GND") (type power_in) (net "GND"))
+    (pin "2" (name "VDD") (type power_in) (net "VDD_3V3"))
+    (pin "3" (name "SCL") (type input) (net "NET_I2C_SCL"))
+    (pin "4" (name "SDA") (type bidirectional) (net "NET_I2C_SDA"))
+    (pin "5" (name "RES#") (type input) (net "NET_OLED_RST"))
+  )
+
+  ;; ========================================
+  ;; BME280 (optional)
+  ;; ========================================
+
+  (symbol (lib_id "Sensor:BME280") (at 104.14 165.1) (name "U9")
+    (property "Value" "BME280")
+    (property "Footprint" "Package_LGA:Bosch_LGA-8_2.5x2.5mm")
+    (pin "1" (name "GND") (type power_in) (net "GND"))
+    (pin "2" (name "VDD") (type power_in) (net "VDD_3V3"))
+    (pin "3" (name "SCL") (type input) (net "NET_I2C_SCL"))
+    (pin "4" (name "SDA") (type bidirectional) (net "NET_I2C_SDA"))
+    (pin "5" (name "INT") (type output) (net "NET_RTC_INT"))
+  )
+
+  ;; ========================================
+  ;; CONNECTORS
+  ;; ========================================
+
+  ;; J1 - USB-C
+  (symbol (lib_id "Connector:USB_C_Plug") (at 10.16 30.48) (name "J1")
+    (property "Value" "USB-C_1054500101")
+    (property "Footprint" "Connector_USB:USB_C_Molex_1054500101")
+    (pin "A4/A9" (name "VBUS") (type power_out) (net "VSRC"))
+    (pin "A7" (name "D+") (type bidirectional) (net "NET_USB_DP"))
+    (pin "A6" (name "D-") (type bidirectional) (net "NET_USB_DM"))
+    (pin "A1/A12/B1/B12" (name "GND") (type power_out) (net "GND"))
+  )
+
+  ;; J4 - Battery connector
+  (symbol (lib_id "Connector:JST_PH_S4B-PH-SM4") (at 25.4 76.2) (name "J4")
+    (property "Value" "JST-PH_4pin_Battery")
+    (property "Footprint" "Connector_JST:JST_PH_S4B-PH-SM4_1x04-1MP_P2.00mm")
+    (pin "1" (name "VBAT+") (type power_in) (net "NET_VBAT"))
+    (pin "2" (name "NTC") (type passive) (net "NET_TEMP_SENSE"))
+    (pin "3" (name "GND") (type power_in) (net "GND"))
+    (pin "4" (name "GND") (type power_in) (net "GND"))
+  )
+
+  ;; SW1-3 - Tactile buttons
+  (symbol (lib_id "Switch:SW_Push") (at 218.44 139.7) (name "SW1")
+    (property "Value" "BTN_MODE")
+    (wire (net "GND") (pin "1") (pin "1"))
+    (wire (net "NET_BTN_MODE") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Switch:SW_Push") (at 218.44 149.86) (name "SW2")
+    (property "Value" "BTN_SEL")
+    (wire (net "GND") (pin "1") (pin "1"))
+    (wire (net "NET_BTN_SEL") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Switch:SW_Push") (at 218.44 160.02) (name "SW3")
+    (property "Value" "BTN_ACT")
+    (wire (net "GND") (pin "1") (pin "1"))
+    (wire (net "NET_BTN_ACT") (pin "2") (pin "2"))
+  )
+
+  ;; LED1-3 - Status LEDs
+  (symbol (lib_id "Device:LED") (at 236.22 139.7) (name "LED1")
+    (property "Value" "RED_RTK")
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric")
+    (wire (net "NET_LED_R") (pin "1") (pin "1"))
+    (wire (net "GND") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Device:R") (at 236.22 134.62) (name "R30")
+    (property "Value" "1kR")
+    (wire (net "NET_LED_R") (pin "1") (pin "1"))
+    (wire (net "NET_LED_R_R") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Device:LED") (at 243.84 139.7) (name "LED2")
+    (property "Value" "GREEN_DATA")
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric")
+  )
+  (symbol (lib_id "Device:LED") (at 251.46 139.7) (name "LED3")
+    (property "Value" "BLUE_LORA")
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric")
+  )
+
+  ;; Y1 - 32.768 kHz LSE crystal
+  (symbol (lib_id "Device:Crystal") (at 142.24 119.38) (name "Y1")
+    (property "Value" "32.768kHz")
+    (property "Footprint" "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm")
+    (pin "1" (name "X1") (type passive) (net "NET_XTAL32_IN"))
+    (pin "2" (name "X2") (type passive) (net "NET_XTAL32_OUT"))
+  )
+
+  ;; Y2 - 32 MHz HSE crystal
+  (symbol (lib_id "Device:Crystal") (at 142.24 129.54) (name "Y2")
+    (property "Value" "32MHz")
+    (property "Footprint" "Crystal:Crystal_SMD_HC49-SD")
+    (pin "1" (name "X1") (type passive) (net "NET_XTAL32M_IN"))
+    (pin "2" (name "X2") (type passive) (net "NET_XTAL32M_OUT"))
+  )
+
+  ;; D1 - TVS on USB
+  (symbol (lib_id "Device:D_TVS") (at 15.24 40.64) (name "D1")
+    (property "Value" "SMBJ5.0A")
+    (property "Footprint" "Diode_SMD:D_SMB")
+    (wire (net "VSRC") (pin "1") (pin "1"))
+    (wire (net "GND") (pin "2") (pin "2"))
+  )
+
+  ;; D2 - Schottky for power path
+  (symbol (lib_id "Device:D_Schottky") (at 40.64 30.48) (name "D2")
+    (property "Value" "RB521S30")
+    (property "Footprint" "Diode_SMD:D_SOD-523")
+    (wire (net "VSRC") (pin "1") (pin "1"))
+    (wire (net "NET_VSRC_DIODE") (pin "2") (pin "2"))
+  )
+
+  ;; Pull-up resistors on I2C bus
+  (symbol (lib_id "Device:R") (at 55.88 160.02) (name "R10")
+    (property "Value" "4.7kR")
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "NET_I2C_SCL") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Device:R") (at 60.96 160.02) (name "R11")
+    (property "Value" "4.7kR")
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "NET_I2C_SDA") (pin "2") (pin "2"))
+  )
+
+  ;; Battery voltage divider
+  (symbol (lib_id "Device:R") (at 33.02 83.82) (name "R17")
+    (property "Value" "100kR")
+    (wire (net "NET_VBAT") (pin "1") (pin "1"))
+    (wire (net "NET_VBAT_SENSE") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Device:R") (at 33.02 91.44) (name "R18")
+    (property "Value" "100kR")
+    (wire (net "NET_VBAT_SENSE") (pin "1") (pin "1"))
+    (wire (net "GND") (pin "2") (pin "2"))
+  )
+
+  ;; Decoupling capacitors (STM32)
+  (symbol (lib_id "Device:C") (at 172.72 71.12) (name "C1")
+    (property "Value" "100nF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "GND") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Device:C") (at 177.8 71.12) (name "C2")
+    (property "Value" "100nF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+  (symbol (lib_id "Device:C") (at 182.88 71.12) (name "C3")
+    (property "Value" "100nF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+  (symbol (lib_id "Device:C") (at 187.96 71.12) (name "C4")
+    (property "Value" "100nF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+  (symbol (lib_id "Device:C") (at 193.04 71.12) (name "C5")
+    (property "Value" "100nF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+  (symbol (lib_id "Device:C") (at 198.12 71.12) (name "C6")
+    (property "Value" "1uF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+
+  ;; ZED-F9P decoupling
+  (symbol (lib_id "Device:C") (at 274.32 33.02) (name "C7")
+    (property "Value" "10uF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "GND") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Device:C") (at 279.4 33.02) (name "C8")
+    (property "Value" "100nF")
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "GND") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Device:C") (at 284.48 33.02) (name "C9")
+    (property "Value" "10nF")
+    (wire (net "VDD_1V8") (pin "1") (pin "1"))
+    (wire (net "GND") (pin "2") (pin "2"))
+  )
+
+  ;; SX1262 decoupling
+  (symbol (lib_id "Device:C") (at 274.32 121.92) (name "C11")
+    (property "Value" "100nF")
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "GND") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Device:C") (at 279.4 121.92) (name "C12")
+    (property "Value" "10uF")
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "GND") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Device:C") (at 284.48 121.92) (name "C13")
+    (property "Value" "100nF")
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "GND") (pin "2") (pin "2"))
+  )
+
+  ;; GNSS pull-ups
+  (symbol (lib_id "Device:R") (at 254 38.1) (name "R12")
+    (property "Value" "10kR")
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "NET_GNSS_RST") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Device:R") (at 259.08 38.1) (name "R13")
+    (property "Value" "10kR")
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "NET_GNSS_SAFE") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Device:R") (at 264.16 38.1) (name "R14")
+    (property "Value" "10kR")
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "NET_SPI1_NSS") (pin "2") (pin "2"))
+  )
+
+  ;; Reset pull-up and cap
+  (symbol (lib_id "Device:R") (at 152.4 119.38) (name "R24")
+    (property "Value" "10kR")
+    (wire (net "VDD_3V3") (pin "1") (pin "1"))
+    (wire (net "NET_RST") (pin "2") (pin "2"))
+  )
+  (symbol (lib_id "Device:C") (at 152.4 124.46) (name "C25")
+    (property "Value" "100nF")
+    (wire (net "NET_RST") (pin "1") (pin "1"))
+    (wire (net "GND") (pin "2") (pin "2"))
+  )
+
+  ;; Power net labels
+  (symbol (lib_id "power:GND") (at 0 0) (name "GND_POWER"))
+  (symbol (lib_id "power:+3V3") (at 86.36 27.94) (name "VDD_3V3_POWER"))
+  (symbol (lib_id "power:+1V8") (at 76.2 48.26) (name "VDD_1V8_POWER"))
+)
