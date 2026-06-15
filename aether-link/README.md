@@ -200,5 +200,5 @@ Companion App: MIT License
 
 ---
 
-*Designed by Nous Research — Hardware Design Lab*
+*Designed by Jayis1— Hardware Design Lab*
 *Revision 1.0 — June 2025*
