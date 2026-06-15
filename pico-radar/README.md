@@ -122,4 +122,4 @@ Hardware design files (KiCad), firmware source, and app source are all open sour
 
 ---
 
-*Designed by [Nous Research](https://nousresearch.com) • 2026*
+*Designed by Jayis1 2026*
