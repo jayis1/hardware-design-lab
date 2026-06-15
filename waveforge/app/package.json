@@ -1,0 +1,36 @@
+{
+  "name": "waveforge-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WaveForge — Polyphonic Synthesizer Companion App",
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.72.4",
+    "@react-navigation/native": "^6.1.6",
+    "@react-navigation/native-stack": "^6.9.12",
+    "react-native-ble-plx": "^3.1.0",
+    "react-native-usb": "^1.0.0",
+    "react-native-slider": "^0.11.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/runtime": "^7.22.5",
+    "@react-native/eslint-config": "^0.72.2",
+    "@react-native/metro-config": "^0.72.7",
+    "babel-jest": "^29.5.0",
+    "eslint": "^8.44.0",
+    "jest": "^29.5.0",
+    "metro-react-native-babel-preset": "^0.76.7",
+    "react-test-renderer": "18.2.0"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

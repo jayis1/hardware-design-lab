@@ -1,0 +1,583 @@
+(kicad_sch (version 20230621)
+  (generator "eeschema")
+  (uuid e1a2b3c4-d5e6-f7a8-b9c0-d1e2f3a4b5c6)
+
+  (paper "A3")
+
+  (title_block
+    (title "WaveForge — Polyphonic Digital Audio Synthesizer Engine")
+    (date "2026-06-15")
+    (rev "1.0")
+    (company "WaveForge Open Hardware")
+    (comment 1 "STM32H743 + WM8778 + W25Q256 + TPA6130A2")
+  )
+
+  (lib_symbols)
+
+  ; ============================================================
+  ; POWER SECTION
+  ; ============================================================
+
+  ; --- USB-C Input Connector ---
+  (symbol (lib_id "Connector:USB_C_16pin") (at 25.4 25.4 0)
+    (uuid a0000001-0000-0000-0000-000000000001)
+    (property "Reference" "J1" (at 25.4 20.32 0))
+    (property "Value" "USB_C_16pin" (at 25.4 22.86 0))
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4105" (at 25.4 25.4 0))
+    (pin "1" (uuid a0000001-0000-0000-0000-000000000101))
+    (pin "2" (uuid a0000001-0000-0000-0000-000000000102))
+    (pin "3" (uuid a0000001-0000-0000-0000-000000000103))
+    (pin "4" (uuid a0000001-0000-0000-0000-000000000104))
+  )
+
+  ; --- DC Barrel Jack ---
+  (symbol (lib_id "Connector:Barrel_Jack") (at 25.4 55.88 0)
+    (uuid a0000001-0000-0000-0000-000000000002)
+    (property "Reference" "J4" (at 25.4 50.8 0))
+    (property "Value" "DC_Barrel_7-12V" (at 25.4 53.34 0))
+    (property "Footprint" "Connector_BarrelJack:BarrelJack_Horizontal" (at 25.4 55.88 0))
+    (pin "1" (uuid a0000001-0000-0000-0000-000000000201))
+    (pin "2" (uuid a0000001-0000-0000-0000-000000000202))
+  )
+
+  ; --- 5V Power Net ---
+  (net_class "Power")
+  (net "VBUS" (uuid b0000001-0000-0000-0000-000000000001))
+
+  ; --- TLV62569 Buck Converter (5V → 1.2V) ---
+  (symbol (lib_id "Regulator_Switching:TLV62569") (at 76.2 35.56 0)
+    (uuid a0000001-0000-0000-0000-000000000003)
+    (property "Reference" "U6" (at 76.2 30.48 0))
+    (property "Value" "TLV6256933PDDCR" (at 76.2 33.02 0))
+    (property "Footprint" "Package_SON:SOT-563-6" (at 76.2 35.56 0))
+    (pin "1" (uuid a0000001-0000-0000-0000-000000000301))  ; VIN
+    (pin "2" (uuid a0000001-0000-0000-0000-000000000302))  ; GND
+    (pin "3" (uuid a0000001-0000-0000-0000-000000000303))  ; EN
+    (pin "4" (uuid a0000001-0000-0000-0000-000000000304))  ; SW
+    (pin "5" (uuid a0000001-0000-0000-0000-000000000305))  ; FB
+    (pin "6" (uuid a0000001-0000-0000-0000-000000000306))  ; PG
+  )
+
+  ; --- Buck Inductor ---
+  (symbol (lib_id "Device:L") (at 88.9 35.56 0)
+    (uuid a0000001-0000-0000-0000-000000000004)
+    (property "Reference" "L1" (at 88.9 30.48 0))
+    (property "Value" "2.2uH_3A" (at 88.9 33.02 0))
+    (property "Footprint" "Inductor_SMD:L_3x3mm" (at 88.9 35.56 0))
+    (pin "1" (uuid a0000001-0000-0000-0000-000000000401))
+    (pin "2" (uuid a0000001-0000-0000-0000-000000000402))
+  )
+
+  ; --- VDD_CORE 1.2V Net ---
+  (net "VDD_CORE" (uuid b0000001-0000-0000-0000-000000000002))
+
+  ; --- LD39050 LDO #1 (5V → 3.3V) ---
+  (symbol (lib_id "Regulator_Linear:LD39050") (at 76.2 55.88 0)
+    (uuid a0000001-0000-0000-0000-000000000005)
+    (property "Reference" "U7" (at 76.2 50.8 0))
+    (property "Value" "LD39050PUR" (at 76.2 53.34 0))
+    (property "Footprint" "Package_DFN_QFN:DFN-6-1EP_2x2mm" (at 76.2 55.88 0))
+    (pin "1" (uuid a0000001-0000-0000-0000-000000000501))  ; VIN
+    (pin "2" (uuid a0000001-0000-0000-0000-000000000502))  ; GND
+    (pin "3" (uuid a0000001-0000-0000-0000-000000000503))  ; EN
+    (pin "4" (uuid a0000001-0000-0000-0000-000000000504))  ; VOUT
+    (pin "5" (uuid a0000001-0000-0000-0000-000000000505))  ; NR
+    (pin "6" (uuid a0000001-0000-0000-0000-000000000506))  ; BP
+  )
+
+  ; --- VDD_3V3 Net ---
+  (net "VDD_3V3" (uuid b0000001-0000-0000-0000-000000000003))
+
+  ; --- LD39050 LDO #2 (5V → 1.8V) ---
+  (symbol (lib_id "Regulator_Linear:LD39050") (at 76.2 73.66 0)
+    (uuid a0000001-0000-0000-0000-000000000006)
+    (property "Reference" "U8" (at 76.2 68.58 0))
+    (property "Value" "LD39050PUR" (at 76.2 71.12 0))
+    (property "Footprint" "Package_DFN_QFN:DFN-6-1EP_2x2mm" (at 76.2 73.66 0))
+    (pin "1" (uuid a0000001-0000-0000-0000-000000000601))
+    (pin "2" (uuid a0000001-0000-0000-0000-000000000602))
+    (pin "3" (uuid a0000001-0000-0000-0000-000000000603))
+    (pin "4" (uuid a0000001-0000-0000-0000-000000000604))
+    (pin "5" (uuid a0000001-0000-0000-0000-000000000605))
+    (pin "6" (uuid a0000001-0000-0000-0000-000000000606))
+  )
+
+  ; --- VDD_1V8 Net ---
+  (net "VDD_1V8" (uuid b0000001-0000-0000-0000-000000000004))
+
+  ; --- Power LEDs ---
+  (symbol (lib_id "Device:LED") (at 116.84 55.88 0)
+    (uuid a0000001-0000-0000-0000-000000000007)
+    (property "Reference" "D1" (at 116.84 50.8 0))
+    (property "Value" "LED_Green" (at 116.84 53.34 0))
+    (property "Footprint" "LED_SMD:LED_0402_1005Metric" (at 116.84 55.88 0))
+    (pin "1" (uuid a0000001-0000-0000-0000-000000000701))
+    (pin "2" (uuid a0000001-0000-0000-0000-000000000702))
+  )
+
+  ; ============================================================
+  ; MCU SECTION — STM32H743VIT6
+  ; ============================================================
+
+  (symbol (lib_id "MCU_ST_STM32H7:STM32H743VIT6") (at 180.34 101.6 0)
+    (uuid a0000002-0000-0000-0000-000000000001)
+    (property "Reference" "U1" (at 180.34 50.8 0))
+    (property "Value" "STM32H743VIT6" (at 180.34 53.34 0))
+    (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 180.34 101.6 0))
+    ; 100 pins — key connections annotated
+    (pin "1" (uuid a0000002-0000-0000-0000-000000000101))  ; VBAT
+    (pin "2" (uuid a0000002-0000-0000-0000-000000000102))  ; PC13/CV4
+    (pin "7" (uuid a0000002-0000-0000-0000-000000000107))  ; NRST
+    (pin "8" (uuid a0000002-0000-0000-0000-000000000108))  ; PC0/CV1
+    (pin "9" (uuid a0000002-0000-0000-0000-000000000109))  ; PC1/CV2
+    (pin "10" (uuid a0000002-0000-0000-0000-000000000110)) ; PC2/CV3
+    (pin "11" (uuid a0000002-0000-0000-0000-000000000111)) ; PC3/MIDI_IN
+    (pin "13" (uuid a0000002-0000-0000-0000-000000000113)) ; PA1/I2S1_SDO
+    (pin "14" (uuid a0000002-0000-0000-0000-000000000114)) ; PA2/I2S1_SDI
+    (pin "15" (uuid a0000002-0000-0000-0000-000000000115)) ; PA3/I2S1_BCLK
+    (pin "16" (uuid a0000002-0000-0000-0000-000000000116)) ; PA4/I2S1_LRCK
+    (pin "17" (uuid a0000002-0000-0000-0000-000000000117)) ; PA5/SPI1_SCK
+    (pin "18" (uuid a0000002-0000-0000-0000-000000000118)) ; PA6/SPI1_MISO
+    (pin "19" (uuid a0000002-0000-0000-0000-000000000119)) ; PA7/SPI1_MOSI
+    (pin "20" (uuid a0000002-0000-0000-0000-000000000120)) ; PC4/I2C1_SDA
+    (pin "21" (uuid a0000002-0000-0000-0000-000000000121)) ; PC5/I2C1_SCL
+    (pin "22" (uuid a0000002-0000-0000-0000-000000000122)) ; PB0/LED_PWR
+    (pin "23" (uuid a0000002-0000-0000-0000-000000000123)) ; PB1/LED_MIDI
+    (pin "24" (uuid a0000002-0000-0000-0000-000000000124)) ; PB2/SPI1_NCS
+    (pin "25" (uuid a0000002-0000-0000-0000-000000000125)) ; PE7/MIDI_THRU
+    (pin "26" (uuid a0000002-0000-0000-0000-000000000126)) ; PE8/CODEC_RST
+    (pin "27" (uuid a0000002-0000-0000-0000-000000000127)) ; PE9/HPAMP_EN
+    (pin "28" (uuid a0000002-0000-0000-0000-000000000128)) ; PE10/I2S1_MCLK
+    (pin "29" (uuid a0000002-0000-0000-0000-000000000129)) ; PE11/USB_DP
+    (pin "30" (uuid a0000002-0000-0000-0000-000000000130)) ; PE12/USB_DM
+    (pin "36" (uuid a0000002-0000-0000-0000-000000000136)) ; VDD
+    (pin "48" (uuid a0000002-0000-0000-0000-000000000148)) ; VDD_CORE
+    (pin "49" (uuid a0000002-0000-0000-0000-000000000149)) ; VDDA
+    (pin "50" (uuid a0000002-0000-0000-0000-000000000150)) ; VREF+
+  )
+
+  ; --- 8 MHz HSE Crystal ---
+  (symbol (lib_id "Device:Crystal") (at 139.7 63.5 0)
+    (uuid a0000002-0000-0000-0000-000000000002)
+    (property "Reference" "Y1" (at 139.7 58.42 0))
+    (property "Value" "8MHz_20ppm_12pF" (at 139.7 60.96 0))
+    (property "Footprint" "Crystal:Crystal_HC49-U_Horizontal" (at 139.7 63.5 0))
+    (pin "1" (uuid a0000002-0000-0000-0000-000000000201))
+    (pin "2" (uuid a0000002-0000-0000-0000-000000000202))
+  )
+
+  ; --- 32.768 kHz LSE Crystal ---
+  (symbol (lib_id "Device:Crystal") (at 139.7 76.2 0)
+    (uuid a0000002-0000-0000-0000-000000000003)
+    (property "Reference" "Y2" (at 139.7 71.12 0))
+    (property "Value" "32.768kHz_20ppm_6pF" (at 139.7 73.66 0))
+    (property "Footprint" "Crystal:Crystal_Round_D2.0mm_Vertical" (at 139.7 76.2 0))
+    (pin "1" (uuid a0000002-0000-0000-0000-000000000301))
+    (pin "2" (uuid a0000002-0000-0000-0000-000000000302))
+  )
+
+  ; ============================================================
+  ; AUDIO CODEC SECTION — WM8778
+  ; ============================================================
+
+  (symbol (lib_id "Audio:WM8778") (at 269.24 96.52 0)
+    (uuid a0000003-0000-0000-0000-000000000001)
+    (property "Reference" "U2" (at 269.24 78.74 0))
+    (property "Value" "WM8778SEDS/RV" (at 269.24 81.28 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-28-1EP_5x5mm_P0.5mm" (at 269.24 96.52 0))
+    (pin "1"  (uuid a0000003-0000-0000-0000-000000000101)) ; AGND
+    (pin "2"  (uuid a0000003-0000-0000-0000-000000000102)) ; VMID
+    (pin "3"  (uuid a0000003-0000-0000-0000-000000000103)) ; AINL
+    (pin "4"  (uuid a0000003-0000-0000-0000-000000000104)) ; AINR
+    (pin "5"  (uuid a0000003-0000-0000-0000-000000000105)) ; DGND
+    (pin "6"  (uuid a0000003-0000-0000-0000-000000000106)) ; DVDD
+    (pin "7"  (uuid a0000003-0000-0000-0000-000000000107)) ; MCLK
+    (pin "8"  (uuid a0000003-0000-0000-0000-000000000108)) ; BCLK
+    (pin "9"  (uuid a0000003-0000-0000-0000-000000000109)) ; LRCLK
+    (pin "10" (uuid a0000003-0000-0000-0000-000000000110)) ; SDIN
+    (pin "11" (uuid a0000003-0000-0000-0000-000000000111)) ; SDOUT
+    (pin "12" (uuid a0000003-0000-0000-0000-000000000112)) ; SCLK (I2C)
+    (pin "13" (uuid a0000003-0000-0000-0000-000000000113)) ; SDATA (I2C)
+    (pin "14" (uuid a0000003-0000-0000-0000-000000000114)) ; CSB (RESET)
+    (pin "15" (uuid a0000003-0000-0000-0000-000000000115)) ; AOUTL
+    (pin "16" (uuid a0000003-0000-0000-0000-000000000116)) ; AOUTR
+    (pin "17" (uuid a0000003-0000-0000-0000-000000000117)) ; HPVDD
+    (pin "18" (uuid a0000003-0000-0000-0000-000000000118)) ; HPGND
+    (pin "19" (uuid a0000003-0000-0000-0000-000000000119)) ; HPOUTL
+    (pin "20" (uuid a0000003-0000-0000-0000-000000000120)) ; HPOUTR
+    (pin "21" (uuid a0000003-0000-0000-0000-000000000121)) ; AVDD
+  )
+
+  ; --- Audio Output Connectors ---
+  (symbol (lib_id "Connector_Audio:Audio_Jack_3.5mm") (at 325.12 86.36 0)
+    (uuid a0000003-0000-0000-0000-000000000002)
+    (property "Reference" "J5" (at 325.12 81.28 0))
+    (property "Value" "Line_Out_L" (at 325.12 83.82 0))
+    (property "Footprint" "Connector_Audio:Jack_3.5mm_CUI_SJ1-3523N" (at 325.12 86.36 0))
+    (pin "1" (uuid a0000003-0000-0000-0000-000000000201))
+    (pin "2" (uuid a0000003-0000-0000-0000-000000000202))
+    (pin "3" (uuid a0000003-0000-0000-0000-000000000203))
+  )
+
+  (symbol (lib_id "Connector_Audio:Audio_Jack_3.5mm") (at 325.12 99.06 0)
+    (uuid a0000003-0000-0000-0000-000000000003)
+    (property "Reference" "J6" (at 325.12 93.98 0))
+    (property "Value" "Line_Out_R" (at 325.12 96.52 0))
+    (property "Footprint" "Connector_Audio:Jack_3.5mm_CUI_SJ1-3523N" (at 325.12 99.06 0))
+    (pin "1" (uuid a0000003-0000-0000-0000-000000000301))
+    (pin "2" (uuid a0000003-0000-0000-0000-000000000302))
+    (pin "3" (uuid a0000003-0000-0000-0000-000000000303))
+  )
+
+  (symbol (lib_id "Connector_Audio:Audio_Jack_3.5mm") (at 325.12 111.76 0)
+    (uuid a0000003-0000-0000-0000-000000000004)
+    (property "Reference" "J7" (at 325.12 106.68 0))
+    (property "Value" "HP_Out_Stereo" (at 325.12 109.22 0))
+    (property "Footprint" "Connector_Audio:Jack_3.5mm_CUI_SJ1-3523N" (at 325.12 111.76 0))
+    (pin "1" (uuid a0000003-0000-0000-0000-000000000401))
+    (pin "2" (uuid a0000003-0000-0000-0000-000000000402))
+    (pin "3" (uuid a0000003-0000-0000-0000-000000000403))
+  )
+
+  ; --- Audio Input Connectors ---
+  (symbol (lib_id "Connector_Audio:Audio_Jack_3.5mm") (at 269.24 127 0)
+    (uuid a0000003-0000-0000-0000-000000000005)
+    (property "Reference" "J8" (at 269.24 121.92 0))
+    (property "Value" "Line_In_L" (at 269.24 124.46 0))
+    (property "Footprint" "Connector_Audio:Jack_3.5mm_CUI_SJ1-3523N" (at 269.24 127 0))
+    (pin "1" (uuid a0000003-0000-0000-0000-000000000501))
+    (pin "2" (uuid a0000003-0000-0000-0000-000000000502))
+    (pin "3" (uuid a0000003-0000-0000-0000-000000000503))
+  )
+
+  (symbol (lib_id "Connector_Audio:Audio_Jack_3.5mm") (at 269.24 139.7 0)
+    (uuid a0000003-0000-0000-0000-000000000006)
+    (property "Reference" "J9" (at 269.24 134.62 0))
+    (property "Value" "Line_In_R" (at 269.24 137.16 0))
+    (property "Footprint" "Connector_Audio:Jack_3.5mm_CUI_SJ1-3523N" (at 269.24 139.7 0))
+    (pin "1" (uuid a0000003-0000-0000-0000-000000000601))
+    (pin "2" (uuid a0000003-0000-0000-0000-000000000602))
+    (pin "3" (uuid a0000003-0000-0000-0000-000000000603))
+  )
+
+  ; ============================================================
+  ; HEADPHONE AMP — TPA6130A2
+  ; ============================================================
+
+  (symbol (lib_id "Amplifier_Audio:TPA6130A2") (at 302.26 111.76 0)
+    (uuid a0000004-0000-0000-0000-000000000001)
+    (property "Reference" "U4" (at 302.26 101.6 0))
+    (property "Value" "TPA6130A2RTJR" (at 302.26 104.14 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.5mm" (at 302.26 111.76 0))
+    (pin "1"  (uuid a0000004-0000-0000-0000-000000000101)) ; INL
+    (pin "2"  (uuid a0000004-0000-0000-0000-000000000102)) ; INR
+    (pin "3"  (uuid a0000004-0000-0000-0000-000000000103)) ; EN
+    (pin "4"  (uuid a0000004-0000-0000-0000-000000000104)) ; SCL
+    (pin "5"  (uuid a0000004-0000-0000-0000-000000000105)) ; SDA
+    (pin "6"  (uuid a0000004-0000-0000-0000-000000000106)) ; GND
+    (pin "7"  (uuid a0000004-0000-0000-0000-000000000107)) ; OUTL
+    (pin "8"  (uuid a0000004-0000-0000-0000-000000000108)) ; OUTR
+    (pin "9"  (uuid a0000004-0000-0000-0000-000000000109)) ; VDD
+    (pin "10" (uuid a0000004-0000-0000-0000-000000000110)) ; SGND
+    (pin "11" (uuid a0000004-0000-0000-0000-000000000111)) ; HP_L
+    (pin "12" (uuid a0000004-0000-0000-0000-000000000112)) ; HP_R
+  )
+
+  ; ============================================================
+  ; QSPI FLASH — W25Q256
+  ; ============================================================
+
+  (symbol (lib_id "Memory_Flash:W25Q256JVEIQ") (at 241.3 45.72 0)
+    (uuid a0000005-0000-0000-0000-000000000001)
+    (property "Reference" "U3" (at 241.3 38.1 0))
+    (property "Value" "W25Q256JVEIQ" (at 241.3 40.64 0))
+    (property "Footprint" "Package_SON:WSON-8-1EP_6x5mm_P1.27mm" (at 241.3 45.72 0))
+    (pin "1" (uuid a0000005-0000-0000-0000-000000000101)) ; /CS
+    (pin "2" (uuid a0000005-0000-0000-0000-000000000102)) ; DO/IO1
+    (pin "3" (uuid a0000005-0000-0000-0000-000000000103)) ; /WP
+    (pin "4" (uuid a0000005-0000-0000-0000-000000000104)) ; GND
+    (pin "5" (uuid a0000005-0000-0000-0000-000000000105)) ; DI/IO0
+    (pin "6" (uuid a0000005-0000-0000-0000-000000000106)) ; CLK
+    (pin "7" (uuid a0000005-0000-0000-0000-000000000107)) ; /HOLD
+    (pin "8" (uuid a0000005-0000-0000-0000-000000000108)) ; VCC
+  )
+
+  ; ============================================================
+  ; I2C EEPROM — 24C256
+  ; ============================================================
+
+  (symbol (lib_id "Memory_EEPROM:24C256") (at 241.3 66.04 0)
+    (uuid a0000005-0000-0000-0000-000000000002)
+    (property "Reference" "U5" (at 241.3 60.96 0))
+    (property "Value" "24C256-WMN" (at 241.3 63.5 0))
+    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 241.3 66.04 0))
+    (pin "1" (uuid a0000005-0000-0000-0000-000000000201)) ; A0
+    (pin "2" (uuid a0000005-0000-0000-0000-000000000202)) ; A1
+    (pin "3" (uuid a0000005-0000-0000-0000-000000000203)) ; A2
+    (pin "4" (uuid a0000005-0000-0000-0000-000000000204)) ; GND
+    (pin "5" (uuid a0000005-0000-0000-0000-000000000205)) ; SDA
+    (pin "6" (uuid a0000005-0000-0000-0000-000000000206)) ; SCL
+    (pin "7" (uuid a0000005-0000-0000-0000-000000000207)) ; WP
+    (pin "8" (uuid a0000005-0000-0000-0000-000000000208)) ; VCC
+  )
+
+  ; ============================================================
+  ; MIDI SECTION — 6N138 Optocoupler
+  ; ============================================================
+
+  (symbol (lib_id "Isolator:6N138") (at 48.26 139.7 0)
+    (uuid a0000006-0000-0000-0000-000000000001)
+    (property "Reference" "U11" (at 48.26 132.08 0))
+    (property "Value" "6N138" (at 48.26 134.62 0))
+    (property "Footprint" "Package_DIP:DIP-8_W7.62mm" (at 48.26 139.7 0))
+    (pin "1" (uuid a0000006-0000-0000-0000-000000000101)) ; NC
+    (pin "2" (uuid a0000006-0000-0000-0000-000000000102)) ; LED anode
+    (pin "3" (uuid a0000006-0000-0000-0000-000000000103)) ; LED cathode
+    (pin "4" (uuid a0000006-0000-0000-0000-000000000104)) ; NC
+    (pin "5" (uuid a0000006-0000-0000-0000-000000000105)) ; GND
+    (pin "6" (uuid a0000006-0000-0000-0000-000000000106)) ; Vout
+    (pin "7" (uuid a0000006-0000-0000-0000-000000000107)) ; Base
+    (pin "8" (uuid a0000006-0000-0000-0000-000000000108)) ; VCC
+  )
+
+  ; --- MIDI DIN-5 Connectors ---
+  (symbol (lib_id "Connector:DIN-5") (at 25.4 139.7 0)
+    (uuid a0000006-0000-0000-0000-000000000002)
+    (property "Reference" "J2" (at 25.4 132.08 0))
+    (property "Value" "MIDI_IN" (at 25.4 134.62 0))
+    (property "Footprint" "Connector_Audio:DIN-5_Jack" (at 25.4 139.7 0))
+    (pin "1" (uuid a0000006-0000-0000-0000-000000000201))
+    (pin "2" (uuid a0000006-0000-0000-0000-000000000202))
+    (pin "3" (uuid a0000006-0000-0000-0000-000000000203))
+    (pin "4" (uuid a0000006-0000-0000-0000-000000000204))
+    (pin "5" (uuid a0000006-0000-0000-0000-000000000205))
+  )
+
+  (symbol (lib_id "Connector:DIN-5") (at 25.4 160.02 0)
+    (uuid a0000006-0000-0000-0000-000000000003)
+    (property "Reference" "J3" (at 25.4 152.4 0))
+    (property "Value" "MIDI_THRU" (at 25.4 154.94 0))
+    (property "Footprint" "Connector_Audio:DIN-5_Jack" (at 25.4 160.02 0))
+    (pin "1" (uuid a0000006-0000-0000-0000-000000000301))
+    (pin "2" (uuid a0000006-0000-0000-0000-000000000302))
+    (pin "3" (uuid a0000006-0000-0000-0000-000000000303))
+    (pin "4" (uuid a0000006-0000-0000-0000-000000000304))
+    (pin "5" (uuid a0000006-0000-0000-0000-000000000305))
+  )
+
+  ; ============================================================
+  ; USB ESD PROTECTION — TPD4E05U06
+  ; ============================================================
+
+  (symbol (lib_id "Power_Protection:TPD4E05U06") (at 48.26 25.4 0)
+    (uuid a0000007-0000-0000-0000-000000000001)
+    (property "Reference" "U10" (at 48.26 20.32 0))
+    (property "Value" "TPD4E05U06DQAR" (at 48.26 22.86 0))
+    (property "Footprint" "Package_SON:USON-10_2.5x1.0mm_P0.5mm" (at 48.26 25.4 0))
+    (pin "1" (uuid a0000007-0000-0000-0000-000000000101))
+    (pin "2" (uuid a0000007-0000-0000-0000-000000000102))
+    (pin "3" (uuid a0000007-0000-0000-0000-000000000103))
+    (pin "4" (uuid a0000007-0000-0000-0000-000000000104))
+    (pin "5" (uuid a0000007-0000-0000-0000-000000000105))
+  )
+
+  ; ============================================================
+  ; CV INPUT HEADER
+  ; ============================================================
+
+  (symbol (lib_id "Connector:Pin_Header_2x05") (at 325.12 139.7 0)
+    (uuid a0000008-0000-0000-0000-000000000001)
+    (property "Reference" "J10" (at 325.12 132.08 0))
+    (property "Value" "CV_Input_Header" (at 325.12 134.62 0))
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical" (at 325.12 139.7 0))
+    (pin "1" (uuid a0000008-0000-0000-0000-000000000101)) ; CV1
+    (pin "2" (uuid a0000008-0000-0000-0000-000000000102)) ; GND
+    (pin "3" (uuid a0000008-0000-0000-0000-000000000103)) ; CV2
+    (pin "4" (uuid a0000008-0000-0000-0000-000000000104)) ; GND
+    (pin "5" (uuid a0000008-0000-0000-0000-000000000105)) ; CV3
+    (pin "6" (uuid a0000008-0000-0000-0000-000000000106)) ; GND
+    (pin "7" (uuid a0000008-0000-0000-0000-000000000107)) ; CV4
+    (pin "8" (uuid a0000008-0000-0000-0000-000000000108)) ; GND
+    (pin "9" (uuid a0000008-0000-0000-0000-000000000109)) ; 5V
+    (pin "10" (uuid a0000008-0000-0000-0000-000000000110)) ; GND
+  )
+
+  ; ============================================================
+  ; SWD DEBUG HEADER
+  ; ============================================================
+
+  (symbol (lib_id "Connector:Pin_Header_2x05") (at 325.12 55.88 0)
+    (uuid a0000008-0000-0000-0000-000000000002)
+    (property "Reference" "J11" (at 325.12 48.26 0))
+    (property "Value" "ARM_SWD_10pin" (at 325.12 50.8 0))
+    (property "Footprint" "Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical" (at 325.12 55.88 0))
+    (pin "1" (uuid a0000008-0000-0000-0000-000000000201)) ; VCC
+    (pin "2" (uuid a0000008-0000-0000-0000-000000000202)) ; SWDIO
+    (pin "3" (uuid a0000008-0000-0000-0000-000000000203)) ; GND
+    (pin "4" (uuid a0000008-0000-0000-0000-000000000204)) ; SWCLK
+    (pin "5" (uuid a0000008-0000-0000-0000-000000000205)) ; GND
+    (pin "6" (uuid a0000008-0000-0000-0000-000000000206)) ; SWO
+    (pin "7" (uuid a0000008-0000-0000-0000-000000000207)) ; NC
+    (pin "8" (uuid a0000008-0000-0000-0000-000000000208)) ; NC
+    (pin "9" (uuid a0000008-0000-0000-0000-000000000209)) ; GND
+    (pin "10" (uuid a0000008-0000-0000-0000-000000000210)) ; NRST
+  )
+
+  ; ============================================================
+  ; PASSIVE COMPONENTS (abbreviated — key decoupling)
+  ; ============================================================
+
+  ; --- 100nF decoupling caps (representative) ---
+  (symbol (lib_id "Device:C") (at 154.94 86.36 0)
+    (uuid c0000001-0000-0000-0000-000000000001)
+    (property "Reference" "C1" (at 154.94 83.82 0))
+    (property "Value" "100nF_25V_X7R_0402" (at 154.94 86.36 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 154.94 86.36 0))
+    (pin "1" (uuid c0000001-0000-0000-0000-000000000101))
+    (pin "2" (uuid c0000001-0000-0000-0000-000000000102))
+  )
+
+  ; --- 10µF bulk cap ---
+  (symbol (lib_id "Device:C") (at 154.94 96.52 0)
+    (uuid c0000001-0000-0000-0000-000000000002)
+    (property "Reference" "C21" (at 154.94 93.98 0))
+    (property "Value" "10uF_10V_X5R_0805" (at 154.94 96.52 0))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 154.94 96.52 0))
+    (pin "1" (uuid c0000001-0000-0000-0000-000000000201))
+    (pin "2" (uuid c0000001-0000-0000-0000-000000000202))
+  )
+
+  ; --- I2C pull-ups ---
+  (symbol (lib_id "Device:R") (at 254 116.84 0)
+    (uuid r0000001-0000-0000-0000-000000000001)
+    (property "Reference" "R20" (at 254 114.3 0))
+    (property "Value" "4.7k_0402" (at 254 116.84 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 254 116.84 0))
+    (pin "1" (uuid r0000001-0000-0000-0000-000000000101))
+    (pin "2" (uuid r0000001-0000-0000-0000-000000000102))
+  )
+
+  (symbol (lib_id "Device:R") (at 259.08 116.84 0)
+    (uuid r0000001-0000-0000-0000-000000000002)
+    (property "Reference" "R21" (at 259.08 114.3 0))
+    (property "Value" "4.7k_0402" (at 259.08 116.84 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 259.08 116.84 0))
+    (pin "1" (uuid r0000001-0000-0000-0000-000000000201))
+    (pin "2" (uuid r0000001-0000-0000-0000-000000000202))
+  )
+
+  ; --- NRST pull-up ---
+  (symbol (lib_id "Device:R") (at 139.7 50.8 0)
+    (uuid r0000002-0000-0000-0000-000000000001)
+    (property "Reference" "R17" (at 139.7 48.26 0))
+    (property "Value" "10k_0402" (at 139.7 50.8 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 139.7 50.8 0))
+    (pin "1" (uuid r0000002-0000-0000-0000-000000000101))
+    (pin "2" (uuid r0000002-0000-0000-0000-000000000102))
+  )
+
+  ; --- BOOT0 pull-down ---
+  (symbol (lib_id "Device:R") (at 149.86 50.8 0)
+    (uuid r0000002-0000-0000-0000-000000000002)
+    (property "Reference" "R18" (at 149.86 48.26 0))
+    (property "Value" "10k_0402" (at 149.86 50.8 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 149.86 50.8 0))
+    (pin "1" (uuid r0000002-0000-0000-0000-000000000201))
+    (pin "2" (uuid r0000002-0000-0000-0000-000000000202))
+  )
+
+  ; --- MIDI activity LED ---
+  (symbol (lib_id "Device:LED") (at 116.84 63.5 0)
+    (uuid d0000002-0000-0000-0000-000000000001)
+    (property "Reference" "D2" (at 116.84 58.42 0))
+    (property "Value" "LED_Amber" (at 116.84 60.96 0))
+    (property "Footprint" "LED_SMD:LED_0402_1005Metric" (at 116.84 63.5 0))
+    (pin "1" (uuid d0000002-0000-0000-0000-000000000101))
+    (pin "2" (uuid d0000002-0000-0000-0000-000000000102))
+  )
+
+  ; --- Ferrite beads ---
+  (symbol (lib_id "Device:Ferrite_Bead") (at 269.24 73.66 0)
+    (uuid fb000001-0000-0000-0000-000000000001)
+    (property "Reference" "FB1" (at 269.24 68.58 0))
+    (property "Value" "600R_100MHz_0402" (at 269.24 71.12 0))
+    (property "Footprint" "Inductor_SMD:L_0402_1005Metric" (at 269.24 73.66 0))
+    (pin "1" (uuid fb000001-0000-0000-0000-000000000101))
+    (pin "2" (uuid fb000001-0000-0000-0000-000000000102))
+  )
+
+  (symbol (lib_id "Device:Ferrite_Bead") (at 279.4 73.66 0)
+    (uuid fb000001-0000-0000-0000-000000000002)
+    (property "Reference" "FB2" (at 279.4 68.58 0))
+    (property "Value" "600R_100MHz_0402" (at 279.4 71.12 0))
+    (property "Footprint" "Inductor_SMD:L_0402_1005Metric" (at 279.4 73.66 0))
+    (pin "1" (uuid fb000001-0000-0000-0000-000000000201))
+    (pin "2" (uuid fb000001-0000-0000-0000-000000000202))
+  )
+
+  ; ============================================================
+  ; NET CONNECTIONS (wire labels — abbreviated for readability)
+  ; ============================================================
+
+  ; Power nets
+  (wire (uuid w0000001-0000-0000-0000-000000000001) (type "power") (net "VBUS"))
+  (wire (uuid w0000001-0000-0000-0000-000000000002) (type "power") (net "VDD_3V3"))
+  (wire (uuid w0000001-0000-0000-0000-000000000003) (type "power") (net "VDD_CORE"))
+  (wire (uuid w0000001-0000-0000-0000-000000000004) (type "power") (net "GND"))
+
+  ; I2S audio bus
+  (wire (uuid w0000002-0000-0000-0000-000000000001) (type "signal") (net "I2S1_SDO"))
+  (wire (uuid w0000002-0000-0000-0000-000000000002) (type "signal") (net "I2S1_SDI"))
+  (wire (uuid w0000002-0000-0000-0000-000000000003) (type "signal") (net "I2S1_BCLK"))
+  (wire (uuid w0000002-0000-0000-0000-000000000004) (type "signal") (net "I2S1_LRCK"))
+  (wire (uuid w0000002-0000-0000-0000-000000000005) (type "signal") (net "I2S1_MCLK"))
+
+  ; I2C bus
+  (wire (uuid w0000003-0000-0000-0000-000000000001) (type "signal") (net "I2C1_SDA"))
+  (wire (uuid w0000003-0000-0000-0000-000000000002) (type "signal") (net "I2C1_SCL"))
+
+  ; SPI flash bus
+  (wire (uuid w0000004-0000-0000-0000-000000000001) (type "signal") (net "SPI1_SCK"))
+  (wire (uuid w0000004-0000-0000-0000-000000000002) (type "signal") (net "SPI1_MISO"))
+  (wire (uuid w0000004-0000-0000-0000-000000000003) (type "signal") (net "SPI1_MOSI"))
+  (wire (uuid w0000004-0000-0000-0000-000000000004) (type "signal") (net "SPI1_NCS"))
+
+  ; USB
+  (wire (uuid w0000005-0000-0000-0000-000000000001) (type "signal") (net "USB_DP"))
+  (wire (uuid w0000005-0000-0000-0000-000000000002) (type "signal") (net "USB_DM"))
+
+  ; MIDI
+  (wire (uuid w0000006-0000-0000-0000-000000000001) (type "signal") (net "MIDI_IN"))
+  (wire (uuid w0000006-0000-0000-0000-000000000002) (type "signal") (net "MIDI_THRU"))
+
+  ; Audio outputs
+  (wire (uuid w0000007-0000-0000-0000-000000000001) (type "signal") (net "AOUTL"))
+  (wire (uuid w0000007-0000-0000-0000-000000000002) (type "signal") (net "AOUTR"))
+  (wire (uuid w0000007-0000-0000-0000-000000000003) (type "signal") (net "HPOUTL"))
+  (wire (uuid w0000007-0000-0000-0000-000000000004) (type "signal") (net "HPOUTR"))
+  (wire (uuid w0000007-0000-0000-0000-000000000005) (type "signal") (net "AINL"))
+  (wire (uuid w0000007-0000-0000-0000-000000000006) (type "signal") (net "AINR"))
+
+  ; CV inputs
+  (wire (uuid w0000008-0000-0000-0000-000000000001) (type "signal") (net "CV1"))
+  (wire (uuid w0000008-0000-0000-0000-000000000002) (type "signal") (net "CV2"))
+  (wire (uuid w0000008-0000-0000-0000-000000000003) (type "signal") (net "CV3"))
+  (wire (uuid w0000008-0000-0000-0000-000000000004) (type "signal") (net "CV4"))
+
+  ; Control
+  (wire (uuid w0000009-0000-0000-0000-000000000001) (type "signal") (net "CODEC_RESET"))
+  (wire (uuid w0000009-0000-0000-0000-000000000002) (type "signal") (net "HPAMP_EN"))
+  (wire (uuid w0000009-0000-0000-0000-000000000003) (type "signal") (net "FLASH_WP"))
+  (wire (uuid w0000009-0000-0000-0000-000000000004) (type "signal") (net "FLASH_HOLD"))
+  (wire (uuid w0000009-0000-0000-0000-000000000005) (type "signal") (net "LED_POWER"))
+  (wire (uuid w0000009-0000-0000-0000-000000000006) (type "signal") (net "LED_MIDI"))
+
+  ; ============================================================
+  ; TEXT LABELS / ANNOTATIONS
+  ; ============================================================
+
+  (text "WaveForge — Polyphonic Digital Audio Synthesizer Engine\nSTM32H743 + WM8778 + W25Q256 + TPA6130A2\n\nPower: USB-C 5V or Barrel 7-12V\nAudio: 48/96 kHz, 24-bit stereo\nMIDI: DIN-5 IN/THRU + USB MIDI\nCV: 4× 0-5V analog inputs\nFlash: 32 MB QSPI wavetable/patch storage"
+    (uuid txt00001-0000-0000-0000-000000000001)
+    (at 139.7 15.24 0)
+  )
+)
