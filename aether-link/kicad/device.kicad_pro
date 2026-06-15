@@ -1,0 +1,508 @@
+{
+  "board": {
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.15,
+        "copper_text_size_v": 1.0,
+        "copper_text_size_h": 1.0,
+        "copper_text_thickness": 0.15,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.12,
+        "silk_text_size_v": 1.0,
+        "silk_text_size_h": 1.0,
+        "silk_text_thickness": 0.15,
+        "soldermask_min_width": 0.1,
+        "pad_to_mask_clearance": 0.05
+      },
+      "diff_pair_dimensions": [
+        {
+          "name": "PCIe_Gen4",
+          "width": 0.1,
+          "gap": 0.15,
+          "via_gap": 0.2
+        },
+        {
+          "name": "QSFP28_100G",
+          "width": 0.1,
+          "gap": 0.15,
+          "via_gap": 0.2
+        },
+        {
+          "name": "DDR4_DQS",
+          "width": 0.11,
+          "gap": 0.14,
+          "via_gap": 0.2
+        },
+        {
+          "name": "DDR4_CLK",
+          "width": 0.1,
+          "gap": 0.15,
+          "via_gap": 0.2
+        },
+        {
+          "name": "LVDS_Clock",
+          "width": 0.1,
+          "gap": 0.15,
+          "via_gap": 0.2
+        },
+        {
+          "name": "USB2",
+          "width": 0.13,
+          "gap": 0.13,
+          "via_gap": 0.2
+        }
+      ],
+      "rule_severities": {
+        "annular_width": "error",
+        "clearance": "error",
+        "connection_width": "warning",
+        "copper_edge_clearance": "error",
+        "courtyards_overlap": "error",
+        "diff_pair_gap_out_of_range": "error",
+        "diff_pair_uncoupled_length_too_long": "error",
+        "drill_out_of_range": "error",
+        "duplicate_footprints": "warning",
+        "extra_footprints": "warning",
+        "footprint_type_mismatch": "error",
+        "hole_clearance": "error",
+        "hole_near_hole": "warning",
+        "invalid_outline": "error",
+        "item_on_disabled_layer": "error",
+        "items_not_allowed": "error",
+        "length_out_of_range": "error",
+        "malformed_courtyard": "error",
+        "microvia_drill_out_of_range": "error",
+        "missing_courtyard": "warning",
+        "missing_footprints": "warning",
+        "net_conflict": "warning",
+        "npth_in_courtyard": "ignore",
+        "padstack": "warning",
+        "pth_in_courtyard": "ignore",
+        "shorting_items": "error",
+        "silk_over_copper": "warning",
+        "silk_overlap": "warning",
+        "skew_out_of_range": "error",
+        "starved_thermal": "warning",
+        "text_height": "warning",
+        "text_thickness": "warning",
+        "through_hole_pad_without_annular_ring": "error",
+        "track_dangling": "warning",
+        "track_width": "error",
+        "unconnected_items": "error",
+        "unresolved_variable": "error",
+        "via_dangling": "warning",
+        "zone_has_no_connected_pads": "error",
+        "zones_intersect": "error"
+      },
+      "teardrop_options": [
+        {
+          "td_onpadsmd": true,
+          "td_onpadround": true,
+          "td_ontrackend": true,
+          "td_onviapad": true
+        }
+      ],
+      "track_widths": [
+        0.1,
+        0.11,
+        0.13,
+        0.15,
+        0.2,
+        0.3,
+        0.5,
+        0.8,
+        1.0,
+        1.5,
+        2.0
+      ],
+      "via_dimensions": [
+        {
+          "diameter": 0.25,
+          "drill": 0.1
+        },
+        {
+          "diameter": 0.4,
+          "drill": 0.2
+        },
+        {
+          "diameter": 0.6,
+          "drill": 0.3
+        },
+        {
+          "diameter": 0.8,
+          "drill": 0.4
+        }
+      ],
+      "tuning_pattern_settings": {
+        "single_track": {
+          "min_amplitude": 0.2,
+          "max_amplitude": 1.0,
+          "spacing": 0.5,
+          "corner_radius": 0.5
+        },
+        "diff_pair": {
+          "min_amplitude": 0.3,
+          "max_amplitude": 1.5,
+          "spacing": 0.6,
+          "corner_radius": 0.6
+        },
+        "diff_pair_skew": {
+          "min_amplitude": 0.2,
+          "max_amplitude": 0.8,
+          "spacing": 0.4,
+          "corner_radius": 0.4
+        }
+      }
+    },
+    "layer_presets": [
+      {
+        "name": "12-Layer_FHHL_PCIe",
+        "layers": [
+          "F.Cu",
+          "In1.Cu",
+          "In2.Cu",
+          "In3.Cu",
+          "In4.Cu",
+          "In5.Cu",
+          "In6.Cu",
+          "In7.Cu",
+          "In8.Cu",
+          "In9.Cu",
+          "In10.Cu",
+          "B.Cu",
+          "B.Adhes",
+          "F.Adhes",
+          "B.Paste",
+          "F.Paste",
+          "B.SilkS",
+          "F.SilkS",
+          "B.Mask",
+          "F.Mask",
+          "Dwgs.User",
+          "Cmts.User",
+          "Eco1.User",
+          "Eco2.User",
+          "Edge.Cuts",
+          "Margin",
+          "B.CrtYd",
+          "F.CrtYd",
+          "B.Fab",
+          "F.Fab"
+        ]
+      }
+    ],
+    "ipc2581": {
+      "dist": "nous-research",
+      "distpn": "AETHER-LINK-REV1",
+      "mfg": "",
+      "mpn": "AETHER-LINK-PCBA",
+      "rev": "1.0",
+      "pcbonly": false
+    }
+  },
+  "board_stackup": {
+    "name": "12-Layer_FHHL_PCIe",
+    "layers": [
+      { "name": "F.Cu", "type": "signal", "thickness": 0.035, "material": "copper" },
+      { "name": "In1.Cu", "type": "plane", "thickness": 0.035, "material": "copper",
+        "dielectric_thickness": 0.1, "dielectric_material": "FR4", "epsilon_r": 4.2, "loss_tangent": 0.02 },
+      { "name": "In2.Cu", "type": "signal", "thickness": 0.035, "material": "copper",
+        "dielectric_thickness": 0.127, "dielectric_material": "FR4", "epsilon_r": 4.2, "loss_tangent": 0.02 },
+      { "name": "In3.Cu", "type": "plane", "thickness": 0.035, "material": "copper",
+        "dielectric_thickness": 0.1, "dielectric_material": "FR4", "epsilon_r": 4.2, "loss_tangent": 0.02 },
+      { "name": "In4.Cu", "type": "plane", "thickness": 0.035, "material": "copper",
+        "dielectric_thickness": 0.127, "dielectric_material": "FR4", "epsilon_r": 4.2, "loss_tangent": 0.02 },
+      { "name": "In5.Cu", "type": "signal", "thickness": 0.035, "material": "copper",
+        "dielectric_thickness": 0.1, "dielectric_material": "FR4", "epsilon_r": 4.2, "loss_tangent": 0.02 },
+      { "name": "In6.Cu", "type": "plane", "thickness": 0.035, "material": "copper",
+        "dielectric_thickness": 0.127, "dielectric_material": "FR4", "epsilon_r": 4.2, "loss_tangent": 0.02 },
+      { "name": "In7.Cu", "type": "plane", "thickness": 0.035, "material": "copper",
+        "dielectric_thickness": 0.1, "dielectric_material": "FR4", "epsilon_r": 4.2, "loss_tangent": 0.02 },
+      { "name": "In8.Cu", "type": "signal", "thickness": 0.035, "material": "copper",
+        "dielectric_thickness": 0.127, "dielectric_material": "FR4", "epsilon_r": 4.2, "loss_tangent": 0.02 },
+      { "name": "In9.Cu", "type": "plane", "thickness": 0.035, "material": "copper",
+        "dielectric_thickness": 0.1, "dielectric_material": "FR4", "epsilon_r": 4.2, "loss_tangent": 0.02 },
+      { "name": "In10.Cu", "type": "plane", "thickness": 0.035, "material": "copper",
+        "dielectric_thickness": 0.127, "dielectric_material": "FR4", "epsilon_r": 4.2, "loss_tangent": 0.02 },
+      { "name": "B.Cu", "type": "signal", "thickness": 0.035, "material": "copper" }
+    ],
+    "copper_finish": "ENIG",
+    "dielectric_constraints": false,
+    "edge_connector": "PCIe_x8",
+    "total_thickness": 1.58
+  },
+  "boards": [
+    {
+      "name": "Aether-Link_Main",
+      "thickness": 1.6,
+      "stackup": "12-Layer_FHHL_PCIe"
+    }
+  ],
+  "net_settings": {
+    "classes": [
+      {
+        "name": "Default",
+        "clearance": 0.15,
+        "track_width": 0.15,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "uvia_diameter": 0.25,
+        "uvia_drill": 0.1,
+        "diff_pair_width": 0.15,
+        "diff_pair_gap": 0.15
+      },
+      {
+        "name": "PCIe_Gen4",
+        "clearance": 0.4,
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.1,
+        "uvia_diameter": 0.25,
+        "uvia_drill": 0.1,
+        "diff_pair_width": 0.1,
+        "diff_pair_gap": 0.15
+      },
+      {
+        "name": "QSFP28_100G",
+        "clearance": 0.4,
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.1,
+        "uvia_diameter": 0.25,
+        "uvia_drill": 0.1,
+        "diff_pair_width": 0.1,
+        "diff_pair_gap": 0.15
+      },
+      {
+        "name": "DDR4_3200",
+        "clearance": 0.3,
+        "track_width": 0.15,
+        "via_diameter": 0.4,
+        "via_drill": 0.2,
+        "diff_pair_width": 0.11,
+        "diff_pair_gap": 0.14
+      },
+      {
+        "name": "Power",
+        "clearance": 0.5,
+        "track_width": 0.5,
+        "via_diameter": 0.8,
+        "via_drill": 0.4
+      },
+      {
+        "name": "LVDS_Clock",
+        "clearance": 0.3,
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.1,
+        "diff_pair_width": 0.1,
+        "diff_pair_gap": 0.15
+      },
+      {
+        "name": "USB2",
+        "clearance": 0.2,
+        "track_width": 0.13,
+        "diff_pair_width": 0.13,
+        "diff_pair_gap": 0.13
+      }
+    ],
+    "netclass_assignments": {
+      "PCIE_RX0_P": "PCIe_Gen4",
+      "PCIE_RX0_N": "PCIe_Gen4",
+      "PCIE_TX0_P": "PCIe_Gen4",
+      "PCIE_TX0_N": "PCIe_Gen4",
+      "PCIE_RX1_P": "PCIe_Gen4",
+      "PCIE_RX1_N": "PCIe_Gen4",
+      "PCIE_TX1_P": "PCIe_Gen4",
+      "PCIE_TX1_N": "PCIe_Gen4",
+      "PCIE_RX2_P": "PCIe_Gen4",
+      "PCIE_RX2_N": "PCIe_Gen4",
+      "PCIE_TX2_P": "PCIe_Gen4",
+      "PCIE_TX2_N": "PCIe_Gen4",
+      "PCIE_RX3_P": "PCIe_Gen4",
+      "PCIE_RX3_N": "PCIe_Gen4",
+      "PCIE_TX3_P": "PCIe_Gen4",
+      "PCIE_TX3_N": "PCIe_Gen4",
+      "PCIE_RX4_P": "PCIe_Gen4",
+      "PCIE_RX4_N": "PCIe_Gen4",
+      "PCIE_TX4_P": "PCIe_Gen4",
+      "PCIE_TX4_N": "PCIe_Gen4",
+      "PCIE_RX5_P": "PCIe_Gen4",
+      "PCIE_RX5_N": "PCIe_Gen4",
+      "PCIE_TX5_P": "PCIe_Gen4",
+      "PCIE_TX5_N": "PCIe_Gen4",
+      "PCIE_RX6_P": "PCIe_Gen4",
+      "PCIE_RX6_N": "PCIe_Gen4",
+      "PCIE_TX6_P": "PCIe_Gen4",
+      "PCIE_TX6_N": "PCIe_Gen4",
+      "PCIE_RX7_P": "PCIe_Gen4",
+      "PCIE_RX7_N": "PCIe_Gen4",
+      "PCIE_TX7_P": "PCIe_Gen4",
+      "PCIE_TX7_N": "PCIe_Gen4",
+      "PCIE_REFCLK_P": "LVDS_Clock",
+      "PCIE_REFCLK_N": "LVDS_Clock",
+      "QSFP0_RX0_P": "QSFP28_100G",
+      "QSFP0_RX0_N": "QSFP28_100G",
+      "QSFP0_TX0_P": "QSFP28_100G",
+      "QSFP0_TX0_N": "QSFP28_100G",
+      "QSFP0_RX1_P": "QSFP28_100G",
+      "QSFP0_RX1_N": "QSFP28_100G",
+      "QSFP0_TX1_P": "QSFP28_100G",
+      "QSFP0_TX1_N": "QSFP28_100G",
+      "QSFP0_RX2_P": "QSFP28_100G",
+      "QSFP0_RX2_N": "QSFP28_100G",
+      "QSFP0_TX2_P": "QSFP28_100G",
+      "QSFP0_TX2_N": "QSFP28_100G",
+      "QSFP0_RX3_P": "QSFP28_100G",
+      "QSFP0_RX3_N": "QSFP28_100G",
+      "QSFP0_TX3_P": "QSFP28_100G",
+      "QSFP0_TX3_N": "QSFP28_100G",
+      "QSFP1_RX0_P": "QSFP28_100G",
+      "QSFP1_RX0_N": "QSFP28_100G",
+      "QSFP1_TX0_P": "QSFP28_100G",
+      "QSFP1_TX0_N": "QSFP28_100G",
+      "QSFP1_RX1_P": "QSFP28_100G",
+      "QSFP1_RX1_N": "QSFP28_100G",
+      "QSFP1_TX1_P": "QSFP28_100G",
+      "QSFP1_TX1_N": "QSFP28_100G",
+      "QSFP1_RX2_P": "QSFP28_100G",
+      "QSFP1_RX2_N": "QSFP28_100G",
+      "QSFP1_TX2_P": "QSFP28_100G",
+      "QSFP1_TX2_N": "QSFP28_100G",
+      "QSFP1_RX3_P": "QSFP28_100G",
+      "QSFP1_RX3_N": "QSFP28_100G",
+      "QSFP1_TX3_P": "QSFP28_100G",
+      "QSFP1_TX3_N": "QSFP28_100G",
+      "DDR4_REFCLK_P": "LVDS_Clock",
+      "DDR4_REFCLK_N": "LVDS_Clock",
+      "CMAC_REFCLK_P": "LVDS_Clock",
+      "CMAC_REFCLK_N": "LVDS_Clock",
+      "QSFP0_REFCLK_P": "LVDS_Clock",
+      "QSFP0_REFCLK_N": "LVDS_Clock",
+      "QSFP1_REFCLK_P": "LVDS_Clock",
+      "QSFP1_REFCLK_N": "LVDS_Clock",
+      "DDR4_A_CK0_P": "DDR4_3200",
+      "DDR4_A_CK0_N": "DDR4_3200",
+      "DDR4_A_DQS0_P": "DDR4_3200",
+      "DDR4_A_DQS0_N": "DDR4_3200",
+      "DDR4_A_DQ0": "DDR4_3200",
+      "DDR4_A_DQ1": "DDR4_3200",
+      "DDR4_A_A0": "DDR4_3200",
+      "DDR4_A_BA0": "DDR4_3200",
+      "DDR4_A_CKE": "DDR4_3200",
+      "DDR4_A_CS#": "DDR4_3200",
+      "DDR4_A_ODT": "DDR4_3200",
+      "DDR4_A_RAS#": "DDR4_3200",
+      "DDR4_A_CAS#": "DDR4_3200",
+      "DDR4_A_WE#": "DDR4_3200",
+      "USB_D_P": "USB2",
+      "USB_D_N": "USB2",
+      "VCCINT": "Power",
+      "MGTAVCC": "Power",
+      "MGTAVTT": "Power",
+      "VCCBRAM": "Power",
+      "VCCAUX": "Power",
+      "VCCO_1V5": "Power",
+      "VCC3V3": "Power",
+      "VCC2V5": "Power",
+      "VCC1V8": "Power",
+      "VCC12V": "Power"
+    },
+    "custom_rules": [
+      {
+        "name": "PCIe_intra_pair_skew",
+        "constraint": "skew",
+        "max": "0.15mil",
+        "condition": "A.NetClass == 'PCIe_Gen4'"
+      },
+      {
+        "name": "QSFP_intra_pair_skew",
+        "constraint": "skew",
+        "max": "0.08mil",
+        "condition": "A.NetClass == 'QSFP28_100G'"
+      },
+      {
+        "name": "DDR4_DQS_skew",
+        "constraint": "skew",
+        "max": "2ps",
+        "condition": "A.NetName == 'DDR4_A_DQS0_P' || A.NetName == 'DDR4_A_DQS0_N'"
+      },
+      {
+        "name": "DDR4_CLK_to_ADDR_skew",
+        "constraint": "skew",
+        "max": "5ps",
+        "condition": "A.NetName == 'DDR4_A_CK0_P' || A.NetName == 'DDR4_A_CK0_N'"
+      },
+      {
+        "name": "PCIe_max_length",
+        "constraint": "length",
+        "max": "101.6mm",
+        "condition": "A.NetClass == 'PCIe_Gen4'"
+      },
+      {
+        "name": "QSFP_max_length",
+        "constraint": "length",
+        "max": "76.2mm",
+        "condition": "A.NetClass == 'QSFP28_100G'"
+      },
+      {
+        "name": "DDR4_max_length",
+        "constraint": "length",
+        "max": "63.5mm",
+        "condition": "A.NetClass == 'DDR4_3200'"
+      },
+      {
+        "name": "PCIe_via_count",
+        "constraint": "via_count",
+        "max": "2",
+        "condition": "A.NetClass == 'PCIe_Gen4'"
+      },
+      {
+        "name": "QSFP_via_count",
+        "constraint": "via_count",
+        "max": "2",
+        "condition": "A.NetClass == 'QSFP28_100G'"
+      },
+      {
+        "name": "DDR4_via_count",
+        "constraint": "via_count",
+        "max": "1",
+        "condition": "A.NetClass == 'DDR4_3200'"
+      },
+      {
+        "name": "Power_plane_clearance",
+        "constraint": "clearance",
+        "min": "1.0mm",
+        "condition": "A.NetClass == 'Power' && B.NetClass != 'Power'"
+      },
+      {
+        "name": "Diff_pair_gap_to_other",
+        "constraint": "clearance",
+        "min": "0.75mm",
+        "condition": "A.NetClass == 'PCIe_Gen4' && B.NetClass != 'PCIe_Gen4'"
+      }
+    ]
+  },
+  "project": {
+    "name": "Aether-Link",
+    "revision": "1.0",
+    "company": "Nous Research",
+    "date": "2025-06-15",
+    "pcb": {
+      "thickness": 1.6,
+      "layers": 12,
+      "finish": "ENIG",
+      "material": "FR4 (Isola 370HR)",
+      "tg": 180,
+      "td": 350,
+      "form_factor": "FHHL PCIe Card",
+      "dimensions": "167.65mm x 111.15mm"
+    },
+    "bom": {
+      "total_parts": 312,
+      "unique_parts": 48,
+      "total_cost_estimate": "$1,650.00"
+    }
+  }
+}
