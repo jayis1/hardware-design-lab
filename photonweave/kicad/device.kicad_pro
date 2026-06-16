@@ -1,0 +1,306 @@
+{
+  "board": {
+    "active_layer": 0,
+    "active_layer_preset": "",
+    "auto_track_width": true,
+    "hidden_netclasses": [],
+    "hidden_nets": [],
+    "high_contrast_mode": 0,
+    "net_color_mode": 1,
+    "netclass_patterns": [],
+    "netclass_assignments": {
+      "PCIE_DIFF": "/PCIE_TX0_P",
+      "HDMI_DIFF": "/HDMI_TMDS_D2_P",
+      "DDR4_DQ": "/DDR4_DQ0",
+      "DDR4_ADDR": "/DDR4_A0",
+      "DDR4_DIFF": "/DDR4_CK0_P",
+      "QSFP_DIFF": "/QSFP_RX1_P",
+      "USB3_DIFF": "/USB3_SSRX_P",
+      "POWER": "/VCCINT",
+      "GENERAL": "/I2C_SCL"
+    },
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.05,
+        "copper_line_width": 0.127,
+        "copper_text_size_h": 1.0,
+        "copper_text_size_v": 1.0,
+        "copper_text_thickness": 0.15,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.15,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15,
+        "zones": {
+          "min_clearance": 0.3
+        }
+      },
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.127,
+          "via_gap": 0.127,
+          "width": 0.076
+        },
+        {
+          "gap": 0.114,
+          "via_gap": 0.114,
+          "width": 0.071
+        },
+        {
+          "gap": 0.152,
+          "via_gap": 0.152,
+          "width": 0.102
+        },
+        {
+          "gap": 0.127,
+          "via_gap": 0.127,
+          "width": 0.076
+        },
+        {
+          "gap": 0.152,
+          "via_gap": 0.152,
+          "width": 0.089
+        }
+      ],
+      "drc_exclusions": [],
+      "meta": {
+        "version": 2
+      },
+      "rule_severities": {
+        "annular_width": "error",
+        "clearance": "error",
+        "connection_width": "warning",
+        "copper_edge_clearance": "error",
+        "copper_sliver": "warning",
+        "courtyards_overlap": "error",
+        "diff_pair_gap_out_of_range": "error",
+        "diff_pair_uncoupled_length_too_long": "warning",
+        "drill_out_of_range": "error",
+        "duplicate_footprints": "warning",
+        "extra_footprint": "warning",
+        "footprint": "error",
+        "footprint_symbol_mismatch": "warning",
+        "footprint_type_mismatch": "error",
+        "hole_clearance": "error",
+        "hole_near_hole": "warning",
+        "hole_to_hole": "error",
+        "hookup_dangling": "warning",
+        "invalid_outline": "error",
+        "isolated_copper": "warning",
+        "item_on_disabled_layer": "error",
+        "items_not_allowed": "error",
+        "length_out_of_range": "error",
+        "lib_footprint_issues": "warning",
+        "lib_footprint_mismatch": "warning",
+        "malformed_courtyard": "error",
+        "microvia_drill_out_of_range": "error",
+        "missing_courtyard": "ignore",
+        "missing_footprint": "error",
+        "net_conflict": "warning",
+        "npth_inside_courtyard": "ignore",
+        "padstack": "warning",
+        "pth_inside_courtyard": "ignore",
+        "shorting_items": "error",
+        "silk_edge_clearance": "warning",
+        "silk_over_copper": "warning",
+        "silk_overlap": "warning",
+        "skew_out_of_range": "error",
+        "solder_mask_bridge": "error",
+        "starved_thermal": "error",
+        "text_height": "warning",
+        "text_thickness": "warning",
+        "through_hole_pad_without_annular_ring": "error",
+        "too_many_vias": "warning",
+        "track_dangling": "warning",
+        "track_width": "error",
+        "tracks_crossing": "error",
+        "unconnected_items": "error",
+        "unresolved_variable": "error",
+        "via_dangling": "warning",
+        "zones_merge": "warning",
+        "zone_has_no_net": "error"
+      },
+      "track_widths": [0.076, 0.071, 0.140, 0.102, 0.089, 0.127, 0.508],
+      "tuning_pattern_settings": {
+        "single_track": {
+          "min_amplitude": 0.2,
+          "max_amplitude": 1.0,
+          "spacing": 0.5
+        },
+        "diff_pair": {
+          "min_amplitude": 0.3,
+          "max_amplitude": 1.0,
+          "spacing": 0.5
+        },
+        "diff_pair_skew": {
+          "min_amplitude": 0.2,
+          "max_amplitude": 0.8,
+          "spacing": 0.4
+        }
+      },
+      "via_dimensions": [
+        {"diameter": 0.45, "drill": 0.20},
+        {"diameter": 0.60, "drill": 0.30},
+        {"diameter": 0.35, "drill": 0.15}
+      ],
+      "zones_allow_external_fillets": false
+    },
+    "ipc2581": {
+      "dist": "",
+      "distpn": "",
+      "internal_id": "",
+      "mfg": "",
+      "mpn": ""
+    },
+    "libraries": {
+      "pinned_footprint_libs": [],
+      "pinned_symbol_libs": []
+    },
+    "meta": {
+      "filename": "device.kicad_pcb",
+      "version": 20240108
+    },
+    "net_settings": {
+      "classes": [
+        {"name": "Default", "clearance": 0.127, "track_width": 0.127, "via_dia": 0.45, "via_drill": 0.20, "uvia_dia": 0.35, "uvia_drill": 0.15, "diff_pair_gap": 0.15, "diff_pair_width": 0.12},
+        {"name": "PCIE_DIFF", "clearance": 0.127, "track_width": 0.076, "via_dia": 0.45, "via_drill": 0.20, "diff_pair_gap": 0.127, "diff_pair_width": 0.076},
+        {"name": "HDMI_DIFF", "clearance": 0.127, "track_width": 0.071, "via_dia": 0.45, "via_drill": 0.20, "diff_pair_gap": 0.114, "diff_pair_width": 0.071},
+        {"name": "DDR4_DQ", "clearance": 0.203, "track_width": 0.140, "via_dia": 0.45, "via_drill": 0.20},
+        {"name": "DDR4_ADDR", "clearance": 0.203, "track_width": 0.140, "via_dia": 0.45, "via_drill": 0.20},
+        {"name": "DDR4_DIFF", "clearance": 0.152, "track_width": 0.102, "via_dia": 0.45, "via_drill": 0.20, "diff_pair_gap": 0.152, "diff_pair_width": 0.102},
+        {"name": "QSFP_DIFF", "clearance": 0.127, "track_width": 0.076, "via_dia": 0.45, "via_drill": 0.20, "diff_pair_gap": 0.127, "diff_pair_width": 0.076},
+        {"name": "USB3_DIFF", "clearance": 0.152, "track_width": 0.089, "via_dia": 0.45, "via_drill": 0.20, "diff_pair_gap": 0.152, "diff_pair_width": 0.089},
+        {"name": "POWER", "clearance": 0.254, "track_width": 0.508, "via_dia": 0.60, "via_drill": 0.30},
+        {"name": "GENERAL", "clearance": 0.127, "track_width": 0.127, "via_dia": 0.45, "via_drill": 0.20}
+      ],
+      "meta": {"version": 3}
+    },
+    "tuning_patterns": {}
+  },
+  "design_settings": {
+    "defaults": {
+      "board_outline_line_width": 0.05,
+      "copper_line_width": 0.127,
+      "copper_text_size_h": 1.0,
+      "copper_text_size_v": 1.0,
+      "copper_text_thickness": 0.15,
+      "other_line_width": 0.15,
+      "silk_line_width": 0.15,
+      "silk_text_size_h": 1.0,
+      "silk_text_size_v": 1.0,
+      "silk_text_thickness": 0.15,
+      "zones": {
+        "min_clearance": 0.3
+      }
+    },
+    "diff_pair_dimensions": [],
+    "drc_exclusions": [],
+    "meta": {
+      "version": 2
+    },
+    "rule_severities": {
+      "annular_width": "error",
+      "clearance": "error",
+      "copper_edge_clearance": "error",
+      "courtyards_overlap": "error",
+      "diff_pair_gap_out_of_range": "error",
+      "diff_pair_uncoupled_length_too_long": "warning",
+      "drill_out_of_range": "error",
+      "duplicate_footprints": "warning",
+      "extra_footprint": "warning",
+      "footprint": "error",
+      "footprint_type_mismatch": "error",
+      "hole_clearance": "error",
+      "hole_near_hole": "warning",
+      "hole_to_hole": "error",
+      "invalid_outline": "error",
+      "item_on_disabled_layer": "error",
+      "items_not_allowed": "error",
+      "length_out_of_range": "error",
+      "lib_footprint_issues": "warning",
+      "lib_footprint_mismatch": "warning",
+      "malformed_courtyard": "error",
+      "microvia_drill_out_of_range": "error",
+      "missing_courtyard": "ignore",
+      "missing_footprint": "error",
+      "net_conflict": "warning",
+      "npth_inside_courtyard": "ignore",
+      "padstack": "warning",
+      "pth_inside_courtyard": "ignore",
+      "shorting_items": "error",
+      "silk_edge_clearance": "warning",
+      "silk_over_copper": "warning",
+      "silk_overlap": "warning",
+      "skew_out_of_range": "error",
+      "solder_mask_bridge": "error",
+      "starved_thermal": "error",
+      "text_height": "warning",
+      "text_thickness": "warning",
+      "through_hole_pad_without_annular_ring": "error",
+      "too_many_vias": "warning",
+      "track_dangling": "warning",
+      "track_width": "error",
+      "tracks_crossing": "error",
+      "unconnected_items": "error",
+      "unresolved_variable": "error",
+      "via_dangling": "warning",
+      "zones_merge": "warning",
+      "zone_has_no_net": "error"
+    },
+    "track_widths": [0.076, 0.071, 0.140, 0.102, 0.089, 0.127, 0.508],
+    "tuning_pattern_settings": {
+      "single_track": {
+        "min_amplitude": 0.2,
+        "max_amplitude": 1.0,
+        "spacing": 0.5
+      },
+      "diff_pair": {
+        "min_amplitude": 0.3,
+        "max_amplitude": 1.0,
+        "spacing": 0.5
+      },
+      "diff_pair_skew": {
+        "min_amplitude": 0.2,
+        "max_amplitude": 0.8,
+        "spacing": 0.4
+      }
+    },
+    "via_dimensions": [
+      {"diameter": 0.45, "drill": 0.20},
+      {"diameter": 0.60, "drill": 0.30},
+      {"diameter": 0.35, "drill": 0.15}
+    ],
+    "zones_allow_external_fillets": false
+  },
+  "ipc2581": {
+    "dist": "",
+    "distpn": "",
+    "internal_id": "",
+    "mfg": "",
+    "mpn": ""
+  },
+  "libraries": {
+    "pinned_footprint_libs": [],
+    "pinned_symbol_libs": []
+  },
+  "meta": {
+    "filename": "device.kicad_pcb",
+    "version": 20240108
+  },
+  "net_settings": {
+    "classes": [
+      {"name": "Default", "clearance": 0.127, "track_width": 0.127, "via_dia": 0.45, "via_drill": 0.20, "uvia_dia": 0.35, "uvia_drill": 0.15, "diff_pair_gap": 0.15, "diff_pair_width": 0.12},
+      {"name": "PCIE_DIFF", "clearance": 0.127, "track_width": 0.076, "via_dia": 0.45, "via_drill": 0.20, "diff_pair_gap": 0.127, "diff_pair_width": 0.076},
+      {"name": "HDMI_DIFF", "clearance": 0.127, "track_width": 0.071, "via_dia": 0.45, "via_drill": 0.20, "diff_pair_gap": 0.114, "diff_pair_width": 0.071},
+      {"name": "DDR4_DQ", "clearance": 0.203, "track_width": 0.140, "via_dia": 0.45, "via_drill": 0.20},
+      {"name": "DDR4_ADDR", "clearance": 0.203, "track_width": 0.140, "via_dia": 0.45, "via_drill": 0.20},
+      {"name": "DDR4_DIFF", "clearance": 0.152, "track_width": 0.102, "via_dia": 0.45, "via_drill": 0.20, "diff_pair_gap": 0.152, "diff_pair_width": 0.102},
+      {"name": "QSFP_DIFF", "clearance": 0.127, "track_width": 0.076, "via_dia": 0.45, "via_drill": 0.20, "diff_pair_gap": 0.127, "diff_pair_width": 0.076},
+      {"name": "USB3_DIFF", "clearance": 0.152, "track_width": 0.089, "via_dia": 0.45, "via_drill": 0.20, "diff_pair_gap": 0.152, "diff_pair_width": 0.089},
+      {"name": "POWER", "clearance": 0.254, "track_width": 0.508, "via_dia": 0.60, "via_drill": 0.30},
+      {"name": "GENERAL", "clearance": 0.127, "track_width": 0.127, "via_dia": 0.45, "via_drill": 0.20}
+    ],
+    "meta": {"version": 3}
+  },
+  "tuning_patterns": {}
+}
