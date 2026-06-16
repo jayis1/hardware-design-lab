@@ -1,0 +1,218 @@
+{
+  "board": {
+    "design_settings": {
+      "allow_soldermask_bridges_in_footprints": false,
+      "apply_soldermask_to_plated_holes": true,
+      "rule_severities": {
+        "courtyards_overlap": "error",
+        "diff_pair_gap_out_of_range": "error",
+        "diff_pair_uncoupled_length_too_long": "warning",
+        "invalid_outline": "error",
+        "item_on_disabled_layer": "error",
+        "malformed_courtyard": "error",
+        "microvia_drill_out_of_range": "error",
+        "netclass_clearance": "error",
+        "netclass_track_width": "error",
+        "netclass_via_diameter": "error",
+        "npth_inside_courtyard": "ignore",
+        "padstack": "warning",
+        "pth_inside_courtyard": "ignore",
+        "shorting_items": "error",
+        "silk_clearance": "warning",
+        "silk_over_copper": "warning",
+        "silk_overlap": "warning",
+        "sketch_outlines": "warning",
+        "starved_thermal": "warning",
+        "text_height": "warning",
+        "text_thickness": "warning",
+        "through_hole_pad_without_hole": "error",
+        "track_dangling": "warning",
+        "track_width": "error",
+        "tracks_crossing": "error",
+        "unconnected_items": "error",
+        "via_dangling": "warning",
+        "zone_connection": "error",
+        "zones_intersect": "error"
+      }
+    },
+    "layer_presets": {
+      "active": "6-layer Nebula Matrix",
+      "presets": {
+        "6-layer Nebula Matrix": {
+          "copper_layers": 6,
+          "layer_names": {
+            "0": "F.Cu",
+            "1": "In1.Cu",
+            "2": "In2.Cu",
+            "3": "In3.Cu",
+            "4": "In4.Cu",
+            "5": "B.Cu"
+          },
+          "layer_types": {
+            "0": "signal",
+            "1": "power",
+            "2": "signal",
+            "3": "signal",
+            "4": "power",
+            "5": "signal"
+          },
+          "layer_thicknesses_mm": {
+            "dielectric_0_1": 0.150,
+            "dielectric_1_2": 0.200,
+            "dielectric_2_3": 0.240,
+            "dielectric_3_4": 0.200,
+            "dielectric_4_5": 0.150
+          },
+          "layer_materials": {
+            "dielectric_0_1": "Prepreg 1080x2 (er=4.05)",
+            "dielectric_1_2": "Core FR-4 (er=4.30)",
+            "dielectric_2_3": "Prepreg 2116x2 (er=4.15)",
+            "dielectric_3_4": "Core FR-4 (er=4.30)",
+            "dielectric_4_5": "Prepreg 1080x2 (er=4.05)"
+          }
+        }
+      }
+    },
+    "net_classes": [
+      {
+        "name": "Default",
+        "clearance": 0.15,
+        "track_width": 0.15,
+        "via_diameter": 0.45,
+        "via_drill": 0.20,
+        "diff_pair_gap": 0.20,
+        "diff_pair_width": 0.12
+      },
+      {
+        "name": "Power",
+        "clearance": 0.25,
+        "track_width": 0.30,
+        "via_diameter": 0.60,
+        "via_drill": 0.30,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.15
+      },
+      {
+        "name": "DDR_40Ohm",
+        "clearance": 0.20,
+        "track_width": 0.22,
+        "via_diameter": 0.45,
+        "via_drill": 0.20,
+        "diff_pair_gap": 0.20,
+        "diff_pair_width": 0.12
+      },
+      {
+        "name": "DDR_Diff100",
+        "clearance": 0.20,
+        "track_width": 0.12,
+        "via_diameter": 0.45,
+        "via_drill": 0.20,
+        "diff_pair_gap": 0.15,
+        "diff_pair_width": 0.12
+      },
+      {
+        "name": "HDMI_Diff100",
+        "clearance": 0.25,
+        "track_width": 0.12,
+        "via_diameter": 0.45,
+        "via_drill": 0.20,
+        "diff_pair_gap": 0.15,
+        "diff_pair_width": 0.12
+      },
+      {
+        "name": "USB_Diff90",
+        "clearance": 0.25,
+        "track_width": 0.14,
+        "via_diameter": 0.45,
+        "via_drill": 0.20,
+        "diff_pair_gap": 0.15,
+        "diff_pair_width": 0.14
+      },
+      {
+        "name": "HUB75E_50Ohm",
+        "clearance": 0.15,
+        "track_width": 0.15,
+        "via_diameter": 0.45,
+        "via_drill": 0.20,
+        "diff_pair_gap": 0.20,
+        "diff_pair_width": 0.12
+      }
+    ],
+    "net_class_assignments": {
+      "+12V_IN": "Power",
+      "+5V0": "Power",
+      "+3V3": "Power",
+      "+1V8": "Power",
+      "+1V35": "Power",
+      "+1V0": "Power",
+      "+1V2": "Power",
+      "VTT": "Power",
+      "DDRA_CK_P": "DDR_Diff100",
+      "DDRA_CK_N": "DDR_Diff100",
+      "DDRB_CK_P": "DDR_Diff100",
+      "DDRB_CK_N": "DDR_Diff100",
+      "DDRA_DQS0_P": "DDR_Diff100",
+      "DDRA_DQS0_N": "DDR_Diff100",
+      "DDRA_DQS1_P": "DDR_Diff100",
+      "DDRA_DQS1_N": "DDR_Diff100",
+      "DDRB_DQS0_P": "DDR_Diff100",
+      "DDRB_DQS0_N": "DDR_Diff100",
+      "DDRB_DQS1_P": "DDR_Diff100",
+      "DDRB_DQS1_N": "DDR_Diff100",
+      "HDMI_TMDS_CLK_P": "HDMI_Diff100",
+      "HDMI_TMDS_CLK_N": "HDMI_Diff100",
+      "HDMI_TMDS_D0_P": "HDMI_Diff100",
+      "HDMI_TMDS_D0_N": "HDMI_Diff100",
+      "HDMI_TMDS_D1_P": "HDMI_Diff100",
+      "HDMI_TMDS_D1_N": "HDMI_Diff100",
+      "HDMI_TMDS_D2_P": "HDMI_Diff100",
+      "HDMI_TMDS_D2_N": "HDMI_Diff100",
+      "USB_DP": "USB_Diff90",
+      "USB_DM": "USB_Diff90",
+      "ETH_MDI0_P": "HDMI_Diff100",
+      "ETH_MDI0_N": "HDMI_Diff100",
+      "ETH_MDI1_P": "HDMI_Diff100",
+      "ETH_MDI1_N": "HDMI_Diff100",
+      "ETH_MDI2_P": "HDMI_Diff100",
+      "ETH_MDI2_N": "HDMI_Diff100",
+      "ETH_MDI3_P": "HDMI_Diff100",
+      "ETH_MDI3_N": "HDMI_Diff100"
+    },
+    "design_rules": {
+      "min_track_width": 0.10,
+      "min_via_drill": 0.20,
+      "min_via_diameter": 0.45,
+      "min_clearance": 0.10,
+      "min_solder_mask_clearance": 0.05,
+      "min_silkscreen_clearance": 0.15,
+      "copper_edge_clearance": 0.40,
+      "courtyard_overlap": 0.25,
+      "allow_blind_buried_vias": false,
+      "allow_microvias": false,
+      "max_via_drill": 3.20,
+      "max_via_diameter": 6.00
+    },
+    "board_outline": {
+      "shape": "rect",
+      "width_mm": 170.00,
+      "height_mm": 170.00,
+      "corner_radius_mm": 3.00
+    },
+    "mounting_holes": [
+      {"x_mm": 5.00, "y_mm": 5.00, "drill_mm": 3.20, "pad_mm": 6.00, "plated": true, "net": "GND"},
+      {"x_mm": 165.00, "y_mm": 5.00, "drill_mm": 3.20, "pad_mm": 6.00, "plated": true, "net": "GND"},
+      {"x_mm": 5.00, "y_mm": 165.00, "drill_mm": 3.20, "pad_mm": 6.00, "plated": true, "net": "GND"},
+      {"x_mm": 165.00, "y_mm": 165.00, "drill_mm": 3.20, "pad_mm": 6.00, "plated": true, "net": "GND"}
+    ]
+  },
+  "project": {
+    "name": "Nebula Matrix",
+    "revision": "1.0",
+    "date": "2026-06-16",
+    "company": "Nous Research",
+    "description": "Professional FPGA-Driven LED Matrix Display Engine — 256×256 pixels, 16-bit color, 120 Hz, 16× HUB75E ports"
+  },
+  "metadata": {
+    "filename": "device.kicad_pro"
+  }
+}
