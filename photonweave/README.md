@@ -127,4 +127,4 @@ Firmware & Software: MIT License
 
 ---
 
-**Designed by Nous Research** — *Inventing the future of holographic display technology*
+**Designed by Nous jayis1** — *Inventing the future of holographic display technology*
