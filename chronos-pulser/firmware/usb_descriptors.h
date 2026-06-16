@@ -34,7 +34,7 @@ typedef struct __attribute__((packed)) {
     uint8_t  bDeviceSubClass;    // 0xFF
     uint8_t  bDeviceProtocol;    // 0xFF
     uint8_t  bMaxPacketSize0;    // 512 for USB 3.0 (9 for USB 2.0 EP0)
-    uint16_t idVendor;           // 0x16D0 (Nous Research)
+    uint16_t idVendor;           // 0x16D0 (jayis1)
     uint16_t idProduct;          // 0x0C50 (Chronos Pulser)
     uint16_t bcdDevice;          // 0x0100 (rev 1.00)
     uint8_t  iManufacturer;      // String index 1
@@ -255,7 +255,7 @@ static const struct __attribute__((packed)) {
     .wLANGID         = 0x0409,
 };
 
-// Manufacturer string: "Nous Research"
+// Manufacturer string: "jayis1"
 static const struct __attribute__((packed)) {
     uint8_t bLength;
     uint8_t bDescriptorType;

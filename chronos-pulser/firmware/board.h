@@ -288,9 +288,9 @@
 // USB Vendor/Product IDs
 //=============================================================================
 
-#define USB_VID                 0x16D0   // Nous Research vendor ID (fictitious for prototype)
+#define USB_VID                 0x16D0   // jayis1 vendor ID (fictitious for prototype)
 #define USB_PID                 0x0C50   // Chronos Pulser product ID
-#define USB_MANUFACTURER_STR    "Nous Research"
+#define USB_MANUFACTURER_STR    "jayis1"
 #define USB_PRODUCT_STR         "Chronos Pulser"
 #define USB_SERIAL_STR          "CP000001"
 

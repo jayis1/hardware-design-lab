@@ -29,7 +29,7 @@ const AetherTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#1A4B8C',       // Deep blue — Nous Research brand
+    primary: '#1A4B8C',       // Deep blue — jayis1 brand
     background: '#0A0E1A',    // Dark background
     card: '#111827',          // Card surface
     text: '#E5E7EB',          // Light text

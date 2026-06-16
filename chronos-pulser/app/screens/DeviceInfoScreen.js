@@ -211,7 +211,7 @@ export default function DeviceInfoScreen() {
       <View style={styles.infoCard}>
         <Text style={styles.infoTitle}>Connection Details</Text>
         <Text style={styles.infoText}>
-          USB Vendor ID: 0x16D0 (Nous Research)
+          USB Vendor ID: 0x16D0 (jayis1)
         </Text>
         <Text style={styles.infoText}>
           USB Product ID: 0x0C50 (Chronos Pulser)

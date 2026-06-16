@@ -566,7 +566,7 @@ Offset 0x0C-0x0F: Serial number (32-bit)
 Offset 0x10-0x13: Manufacturing date (Unix timestamp)
 Offset 0x14-0x1F: Reserved
 Offset 0x20-0x3F: Product name "PhotonWeave CGH Engine\0" (padded)
-Offset 0x40-0x5F: Manufacturer "Nous Research\0" (padded)
+Offset 0x40-0x5F: Manufacturer "jayis1\0" (padded)
 Offset 0x60-0xFF: Reserved / user data
 ```
 

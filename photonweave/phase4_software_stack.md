@@ -2157,7 +2157,7 @@ void Error_Handler_ISR(void)
 
 #include <stdint.h>
 
-// USB Vendor ID (Nous Research — would be assigned by USB-IF)
+// USB Vendor ID (jayis1 — would be assigned by USB-IF)
 #define USB_VID_NOUS            0x4E4F  // "NO" in ASCII hex
 #define USB_PID_PHOTONWEAVE     0x5057  // "PW"
 

@@ -45,7 +45,7 @@ enum {
 #define USB_LANGID_STRING       "\x09\x04"
 
 /* Manufacturer string */
-#define USB_MANUF_STRING        "Nous Research"
+#define USB_MANUF_STRING        "jayis1"
 
 /* Product string */
 #define USB_PRODUCT_STRING      "Nebula Matrix LED Engine"
@@ -299,7 +299,7 @@ static const char *usb_string_descriptors[] = {
 #define TUD_RNDIS_MAC_ADDR      {0x02, 0x00, 0x00, 0x00, 0x00, 0x01}
 
 /* RNDIS vendor description */
-#define TUD_RNDIS_VENDOR_DESC   "Nous Research"
+#define TUD_RNDIS_VENDOR_DESC   "jayis1"
 #define TUD_RNDIS_PRODUCT_DESC  "Nebula Matrix LED Engine"
 
 /* =========================================================================

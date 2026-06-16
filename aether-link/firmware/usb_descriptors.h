@@ -27,7 +27,7 @@ typedef struct __attribute__((packed)) {
     uint16_t idVendor;           // 0x0403 (FTDI)
     uint16_t idProduct;          // 0x6014 (FT232H)
     uint16_t bcdDevice;          // 0x0900 (9.00)
-    uint8_t  iManufacturer;      // 1 = "Nous Research"
+    uint8_t  iManufacturer;      // 1 = "jayis1"
     uint8_t  iProduct;           // 2 = "Aether-Link Debug Bridge"
     uint8_t  iSerialNumber;      // 3 = unique serial
     uint8_t  bNumConfigurations; // 1
@@ -128,7 +128,7 @@ typedef struct __attribute__((packed)) {
 #define USB_STRING_IDX_MPSSE        4
 #define USB_STRING_IDX_UART         5
 
-// Manufacturer string: "Nous Research"
+// Manufacturer string: "jayis1"
 #define USB_STRING_MANUFACTURER \
     { 26, 0x03, 'N',0, 'o',0, 'u',0, 's',0, ' ',0, 'R',0, 'e',0, 's',0, 'e',0, 'a',0, 'r',0, 'c',0, 'h',0 }
 

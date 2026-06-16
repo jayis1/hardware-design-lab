@@ -56,7 +56,7 @@ Power-On / PCIe PERST# Deassertion
 │   │   ├── Vendor ID: 0x10EE (Xilinx)
 │   │   ├── Device ID: 0x9038 (custom)
 │   │   ├── Class Code: 0x010802 (NVMe controller)
-│   │   ├── Subsystem Vendor ID: 0x1A4B (Nous Research)
+│   │   ├── Subsystem Vendor ID: 0x1A4B (jayis1)
 │   │   ├── Subsystem ID: 0x0001 (Aether-Link)
 │   │   └── BAR0: 64KB MMIO (NVMe registers + doorbells)
 │   ├── MSI-X capability: 2048 vectors

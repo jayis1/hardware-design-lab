@@ -146,7 +146,7 @@ static const uint8_t usb_string_langid[] = {
     0x09, 0x04                  // wLANGID[0]: 0x0409 = English (United States)
 };
 
-// String Descriptor 1: Manufacturer — "Nous Research"
+// String Descriptor 1: Manufacturer — "jayis1"
 static const uint8_t usb_string_manufacturer[] = {
     0x1C,                       // bLength (28 bytes: 2 header + 13 chars × 2)
     0x03,                       // bDescriptorType: STRING

@@ -266,7 +266,7 @@ export default function SettingsScreen() {
         <Text style={styles.aboutTitle}>Chronos Pulser</Text>
         <Text style={styles.aboutText}>Companion App v1.0.0</Text>
         <Text style={styles.aboutText}>Precision Time-Domain Reflectometer</Text>
-        <Text style={styles.aboutText}>Nous Research — Hardware Design Lab</Text>
+        <Text style={styles.aboutText}>jayis1 — Hardware Design Lab</Text>
         <Text style={styles.aboutText}>© 2026 — Open Source Hardware</Text>
       </View>
     </ScrollView>

@@ -2,7 +2,7 @@
  * usb_descriptors.h - USB Device Descriptors for CyberGuard
  * CTAP2/HID FIDO2 Authenticator + CDC Debug
  *
- * USB VID: 0x1EA8  (Nous Research)
+ * USB VID: 0x1EA8  (jayis1)
  * USB PID: 0xCY01  (CyberGuard Token)
  */
 
@@ -17,7 +17,7 @@
 #define USB_VID                 0x1EA8
 #define USB_PID                 0xCY01
 #define USB_LANG_ID             0x0409   /* English (US) */
-#define USB_MANUFACTURER        "Nous Research"
+#define USB_MANUFACTURER        "jayis1"
 #define USB_PRODUCT             "CyberGuard Security Token"
 #define USB_SERIAL              "CG-00000001"
 #define USB_VERSION             0x0100  /* v1.0 */

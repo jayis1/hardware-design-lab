@@ -227,7 +227,7 @@
 //=============================================================================
 // USB / FT601 Configuration
 //=============================================================================
-#define USB_VID                  0x4E4F      // "NO" — Nous Research
+#define USB_VID                  0x4E4F      // "NO" — jayis1
 #define USB_PID                  0x5057      // "PW" — PhotonWeave
 #define USB_MAX_PACKET_SIZE      1024        // SuperSpeed bulk
 #define USB_CONFIG_VALUE         1

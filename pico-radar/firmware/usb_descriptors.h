@@ -141,7 +141,7 @@ static const uint8_t string_lang_id[4] = {
     0x04, 0x03, 0x09, 0x04
 };
 
-/* Manufacturer: "Nous Research" */
+/* Manufacturer: "jayis1" */
 static const uint8_t string_manufacturer[28] = {
     28, 0x03,
     'N', 0, 'o', 0, 'u', 0, 's', 0, ' ', 0,

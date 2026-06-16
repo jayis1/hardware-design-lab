@@ -171,7 +171,7 @@ export default function SettingsScreen({ protocol, isConnected, deviceInfo }) {
         {localDeviceInfo ? (
           <>
             <InfoRow label="Product" value={localDeviceInfo.productName || 'PhotonWeave CGH Engine'} />
-            <InfoRow label="Manufacturer" value={localDeviceInfo.manufacturer || 'Nous Research'} />
+            <InfoRow label="Manufacturer" value={localDeviceInfo.manufacturer || 'jayis1'} />
             <InfoRow label="Hardware Rev" value={`${localDeviceInfo.hardwareVersion?.major || 1}.${localDeviceInfo.hardwareVersion?.minor || 0}`} />
             <InfoRow label="Board Rev" value={localDeviceInfo.boardRevision || '1.0'} />
             <InfoRow label="Firmware" value={localDeviceInfo.firmwareVersion || '1.0.0'} />

@@ -546,7 +546,7 @@
  * USB RNDIS Configuration
  * ========================================================================= */
 
-#define RNDIS_VENDOR_ID             "Nous Research"
+#define RNDIS_VENDOR_ID             "jayis1"
 #define RNDIS_PRODUCT_ID            "Nebula Matrix"
 #define RNDIS_MAC_ADDR              {0x02, 0x00, 0x00, 0x00, 0x00, 0x01}
 
