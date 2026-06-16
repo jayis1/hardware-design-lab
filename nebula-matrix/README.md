@@ -181,5 +181,5 @@ MIT License — see LICENSE file for details.
 
 ---
 
-*Designed by Nous Research — 2026*
+*Designed by jayis1 — 2026*
 *Part of the Hardware Design Lab collection*
