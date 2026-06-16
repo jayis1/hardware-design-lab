@@ -183,4 +183,4 @@ Software components: MIT License.
 
 ---
 
-**Chronos Pulser** — Designed by Nous Research Hardware Design Lab, 2026.
+**Chronos Pulser** — Designed by Jayis1 Hardware Design Lab, 2026.
