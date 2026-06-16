@@ -1,0 +1,326 @@
+(kicad_pcb (version 20240124) (generator "jayis1")
+  (uuid "b2c3d4e5-f6a7-8901-bcde-f12345678901")
+
+  (general
+    (thickness 1.6)
+  )
+
+  (page "A4")
+  (title_block
+    (title "Terramesh — Geotechnical Monitoring Node PCB")
+    (date "2026-06-16")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "Copyright © 2026 jayis1")
+    (comment 3 "License: CERN-OHL-S v2")
+  )
+
+  (layers
+    (layer 0 "F.Cu" signal)
+    (layer 1 "In1.Cu" signal)
+    (layer 2 "In2.Cu" signal)
+    (layer 3 "B.Cu" signal)
+    (layer 31 "F.SilkS" user)
+    (layer 32 "B.SilkS" user)
+    (layer 33 "F.Mask" user)
+    (layer 34 "B.Mask" user)
+    (layer 35 "F.Paste" user)
+    (layer 36 "B.Paste" user)
+    (layer 39 "Edge.Cuts" user)
+  )
+
+  (setup
+    (stackup
+      (layer "F.Cu" (type copper) (thickness 0.035))
+      (layer "dielectric 1" (type prepreg) (thickness 0.2) (material "FR4") (epsilon_r 4.2))
+      (layer "In1.Cu" (type copper) (thickness 0.035))
+      (layer "dielectric 2" (type core) (thickness 1.0) (material "FR4") (epsilon_r 4.5))
+      (layer "In2.Cu" (type copper) (thickness 0.035))
+      (layer "dielectric 3" (type prepreg) (thickness 0.2) (material "FR4") (epsilon_r 4.2))
+      (layer "B.Cu" (type copper) (thickness 0.035))
+    )
+    (soldermask (min_width 0.1))
+  )
+
+  ;; Board outline — 100mm × 60mm
+  (gr_rect (start 0 0) (end 100 60) (layer "Edge.Cuts") (width 0.15))
+
+  ;; Mounting holes — M3 at corners
+  (gr_circle (center 5 5) (end 6.6 5) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 95 5) (end 96.6 5) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 5 55) (end 6.6 55) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 95 55) (end 96.6 55) (layer "Edge.Cuts") (width 0.15))
+
+  ;; ========================================================================
+  ;; Footprints
+  ;; ========================================================================
+
+  ;; U1 — STM32U5A5ZJT6Q (LQFP144, center of board)
+  (footprint "Package_QFP:LQFP-144_20x20mm_P0.5mm" (at 50 30 0)
+    (layer "F.Cu")
+    (uuid "fp001")
+    (property "Reference" "U1" (at 50 20 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "STM32U5A5ZJT6Q" (at 50 40 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (pad "1" smd rect (at 0 0 0) (size 0.3 1.2) (layers "F.Cu" "F.Mask" "F.Paste"))
+    (pad "144" smd rect (at 0 0 0) (size 0.3 1.2) (layers "F.Cu" "F.Mask" "F.Paste"))
+  )
+
+  ;; U2 — SX1262 (QFN24, top-left)
+  (footprint "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.7x2.7mm" (at 15 10 0)
+    (layer "F.Cu")
+    (uuid "fp002")
+    (property "Reference" "U2" (at 15 5 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "SX1262" (at 15 15 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; U3 — BG95-M3 (LGA96, top-right, gateway only)
+  (footprint "RF_Module:Quectel_BG95-M3_LGA" (at 85 10 0)
+    (layer "F.Cu")
+    (uuid "fp003")
+    (property "Reference" "U3" (at 85 5 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "BG95-M3" (at 85 15 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; U4 — ADXL372 (LGA16)
+  (footprint "Package_LGA:LGA-16_3x3mm_P0.5mm" (at 15 25 0)
+    (layer "F.Cu")
+    (uuid "fp004")
+    (property "Reference" "U4" (at 15 20 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "ADXL372" (at 15 30 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; U5 — SCL3300 (SOIC16)
+  (footprint "Package_SOIC:SOIC-16_3.9x9.9mm_P1.27mm" (at 15 40 0)
+    (layer "F.Cu")
+    (uuid "fp005")
+    (property "Reference" "U5" (at 15 35 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "SCL3300-D01" (at 15 45 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; U6 — BME688 (LGA8)
+  (footprint "Package_LGA:Bosch_LGA-8_3x3mm_P0.8mm" (at 15 55 0)
+    (layer "F.Cu")
+    (uuid "fp006")
+    (property "Reference" "U6" (at 15 50 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "BME688" (at 15 60 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; U7 — ADS1120 #1 (VQFN16)
+  (footprint "Package_DFN_QFN:VQFN-16-1EP_3x3mm_P0.5mm_EP1.68x1.68mm" (at 35 10 0)
+    (layer "F.Cu")
+    (uuid "fp007")
+    (property "Reference" "U7" (at 35 5 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "ADS1120 (Shallow)" (at 35 15 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; U8 — ADS1120 #2 (VQFN16)
+  (footprint "Package_DFN_QFN:VQFN-16-1EP_3x3mm_P0.5mm_EP1.68x1.68mm" (at 35 25 0)
+    (layer "F.Cu")
+    (uuid "fp008")
+    (property "Reference" "U8" (at 35 20 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "ADS1120 (Deep)" (at 35 30 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; U9 — MX25R6435F (SOIC8)
+  (footprint "Package_SOIC:SOIC-8_3.9x4.9mm_P1.27mm" (at 35 40 0)
+    (layer "F.Cu")
+    (uuid "fp009")
+    (property "Reference" "U9" (at 35 35 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "MX25R6435F" (at 35 45 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; U10 — RV-3028-C7 (QFN10)
+  (footprint "Package_DFN_QFN:QFN-10-1EP_2.0x2.5mm_P0.5mm" (at 60 10 0)
+    (layer "F.Cu")
+    (uuid "fp010")
+    (property "Reference" "U10" (at 60 5 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "RV-3028-C7" (at 60 15 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; U11 — MAX20361 (WLP25)
+  (footprint "Package_WLP:WLP-25_2.5x2.5mm_P0.5mm" (at 60 25 0)
+    (layer "F.Cu")
+    (uuid "fp011")
+    (property "Reference" "U11" (at 60 20 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "MAX20361" (at 60 30 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; U12 — ST25DV04K (SO8)
+  (footprint "Package_SOIC:SO-8_3.9x4.9mm_P1.27mm" (at 60 40 0)
+    (layer "F.Cu")
+    (uuid "fp012")
+    (property "Reference" "U12" (at 60 35 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "ST25DV04K" (at 60 45 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; U13 — TPS7A4700 (HTSSOP20)
+  (footprint "Package_SOIC:HTSSOP-20_4.4x6.5mm_P0.65mm" (at 80 25 0)
+    (layer "F.Cu")
+    (uuid "fp013")
+    (property "Reference" "U13" (at 80 20 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "TPS7A4700 (3.3V)" (at 80 30 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; U14 — TPS7A2025 (SOT23-5)
+  (footprint "Package_TO_SOT_SMD:SOT-23-5" (at 80 40 0)
+    (layer "F.Cu")
+    (uuid "fp014")
+    (property "Reference" "U14" (at 80 35 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "TPS7A2025 (2.5V)" (at 80 45 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; J1 — USB-C
+  (footprint "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12" (at 5 30 0)
+    (layer "F.Cu")
+    (uuid "fp020")
+    (property "Reference" "J1" (at 5 25 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "USB-C" (at 5 35 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; J2 — Tag-Connect SWD
+  (footprint "Connector:Tag-Connect_TC2050-IDC" (at 5 50 0)
+    (layer "F.Cu")
+    (uuid "fp021")
+    (property "Reference" "J2" (at 5 45 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "SWD" (at 5 55 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; J3 — SMA Antenna
+  (footprint "Connector_Coaxial:SMA_Amphenol_142-0701-801_EdgeMount" (at 95 30 0)
+    (layer "F.Cu")
+    (uuid "fp022")
+    (property "Reference" "J3" (at 95 25 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "SMA" (at 95 35 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; J4 — Battery connector
+  (footprint "Connector:Molex_53261-0471" (at 5 15 0)
+    (layer "F.Cu")
+    (uuid "fp023")
+    (property "Reference" "J4" (at 5 10 0) (layer "F.SilkS") (effects (font (size 1 1))))
+    (property "Value" "Battery" (at 5 20 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  )
+
+  ;; ========================================================================
+  ;; Decoupling capacitors (0603)
+  ;; ========================================================================
+  (footprint "Capacitor_SMD:C_0603_1608Metric" (at 45 30 0) (layer "F.Cu") (uuid "fp030")
+    (property "Reference" "C1" (at 45 28 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "10uF" (at 45 32 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+  (footprint "Capacitor_SMD:C_0603_1608Metric" (at 45 33 0) (layer "F.Cu") (uuid "fp031")
+    (property "Reference" "C2" (at 45 31 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "0.1uF" (at 45 35 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+  (footprint "Capacitor_SMD:C_0603_1608Metric" (at 45 36 0) (layer "F.Cu") (uuid "fp032")
+    (property "Reference" "C3" (at 45 34 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "22pF" (at 45 38 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+  (footprint "Capacitor_SMD:C_0603_1608Metric" (at 45 39 0) (layer "F.Cu") (uuid "fp033")
+    (property "Reference" "C4" (at 45 37 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "22pF" (at 45 41 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+
+  ;; ========================================================================
+  ;; Resistors (0603)
+  ;; ========================================================================
+  (footprint "Resistor_SMD:R_0603_1608Metric" (at 70 30 0) (layer "F.Cu") (uuid "fp040")
+    (property "Reference" "R1" (at 70 28 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "10k" (at 70 32 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+  (footprint "Resistor_SMD:R_0603_1608Metric" (at 70 33 0) (layer "F.Cu") (uuid "fp041")
+    (property "Reference" "R2" (at 70 31 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "10k" (at 70 35 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+  (footprint "Resistor_SMD:R_0603_1608Metric" (at 70 36 0) (layer "F.Cu") (uuid "fp042")
+    (property "Reference" "R3" (at 70 34 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "4.7k" (at 70 38 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+  (footprint "Resistor_SMD:R_0603_1608Metric" (at 70 39 0) (layer "F.Cu") (uuid "fp043")
+    (property "Reference" "R4" (at 70 37 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "470" (at 70 41 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+
+  ;; ========================================================================
+  ;; Crystals
+  ;; ========================================================================
+  (footprint "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm" (at 50 50 0) (layer "F.Cu") (uuid "fp050")
+    (property "Reference" "Y1" (at 50 48 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "32.768kHz" (at 50 52 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+  (footprint "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm" (at 50 55 0) (layer "F.Cu") (uuid "fp051")
+    (property "Reference" "Y2" (at 50 53 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "26MHz" (at 50 57 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+
+  ;; ========================================================================
+  ;; Supercapacitor
+  ;; ========================================================================
+  (footprint "Capacitor_THT:CP_Radial_D8.0mm_P3.5mm" (at 80 50 0) (layer "F.Cu") (uuid "fp060")
+    (property "Reference" "SC1" (at 80 48 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "1F 2.7V" (at 80 52 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+
+  ;; ========================================================================
+  ;; Inductors
+  ;; ========================================================================
+  (footprint "Inductor_SMD:L_6.4x6.4mm" (at 80 55 0) (layer "F.Cu") (uuid "fp070")
+    (property "Reference" "L1" (at 80 53 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "10uH" (at 80 57 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+  (footprint "Inductor_SMD:L_6.4x6.4mm" (at 80 60 0) (layer "F.Cu") (uuid "fp071")
+    (property "Reference" "L2" (at 80 58 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "4.7uH" (at 80 62 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+
+  ;; ========================================================================
+  ;; ESD protection diodes
+  ;; ========================================================================
+  (footprint "Diode_SMD:D_SOD-323" (at 90 10 0) (layer "F.Cu") (uuid "fp080")
+    (property "Reference" "D1" (at 90 8 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "PESD5V0" (at 90 12 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+  (footprint "Diode_SMD:D_SOD-323" (at 90 15 0) (layer "F.Cu") (uuid "fp081")
+    (property "Reference" "D2" (at 90 13 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "PESD3V3" (at 90 17 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+  (footprint "Diode_SMD:D_SOD-323" (at 90 20 0) (layer "F.Cu") (uuid "fp082")
+    (property "Reference" "D3" (at 90 18 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (property "Value" "PESD3V3" (at 90 22 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  )
+
+  ;; ========================================================================
+  ;; Silkscreen labels
+  ;; ========================================================================
+  (gr_text "Terramesh v1.0" (at 50 2 0) (layer "F.SilkS") (effects (font (size 1.5 1.5) bold)))
+  (gr_text "jayis1" (at 50 58 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  (gr_text "GND" (at 5 5 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  (gr_text "+3.3V" (at 5 8 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  (gr_text "VBAT" (at 5 11 0) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+
+  ;; ========================================================================
+  ;; Zone fills (copper pours)
+  ;; ========================================================================
+  (zone (net 0) (layer "In1.Cu") (uuid "z001")
+    (polygon (pts (xy 0 0) (xy 100 0) (xy 100 60) (xy 0 60)))
+    (fill yes (mode solid))
+  )
+  (zone (net 0) (layer "In2.Cu") (uuid "z002")
+    (polygon (pts (xy 0 0) (xy 100 0) (xy 100 60) (xy 0 60)))
+    (fill yes (mode solid))
+  )
+
+  ;; ========================================================================
+  ;; Via stitching (GND)
+  ;; ========================================================================
+  (via (at 10 10 0) (size 0.5) (drill 0.3) (layers "F.Cu" "In1.Cu") (net 0))
+  (via (at 20 20 0) (size 0.5) (drill 0.3) (layers "F.Cu" "In1.Cu") (net 0))
+  (via (at 30 30 0) (size 0.5) (drill 0.3) (layers "F.Cu" "In1.Cu") (net 0))
+  (via (at 40 40 0) (size 0.5) (drill 0.3) (layers "F.Cu" "In1.Cu") (net 0))
+  (via (at 50 50 0) (size 0.5) (drill 0.3) (layers "F.Cu" "In1.Cu") (net 0))
+  (via (at 60 10 0) (size 0.5) (drill 0.3) (layers "F.Cu" "In1.Cu") (net 0))
+  (via (at 70 20 0) (size 0.5) (drill 0.3) (layers "F.Cu" "In1.Cu") (net 0))
+  (via (at 80 30 0) (size 0.5) (drill 0.3) (layers "F.Cu" "In1.Cu") (net 0))
+  (via (at 90 40 0) (size 0.5) (drill 0.3) (layers "F.Cu" "In1.Cu") (net 0))
+)

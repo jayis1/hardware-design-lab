@@ -1,0 +1,77 @@
+{
+  "board": {
+    "design_settings": {
+      "rules": {
+        "min_clearance": 0.15,
+        "min_track_width": 0.15,
+        "min_via_diameter": 0.5,
+        "min_via_drill": 0.3,
+        "min_microvia_diameter": 0.3,
+        "min_microvia_drill": 0.1,
+        "min_through_hole_diameter": 0.3,
+        "min_annular_ring": 0.1,
+        "solder_mask_margin": 0.05,
+        "solder_paste_margin": -0.05,
+        "solder_paste_ratio": 0.0,
+        "clearance_overrides": [],
+        "track_widths": [0.15, 0.25, 0.35, 0.5, 1.0],
+        "via_dimensions": [
+          {"diameter": 0.5, "drill": 0.3},
+          {"diameter": 0.7, "drill": 0.4},
+          {"diameter": 1.0, "drill": 0.6}
+        ],
+        "microvia_dimensions": []
+      },
+      "layers": {
+        "layers": [
+          {"id": 0, "name": "F.Cu", "type": "copper"},
+          {"id": 1, "name": "In1.Cu", "type": "copper"},
+          {"id": 2, "name": "In2.Cu", "type": "copper"},
+          {"id": 3, "name": "B.Cu", "type": "copper"},
+          {"id": 31, "name": "F.SilkS", "type": "user"},
+          {"id": 32, "name": "B.SilkS", "type": "user"},
+          {"id": 33, "name": "F.Mask", "type": "user"},
+          {"id": 34, "name": "B.Mask", "type": "user"},
+          {"id": 35, "name": "F.Paste", "type": "user"},
+          {"id": 36, "name": "B.Paste", "type": "user"},
+          {"id": 39, "name": "Edge.Cuts", "type": "user"},
+          {"id": 40, "name": "Margin", "type": "user"},
+          {"id": 41, "name": "F.CrtYd", "type": "user"},
+          {"id": 42, "name": "B.CrtYd", "type": "user"},
+          {"id": 43, "name": "F.Fab", "type": "user"},
+          {"id": 44, "name": "B.Fab", "type": "user"}
+        ]
+      },
+      "board_thickness": 1.6,
+      "copper_finish": "ENIG",
+      "stackup": [
+        {"layer_name": "F.Cu", "layer_type": "copper", "thickness": 0.035, "material": "copper", "epsilon_r": 4.2},
+        {"layer_name": "dielectric 1", "layer_type": "prepreg", "thickness": 0.2, "material": "FR4", "epsilon_r": 4.2},
+        {"layer_name": "In1.Cu", "layer_type": "copper", "thickness": 0.035, "material": "copper", "epsilon_r": 4.5},
+        {"layer_name": "dielectric 2", "layer_type": "core", "thickness": 1.0, "material": "FR4", "epsilon_r": 4.5},
+        {"layer_name": "In2.Cu", "layer_type": "copper", "thickness": 0.035, "material": "copper", "epsilon_r": 4.5},
+        {"layer_name": "dielectric 3", "layer_type": "prepreg", "thickness": 0.2, "material": "FR4", "epsilon_r": 4.2},
+        {"layer_name": "B.Cu", "layer_type": "copper", "thickness": 0.035, "material": "copper", "epsilon_r": 4.2}
+      ]
+    },
+    "board": {
+      "width": 100.0,
+      "height": 60.0,
+      "edge_connectors": []
+    }
+  },
+  "meta": {
+    "author": "jayis1",
+    "version": "1.0",
+    "date": "2026-06-16",
+    "description": "Terramesh Geotechnical Monitoring Node — KiCad Project"
+  },
+  "project": {
+    "name": "terramesh",
+    "title": "Terramesh — Subterranean Geotechnical Monitoring Node",
+    "company": "jayis1",
+    "revision": "1.0",
+    "board": "device.kicad_pcb",
+    "schematic": "device.kicad_sch"
+  }
+}
