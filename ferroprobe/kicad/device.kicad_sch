@@ -1,0 +1,263 @@
+(kicad_sch
+  (version 20221018)
+  (generator "ferroprobe-jayis1")
+  (uuid "00000000-0000-0000-0000-000000000001")
+
+  (paper "A3")
+
+  (title_block
+    (title "FerroProbe — 3-Axis Fluxgate Magnetometer")
+    (date "2026-06-17")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Open-Source 3-Axis Vector Fluxgate Magnetometer")
+    (comment 2 "Author: jayis1")
+    (comment 3 "License: CERN-OHL-S v2"))
+
+  (lib_symbols
+    (symbol "MCU_ST_STM32H7:STM32H743VIT6"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "STM32H743VIT6" (at 0 0 0))
+      (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm")
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h743vi.pdf")
+      (property "Description" "MCU Cortex-M7 480MHz 2MB Flash 1MB RAM")
+      (property "Author" "jayis1"))
+
+    (symbol "Sensor_Magnetic:Fluxgate_3Axis"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "FG" (at 0 5.08 0))
+      (property "Value" "FG_3AXIS" (at 0 0 0))
+      (property "Footprint" "Custom:Fluxgate_3Axis_14mm")
+      (property "Description" "3-Axis Mu-Metal Fluxgate Sensor Assembly")
+      (property "Author" "jayis1"))
+
+    (symbol "Analog_ADC:ADS1256"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "ADS1256" (at 0 0 0))
+      (property "Footprint" "Package_SO:SSOP-28_5.3x10.2mm_P0.65mm")
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/ads1256.pdf")
+      (property "Description" "24-bit 8-channel Delta-Sigma ADC, 30kSPS")
+      (property "Author" "jayis1"))
+
+    (symbol "Analog_DAC:DAC8568"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "DAC8568" (at 0 0 0))
+      (property "Footprint" "Package_SO:SSOP-16_3.9x4.9mm_P0.635mm")
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/dac8568.pdf")
+      (property "Description" "16-bit 8-channel Voltage Output DAC")
+      (property "Author" "jayis1"))
+
+    (symbol "Sensor_Motion:BMI270"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "BMI270" (at 0 0 0))
+      (property "Footprint" "Package_LGA:Bosch_LGA-14_3x2.5mm_P0.5mm")
+      (property "Datasheet" "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmi270-ds000.pdf")
+      (property "Description" "6-axis IMU (accel + gyro), I2C/SPI")
+      (property "Author" "jayis1"))
+
+    (symbol "RF_Module:NEO-M9N"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "NEO-M9N" (at 0 0 0))
+      (property "Footprint" "RF_Module:u-blox NEO-M9N")
+      (property "Datasheet" "https://www.u-blox.com/en/docs/UBX-21022428")
+      (property "Description" "Multi-constellation GNSS receiver, 10Hz, 2m CEP")
+      (property "Author" "jayis1"))
+
+    (symbol "RF_Bluetooth:nRF52840"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "nRF52840" (at 0 0 0))
+      (property "Footprint" "Package_DFN_QFN:QFN-73_7x7mm_P0.5mm")
+      (property "Datasheet" "https://www.nordicsemi.com/-/media/Software-and-other-downloads/Product-briefs/nRF52840-product-brief.pdf")
+      (property "Description" "BLE 5.0 SoC, ARM Cortex-M4F, 2Mbps")
+      (property "Author" "jayis1"))
+
+    (symbol "Device:C"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 0 2.54 0))
+      (property "Value" "C" (at 0 -2.54 0))
+      (property "Footprint" ""))
+
+    (symbol "Device:R"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 0 2.54 0))
+      (property "Value" "R" (at 0 -2.54 0))
+      (property "Footprint" ""))
+
+    (symbol "Device:L"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "L" (at 0 2.54 0))
+      (property "Value" "L" (at 0 -2.54 0))
+      (property "Footprint" ""))
+
+    (symbol "power:GND"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -3.81 0))
+      (property "Value" "GND" (at 0 -1.27 0)))
+
+    (symbol "power:+3V3"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -3.81 0))
+      (property "Value" "+3V3" (at 0 1.27 0)))
+
+    (symbol "power:+5V"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -3.81 0))
+      (property "Value" "+5V" (at 0 1.27 0)))
+
+    (symbol "power:VBUS"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -3.81 0))
+      (property "Value" "VBUS" (at 0 1.27 0))))
+
+  (symbol_instances
+    (path "/00000000-0000-0000-0000-000000000001" (reference "U1") (unit 1) (value "STM32H743VIT6"))
+    (path "/00000000-0000-0000-0000-000000000002" (reference "U2") (unit 1) (value "ADS1256"))
+    (path "/00000000-0000-0000-0000-000000000003" (reference "U3") (unit 1) (value "DAC8568"))
+    (path "/00000000-0000-0000-0000-000000000004" (reference "U4") (unit 1) (value "BMI270"))
+    (path "/00000000-0000-0000-0000-000000000005" (reference "U5") (unit 1) (value "NEO-M9N"))
+    (path "/00000000-0000-0000-0000-000000000006" (reference "U6") (unit 1) (value "nRF52840"))
+    (path "/00000000-0000-0000-0000-000000000007" (reference "FG1") (unit 1) (value "FG_3AXIS"))
+    (path "/00000000-0000-0000-0000-000000000008" (reference "U7") (unit 1) (value "AD8429"))
+    (path "/00000000-0000-0000-0000-000000000009" (reference "U8") (unit 1) (value "TPS28225"))
+    (path "/00000000-0000-0000-0000-000000000010" (reference "U9") (unit 1) (value "MCP73871"))
+    (path "/00000000-0000-0000-0000-000000000011" (reference "U10") (unit 1) (value "SSD1306"))
+    (path "/00000000-0000-0000-0000-000000000012" (reference "U11") (unit 1) (value "TPS62A02"))
+    (path "/00000000-0000-0000-0000-000000000013" (reference "U12") (unit 1) (value "OPA1637"))
+    (path "/00000000-0000-0000-0000-000000000014" (reference "U13") (unit 1) (value "LM35"))
+    (path "/00000000-0000-0000-0000-000000000015" (reference "Y1") (unit 1) (value "8MHz"))
+    (path "/00000000-0000-0000-0000-000000000016" (reference "Y2") (unit 1) (value "32.768kHz"))
+    (path "/00000000-0000-0000-0000-000000000017" (reference "J1") (unit 1) (value "USB-C"))
+    (path "/00000000-0000-0000-0000-000000000018" (reference "J2") (unit 1) (value "MicroSD"))
+    (path "/00000000-0000-0000-0000-000000000019" (reference "BT1") (unit 1) (value "18650_Holder"))
+    (path "/00000000-0000-0000-0000-000000000020" (reference "SW1") (unit 1) (value "SW_MODE"))
+    (path "/00000000-0000-0000-0000-000000000021" (reference "SW2") (unit 1) (value "SW_START")))
+
+  ;; === Net connections (schematic wiring) ===
+
+  ;; STM32H743 (U1) → ADS1256 (U2) via SPI1
+  (net (code 1) (name "SPI1_SCK") (wire (path "PA5" "ADS1256_SCLK")))
+  (net (code 2) (name "SPI1_MISO") (wire (path "PA6" "ADS1256_DOUT")))
+  (net (code 3) (name "SPI1_MOSI") (wire (path "PA7" "ADS1256_DIN")))
+  (net (code 4) (name "ADS1256_CS") (wire (path "PD14" "ADS1256_CS")))
+  (net (code 5) (name "ADS1256_DRDY") (wire (path "PD15" "ADS1256_DRDY")))
+  (net (code 6) (name "ADS1256_SYNC") (wire (path "PD0" "ADS1256_SYNC")))
+
+  ;; STM32H743 (U1) → DAC8568 (U3) via SPI2
+  (net (code 7) (name "SPI2_SCK") (wire (path "PB10" "DAC8568_SCLK")))
+  (net (code 8) (name "SPI2_MOSI") (wire (path "PC2" "DAC8568_DIN")))
+  (net (code 9) (name "DAC8568_CS") (wire (path "PD4" "DAC8568_CS")))
+  (net (code 10) (name "DAC8568_LDAC") (wire (path "PD5" "DAC8568_LDAC")))
+
+  ;; STM32H743 (U1) → BMI270 (U4) + SSD1306 (U10) via I2C1
+  (net (code 11) (name "I2C1_SCL") (wire (path "PB6" "BMI270_SCL" "SSD1306_SCL")))
+  (net (code 12) (name "I2C1_SDA") (wire (path "PB7" "BMI270_SDA" "SSD1306_SDA")))
+
+  ;; STM32H743 (U1) → NEO-M9N (U5) via USART1
+  (net (code 13) (name "USART1_TX") (wire (path "PA9" "NEO-M9N_RX")))
+  (net (code 14) (name "USART1_RX") (wire (path "PA10" "NEO-M9N_TX")))
+
+  ;; STM32H743 (U1) → nRF52840 (U6) via UART4
+  (net (code 15) (name "UART4_TX") (wire (path "PA0" "nRF52840_RX")))
+  (net (code 16) (name "UART4_RX") (wire (path "PA1" "nRF52840_TX")))
+  (net (code 17) (name "UART4_RTS") (wire (path "PA2" "nRF52840_CTS")))
+  (net (code 18) (name "UART4_CTS") (wire (path "PA3" "nRF52840_RTS")))
+
+  ;; STM32H743 (U1) → H-Bridge (U9: TPS28225) via TIM1 PWM
+  (net (code 19) (name "TIM1_CH1") (wire (path "PE9" "TPS28225_IN_A")))
+  (net (code 20) (name "TIM1_CH1N") (wire (path "PE8" "TPS28225_IN_B")))
+  (net (code 21) (name "HBRIDGE_EN") (wire (path "PD6" "TPS28225_EN")))
+
+  ;; Fluxgate sensors (FG1) → Preamp (U7: AD8429) → ADS1256 (U2)
+  (net (code 22) (name "FG_X_SENSE") (wire (path "FG1_X_OUT" "AD8429_X_IN")))
+  (net (code 23) (name "FG_Y_SENSE") (wire (path "FG1_Y_OUT" "AD8429_Y_IN")))
+  (net (code 24) (name "FG_Z_SENSE") (wire (path "FG1_Z_OUT" "AD8429_Z_IN")))
+  (net (code 25) (name "AIN0_X") (wire (path "AD8429_X_OUT" "ADS1256_AIN0")))
+  (net (code 26) (name "AIN1_Y") (wire (path "AD8429_Y_OUT" "ADS1256_AIN1")))
+  (net (code 27) (name "AIN2_Z") (wire (path "AD8429_Z_OUT" "ADS1256_AIN2")))
+  (net (code 28) (name "AIN3_TEMP") (wire (path "LM35_OUT" "ADS1256_AIN3")))
+
+  ;; H-Bridge (U9) → Fluxgate drive coils
+  (net (code 29) (name "DRV_X_A") (wire (path "TPS28225_OUT_A" "FG1_X_DRV_P")))
+  (net (code 30) (name "DRV_X_B") (wire (path "TPS28225_OUT_B" "FG1_X_DRV_N")))
+
+  ;; DAC8568 (U3) → Fluxgate nulling coils (feedback)
+  (net (code 31) (name "DAC_OUT_X") (wire (path "DAC8568_VOUT_A" "FG1_X_NULL")))
+  (net (code 32) (name "DAC_OUT_Y") (wire (path "DAC8568_VOUT_B" "FG1_Y_NULL")))
+  (net (code 33) (name "DAC_OUT_Z") (wire (path "DAC8568_VOUT_C" "FG1_Z_NULL")))
+
+  ;; Power nets
+  (net (code 34) (name "VBUS") (wire (path "USB-C_VBUS" "MCP73871_VIN")))
+  (net (code 35) (name "VBAT") (wire (path "18650_+" "MCP73871_BAT")))
+  (net (code 36) (name "+3V3") (wire (path "TPS62A02_OUT" "STM32_VDD" "ADS1256_AVDD" "BMI270_VDD" "NEO_VDD" "nRF52840_VDD" "SSD1306_VDD")))
+  (net (code 37) (name "+5V") (wire (path "MCP73871_OUT" "TPS62A02_IN" "ADS1256_AVDD5V")))
+  (net (code 38) (name "GND"))
+  (net (code 39) (name "AGND") (wire (path "ADS1256_AGND" "AD8429_AGND" "FG1_GND")))
+
+  ;; HSE crystal (Y1: 8 MHz) → STM32H743
+  (net (code 40) (name "HSE_IN") (wire (path "Y1_1" "STM32H743_OSC_IN")))
+  (net (code 41) (name "HSE_OUT") (wire (path "Y1_2" "STM32H743_OSC_OUT")))
+
+  ;; LSE crystal (Y2: 32.768 kHz) → STM32H743 RTC
+  (net (code 42) (name "LSE_IN") (wire (path "Y2_1" "STM32H743_OSC32_IN")))
+  (net (code 43) (name "LSE_OUT") (wire (path "Y2_2" "STM32H743_OSC32_OUT")))
+
+  ;; SD card (J2) via SPI1 (shared with ADS1256)
+  (net (code 44) (name "SD_CS") (wire (path "PD1" "MicroSD_CS")))
+  (net (code 45) (name "SD_DAT") (wire (path "SPI1_MISO" "MicroSD_DAT0")))
+
+  ;; LEDs + Buzzer
+  (net (code 46) (name "LED_R") (wire (path "PD8" "LED_R_ANODE")))
+  (net (code 47) (name "LED_G") (wire (path "PD9" "LED_G_ANODE")))
+  (net (code 48) (name "LED_B") (wire (path "PD10" "LED_B_ANODE")))
+  (net (code 49) (name "BUZZER") (wire (path "PD11" "BUZZER_+")))
+
+  ;; Buttons
+  (net (code 50) (name "BTN_MODE") (wire (path "PD12" "SW1_1")))
+  (net (code 51) (name "BTN_START") (wire (path "PD13" "SW2_1")))
+
+  ;; USB-C (J1) → STM32H743 USB + MCP73871 charger
+  (net (code 52) (name "USB_DM") (wire (path "USB-C_D-" "STM32H743_PA11")))
+  (net (code 53) (name "USB_DP") (wire (path "USB-C_D+" "STM32H743_PA12")))
+
+  ;; Reference voltage (REF192: 2.5V) → ADS1256 VREF
+  (net (code 54) (name "VREF_2V5") (wire (path "REF192_OUT" "ADS1256_VREFP")))
+
+  ;; Battery sensing
+  (net (code 55) (name "BATT_SENSE") (wire (path "VBAT_DIV" "PC15_ANALOG")))
+  (net (code 56) (name "CHARGE_STAT") (wire (path "MCP73871_STAT" "PD13_INPUT")))
+
+  ;; === Component placements (schematic sheet coordinates) ===
+  ;; U1 (STM32H743VIT6) at (80, 60) — center of sheet
+  ;; U2 (ADS1256) at (50, 100) — lower left, near fluxgate preamps
+  ;; U3 (DAC8568) at (50, 40) — upper left, near feedback coils
+  ;; U4 (BMI270) at (120, 100) — lower right
+  ;; U5 (NEO-M9N) at (120, 40) — upper right
+  ;; U6 (nRF52840) at (120, 70) — right side
+  ;; FG1 (Fluxgate 3-axis) at (20, 70) — far left (sensor head)
+  ;; U7 (AD8429 preamp ×3) at (35, 85)
+  ;; U8 (TPS28225 H-bridge) at (35, 50)
+  ;; U9 (MCP73871 charger) at (80, 10) — top center
+  ;; U10 (SSD1306 OLED) at (120, 130) — bottom right
+  ;; U11 (TPS62A02 buck) at (80, 25)
+  ;; U12 (OPA1637 bandpass ×3) at (35, 75)
+  ;; U13 (LM35 temp sensor) at (20, 110)
+  ;; Y1 (8 MHz) at (80, 50)
+  ;; Y2 (32.768 kHz) at (90, 50)
+  ;; J1 (USB-C) at (140, 10)
+  ;; J2 (MicroSD) at (140, 100)
+  ;; BT1 (18650 holder) at (80, 130)
+  ;; SW1 (mode button) at (60, 130)
+  ;; SW2 (start button) at (70, 130)
+
+  (sheet (name "FerroProbe Main") (tstamps "/")
+    (property "Sheetname" "FerroProbe")
+    (property "Sheetfile" "device.kicad_sch"))
+
+  (no_connect (at 140 70))
+)
