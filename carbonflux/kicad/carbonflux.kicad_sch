@@ -1,0 +1,299 @@
+(kicad_sch (version 20231128) (generator "Eeschema")
+
+  (uuid "a1b2c3d4-e5f6-7890-abcd-ef1234567890")
+
+  (title_block
+    (title "CarbonFlux Soil CO2 Flux Monitor")
+    (date "2026-06-17")
+    (rev "A")
+    (company "Open Hardware Design")
+    (comment 1 "Author: jayis1")
+    (comment 2 "Copyright 2026 jayis1. All rights reserved.")
+    (comment 3 "License: CERN-OHL-S v2")
+  )
+
+  (page A4)
+
+  ; ==========================================================================
+  ; POWER SUPPLY SECTION
+  ; ==========================================================================
+
+  (symbol "PWR_FLAG" (power "PWR_FLAG")
+    (pin_names (font (size 1.27 1.27)) hide)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "VDD" (id 0) (at 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "+3.3V" (id 1) (at 0 2.54) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "" (id 2))
+    (property "Datasheet" "" (id 3))
+    (symbol "power"
+      (pin "1" (uuid "11111111-1111-1111-1111-111111111111"))
+    )
+  )
+
+  (symbol "PWR_FLAG" (power "PWR_FLAG")
+    (pin_names (font (size 1.27 1.27)) hide)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "VDD5V" (id 0) (at 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "+5V" (id 1) (at 0 2.54) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "" (id 2))
+    (property "Datasheet" "" (id 3))
+    (symbol "power"
+      (pin "1" (uuid "22222222-2222-2222-2222-222222222222"))
+    )
+  )
+
+  (symbol "PWR_FLAG" (power "PWR_FLAG")
+    (pin_names (font (size 1.27 1.27)) hide)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "GND" (id 0) (at 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "0V" (id 1) (at 0 2.54) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "" (id 2))
+    (property "Datasheet" "" (id 3))
+    (symbol "power"
+      (pin "1" (uuid "33333333-3333-3333-3333-333333333333"))
+    )
+  )
+
+  ; TPS63070 Buck-Boost Converter
+  (symbol "TPS63070" (in_bom yes) (on_board yes)
+    (property "Reference" "U9" (id 0) (at 0 10.16) (effects (font (size 1.27 1.27))))
+    (property "Value" "TPS63070" (id 1) (at 0 7.62) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_DFN_QFN:QFN-15-1EP_3x3mm_P0.5mm_EP1.7x1.7mm" (id 2))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps63070.pdf" (id 3))
+    (pin "1" (uuid "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa") (name "VIN") (number "1") (electrical passive))
+    (pin "2" (uuid "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb") (name "EN") (number "2") (electrical input))
+    (pin "3" (uuid "cccccccc-cccc-cccc-cccc-cccccccccccc") (name "PS_SYNC") (number "3") (electrical input))
+    (pin "4" (uuid "dddddddd-dddd-dddd-dddd-dddddddddddd") (name "PGND") (number "4") (electrical passive))
+    (pin "5" (uuid "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee") (name "SW") (number "5") (electrical passive))
+    (pin "6" (uuid "ffffffff-ffff-ffff-ffff-ffffffffffff") (name "VOUT") (number "6") (electrical passive))
+    (pin "7" (uuid "11111111-2222-3333-4444-555555555555") (name "FB") (number "7") (electrical input))
+    (pin "8" (uuid "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee") (name "AGND") (number "8") (electrical passive))
+    (pin "9" (uuid "bbbbbbbb-cccc-dddd-eeee-ffffffffffff") (name "VINA") (number "9") (electrical passive))
+  )
+
+  ; CN3791 MPPT Solar Charger
+  (symbol "CN3791" (in_bom yes) (on_board yes)
+    (property "Reference" "U8" (id 0) (at 0 10.16) (effects (font (size 1.27 1.27))))
+    (property "Value" "CN3791" (id 1) (at 0 7.62) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_SO:SOP-16_3.9x9.9mm_P1.27mm" (id 2))
+    (property "Datasheet" "http://www.consonance-elec.com/pdf/CN3791_datasheet.pdf" (id 3))
+    (pin "1" (uuid "aaaa0001-0001-0001-0001-000000000001") (name "CHRG") (number "1") (electrical output))
+    (pin "2" (uuid "aaaa0002-0002-0002-0002-000000000002") (name "ACPR") (number "2") (electrical output))
+    (pin "3" (uuid "aaaa0003-0003-0003-0003-000000000003") (name "FB") (number "3") (electrical input))
+    (pin "4" (uuid "aaaa0004-0004-0004-0004-000000000004") (name "CSP") (number "4") (electrical passive))
+    (pin "5" (uuid "aaaa0005-0005-0005-0005-000000000005") (name "BAT") (number "5") (electrical passive))
+    (pin "6" (uuid "aaaa0006-0006-0006-0006-000000000006") (name "SEL") (number "6") (electrical input))
+    (pin "7" (uuid "aaaa0007-0007-0007-0007-000000000007") (name "VIN") (number "7") (electrical passive))
+    (pin "8" (uuid "aaaa0008-0008-0008-0008-000000000008") (name "GND") (number "8") (electrical passive))
+    (pin "9" (uuid "aaaa0009-0009-0009-0009-000000000009") (name "GND") (number "9") (electrical passive))
+    (pin "10" (uuid "aaaa0010-0010-0010-0010-000000000010") (name "VCC") (number "10") (electrical passive))
+    (pin "11" (uuid "aaaa0011-0011-0011-0011-000000000011") (name "TIMER") (number "11") (electrical input))
+    (pin "12" (uuid "aaaa0012-0012-0012-0012-000000000012") (name "SNS") (number "12") (electrical passive))
+    (pin "13" (uuid "aaaa0013-0013-0013-0013-000000000013") (name "BAT") (number "13") (electrical passive))
+    (pin "14" (uuid "aaaa0014-0014-0014-0014-000000000014") (name "NTC") (number "14") (electrical input))
+    (pin "15" (uuid "aaaa0015-0015-0015-0015-000000000015") (name "REF") (number "15") (electrical output))
+    (pin "16" (uuid "aaaa0016-0016-0016-0016-000000000016") (name "STAT") (number "16") (electrical output))
+  )
+
+  ; ==========================================================================
+  ; MCU SECTION — STM32U5A9ZG
+  ; ==========================================================================
+
+  (symbol "STM32U5A9ZGJ6" (in_bom yes) (on_board yes)
+    (property "Reference" "U1" (id 0) (at 0 10.16) (effects (font (size 1.27 1.27))))
+    (property "Value" "STM32U5A9ZGJ6" (id 1) (at 0 7.62) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_BGA:UFBGA-176_7x7mm_Layout13x13_P0.5mm" (id 2))
+    (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32u5a9zj.pdf" (id 3))
+    (pin "1" (uuid "b0010001-0001-0001-0001-000000000001") (name "PB0") (number "A4") (electrical bidirectional))
+    (pin "2" (uuid "b0010002-0002-0002-0002-000000000002") (name "PB1") (number "A5") (electrical bidirectional))
+    (pin "3" (uuid "b0010003-0003-0003-0003-000000000003") (name "PB2") (number "A6") (electrical bidirectional))
+    (pin "4" (uuid "b0010004-0004-0004-0004-000000000004") (name "PB3") (number "A1") (electrical bidirectional))
+    (pin "5" (uuid "b0010005-0005-0005-0005-000000000005") (name "PB4") (number "A2") (electrical bidirectional))
+    (pin "6" (uuid "b0010006-0006-0006-0006-000000000006") (name "PB5") (number "A3") (electrical bidirectional))
+    (pin "7" (uuid "b0010007-0007-0007-0007-000000000007") (name "PB6") (number "B1") (electrical bidirectional))
+    (pin "8" (uuid "b0010008-0008-0008-0008-000000000008") (name "PB7") (number "B2") (electrical bidirectional))
+    (pin "9" (uuid "b0010009-0009-0009-0009-000000000009") (name "PB8") (number "B3") (electrical bidirectional))
+    (pin "10" (uuid "b0010010-0010-0010-0010-000000000010") (name "PB9") (number "B4") (electrical bidirectional))
+    (pin "11" (uuid "b0010011-0011-0011-0011-000000000011") (name "PA0") (number "B5") (electrical bidirectional))
+    (pin "12" (uuid "b0010012-0012-0012-0012-000000000012") (name "PA1") (number "B6") (electrical bidirectional))
+    (pin "13" (uuid "b0010013-0013-0013-0013-000000000013") (name "PA2") (number "C1") (electrical bidirectional))
+    (pin "14" (uuid "b0010014-0014-0014-0014-000000000014") (name "PA3") (number "C2") (electrical bidirectional))
+    (pin "15" (uuid "b0010015-0015-0015-0015-000000000015") (name "PA4") (number "C3") (electrical bidirectional))
+    (pin "16" (uuid "b0010016-0016-0016-0016-000000000016") (name "PA5") (number "C4") (electrical bidirectional))
+    (pin "17" (uuid "b0010017-0017-0017-0017-000000000017") (name "PA6") (number "C5") (electrical bidirectional))
+    (pin "18" (uuid "b0010018-0018-0018-0018-000000000018") (name "PA7") (number "C6") (electrical bidirectional))
+    (pin "19" (uuid "b0010019-0019-0019-0019-000000000019") (name "PA8") (number "D1") (electrical bidirectional))
+    (pin "20" (uuid "b0010020-0020-0020-0020-000000000020") (name "PA9") (number "D2") (electrical bidirectional))
+    (pin "21" (uuid "b0010021-0021-0021-0021-000000000021") (name "PA10") (number "D3") (electrical bidirectional))
+    (pin "22" (uuid "b0010022-0022-0022-0022-000000000022") (name "PA11") (number "D4") (electrical bidirectional))
+    (pin "23" (uuid "b0010023-0023-0023-0023-000000000023") (name "PA12") (number "D5") (electrical bidirectional))
+    (pin "24" (uuid "b0010024-0024-0024-0024-000000000024") (name "PA13") (number "D6") (electrical bidirectional))
+    (pin "25" (uuid "b0010025-0025-0025-0025-000000000025") (name "PA14") (number "E1") (electrical bidirectional))
+    (pin "26" (uuid "b0010026-0026-0026-0026-000000000026") (name "PA15") (number "E2") (electrical bidirectional))
+    (pin "27" (uuid "b0010027-0027-0027-0027-000000000027") (name "PC0") (number "E3") (electrical bidirectional))
+    (pin "28" (uuid "b0010028-0028-0028-0028-000000000028") (name "PC1") (number "E4") (electrical bidirectional))
+    (pin "29" (uuid "b0010029-0029-0029-0029-000000000029") (name "PC2") (number "E5") (electrical bidirectional))
+    (pin "30" (uuid "b0010030-0030-0030-0030-000000000030") (name "PC3") (number "E6") (electrical bidirectional))
+    (pin "31" (uuid "b0010031-0031-0031-0031-000000000031") (name "PC4") (number "F1") (electrical bidirectional))
+    (pin "32" (uuid "b0010032-0032-0032-0032-000000000032") (name "PC5") (number "F2") (electrical bidirectional))
+    (pin "33" (uuid "b0010033-0033-0033-0033-000000000033") (name "PC6") (number "F3") (electrical bidirectional))
+    (pin "34" (uuid "b0010034-0034-0034-0034-000000000034") (name "PC7") (number "F4") (electrical bidirectional))
+    (pin "35" (uuid "b0010035-0035-0035-0035-000000000035") (name "PC8") (number "F5") (electrical bidirectional))
+    (pin "36" (uuid "b0010036-0036-0036-0036-000000000036") (name "PC9") (number "F6") (electrical bidirectional))
+    (pin "99" (uuid "b0010099-0099-0099-0099-000000000099") (name "VDD") (number "V1") (electrical passive))
+    (pin "100" (uuid "b0010100-0100-0100-0100-000000000100") (name "VSS") (number "V2") (electrical passive))
+    (pin "101" (uuid "b0010101-0101-0101-0101-000000000101") (name "VDDA") (number "V3") (electrical passive))
+    (pin "102" (uuid "b0010102-0102-0102-0102-000000000102") (name "VSSA") (number "V4") (electrical passive))
+  )
+
+  ; ==========================================================================
+  ; SENSOR SECTION
+  ; ==========================================================================
+
+  ; SCD41 CO2 Sensor
+  (symbol "SCD41" (in_bom yes) (on_board yes)
+    (property "Reference" "U4" (id 0) (at 0 10.16) (effects (font (size 1.27 1.27))))
+    (property "Value" "SCD41" (id 1) (at 0 7.62) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Sensor_CO2:Sensirion_SCD41" (id 2))
+    (property "Datasheet" "https://sensirion.com/media/documents/C4D1D162/62873FEA/CD_DS_SCD41_Datasheet.pdf" (id 3))
+    (pin "1" (uuid "c0010001-0001-0001-0001-000000000001") (name "VDD") (number "1") (electrical passive))
+    (pin "2" (uuid "c0010002-0002-0002-0002-000000000002") (name "VDDIO") (number "2") (electrical passive))
+    (pin "3" (uuid "c0010003-0003-0003-0003-000000000003") (name "SCL") (number "3") (electrical bidirectional))
+    (pin "4" (uuid "c0010004-0004-0004-0004-000000000004") (name "SDA") (number "4") (electrical bidirectional))
+    (pin "5" (uuid "c0010005-0005-0005-0005-000000000005") (name "GND") (number "5") (electrical passive))
+    (pin "6" (uuid "c0010006-0006-0006-0006-000000000006") (name "NC") (number "6") (electrical passive))
+  )
+
+  ; DPS310 Barometer
+  (symbol "DPS310" (in_bom yes) (on_board yes)
+    (property "Reference" "U5" (id 0) (at 0 10.16) (effects (font (size 1.27 1.27))))
+    (property "Value" "DPS310" (id 1) (at 0 7.62) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_LGA:Infineon_DPS310-1.0x1.0mm_P0.5mm" (id 2))
+    (property "Datasheet" "https://www.infineon.com/dgdl/Infineon-DPS310-DS-v01_00.pdf" (id 3))
+    (pin "1" (uuid "d0010001-0001-0001-0001-000000000001") (name "CSB") (number "1") (electrical input))
+    (pin "2" (uuid "d0010002-0002-0002-0002-000000000002") (name "SDI") (number "2") (electrical bidirectional))
+    (pin "3" (uuid "d0010003-0003-0003-0003-000000000003") (name "SDA") (number "3") (electrical bidirectional))
+    (pin "4" (uuid "d0010004-0004-0004-0004-000000000004") (name "SCLK") (number "4") (electrical input))
+    (pin "5" (uuid "d0010005-0005-0005-0005-000000000005") (name "VDD") (number "5") (electrical passive))
+    (pin "6" (uuid "d0010006-0006-0006-0006-000000000006") (name "GND") (number "6") (electrical passive))
+    (pin "7" (uuid "d0010007-0007-0007-0007-000000000007") (name "VDDIO") (number "7") (electrical passive))
+    (pin "8" (uuid "d0010008-0008-0008-0008-000000000008") (name "INT") (number "8") (electrical output))
+  )
+
+  ; TMP117 Temperature Sensor
+  (symbol "TMP117" (in_bom yes) (on_board yes)
+    (property "Reference" "U6" (id 0) (at 0 10.16) (effects (font (size 1.27 1.27))))
+    (property "Value" "TMP117" (id 1) (at 0 7.62) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_SMD:Texas_WSON-6-1EP_2.0x2.0mm_P0.5mm" (id 2))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tmp117.pdf" (id 3))
+    (pin "1" (uuid "e0010001-0001-0001-0001-000000000001") (name "VDD") (number "1") (electrical passive))
+    (pin "2" (uuid "e0010002-0002-0002-0002-000000000002") (name "GND") (number "2") (electrical passive))
+    (pin "3" (uuid "e0010003-0003-0003-0003-000000000003") (name "SCL") (number "3") (electrical bidirectional))
+    (pin "4" (uuid "e0010004-0004-0004-0004-000000000004") (name "SDA") (number "4") (electrical bidirectional))
+    (pin "5" (uuid "e0010005-0005-0005-0005-000000000005") (name "ADDR0") (number "5") (electrical input))
+    (pin "6" (uuid "e0010006-0006-0006-0006-000000000006") (name "ADDR1") (number "6") (electrical input))
+  )
+
+  ; RV-8803 RTC
+  (symbol "RV8803" (in_bom yes) (on_board yes)
+    (property "Reference" "U7" (id 0) (at 0 10.16) (effects (font (size 1.27 1.27))))
+    (property "Value" "RV-8803-C7" (id 1) (at 0 7.62) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_SON:MicroCrystal_RV-8803-C7" (id 2))
+    (property "Datasheet" "https://www.microcrystal.com/fileadmin/Media/Products/RTC/Documents/RV-8803-C7.pdf" (id 3))
+    (pin "1" (uuid "f0010001-0001-0001-0001-000000000001") (name "SCL") (number "1") (electrical bidirectional))
+    (pin "2" (uuid "f0010002-0002-0002-0002-000000000002") (name "SDA") (number "2") (electrical bidirectional))
+    (pin "3" (uuid "f0010003-0003-0003-0003-000000000003") (name "GND") (number "3") (electrical passive))
+    (pin "4" (uuid "f0010004-0004-0004-0004-000000000004") (name "VDD") (number "4") (electrical passive))
+    (pin "5" (uuid "f0010005-0005-0005-0005-000000000005") (name "VBACK") (number "5") (electrical passive))
+    (pin "6" (uuid "f0010006-0006-0006-0006-000000000006") (name "CLKOUT") (number "6") (electrical output))
+    (pin "7" (uuid "f0010007-0007-0007-0007-000000000007") (name "INT") (number "7") (electrical output))
+  )
+
+  ; ==========================================================================
+  ; RADIO SECTION — SX1262 LoRa
+  ; ==========================================================================
+
+  (symbol "SX1262" (in_bom yes) (on_board yes)
+    (property "Reference" "U2" (id 0) (at 0 10.16) (effects (font (size 1.27 1.27))))
+    (property "Value" "SX1262" (id 1) (at 0 7.62) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" (id 2))
+    (property "Datasheet" "https://www.semtech.com/products/wireless-rf/lora-connect/sx1262" (id 3))
+    (pin "1" (uuid "g0010001-0001-0001-0001-000000000001") (name "RFP") (number "1") (electrical passive))
+    (pin "2" (uuid "g0010002-0002-0002-0002-000000000002") (name "RFN") (number "2") (electrical passive))
+    (pin "3" (uuid "g0010003-0003-0003-0003-000000000003") (name "VDD_RF") (number "3") (electrical passive))
+    (pin "4" (uuid "g0010004-0004-0004-0004-000000000004") (name "GND") (number "4") (electrical passive))
+    (pin "5" (uuid "g0010005-0005-0005-0005-000000000005") (name "VBAT_IN") (number "5") (electrical passive))
+    (pin "6-23" ... )
+    (pin "24" (uuid "g0010024-0024-0024-0024-000000000024") (name "GND") (number "24") (electrical passive))
+  )
+
+  ; ==========================================================================
+  ; FLASH — W25Q128
+  ; ==========================================================================
+
+  (symbol "W25Q128" (in_bom yes) (on_board yes)
+    (property "Reference" "U3" (id 0) (at 0 10.16) (effects (font (size 1.27 1.27))))
+    (property "Value" "W25Q128JV" (id 1) (at 0 7.62) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_SOIC:SOIC-8_5.23x5.23mm_P1.27mm" (id 2))
+    (property "Datasheet" "https://www.winbond.com/resource-files/w25q128jv_dtr_revi_05212020.pdf" (id 3))
+    (pin "1" (uuid "h0010001-0001-0001-0001-000000000001") (name "CS") (number "1") (electrical input))
+    (pin "2" (uuid "h0010002-0002-0002-0002-000000000002") (name "SO/IO1") (number "2") (electrical bidirectional))
+    (pin "3" (uuid "h0010003-0003-0003-0003-000000000003") (name "WP/IO2") (number "3") (electrical bidirectional))
+    (pin "4" (uuid "h0010004-0004-0004-0004-000000000004") (name "GND") (number "4") (electrical passive))
+    (pin "5" (uuid "h0010005-0005-0005-0005-000000000005") (name "SI/IO0") (number "5") (electrical bidirectional))
+    (pin "6" (uuid "h0010006-0006-0006-0006-000000000006") (name "SCK") (number "6") (electrical input))
+    (pin "7" (uuid "h0010007-0007-0007-0007-000000000007") (name "HOLD/IO3") (number "7") (electrical bidirectional))
+    (pin "8" (uuid "h0010008-0008-0008-0008-000000000008") (name "VCC") (number "8") (electrical passive))
+  )
+
+  ; ==========================================================================
+  ; NET LIST (Critical connections)
+  ; ==========================================================================
+
+  (wire (pts (xy 50.8 50.8) (xy 60.8 50.8)) (net 1) (uuid "n0010001-0001-0001-0001-000000000001"))
+  (wire (pts (xy 50.8 55.8) (xy 60.8 55.8)) (net 2) (uuid "n0010002-0002-0002-0002-000000000002"))
+
+  (net (name "+3.3V") (code 1))
+  (net (name "GND") (code 0))
+  (net (name "+5V") (code 2))
+  (net (name "+12V_BAT") (code 3))
+  (net (name "I2C1_SCL") (code 4))
+  (net (name "I2C1_SDA") (code 5))
+  (net (name "SPI1_SCK") (code 6))
+  (net (name "SPI1_MISO") (code 7))
+  (net (name "SPI1_MOSI") (code 8))
+  (net (name "LORA_NSS") (code 9))
+  (net (name "LORA_DIO1") (code 10))
+  (net (name "LORA_RESET") (code 11))
+  (net (name "LORA_BUSY") (code 12))
+  (net (name "SPI2_QSPI_SCK") (code 13))
+  (net (name "SPI2_QSPI_SI") (code 14))
+  (net (name "SPI2_QSPI_SO") (code 15))
+  (net (name "QSPI_CS") (code 16))
+  (net (name "USB_DP") (code 17))
+  (net (name "USB_DM") (code 18))
+  (net (name "SERVO_PWM") (code 19))
+  (net (name "ONEWIRE_DATA") (code 20))
+  (net (name "PAR_ADC") (code 21))
+  (net (name "VBAT_MON") (code 22))
+
+  (label "I2C1_SCL" (shape input) (at 80 50.8))
+  (label "I2C1_SDA" (shape input) (at 80 55.8))
+  (label "+3.3V" (shape input) (at 90 40))
+  (label "GND" (shape input) (at 90 45))
+
+  (sheet_instances (path "/" (page "1")))
+
+  ; ==========================================================================
+  ; TEXT & GRAPHICS
+  ; ==========================================================================
+
+  (text "CarbonFlux v1.0 — Author: jayis1" (at 50 10) (effects (font (size 2 2))))
+  (text "Copyright 2026 jayis1 — License: CERN-OHL-S v2" (at 50 15) (effects (font (size 1.5 1.5))))
+  (text "Schematic Revision A — 2026-06-17" (at 50 20) (effects (font (size 1.5 1.5))))
+
+  ; Title block area
+  (rect (start 140 0) (end 200 30) (stroke (width 0.2)) (fill none))
+
+  (image "./carbonflux_logo.png" (at 10 50) (scale 1) (uuid "img-0001"))
+) (kicad_sch)

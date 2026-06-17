@@ -1,0 +1,211 @@
+{
+  "board": {
+    "3dviewports": [],
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "pads": {
+          "clearance": 0.2,
+          "solder_mask_margin": 0.05
+        },
+        "tracks": {
+          "clearance": 0.15,
+          "via_diameter": 0.6,
+          "via_drill": 0.3,
+          "micro_via_diameter": 0.4,
+          "micro_via_drill": 0.2
+        }
+      },
+      "diff_pair_dimensions": [],
+      "drc_rules": [],
+      "meta": {
+        "version": 2
+      },
+      "rule_severities": {
+        "clearance_overrides": "error",
+        "copper_edge_clearance": "warning",
+        "courtyards_overlap": "warning",
+        "drill_out_of_range": "error",
+        "footprint_filters_mismatch": "warning",
+        "footprint_type_mismatch": "error",
+        "hole_clearance": "error",
+        "hole_near_hole": "warning",
+        "invalid_outline": "error",
+        "isolated_copper": "warning",
+        "item_on_disabled_layer": "error",
+        "items_displaced": "error",
+        "malformed_courtyard": "error",
+        "missing_courtyard": "ignore",
+        "missing_footprint": "error",
+        "net_conflict": "warning",
+        "npth_inside_courtyard": "ignore",
+        "padstack": "error",
+        "pth_inside_courtyard": "ignore",
+        "shorting_edges": "error",
+        "silk_over_copper": "warning",
+        "silk_over_clearance": "warning",
+        "solder_mask_bridge": "error",
+        "starved_thermal": "error",
+        "text_height": "warning",
+        "unconnected_items": "error",
+        "unresolved_variable": "warning",
+        "zone_has_no_net": "warning"
+      },
+      "track_widths": [0.15, 0.2, 0.25, 0.3, 0.4, 0.5, 0.8, 1.0],
+      "via_dimensions": [
+        {"diameter": 0.4, "drill": 0.2},
+        {"diameter": 0.6, "drill": 0.3},
+        {"diameter": 0.9, "drill": 0.5}
+      ]
+    },
+    "ipc2581": {
+      "dist": "",
+      "distpn": "",
+      "internal_id": ""
+    },
+    "layer_presets": [],
+    "material": {
+      "thickness": 1.6
+    },
+    "meta": {
+      "version": 1
+    },
+    "plot_params": {
+      "gerber_accuracy": 3,
+      "line_width": 0.1
+    },
+    "rules": {
+      "min_clearance": 0.15,
+      "min_connection": "0.01mm",
+      "min_copper_width": 0.15,
+      "min_hole_diameter": 0.2,
+      "min_hole_to_hole": 0.3,
+      "min_microvia_diameter": 0.2,
+      "min_microvia_drill": 0.1,
+      "min_silk_clearance": 0.1,
+      "min_through_hole_diameter": 0.3,
+      "solder_mask_to_copper_clearance": 0.05,
+      "solder_mask_min_width": 0.05,
+      "solder_mask_ratio": 1.0
+    },
+    "solder_mask": {
+      "min_width": 0.05,
+      "ratio": 1.0
+    },
+    "stackup": {
+      "copper_finish": "ENIG",
+      "dielectric_constraints": [],
+      "layers": [
+        {"copper_thickness": 0.035, "type": "copper", "name": "F.Cu", "role": "signal"},
+        {"thickness": 0.2, "type": "core", "material": "FR4", "epsilon_r": 4.5},
+        {"copper_thickness": 0.0175, "type": "copper", "name": "In1.Cu", "role": "plane"},
+        {"thickness": 1.0, "type": "prepreg", "material": "FR4", "epsilon_r": 4.5},
+        {"copper_thickness": 0.0175, "type": "copper", "name": "In2.Cu", "role": "plane"},
+        {"thickness": 0.2, "type": "core", "material": "FR4", "epsilon_r": 4.5},
+        {"copper_thickness": 0.035, "type": "copper", "name": "B.Cu", "role": "signal"}
+      ]
+    },
+    "title_block": {
+      "title": "CarbonFlux Soil CO2 Flux Monitor",
+      "date": "2026-06-17",
+      "revision": "A",
+      "company": "Open Hardware Design",
+      "comment1": "Author: jayis1",
+      "comment2": "Copyright 2026 jayis1"
+    }
+  },
+  "boards": [],
+  "cvpcb": {
+    "equfiles": []
+  },
+  "erc": {
+    "erc_warnings": []
+  },
+  "meta": {
+    "version": 1
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "name": "Default",
+        "clearance": 0.15,
+        "trace_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "uvia_diameter": 0.4,
+        "uvia_drill": 0.2,
+        "diff_pair_width": 0.3,
+        "diff_pair_gap": 0.15
+      },
+      {
+        "name": "POWER",
+        "clearance": 0.2,
+        "trace_width": 0.5,
+        "via_diameter": 0.9,
+        "via_drill": 0.5,
+        "uvia_diameter": 0.4,
+        "uvia_drill": 0.2,
+        "diff_pair_width": 0.3,
+        "diff_pair_gap": 0.15
+      },
+      {
+        "name": "RF",
+        "clearance": 0.3,
+        "trace_width": 0.4,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "uvia_diameter": 0.4,
+        "uvia_drill": 0.2,
+        "diff_pair_width": 0.3,
+        "diff_pair_gap": 0.15
+      },
+      {
+        "name": "USB",
+        "clearance": 0.15,
+        "trace_width": 0.3,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "uvia_diameter": 0.4,
+        "uvia_drill": 0.2,
+        "diff_pair_width": 0.3,
+        "diff_pair_gap": 0.15
+      }
+    ],
+    "meta": {
+      "version": 2
+    },
+    "net_colors": null
+  },
+  "pcbnew": {
+    "last_paths": {
+      "gencad": "",
+      "idf": "",
+      "netlist": "",
+      "specctra_dsn": "",
+      "step": ""
+    },
+    "page_layout_descr_file": ""
+  },
+  "schematic": {
+    "annotate_start_num": 0,
+    "drawing": {
+      "page_layout_descr_file": ""
+    },
+    "meta": {
+      "version": 1
+    },
+    "net_bus_passive": false,
+    "subpart_id_separator": 0,
+    "update_hu2018": true
+  },
+  "sheets": [
+    ["", "/"]
+  ],
+  "meta": {
+    "version": 1
+  }
+}

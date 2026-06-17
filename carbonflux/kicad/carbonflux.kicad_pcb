@@ -1,0 +1,218 @@
+(kicad_pcb (version 20231128) (host pcbnew "(2023-11-28)")
+
+  (uuid "p1a2b3c4-d5e6-7890-abcd-ef1234567890")
+
+  (general
+    (thickness 1.6)
+    (paper "User")
+    (drawings 0)
+    (tracks 0)
+    (zones 0)
+    (modules 0)
+    (nets 23)
+  )
+
+  (page A4)
+
+  (title_block
+    (title "CarbonFlux Soil CO2 Flux Monitor PCB")
+    (date "2026-06-17")
+    (rev "A")
+    (company "Open Hardware Design")
+    (comment 1 "Author: jayis1")
+    (comment 2 "Copyright 2026 jayis1. All rights reserved.")
+  )
+
+  (net 0 "GND")
+  (net 1 "+3.3V")
+  (net 2 "+5V")
+  (net 3 "+12V_BAT")
+  (net 4 "I2C1_SCL")
+  (net 5 "I2C1_SDA")
+  (net 6 "SPI1_SCK")
+  (net 7 "SPI1_MISO")
+  (net 8 "SPI1_MOSI")
+  (net 9 "LORA_NSS")
+  (net 10 "LORA_DIO1")
+  (net 11 "LORA_RESET")
+  (net 12 "LORA_BUSY")
+  (net 13 "SPI2_SCK")
+  (net 14 "SPI2_SI")
+  (net 15 "SPI2_SO")
+  (net 16 "QSPI_CS")
+  (net 17 "USB_DP")
+  (net 18 "USB_DM")
+  (net 19 "SERVO_PWM")
+  (net 20 "ONEWIRE_DATA")
+  (net 21 "PAR_ADC")
+  (net 22 "VBAT_MON")
+
+  ; Board outline — 120mm x 80mm
+  (gr_line (start 0 0) (end 120 0) (layer "Edge.Cuts") (width 0.1) (uuid "g00001"))
+  (gr_line (start 120 0) (end 120 80) (layer "Edge.Cuts") (width 0.1) (uuid "g00002"))
+  (gr_line (start 120 80) (end 0 80) (layer "Edge.Cuts") (width 0.1) (uuid "g00003"))
+  (gr_line (start 0 80) (end 0 0) (layer "Edge.Cuts") (width 0.1) (uuid "g00004"))
+
+  ; Mounting holes — M3 at corners
+  (pad "" np_thru_hole circle (at 5 5) (size 3.2 3.2) (drill 3.2) (layers *.Cu *.Mask))
+  (pad "" np_thru_hole circle (at 115 5) (size 3.2 3.2) (drill 3.2) (layers *.Cu *.Mask))
+  (pad "" np_thru_hole circle (at 5 75) (size 3.2 3.2) (drill 3.2) (layers *.Cu *.Mask))
+  (pad "" np_thru_hole circle (at 115 75) (size 3.2 3.2) (drill 3.2) (layers *.Cu *.Mask))
+
+  ; Key component footprints
+  ; U1 — STM32U5A9ZG (UFBGA-176)
+  (module "Package_BGA:UFBGA-176_7x7mm_Layout13x13_P0.5mm" (layer "F.Cu") (tedit 0) (tstamp 0)
+    (at 60 40)
+    (descr "STM32U5A9ZG — Main MCU")
+    (attr smd)
+  )
+
+  ; U2 — SX1262 (QFN-24)
+  (module "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm" (layer "F.Cu") (tedit 0) (tstamp 0)
+    (at 30 60)
+    (descr "SX1262 LoRa Transceiver")
+    (attr smd)
+  )
+
+  ; U3 — W25Q128 (SOIC-8)
+  (module "Package_SOIC:SOIC-8_5.23x5.23mm_P1.27mm" (layer "F.Cu") (tedit 0) (tstamp 0)
+    (at 50 25)
+    (descr "W25Q128JV — 16MB SPI Flash")
+    (attr smd)
+  )
+
+  ; U4 — SCD41
+  (module "Sensor_CO2:Sensirion_SCD41" (layer "F.Cu") (tedit 0) (tstamp 0)
+    (at 30 25)
+    (descr "SCD41 CO2 Sensor")
+    (attr smd)
+  )
+
+  ; U5 — DPS310
+  (module "Package_LGA:Infineon_DPS310-1.0x1.0mm_P0.5mm" (layer "F.Cu") (tedit 0) (tstamp 0)
+    (at 45 10)
+    (descr "DPS310 Barometer")
+    (attr smd)
+  )
+
+  ; U6 — TMP117
+  (module "Package_TO_SOT_SMD:Texas_WSON-6-1EP_2.0x2.0mm_P0.5mm" (layer "F.Cu") (tedit 0) (tstamp 0)
+    (at 60 10)
+    (descr "TMP117 High-Accuracy Temperature Sensor")
+    (attr smd)
+  )
+
+  ; U7 — RV-8803 RTC
+  (module "Package_SON:MicroCrystal_RV-8803-C7" (layer "F.Cu") (tedit 0) (tstamp 0)
+    (at 40 55)
+    (descr "RV-8803-C7 Precision RTC")
+    (attr smd)
+  )
+
+  ; U8 — CN3791 MPPT Charger
+  (module "Package_SO:SOP-16_3.9x9.9mm_P1.27mm" (layer "F.Cu") (tedit 0) (tstamp 0)
+    (at 85 55)
+    (descr "CN3791 MPPT Solar Charger")
+    (attr smd)
+  )
+
+  ; U9 — TPS63070 Buck-Boost
+  (module "Package_DFN_QFN:QFN-15-1EP_3x3mm_P0.5mm_EP1.7x1.7mm" (layer "F.Cu") (tedit 0) (tstamp 0)
+    (at 85 30)
+    (descr "TPS63070 Buck-Boost 3.3V")
+    (attr smd)
+  )
+
+  ; Connectors
+  ; J1 — USB-C
+  (module "Connector_USB:USB4115-GF-A" (layer "F.Cu") (tedit 0) (tstamp 0)
+    (at 60 75)
+    (descr "USB-C Connector")
+    (attr smd)
+  )
+
+  ; J2 — SMA antenna
+  (module "Connector_Coaxial:SMA_Edge" (layer "F.Cu") (tedit 0) (tstamp 0)
+    (at 10 70)
+    (descr "SMA Antenna Connector")
+    (attr smd)
+  )
+
+  ; J3 — Battery screw terminal
+  (module "TerminalBlock:TerminalBlock_Keystone_3516_02x3.81mm" (layer "F.Cu") (tedit 0) (tstamp 0)
+    (at 100 65)
+    (descr "2-pin Battery Terminal")
+  )
+
+  ; Critical routing — USB differential pair
+  (segment (start 52 75) (end 54 73) (width 0.3) (layer "F.Cu") (net 17) (uuid "t00001"))
+  (segment (start 54 73) (end 56 71) (width 0.3) (layer "F.Cu") (net 17) (uuid "t00002"))
+  (segment (start 68 75) (end 66 73) (width 0.3) (layer "F.Cu") (net 18) (uuid "t00003"))
+  (segment (start 66 73) (end 64 71) (width 0.3) (layer "F.Cu") (net 18) (uuid "t00004"))
+
+  ; Power routes — 3.3V
+  (segment (start 85 30) (end 80 30) (width 0.5) (layer "In2.Cu") (net 1) (uuid "t00010"))
+  (segment (start 80 30) (end 60 30) (width 0.5) (layer "In2.Cu") (net 1) (uuid "t00011"))
+
+  ; I2C bus routing
+  (segment (start 60 10) (end 55 15) (width 0.2) (layer "F.Cu") (net 4) (uuid "t00020"))
+  (segment (start 55 15) (end 45 15) (width 0.2) (layer "F.Cu") (net 4) (uuid "t00021"))
+  (segment (start 60 10) (end 55 17) (width 0.2) (layer "F.Cu") (net 5) (uuid "t00030"))
+  (segment (start 55 17) (end 45 17) (width 0.2) (layer "F.Cu") (net 5) (uuid "t00031"))
+
+  ; SPI1 (LoRa) routing
+  (segment (start 60 40) (end 50 50) (width 0.2) (layer "F.Cu") (net 6) (uuid "t00040"))
+  (segment (start 60 40) (end 50 52) (width 0.2) (layer "F.Cu") (net 7) (uuid "t00041"))
+  (segment (start 60 40) (end 50 54) (width 0.2) (layer "F.Cu") (net 8) (uuid "t00042"))
+
+  ; QSPI (Flash) routing
+  (segment (start 60 40) (end 55 25) (width 0.25) (layer "In1.Cu") (net 13) (uuid "t00050"))
+  (segment (start 60 40) (end 53 25) (width 0.25) (layer "In1.Cu") (net 14) (uuid "t00051"))
+  (segment (start 60 40) (end 51 25) (width 0.25) (layer "In1.Cu") (net 15) (uuid "t00052"))
+
+  ; Power segments — battery
+  (segment (start 100 65) (end 90 55) (width 0.8) (layer "In2.Cu") (net 3) (uuid "t00060"))
+
+  ; Silkscreen labels
+  (gr_text "CARBONFLUX v1.0" (at 60 5) (layer "F.SilkS") (effects (font (size 1.5 1.5) (thickness 0.3))) (uuid "g10001"))
+  (gr_text "Author: jayis1" (at 60 2) (layer "F.SilkS") (effects (font (size 1.0 1.0) (thickness 0.2))) (uuid "g10002"))
+  (gr_text "J1 USB-C" (at 60 78) (layer "F.SilkS") (effects (font (size 1.0 1.0) (thickness 0.2))) (uuid "g10003"))
+  (gr_text "J2 ANT" (at 10 75) (layer "F.SilkS") (effects (font (size 1.0 1.0) (thickness 0.2))) (uuid "g10004"))
+  (gr_text "J3 BAT+" (at 100 70) (layer "F.SilkS") (effects (font (size 1.0 1.0) (thickness 0.2))) (uuid "g10005"))
+  (gr_text "J4 SOLAR" (at 100 62) (layer "F.SilkS") (effects (font (size 1.0 1.0) (thickness 0.2))) (uuid "g10006"))
+  (gr_text "J5 STAKE" (at 10 15) (layer "F.SilkS") (effects (font (size 1.0 1.0) (thickness 0.2))) (uuid "g10007"))
+  (gr_text "LED: G=OK R=ERR B=TX" (at 15 5) (layer "F.SilkS") (effects (font (size 0.8 0.8) (thickness 0.15))) (uuid "g10008"))
+
+  ; Zone fills
+  (zone (net 0) (layer "In1.Cu") (uuid "z00001")
+    (hatch edge 0.5)
+    (filled_polygon
+      (pts (xy 0 0) (xy 120 0) (xy 120 80) (xy 0 80))
+    )
+  )
+
+  (zone (net 1) (layer "In2.Cu") (uuid "z00002")
+    (hatch edge 0.5)
+    (filled_polygon
+      (pts (xy 0 0) (xy 120 0) (xy 120 80) (xy 0 80))
+    )
+  )
+
+  (zone (net 0) (layer "F.Cu") (uuid "z00003")
+    (hatch edge 0.5)
+    (filled_polygon
+      (pts (xy 0 0) (xy 120 0) (xy 120 80) (xy 0 80))
+    )
+  )
+
+  ; Design rules
+  (design_rules
+    (min_clearance 0.15)
+    (min_track_width 0.15)
+    (min_via_diameter 0.4)
+    (min_via_drill 0.2)
+    (uvia_allowed true)
+    (uvia_min_diameter 0.2)
+    (uvia_min_drill 0.1)
+  )
+) (kicad_pcb)
