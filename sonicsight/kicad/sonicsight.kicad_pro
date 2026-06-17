@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "author": "jayis1",
+    "date": "2026-06-17",
+    "description": "SonicSight — Portable Acoustic Tomography Scanner. Professional-grade project files for KiCad 7.x.",
+    "version": "1.0.0",
+    "copyright": "© 2026 jayis1. All rights reserved."
+  },
+  "project": {
+    "name": "SonicSight",
+    "board": "sonicsight",
+    "version": "1.0",
+    "revision": "A",
+    "board_start_date": "2026-06-17T00:00:00Z",
+    "pcbnew": {
+      "last_page_size": "A4",
+      "page_layout_descr_file": ""
+    },
+    "sheets": [
+      "power.sch",
+      "mcu.sch",
+      "tx_frontend.sch",
+      "rx_frontend.sch",
+      "peripherals.sch"
+    ]
+  },
+  "design_settings": {
+    "defaults": {
+      "net_class": "Default",
+      "track_width": "0.25mm",
+      "via_size": "0.6mm",
+      "via_drill": "0.3mm",
+      "micro_via_size": "0.3mm",
+      "micro_via_drill": "0.15mm"
+    },
+    "rules": {
+      "min_clearance": "0.15mm",
+      "min_track_width": "0.15mm",
+      "min_via_annular_ring": "0.1mm",
+      "solder_mask_clearance": "0.05mm",
+      "solder_paste_ratio": "-0.000mm",
+      "solder_paste_ratio_absolute": "0.000mm"
+    },
+    "layers": {
+      "copper": ["F.Cu", "In1.Cu", "In2.Cu", "B.Cu"],
+      "signal": 4,
+      "setup": {
+        "F.Cu": {"type": "signal", "thickness": "0.035mm"},
+        "In1.Cu": {"type": "signal", "thickness": "0.035mm"},
+        "In2.Cu": {"type": "signal", "thickness": "0.035mm"},
+        "B.Cu": {"type": "signal", "thickness": "0.035mm"}
+      },
+      "stackup": {
+        "total_thickness": "1.6mm",
+        "prepreg": [
+          {"material": "FR4", "thickness": "0.2mm", "dielectric": "4.5"},
+          {"material": "FR4", "thickness": "0.2mm", "dielectric": "4.5"},
+          {"material": "FR4", "thickness": "0.2mm", "dielectric": "4.5"}
+        ],
+        "core": [
+          {"material": "FR4", "thickness": "0.5mm", "dielectric": "4.5"},
+          {"material": "FR4", "thickness": "0.5mm", "dielectric": "4.5"}
+        ]
+      }
+    }
+  }
+}
