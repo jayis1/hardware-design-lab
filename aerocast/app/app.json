@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "AeroCast",
+    "slug": "aerocast-app",
+    "version": "1.0.0",
+    "author": "jayis1",
+    "description": "AeroCast companion app — real-time bioaerosol identification & allergy forecast. Author: jayis1",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "backgroundColor": "#0b1020",
+      "resizeMode": "contain",
+      "image": "./assets/splash.png"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": { "supportsTablet": true, "infoPlist": { "NSBluetoothAlwaysUsageDescription": "AeroCast uses Bluetooth to connect to your bioaerosol sensor." } },
+    "android": { "adaptiveIcon": { "backgroundColor": "#0b1020" }, "permissions": ["BLUETOOTH_CONNECT","BLUETOOTH_SCAN","ACCESS_FINE_LOCATION"] },
+    "extra": { "eas": { "projectId": "aerocast-jayis1" } }
+  }
+}

@@ -1,0 +1,292 @@
+(kicad_sch
+  (version 20240108)
+  (generator "kicad")
+  (generator_version "8.0")
+  (uuid "aerocast-sch-0001")
+  (paper "A2")
+  (title_block
+    (title "AeroCast — Real-Time Bioaerosol Identification Station")
+    (date "2026-06-18")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "Copyright (C) 2026 jayis1")
+    (comment 3 "License: CERN-OHL-S v2")
+  )
+
+  ;; ============================================================
+  ;; Sheet instances
+  ;; ============================================================
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+
+  ;; ============================================================
+  ;; Power nets
+  ;; ============================================================
+  (net 0 "")
+  (net 1 "+5V")
+  (net 2 "+3V3")
+  (net 3 "GND")
+  (net 4 "VBAT")
+  (net 5 "V_ANALOG")
+  (net 6 "V_PMT_850")
+
+  ;; ============================================================
+  ;; U1 — STM32H7A3VIT6 main MCU
+  ;; ============================================================
+  (symbol (lib_id "MCU_ST_STM32H7:STM32H7A3VIT6") (at 120 80) (uuid "u1-mcu")
+    (property "Reference" "U1" (at 120 40))
+    (property "Value"  "STM32H7A3VIT6" (at 120 48))
+    (property "Footprint" "Package_BGA:UFBGA-176_10x10mm_P0.65mm")
+    (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h7a3vi.pdf")
+    (property "Author" "jayis1")
+    (pin "VBAT"          (id 0)  (at 60  90)  (length 5)  (name "VBAT")      (type "power_in"))
+    (pin "VDD"           (id 1)  (at 60  95)  (length 5)  (name "VDD")       (type "power_in"))
+    (pin "VSSA"          (id 2)  (at 60  100) (length 5)  (name "VSSA")      (type "power_in"))
+    (pin "VDDA"          (id 3)  (at 60  105) (length 5)  (name "VDDA")      (type "power_in"))
+    (pin "NRST"          (id 4)  (at 60  110) (length 5)  (name "NRST")      (type "input"))
+    (pin "BOOT0"         (id 5)  (at 60  115) (length 5)  (name "BOOT0")     (type "input"))
+    (pin "PA0"           (id 6)  (at 60  120) (length 5)  (name "PA0")       (type "bidirectional"))
+    (pin "PA2/USART2_TX" (id 7)  (at 180 120) (length 5)  (name "PA2")       (type "bidirectional"))
+    (pin "PA3/USART2_RX" (id 8)  (at 180 115) (length 5)  (name "PA3")       (type "bidirectional"))
+    (pin "PA4/DAC1_OUT1" (id 9)  (at 180 110) (length 5)  (name "PA4")       (type "bidirectional"))
+    (pin "PA5/SPI1_SCK"  (id 10) (at 180 105) (length 5)  (name "PA5")       (type "bidirectional"))
+    (pin "PA15/TIM2_CH1" (id 11) (at 180 100) (length 5)  (name "PA15")      (type "bidirectional"))
+    (pin "PB0/TIM3_CH1"  (id 12) (at 180 95)  (length 5)  (name "PB0")       (type "bidirectional"))
+    (pin "PB4/SPI1_MISO" (id 13) (at 180 90)  (length 5)  (name "PB4")       (type "bidirectional"))
+    (pin "PB6/I2C1_SCL"  (id 14) (at 180 85)  (length 5)  (name "PB6")       (type "bidirectional"))
+    (pin "PB7/I2C1_SDA"  (id 15) (at 180 80)  (length 5)  (name "PB7")       (type "bidirectional"))
+    (pin "PB8/I2C4_SCL"  (id 16) (at 180 75)  (length 5)  (name "PB8")       (type "bidirectional"))
+    (pin "PB9/I2C4_SDA"  (id 17) (at 180 70)  (length 5)  (name "PB9")       (type "bidirectional"))
+    (pin "PB10/USART3_TX"(id 18) (at 180 65)  (length 5)  (name "PB10")      (type "bidirectional"))
+    (pin "PB11/USART3_RX"(id 19) (at 180 60)  (length 5)  (name "PB11")      (type "bidirectional"))
+    (pin "PC0/LID_SW"    (id 20) (at 60  55)  (length 5)  (name "PC0")       (type "bidirectional"))
+    (pin "PC8/SDMMC1_D0" (id 21) (at 60  50)  (length 5)  (name "PC8")       (type "bidirectional"))
+    (pin "PC9/ADC_CS"    (id 22) (at 60  45)  (length 5)  (name "PC9")       (type "bidirectional"))
+    (pin "PC10/ADC_BUSY" (id 23) (at 60  85)  (length 5)  (name "PC10")      (type "bidirectional"))
+    (pin "PC13/DISP_CS"  (id 24) (at 60  75)  (length 5)  (name "PC13")      (type "bidirectional"))
+  )
+
+  ;; ============================================================
+  ;; U2 — ESP32-C6-MINI-2U (Wi-Fi 6 + BLE 5.3)
+  ;; ============================================================
+  (symbol (lib_id "RF_Module:ESP32-C6-MINI-2U") (at 220 80) (uuid "u2-esp")
+    (property "Reference" "U2" (at 220 60))
+    (property "Value"  "ESP32-C6-MINI-2U" (at 220 66))
+    (property "Footprint" "RF_Module:ESP32-C6-MINI-2U")
+    (property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-c6-mini-2u_datasheet_en.pdf")
+    (property "Author" "jayis1")
+    (pin "3V3"    (id 0) (at 200 90) (length 4) (name "3V3")  (type "power_in"))
+    (pin "GND"    (id 1) (at 200 95) (length 4) (name "GND")  (type "power_in"))
+    (pin "EN"     (id 2) (at 200 100)(length 4) (name "EN")   (type "input"))
+    (pin "IO0"    (id 3) (at 240 100)(length 4) (name "IO0/BOOT") (type "bidirectional"))
+    (pin "TXD0"   (id 4) (at 240 90) (length 4) (name "TXD0") (type "bidirectional"))
+    (pin "RXD0"   (id 5) (at 240 85) (length 4) (name "RXD0") (type "bidirectional"))
+  )
+
+  ;; ============================================================
+  ;; U3 — LTC2351-14 4-channel simultaneous ADC
+  ;; ============================================================
+  (symbol (lib_id "Analog_ADC:LTC2351-14") (at 60 170) (uuid "u3-adc")
+    (property "Reference" "U3" (at 60 150))
+    (property "Value"  "LTC2351-14" (at 60 156))
+    (property "Footprint" "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm")
+    (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/235112fb.pdf")
+    (property "Author" "jayis1")
+    (pin "VDD"  (id 0) (at 40 180) (length 4) (name "VDD")   (type "power_in"))
+    (pin "GND"  (id 1) (at 40 190) (length 4) (name "GND")   (type "power_in"))
+    (pin "SCK"  (id 2) (at 80 180) (length 4) (name "SCK")   (type "input"))
+    (pin "SDO"  (id 3) (at 80 175) (length 4) (name "SDO")   (type "output"))
+    (pin "CS"   (id 4) (at 80 170) (length 4) (name "CS")    (type "input"))
+    (pin "CONVST"(id 5)(at 80 165) (length 4) (name "CONVST")(type "input"))
+    (pin "BUSY" (id 6) (at 80 160) (length 4) (name "BUSY")  (type "output"))
+    (pin "IN1+" (id 7) (at 40 165) (length 4) (name "IN1+")  (type "input"))
+    (pin "IN2+" (id 8) (at 40 160) (length 4) (name "IN2+")  (type "input"))
+    (pin "IN3+" (id 9) (at 40 155) (length 4) (name "IN3+")  (type "input"))
+    (pin "IN4+" (id 10)(at 40 150) (length 4) (name "IN4+")  (type "input"))
+  )
+
+  ;; ============================================================
+  ;; U4 — SHT45 temperature/humidity sensor
+  ;; ============================================================
+  (symbol (lib_id "Sensor_Humidity:Sensirion_SHT45") (at 160 180) (uuid "u4-sht")
+    (property "Reference" "U4" (at 160 170))
+    (property "Value"  "SHT45" (at 160 174))
+    (property "Footprint" "Sensor:Sensirion_DFN-4-1EP_1.5x1.5mm_P0.5mm")
+    (property "Datasheet" "https://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/2.5_sensirion_datasheets/Sensirion_Humidity_Sensors_SHT4x_Datasheet.pdf")
+    (property "Author" "jayis1")
+    (pin "VDD" (id 0) (at 150 190) (length 3) (name "VDD") (type "power_in"))
+    (pin "GND" (id 1) (at 170 190) (length 3) (name "GND") (type "power_in"))
+    (pin "SCL" (id 2) (at 150 175) (length 3) (name "SCL") (type "input"))
+    (pin "SDA" (id 3) (at 170 175) (length 3) (name "SDA") (type "bidirectional"))
+  )
+
+  ;; ============================================================
+  ;; U5 — BMP390 barometric pressure sensor
+  ;; ============================================================
+  (symbol (lib_id "Sensor_Pressure:BMP390") (at 220 180) (uuid "u5-bmp")
+    (property "Reference" "U5" (at 220 170))
+    (property "Value"  "BMP390" (at 220 174))
+    (property "Footprint" "Package_LGA:Bosch_LGA-10_2.5x2.5mm_P0.6mm")
+    (property "Datasheet" "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp390-ds002.pdf")
+    (property "Author" "jayis1")
+    (pin "VDDIO"(id 0) (at 210 190) (length 3) (name "VDDIO") (type "power_in"))
+    (pin "GND"  (id 1) (at 230 190) (length 3) (name "GND")   (type "power_in"))
+    (pin "SCL"  (id 2) (at 210 175) (length 3) (name "SCL")   (type "input"))
+    (pin "SDA"  (id 3) (at 230 175) (length 3) (name "SDA")   (type "bidirectional"))
+  )
+
+  ;; ============================================================
+  ;; U6 — SDP810 differential pressure sensor (flow)
+  ;; ============================================================
+  (symbol (lib_id "Sensor_Pressure:SDP810-500Pa") (at 280 180) (uuid "u6-sdp")
+    (property "Reference" "U6" (at 280 170))
+    (property "Value"  "SDP810-500Pa" (at 280 174))
+    (property "Footprint" "Sensor:Sensirion_SDP8xx_DFN-8_5x8mm_P1.25mm")
+    (property "Datasheet" "https://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/0.5_sensirion_datasheets/differential_pressure/Sensirion_Differential_Pressure_Sensors_SDP8xx_Datasheet.pdf")
+    (property "Author" "jayis1")
+    (pin "VDD" (id 0) (at 270 190) (length 3) (name "VDD") (type "power_in"))
+    (pin "GND" (id 1) (at 290 190) (length 3) (name "GND") (type "power_in"))
+    (pin "SCL" (id 2) (at 270 175) (length 3) (name "SCL") (type "input"))
+    (pin "SDA" (id 3) (at 290 175) (length 3) (name "SDA") (type "bidirectional"))
+  )
+
+  ;; ============================================================
+  ;; U7 — MP2762A NiMH charger
+  ;; ============================================================
+  (symbol (lib_id "Battery_Management:MP2762A") (at 60 250) (uuid "u7-charge")
+    (property "Reference" "U7" (at 60 240))
+    (property "Value"  "MP2762A" (at 60 244))
+    (property "Footprint" "Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.4mm")
+    (property "Datasheet" "https://www.monolithicpower.com/en/documentview/productdocument/document_version/2/product_version/33/product_series/2464/document_type/13")
+    (property "Author" "jayis1")
+    (pin "VIN"  (id 0) (at 40 260) (length 4) (name "VIN")  (type "power_in"))
+    (pin "GND"  (id 1) (at 80 260) (length 4) (name "GND")  (type "power_in"))
+    (pin "BAT"  (id 2) (at 40 250) (length 4) (name "BAT")  (type "power_out"))
+    (pin "ISET" (id 3) (at 80 250) (length 4) (name "ISET") (type "input"))
+  )
+
+  ;; ============================================================
+  ;; U8 — TPS62840 buck (3V3)
+  ;; ============================================================
+  (symbol (lib_id "Regulator_Switching:TPS62840") (at 160 250) (uuid "u8-buck")
+    (property "Reference" "U8" (at 160 240))
+    (property "Value"  "TPS62840" (at 160 244))
+    (property "Footprint" "Package_DFN_QFN:DSBGA-6_1.5x1.5mm_P0.5mm")
+    (property "Author" "jayis1")
+    (pin "VIN" (id 0) (at 140 260) (length 4) (name "VIN")  (type "power_in"))
+    (pin "GND" (id 1) (at 180 260) (length 4) (name "GND")  (type "power_in"))
+    (pin "VOUT"(id 2) (at 180 250) (length 4) (name "VOUT") (type "power_out"))
+  )
+
+  ;; ============================================================
+  ;; U9 — LP5907-3.3 analog LDO
+  ;; ============================================================
+  (symbol (lib_id "Regulator_Linear:LP5907-3.3") (at 220 250) (uuid "u9-ldo")
+    (property "Reference" "U9" (at 220 240))
+    (property "Value"  "LP5907-3.3" (at 220 244))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5")
+    (property "Author" "jayis1")
+    (pin "VIN" (id 0) (at 200 260) (length 4) (name "VIN")  (type "power_in"))
+    (pin "GND" (id 1) (at 240 260) (length 4) (name "GND")  (type "power_in"))
+    (pin "VOUT"(id 2) (at 240 250) (length 4) (name "VOUT") (type "power_out"))
+  )
+
+  ;; ============================================================
+  ;; D1 — 650 nm laser diode
+  ;; ============================================================
+  (symbol (lib_id "Device:Laser_Diode") (at 120 320) (uuid "d1-laser")
+    (property "Reference" "D1" (at 120 315))
+    (property "Value"  "650nm_50mW" (at 120 318))
+    (property "Footprint" "OptoDevice:TO-18_3Pin")
+    (property "Author" "jayis1")
+    (pin "A" (id 0) (at 110 330) (length 4) (name "A") (type "passive"))
+    (pin "K" (id 1) (at 130 330) (length 4) (name "K") (type "passive"))
+  )
+
+  ;; ============================================================
+  ;; D2 — 340 nm UV-LED
+  ;; ============================================================
+  (symbol (lib_id "Device:LED") (at 160 320) (uuid "d2-uv")
+    (property "Reference" "D2" (at 160 315))
+    (property "Value"  "340nm_UVLED_300mW" (at 160 318))
+    (property "Footprint" "LED_SMD:LED_3528")
+    (property "Author" "jayis1")
+    (pin "A" (id 0) (at 150 330) (length 4) (name "A") (type "passive"))
+    (pin "K" (id 1) (at 170 330) (length 4) (name "K") (type "passive"))
+  )
+
+  ;; ============================================================
+  ;; DISP1 — ST7789V 2.4" display (FPC)
+  ;; ============================================================
+  (symbol (lib_id "Display:ST7789V_2.4in") (at 280 320) (uuid "disp1")
+    (property "Reference" "DISP1" (at 280 305))
+    (property "Value"  "ST7789V_240x320" (at 280 310))
+    (property "Footprint" "Display:ST7789V_2.4in_FPC")
+    (property "Author" "jayis1")
+    (pin "VCC" (id 0) (at 260 330) (length 4) (name "VCC") (type "power_in"))
+    (pin "GND" (id 1) (at 300 330) (length 4) (name "GND") (type "power_in"))
+    (pin "SCL" (id 2) (at 260 320) (length 4) (name "SCL") (type "input"))
+    (pin "SDA" (id 3) (at 300 320) (length 4) (name "SDA") (type "input"))
+    (pin "DC"  (id 4) (at 260 310) (length 4) (name "DC")  (type "input"))
+    (pin "CS"  (id 5) (at 300 310) (length 4) (name "CS")  (type "input"))
+    (pin "RST" (id 6) (at 280 300) (length 4) (name "RST") (type "input"))
+  )
+
+  ;; ============================================================
+  ;; J1 — USB-C connector
+  ;; ============================================================
+  (symbol (lib_id "Connector:USB_C_Plug") (at 40 380) (uuid "j1-usbc")
+    (property "Reference" "J1" (at 40 360))
+    (property "Value"  "USB-C 24-pin" (at 40 365))
+    (property "Footprint" "Connector_USB:USB_C_Plug_Molex_105444")
+    (property "Author" "jayis1")
+    (pin "VBUS" (id 0) (at 60 370) (length 4) (name "VBUS") (type "power_in"))
+    (pin "GND"  (id 1) (at 60 380) (length 4) (name "GND")  (type "power_in"))
+  )
+
+  ;; ============================================================
+  ;; J4 — RS-485 anemometer header
+  ;; ============================================================
+  (symbol (lib_id "Connector_Generic:Conn_01x04") (at 280 380) (uuid "j4-wind")
+    (property "Reference" "J4" (at 280 370))
+    (property "Value"  "Anemometer_RS485" (at 280 375))
+    (property "Footprint" "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm")
+    (property "Author" "jayis1")
+    (pin "1" (id 0) (at 290 390) (length 4) (name "A") (type "passive"))
+    (pin "2" (id 1) (at 285 390) (length 4) (name "B") (type "passive"))
+    (pin "3" (id 2) (at 280 390) (length 4) (name "VCC") (type "power_in"))
+    (pin "4" (id 3) (at 275 390) (length 4) (name "GND") (type "power_in"))
+  )
+
+  ;; ============================================================
+  ;; Net labels / wires (simplified representative subset)
+  ;; ============================================================
+  (wire (pts (xy 60 90) (xy 55 90))     (net 4))   ; VBAT
+  (wire (pts (xy 60 95) (xy 55 95))     (net 2))   ; +3V3
+  (wire (pts (xy 180 120)(xy 190 120))  (net 7))   ; USART2_TX→ESP RX
+  (wire (pts (xy 180 115)(xy 190 115))  (net 8))   ; USART2_RX←ESP TX
+  (wire (pts (xy 180 105)(xy 185 105))  (net 9))   ; SPI1_SCK→ADC SCK
+  (wire (pts (xy 80 180) (xy 95 180))   (net 9))   ; ADC SCK
+  (wire (pts (xy 80 175) (xy 95 175))   (net 10))  ; ADC SDO→SPI1_MISO
+  (wire (pts (xy 180 90) (xy 190 90))   (net 10))  ; PB4 MISO
+  (wire (pts (xy 150 175)(xy 145 175))  (net 11))  ; I2C1_SCL
+  (wire (pts (xy 180 85) (xy 190 85))   (net 11))  ; PB6 SCL
+  (wire (pts (xy 170 175)(xy 175 175))  (net 12))  ; I2C1_SDA
+  (wire (pts (xy 180 80) (xy 190 80))   (net 12))  ; PB7 SDA
+  (wire (pts (xy 270 175)(xy 265 175))  (net 13))  ; I2C4_SCL
+  (wire (pts (xy 180 75) (xy 190 75))   (net 13))  ; PB8 SCL
+  (wire (pts (xy 290 175)(xy 295 175))  (net 14))  ; I2C4_SDA
+  (wire (pts (xy 180 70) (xy 190 70))   (net 14))  ; PB9 SDA
+
+  (global_label "+3V3" (shape input)   (at 55 95)  (effects (font (size 1.2 1.2))))
+  (global_label "GND"  (shape input)   (at 55 100) (effects (font (size 1.2 1.2))))
+  (global_label "+5V"  (shape input)   (at 60 370) (effects (font (size 1.2 1.2))))
+  (global_label "V_ANALOG" (shape input)(at 240 250)(effects (font (size 1.2 1.2))))
+
+  (text "AeroCast — Bioaerosol ID Station\nAuthor: jayis1 — Copyright (C) 2026 jayis1\nLicense: CERN-OHL-S v2"
+        (at 120 20) (effects (font (size 2 2) italic)))
+
+  (instances (project "aerocast" (path "/aerocast-sch-0001")))
+)

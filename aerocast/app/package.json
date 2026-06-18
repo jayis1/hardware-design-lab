@@ -1,0 +1,34 @@
+{
+  "name": "aerocast-app",
+  "version": "1.0.0",
+  "author": "jayis1",
+  "license": "MIT",
+  "description": "AeroCast companion app — real-time bioaerosol identification & allergy forecast. Author: jayis1",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "expo": "~51.0.0",
+    "expo-ble-peripheral": "~13.0.0",
+    "expo-status-bar": "~1.12.0",
+    "react": "18.2.0",
+    "react-native": "0.74.0",
+    "react-native-ble-plx": "^3.0.0",
+    "react-native-chart-kit": "^6.12.0",
+    "react-native-paper": "^5.12.0",
+    "react-native-safe-area-context": "^4.10.0",
+    "react-native-screens": "^3.31.0",
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/bottom-tabs": "^6.6.0",
+    "@react-native-async-storage/async-storage": "^1.23.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "eslint": "^8.57.0"
+  },
+  "private": true
+}
