@@ -1,0 +1,147 @@
+{
+  "board": {
+    "3dviewports": [],
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.2,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "courtyard_line_width": 0.05,
+        "edge_cut_line_width": 0.15,
+        "fab_line_width": 0.1,
+        "fab_text_size_h": 1.0,
+        "fab_text_size_v": 1.0,
+        "fab_text_thickness": 0.15,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.15,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15
+      },
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
+      "rules": {
+        "min_clearance": 0.15,
+        "min_track_width": 0.15,
+        "min_via_diameter": 0.4,
+        "min_via_drill": 0.2
+      },
+      "track_widths": [0.0, 0.15, 0.2, 0.3, 0.5, 0.8],
+      "via_dimensions": [
+        { "diameter": 0.5, "drill": 0.25 },
+        { "diameter": 0.6, "drill": 0.3 }
+      ]
+    },
+    "ipc2581": { "dist": "", "distpn": "", "internal_id": "", "mfg": "", "mpn": "" },
+    "layer_presets": [],
+    "viewports": []
+  },
+  "boards": [],
+  "copyright": "Copyright (C) jayis1 — MIT License",
+  "meta": {
+    "filename": "device.kicad_pro",
+    "version": 3
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Default",
+        "pcb_color": "rgba(0,0,0,1)",
+        "schematic_color": "rgba(0,0,0,1)",
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6.0
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.25,
+        "name": "Analog",
+        "track_width": 0.3,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6.0
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "name": "Power",
+        "track_width": 0.5,
+        "via_diameter": 0.7,
+        "via_drill": 0.35,
+        "wire_width": 6.0
+      }
+    ],
+    "meta": { "version": 4 },
+    "net_colors": null,
+    "netclass_assignments": {
+      "+3V3": "Power",
+      "GND": "Power",
+      "VBAT": "Power",
+      "ANALOG_FLUOR_360": "Analog",
+      "ANALOG_FLUOR_430": "Analog",
+      "ANALOG_FLUOR_650": "Analog",
+      "ANALOG_FLUOR_685": "Analog",
+      "ANALOG_REF_255": "Analog",
+      "ANALOG_REF_660": "Analog",
+      "ANALOG_SCATTER_660": "Analog"
+    },
+    "netclass_patterns": []
+  },
+  "pcbnew": {
+    "last_paths": { "cadplot": "", "dxf": "", "gerber": "", "hpgl": "", "pdf": "", "ps": "" },
+    "page_layout_descr_file": "",
+    "plot": {
+      "dxf_polygon_mode": true,
+      "dxf_use_aux_origin": false,
+      "excludeedgelayer": true,
+      "gerb_plot_use_meta_attrs": false,
+      "gerb_auto_format": true,
+      "gerb_precision": 5,
+      "gerb_temp_dir": "",
+      "hp_pen_number": 1,
+      "hp_pen_speed": 20,
+      "hp_pen_width": 0.15,
+      "output_dir": "",
+      "plot_sheet": false,
+      "ps_a4_output": true,
+      "use_aux_origin": false
+    }
+  },
+  "schematic": {
+    "annotate_start_num": 0,
+    "bom_export_filename": "",
+    "bom_fmt_presets": [],
+    "bom_fmt_settings": { "field_delimiter": ",", "keep_line_breaks": false, "name": "CSV", "ref_delimiter": ",", "string_delimiter": "\"" },
+    "bom_presets": [],
+    "bom_settings": { "exclude_dnp": false, "filter": "", "group_fields": [], "include_dnp": false, "sort": "" },
+    "connection_grid_size": 50.0,
+    "drawing": { "dashed_lines_dash_length_ratio": 12.0, "dashed_lines_gap_length_ratio": 3.0, "default_line_thickness": 6.0, "default_text_size": 50.0, "field_names": [], "intersheets_ref_own_page": false, "intersheets_ref_prefix": "", "intersheets_ref_short": false, "intersheets_ref_show": false, "intersheets_ref_suffix": "", "junction_size_choice": 3, "label_size_ratio": 0.375, "operating_point_overlay_i_precision": 3, "operating_point_overlay_v_precision": 3, "pin_symbol_size": 25.0, "text_offset_ratio": 0.15 },
+    "legacy_lib_dir": "",
+    "legacy_lib_list": [],
+    "meta": { "version": 1 },
+    "net_format_name": "",
+    "page_layout_descr_file": "",
+    "plot_directory": "",
+    "spice_current_span_as_time": true,
+    "spice_external_command": "spice \"%I\"",
+    "spice_save_all_currents": false,
+    "spice_save_all_voltages": false,
+    "subpart_first_id": 65,
+    "subpart_id_separator": 0,
+    "symbol": { "lib_id": "", "pin_numbers": false, "pin_names": false, "units": false },
+    "transform": { "mirror": false, "offset": [0, 0], "orient": 0, "scale": 1.0 }
+  },
+  "sheets": [
+    [ "11111111-1111-1111-1111-111111111111", "HydroFluor" ]
+  ],
+  "text_variables": []
+}
