@@ -1,0 +1,281 @@
+(kicad_sch
+  (version 20221018)
+  (generator "flora-pulse-jayis1")
+  (uuid "00000000-0000-0000-0000-000000000001")
+
+  (paper "A3")
+
+  (title_block
+    (title "FloraPulse — Plant Electrophysiology & Sap-Flow Stress Monitor")
+    (date "2026-06-18")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Open-Source Plant Phytosensing Platform")
+    (comment 2 "Author: jayis1")
+    (comment 3 "License: CERN-OHL-S v2"))
+
+  (lib_symbols
+    (symbol "MCU_ST_STM32L4:STM32L476RGT6"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "STM32L476RGT6" (at 0 0 0))
+      (property "Footprint" "Package_QFP:LQFP-64_10x10mm_P0.5mm")
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32l476rg.pdf")
+      (property "Description" "MCU Cortex-M4F 80MHz 1MB Flash 128KB RAM, USB OTG, LCD, low-power")
+      (property "Author" "jayis1"))
+
+    (symbol "Analog_ADC:ADS1292"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "ADS1292" (at 0 0 0))
+      (property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm")
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/ads1292.pdf")
+      (property "Description" "2-channel 24-bit delta-sigma biopotential ADC, 250 SPS, PGA")
+      (property "Author" "jayis1"))
+
+    (symbol "Analog_ADC:ADS1220"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "ADS1220" (at 0 0 0))
+      (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm")
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/ads1220.pdf")
+      (property "Description" "24-bit 2kSPS 4-channel delta-sigma ADC, SPI, PGA")
+      (property "Author" "jayis1"))
+
+    (symbol "Sensor:APDS-9301"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "APDS-9301" (at 0 0 0))
+      (property "Footprint" "OptoDevice:Avago_APDS-9301")
+      (property "Datasheet" "https://www.broadcom.com/products/optical-sensors/ambient-light-photo-sensors/apds-9301")
+      (property "Description" "Ambient light sensor, I2C, 16-bit, 2 channels")
+      (property "Author" "jayis1"))
+
+    (symbol "Sensor:BME280"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "BME280" (at 0 0 0))
+      (property "Footprint" "Package_LGA:Bosch_LGA-8_2.5x2.5mm_P0.65mm_ClockwisePinLayout1")
+      (property "Datasheet" "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf")
+      (property "Description" "Temperature, humidity, pressure sensor, I2C/SPI")
+      (property "Author" "jayis1"))
+
+    (symbol "Sensor_Magnetic:MAX17048"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "MAX17048" (at 0 0 0))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-8")
+      (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/max17048-max17049.pdf")
+      (property "Description" "Li-ion fuel gauge, I2C, 1-cell")
+      (property "Author" "jayis1"))
+
+    (symbol "RF_Module:SX1276"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "SX1276" (at 0 0 0))
+      (property "Footprint" "RF_Module:HOPERF_RFM95W")
+      (property "Datasheet" "https://www.semtech.com/products/wireless-rf/lora-transceivers/sx1276")
+      (property "Description" "LoRa transceiver, 137-1020 MHz, +20 dBm, SPI")
+      (property "Author" "jayis1"))
+
+    (symbol "RF_Bluetooth:nRF52840"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "nRF52840" (at 0 0 0))
+      (property "Footprint" "Package_DFN_QFN:QFN-73_7x7mm_P0.5mm")
+      (property "Datasheet" "https://www.nordicsemi.com/-/media/Software-and-other-downloads/Product-briefs/nRF52840-product-brief.pdf")
+      (property "Description" "BLE 5.0 SoC, ARM Cortex-M4F, 2Mbps, USB")
+      (property "Author" "jayis1"))
+
+    (symbol "Device:C"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 0 2.54 0))
+      (property "Value" "C" (at 0 -2.54 0))
+      (property "Footprint" ""))
+
+    (symbol "Device:R"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 0 2.54 0))
+      (property "Value" "R" (at 0 -2.54 0))
+      (property "Footprint" ""))
+
+    (symbol "Device:L"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "L" (at 0 2.54 0))
+      (property "Value" "L" (at 0 -2.54 0))
+      (property "Footprint" ""))
+
+    (symbol "power:GND"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -3.81 0))
+      (property "Value" "GND" (at 0 -1.27 0)))
+
+    (symbol "power:+3V3"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -3.81 0))
+      (property "Value" "+3V3" (at 0 1.27 0)))
+
+    (symbol "power:+5V"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -3.81 0))
+      (property "Value" "+5V" (at 0 1.27 0)))
+
+    (symbol "power:VBUS"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -3.81 0))
+      (property "Value" "VBUS" (at 0 1.27 0))))
+
+  (symbol_instances
+    (path "/00000000-0000-0000-0000-000000000001" (reference "U1") (unit 1) (value "STM32L476RGT6"))
+    (path "/00000000-0000-0000-0000-000000000002" (reference "U2") (unit 1) (value "ADS1292"))
+    (path "/00000000-0000-0000-0000-000000000003" (reference "U3") (unit 1) (value "ADS1220"))
+    (path "/00000000-0000-0000-0000-000000000004" (reference "U4") (unit 1) (value "BME280"))
+    (path "/00000000-0000-0000-0000-000000000005" (reference "U5") (unit 1) (value "APDS-9301"))
+    (path "/00000000-0000-0000-0000-000000000006" (reference "U6") (unit 1) (value "MAX17048"))
+    (path "/00000000-0000-0000-0000-000000000007" (reference "U7") (unit 1) (value "SX1276"))
+    (path "/00000000-0000-0000-0000-000000000008" (reference "U8") (unit 1) (value "nRF52840"))
+    (path "/00000000-0000-0000-0000-000000000009" (reference "U9") (unit 1) (value "TPS61023"))
+    (path "/00000000-0000-0000-0000-000000000010" (reference "U10") (unit 1) (value "MCP73871"))
+    (path "/00000000-0000-0000-0000-000000000011" (reference "U11") (unit 1) (value "TPS28225"))
+    (path "/path/1" (reference "FG1") (unit 1) (value "Electrode_Probe_AP"))
+    (path "/path/2" (reference "TH1") (unit 1) (value "NTC_10K_Upper"))
+    (path "/path/3" (reference "TH2") (unit 1) (value "NTC_10K_Lower"))
+    (path "/path/4" (reference "R_HEAT") (unit 1) (value "Heater_47R_3W"))
+    (path "/path/5" (reference "LW1") (unit 1) (value "Leaf_Wet_Cap"))
+    (path "/path/6" (reference "Y1") (unit 1) (value "8MHz"))
+    (path "/path/7" (reference "Y2") (unit 1) (value "32.768kHz"))
+    (path "/path/8" (reference "J1") (unit 1) (value "USB-C"))
+    (path "/path/9" (reference "J2") (unit 1) (value "MicroSD"))
+    (path "/path/10" (reference "J3") (unit 1) (value "Electrode_Header"))
+    (path "/path/11" (reference "J4") (unit 1) (value "SapFlow_Header"))
+    (path "/path/12" (reference "BT1") (unit 1) (value "18650_Holder"))
+    (path "/path/13" (reference "SW1") (unit 1) (value "SW_USER"))
+    (path "/path/14" (reference "D1") (unit 1) (value "LED_Green"))
+    (path "/path/15" (reference "D2") (unit 1) (value "LED_Red"))
+    (path "/path/16" (reference "D3") (unit 1) (value "LED_Blue"))
+    (path "/path/17" (reference "D4") (unit 1) (value "LED_Yellow"))
+    (path "/path/18" (reference "ANT1") (unit 1) (value "LoRa_Antenna")))
+
+  ;; === Net connections (schematic wiring) ===
+
+  ;; STM32L476 (U1) → ADS1292 (U2) via SPI1
+  (net (code 1) (name "SPI1_SCK") (wire (path "PA5" "ADS1292_SCLK")))
+  (net (code 2) (name "SPI1_MISO") (wire (path "PA6" "ADS1292_DOUT")))
+  (net (code 3) (name "SPI1_MOSI") (wire (path "PA7" "ADS1292_DIN")))
+  (net (code 4) (name "ADS1292_CS") (wire (path "PB0" "ADS1292_CS")))
+  (net (code 5) (name "ADS1292_DRDY") (wire (path "PB1" "ADS1292_DRDY")))
+  (net (code 6) (name "ADS1292_START") (wire (path "PB2" "ADS1292_START")))
+  (net (code 7) (name "ADS1292_PWDN") (wire (path "PB10" "ADS1292_PWDN")))
+
+  ;; STM32L476 (U1) → ADS1220 (U3) via SPI2 (shared with SD card & SX1276)
+  (net (code 8) (name "SPI2_SCK") (wire (path "PB13" "ADS1220_SCLK" "SX1276_SCLK" "MicroSD_SCK")))
+  (net (code 9) (name "SPI2_MISO") (wire (path "PB14" "ADS1220_DOUT" "SX1276_MISO" "MicroSD_DAT0")))
+  (net (code 10) (name "SPI2_MOSI") (wire (path "PB15" "ADS1220_DIN" "SX1276_MOSI" "MicroSD_CMD")))
+  (net (code 11) (name "ADS1220_CS") (wire (path "PB4" "ADS1220_CS")))
+  (net (code 12) (name "ADS1220_DRDY") (wire (path "PB5" "ADS1220_DRDY")))
+  (net (code 13) (name "SD_CS") (wire (path "PB6" "MicroSD_CS")))
+  (net (code 14) (name "SX1276_CS") (wire (path "PC7" "SX1276_NSS")))
+
+  ;; STM32L476 (U1) → BME280 (U4) + APDS-9301 (U5) + MAX17048 (U6) via I2C1
+  (net (code 15) (name "I2C1_SCL") (wire (path "PB8" "BME280_SCL" "APDS9301_SCL" "MAX17048_SCL")))
+  (net (code 16) (name "I2C1_SDA") (wire (path "PB9" "BME280_SDA" "APDS9301_SDA" "MAX17048_SDA")))
+
+  ;; STM32L476 (U1) → nRF52840 (U8) via USART1
+  (net (code 17) (name "USART1_TX") (wire (path "PA9" "nRF52840_RX")))
+  (net (code 18) (name "USART1_RX") (wire (path "PA10" "nRF52840_TX")))
+
+  ;; STM32L476 (U1) → TIM1_CH1 Heater PWM (PC0 → TPS28225 gate driver)
+  (net (code 19) (name "TIM1_CH1") (wire (path "PC0" "TPS28225_IN_A")))
+  (net (code 20) (name "HEATER_EN") (wire (path "PC1" "TPS28225_EN")))
+  (net (code 21) (name "HEATER_OUT") (wire (path "TPS28225_OUT" "R_HEAT_1")))
+  (net (code 22) (name "HEATER_RTN") (wire (path "R_HEAT_2" "GND")))
+
+  ;; TIM3_ETR — Leaf-wetness oscillator frequency input (PD2)
+  (net (code 23) (name "TIM3_ETR") (wire (path "PD2" "LW1_OUT")))
+  (net (code 24) (name "LW_DRIVE") (wire (path "PC2" "LW1_ENABLE")))
+
+  ;; SX1276 DIO pins
+  (net (code 25) (name "SX1276_DIO0") (wire (path "PC3" "SX1276_DIO0")))
+  (net (code 26) (name "SX1276_DIO1") (wire (path "PC4" "SX1276_DIO1")))
+  (net (code 27) (name "SX1276_RST") (wire (path "PC5" "SX1276_NRST")))
+  (net (code 28) (name "SX1276_ANT") (wire (path "SX1276_RFO" "ANT1_FEED")))
+
+  ;; ADS1292 → plant electrode probes (via J3)
+  (net (code 29) (name "AP_CH1_P") (wire (path "ADS1292_IN1P" "J3_1")))
+  (net (code 30) (name "AP_CH1_N") (wire (path "ADS1292_IN1N" "J3_2")))
+  (net (code 31) (name "AP_CH2_P") (wire (path "ADS1292_IN2P" "J3_3")))
+  (net (code 32) (name "AP_CH2_N") (wire (path "ADS1292_IN2N" "J3_4")))
+  (net (code 33) (name "AP_RLD") (wire (path "ADS1292_RLDRIVE" "J3_5")))
+
+  ;; ADS1220 → sap-flow thermistors (via J4)
+  (net (code 34) (name "TH_UPPER_P") (wire (path "ADS1220_AIN0" "J4_1" "TH1_1")))
+  (net (code 35) (name "TH_UPPER_N") (wire (path "ADS1220_AIN1" "J4_2" "TH1_2")))
+  (net (code 36) (name "TH_LOWER_P") (wire (path "ADS1220_AIN2" "J4_3" "TH2_1")))
+  (net (code 37) (name "TH_LOWER_N") (wire (path "ADS1220_AIN3" "J4_4" "TH2_2")))
+  (net (code 38) (name "HEATER_PROBE") (wire (path "J4_5" "R_HEAT_1")))
+
+  ;; Power nets
+  (net (code 39) (name "VBUS") (wire (path "USB-C_VBUS" "MCP73871_VIN")))
+  (net (code 40) (name "VBAT") (wire (path "18650_+" "MCP73871_BAT" "MAX17048_CELL")))
+  (net (code 41) (name "+3V3") (wire (path "TPS61023_OUT" "STM32_VDD" "ADS1292_AVDD" "BME280_VDD" "SX1276_VDD" "nRF52840_VDD" "MAX17048_VDD")))
+  (net (code 42) (name "+5V") (wire (path "MCP73871_OUT" "TPS61023_IN")))
+  (net (code 43) (name "GND"))
+  (net (code 44) (name "AGND") (wire (path "ADS1292_AGND" "ADS1220_AGND")))
+
+  ;; HSE crystal (Y1: 8 MHz) → STM32L476
+  (net (code 45) (name "HSE_IN") (wire (path "Y1_1" "STM32L476_OSC_IN")))
+  (net (code 46) (name "HSE_OUT") (wire (path "Y1_2" "STM32L476_OSC_OUT")))
+
+  ;; LSE crystal (Y2: 32.768 kHz) → STM32L476 RTC
+  (net (code 47) (name "LSE_IN") (wire (path "Y2_1" "STM32L476_OSC32_IN")))
+  (net (code 48) (name "LSE_OUT") (wire (path "Y2_2" "STM32L476_OSC32_OUT")))
+
+  ;; Battery sensing
+  (net (code 49) (name "BATT_SENSE") (wire (path "VBAT_DIV" "PA1_ANALOG")))
+  (net (code 50) (name "CHARGE_STAT") (wire (path "MCP73871_STAT" "PC13_INPUT")))
+
+  ;; LEDs
+  (net (code 51) (name "LED_STATUS") (wire (path "PA8" "D1_ANODE")))
+  (net (code 52) (name "LED_ALERT") (wire (path "PA15" "D2_ANODE")))
+  (net (code 53) (name "LED_TX") (wire (path "PC10" "D3_ANODE")))
+  (net (code 54) (name "LED_LORA") (wire (path "PC11" "D4_ANODE")))
+
+  ;; USB-C (J1) → STM32L476 USB
+  (net (code 55) (name "USB_DM") (wire (path "USB-C_D-" "STM32L476_PA11")))
+  (net (code 56) (name "USB_DP") (wire (path "USB-C_D+" "STM32L476_PA12")))
+
+  ;; Button
+  (net (code 57) (name "BTN_USER") (wire (path "PC12" "SW1_1")))
+
+  ;; === Component placements (schematic sheet coordinates) ===
+  ;; U1 (STM32L476RGT6) at (80, 60) — center of sheet
+  ;; U2 (ADS1292) at (40, 90) — lower left, near electrode header
+  ;; U3 (ADS1220) at (40, 50) — left center, near thermistor header
+  ;; U4 (BME280) at (120, 30) — upper right
+  ;; U5 (APDS-9301) at (120, 50) — right center
+  ;; U6 (MAX17048) at (120, 90) — lower right
+  ;; U7 (SX1276) at (60, 20) — upper left
+  ;; U8 (nRF52840) at (100, 100) — bottom right
+  ;; U9 (TPS61023 boost) at (80, 20) — top center
+  ;; U10 (MCP73871 charger) at (80, 10) — top edge
+  ;; U11 (TPS28225 H-bridge) at (20, 40) — far left (heater driver)
+  ;; FG1 (AP electrodes) at (20, 90) — far left (plant interface)
+  ;; TH1/TH2 (NTC thermistors) at (20, 60) — left
+  ;; R_HEAT (heater resistor) at (20, 30) — far left
+  ;; LW1 (leaf-wetness sensor) at (20, 10) — bottom left
+  ;; Y1 (8 MHz) at (80, 50)
+  ;; Y2 (32.768 kHz) at (90, 50)
+  ;; J1 (USB-C) at (140, 10)
+  ;; J2 (MicroSD) at (140, 40)
+  ;; J3 (Electrode header) at (10, 90)
+  ;; J4 (Sap-flow header) at (10, 50)
+  ;; BT1 (18650 holder) at (80, 110)
+  ;; SW1 (user button) at (100, 110)
+  ;; ANT1 (LoRa antenna) at (40, 10)
+
+  (sheet (name "FloraPulse Main") (tstamps "/")
+    (property "Sheetname" "FloraPulse")
+    (property "Sheetfile" "device.kicad_sch"))
+
+  (no_connect (at 140 70))
+)
