@@ -1,0 +1,35 @@
+{
+  "name": "pollen-scout-app",
+  "version": "1.0.0",
+  "description": "Companion app for the Pollen Scout edge-AI pollen & aerosol forecasting instrument.",
+  "author": "jayis1",
+  "license": "MIT",
+  "main": "src/App.tsx",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "lint": "eslint src --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "expo": "^50.0.0",
+    "expo-ble-peripheral": "~13.0.0",
+    "expo-linear-gradient": "~12.7.0",
+    "expo-notifications": "~0.27.0",
+    "expo-secure-store": "~12.8.0",
+    "mqtt": "^5.10.0",
+    "react": "18.2.0",
+    "react-native": "0.73.4",
+    "react-native-chart-kit": "^6.12.0",
+    "react-native-safe-area-context": "4.8.2",
+    "react-native-screens": "~3.29.0",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/bottom-tabs": "^6.5.11",
+    "@react-navigation/stack": "^6.3.20"
+  },
+  "devDependencies": {
+    "@types/react": "~18.2.45",
+    "typescript": "^5.3.0"
+  },
+  "copyright": "Copyright (c) 2026 jayis1"
+}

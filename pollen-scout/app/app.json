@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "Pollen Scout",
+    "slug": "pollen-scout",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": { "backgroundColor": "#E8F5E9" },
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.jayis1.pollenscout" },
+    "android": { "package": "com.jayis1.pollenscout" },
+    "author": "jayis1",
+    "description": "Companion app for the Pollen Scout edge-AI pollen & aerosol forecasting instrument.",
+    "extra": { "author": "jayis1" }
+  }
+}
