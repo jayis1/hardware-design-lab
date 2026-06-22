@@ -1,0 +1,586 @@
+(kicad_sch
+  (version 20221018)
+  (generator "lumicast-jayis1")
+  (uuid "20000000-0000-0000-0000-000000000001")
+
+  (paper "A3")
+
+  (title_block
+    (title "LumiCast — Circadian Light & SPD Analyzer")
+    (date "2026-06-19")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Open-Source Spectral Photometer")
+    (comment 2 "Author: jayis1")
+    (comment 3 "License: CERN-OHL-S v2"))
+
+  (lib_symbols
+
+    (symbol "MCU_ST_STM32WB:STM32WB55CGU6"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "STM32WB55CGU6" (at 0 0 0))
+      (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm")
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32wb55cg.pdf")
+      (property "Description" "MCU Cortex-M4 64MHz + M0+ 32MHz, 1MB Flash, 256KB RAM, BLE 5.2")
+      (property "Author" "jayis1"))
+
+    (symbol "Sensor_Optical:AMS_AS7343"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "AS7343" (at 0 0 0))
+      (property "Footprint" "Package_LCC:AMS_OSLON_LCC-12")
+      (property "Datasheet" "https://ams.com/documents/20143/5486889/AS7343_DS000980_2-00.pdf")
+      (property "Description" "11-channel visible/NIR spectrometer on chip, I2C, 415-910nm")
+      (property "Author" "jayis1"))
+
+    (symbol "Sensor_Optical:TSL2572"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "TSL25721" (at 0 0 0))
+      (property "Footprint" "Package_SO:TSOP-6_3.0x3.0mm_P1.27mm")
+      (property "Datasheet" "https://www.mouser.com/datasheet/2/588/TSL2572_Datasheet-3498869.pdf")
+      (property "Description" "Ambient light sensor with flicker detect, I2C")
+      (property "Author" "jayis1"))
+
+    (symbol "Display:SSD1306_OLED_128x64"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "SSD1306" (at 0 0 0))
+      (property "Footprint" "Display:OLED_128x64_0.96inch_I2C")
+      (property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf")
+      (property "Description" "128x64 monochrome OLED, I2C, 3.3V")
+      (property "Author" "jayis1"))
+
+    (symbol "Sensor:Photodiode_HAMAMATSU_S1223"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "D" (at 0 5.08 0))
+      (property "Value" "S1223-01" (at 0 0 0))
+      (property "Footprint" "OptoDevice:Hamamatsu_S1223")
+      (property "Datasheet" "https://www.hamamatsu.com/resources/pdf/ssd/s1223_series_kpin1047e.pdf")
+      (property "Description" "Si PIN photodiode, 320-1100nm, 3.2MHz BW")
+      (property "Author" "jayis1"))
+
+    (symbol "Power_Management:TP4056"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "TP4056" (at 0 0 0))
+      (property "Footprint" "Package_SO:TSOT-23-8")
+      (property "Datasheet" "https://dlnmh9ip6v2uc.cloudfront.net/datasheets/Prototyping/TP4056.pdf")
+      (property "Description" "Linear Li-Ion charger, 1A, USB input")
+      (property "Author" "jayis1"))
+
+    (symbol "Regulator_Linear:AP2112K-3.3"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "AP2112K-3.3" (at 0 0 0))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5")
+      (property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP2112.pdf")
+      (property "Description" "LDO 3.3V 600mA, SOT-23-5")
+      (property "Author" "jayis1"))
+
+    (symbol "Analog_ADC:ADS1115"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "ADS1115IDGS" (at 0 0 0))
+      (property "Footprint" "Package_SO:TSSOP-10_3x3mm_P0.5mm")
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/ads1115.pdf")
+      (property "Description" "16-bit 4-channel ADC, I2C, 860 SPS")
+      (property "Author" "jayis1"))
+
+    (symbol "Connector:USB_C_2.0"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 5.08 0))
+      (property "Value" "USB_C" (at 0 0 0))
+      (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4105")
+      (property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb-type-c.pdf")
+      (property "Description" "USB Type-C receptacle, 2.0 data only")
+      (property "Author" "jayis1"))
+
+    (symbol "Connector:microSD_card"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 5.08 0))
+      (property "Value" "MicroSD" (at 0 0 0))
+      (property "Footprint" "Connector_Card:microSD_HC_Hirose_DM3AT")
+      (property "Datasheet" "https://www.hirose.com/product/document?clcode=CL0324-0039-0-53")
+      (property "Description" "microSD card socket, SPI mode")
+      (property "Author" "jayis1"))
+
+    (symbol "Battery:Li-Ion_18650_holder"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "BT" (at 0 5.08 0))
+      (property "Value" "Li-Ion" (at 0 0 0))
+      (property "Footprint" "Battery:BatteryHolder_Keystone_1042_18650")
+      (property "Datasheet" "")
+      (property "Description" "18650 Li-Ion battery holder, 3.7V nominal")
+      (property "Author" "jayis1"))
+
+    (symbol "RF_Module:Antenna_CHIP"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "AE" (at 0 5.08 0))
+      (property "Value" "2.4GHz_Chip_Ant" (at 0 0 0))
+      (property "Footprint" "RF_Antenna:Johanson_2450AT18B100")
+      (property "Datasheet" "https://www.johansontechnology.com/datasheets/antennas/2450AT18B100.pdf")
+      (property "Description" "2.4GHz chip antenna for BLE")
+      (property "Author" "jayis1"))
+
+    (symbol "Device:Crystal_32MHz_HC49"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "Y" (at 0 5.08 0))
+      (property "Value" "32MHz" (at 0 0 0))
+      (property "Footprint" "Crystal:Crystal_SMD_Abracon_ABM8B-4Pin_3.2x2.5mm")
+      (property "Datasheet" "")
+      (property "Description" "32 MHz HSE crystal, 8pF, 50ppm")
+      (property "Author" "jayis1"))
+
+    (symbol "Device:Crystal_32768kHz"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "Y" (at 0 5.08 0))
+      (property "Value" "32.768kHz" (at 0 0 0))
+      (property "Footprint" "Crystal:Crystal_SMD_MicroCrystal_CC7V-T1A-2Pin_11.4x4.5mm")
+      (property "Datasheet" "")
+      (property "Description" "32.768 kHz LSE crystal for RTC")
+      (property "Author" "jayis1"))
+
+    (symbol "Switch:SW_Push"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "SW" (at 0 5.08 0))
+      (property "Value" "TL3342" (at 0 0 0))
+      (property "Footprint" "Button_Switch_SMD:SW_TACTILE_SPST_NO_SMD_6x6mm")
+      (property "Datasheet" "")
+      (property "Description" "Tactile push button SPST NO")
+      (property "Author" "jayis1"))
+
+    (symbol "Device:C"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 0 5.08 0))
+      (property "Value" "C" (at 0 0 0))
+      (property "Footprint" "Capacitor_SMD:C_0603_1608Metric")
+      (property "Datasheet" "")
+      (property "Description" "Ceramic capacitor, 0603")
+      (property "Author" "jayis1"))
+
+    (symbol "Device:R"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 0 5.08 0))
+      (property "Value" "R" (at 0 0 0))
+      (property "Footprint" "Resistor_SMD:R_0603_1608Metric")
+      (property "Datasheet" "")
+      (property "Description" "Resistor, 0603, 1%")
+      (property "Author" "jayis1"))
+
+    (symbol "Device:L"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "L" (at 0 5.08 0))
+      (property "Value" "L" (at 0 0 0))
+      (property "Footprint" "Inductor_SMD:L_0805_2012Metric")
+      (property "Datasheet" "")
+      (property "Description" "Inductor, 0805")
+      (property "Author" "jayis1"))
+
+    (symbol "Device:Ferrite_Bead"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "FB" (at 0 5.08 0))
+      (property "Value" "Ferrite" (at 0 0 0))
+      (property "Footprint" "Inductor_SMD:L_0805_2012Metric")
+      (property "Datasheet" "")
+      (property "Description" "Ferrite bead, 0805")
+      (property "Author" "jayis1"))
+
+    (symbol "Transistor:BC857"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "Q" (at 0 5.08 0))
+      (property "Value" "BC857" (at 0 0 0))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23")
+      (property "Datasheet" "")
+      (property "Description" "PNP transistor, SOT-23")
+      (property "Author" "jayis1"))
+
+    (symbol "Sensor_Temperature:NTC_10k"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "TH" (at 0 5.08 0))
+      (property "Value" "10k_NTC" (at 0 0 0))
+      (property "Footprint" "Resistor_SMD:R_0603_1608Metric")
+      (property "Datasheet" "")
+      (property "Description" "NTC thermistor 10k, 0603")
+      (property "Author" "jayis1"))
+  )
+
+  ;; ===================== Component instances ===========================
+
+  (symbol (lib_id "MCU_ST_STM32WB:STM32WB55CGU6") (at 50 50 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U1" (at 50 35 0))
+    (property "Value" "STM32WB55CGU6" (at 50 38 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm" (at 50 50 0))
+    (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32wb55cg.pdf")
+    (property "Description" "MCU Cortex-M4 64MHz + M0+ 32MHz, 1MB Flash, 256KB RAM, BLE 5.2")
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Sensor_Optical:AMS_AS7343") (at 150 40 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U2" (at 150 30 0))
+    (property "Value" "AS7343" (at 150 33 0))
+    (property "Footprint" "Package_LCC:AMS_OSLON_LCC-12" (at 150 40 0))
+    (property "Datasheet" "https://ams.com/documents/20143/5486889/AS7343_DS000980_2-00.pdf")
+    (property "Description" "11-channel visible/NIR spectrometer")
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Display:SSD1306_OLED_128x64") (at 150 80 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U3" (at 150 70 0))
+    (property "Value" "SSD1306" (at 150 73 0))
+    (property "Footprint" "Display:OLED_128x64_0.96inch_I2C" (at 150 80 0))
+    (property "Datasheet" "")
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Sensor:Photodiode_HAMAMATSU_S1223") (at 100 90 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D1" (at 100 85 0))
+    (property "Value" "S1223-01" (at 100 100 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Power_Management:TP4056") (at 50 110 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U4" (at 50 105 0))
+    (property "Value" "TP4056" (at 50 115 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Regulator_Linear:AP2112K-3.3") (at 90 110 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U5" (at 90 105 0))
+    (property "Value" "AP2112K-3.3" (at 90 115 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Analog_ADC:ADS1115") (at 100 130 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U6" (at 100 125 0))
+    (property "Value" "ADS1115IDGS" (at 100 135 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Connector:USB_C_2.0") (at 20 110 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J1" (at 20 100 0))
+    (property "Value" "USB_C" (at 20 120 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Connector:microSD_card") (at 150 110 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J2" (at 150 100 0))
+    (property "Value" "MicroSD" (at 150 120 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Battery:Li-Ion_18650_holder") (at 20 90 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "BT1" (at 20 85 0))
+    (property "Value" "Li-Ion 18650" (at 20 95 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "RF_Module:Antenna_CHIP") (at 20 50 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "AE1" (at 20 45 0))
+    (property "Value" "2.4GHz_Chip_Ant" (at 20 55 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:Crystal_32MHz_HC49") (at 90 40 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "Y1" (at 90 35 0))
+    (property "Value" "32MHz" (at 90 45 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:Crystal_32768kHz") (at 90 55 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "Y2" (at 90 50 0))
+    (property "Value" "32.768kHz" (at 90 60 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Switch:SW_Push") (at 100 70 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "SW1" (at 100 65 0))
+    (property "Value" "TL3342" (at 100 75 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:C") (at 70 40 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C1" (at 70 35 0))
+    (property "Value" "12pF" (at 70 45 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:C") (at 75 40 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C2" (at 75 35 0))
+    (property "Value" "12pF" (at 75 45 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:C") (at 70 55 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C3" (at 70 50 0))
+    (property "Value" "12pF" (at 70 60 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:C") (at 75 55 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C4" (at 75 50 0))
+    (property "Value" "12pF" (at 75 60 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:C") (at 50 70 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C5" (at 50 65 0))
+    (property "Value" "100nF" (at 50 75 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:C") (at 55 70 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C6" (at 55 65 0))
+    (property "Value" "4.7µF" (at 55 75 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:C") (at 60 70 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C7" (at 60 65 0))
+    (property "Value" "100nF" (at 60 75 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:C") (at 65 70 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C8" (at 65 65 0))
+    (property "Value" "4.7µF" (at 65 75 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:C") (at 70 70 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C9" (at 70 65 0))
+    (property "Value" "1µF" (at 70 75 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:C") (at 75 70 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C10" (at 75 65 0))
+    (property "Value" "10µF" (at 75 75 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:R") (at 40 110 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R1" (at 40 105 0))
+    (property "Value" "5.1k" (at 40 115 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:R") (at 45 110 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R2" (at 45 105 0))
+    (property "Value" "5.1k" (at 45 115 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:R") (at 110 90 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R3" (at 110 85 0))
+    (property "Value" "100k" (at 110 95 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:R") (at 115 90 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R4" (at 115 85 0))
+    (property "Value" "47k" (at 115 95 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:R") (at 120 90 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R5" (at 120 85 0))
+    (property "Value" "10k" (at 120 95 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:R") (at 125 90 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R6" (at 125 85 0))
+    (property "Value" "4.7k" (at 125 95 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:R") (at 130 90 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R7" (at 130 85 0))
+    (property "Value" "1k" (at 130 95 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:R") (at 135 90 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R8" (at 135 85 0))
+    (property "Value" "1k" (at 135 95 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:Ferrite_Bead") (at 35 90 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "FB1" (at 35 85 0))
+    (property "Value" "600Ω@100MHz" (at 35 95 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:L") (at 40 70 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "L1" (at 40 65 0))
+    (property "Value" "3.9nH" (at 40 75 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:L") (at 45 70 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "L2" (at 45 65 0))
+    (property "Value" "2.7nH" (at 45 75 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:C") (at 35 70 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C11" (at 35 65 0))
+    (property "Value" "1.5pF" (at 35 75 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Device:C") (at 30 70 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C12" (at 30 65 0))
+    (property "Value" "1.2pF" (at 30 75 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Transistor:BC857") (at 135 40 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "Q1" (at 135 35 0))
+    (property "Value" "BC857" (at 135 45 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Sensor_Temperature:NTC_10k") (at 135 60 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "TH1" (at 135 55 0))
+    (property "Value" "10k_NTC" (at 135 65 0))
+    (property "Author" "jayis1"))
+
+  (symbol (lib_id "Sensor_Optical:TSL2572") (at 150 55 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U7" (at 150 50 0))
+    (property "Value" "TSL25721" (at 150 60 0))
+    (property "Author" "jayis1"))
+
+  ;; ===================== Net labels ==================================
+
+  (global_label "VCC_3V3" (shape input) (at 90 105 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (global_label "GND" (shape input) (at 90 120 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (global_label "VBAT" (shape input) (at 20 90 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (global_label "VBUS" (shape input) (at 20 105 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+
+  (global_label "I2C1_SCL" (shape input) (at 150 75 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+  (global_label "I2C1_SDA" (shape input) (at 155 75 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+  (global_label "I2C3_SCL" (shape input) (at 150 35 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+  (global_label "I2C3_SDA" (shape input) (at 155 35 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+
+  (global_label "SPI1_SCK" (shape input) (at 145 105 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+  (global_label "SPI1_MISO" (shape input) (at 145 110 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+  (global_label "SPI1_MOSI" (shape input) (at 145 115 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+  (global_label "SD_CS" (shape input) (at 145 120 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+
+  (global_label "ADC1_IN1" (shape input) (at 100 85 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+  (global_label "ADC1_IN3" (shape input) (at 135 65 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+
+  (global_label "BUTTON" (shape input) (at 100 75 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+
+  (global_label "RF_ANT" (shape input) (at 25 50 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+
+  (global_label "LED_DRV" (shape input) (at 135 45 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+
+  (global_label "OLED_RST" (shape input) (at 145 80 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+
+  (global_label "BACKLIGHT_PWM" (shape input) (at 145 85 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+
+  ;; ===================== Wires (netlist connections) ================
+
+  (wire (pts (xy 25 50) (xy 40 50)) (stroke (width 0.254) (type default)) (net 1 "RF_ANT"))
+  (wire (pts (xy 40 50) (xy 40 70)) (stroke (width 0.254) (type default)) (net 1 "RF_ANT"))
+  (wire (pts (xy 45 70) (xy 45 50)) (stroke (width 0.254) (type default)) (net 2 "RF_MATCH"))
+  (wire (pts (xy 35 70) (xy 45 70)) (stroke (width 0.254) (type default)) (net 2 "RF_MATCH"))
+  (wire (pts (xy 30 70) (xy 30 80)) (stroke (width 0.254) (type default)) (net 3 "GND"))
+  (wire (pts (xy 30 80) (xy 35 80)) (stroke (width 0.254) (type default)) (net 3 "GND"))
+
+  (wire (pts (xy 90 40) (xy 70 40)) (stroke (width 0.254) (type default)) (net 4 "HSE_IN"))
+  (wire (pts (xy 90 40) (xy 75 40)) (stroke (width 0.254) (type default)) (net 5 "HSE_OUT"))
+  (wire (pts (xy 90 55) (xy 70 55)) (stroke (width 0.254) (type default)) (net 6 "LSE_IN"))
+  (wire (pts (xy 90 55) (xy 75 55)) (stroke (width 0.254) (type default)) (net 7 "LSE_OUT"))
+
+  (wire (pts (xy 50 70) (xy 65 70)) (stroke (width 0.254) (type default)) (net 3 "GND"))
+  (wire (pts (xy 55 70) (xy 65 70)) (stroke (width 0.254) (type default)) (net 3 "GND"))
+
+  (wire (pts (xy 150 40) (xy 150 35)) (stroke (width 0.254) (type default)) (net 8 "I2C3_SCL"))
+  (wire (pts (xy 155 40) (xy 155 35)) (stroke (width 0.254) (type default)) (net 9 "I2C3_SDA"))
+  (wire (pts (xy 150 80) (xy 150 75)) (stroke (width 0.254) (type default)) (net 10 "I2C1_SCL"))
+  (wire (pts (xy 155 80) (xy 155 75)) (stroke (width 0.254) (type default)) (net 11 "I2C1_SDA"))
+
+  (wire (pts (xy 100 90) (xy 100 85)) (stroke (width 0.254) (type default)) (net 12 "ADC1_IN1"))
+  (wire (pts (xy 110 90) (xy 110 125)) (stroke (width 0.254) (type default)) (net 13 "VBAT_DIV"))
+  (wire (pts (xy 110 125) (xy 100 125)) (stroke (width 0.254) (type default)) (net 13 "VBAT_DIV"))
+
+  (wire (pts (xy 135 90) (xy 135 65)) (stroke (width 0.254) (type default)) (net 14 "ADC1_IN3"))
+  (wire (pts (xy 120 90) (xy 120 70)) (stroke (width 0.254) (type default)) (net 3 "GND"))
+  (wire (pts (xy 120 70) (xy 100 70)) (stroke (width 0.254) (type default)) (net 3 "GND"))
+  (wire (pts (xy 100 70) (xy 100 75)) (stroke (width 0.254) (type default)) (net 15 "BUTTON"))
+  (wire (pts (xy 100 75) (xy 125 90)) (stroke (width 0.254) (type default)) (net 15 "BUTTON"))
+
+  (wire (pts (xy 135 40) (xy 135 45)) (stroke (width 0.254) (type default)) (net 16 "LED_DRV"))
+  (wire (pts (xy 135 45) (xy 130 90)) (stroke (width 0.254) (type default)) (net 16 "LED_DRV"))
+  (wire (pts (xy 130 90) (xy 130 45)) (stroke (width 0.254) (type default)) (net 16 "LED_DRV"))
+
+  (wire (pts (xy 20 90) (xy 35 90)) (stroke (width 0.254) (type default)) (net 17 "VBAT"))
+  (wire (pts (xy 35 90) (xy 35 70)) (stroke (width 0.254) (type default)) (net 17 "VBAT"))
+  (wire (pts (xy 50 110) (xy 40 110)) (stroke (width 0.254) (type default)) (net 18 "ISET"))
+  (wire (pts (xy 40 110) (xy 40 90)) (stroke (width 0.254) (type default)) (net 18 "ISET"))
+  (wire (pts (xy 40 90) (xy 45 110)) (stroke (width 0.254) (type default)) (net 18 "ISET"))
+  (wire (pts (xy 45 110) (xy 45 90)) (stroke (width 0.254) (type default)) (net 19 "PROG"))
+  (wire (pts (xy 45 90) (xy 20 90)) (stroke (width 0.254) (type default)) (net 17 "VBAT"))
+
+  (wire (pts (xy 20 110) (xy 20 105)) (stroke (width 0.254) (type default)) (net 20 "VBUS"))
+  (wire (pts (xy 20 105) (xy 50 110)) (stroke (width 0.254) (type default)) (net 20 "VBUS"))
+
+  (wire (pts (xy 90 110) (xy 90 105)) (stroke (width 0.254) (type default)) (net 21 "VCC_3V3"))
+  (wire (pts (xy 90 105) (xy 90 105)) (stroke (width 0.254) (type default)) (net 21 "VCC_3V3"))
+  (wire (pts (xy 90 115) (xy 90 120)) (stroke (width 0.254) (type default)) (net 3 "GND"))
+
+  (wire (pts (xy 100 130) (xy 100 135)) (stroke (width 0.254) (type default)) (net 22 "ADC_ALRT"))
+  (wire (pts (xy 100 130) (xy 110 125)) (stroke (width 0.254) (type default)) (net 22 "ADC_ALRT"))
+
+  (wire (pts (xy 145 105) (xy 145 110)) (stroke (width 0.254) (type default)) (net 23 "SPI1_SCK"))
+  (wire (pts (xy 145 110) (xy 145 115)) (stroke (width 0.254) (type default)) (net 24 "SPI1_MISO"))
+  (wire (pts (xy 145 115) (xy 145 120)) (stroke (width 0.254) (type default)) (net 25 "SPI1_MOSI"))
+  (wire (pts (xy 145 120) (xy 150 120)) (stroke (width 0.254) (type default)) (net 26 "SD_CS"))
+
+  (wire (pts (xy 145 80) (xy 150 80)) (stroke (width 0.254) (type default)) (net 27 "OLED_RST"))
+  (wire (pts (xy 145 85) (xy 150 85)) (stroke (width 0.254) (type default)) (net 28 "BACKLIGHT_PWM"))
+
+  (wire (pts (xy 150 55) (xy 150 50)) (stroke (width 0.254) (type default)) (net 8 "I2C3_SCL"))
+  (wire (pts (xy 155 55) (xy 155 50)) (stroke (width 0.254) (type default)) (net 9 "I2C3_SDA"))
+
+  ;; ===================== Net classes =================================
+
+  (net_class "Default" (clearance 0.152) (trace_width 0.2)
+    (via_dia 0.4) (via_drill 0.2)
+    (uvia_dia 0.3) (uvia_drill 0.1))
+  (net_class "Power" (clearance 0.2) (trace_width 0.4)
+    (via_dia 0.6) (via_drill 0.3)
+    (uvia_dia 0.3) (uvia_drill 0.1))
+  (net_class "RF" (clearance 0.2) (trace_width 0.25)
+    (via_dia 0.6) (via_drill 0.3))
+
+  (sheet_instances
+    (path "/" (page "1")))
+)

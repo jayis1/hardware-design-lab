@@ -1,0 +1,903 @@
+(kicad_sch
+  (version 20231120)
+  (generator "eeschema")
+  (generator_version "8.0")
+  (uuid "b1a2c3d4-e5f6-7890-abcd-ef1234567890")
+  (paper "A3")
+
+  (title_block
+    (title "BreathPrint — Portable Breath VOC Analyzer")
+    (date "2026-06-22")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "MIT License — Copyright (c) 2026 jayis1")
+    (comment 3 "8-channel breath analysis device")
+  )
+
+  (lib_symbols
+    ; --- STM32H733 MCU ---
+    (symbol "STM32H733VGT6"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -25.4 35.56 0))
+      (property "Value" "STM32H733VGT6" (at -15.24 33.02 0))
+      (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at -25.4 -35.56 0))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h733.pdf")
+      (property "Description" "MCU ARM Cortex-M7 312MHz 1MB Flash")
+      (symbol "STM32H733VGT6_0_1"
+        (rectangle (start -26.67 34.29) (end 26.67 -34.29)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+      )
+      (symbol "STM32H733VGT6_1_1"
+        ; Power pins
+        (pin power_in line (at -10.16 38.1 270) (length 3.81)
+          (name "VDD") (number "11") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -7.62 38.1 270) (length 3.81)
+          (name "VDD") (number "19") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -5.08 38.1 270) (length 3.81)
+          (name "VDD") (number "28") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -2.54 38.1 270) (length 3.81)
+          (name "VDD") (number "50") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 38.1 270) (length 3.81)
+          (name "VDD") (number "75") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 2.54 38.1 270) (length 3.81)
+          (name "VDD") (number "100") (effects (font (size 1.27 1.27))))
+        ; VSS / GND
+        (pin power_in line (at -10.16 -38.1 90) (length 3.81)
+          (name "VSS") (number "10") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -7.62 -38.1 90) (length 3.81)
+          (name "VSS") (number "27") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -5.08 -38.1 90) (length 3.81)
+          (name "VSS") (number "49") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -2.54 -38.1 90) (length 3.81)
+          (name "VSS") (number "74") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 -38.1 90) (length 3.81)
+          (name "VSS") (number "99") (effects (font (size 1.27 1.27))))
+        ; VDDA
+        (pin power_in line (at 10.16 38.1 270) (length 3.81)
+          (name "VDDA") (number "22") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 10.16 -38.1 90) (length 3.81)
+          (name "VSSA") (number "21") (effects (font (size 1.27 1.27))))
+        ; VBAT
+        (pin power_in line (at 7.62 38.1 270) (length 3.81)
+          (name "VBAT") (number "6") (effects (font (size 1.27 1.27))))
+        ; Reset
+        (pin input line (at -30.48 25.4 0) (length 3.81)
+          (name "NRST") (number "14") (effects (font (size 1.27 1.27))))
+        ; BOOT0
+        (pin input line (at -30.48 20.32 0) (length 3.81)
+          (name "BOOT0") (number "94") (effects (font (size 1.27 1.27))))
+        ; HSE oscillator
+        (pin input line (at -30.48 10.16 0) (length 3.81)
+          (name "PH0-OSC_IN") (number "12") (effects (font (size 1.27 1.27))))
+        (pin output line (at -30.48 7.62 0) (length 3.81)
+          (name "PH1-OSC_OUT") (number "13") (effects (font (size 1.27 1.27))))
+        ; GPIO Ports
+        ; PA0 - User button / TIM2_CH1
+        (pin bidirectional line (at -30.48 -5.08 0) (length 3.81)
+          (name "PA0") (number "23") (effects (font (size 1.27 1.27))))
+        ; PA2 - USART2_TX (BLE)
+        (pin bidirectional line (at -30.48 -10.16 0) (length 3.81)
+          (name "PA2") (number "25") (effects (font (size 1.27 1.27))))
+        ; PA3 - USART2_RX (BLE)
+        (pin bidirectional line (at -30.48 -12.7 0) (length 3.81)
+          (name "PA3") (number "26") (effects (font (size 1.27 1.27))))
+        ; PA4 - SD CS
+        (pin bidirectional line (at -30.48 -15.24 0) (length 3.81)
+          (name "PA4") (number "29") (effects (font (size 1.27 1.27))))
+        ; PA5 - SPI1_SCK (SD)
+        (pin bidirectional line (at -30.48 -17.78 0) (length 3.81)
+          (name "PA5") (number "30") (effects (font (size 1.27 1.27))))
+        ; PA6 - SPI1_MISO (SD)
+        (pin bidirectional line (at -30.48 -20.32 0) (length 3.81)
+          (name "PA6") (number "31") (effects (font (size 1.27 1.27))))
+        ; PA7 - SPI1_MOSI (SD)
+        (pin bidirectional line (at -30.48 -22.86 0) (length 3.81)
+          (name "PA7") (number "32") (effects (font (size 1.27 1.27))))
+        ; PA8 - BLE RST
+        (pin bidirectional line (at -30.48 -25.4 0) (length 3.81)
+          (name "PA8") (number "41") (effects (font (size 1.27 1.27))))
+        ; PA9 - USART1_TX (Debug)
+        (pin bidirectional line (at -30.48 -27.94 0) (length 3.81)
+          (name "PA9") (number "42") (effects (font (size 1.27 1.27))))
+        ; PA10 - USART1_RX (Debug)
+        (pin bidirectional line (at -30.48 -30.48 0) (length 3.81)
+          (name "PA10") (number "43") (effects (font (size 1.27 1.27))))
+        ; PA15 - Charger STAT
+        (pin bidirectional line (at 30.48 -25.4 180) (length 3.81)
+          (name "PA15") (number "77") (effects (font (size 1.27 1.27))))
+        ; PB1 - Status LED
+        (pin bidirectional line (at 30.48 -5.08 180) (length 3.81)
+          (name "PB1") (number "46") (effects (font (size 1.27 1.27))))
+        ; PB2 - Sample LED
+        (pin bidirectional line (at 30.48 -7.62 180) (length 3.81)
+          (name "PB2") (number "47") (effects (font (size 1.27 1.27))))
+        ; PB4 - Display RST
+        (pin bidirectional line (at 30.48 -10.16 180) (length 3.81)
+          (name "PB4") (number "56") (effects (font (size 1.27 1.27))))
+        ; PB5 - Display DC
+        (pin bidirectional line (at 30.48 -12.7 180) (length 3.81)
+          (name "PB5") (number "57") (effects (font (size 1.27 1.27))))
+        ; PB6 - I2C1_SCL
+        (pin bidirectional line (at 30.48 5.08 180) (length 3.81)
+          (name "PB6") (number "92") (effects (font (size 1.27 1.27))))
+        ; PB7 - I2C1_SDA
+        (pin bidirectional line (at 30.48 2.54 180) (length 3.81)
+          (name "PB7") (number "93") (effects (font (size 1.27 1.27))))
+        ; PB8 - Sensor Power Switch
+        (pin bidirectional line (at 30.48 0 180) (length 3.81)
+          (name "PB8") (number "95") (effects (font (size 1.27 1.27))))
+        ; PB9 - Pump Control
+        (pin bidirectional line (at 30.48 -2.54 180) (length 3.81)
+          (name "PB9") (number "96") (effects (font (size 1.27 1.27))))
+        ; PB12 - Display CS
+        (pin bidirectional line (at 30.48 -15.24 180) (length 3.81)
+          (name "PB12") (number "51") (effects (font (size 1.27 1.27))))
+        ; PB13 - SPI2_SCK (Display)
+        (pin bidirectional line (at 30.48 -17.78 180) (length 3.81)
+          (name "PB13") (number "52") (effects (font (size 1.27 1.27))))
+        ; PB15 - SPI2_MOSI (Display)
+        (pin bidirectional line (at 30.48 -20.32 180) (length 3.81)
+          (name "PB15") (number "54") (effects (font (size 1.27 1.27))))
+        ; PC0 - ADC1_IN0 (H2 sensor)
+        (pin bidirectional line (at 30.48 15.24 180) (length 3.81)
+          (name "PC0") (number "15") (effects (font (size 1.27 1.27))))
+        ; PC1 - ADC1_IN1 (Battery)
+        (pin bidirectional line (at 30.48 12.7 180) (length 3.81)
+          (name "PC1") (number "16") (effects (font (size 1.27 1.27))))
+        ; PC10 - USART3_TX (CH4)
+        (pin bidirectional line (at 30.48 20.32 180) (length 3.81)
+          (name "PC10") (number "78") (effects (font (size 1.27 1.27))))
+        ; PC11 - USART3_RX (CH4)
+        (pin bidirectional line (at 30.48 17.78 180) (length 3.81)
+          (name "PC11") (number "79") (effects (font (size 1.27 1.27))))
+        ; PC13 - Power Button
+        (pin bidirectional line (at 30.48 25.4 180) (length 3.81)
+          (name "PC13") (number "7") (effects (font (size 1.27 1.27))))
+        ; PE2 - SPI4_SCK (Flash)
+        (pin bidirectional line (at 30.48 30.48 180) (length 3.81)
+          (name "PE2") (number "1") (effects (font (size 1.27 1.27))))
+        ; PE4 - Flash CS
+        (pin bidirectional line (at 30.48 27.94 180) (length 3.81)
+          (name "PE4") (number "3") (effects (font (size 1.27 1.27))))
+        ; PE5 - SPI4_MISO (Flash)
+        (pin bidirectional line (at 30.48 33.02 180) (length 3.81)
+          (name "PE5") (number "4") (effects (font (size 1.27 1.27))))
+        ; PE6 - SPI4_MOSI (Flash)
+        (pin bidirectional line (at 30.48 35.56 180) (length 3.81)
+          (name "PE6") (number "5") (effects (font (size 1.27 1.27))))
+        ; USB pins
+        (pin bidirectional line (at 30.48 -30.48 180) (length 3.81)
+          (name "PA11(USB_DM)") (number "44") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 30.48 -33.02 180) (length 3.81)
+          (name "PA12(USB_DP)") (number "45") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; --- BME688 sensor ---
+    (symbol "BME688"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -7.62 7.62 0))
+      (property "Value" "BME688" (at -7.62 5.08 0))
+      (property "Footprint" "Package_LCC:Bosch_LCC-8_3.6x4.2mm_P1.2mm" (at 0 -10.16 0))
+      (property "Datasheet" "https://www.bosch-sensortec.com/products/environmental-sensors/gas-sensors/bme688/")
+      (symbol "BME688_0_1"
+        (rectangle (start -8.89 6.35) (end 8.89 -7.62)
+          (stroke (width 0.254) (type default))
+          (fill (type background)))
+      )
+      (symbol "BME688_1_1"
+        (pin power_in line (at -12.7 3.81 0) (length 3.81)
+          (name "VDDIO") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -12.7 1.27 0) (length 3.81)
+          (name "VDD") (number "8") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -12.7 -3.81 0) (length 3.81)
+          (name "GND") (number "2") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -12.7 -6.35 0) (length 3.81)
+          (name "GND") (number "7") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 12.7 3.81 180) (length 3.81)
+          (name "SDO") (number "6") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 12.7 1.27 180) (length 3.81)
+          (name "CSB") (number "3") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 12.7 -1.27 180) (length 3.81)
+          (name "SCK") (number "4") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 12.7 -3.81 180) (length 3.81)
+          (name "SDI") (number "5") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; --- SCD41 CO2 sensor ---
+    (symbol "SCD41"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -7.62 7.62 0))
+      (property "Value" "SCD41" (at -7.62 5.08 0))
+      (property "Footprint" "Sensor:Sensirion_SCD41" (at 0 -10.16 0))
+      (property "Datasheet" "https://sensirion.com/products/catalog/SCD41/")
+      (symbol "SCD41_0_1"
+        (rectangle (start -8.89 6.35) (end 8.89 -7.62)
+          (stroke (width 0.254) (type default))
+          (fill (type background)))
+      )
+      (symbol "SCD41_1_1"
+        (pin power_in line (at -12.7 3.81 0) (length 3.81)
+          (name "VDD") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -12.7 -3.81 0) (length 3.81)
+          (name "GND") (number "2") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 12.7 3.81 180) (length 3.81)
+          (name "SCL") (number "3") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 12.7 1.27 180) (length 3.81)
+          (name "SDA") (number "4") (effects (font (size 1.27 1.27))))
+        (pin output line (at 12.7 -1.27 180) (length 3.81)
+          (name "RDY") (number "5") (effects (font (size 1.27 1.27))))
+        (pin input line (at 12.7 -3.81 180) (length 3.81)
+          (name "EN") (number "6") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; --- W25Q64 Flash ---
+    (symbol "W25Q64JVSIQ"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -10.16 8.89 0))
+      (property "Value" "W25Q64JVSIQ" (at -10.16 6.35 0))
+      (property "Footprint" "Package_SO:SOIC-8_5.27x5.27mm_P1.27mm" (at 0 -12.7 0))
+      (property "Datasheet" "https://www.winbond.com/resource-files/w25q64jv%20revj%2003272018%20plus.pdf")
+      (symbol "W25Q64JVSIQ_0_1"
+        (rectangle (start -11.43 7.62) (end 11.43 -10.16)
+          (stroke (width 0.254) (type default))
+          (fill (type background)))
+      )
+      (symbol "W25Q64JVSIQ_1_1"
+        (pin power_in line (at -15.24 5.08 0) (length 3.81)
+          (name "VCC") (number "8") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -15.24 -7.62 0) (length 3.81)
+          (name "GND") (number "4") (effects (font (size 1.27 1.27))))
+        (pin input line (at 15.24 5.08 180) (length 3.81)
+          (name "CS") (number "1") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 2.54 180) (length 3.81)
+          (name "DO(IO1)") (number "2") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 0 180) (length 3.81)
+          (name "WP(IO2)") (number "3") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 -2.54 180) (length 3.81)
+          (name "DI(IO0)") (number "5") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 -5.08 180) (length 3.81)
+          (name "HOLD(IO3)") (number "7") (effects (font (size 1.27 1.27))))
+        (pin input line (at 15.24 -7.62 180) (length 3.81)
+          (name "CLK") (number "6") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; --- MCP73831 Charger ---
+    (symbol "MCP73831T-2ACI"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -7.62 6.35 0))
+      (property "Value" "MCP73831T-2ACI" (at -7.62 3.81 0))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 -8.89 0))
+      (property "Datasheet" "https://ww1.microchip.com/downloads/en/DeviceDoc/MCP73831-Family-Data-Sheet-DS20001984H.pdf")
+      (symbol "MCP73831T-2ACI_0_1"
+        (rectangle (start -8.89 5.08) (end 8.89 -6.35)
+          (stroke (width 0.254) (type default))
+          (fill (type background)))
+      )
+      (symbol "MCP73831T-2ACI_1_1"
+        (pin power_in line (at -12.7 2.54 0) (length 3.81)
+          (name "VDD") (number "4") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 12.7 2.54 180) (length 3.81)
+          (name "VBAT") (number "3") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 12.7 -3.81 180) (length 3.81)
+          (name "GND") (number "2") (effects (font (size 1.27 1.27))))
+        (pin output line (at -12.7 -1.27 0) (length 3.81)
+          (name "STAT") (number "1") (effects (font (size 1.27 1.27))))
+        (pin input line (at -12.7 -3.81 0) (length 3.81)
+          (name "PROG") (number "5") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; --- TPS63031 Buck-Boost ---
+    (symbol "TPS63031DSKR"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -8.89 8.89 0))
+      (property "Value" "TPS63031DSKR" (at -8.89 6.35 0))
+      (property "Footprint" "Package_SON:VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.35mm" (at 0 -10.16 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps63031.pdf")
+      (symbol "TPS63031DSKR_0_1"
+        (rectangle (start -10.16 7.62) (end 10.16 -7.62)
+          (stroke (width 0.254) (type default))
+          (fill (type background)))
+      )
+      (symbol "TPS63031DSKR_1_1"
+        (pin power_in line (at -13.97 5.08 0) (length 3.81)
+          (name "VIN") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -13.97 2.54 0) (length 3.81)
+          (name "VIN") (number "2") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 13.97 5.08 180) (length 3.81)
+          (name "VOUT") (number "9") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 13.97 2.54 180) (length 3.81)
+          (name "VOUT") (number "10") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -13.97 -5.08 0) (length 3.81)
+          (name "GND") (number "3") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -13.97 -2.54 0) (length 3.81)
+          (name "GND") (number "4") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 13.97 -5.08 180) (length 3.81)
+          (name "GND") (number "8") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 13.97 -2.54 180) (length 3.81)
+          (name "PGND") (number "7") (effects (font (size 1.27 1.27))))
+        (pin passive line (at 13.97 0 180) (length 3.81)
+          (name "FB") (number "6") (effects (font (size 1.27 1.27))))
+        (pin input line (at -13.97 0 0) (length 3.81)
+          (name "EN") (number "5") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; --- SSD1306 OLED ---
+    (symbol "SSD1306_128x64"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -10.16 8.89 0))
+      (property "Value" "SSD1306_128x64" (at -10.16 6.35 0))
+      (property "Footprint" "Display:SSD1306_0.96in_128x64" (at 0 -12.7 0))
+      (symbol "SSD1306_128x64_0_1"
+        (rectangle (start -11.43 7.62) (end 11.43 -10.16)
+          (stroke (width 0.254) (type default))
+          (fill (type background)))
+      )
+      (symbol "SSD1306_128x64_1_1"
+        (pin power_in line (at -15.24 5.08 0) (length 3.81)
+          (name "VCC") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -15.24 -7.62 0) (length 3.81)
+          (name "GND") (number "2") (effects (font (size 1.27 1.27))))
+        (pin input line (at 15.24 5.08 180) (length 3.81)
+          (name "CS") (number "3") (effects (font (size 1.27 1.27))))
+        (pin input line (at 15.24 2.54 180) (length 3.81)
+          (name "DC") (number "4") (effects (font (size 1.27 1.27))))
+        (pin input line (at 15.24 0 180) (length 3.81)
+          (name "RST") (number "5") (effects (font (size 1.27 1.27))))
+        (pin input line (at 15.24 -2.54 180) (length 3.81)
+          (name "SCK") (number "6") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 -5.08 180) (length 3.81)
+          (name "MOSI") (number "7") (effects (font (size 1.27 1.27))))
+        (pin input line (at 15.24 -7.62 180) (length 3.81)
+          (name "MISO") (number "8") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; --- Resistor ---
+    (symbol "R"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 2.032 0 90))
+      (property "Value" "R" (at 0 0 90))
+      (property "Footprint" "" (at -1.778 0 90))
+      (symbol "R_0_1"
+        (rectangle (start -1.016 -2.54) (end 1.016 2.54)
+          (stroke (width 0.254) (type default))
+          (fill (type none)))
+      )
+      (symbol "R_1_1"
+        (pin passive line (at 0 3.81 270) (length 1.27)
+          (name "~") (number "1") (effects (font (size 1.27 1.27))))
+        (pin passive line (at 0 -3.81 90) (length 1.27)
+          (name "~") (number "2") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; --- Capacitor ---
+    (symbol "C"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 2.032 0 90))
+      (property "Value" "C" (at 0 0 90))
+      (property "Footprint" "" (at -1.778 0 90))
+      (symbol "C_0_1"
+        (polyline (pts (xy -1.524 -0.508) (xy 1.524 -0.508))
+          (stroke (width 0.3048) (type default))
+          (fill (type none)))
+        (polyline (pts (xy -1.524 0.508) (xy 1.524 0.508))
+          (stroke (width 0.3048) (type default))
+          (fill (type none)))
+      )
+      (symbol "C_1_1"
+        (pin passive line (at 0 3.81 270) (length 1.27)
+          (name "~") (number "1") (effects (font (size 1.27 1.27))))
+        (pin passive line (at 0 -3.81 90) (length 1.27)
+          (name "~") (number "2") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; --- Crystal ---
+    (symbol "Crystal"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "Y" (at 0 3.81 0))
+      (property "Value" "Crystal" (at 0 -3.81 0))
+      (property "Footprint" "" (at 0 0 0))
+      (symbol "Crystal_0_1"
+        (rectangle (start -1.143 1.778) (end 1.143 -1.778)
+          (stroke (width 0.254) (type default))
+          (fill (type none)))
+        (polyline (pts (xy -2.54 0) (xy -1.905 0))
+          (stroke (width 0) (type default))
+          (fill (type none)))
+        (polyline (pts (xy 2.54 0) (xy 1.905 0))
+          (stroke (width 0) (type default))
+          (fill (type none)))
+      )
+      (symbol "Crystal_1_1"
+        (pin passive line (at -3.81 0 0) (length 1.27)
+          (name "~") (number "1") (effects (font (size 1.27 1.27))))
+        (pin passive line (at 3.81 0 180) (length 1.27)
+          (name "~") (number "2") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; --- USB-C Connector ---
+    (symbol "USB-C"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at -10.16 12.7 0))
+      (property "Value" "USB-C" (at -10.16 10.16 0))
+      (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4085" (at 0 -15.24 0))
+      (symbol "USB-C_0_1"
+        (rectangle (start -11.43 11.43) (end 11.43 -13.97)
+          (stroke (width 0.254) (type default))
+          (fill (type background)))
+      )
+      (symbol "USB-C_1_1"
+        (pin power_in line (at -15.24 8.89 0) (length 3.81)
+          (name "VBUS") (number "A4") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 15.24 8.89 180) (length 3.81)
+          (name "VBUS") (number "B4") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -15.24 -11.43 0) (length 3.81)
+          (name "GND") (number "A1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 15.24 -11.43 180) (length 3.81)
+          (name "GND") (number "B1") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 3.81 0) (length 3.81)
+          (name "DP") (number "A6") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 1.27 0) (length 3.81)
+          (name "DN") (number "A7") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 3.81 180) (length 3.81)
+          (name "DP") (number "B6") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 1.27 180) (length 3.81)
+          (name "DN") (number "B7") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 -3.81 0) (length 3.81)
+          (name "CC1") (number "A5") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 -3.81 180) (length 3.81)
+          (name "CC2") (number "B5") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; --- LED ---
+    (symbol "LED"
+      (pin_numbers (hide yes))
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "D" (at 0 2.54 0))
+      (property "Value" "LED" (at 0 -2.54 0))
+      (property "Footprint" "" (at 0 0 0))
+      (symbol "LED_0_1"
+        (polyline (pts (xy -1.27 1.27) (xy 1.27 0) (xy -1.27 -1.27))
+          (stroke (width 0.254) (type default))
+          (fill (type none)))
+        (rectangle (start -1.27 1.27) (end 1.27 -1.27)
+          (stroke (width 0.254) (type default))
+          (fill (type none)))
+      )
+      (symbol "LED_1_1"
+        (pin passive line (at -3.81 0 0) (length 2.54)
+          (name "A") (number "1") (effects (font (size 1.27 1.27))))
+        (pin passive line (at 3.81 0 180) (length 2.54)
+          (name "K") (number "2") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; --- Switch ---
+    (symbol "SW_Push"
+      (pin_names (offset 1.016) hide yes))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "SW" (at 0 3.81 0))
+      (property "Value" "SW_Push" (at 0 -2.54 0))
+      (property "Footprint" "" (at 0 0 0))
+      (symbol "SW_Push_0_1"
+        (circle (center -2.032 0) (radius 0.508)
+          (stroke (width 0)) (fill (type none)))
+        (circle (center 2.032 0) (radius 0.508)
+          (stroke (width 0)) (fill (type none)))
+        (polyline (pts (xy 0 1.27) (xy 0 3.048))
+          (stroke (width 0)) (fill (type none)))
+      )
+      (symbol "SW_Push_1_1"
+        (pin passive line (at -3.81 0 0) (length 1.27)
+          (name "1") (number "1") (effects (font (size 1.27 1.27))))
+        (pin passive line (at 3.81 0 180) (length 1.27)
+          (name "2") (number "2") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; --- Battery ---
+    (symbol "Battery_Cell"
+      (pin_names (offset 0))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "BT" (at 2.54 2.54 0))
+      (property "Value" "Battery_Cell" (at 2.54 -2.54 0))
+      (property "Footprint" "" (at 0 0 0))
+      (symbol "Battery_Cell_0_1"
+        (rectangle (start -1.27 1.778) (end 1.27 1.27)
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (rectangle (start -2.032 0.254) (end 2.032 -0.254)
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (polyline (pts (xy 0 0.254) (xy 0 1.27))
+          (stroke (width 0.254) (type default)) (fill (type none)))
+      )
+      (symbol "Battery_Cell_1_1"
+        (pin passive line (at 0 2.54 270) (length 1.27)
+          (name "+") (number "1") (effects (font (size 1.27 1.27))))
+        (pin passive line (at 0 -2.54 90) (length 1.27)
+          (name "-") (number "2") (effects (font (size 1.27 1.27))))
+      )
+    )
+  )
+
+  ; ========================================================================
+  ; Component Instances
+  ; ========================================================================
+
+  ; --- MCU ---
+  (symbol (lib_id "STM32H733VGT6") (at 127 76.2 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U1" (at 101.6 40.64 0))
+    (property "Value" "STM32H733VGT6" (at 101.6 43.18 0))
+    (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm")
+    (property "Author" "jayis1")
+  )
+
+  ; --- BME688 #1 (Acetone) ---
+  (symbol (lib_id "BME688") (at 50.8 27.94 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U2" (at 43.18 20.32 0))
+    (property "Value" "BME688" (at 43.18 17.78 0))
+    (property "Footprint" "Package_LCC:Bosch_LCC-8_3.6x4.2mm_P1.2mm")
+    (property "Author" "jayis1")
+  )
+
+  ; --- BME688 #2 (Isoprene) ---
+  (symbol (lib_id "BME688") (at 50.8 48.26 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U3" (at 43.18 40.64 0))
+    (property "Value" "BME688" (at 43.18 38.1 0))
+    (property "Footprint" "Package_LCC:Bosch_LCC-8_3.6x4.2mm_P1.2mm")
+    (property "Author" "jayis1")
+  )
+
+  ; --- SCD41 (CO2) ---
+  (symbol (lib_id "SCD41") (at 50.8 68.58 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U4" (at 43.18 60.96 0))
+    (property "Value" "SCD41" (at 43.18 58.42 0))
+    (property "Footprint" "Sensor:Sensirion_SCD41")
+    (property "Author" "jayis1")
+  )
+
+  ; --- W25Q64 Flash ---
+  (symbol (lib_id "W25Q64JVSIQ") (at 180.34 27.94 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U5" (at 170.18 20.32 0))
+    (property "Value" "W25Q64JVSIQ" (at 170.18 17.78 0))
+    (property "Footprint" "Package_SO:SOIC-8_5.27x5.27mm_P1.27mm")
+    (property "Author" "jayis1")
+  )
+
+  ; --- MCP73831 Charger ---
+  (symbol (lib_id "MCP73831T-2ACI") (at 180.34 66.04 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U6" (at 172.72 58.42 0))
+    (property "Value" "MCP73831T-2ACI" (at 172.72 55.88 0))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5")
+    (property "Author" "jayis1")
+  )
+
+  ; --- TPS63031 Buck-Boost ---
+  (symbol (lib_id "TPS63031DSKR") (at 180.34 88.9 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U7" (at 171.45 81.28 0))
+    (property "Value" "TPS63031DSKR" (at 171.45 78.74 0))
+    (property "Footprint" "Package_SON:VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.35mm")
+    (property "Author" "jayis1")
+  )
+
+  ; --- OLED Display ---
+  (symbol (lib_id "SSD1306_128x64") (at 127 127 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U8" (at 116.84 119.38 0))
+    (property "Value" "SSD1306_128x64" (at 116.84 116.84 0))
+    (property "Footprint" "Display:SSD1306_0.96in_128x64")
+    (property "Author" "jayis1")
+  )
+
+  ; --- USB-C Connector ---
+  (symbol (lib_id "USB-C") (at 210.82 66.04 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J1" (at 200.66 53.34 0))
+    (property "Value" "USB-C" (at 200.66 50.8 0))
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4085")
+    (property "Author" "jayis1")
+  )
+
+  ; --- Crystal 16 MHz ---
+  (symbol (lib_id "Crystal") (at 93.98 86.36 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "Y1" (at 93.98 90.17 0))
+    (property "Value" "16MHz" (at 93.98 82.55 0))
+    (property "Footprint" "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm")
+    (property "Author" "jayis1")
+  )
+
+  ; --- Battery ---
+  (symbol (lib_id "Battery_Cell") (at 210.82 88.9 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "BT1" (at 213.36 91.44 0))
+    (property "Value" "500mAh Li-Po" (at 213.36 86.36 0))
+    (property "Footprint" "Battery:BatteryHolder_Keystone_1042_1x18650")
+    (property "Author" "jayis1")
+  )
+
+  ; --- Status LED ---
+  (symbol (lib_id "LED") (at 165.1 127 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D1" (at 165.1 129.54 0))
+    (property "Value" "Status_LED" (at 165.1 121.92 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric")
+    (property "Author" "jayis1")
+  )
+
+  ; --- Sample LED ---
+  (symbol (lib_id "LED") (at 175.26 127 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D2" (at 175.26 129.54 0))
+    (property "Value" "Sample_LED" (at 175.26 121.92 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric")
+    (property "Author" "jayis1")
+  )
+
+  ; --- User Button ---
+  (symbol (lib_id "SW_Push") (at 91.44 127 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "SW1" (at 91.44 130.81 0))
+    (property "Value" "Analyze_BTN" (at 91.44 124.46 0))
+    (property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm")
+    (property "Author" "jayis1")
+  )
+
+  ; --- Power Button ---
+  (symbol (lib_id "SW_Push") (at 101.6 127 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "SW2" (at 101.6 130.81 0))
+    (property "Value" "Power_BTN" (at 101.6 124.46 0))
+    (property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm")
+    (property "Author" "jayis1")
+  )
+
+  ; --- Decoupling Capacitors ---
+  (symbol (lib_id "C") (at 116.84 48.26 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C1" (at 116.84 44.45 0))
+    (property "Value" "100nF" (at 116.84 52.07 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+    (property "Author" "jayis1")
+  )
+
+  (symbol (lib_id "C") (at 121.92 48.26 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C2" (at 121.92 44.45 0))
+    (property "Value" "100nF" (at 121.92 52.07 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+
+  (symbol (lib_id "C") (at 127 48.26 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C3" (at 127 44.45 0))
+    (property "Value" "4.7uF" (at 127 52.07 0))
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric")
+  )
+
+  (symbol (lib_id "C") (at 132.08 48.26 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C4" (at 132.08 44.45 0))
+    (property "Value" "100nF" (at 132.08 52.07 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+
+  (symbol (lib_id "C") (at 137.16 48.26 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C5" (at 137.16 44.45 0))
+    (property "Value" "10uF" (at 137.16 52.07 0))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric")
+  )
+
+  ; --- Crystal Load Capacitors ---
+  (symbol (lib_id "C") (at 88.9 91.44 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C6" (at 88.9 87.63 0))
+    (property "Value" "12pF" (at 88.9 95.25 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+
+  (symbol (lib_id "C") (at 99.06 91.44 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C7" (at 99.06 87.63 0))
+    (property "Value" "12pF" (at 99.06 95.25 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+
+  ; --- Pull-up Resistors for I2C ---
+  (symbol (lib_id "R") (at 71.12 22.86 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R1" (at 71.12 19.05 0))
+    (property "Value" "4.7k" (at 71.12 26.67 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+  )
+
+  (symbol (lib_id "R") (at 76.2 22.86 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R2" (at 76.2 19.05 0))
+    (property "Value" "4.7k" (at 76.2 26.67 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+  )
+
+  ; --- LED Current Limit Resistor ---
+  (symbol (lib_id "R") (at 165.1 116.84 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R3" (at 165.1 113.03 0))
+    (property "Value" "330R" (at 165.1 120.65 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+  )
+
+  (symbol (lib_id "R") (at 175.26 116.84 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R4" (at 175.26 113.03 0))
+    (property "Value" "330R" (at 175.26 120.65 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+  )
+
+  ; --- Battery Voltage Divider ---
+  (symbol (lib_id "R") (at 210.82 76.2 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R5" (at 210.82 72.39 0))
+    (property "Value" "20k" (at 210.82 80.01 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+  )
+
+  (symbol (lib_id "R") (at 210.82 83.82 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R6" (at 210.82 80.01 0))
+    (property "Value" "10k" (at 210.82 87.63 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+  )
+
+  ; ========================================================================
+  ; Net Labels
+  ; ========================================================================
+
+  (net_label "VCC" (at 66.04 22.86 0))
+  (net_label "GND" (at 66.04 27.94 0))
+  (net_label "VBAT" (at 195.58 66.04 0))
+  (net_label "VUSB" (at 200.66 66.04 0))
+  (net_label "VSENS" (at 66.04 33.02 0))
+  (net_label "I2C1_SCL" (at 76.2 31.75 0))
+  (net_label "I2C1_SDA" (at 76.2 34.29 0))
+  (net_label "SPI1_SCK" (at 96.52 53.34 0))
+  (net_label "SPI1_MISO" (at 96.52 55.88 0))
+  (net_label "SPI1_MOSI" (at 96.52 58.42 0))
+  (net_label "SPI2_SCK" (at 154.94 109.22 0))
+  (net_label "SPI2_MOSI" (at 154.94 111.76 0))
+  (net_label "SPI4_SCK" (at 165.1 53.34 0))
+  (net_label "SPI4_MISO" (at 165.1 55.88 0))
+  (net_label "SPI4_MOSI" (at 165.1 58.42 0))
+  (net_label "USART2_TX" (at 96.52 66.04 0))
+  (net_label "USART2_RX" (at 96.52 68.58 0))
+  (net_label "USART3_TX" (at 154.94 96.52 0))
+  (net_label "USART3_RX" (at 154.94 99.06 0))
+  (net_label "ADC_H2" (at 154.94 91.44 0))
+  (net_label "ADC_BAT" (at 195.58 76.2 0))
+  (net_label "NRST" (at 96.52 101.6 0))
+  (net_label "BOOT0" (at 96.52 96.52 0))
+  (net_label "SD_CS" (at 96.52 60.96 0))
+  (net_label "DISP_CS" (at 154.94 106.68 0))
+  (net_label "DISP_DC" (at 154.94 104.14 0))
+  (net_label "DISP_RST" (at 154.94 101.6 0))
+  (net_label "FLASH_CS" (at 165.1 60.96 0))
+  (net_label "BLE_RST" (at 96.52 50.8 0))
+  (net_label "CHRG_STAT" (at 165.1 66.04 0))
+  (net_label "SENS_PWR" (at 154.94 76.2 0))
+  (net_label "PUMP_CTL" (at 154.94 73.66 0))
+  (net_label "STATUS_LED" (at 154.94 86.36 0))
+  (net_label "SAMPLE_LED" (at 154.94 83.82 0))
+  (net_label "USB_DM" (at 154.94 114.3 0))
+  (net_label "USB_DP" (at 154.94 116.84 0))
+  (net_label "HSE_IN" (at 90.17 86.36 0))
+  (net_label "HSE_OUT" (at 97.79 86.36 0))
+  (net_label "BTN_ANALYZE" (at 87.63 127 0))
+  (net_label "BTN_POWER" (at 106.68 127 0))
+
+  ; ========================================================================
+  ; Power Flags
+  ; ========================================================================
+
+  (power_flag "VCC" (at 30.48 20.32 0))
+  (power_flag "GND" (at 30.48 25.4 0))
+  (power_flag "VBAT" (at 30.48 30.48 0))
+  (power_flag "VUSB" (at 30.48 35.56 0))
+  (power_flag "VSENS" (at 30.48 40.64 0))
+
+  ; ========================================================================
+  ; Wires / Connections
+  ; ========================================================================
+
+  ; I2C bus connections
+  (wire (pts (xy 63.5 24.13) (xy 71.12 24.13))
+    (stroke (width 0.254)))
+  (wire (pts (xy 63.5 26.67) (xy 76.2 26.67))
+    (stroke (width 0.254)))
+
+  ; Crystal connections
+  (wire (pts (xy 90.17 86.36) (xy 92.71 86.36))
+    (stroke (width 0.254)))
+  (wire (pts (xy 95.25 86.36) (xy 97.79 86.36))
+    (stroke (width 0.254)))
+
+  ; Decoupling caps to GND
+  (wire (pts (xy 116.84 44.45) (xy 116.84 40.64))
+    (stroke (width 0.254)))
+
+  ; USB DM/DP
+  (wire (pts (xy 195.58 69.85) (xy 195.58 66.04))
+    (stroke (width 0.254)))
+
+  ; ========================================================================
+  ; Text Annotations
+  ; ========================================================================
+
+  (text "BreathPrint — Portable Breath VOC Analyzer"
+    (at 30.48 12.7 0)
+    (effects (font (size 3.81 3.81)) (justify left bottom)))
+
+  (text "Author: jayis1"
+    (at 30.48 8.89 0)
+    (effects (font (size 1.524 1.524)) (justify left bottom)))
+
+  (text "Sensor Array: 8-channel gas analysis"
+    (at 30.48 109.22 0)
+    (effects (font (size 1.524 1.524)) (justify left bottom)))
+
+  (text "I2C Bus: BME688×2, SCD41, DGS×3, BMP390"
+    (at 30.48 114.3 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom)))
+
+  (text "SPI1: microSD | SPI2: OLED | SPI4: Flash"
+    (at 30.48 119.38 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom)))
+
+  (text "USART2: BLE | USART3: CH4 NDIR | USART1: Debug"
+    (at 30.48 124.46 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom)))
+
+  (text "ADC1: H2 sensor + Battery voltage"
+    (at 30.48 129.54 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom)))
+
+  (text "Power: 500mAh Li-Po, MCP73831 charger, TPS63031 3.3V"
+    (at 195.58 50.8 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom)))
+
+  (sheet_instances
+    (path "/" (page "1/1"))
+  )
+)
