@@ -1,0 +1,546 @@
+(kicad_sch
+  (version 20221018)
+  (generator "mycomesh-jayis1")
+  (uuid "30000000-0000-0000-0000-000000000001")
+
+  (paper "A3")
+
+  (title_block
+    (title "MycoMesh — Fungal Mycelium Electrophysiology & Chemical Sensing Network")
+    (date "2026-06-23")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Open-Source 16-Channel Mycelial Electrophysiology Sensor Node")
+    (comment 2 "Author: jayis1")
+    (comment 3 "License: CERN-OHL-S v2"))
+
+  (lib_symbols
+
+    (symbol "MCU_ST_STM32L4:STM32L4R9ZIT6"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "STM32L4R9ZIT6" (at 0 0 0))
+      (property "Footprint" "Package_QFP:LQFP-144_20x20mm_P0.5mm")
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32l4r9.pdf")
+      (property "Description" "MCU Cortex-M4F 120MHz, 2MB Flash, 640KB SRAM")
+      (property "Author" "jayis1"))
+
+    (symbol "Analog_ADC:ADS1298IPBS"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 7.62 0))
+      (property "Value" "ADS1298IPBS" (at 0 0 0))
+      (property "Footprint" "Package_QFP:TQFP-64_10x10mm_P0.5mm")
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/ads1298.pdf")
+      (property "Description" "8-Channel 24-Bit Delta-Sigma ADC for Biopotential Measurement")
+      (property "Author" "jayis1"))
+
+    (symbol "RF_Module:SX1262IMLTRT"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "SX1262" (at 0 0 0))
+      (property "Footprint" "Package_DFN_QFN:QFN-16-1EP_4x4mm_P0.65mm")
+      (property "Datasheet" "https://www.semtech.com/products/wireless-rf/lora-core/sx1262")
+      (property "Description" "Sub-GHz LoRa Transceiver, +22dBm, 868/915MHz")
+      (property "Author" "jayis1"))
+
+    (symbol "Sensor:SCD41-D-R2"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "SCD41" (at 0 0 0))
+      (property "Footprint" "Sensor:Sensirion_SCD41")
+      (property "Datasheet" "https://sensirion.com/resource/datasheet/scd41")
+      (property "Description" "Photoacoustic CO2 Sensor, 400-5000ppm, I2C")
+      (property "Author" "jayis1"))
+
+    (symbol "Sensor_Temperature:DS18B20"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 3.81 0))
+      (property "Value" "DS18B20+" (at 0 -1.27 0))
+      (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline")
+      (property "Datasheet" "https://datasheets.maximintegrated.com/en/ds/DS18B20.pdf")
+      (property "Description" "Digital Temperature Sensor, 1-Wire, ±0.5°C")
+      (property "Author" "jayis1"))
+
+    (symbol "Sensor:Truebner_SMT100"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 3.81 0))
+      (property "Value" "SMT100" (at 0 -1.27 0))
+      (property "Footprint" "Sensor:Truebner_SMT100")
+      (property "Datasheet" "https://www.truebner.de/smt100")
+      (property "Description" "Capacitive Soil Moisture Sensor, SDI-12, ±3% VWC")
+      (property "Author" "jayis1"))
+
+    (symbol "Regulator_Switching:TPS62743DGN"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 3.81 0))
+      (property "Value" "TPS62743DGN" (at 0 -1.27 0))
+      (property "Footprint" "Package_SO:MSOP-8_3x3mm_P0.65mm")
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps62743.pdf")
+      (property "Description" "Step-Down Converter, 3.3V, 400mA, 360nA IQ")
+      (property "Author" "jayis1"))
+
+    (symbol "Regulator_Linear:TPS7A0200PDBVR"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 3.81 0))
+      (property "Value" "TPS7A02" (at 0 -1.27 0))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5")
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps7a02.pdf")
+      (property "Description" "LDO, 3.0V, 250mA, 1nA IQ, Ultra-Low Noise")
+      (property "Author" "jayis1"))
+
+    (symbol "Regulator_ChargePump:TPS60403DBVR"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 3.81 0))
+      (property "Value" "TPS60403" (at 0 -1.27 0))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5")
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps60403.pdf")
+      (property "Description" "Inverting Charge Pump, -2.5V, 60mA")
+      (property "Author" "jayis1"))
+
+    (symbol "Power_Management:MP2667GQ"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08 0))
+      (property "Value" "MP2667" (at 0 0 0))
+      (property "Footprint" "Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.5mm")
+      (property "Datasheet" "https://www.monolithicpower.com/en/documentview/productdocument/mp2667")
+      (property "Description" "Solar Charger IC, 5V Input, Supercap/Li-Ion")
+      (property "Author" "jayis1"))
+
+    (symbol "Device:R"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 0 2.54 0))
+      (property "Value" "R" (at 0 0 0))
+      (property "Footprint" "Resistor_SMD:R_0603_1608Metric"))
+
+    (symbol "Device:C"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 0 2.54 0))
+      (property "Value" "C" (at 0 0 0))
+      (property "Footprint" "Capacitor_SMD:C_0603_1608Metric"))
+
+    (symbol "Device:C_Polarized"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 0 2.54 0))
+      (property "Value" "C_Pol" (at 0 0 0))
+      (property "Footprint" "Capacitor_Tantalum_SMD:CP_EIA-3216-18_X_R"))
+
+    (symbol "Device:L"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "L" (at 0 2.54 0))
+      (property "Value" "L" (at 0 0 0))
+      (property "Footprint" "Inductor_SMD:L_0805_2012Metric"))
+
+    (symbol "Device:LED"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "D" (at 0 2.54 0))
+      (property "Value" "LED" (at 0 0 0)
+      (property "Footprint" "LED_SMD:LED_0603_1608Metric")))
+
+    (symbol "Connector:USB_C_Receptacle"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 5.08 0))
+      (property "Value" "USB-C" (at 0 0 0))
+      (property "Footprint" "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12")
+      (property "Description" "USB-C 16-pin receptacle")
+      (property "Author" "jayis1"))
+
+    (symbol "Connector:MicroSD_Card"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 5.08 0))
+      (property "Value" "MicroSD" (at 0 0 0))
+      (property "Footprint" "Connector_Card:microSD_HC_Hirose_DM3D-SF")
+      (property "Description" "MicroSD push-push socket")
+      (property "Author" "jayis1"))
+
+    (symbol "Connector:Conn_01x18"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 10.16 0))
+      (property "Value" "Electrode_Harness" (at 0 0 0))
+      (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x18_P2.54mm_Vertical")
+      (property "Description" "18-conductor electrode harness connector (16 channels + 2 ref)")
+      (property "Author" "jayis1"))
+
+    (symbol "Connector_Generic:Conn_01x02"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 2.54 0))
+      (property "Value" "Battery" (at 0 -1.27 0))
+      (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"))
+
+    (symbol "Switch:SW_Push"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "SW" (at 0 2.54 0))
+      (property "Value" "SW_Push" (at 0 0 0)
+      (property "Footprint" "Button_Switch_SMD:SW_SPST_B3SN-6_6x6mm")))
+
+  )
+
+  ;; =====================================================================
+  ;;  Component instances
+  ;; =====================================================================
+
+  ;; --- MCU: STM32L4R9ZIT6 ---
+  (symbol (lib_id "MCU_ST_STM32L4:STM32L4R9ZIT6") (at 127 76.2 0)
+    (property "Reference" "U1" (at 127 76.2 0))
+    (property "Value" "STM32L4R9ZIT6" (at 127 71.12 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- ADS1298 #0 (channels 0-7) ---
+  (symbol (lib_id "Analog_ADC:ADS1298IPBS") (at 53.34 55.88 0)
+    (property "Reference" "U2" (at 53.34 55.88 0))
+    (property "Value" "ADS1298IPBS" (at 53.34 50.8 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- ADS1298 #1 (channels 8-15) ---
+  (symbol (lib_id "Analog_ADC:ADS1298IPBS") (at 53.34 104.14 0)
+    (property "Reference" "U3" (at 53.34 104.14 0))
+    (property "Value" "ADS1298IPBS" (at 53.34 99.06 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- LoRa Transceiver: SX1262 ---
+  (symbol (lib_id "RF_Module:SX1262IMLTRT") (at 195.58 73.66 0)
+    (property "Reference" "U4" (at 195.58 73.66 0))
+    (property "Value" "SX1262" (at 195.58 68.58 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- SCD41 CO2 Sensor ---
+  (symbol (lib_id "Sensor:SCD41-D-R2") (at 195.58 50.8 0)
+    (property "Reference" "U9" (at 195.58 50.8 0))
+    (property "Value" "SCD41" (at 195.58 45.72 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- DS18B20 Temperature Sensor ---
+  (symbol (lib_id "Sensor_Temperature:DS18B20") (at 195.58 104.14 0)
+    (property "Reference" "U10" (at 195.58 104.14 0))
+    (property "Value" "DS18B20+" (at 195.58 99.06 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- SMT100 Soil Moisture Sensor ---
+  (symbol (lib_id "Sensor:Truebner_SMT100") (at 195.58 119.38 0)
+    (property "Reference" "U11" (at 195.58 119.38 0))
+    (property "Value" "SMT100" (at 195.58 114.3 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- Buck Converter: TPS62743 (3.3V) ---
+  (symbol (lib_id "Regulator_Switching:TPS62743DGN") (at 40.64 25.4 0)
+    (property "Reference" "U5" (at 40.64 25.4 0))
+    (property "Value" "TPS62743" (at 40.64 20.32 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- LDO: TPS7A02 (3.0V analog) ---
+  (symbol (lib_id "Regulator_Linear:TPS7A0200PDBVR") (at 40.64 43.18 0)
+    (property "Reference" "U6" (at 40.64 43.18 0))
+    (property "Value" "TPS7A02" (at 40.64 38.1 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- Charge Pump: TPS60403 (-2.5V) ---
+  (symbol (lib_id "Regulator_ChargePump:TPS60403DBVR") (at 40.64 60.96 0)
+    (property "Reference" "U7" (at 40.64 60.96 0))
+    (property "Value" "TPS60403" (at 40.64 55.88 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- Solar Charger: MP2667 ---
+  (symbol (lib_id "Power_Management:MP2667GQ") (at 40.64 78.74 0)
+    (property "Reference" "U8" (at 40.64 78.74 0))
+    (property "Value" "MP2667" (at 40.64 73.66 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- Status LEDs ---
+  (symbol (lib_id "Device:LED") (at 88.9 25.4 0)
+    (property "Reference" "D2" (at 88.9 25.4 0))
+    (property "Value" "Green" (at 88.9 22.86 0))
+    (in_bom yes) (on_board yes))
+
+  (symbol (lib_id "Device:LED") (at 88.9 33.02 0)
+    (property "Reference" "D3" (at 88.9 33.02 0))
+    (property "Value" "Red" (at 88.9 30.48 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- USB-C Receptacle ---
+  (symbol (lib_id "Connector:USB_C_Receptacle") (at 127 127 0)
+    (property "Reference" "J1" (at 127 127 0))
+    (property "Value" "USB-C" (at 127 121.92 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- MicroSD Socket ---
+  (symbol (lib_id "Connector:MicroSD_Card") (at 127 152.4 0)
+    (property "Reference" "J2" (at 127 152.4 0))
+    (property "Value" "MicroSD" (at 127 147.32 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- Electrode Harness Connector (18-pin) ---
+  (symbol (lib_id "Connector:Conn_01x18") (at 15.24 78.74 0)
+    (property "Reference" "J3" (at 15.24 78.74 0))
+    (property "Value" "Electrode_Harness" (at 15.24 66.04 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- Battery Connector ---
+  (symbol (lib_id "Connector_Generic:Conn_01x02") (at 15.24 25.4 0)
+    (property "Reference" "J4" (at 15.24 25.4 0))
+    (property "Value" "Battery" (at 15.24 20.32 0))
+    (in_bom yes) (on_board yes))
+
+  ;; --- User Button ---
+  (symbol (lib_id "Switch:SW_Push") (at 88.9 43.18 0)
+    (property "Reference" "SW1" (at 88.9 43.18 0))
+    (property "Value" "BTN" (at 88.9 40.64 0))
+    (in_bom yes) (on_board yes))
+
+  ;; =====================================================================
+  ;;  Passive components
+  ;; =====================================================================
+
+  ;; Decoupling capacitors for STM32L4
+  (symbol (lib_id "Device:C") (at 114.3 55.88 0) (property "Reference" "C1") (property "Value" "100nF"))
+  (symbol (lib_id "Device:C") (at 114.3 60.96 0) (property "Reference" "C2") (property "Value" "100nF"))
+  (symbol (lib_id "Device:C") (at 114.3 66.04 0) (property "Reference" "C3") (property "Value" "100nF"))
+  (symbol (lib_id "Device:C") (at 114.3 71.12 0) (property "Reference" "C4") (property "Value" "100nF"))
+  (symbol (lib_id "Device:C") (at 114.3 76.2 0) (property "Reference" "C5") (property "Value" "10uF"))
+  (symbol (lib_id "Device:C") (at 114.3 81.28 0) (property "Reference" "C6") (property "Value" "1uF"))
+
+  ;; Decoupling for ADS1298 #0
+  (symbol (lib_id "Device:C") (at 40.64 33.02 0) (property "Reference" "C7") (property "Value" "1uF"))
+  (symbol (lib_id "Device:C") (at 45.72 33.02 0) (property "Reference" "C8") (property "Value" "100nF"))
+
+  ;; Decoupling for ADS1298 #1
+  (symbol (lib_id "Device:C") (at 40.64 50.8 0) (property "Reference" "C9") (property "Value" "1uF"))
+  (symbol (lib_id "Device:C") (at 45.72 50.8 0) (property "Reference" "C10") (property "Value" "100nF"))
+
+  ;; Buck converter output inductor and caps
+  (symbol (lib_id "Device:L") (at 55.88 25.4 0) (property "Reference" "L1") (property "Value" "2.2uH"))
+  (symbol (lib_id "Device:C") (at 63.5 27.94 0) (property "Reference" "C11") (property "Value" "10uF"))
+  (symbol (lib_id "Device:C") (at 68.58 27.94 0) (property "Reference" "C12") (property "Value" "10uF"))
+
+  ;; LDO output cap
+  (symbol (lib_id "Device:C") (at 55.88 43.18 0) (property "Reference" "C13") (property "Value" "1uF"))
+
+  ;; Charge pump caps
+  (symbol (lib_id "Device:C") (at 55.88 60.96 0) (property "Reference" "C14") (property "Value" "1uF"))
+  (symbol (lib_id "Device:C") (at 55.88 66.04 0) (property "Reference" "C15") (property "Value" "1uF"))
+
+  ;; Solar charger caps
+  (symbol (lib_id "Device:C_Polarized") (at 55.88 76.2 0) (property "Reference" "C16") (property "Value" "22uF"))
+  (symbol (lib_id "Device:C") (at 63.5 76.2 0) (property "Reference" "C17") (property "Value" "100nF"))
+
+  ;; Supercapacitor
+  (symbol (lib_id "Device:C_Polarized") (at 71.12 76.2 0) (property "Reference" "C18") (property "Value" "5F/5.5V"))
+
+  ;; SX1262 matching components
+  (symbol (lib_id "Device:L") (at 182.88 73.66 0) (property "Reference" "L2") (property "Value" "12nH"))
+  (symbol (lib_id "Device:L") (at 182.88 78.74 0) (property "Reference" "L3") (property "Value" "12nH"))
+  (symbol (lib_id "Device:C") (at 208.28 73.66 0) (property "Reference" "C19") (property "Value" "12pF"))
+  (symbol (lib_id "Device:C") (at 208.28 78.74 0) (property "Reference" "C20") (property "Value" "12pF"))
+
+  ;; LED current-limiting resistors
+  (symbol (lib_id "Device:R") (at 83.82 25.4 0) (property "Reference" "R1") (property "Value" "1k"))
+  (symbol (lib_id "Device:R") (at 83.82 33.02 0) (property "Reference" "R2") (property "Value" "1k"))
+
+  ;; Button pull-up
+  (symbol (lib_id "Device:R") (at 83.82 43.18 0) (property "Reference" "R3") (property "Value" "10k"))
+
+  ;; Battery voltage divider
+  (symbol (lib_id "Device:R") (at 25.4 33.02 0) (property "Reference" "R4") (property "Value" "10k"))
+  (symbol (lib_id "Device:R") (at 25.4 38.1 0) (property "Reference" "R5") (property "Value" "10k"))
+
+  ;; =====================================================================
+  ;;  Net labels and connections
+  ;; =====================================================================
+
+  (net_label "VDD" (at 127 60.96 0))
+  (net_label "GND" (at 127 91.44 0))
+  (net_label "VDDA" (at 53.34 40.64 0))
+  (net_label "VSSA" (at 53.34 48.26 0))
+  (net_label "VBAT" (at 15.24 25.4 0))
+  (net_label "VSOLAR" (at 25.4 78.74 0))
+  (net_label "VSUPERCAP" (at 71.12 76.2 0))
+
+  ;; SPI1 bus (ADS1298)
+  (net_label "SPI1_SCK" (at 76.2 53.34 0))
+  (net_label "SPI1_MISO" (at 76.2 55.88 0))
+  (net_label "SPI1_MOSI" (at 76.2 58.42 0))
+  (net_label "ADS_CS0" (at 76.2 60.96 0))
+  (net_label "ADS_CS1" (at 76.2 63.5 0))
+  (net_label "ADS_DRDY" (at 76.2 66.04 0))
+  (net_label "ADS_START" (at 76.2 68.58 0))
+  (net_label "ADS_RESET" (at 76.2 71.12 0))
+  (net_label "ADS_PWDN" (at 76.2 73.66 0))
+
+  ;; SPI3 bus (LoRa)
+  (net_label "SPI3_SCK" (at 177.8 71.12 0))
+  (net_label "SPI3_MISO" (at 177.8 73.66 0))
+  (net_label "SPI3_MOSI" (at 177.8 76.2 0))
+  (net_label "LORA_CS" (at 177.8 78.74 0))
+  (net_label "LORA_BUSY" (at 177.8 81.28 0))
+  (net_label "LORA_DIO1" (at 177.8 83.82 0))
+  (net_label "LORA_NRST" (at 177.8 86.36 0))
+
+  ;; I2C1 (SCD41)
+  (net_label "I2C1_SCL" (at 182.88 48.26 0))
+  (net_label "I2C1_SDA" (at 182.88 50.8 0))
+
+  ;; Electrode channels
+  (net_label "ELECTRODE_CH0" (at 33.02 40.64 0))
+  (net_label "ELECTRODE_CH1" (at 33.02 43.18 0))
+  (net_label "ELECTRODE_CH2" (at 33.02 45.72 0))
+  (net_label "ELECTRODE_CH3" (at 33.02 48.26 0))
+  (net_label "ELECTRODE_CH4" (at 33.02 50.8 0))
+  (net_label "ELECTRODE_CH5" (at 33.02 53.34 0))
+  (net_label "ELECTRODE_CH6" (at 33.02 55.88 0))
+  (net_label "ELECTRODE_CH7" (at 33.02 58.42 0))
+  (net_label "ELECTRODE_CH8" (at 33.02 88.9 0))
+  (net_label "ELECTRODE_CH9" (at 33.02 91.44 0))
+  (net_label "ELECTRODE_CH10" (at 33.02 93.98 0))
+  (net_label "ELECTRODE_CH11" (at 33.02 96.52 0))
+  (net_label "ELECTRODE_CH12" (at 33.02 99.06 0))
+  (net_label "ELECTRODE_CH13" (at 33.02 101.6 0))
+  (net_label "ELECTRODE_CH14" (at 33.02 104.14 0))
+  (net_label "ELECTRODE_CH15" (at 33.02 106.68 0))
+  (net_label "ELECTRODE_REF1" (at 33.02 111.76 0))
+  (net_label "ELECTRODE_REF2" (at 33.02 114.3 0))
+
+  ;; Power nets
+  (net_label "LOADSW_ANA" (at 71.12 43.18 0))
+  (net_label "LOADSW_ENV" (at 71.12 50.8 0))
+  (net_label "LOADSW_SD" (at 71.12 58.42 0))
+
+  ;; USB
+  (net_label "USB_DM" (at 114.3 127 0))
+  (net_label "USB_DP" (at 114.3 129.54 0))
+
+  ;; SD card
+  (net_label "SD_CS" (at 114.3 152.4 0))
+  (net_label "SPI2_SCK" (at 114.3 154.94 0))
+  (net_label "SPI2_MISO" (at 114.3 157.48 0))
+  (net_label "SPI2_MOSI" (at 114.3 160.02 0))
+
+  ;; DS18B20
+  (net_label "ONEWIRE" (at 182.88 104.14 0))
+
+  ;; SDI-12
+  (net_label "SDI12_TX" (at 182.88 119.38 0))
+  (net_label "SDI12_RX" (at 182.88 121.92 0))
+
+  ;; RF antenna
+  (net_label "RF_OUT" (at 213.36 76.2 0))
+
+  ;; =====================================================================
+  ;;  Power flags
+  ;; =====================================================================
+
+  (power (lib_id "power:VDD") (at 127 60.96 0))
+  (power (lib_id "power:GND") (at 127 91.44 0))
+  (power (lib_id "power:VDDA") (at 53.34 40.64 0))
+  (power (lib_id "power:VSSA") (at 53.34 48.26 0))
+
+  ;; =====================================================================
+  ;;  Wires and connections
+  ;; =====================================================================
+
+  ;; MCU power connections
+  (wire (pts (xy 127 60.96) (xy 127 66.04)))
+  (wire (pts (xy 127 86.36) (xy 127 91.44)))
+
+  ;; ADS1298 #0 to MCU SPI1
+  (wire (pts (xy 71.12 53.34) (xy 76.2 53.34)))
+  (wire (pts (xy 71.12 55.88) (xy 76.2 55.88)))
+  (wire (pts (xy 71.12 58.42) (xy 76.2 58.42)))
+  (wire (pts (xy 71.12 60.96) (xy 76.2 60.96)))
+  (wire (pts (xy 71.12 63.5) (xy 76.2 63.5)))
+
+  ;; ADS1298 #1 to MCU SPI1 (shared bus, separate CS)
+  (wire (pts (xy 71.12 101.6) (xy 76.2 101.6)))
+  (wire (pts (xy 71.12 104.14) (xy 76.2 104.14)))
+  (wire (pts (xy 71.12 106.68) (xy 76.2 106.68)))
+
+  ;; Electrode harness to ADS1298 inputs
+  (wire (pts (xy 20.32 40.64) (xy 33.02 40.64)))
+  (wire (pts (xy 20.32 43.18) (xy 33.02 43.18)))
+  (wire (pts (xy 20.32 45.72) (xy 33.02 45.72)))
+  (wire (pts (xy 20.32 48.26) (xy 33.02 48.26)))
+  (wire (pts (xy 20.32 50.8) (xy 33.02 50.8)))
+  (wire (pts (xy 20.32 53.34) (xy 33.02 53.34)))
+  (wire (pts (xy 20.32 55.88) (xy 33.02 55.88)))
+  (wire (pts (xy 20.32 58.42) (xy 33.02 58.42)))
+  (wire (pts (xy 20.32 88.9) (xy 33.02 88.9)))
+  (wire (pts (xy 20.32 91.44) (xy 33.02 91.44)))
+  (wire (pts (xy 20.32 93.98) (xy 33.02 93.98)))
+  (wire (pts (xy 20.32 96.52) (xy 33.02 96.52)))
+  (wire (pts (xy 20.32 99.06) (xy 33.02 99.06)))
+  (wire (pts (xy 20.32 101.6) (xy 33.02 101.6)))
+  (wire (pts (xy 20.32 104.14) (xy 33.02 104.14)))
+  (wire (pts (xy 20.32 106.68) (xy 33.02 106.68)))
+  (wire (pts (xy 20.32 111.76) (xy 33.02 111.76)))
+  (wire (pts (xy 20.32 114.3) (xy 33.02 114.3)))
+
+  ;; Battery to buck converter
+  (wire (pts (xy 20.32 25.4) (xy 33.02 25.4)))
+  (wire (pts (xy 48.26 25.4) (xy 55.88 25.4)))
+  (wire (pts (xy 55.88 25.4) (xy 63.5 25.4)))
+  (wire (pts (xy 63.5 25.4) (xy 68.58 25.4)))
+
+  ;; LDO
+  (wire (pts (xy 48.26 43.18) (xy 55.88 43.18)))
+
+  ;; Charge pump
+  (wire (pts (xy 48.26 60.96) (xy 55.88 60.96)))
+
+  ;; Solar charger
+  (wire (pts (xy 25.4 78.74) (xy 40.64 78.74)))
+  (wire (pts (xy 55.88 76.2) (xy 71.12 76.2)))
+
+  ;; USB-C to MCU
+  (wire (pts (xy 114.3 127) (xy 114.3 127)))
+  (wire (pts (xy 114.3 129.54) (xy 114.3 129.54)))
+
+  ;; SX1262 to MCU SPI3
+  (wire (pts (xy 177.8 71.12) (xy 182.88 71.12)))
+  (wire (pts (xy 177.8 73.66) (xy 182.88 73.66)))
+  (wire (pts (xy 177.8 76.2) (xy 182.88 76.2)))
+  (wire (pts (xy 208.28 76.2) (xy 213.36 76.2)))
+
+  ;; SCD41 I2C
+  (wire (pts (xy 182.88 48.26) (xy 195.58 48.26)))
+  (wire (pts (xy 182.88 50.8) (xy 195.58 50.8)))
+
+  ;; DS18B20 1-Wire
+  (wire (pts (xy 182.88 104.14) (xy 195.58 104.14)))
+
+  ;; LEDs
+  (wire (pts (xy 83.82 25.4) (xy 86.36 25.4)))
+  (wire (pts (xy 83.82 33.02) (xy 86.36 33.02)))
+
+  ;; Button
+  (wire (pts (xy 83.82 43.18) (xy 86.36 43.18)))
+
+  ;; =====================================================================
+  ;;  Text annotations
+  ;; =====================================================================
+
+  (text "MycoMesh Sensor Node — Schematic Rev 1.0"
+        (at 25.4 15.24 0)
+        (effects (font (size 2.54 2.54) bold)))
+
+  (text "Author: jayis1  |  License: CERN-OHL-S v2"
+        (at 25.4 20.32 0)
+        (effects (font (size 1.524 1.524))))
+
+  (text "Power Supply Section"
+        (at 30.48 17.78 0)
+        (effects (font (size 1.524 1.524) bold)))
+
+  (text "Analog Front End (ADS1298 ×2 = 16 channels)"
+        (at 45.72 35.56 0)
+        (effects (font (size 1.524 1.524) bold)))
+
+  (text "MCU: STM32L4R9ZI"
+        (at 115.57 60.96 0)
+        (effects (font (size 1.524 1.524) bold)))
+
+  (text "LoRaWAN Radio + Environmental Sensors"
+        (at 185.42 40.64 0)
+        (effects (font (size 1.524 1.524) bold)))
+
+  (text "USB-C + MicroSD + Electrode Harness"
+        (at 110.49 116.84 0)
+        (effects (font (size 1.524 1.524) bold)))
+
+)
