@@ -1,0 +1,29 @@
+{
+  "name": "wattlens-app",
+  "version": "1.0.0",
+  "description": "Companion app for WattLens — 3-Phase Power Quality Analyzer & NILM",
+  "author": "jayis1",
+  "license": "MIT",
+  "copyright": "Copyright (c) 2026 jayis1",
+  "main": "App.js",
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "build": "react-native bundle --entry-file App.js --bundle-output build/main.jsbundle"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-native": "^0.73.0",
+    "react-native-ble-plx": "^3.0.0",
+    "react-native-svg": "^15.0.0",
+    "@react-navigation/native": "^6.1.0",
+    "@react-navigation/bottom-tabs": "^6.5.0",
+    "react-native-screens": "^3.29.0",
+    "react-native-safe-area-context": "^4.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "metro-react-native-babel-preset": "^0.77.0"
+  }
+}

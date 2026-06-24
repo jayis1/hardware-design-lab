@@ -1,0 +1,619 @@
+(kicad_sch
+  (version 20231120)
+  (generator "eeschema")
+  (generator_version "8.0")
+  (uuid "a1b2c3d4-e5f6-7890-abcd-wattlens00001")
+  (paper "A2")
+
+  (title_block
+    (title "WattLens — 3-Phase Power Quality Analyzer & NILM")
+    (date "2026-06-24")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "MIT License — Copyright (c) 2026 jayis1")
+    (comment 3 "STM32H743 + ADS131M08 + AMC1301 + SX1262 + nRF52840")
+    (comment 4 "Schematic Page 1 of 1")
+  )
+
+  (lib_symbols
+    ; ========================================================================
+    ; STM32H743VIT6 — Main MCU (LQFP-100)
+    ; ========================================================================
+    (symbol "STM32H743VIT6"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -25.4 35.56 0))
+      (property "Value" "STM32H743VIT6" (at -12.7 33.02 0))
+      (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at -25.4 -35.56 0))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h743vi.pdf")
+      (property "Description" "MCU ARM Cortex-M7 480MHz 2MB Flash 1MB SRAM")
+      (property "Manufacturer" "STMicroelectronics")
+      (property "MPN" "STM32H743VIT6")
+      (symbol "STM32H743VIT6_0_1"
+        (rectangle (start -26.67 34.29) (end 26.67 -34.29)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+      )
+      (symbol "STM32H743VIT6_1_1"
+        ; Power pins
+        (pin power_in line (at -10.16 36.83 270) (length 2.54) (name "VDD") (number "11"))
+        (pin power_in line (at -7.62 36.83 270) (length 2.54) (name "VDD") (number "19"))
+        (pin power_in line (at -5.08 36.83 270) (length 2.54) (name "VDD") (number "28"))
+        (pin power_in line (at -2.54 36.83 270) (length 2.54) (name "VDD") (number "50"))
+        (pin power_in line (at 0 36.83 270) (length 2.54) (name "VDD") (number "75"))
+        (pin power_in line (at 2.54 36.83 270) (length 2.54) (name "VDD") (number "100"))
+        (pin power_in line (at 10.16 36.83 270) (length 2.54) (name "VDDA") (number "22"))
+        (pin power_in line (at 12.7 36.83 270) (length 2.54) (name "VREF+") (number "21"))
+        (pin power_in line (at -10.16 -36.83 90) (length 2.54) (name "VSS") (number "10"))
+        (pin power_in line (at -7.62 -36.83 90) (length 2.54) (name "VSS") (number "27"))
+        (pin power_in line (at -5.08 -36.83 90) (length 2.54) (name "VSS") (number "49"))
+        (pin power_in line (at -2.54 -36.83 90) (length 2.54) (name "VSS") (number "74"))
+        (pin power_in line (at 0 -36.83 90) (length 2.54) (name "VSS") (number "99"))
+        (pin power_in line (at 10.16 -36.83 90) (length 2.54) (name "VSSA") (number "23"))
+        ; Clock pins
+        (pin input line (at -29.21 20.32 0) (length 2.54) (name "PH0-OSC_IN") (number "12"))
+        (pin input line (at -29.21 17.78 0) (length 2.54) (name "PH1-OSC_OUT") (number "13"))
+        (pin input line (at -29.21 12.7 0) (length 2.54) (name "PC14-OSC32_IN") (number "8"))
+        (pin input line (at -29.21 10.16 0) (length 2.54) (name "PC15-OSC32_OUT") (number "9"))
+        ; Reset / boot
+        (pin input line (at -29.21 27.94 0) (length 2.54) (name "NRST") (number "14"))
+        (pin input line (at -29.21 25.4 0) (length 2.54) (name "BOOT0") (number "94"))
+        ; SPI2 (ADS131M08 ADC)
+        (pin bidirectional line (at 29.21 15.24 180) (length 2.54) (name "PB12-SPI2_NSS") (number "51"))
+        (pin bidirectional line (at 29.21 12.7 180) (length 2.54) (name "PB13-SPI2_SCK") (number "52"))
+        (pin bidirectional line (at 29.21 10.16 180) (length 2.54) (name "PB14-SPI2_MISO") (number "53"))
+        (pin bidirectional line (at 29.21 7.62 180) (length 2.54) (name "PB15-SPI2_MOSI") (number "54"))
+        ; SPI3 (ILI9341 Display)
+        (pin bidirectional line (at 29.21 2.54 180) (length 2.54) (name "PB3-SPI3_SCK") (number "57"))
+        (pin bidirectional line (at 29.21 0 180) (length 2.54) (name "PB4-SPI3_MISO") (number "56"))
+        (pin bidirectional line (at 29.21 -2.54 180) (length 2.54) (name "PB5-SPI3_MOSI") (number "57"))
+        (pin bidirectional line (at 29.21 -5.08 180) (length 2.54) (name "PA15-SPI3_NSS") (number "77"))
+        ; USART2 (BLE nRF52840)
+        (pin bidirectional line (at -29.21 5.08 0) (length 2.54) (name "PA2-USART2_TX") (number "35"))
+        (pin bidirectional line (at -29.21 2.54 0) (length 2.54) (name "PA3-USART2_RX") (number "36"))
+        ; USART3 (LoRa SX1262)
+        (pin bidirectional line (at 29.21 -10.16 180) (length 2.54) (name "PB10-USART3_TX") (number "47"))
+        (pin bidirectional line (at 29.21 -12.7 180) (length 2.54) (name "PB11-USART3_RX") (number "48"))
+        ; I2C1 (RTC, IMU, Fuel Gauge)
+        (pin bidirectional line (at 29.21 -17.78 180) (length 2.54) (name "PB6-I2C1_SCL") (number "92"))
+        (pin bidirectional line (at 29.21 -20.32 180) (length 2.54) (name "PB7-I2C1_SDA") (number "93"))
+        ; USB
+        (pin bidirectional line (at -29.21 -5.08 0) (length 2.54) (name "PA11-USB_DM") (number "70"))
+        (pin bidirectional line (at -29.21 -7.62 0) (length 2.54) (name "PA12-USB_DP") (number "71"))
+        ; GPIO control pins
+        (pin bidirectional line (at -29.21 -15.24 0) (length 2.54) (name "PC4-ADC_RESET") (number "33"))
+        (pin bidirectional line (at -29.21 -17.78 0) (length 2.54) (name "PC5-ADC_DRDY") (number "34"))
+        (pin bidirectional line (at -29.21 -22.86 0) (length 2.54) (name "PC6-DISP_DC") (number "63"))
+        (pin bidirectional line (at -29.21 -25.4 0) (length 2.54) (name "PC7-DISP_RST") (number "64"))
+        (pin bidirectional line (at -29.21 -27.94 0) (length 2.54) (name "PC8-SD_CS") (number "65"))
+        (pin bidirectional line (at -29.21 -30.48 0) (length 2.54) (name "PE1-ADC_PWDN") (number "41"))
+      )
+    )
+
+    ; ========================================================================
+    ; ADS131M08 — 8-channel 24-bit simultaneous-sampling ADC
+    ; ========================================================================
+    (symbol "ADS131M08IPM"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -15.24 20.32 0))
+      (property "Value" "ADS131M08IPM" (at -5.08 17.78 0))
+      (property "Footprint" "Package_QFP:TQFP-64_10x10mm_P0.5mm" (at -15.24 -20.32 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/ads131m08.pdf")
+      (property "Description" "8-ch 24-bit simultaneous ΔΣ ADC, SPI")
+      (property "Manufacturer" "Texas Instruments")
+      (property "MPN" "ADS131M08IPM")
+      (symbol "ADS131M08IPM_0_1"
+        (rectangle (start -16.51 19.05) (end 16.51 -19.05)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+      )
+      (symbol "ADS131M08IPM_1_1"
+        (pin power_in line (at -19.05 15.24 0) (length 2.54) (name "AVDD") (number "1"))
+        (pin power_in line (at -19.05 12.7 0) (length 2.54) (name "AVDD") (number "2"))
+        (pin power_in line (at -19.05 -15.24 0) (length 2.54) (name "AVSS") (number "3"))
+        (pin power_in line (at -19.05 -12.7 0) (length 2.54) (name "AVSS") (number "4"))
+        (pin power_in line (at 19.05 15.24 180) (length 2.54) (name "DVDD") (number "17"))
+        (pin power_in line (at 19.05 -15.24 180) (length 2.54) (name "DGND") (number "18"))
+        ; Analog inputs
+        (pin input line (at -19.05 7.62 0) (length 2.54) (name "AIN0P") (number "5"))
+        (pin input line (at -19.05 5.08 0) (length 2.54) (name "AIN0N") (number "6"))
+        (pin input line (at -19.05 2.54 0) (length 2.54) (name "AIN1P") (number "7"))
+        (pin input line (at -19.05 0 0) (length 2.54) (name "AIN1N") (number "8"))
+        (pin input line (at -19.05 -2.54 0) (length 2.54) (name "AIN2P") (number "9"))
+        (pin input line (at -19.05 -5.08 0) (length 2.54) (name "AIN2N") (number "10"))
+        (pin input line (at -19.05 -7.62 0) (length 2.54) (name "AIN3P") (number "11"))
+        (pin input line (at -19.05 -10.16 0) (length 2.54) (name "AIN3N") (number "12"))
+        ; SPI interface
+        (pin input line (at 19.05 10.16 180) (length 2.54) (name "SCLK") (number "20"))
+        (pin input line (at 19.05 7.62 180) (length 2.54) (name "DIN") (number "21"))
+        (pin output line (at 19.05 5.08 180) (length 2.54) (name "DOUT") (number "22"))
+        (pin input line (at 19.05 2.54 180) (length 2.54) (name "CS") (number "23"))
+        (pin output line (at 19.05 0 180) (length 2.54) (name "DRDY") (number "24"))
+        ; Control
+        (pin input line (at 19.05 -5.08 180) (length 2.54) (name "RESET") (number "25"))
+        (pin input line (at 19.05 -7.62 180) (length 2.54) (name "SYNC") (number "26"))
+        (pin input line (at 19.05 -10.16 180) (length 2.54) (name "CLKIN") (number "27"))
+      )
+    )
+
+    ; ========================================================================
+    ; AMC1301B — Reinforced isolation amplifier
+    ; ========================================================================
+    (symbol "AMC1301B"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -7.62 8.89 0))
+      (property "Value" "AMC1301B" (at 0 6.35 0))
+      (property "Footprint" "Package_SO:SOIC-8_5.3x5.3mm_P1.27mm" (at -7.62 -8.89 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/amc1301b.pdf")
+      (property "Description" "Reinforced isolation amplifier, 4kV")
+      (property "Manufacturer" "Texas Instruments")
+      (property "MPN" "AMC1301B")
+      (symbol "AMC1301B_0_1"
+        (rectangle (start -8.89 7.62) (end 8.89 -7.62)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+        ; Isolation barrier line
+        (polyline (pts (xy 0 7.62) (xy 0 -7.62))
+          (stroke (width 0.15) (type dash))
+        )
+      )
+      (symbol "AMC1301B_1_1"
+        (pin power_in line (at -11.43 5.08 0) (length 2.54) (name "VDD1") (number "1"))
+        (pin input line (at -11.43 2.54 0) (length 2.54) (name "VINP") (number "2"))
+        (pin input line (at -11.43 0 0) (length 2.54) (name "VINN") (number "3"))
+        (pin power_in line (at -11.43 -5.08 0) (length 2.54) (name "GND1") (number "4"))
+        (pin power_in line (at 11.43 5.08 180) (length 2.54) (name "VDD2") (number "8"))
+        (pin output line (at 11.43 2.54 180) (length 2.54) (name "VOUTP") (number "7"))
+        (pin output line (at 11.43 0 180) (length 2.54) (name "VOUTN") (number "6"))
+        (pin power_in line (at 11.43 -5.08 180) (length 2.54) (name "GND2") (number "5"))
+      )
+    )
+
+    ; ========================================================================
+    ; SX1262 — LoRa radio
+    ; ========================================================================
+    (symbol "SX1262"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -12.7 12.7 0))
+      (property "Value" "SX1262" (at -5.08 10.16 0))
+      (property "Footprint" "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" (at -12.7 -12.7 0))
+      (property "Datasheet" "https://www.semtech.com/products/wireless-rf/lora-connect/sx1262")
+      (property "Description" "LoRa transceiver, 868/915 MHz, 22 dBm")
+      (symbol "SX1262_0_1"
+        (rectangle (start -13.97 11.43) (end 13.97 -11.43)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+      )
+      (symbol "SX1262_1_1"
+        (pin power_in line (at 16.51 7.62 180) (length 2.54) (name "VDD_IN") (number "1"))
+        (pin power_in line (at 16.51 5.08 180) (length 2.54) (name "VDD_IO") (number "2"))
+        (pin power_in line (at 16.51 -7.62 180) (length 2.54) (name "GND") (number "23"))
+        (pin power_in line (at 16.51 -10.16 180) (length 2.54) (name "GND") (number "24"))
+        (pin input line (at -16.51 7.62 0) (length 2.54) (name "SCK") (number "4"))
+        (pin input line (at -16.51 5.08 0) (length 2.54) (name "MOSI") (number "5"))
+        (pin output line (at -16.51 2.54 0) (length 2.54) (name "MISO") (number "6"))
+        (pin input line (at -16.51 0 0) (length 2.54) (name "NSS") (number "7"))
+        (pin output line (at -16.51 -2.54 0) (length 2.54) (name "DIO1") (number "8"))
+        (pin output line (at -16.51 -5.08 0) (length 2.54) (name "BUSY") (number "9"))
+        (pin input line (at -16.51 -7.62 0) (length 2.54) (name "NRST") (number "10"))
+        (pin bidirectional line (at 16.51 0 180) (length 2.54) (name "RFI") (number "19"))
+        (pin power_in line (at 16.51 -2.54 180) (length 2.54) (name "RFO") (number "20"))
+        (pin power_in line (at 16.51 -5.08 180) (length 2.54) (name "VCC_PA") (number "21"))
+      )
+    )
+
+    ; ========================================================================
+    ; nRF52840 Module — BLE
+    ; ========================================================================
+    (symbol "nRF52840_Module"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -10.16 10.16 0))
+      (property "Value" "nRF52840" (at 0 7.62 0))
+      (property "Footprint" "RF_Module:nRF52840" (at -10.16 -10.16 0))
+      (property "Datasheet" "https://www.nordicsemi.com/products/nrf52840")
+      (property "Description" "BLE 5.2 SoC module")
+      (symbol "nRF52840_Module_0_1"
+        (rectangle (start -11.43 8.89) (end 11.43 -8.89)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+      )
+      (symbol "nRF52840_Module_1_1"
+        (pin power_in line (at 13.97 5.08 180) (length 2.54) (name "VDD") (number "1"))
+        (pin power_in line (at 13.97 -5.08 180) (length 2.54) (name "GND") (number "2"))
+        (pin bidirectional line (at -13.97 5.08 0) (length 2.54) (name "UART_TX") (number "3"))
+        (pin bidirectional line (at -13.97 2.54 0) (length 2.54) (name "UART_RX") (number "4"))
+        (pin bidirectional line (at -13.97 -2.54 0) (length 2.54) (name "SWDIO") (number "5"))
+        (pin bidirectional line (at -13.97 -5.08 0) (length 2.54) (name "SWCLK") (number "6"))
+        (pin input line (at 13.97 0 180) (length 2.54) (name "ANT") (number "7"))
+      )
+    )
+
+    ; ========================================================================
+    ; ILI9341 — 2.4" TFT Display
+    ; ========================================================================
+    (symbol "ILI9341_TFT"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "DISP" (at -12.7 15.24 0))
+      (property "Value" "ILI9341_2.4inch" (at 0 12.7 0))
+      (property "Footprint" "Display:ILI9341_240x320" (at -12.7 -15.24 0))
+      (property "Datasheet" "https://www.lcdwiki.com/2.4inch_SPI_Module_ILI9341")
+      (property "Description" "2.4 inch 320x240 TFT, SPI, resistive touch")
+      (symbol "ILI9341_TFT_0_1"
+        (rectangle (start -13.97 13.97) (end 13.97 -13.97)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+      )
+      (symbol "ILI9341_TFT_1_1"
+        (pin power_in line (at 16.51 10.16 180) (length 2.54) (name "VCC") (number "1"))
+        (pin power_in line (at 16.51 7.62 180) (length 2.54) (name "GND") (number "2"))
+        (pin input line (at -16.51 10.16 0) (length 2.54) (name "CS") (number "3"))
+        (pin input line (at -16.51 7.62 0) (length 2.54) (name "RESET") (number "4"))
+        (pin input line (at -16.51 5.08 0) (length 2.54) (name "DC") (number "5"))
+        (pin input line (at -16.51 2.54 0) (length 2.54) (name "SDI/MOSI") (number "6"))
+        (pin input line (at -16.51 0 0) (length 2.54) (name "SCK") (number "7"))
+        (pin output line (at -16.51 -2.54 0) (length 2.54) (name "SDO/MISO") (number "8"))
+        (pin input line (at 16.51 -2.54 180) (length 2.54) (name "T_CLK") (number "9"))
+        (pin input line (at 16.51 -5.08 180) (length 2.54) (name "T_CS") (number "10"))
+        (pin input line (at 16.51 -7.62 180) (length 2.54) (name "T_IRQ") (number "11"))
+        (pin input line (at 16.51 -10.16 180) (length 2.54) (name "T_DIN") (number "12"))
+        (pin output line (at 16.51 -12.7 180) (length 2.54) (name "T_DOUT") (number "13"))
+        (pin power_in line (at -16.51 -12.7 0) (length 2.54) (name "LED") (number "14"))
+      )
+    )
+
+    ; ========================================================================
+    ; LSM6DSO — 6-axis IMU
+    ; ========================================================================
+    (symbol "LSM6DSO"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -10.16 8.89 0))
+      (property "Value" "LSM6DSO" (at 0 6.35 0))
+      (property "Footprint" "Package_LGA:LGA-14_2x2mm_P0.35mm" (at -10.16 -8.89 0))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/lsm6dso.pdf")
+      (property "Description" "6-axis IMU, accelerometer + gyro, I2C/SPI")
+      (symbol "LSM6DSO_0_1"
+        (rectangle (start -11.43 7.62) (end 11.43 -7.62)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+      )
+      (symbol "LSM6DSO_1_1"
+        (pin power_in line (at 13.97 5.08 180) (length 2.54) (name "VDD") (number "1"))
+        (pin power_in line (at 13.97 2.54 180) (length 2.54) (name "VDD_IO") (number "2"))
+        (pin power_in line (at 13.97 -5.08 180) (length 2.54) (name "GND") (number "3"))
+        (pin power_in line (at 13.97 -7.62 180) (length 2.54) (name "GND") (number "4"))
+        (pin bidirectional line (at -13.97 5.08 0) (length 2.54) (name "SCL") (number "5"))
+        (pin bidirectional line (at -13.97 2.54 0) (length 2.54) (name "SDA") (number "6"))
+        (pin output line (at -13.97 -2.54 0) (length 2.54) (name "INT1") (number "7"))
+      )
+    )
+
+    ; ========================================================================
+    ; PCF85263A — RTC
+    ; ========================================================================
+    (symbol "PCF85263A"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -8.89 7.62 0))
+      (property "Value" "PCF85263A" (at 0 5.08 0))
+      (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at -8.89 -7.62 0))
+      (property "Datasheet" "https://www.nxp.com/docs/en/data-sheet/PCF85263A.pdf")
+      (property "Description" "I2C RTC with timestamp, supercap backup")
+      (symbol "PCF85263A_0_1"
+        (rectangle (start -10.16 6.35) (end 10.16 -6.35)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+      )
+      (symbol "PCF85263A_1_1"
+        (pin power_in line (at 12.7 3.81 180) (length 2.54) (name "VDD") (number "1"))
+        (pin power_in line (at 12.7 -3.81 180) (length 2.54) (name "GND") (number "2"))
+        (pin bidirectional line (at -12.7 3.81 0) (length 2.54) (name "SCL") (number "3"))
+        (pin bidirectional line (at -12.7 1.27 0) (length 2.54) (name "SDA") (number "4"))
+        (pin input line (at -12.7 -3.81 0) (length 2.54) (name "OSCI") (number "5"))
+        (pin output line (at -12.7 -6.35 0) (length 2.54) (name "OSCO") (number "6"))
+        (pin power_in line (at 12.7 -1.27 180) (length 2.54) (name "VBAT") (number "7"))
+        (pin output line (at 12.7 1.27 180) (length 2.54) (name "INT") (number "8"))
+      )
+    )
+
+    ; ========================================================================
+    ; MAX17048 — Fuel gauge
+    ; ========================================================================
+    (symbol "MAX17048"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -7.62 6.35 0))
+      (property "Value" "MAX17048" (at 0 3.81 0))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-8" (at -7.62 -6.35 0))
+      (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17048-MAX17049.pdf")
+      (property "Description" "Li-ion fuel gauge, I2C")
+      (symbol "MAX17048_0_1"
+        (rectangle (start -8.89 5.08) (end 8.89 -5.08)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+      )
+      (symbol "MAX17048_1_1"
+        (pin power_in line (at 11.43 2.54 180) (length 2.54) (name "CELL+") (number "1"))
+        (pin power_in line (at 11.43 -2.54 180) (length 2.54) (name "GND") (number "2"))
+        (pin bidirectional line (at -11.43 2.54 0) (length 2.54) (name "SCL") (number "3"))
+        (pin bidirectional line (at -11.43 0 0) (length 2.54) (name "SDA") (number "4"))
+        (pin bidirectional line (at -11.43 -2.54 0) (length 2.54) (name "ALRT") (number "5"))
+      )
+    )
+
+    ; ========================================================================
+    ; TP4056 — Li-ion charger
+    ; ========================================================================
+    (symbol "TP4056"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -7.62 7.62 0))
+      (property "Value" "TP4056" (at 0 5.08 0))
+      (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at -7.62 -7.62 0))
+      (property "Datasheet" "https://dlnmh9ip6v2uc.cloudfront.net/datasheets/Prototyping/TP4056.pdf")
+      (property "Description" "Li-ion linear charger, 1A")
+      (symbol "TP4056_0_1"
+        (rectangle (start -8.89 6.35) (end 8.89 -6.35)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+      )
+      (symbol "TP4056_1_1"
+        (pin power_in line (at 11.43 3.81 180) (length 2.54) (name "VCC") (number "1"))
+        (pin power_in line (at 11.43 1.27 180) (length 2.54) (name "BAT") (number "2"))
+        (pin power_in line (at 11.43 -1.27 180) (length 2.54) (name "GND") (number "3"))
+        (pin output line (at -11.43 3.81 0) (length 2.54) (name "CHRG") (number "4"))
+        (pin output line (at -11.43 1.27 0) (length 2.54) (name "STDBY") (number "5"))
+        (pin input line (at -11.43 -1.27 0) (length 2.54) (name "PROG") (number "6"))
+        (pin input line (at -11.43 -3.81 0) (length 2.54) (name "TE") (number "7"))
+        (pin input line (at 11.43 -3.81 180) (length 2.54) (name "CE") (number "8"))
+      )
+    )
+
+    ; ========================================================================
+    ; ISO7720 — Digital isolator (SPI bridge)
+    ; ========================================================================
+    (symbol "ISO7720FQ"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -7.62 8.89 0))
+      (property "Value" "ISO7720FQ" (at 0 6.35 0))
+      (property "Footprint" "Package_SO:SOIC-8_5.3x5.3mm_P1.27mm" (at -7.62 -8.89 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/iso7720.pdf")
+      (property "Description" "Single-channel digital isolator, 5.7kV")
+      (symbol "ISO7720FQ_0_1"
+        (rectangle (start -8.89 7.62) (end 8.89 -7.62)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+        (polyline (pts (xy 0 7.62) (xy 0 -7.62)) (stroke (width 0.15) (type dash)))
+      )
+      (symbol "ISO7720FQ_1_1"
+        (pin power_in line (at -11.43 5.08 0) (length 2.54) (name "VCC1") (number "1"))
+        (pin input line (at -11.43 2.54 0) (length 2.54) (name "IN") (number "2"))
+        (pin power_in line (at -11.43 -5.08 0) (length 2.54) (name "GND1") (number "3"))
+        (pin power_in line (at 11.43 5.08 180) (length 2.54) (name "VCC2") (number "8"))
+        (pin output line (at 11.43 2.54 180) (length 2.54) (name "OUT") (number "7"))
+        (pin output line (at 11.43 0 180) (length 2.54) (name "EN") (number "6"))
+        (pin power_in line (at 11.43 -5.08 180) (length 2.54) (name "GND2") (number "5"))
+      )
+    )
+
+    ; ========================================================================
+    ; W25Q128 — QSPI Flash (16 MB)
+    ; ========================================================================
+    (symbol "W25Q128JVSIQ"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -10.16 10.16 0))
+      (property "Value" "W25Q128JVSIQ" (at 0 7.62 0))
+      (property "Footprint" "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm" (at -10.16 -10.16 0))
+      (property "Datasheet" "https://www.winbond.com/resource-files/w25q128jv%20revh%2004082019.pdf")
+      (property "Description" "128 Mbit QSPI flash, 4KB sectors")
+      (symbol "W25Q128JVSIQ_0_1"
+        (rectangle (start -11.43 8.89) (end 11.43 -8.89)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+      )
+      (symbol "W25Q128JVSIQ_1_1"
+        (pin power_in line (at 13.97 5.08 180) (length 2.54) (name "VCC") (number "1"))
+        (pin power_in line (at 13.97 -5.08 180) (length 2.54) (name "GND") (number "4"))
+        (pin bidirectional line (at -13.97 5.08 0) (length 2.54) (name "CS") (number "2"))
+        (pin bidirectional line (at -13.97 2.54 0) (length 2.54) (name "DO(IO1)") (number "3"))
+        (pin bidirectional line (at -13.97 0 0) (length 2.54) (name "WP(IO2)") (number "5"))
+        (pin bidirectional line (at -13.97 -2.54 0) (length 2.54) (name "DI(IO0)") (number "6"))
+        (pin bidirectional line (at -13.97 -5.08 0) (length 2.54) (name "HOLD(IO3)") (number "7"))
+        (pin input line (at -13.97 -7.62 0) (length 2.54) (name "CLK") (number "8"))
+      )
+    )
+  )
+
+  ; ==========================================================================
+  ; Symbol instances (component placement on schematic)
+  ; ==========================================================================
+  (symbol (lib_id "STM32H743VIT6") (at 127 76.2 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U1" (at 101.6 40.64 0))
+    (property "Value" "STM32H743VIT6" (at 114.3 43.18 0))
+    (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 101.6 111.76 0))
+  )
+
+  (symbol (lib_id "ADS131M08IPM") (at 50.8 76.2 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U2" (at 35.56 55.88 0))
+    (property "Value" "ADS131M08IPM" (at 45.72 58.42 0))
+  )
+
+  (symbol (lib_id "AMC1301B") (at 20.32 55.88 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U3" (at 12.7 46.99 0))
+    (property "Value" "AMC1301B" (at 20.32 49.53 0))
+  )
+
+  (symbol (lib_id "AMC1301B") (at 20.32 71.12 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U4" (at 12.7 62.23 0))
+    (property "Value" "AMC1301B" (at 20.32 64.77 0))
+  )
+
+  (symbol (lib_id "AMC1301B") (at 20.32 86.36 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U5" (at 12.7 77.47 0))
+    (property "Value" "AMC1301B" (at 20.32 80.01 0))
+  )
+
+  (symbol (lib_id "ISO7720FQ") (at 80.01 50.8 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U6" (at 72.39 41.91 0))
+    (property "Value" "ISO7720FQ" (at 80.01 44.45 0))
+  )
+
+  (symbol (lib_id "nRF52840_Module") (at 180.34 50.8 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U7" (at 170.18 40.64 0))
+    (property "Value" "nRF52840" (at 180.34 43.18 0))
+  )
+
+  (symbol (lib_id "SX1262") (at 180.34 86.36 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U8" (at 167.64 73.66 0))
+    (property "Value" "SX1262" (at 175.26 76.2 0))
+  )
+
+  (symbol (lib_id "ILI9341_TFT") (at 127 132.08 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "DISP1" (at 114.3 116.84 0))
+    (property "Value" "ILI9341_2.4inch" (at 127 119.38 0))
+  )
+
+  (symbol (lib_id "LSM6DSO") (at 50.8 114.3 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U10" (at 40.64 105.41 0))
+    (property "Value" "LSM6DSO" (at 50.8 107.95 0))
+  )
+
+  (symbol (lib_id "PCF85263A") (at 50.8 132.08 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U11" (at 42.164 124.46 0))
+    (property "Value" "PCF85263A" (at 50.8 127 0))
+  )
+
+  (symbol (lib_id "MAX17048") (at 50.8 149.86 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U12" (at 43.18 142.24 0))
+    (property "Value" "MAX17048" (at 50.8 144.78 0))
+  )
+
+  (symbol (lib_id "TP4056") (at 180.34 119.38 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U13" (at 172.72 110.49 0))
+    (property "Value" "TP4056" (at 180.34 113.03 0))
+  )
+
+  (symbol (lib_id "W25Q128JVSIQ") (at 180.34 149.86 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U14" (at 170.18 139.7 0))
+    (property "Value" "W25Q128JVSIQ" (at 180.34 142.24 0))
+  )
+
+  ; ==========================================================================
+  ; Power flags
+  ; ==========================================================================
+  (symbol (lib_id "power:+3V3") (at 127 38.1 0) (unit 1)
+    (property "Reference" "#PWR01" (at 127 38.1 0))
+    (property "Value" "+3V3" (at 127 33.02 0))
+  )
+
+  (symbol (lib_id "power:GND") (at 127 114.3 0) (unit 1)
+    (property "Reference" "#PWR02" (at 127 114.3 0))
+    (property "Value" "GND" (at 127 116.84 0))
+  )
+
+  ; ==========================================================================
+  ; Net labels / wires (key connections)
+  ; ==========================================================================
+  (global_label "SPI2_SCK" (shape input) (at 68.58 86.36 0) (effects (font (size 1.27 1.27))))
+  (global_label "SPI2_MISO" (shape output) (at 68.58 81.28 0) (effects (font (size 1.27 1.27))))
+  (global_label "SPI2_MOSI" (shape input) (at 68.58 83.82 0) (effects (font (size 1.27 1.27))))
+  (global_label "ADC_DRDY" (shape output) (at 68.58 76.2 0) (effects (font (size 1.27 1.27))))
+  (global_label "ADC_CS" (shape input) (at 68.58 78.74 0) (effects (font (size 1.27 1.27))))
+  (global_label "ADC_RESET" (shape input) (at 68.58 71.12 0) (effects (font (size 1.27 1.27))))
+
+  (global_label "SPI3_SCK" (shape input) (at 156.21 130.81 180) (effects (font (size 1.27 1.27))))
+  (global_label "SPI3_MOSI" (shape input) (at 156.21 133.35 180) (effects (font (size 1.27 1.27))))
+  (global_label "SPI3_MISO" (shape output) (at 156.21 135.89 180) (effects (font (size 1.27 1.27))))
+  (global_label "DISP_CS" (shape input) (at 156.21 128.27 180) (effects (font (size 1.27 1.27))))
+  (global_label "DISP_DC" (shape input) (at 156.21 125.73 180) (effects (font (size 1.27 1.27))))
+  (global_label "DISP_RST" (shape input) (at 156.21 123.19 180) (effects (font (size 1.27 1.27))))
+
+  (global_label "I2C1_SCL" (shape bidirectional) (at 38.1 119.38 180) (effects (font (size 1.27 1.27))))
+  (global_label "I2C1_SDA" (shape bidirectional) (at 38.1 121.92 180) (effects (font (size 1.27 1.27))))
+
+  (global_label "BLE_TX" (shape input) (at 166.37 55.88 0) (effects (font (size 1.27 1.27))))
+  (global_label "BLE_RX" (shape output) (at 166.37 53.34 0) (effects (font (size 1.27 1.27))))
+
+  (global_label "LORA_TX" (shape input) (at 163.83 93.98 0) (effects (font (size 1.27 1.27))))
+  (global_label "LORA_RX" (shape output) (at 163.83 96.52 0) (effects (font (size 1.27 1.27))))
+  (global_label "LORA_DIO1" (shape output) (at 163.83 83.82 0) (effects (font (size 1.27 1.27))))
+  (global_label "LORA_NSS" (shape input) (at 163.83 86.36 0) (effects (font (size 1.27 1.27))))
+  (global_label "LORA_RESET" (shape input) (at 163.83 78.74 0) (effects (font (size 1.27 1.27))))
+
+  (global_label "USB_DM" (shape bidirectional) (at 97.79 71.12 180) (effects (font (size 1.27 1.27))))
+  (global_label "USB_DP" (shape bidirectional) (at 97.79 68.58 180) (effects (font (size 1.27 1.27))))
+
+  (global_label "V1_ISO" (shape input) (at 31.75 58.42 180) (effects (font (size 1.27 1.27))))
+  (global_label "V2_ISO" (shape input) (at 31.75 73.66 180) (effects (font (size 1.27 1.27))))
+  (global_label "V3_ISO" (shape input) (at 31.75 88.9 180) (effects (font (size 1.27 1.27))))
+
+  (global_label "QSPI_CS" (shape input) (at 167.64 154.94 0) (effects (font (size 1.27 1.27))))
+  (global_label "QSPI_CLK" (shape input) (at 167.64 152.4 0) (effects (font (size 1.27 1.27))))
+  (global_label "QSPI_IO0" (shape bidirectional) (at 167.64 147.32 0) (effects (font (size 1.27 1.27))))
+  (global_label "QSPI_IO1" (shape bidirectional) (at 167.64 149.86 0) (effects (font (size 1.27 1.27))))
+
+  ; ==========================================================================
+  ; Wires (key connections — representative subset)
+  ; ==========================================================================
+  (wire (pts (xy 31.75 58.42) (xy 38.1 58.42)) (stroke (width 0.15) (type default)))
+  (wire (pts (xy 31.75 73.66) (xy 38.1 73.66)) (stroke (width 0.15) (type default)))
+  (wire (pts (xy 31.75 88.9) (xy 38.1 88.9)) (stroke (width 0.15) (type default)))
+
+  (wire (pts (xy 68.58 86.36) (xy 97.79 86.36)) (stroke (width 0.15) (type default)))
+  (wire (pts (xy 68.58 83.82) (xy 97.79 83.82)) (stroke (width 0.15) (type default)))
+  (wire (pts (xy 68.58 81.28) (xy 97.79 81.28)) (stroke (width 0.15) (type default)))
+  (wire (pts (xy 68.58 78.74) (xy 97.79 78.74)) (stroke (width 0.15) (type default)))
+  (wire (pts (xy 68.58 76.2) (xy 97.79 76.2)) (stroke (width 0.15) (type default)))
+
+  (wire (pts (xy 166.37 55.88) (xy 156.21 55.88)) (stroke (width 0.15) (type default)))
+  (wire (pts (xy 166.37 53.34) (xy 156.21 53.34)) (stroke (width 0.15) (type default)))
+
+  (wire (pts (xy 38.1 119.38) (xy 35.56 119.38)) (stroke (width 0.15) (type default)))
+  (wire (pts (xy 38.1 121.92) (xy 35.56 121.92)) (stroke (width 0.15) (type default)))
+
+  ; ==========================================================================
+  ; Notes
+  ; ==========================================================================
+  (text "WattLens — 3-Phase Power Quality Analyzer & NILM"
+    (at 110 25 0) (effects (font (size 2.54 2.54) bold)))
+  (text "Author: jayis1  |  MIT License  |  Copyright (c) 2026 jayis1"
+    (at 110 30 0) (effects (font (size 1.5 1.5))))
+
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+)
