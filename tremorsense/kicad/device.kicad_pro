@@ -1,0 +1,66 @@
+{
+  "board": {
+    "3dviewports": [],
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "courtyard_line_width": 0.05,
+        "dimension_precision": 4,
+        "dimension_units": 3,
+        "fab_line_width": 0.1,
+        "fab_text_size_h": 1.0,
+        "fab_text_size_v": 1.0,
+        "fab_text_thickness": 0.15,
+        "other_line_width": 0.1,
+        "other_text_size_h": 1.0,
+        "other_text_size_v": 1.0,
+        "other_text_thickness": 0.15,
+        "pcb_text_size_h": 1.5,
+        "pcb_text_size_v": 1.5,
+        "silk_line_width": 0.15,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15,
+        "silkscreen_line_width": 0.12
+      },
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
+      "rules": {
+        "min_clearance": 0.15,
+        "min_track_width": 0.15,
+        "min_via_diameter": 0.4,
+        "min_via_drill": 0.2,
+        "min_hole_clearance": 0.2,
+        "min_hole_to_hole": 0.25
+      },
+      "track_widths": [0.0, 0.15, 0.2, 0.25, 0.3, 0.5],
+      "via_dimensions": [
+        {"diameter": 0.4, "drill": 0.2},
+        {"diameter": 0.5, "drill": 0.25},
+        {"diameter": 0.6, "drill": 0.3}
+      ]
+    },
+    "ipc2581": {
+      "dist": "",
+      "distpn": "",
+      "internal_id": "",
+      "mfg": "",
+      "mpn": "",
+      "name": "tremorsense"
+    },
+    "layer_presets": [],
+    "viewports": []
+  },
+  "boards": ["device.kicad_pcb"],
+  "copyright": "Copyright (c) 2026 jayis1. All rights reserved.",
+  "meta": {
+    "filename": "device.kicad_pro",
+    "version": 2
+  },
+  "projects": ["device.kicad_sch"],
+  "author": "jayis1"
+}
