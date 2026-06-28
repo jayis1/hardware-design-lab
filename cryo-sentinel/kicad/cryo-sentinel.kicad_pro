@@ -1,0 +1,39 @@
+{
+  "board": {
+    "design_rule": {
+      "default": {
+        "min_track_width": 0.15,
+        "min_clearance": 0.15,
+        "min_via_diameter": 0.45,
+        "min_via_drill": 0.25
+      }
+    },
+    "layers": [
+      {"id": 0, "name": "F.Cu", "type": "copper"},
+      {"id": 31, "name": "B.Cu", "type": "copper"},
+      {"id": 32, "name": "B.Adhes", "type": "adhes"},
+      {"id": 33, "name": "F.Adhes", "type": "adhes"},
+      {"id:": 34, "name": "B.Paste", "type": "paste"},
+      {"id": 35, "name": "F.Paste", "type": "paste"},
+      {"id": 36, "name": "B.SilkS", "type": "silk"},
+      {"id": 37, "name": "F.SilkS", "type": "silk"},
+      {"id": 38, "name": "B.Mask", "type": "mask"},
+      {"id": 39, "name": "F.Mask", "type": "mask"}
+    ],
+    "setup": {
+      "pad_to_mask_clearance": 0.05,
+      "copper_edge_clearance": 0.3
+    },
+    "properties": {
+      "name": "cryo-sentinel",
+      "author": "jayis1",
+      "date": "2026-06-28"
+    }
+  },
+  "metadata": {
+    "title": "Cryo-Sentinel",
+    "author": "jayis1",
+    "license": "MIT",
+    "revision": "1.0.0"
+  }
+}

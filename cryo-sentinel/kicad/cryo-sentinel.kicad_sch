@@ -1,0 +1,425 @@
+(kicad_sch
+  (version 20260101)
+  (generator "kicad-cli")
+  (generator_version "9.0")
+  (uuid "c5a1e4b0-1234-4abc-9def-cryosentinel0000")
+  (paper "A3")
+  (title_block
+    (title "Cryo-Sentinel — Cryogenic Dewar Sentinel")
+    (date "2026-06-28")
+    (rev "1.0.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: MIT")
+    (comment 3 "nRF5340 + FDC2214 + MAX31865 + BG770A cellular sentinel")
+  )
+
+  ; ---- Global labels (net names that cross sheet boundaries) -----------
+  (global_label "VDD_3V3"      (shape input)   (at 30  25) (fields_autoplaced))
+  (global_label "GND"          (shape input)   (at 30  30) (fields_autoplaced))
+  (global_label "VBUS_5V"      (shape input)   (at 30  35) (fields_autoplaced))
+  (global_label "VBAT_7V4"     (shape input)   (at 30  40) (fields_autoplaced))
+  (global_label "I2C_SDA"      (shape bidirectional) (at 200 50) (fields_autoplaced))
+  (global_label "I2C_SCL"      (shape bidirectional) (at 200 55) (fields_autoplaced))
+  (global_label "SPI_MOSI"     (shape output)  (at 200 60) (fields_autoplaced))
+  (global_label "SPI_MISO"     (shape input)   (at 200 65) (fields_autoplaced))
+  (global_label "SPI_SCK"      (shape output)  (at 200 70) (fields_autoplaced))
+  (global_label "UART_CELL_TX" (shape output)  (at 200 75) (fields_autoplaced))
+  (global_label "UART_CELL_RX" (shape input)   (at 200 80) (fields_autoplaced))
+  (global_label "LID_REED"     (shape input)   (at 200 85) (fields_autoplaced))
+  (global_label "ENC_HALL"     (shape input)   (at 200 90) (fields_autoplaced))
+  (global_label "MAINS_OPTO"   (shape input)   (at 200 95) (fields_autoplaced))
+  (global_label "CELL_PWR_EN"  (shape output)  (at 200 100) (fields_autoplaced))
+  (global_label "LED_WARN"     (shape output)  (at 200 105) (fields_autoplaced))
+  (global_label "LED_CRIT"     (shape output)  (at 200 110) (fields_autoplaced))
+  (global_label "BUZZER"       (shape output)  (at 200 115) (fields_autoplaced))
+
+  ; ---- U1: nRF5340 main SoC -------------------------------------------
+  (symbol "nRF5340"
+    (lib_id "RF_Module:Nordic_nRF5340")
+    (at 120 80)
+    (property "Reference" "U1" (at 120 60) (effects (font (size 1.2 1.2))))
+    (property "Value" "nRF5340-QKAA" (at 120 62) (effects (font (size 1 1))))
+    (property "Footprint" "Package_DFN_QFN:Nordic_AQFN-94-1EP_7x7mm_P0.4mm"
+      (at 120 90) (effects (font (size 0.8 0.8)) hide))
+    (property "Datasheet" "https://docs.nordicsemi.com" (at 120 92)
+      (effects (font (size 0.8 0.8)) hide))
+    (property "Author" "jayis1" (at 120 94) (effects hide))
+    (pin "VDD"      (at 105 25) (effects hide))
+    (pin "GND"      (at 105 30) (effects hide))
+    (pin "P0.26"    (at 135 50) (effects hide))  ; I2C_SDA
+    (pin "P0.27"    (at 135 55) (effects hide))  ; I2C_SCL
+    (pin "P0.23"    (at 135 60) (effects hide))  ; SPI_MOSI
+    (pin "P0.24"    (at 135 65) (effects hide))  ; SPI_MISO
+    (pin "P0.25"    (at 135 70) (effects hide))  ; SPI_SCK
+    (pin "P1.00"    (at 135 75) (effects hide))  ; UART_CELL_TX
+    (pin "P1.01"    (at 135 80) (effects hide))  ; UART_CELL_RX
+    (pin "P0.11"    (at 135 85) (effects hide))  ; LID_REED
+    (pin "P0.12"    (at 135 90) (effects hide))  ; ENC_HALL
+    (pin "P0.13"    (at 135 95) (effects hide))  ; MAINS_OPTO
+    (pin "P0.14"    (at 135 100) (effects hide)) ; CELL_PWR_EN
+    (pin "P0.28"    (at 135 105) (effects hide)) ; LED_WARN
+    (pin "P0.29"    (at 135 110) (effects hide)) ; LED_CRIT
+    (pin "P0.30"    (at 135 115) (effects hide)) ; BUZZER
+  )
+
+  ; ---- U2: TI FDC2214 capacitive-to-digital ----------------------------
+  (symbol "FDC2214"
+    (lib_id "Sensor:FDC2214")
+    (at 70 130)
+    (property "Reference" "U2" (at 70 115) (effects (font (size 1.2 1.2))))
+    (property "Value" "FDC2214" (at 70 117) (effects (font (size 1 1))))
+    (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm"
+      (at 70 140) (effects hide))
+    (property "Author" "jayis1" (at 70 142) (effects hide))
+    (pin "SDA"  (at 85 50) (effects hide))
+    (pin "SCL"  (at 85 55) (effects hide))
+    (pin "CH0+" (at 85 130) (effects hide))
+    (pin "CH0-" (at 85 135) (effects hide))
+    (pin "VDD"  (at 55 25) (effects hide))
+    (pin "GND"  (at 55 30) (effects hide))
+  )
+
+  ; ---- U3/U4/U5: MAX31865 RTD front-ends (3 channels) -----------------
+  (symbol "MAX31865_A"
+    (lib_id "Sensor_Temperature:MAX31865")
+    (at 70 170)
+    (property "Reference" "U3" (at 70 155) (effects (font (size 1.2 1.2))))
+    (property "Value" "MAX31865 (top RTD)" (at 70 157) (effects (font (size 1 1))))
+    (property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
+      (at 70 180) (effects hide))
+    (property "Author" "jayis1" (at 70 182) (effects hide))
+    (pin "MOSI" (at 85 60) (effects hide))
+    (pin "MISO" (at 85 65) (effects hide))
+    (pin "SCK"  (at 85 70) (effects hide))
+    (pin "CS"   (at 85 170) (effects hide))
+    (pin "VDD"  (at 55 25) (effects hide))
+    (pin "GND"  (at 55 30) (effects hide))
+    (pin "RTDIN+" (at 85 175) (effects hide))
+    (pin "RTDIN-" (at 85 180) (effects hide))
+  )
+  (symbol "MAX31865_B"
+    (lib_id "Sensor_Temperature:MAX31865")
+    (at 70 200)
+    (property "Reference" "U4" (at 70 185) (effects (font (size 1.2 1.2))))
+    (property "Value" "MAX31865 (mid RTD)" (at 70 187) (effects (font (size 1 1))))
+    (property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
+      (at 70 210) (effects hide))
+    (property "Author" "jayis1" (at 70 212) (effects hide))
+    (pin "MOSI" (at 85 60) (effects hide))
+    (pin "MISO" (at 85 65) (effects hide))
+    (pin "SCK"  (at 85 70) (effects hide))
+    (pin "CS"   (at 85 200) (effects hide))
+    (pin "VDD"  (at 55 25) (effects hide))
+    (pin "GND"  (at 55 30) (effects hide))
+    (pin "RTDIN+" (at 85 205) (effects hide))
+    (pin "RTDIN-" (at 85 210) (effects hide))
+  )
+  (symbol "MAX31865_C"
+    (lib_id "Sensor_Temperature:MAX31865")
+    (at 70 230)
+    (property "Reference" "U5" (at 70 215) (effects (font (size 1.2 1.2))))
+    (property "Value" "MAX31865 (bottom RTD)" (at 70 217) (effects (font (size 1 1))))
+    (property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
+      (at 70 240) (effects hide))
+    (property "Author" "jayis1" (at 70 242) (effects hide))
+    (pin "MOSI" (at 85 60) (effects hide))
+    (pin "MISO" (at 85 65) (effects hide))
+    (pin "SCK"  (at 85 70) (effects hide))
+    (pin "CS"   (at 85 230) (effects hide))
+    (pin "VDD"  (at 55 25) (effects hide))
+    (pin "GND"  (at 55 30) (effects hide))
+    (pin "RTDIN+" (at 85 235) (effects hide))
+    (pin "RTDIN-" (at 85 240) (effects hide))
+  )
+
+  ; ---- U6: TCA9548A I2C mux (for RTD control-reg mirrors) -------------
+  (symbol "TCA9548A"
+    (lib_id "Analog_Switch:TCA9548A")
+    (at 130 170)
+    (property "Reference" "U6" (at 130 155) (effects (font (size 1.2 1.2))))
+    (property "Value" "TCA9548A" (at 130 157) (effects (font (size 1 1))))
+    (property "Footprint" "Package_SO:SSOP-24_5.3x8.2mm_P0.65mm"
+      (at 130 180) (effects hide))
+    (property "Author" "jayis1" (at 130 182) (effects hide))
+    (pin "SDA"  (at 145 50) (effects hide))
+    (pin "SCL"  (at 145 55) (effects hide))
+    (pin "VDD"  (at 115 25) (effects hide))
+    (pin "GND"  (at 115 30) (effects hide))
+  )
+
+  ; ---- U7: Bosch BME280 ambient ---------------------------------------
+  (symbol "BME280"
+    (lib_id "Sensor:BME280")
+    (at 120 220)
+    (property "Reference" "U7" (at 120 210) (effects (font (size 1.2 1.2))))
+    (property "Value" "BME280" (at 120 212) (effects (font (size 1 1))))
+    (property "Footprint" "Package_LGA:Bosch_LGA-8_3x3mm_P0.8mm"
+      (at 120 230) (effects hide))
+    (property "Author" "jayis1" (at 120 232) (effects hide))
+    (pin "SDA" (at 135 50) (effects hide))
+    (pin "SCL" (at 135 55) (effects hide))
+    (pin "VDD" (at 105 25) (effects hide))
+    (pin "GND" (at 105 30) (effects hide))
+  )
+
+  ; ---- U8: TDK ICM-45686 IMU ------------------------------------------
+  (symbol "ICM45686"
+    (lib_id "Sensor_Motion:ICM-45686")
+    (at 120 250)
+    (property "Reference" "U8" (at 120 240) (effects (font (size 1.2 1.2))))
+    (property "Value" "ICM-45686" (at 120 242) (effects (font (size 1 1))))
+    (property "Footprint" "Package_LGA:LGA-14_2.5x3mm_P0.6mm"
+      (at 120 260) (effects hide))
+    (property "Author" "jayis1" (at 120 262) (effects hide))
+    (pin "SDA" (at 135 50) (effects hide))
+    (pin "SCL" (at 135 55) (effects hide))
+    (pin "VDD" (at 105 25) (effects hide))
+    (pin "GND" (at 105 30) (effects hide))
+  )
+
+  ; ---- U9: Fujitsu MB85RC04 FRAM --------------------------------------
+  (symbol "MB85RC04"
+    (lib_id "Memory_NVRAM:MB85RC04")
+    (at 120 280)
+    (property "Reference" "U9" (at 120 270) (effects (font (size 1.2 1.2))))
+    (property "Value" "MB85RC04VPF-G" (at 120 272) (effects (font (size 1 1))))
+    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+      (at 120 290) (effects hide))
+    (property "Author" "jayis1" (at 120 292) (effects hide))
+    (pin "SDA" (at 135 50) (effects hide))
+    (pin "SCL" (at 135 55) (effects hide))
+    (pin "VDD" (at 105 25) (effects hide))
+    (pin "GND" (at 105 30) (effects hide))
+  )
+
+  ; ---- U10: TI BQ25895 charger ----------------------------------------
+  (symbol "BQ25895"
+    (lib_id "Battery_Management:BQ25895")
+    (at 180 130)
+    (property "Reference" "U10" (at 180 115) (effects (font (size 1.2 1.2))))
+    (property "Value" "BQ25895RTW" (at 180 117) (effects (font (size 1 1))))
+    (property "Footprint" "Package_DFN_QFN:VQFN-24-1EP_4x4mm_P0.5mm"
+      (at 180 140) (effects hide))
+    (property "Author" "jayis1" (at 180 142) (effects hide))
+    (pin "VBUS" (at 165 35) (effects hide))
+    (pin "BAT"  (at 195 40) (effects hide))
+    (pin "SDA"  (at 195 50) (effects hide))
+    (pin "SCL"  (at 195 55) (effects hide))
+    (pin "GND"  (at 165 30) (effects hide))
+  )
+
+  ; ---- U11: TI MAX17055 fuel gauge ------------------------------------
+  (symbol "MAX17055"
+    (lib_id "Battery_Management:MAX17055")
+    (at 180 170)
+    (property "Reference" "U11" (at 180 155) (effects (font (size 1.2 1.2))))
+    (property "Value" "MAX17055G+T10" (at 180 157) (effects (font (size 1 1))))
+    (property "Footprint" "Package_DFN_QFN:WLP-15-1EP_1.37x2.35mm_P0.5mm"
+      (at 180 180) (effects hide))
+    (property "Author" "jayis1" (at 180 182) (effects hide))
+    (pin "CELL+" (at 195 40) (effects hide))
+    (pin "SDA"   (at 195 50) (effects hide))
+    (pin "SCL"   (at 195 55) (effects hide))
+    (pin "VDD"   (at 165 25) (effects hide))
+    (pin "GND"   (at 165 30) (effects hide))
+  )
+
+  ; ---- U12: Quectel BG770A cellular modem -----------------------------
+  (symbol "BG770A"
+    (lib_id "RF_Module:Quectel_BG770A-GLS")
+    (at 220 80)
+    (property "Reference" "U12" (at 220 60) (effects (font (size 1.2 1.2))))
+    (property "Value" "BG770A-GLS" (at 220 62) (effects (font (size 1 1))))
+    (property "Footprint" "RF_Module:Quectel_LGA-134_15.4x14.4mm_P0.5mm"
+      (at 220 90) (effects hide))
+    (property "Author" "jayis1" (at 220 92) (effects hide))
+    (pin "UART_TX" (at 205 75) (effects hide))
+    (pin "UART_RX" (at 205 80) (effects hide))
+    (pin "VINT"    (at 235 25) (effects hide))
+    (pin "GND"     (at 235 30) (effects hide))
+    (pin "ANT_RF"  (at 205 100) (effects hide))
+  )
+
+  ; ---- U13: USB-C connector (5 V in) ----------------------------------
+  (symbol "USB-C"
+    (lib_id "Connector:USB_C_Receptacle_USB2.0")
+    (at 30 130)
+    (property "Reference" "J1" (at 30 115) (effects (font (size 1.2 1.2))))
+    (property "Value" "USB-C 16-pin" (at 30 117) (effects (font (size 1 1))))
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4105"
+      (at 30 140) (effects hide))
+    (property "Author" "jayis1" (at 30 142) (effects hide))
+    (pin "VBUS" (at 45 35) (effects hide))
+    (pin "GND"  (at 45 30) (effects hide))
+  )
+
+  ; ---- U14: TCA9548A mux / load switch for BG770A VINT ----------------
+  (symbol "LOAD_SWITCH"
+    (lib_id "Power:AP22802")
+    (at 250 30)
+    (property "Reference" "U14" (at 250 25) (effects (font (size 1.2 1.2))))
+    (property "Value" "AP22802AW5-7" (at 250 27) (effects (font (size 1 1))))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 250 40) (effects hide))
+    (property "Author" "jayis1" (at 250 42) (effects hide))
+    (pin "VIN"  (at 235 25) (effects hide))
+    (pin "VOUT" (at 265 25) (effects hide))
+    (pin "EN"   (at 250 45) (effects hide))
+    (pin "GND"  (at 265 30) (effects hide))
+  )
+
+  ; ---- Passives -------------------------------------------------------
+  (symbol "R1" (lib_id "Device:R") (at 30 50)
+    (property "Reference" "R1" (at 30 48) (effects (font (size 1 1))))
+    (property "Value" "4k7" (at 30 52) (effects (font (size 1 1))))
+    (property "Footprint" "Resistor_SMD:R_0603" (at 30 50) (effects hide))
+    (property "Author" "jayis1" (at 30 54) (effects hide)))
+  (symbol "R2" (lib_id "Device:R") (at 30 55)
+    (property "Reference" "R2" (at 30 53) (effects (font (size 1 1))))
+    (property "Value" "4k7" (at 30 57) (effects (font (size 1 1))))
+    (property "Footprint" "Resistor_SMD:R_0603" (at 30 55) (effects hide)))
+  (symbol "C1" (lib_id "Device:C") (at 30 65)
+    (property "Reference" "C1" (at 30 63) (effects (font (size 1 1))))
+    (property "Value" "10uF" (at 30 67) (effects (font (size 1 1))))
+    (property "Footprint" "Capacitor_SMD:C_0805" (at 30 65) (effects hide)))
+  (symbol "C2" (lib_id "Device:C") (at 30 70)
+    (property "Reference" "C2" (at 30 68) (effects (font (size 1 1))))
+    (property "Value" "100nF" (at 30 72) (effects (font (size 1 1))))
+    (property "Footprint" "Capacitor_SMD:C_0603" (at 30 70) (effects hide)))
+  (symbol "C3" (lib_id "Device:C") (at 30 75)
+    (property "Reference" "C3" (at 30 73) (effects (font (size 1 1))))
+    (property "Value" "100nF" (at 30 77) (effects (font (size 1 1))))
+    (property "Footprint" "Capacitor_SMD:C_0603" (at 30 75) (effects hide)))
+
+  ; ---- RTD sensors (external, via harness) ----------------------------
+  (symbol "RTD_TOP" (lib_id "Sensor_Temperature:Pt1000") (at 70 175)
+    (property "Reference" "RT1" (at 70 173) (effects (font (size 1 1))))
+    (property "Value" "Pt1000" (at 70 177) (effects (font (size 1 1))))
+    (property "Author" "jayis1" (at 70 179) (effects hide)))
+  (symbol "RTD_MID" (lib_id "Sensor_Temperature:Pt1000") (at 70 205)
+    (property "Reference" "RT2" (at 70 203) (effects (font (size 1 1))))
+    (property "Value" "Pt1000" (at 70 207) (effects (font (size 1 1))))
+    (property "Author" "jayis1" (at 70 209) (effects hide)))
+  (symbol "RTD_BOT" (lib_id "Sensor_Temperature:Pt1000") (at 70 235)
+    (property "Reference" "RT3" (at 70 233) (effects (font (size 1 1))))
+    (property "Value" "Pt1000" (at 70 237) (effects (font (size 1 1))))
+    (property "Author" "jayis1" (at 70 239) (effects hide)))
+
+  ; ---- GPIO inputs: reed, hall, opto ----------------------------------
+  (symbol "REED_LID" (lib_id "Switch:SW_Reed") (at 30 200)
+    (property "Reference" "SW1" (at 30 198) (effects (font (size 1 1))))
+    (property "Value" "Reed lid" (at 30 202) (effects (font (size 1 1))))
+    (property "Author" "jayis1" (at 30 204) (effects hide)))
+  (symbol "HALL_ENC" (lib_id "Sensor_Hall:DRV5032") (at 30 220)
+    (property "Reference" "U15" (at 30 218) (effects (font (size 1 1))))
+    (property "Value" "DRV5032AJ" (at 30 222) (effects (font (size 1 1))))
+    (property "Author" "jayis1" (at 30 224) (effects hide)))
+  (symbol "OPTO_MAINS" (lib_id "Isolator:PC817") (at 30 240)
+    (property "Reference" "U16" (at 30 238) (effects (font (size 1 1))))
+    (property "Value" "PC817" (at 30 242) (effects (font (size 1 1))))
+    (property "Author" "jayis1" (at 30 244) (effects hide)))
+
+  ; ---- LEDs + buzzer --------------------------------------------------
+  (symbol "LED_WARN" (lib_id "LED:LED") (at 30 260)
+    (property "Reference" "D1" (at 30 258) (effects (font (size 1 1))))
+    (property "Value" "Amber" (at 30 262) (effects (font (size 1 1))))
+    (property "Author" "jayis1" (at 30 264) (effects hide)))
+  (symbol "LED_CRIT" (lib_id "LED:LED") (at 30 270)
+    (property "Reference" "D2" (at 30 268) (effects (font (size 1 1))))
+    (property "Value" "Red" (at 30 272) (effects (font (size 1 1))))
+    (property "Author" "jayis1" (at 30 274) (effects hide)))
+  (symbol "BUZZER" (lib_id "Device:Buzzer") (at 30 280)
+    (property "Reference" "BZ1" (at 30 278) (effects (font (size 1 1))))
+    (property "Value" "Piezo 5V" (at 30 282) (effects (font (size 1 1))))
+    (property "Author" "jayis1" (at 30 284) (effects hide)))
+
+  ; ---- Antennas -------------------------------------------------------
+  (symbol "ANT_CELL" (lib_id "Device:Antenna") (at 220 110)
+    (property "Reference" "AE1" (at 220 108) (effects (font (size 1 1))))
+    (property "Value" "LTE main" (at 220 112) (effects (font (size 1 1))))
+    (property "Author" "jayis1" (at 220 114) (effects hide)))
+  (symbol "ANT_BLE" (lib_id "Device:Antenna") (at 120 110)
+    (property "Reference" "AE2" (at 120 108) (effects (font (size 1 1))))
+    (property "Value" "BLE/Thread PCB" (at 120 112) (effects (font (size 1 1))))
+    (property "Author" "jayis1" (at 120 114) (effects hide)))
+
+  ; ---- Battery connector ---------------------------------------------
+  (symbol "BAT_CONN" (lib_id "Connector:Conn_01x02") (at 180 50)
+    (property "Reference" "J2" (at 180 48) (effects (font (size 1 1))))
+    (property "Value" "18650 x2" (at 180 52) (effects (font (size 1 1))))
+    (property "Author" "jayis1" (at 180 54) (effects hide)))
+
+  ; ---- Probe harness connector ---------------------------------------
+  (symbol "PROBE_CONN" (lib_id "Connector:Conn_01x06") (at 250 170)
+    (property "Reference" "J3" (at 250 168) (effects (font (size 1 1))))
+    (property "Value" "Probe harness" (at 250 172) (effects (font (size 1 1))))
+    (property "Author" "jayis1" (at 250 174) (effects hide)))
+
+  ; ---- Net connections (wire stubs) -----------------------------------
+  (wire (pts (xy 45 35) (xy 165 35)))   ; VBUS_5V
+  (wire (pts (xy 105 25) (xy 45 25)))   ; VDD_3V3 from regulator
+  (wire (pts (xy 135 50) (xy 85 50)))   ; I2C_SDA daisy chain
+  (wire (pts (xy 135 55) (xy 85 55)))   ; I2C_SCL daisy chain
+  (wire (pts (xy 135 60) (xy 85 60)))   ; SPI_MOSI
+  (wire (pts (xy 135 65) (xy 85 65)))   ; SPI_MISO
+  (wire (pts (xy 135 70) (xy 85 70)))   ; SPI_SCK
+  (wire (pts (xy 135 75) (xy 205 75)))  ; UART_CELL_TX to modem
+  (wire (pts (xy 135 80) (xy 205 80)))  ; UART_CELL_RX from modem
+  (wire (pts (xy 235 25) (xy 265 25)))  ; CELL VINT via load switch
+  (wire (pts (xy 250 45) (xy 135 100))) ; CELL_PWR_EN from MCU
+
+  ; ---- Net labels -----------------------------------------------------
+  (net "VDD_3V3"  (node "U1.VDD" "U2.VDD" "U3.VDD" "U4.VDD" "U5.VDD"
+                        "U6.VDD" "U7.VDD" "U8.VDD" "U9.VDD" "U11.VDD"))
+  (net "GND"      (node "U1.GND" "U2.GND" "U3.GND" "U4.GND" "U5.GND"
+                        "U6.GND" "U7.GND" "U8.GND" "U9.GND" "U10.GND"
+                        "U11.GND" "U12.GND" "U14.GND" "J1.GND"))
+  (net "VBUS_5V"  (node "J1.VBUS" "U10.VBUS"))
+  (net "VBAT_7V4" (node "J2.1" "U10.BAT" "U11.CELL+"))
+  (net "I2C_SDA"  (node "U1.P0.26" "U2.SDA" "U6.SDA" "U7.SDA" "U8.SDA"
+                        "U9.SDA" "U10.SDA" "U11.SDA" "R1.1"))
+  (net "I2C_SCL"  (node "U1.P0.27" "U2.SCL" "U6.SCL" "U7.SCL" "U8.SCL"
+                        "U9.SCL" "U10.SCL" "U11.SCL" "R2.1"))
+  (net "SPI_MOSI" (node "U1.P0.23" "U3.MOSI" "U4.MOSI" "U5.MOSI"))
+  (net "SPI_MISO" (node "U1.P0.24" "U3.MISO" "U4.MISO" "U5.MISO"))
+  (net "SPI_SCK"  (node "U1.P0.25" "U3.SCK"  "U4.SCK"  "U5.SCK"))
+  (net "UART_CELL_TX" (node "U1.P1.00" "U12.UART_TX"))
+  (net "UART_CELL_RX" (node "U1.P1.01" "U12.UART_RX"))
+  (net "LID_REED"   (node "U1.P0.11" "SW1.1"))
+  (net "ENC_HALL"   (node "U1.P0.12" "U15.OUT"))
+  (net "MAINS_OPTO" (node "U1.P0.13" "U16.COL"))
+  (net "CELL_PWR_EN" (node "U1.P0.14" "U14.EN"))
+  (net "LED_WARN"   (node "U1.P0.28" "D1.A"))
+  (net "LED_CRIT"   (node "U1.P0.29" "D2.A"))
+  (net "BUZZER"     (node "U1.P0.30" "BZ1.+"))
+  (net "FDC_CH0+"   (node "U2.CH0+" "J3.1"))
+  (net "FDC_CH0-"   (node "U2.CH0-" "J3.2"))
+  (net "RTD_TOP_IN" (node "U3.RTDIN+" "U3.RTDIN-" "RT1.1" "RT1.2"))
+  (net "RTD_MID_IN" (node "U4.RTDIN+" "U4.RTDIN-" "RT2.1" "RT2.2"))
+  (net "RTD_BOT_IN" (node "U5.RTDIN+" "U5.RTDIN-" "RT3.1" "RT3.2"))
+  (net "CELL_VINT"  (node "U14.VOUT" "U12.VINT"))
+  (net "CELL_ANT"   (node "U12.ANT_RF" "AE1.1"))
+
+  ; ---- Sheet instances ------------------------------------------------
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+  (symbol_instances
+    (path "/U1"  (reference "U1")  (instance_name "nRF5340"))
+    (path "/U2"  (reference "U2")  (instance_name "FDC2214"))
+    (path "/U3"  (reference "U3")  (instance_name "MAX31865_A"))
+    (path "/U4"  (reference "U4")  (instance_name "MAX31865_B"))
+    (path "/U5"  (reference "U5")  (instance_name "MAX31865_C"))
+    (path "/U6"  (reference "U6")  (instance_name "TCA9548A"))
+    (path "/U7"  (reference "U7")  (instance_name "BME280"))
+    (path "/U8"  (reference "U8")  (instance_name "ICM-45686"))
+    (path "/U9"  (reference "U9")  (instance_name "MB85RC04"))
+    (path "/U10" (reference "U10") (instance_name "BQ25895"))
+    (path "/U11" (reference "U11") (instance_name "MAX17055"))
+    (path "/U12" (reference "U12") (instance_name "BG770A"))
+    (path "/U14" (reference "U14") (instance_name "AP22802"))
+    (path "/J1"  (reference "J1")  (instance_name "USB-C"))
+    (path "/J2"  (reference "J2")  (instance_name "18650_x2"))
+    (path "/J3"  (reference "J3")  (instance_name "PROBE_HARNESS"))
+  )
+)
