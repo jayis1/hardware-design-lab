@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "HiveVox",
+    "slug": "hivevox",
+    "version": "1.0.0",
+    "author": "jayis1",
+    "description": "Companion app for HiveVox acoustic beehive health monitor",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#e8a800",
+      "resizeMode": "contain"
+    },
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.jayis1.hivevox" },
+    "android": { "package": "com.jayis1.hivevox", "adaptiveIcon": { "backgroundColor": "#e8a800" } },
+    "extra": { "eas": { "projectId": "hivevox" } }
+  }
+}
