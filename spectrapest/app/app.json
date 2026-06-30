@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "SpectraPest Field",
+    "slug": "spectrapest-field",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "author": "jayis1",
+    "description": "Companion app for SpectraPest multispectral+acoustic pest identifier",
+    "license": "MIT",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "backgroundColor": "#2E7D32",
+      "resizeMode": "contain",
+      "image": "./assets/splash.png"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jayis1.spectrapest"
+    },
+    "android": {
+      "package": "com.jayis1.spectrapest",
+      "permissions": [
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.INTERNET"
+      ]
+    },
+    "plugins": [
+      "expo-ble-peripheral",
+      "expo-location",
+      "expo-notifications"
+    ]
+  }
+}
