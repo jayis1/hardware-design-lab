@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "Soilchord Field",
+    "slug": "soilchord-field",
+    "author": "jayis1",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "backgroundColor": "#1a3a2a",
+      "resizeMode": "contain"
+    },
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.jayis1.soilchordfield" },
+    "android": { "package": "com.jayis1.soilchordfield", "adaptiveIcon": { "backgroundColor": "#1a3a2a" } },
+    "extra": { "eas": { "projectId": "soilchord-field" } }
+  }
+}

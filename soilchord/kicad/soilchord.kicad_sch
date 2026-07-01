@@ -1,0 +1,100 @@
+(kicad_sch (version 20230121) (generator "soilchord")
+  (uuid "00000000-0000-0000-0000-000000000001")
+  (paper "A2")
+  (title_block
+    (title "Soilchord — Geotechnical Acoustic Soil Profiler")
+    (date "2026-07-01")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Reference schematic — surface electronics")
+    (comment 2 "MIT License — Author: jayis1"))
+
+  (lib_symbols
+    (symbol "MCU_ST:STM32L432KCUx"
+      (pin_numbers hide) (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "STM32L432KCUx" (at 0 0 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm" (at 0 -2.54 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "STM32L432KCUx_0_1"
+        (rectangle (start -12.7 15.24) (end 12.7 -15.24) (stroke (width 0.254)) (fill (type background))))
+      (symbol "STM32L432KCUx_1_1"
+        (pin power_in line (at 0 17.78 270) (length 2.54) (name "VDD") (number "17") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 -17.78 90) (length 2.54) (name "VSS") (number "16") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 12.7 0) (length 2.54) (name "PA0") (number "8") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 10.16 0) (length 2.54) (name "PA1") (number "9") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 12.7 180) (length 2.54) (name "PB12") (number "25") (effects (font (size 1.27 1.27))))))
+
+    (symbol "RF_Module:SX1262IMLTRT"
+      (pin_numbers hide) (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "SX1262IMLTRT" (at 0 -2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.4x2.4mm" (at 0 -5.08 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "SX1262IMLTRT_0_1"
+        (rectangle (start -10.16 10.16) (end 10.16 -10.16) (stroke (width 0.254)) (fill (type background))))
+      (symbol "SX1262IMLTRT_1_1"
+        (pin power_in line (at 0 12.7 270) (length 2.54) (name "VDD") (number "10") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 -12.7 90) (length 2.54) (name "GND") (number "1") (effects (font (size 1.27 1.27))))
+        (pin input line (at -12.7 7.62 0) (length 2.54) (name "NSS") (number "2") (effects (font (size 1.27 1.27))))
+        (pin input line (at -12.7 5.08 0) (length 2.54) (name "SCK") (number "3") (effects (font (size 1.27 1.27))))
+        (pin output line (at -12.7 2.54 0) (length 2.54) (name "MISO") (number "4") (effects (font (size 1.27 1.27))))
+        (pin input line (at -12.7 0 0) (length 2.54) (name "MOSI") (number "5") (effects (font (size 1.27 1.27))))))
+
+    (symbol "Amplifier_Operational:OPA2333"
+      (pin_numbers hide) (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "OPA2333" (at 0 -2.54 0) (effects (font (size 1.27 1.27))))
+      (symbol "OPA2333_0_1"
+        (polyline (pts (xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)) (stroke (width 0.254)) (fill (type background))))
+      (symbol "OPA2333_1_1"
+        (pin input line (at -7.62 2.54 0) (length 2.54) (name "+") (number "1") (effects (font (size 1.27 1.27))))
+        (pin input line (at -7.62 -2.54 0) (length 2.54) (name "-") (number "2") (effects (font (size 1.27 1.27))))
+        (pin output line (at 7.62 0 180) (length 2.54) (name "OUT") (number "3") (effects (font (size 1.27 1.27)))))))
+
+  (symbol_instances
+    (path "/00000000-0000-0000-0000-000000000010"
+      (reference "U1") (value "STM32L432KCUx") (unit 1))
+    (path "/00000000-0000-0000-0000-000000000020"
+      (reference "U2") (value "SX1262IMLTRT") (unit 1))
+    (path "/00000000-0000-0000-0000-000000000030"
+      (reference "U3") (value "OPA2333") (unit 1))
+    (path "/00000000-0000-0000-0000-000000000031"
+      (reference "U4") (value "OPA2333") (unit 1))
+    (path "/00000000-0000-0000-0000-000000000040"
+      (reference "U5") (value "MCP6S22") (unit 1))
+    (path "/00000000-0000-0000-0000-000000000050"
+      (reference "U6") (value "DS18B20") (unit 1))
+    (path "/00000000-0000-0000-0000-000000000060"
+      (reference "U7") (value "W25Q64JV") (unit 1))
+    (path "/00000000-0000-0000-0000-000000000070"
+      (reference "U8") (value "BQ24650") (unit 1))
+    (path "/00000000-0000-0000-0000-000000000080"
+      (reference "U9") (value "MAX17048") (unit 1))
+    (path "/00000000-0000-0000-0000-000000000090"
+      (reference "Q1") (value "IRLML2502") (unit 1))
+    (path "/00000000-0000-0000-0000-000000000091"
+      (reference "Q2") (value "IRLML2502") (unit 1))
+    (path "/00000000-0000-0000-0000-000000000092"
+      (reference "Q3") (value "IRLML2502") (unit 1))
+    (path "/00000000-0000-0000-0000-000000000093"
+      (reference "Q4") (value "IRLML2502") (unit 1))
+    (path "/00000000-0000-0000-0000-000000000100"
+      (reference "L1") (value "33uH") (unit 1))
+    (path "/00000000-0000-0000-0000-000000000110"
+      (reference "D5") (value "SMS140") (unit 1))
+    (path "/00000000-0000-0000-0000-000000000120"
+      (reference "BT1") (value "LiFePO4_10Ah") (unit 1)))
+
+  (net "VBAT" "VSOLAR" "GND" "+3V3" "VBUS" "NRST" "SWDIO" "SWCLK"
+       "MOSI_LORA" "MISO_LORA" "SCK_LORA" "NSS_LORA" "BUSY_LORA"
+       "DIO1_LORA" "NRST_LORA" "ANT_SW" "SOL_DRV0" "SOL_DRV1"
+       "SOL_DRV2" "SOL_DRV3" "PIEZO_ADC" "PGA_CS" "PGA_SCK" "PGA_MOSI"
+       "ANALOG_LDO_EN" "ONEWIRE" "FLASH_NSS" "FLASH_SCK" "FLASH_MOSI"
+       "FLASH_MISO" "I2C_SCL" "I2C_SDA" "LED_R" "LED_G" "LED_B"
+       "MUX_A0" "MUX_A1" "MUX_A2" "RTC_ALARM" "unconnected")
+
+  (sheet (at 0 0) (size 297 210)
+    (property "Sheetname" "Soilchord") (property "Sheetfile" "soilchord.kicad_sch"))
+)
