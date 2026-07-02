@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "TensilGuard Field",
+    "slug": "tensilguard-field",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1a2a3a"
+    },
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.jayis1.tensilguard" },
+    "android": {
+      "adaptiveIcon": { "foregroundImage": "./assets/adaptive-icon.png", "backgroundColor": "#1a2a3a" },
+      "package": "com.jayis1.tensilguard"
+    },
+    "web": { "favicon": "./assets/favicon.png" },
+    "extra": { "author": "jayis1", "eas": { "projectId": "tensilguard" } },
+    "plugins": ["expo-notifications"]
+  }
+}

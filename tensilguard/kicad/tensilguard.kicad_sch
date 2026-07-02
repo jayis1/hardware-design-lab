@@ -1,0 +1,352 @@
+(kicad_sch (version 20230121) (generator "tensilguard")
+  (uuid "a1b2c3d4-0001-0001-0001-000000000001")
+  (paper "A2")
+  (title_block
+    (title "TensilGuard — Magnetoelastic Cable Tension & Structural Health Monitor")
+    (date "2026-07-02")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Reference schematic — surface electronics")
+    (comment 2 "MIT License — Author: jayis1"))
+
+  (lib_symbols
+    (symbol "MCU_ST:STM32G431RBTx"
+      (pin_numbers hide) (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "STM32G431RBTx" (at 0 0 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.45x3.45mm" (at 0 -2.54 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "STM32G431RBTx_0_1"
+        (rectangle (start -12.7 17.78) (end 12.7 -17.78) (stroke (width 0.254)) (fill (type background))))
+      (symbol "STM32G431RBTx_1_1"
+        (pin power_in line (at 0 20.32 270) (length 2.54) (name "VDD") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 -20.32 90) (length 2.54) (name "VSS") (number "17") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -2.54 20.32 270) (length 2.54) (name "VDDA") (number "5") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 15.24 0) (length 2.54) (name "PA0") (number "8") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 12.7 0) (length 2.54) (name "PA1") (number "9") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 10.16 0) (length 2.54) (name "PA2") (number "10") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 7.62 0) (length 2.54) (name "PA3") (number "11") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 5.08 0) (length 2.54) (name "PA4") (number "12") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 2.54 0) (length 2.54) (name "PA5") (number "13") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 0 0) (length 2.54) (name "PA6") (number "14") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 -2.54 0) (length 2.54) (name "PA7") (number "15") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 -5.08 0) (length 2.54) (name "PA8") (number "23") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 -7.62 0) (length 2.54) (name "PA9") (number "24") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -15.24 -10.16 0) (length 2.54) (name "PA10") (number "25") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 15.24 180) (length 2.54) (name "PB0") (number "26") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 12.7 180) (length 2.54) (name "PB1") (number "27") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 10.16 180) (length 2.54) (name "PB2") (number "28") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 7.62 180) (length 2.54) (name "PB6") (number "42") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 5.08 180) (length 2.54) (name "PB7") (number "43") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 2.54 180) (length 2.54) (name "PB10") (number "21") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 0 180) (length 2.54) (name "PB11") (number "22") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 -2.54 180) (length 2.54) (name "PB12") (number "33") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 -5.08 180) (length 2.54) (name "PB13") (number "34") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 -7.62 180) (length 2.54) (name "PB14") (number "35") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 -10.16 180) (length 2.54) (name "PB15") (number "36") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 -12.7 180) (length 2.54) (name "PC13") (number "2") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 -15.24 180) (length 2.54) (name "PC14-OSC32") (number "3") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 15.24 -17.78 180) (length 2.54) (name "PC15-OSC32") (number "4") (effects (font (size 1.27 1.27))))))
+
+    (symbol "RF_Module:SX1262IMLTRT"
+      (pin_numbers hide) (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "SX1262IMLTRT" (at 0 -2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.4x2.4mm" (at 0 -5.08 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "SX1262IMLTRT_0_1"
+        (rectangle (start -10.16 10.16) (end 10.16 -10.16) (stroke (width 0.254)) (fill (type background))))
+      (symbol "SX1262IMLTRT_1_1"
+        (pin power_in line (at 0 12.7 270) (length 2.54) (name "VDD") (number "10") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 -12.7 90) (length 2.54) (name "GND") (number "1") (effects (font (size 1.27 1.27))))
+        (pin input line (at -12.7 7.62 0) (length 2.54) (name "NSS") (number "2") (effects (font (size 1.27 1.27))))
+        (pin input line (at -12.7 5.08 0) (length 2.54) (name "SCK") (number "3") (effects (font (size 1.27 1.27))))
+        (pin output line (at -12.7 2.54 0) (length 2.54) (name "MISO") (number "4") (effects (font (size 1.27 1.27))))
+        (pin input line (at -12.7 0 0) (length 2.54) (name "MOSI") (number "5") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -12.7 -2.54 0) (length 2.54) (name "DIO1") (number "6") (effects (font (size 1.27 1.27))))
+        (pin input line (at -12.7 -5.08 0) (length 2.54) (name "BUSY") (number "7") (effects (font (size 1.27 1.27))))
+        (pin input line (at -12.7 -7.62 0) (length 2.54) (name "RST") (number "9") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 12.7 7.62 180) (length 2.54) (name "ANT") (number "21") (effects (font (size 1.27 1.27))))))
+
+    (symbol "Sensor:ICM-42688-P"
+      (pin_numbers hide) (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "ICM-42688-P" (at 0 -2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_LCC:QFN-14-1EP_2.5x2.5mm_P0.5mm" (at 0 -5.08 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "ICM-42688-P_0_1"
+        (rectangle (start -7.62 7.62) (end 7.62 -7.62) (stroke (width 0.254)) (fill (type background))))
+      (symbol "ICM-42688-P_1_1"
+        (pin power_in line (at 0 10.16 270) (length 2.54) (name "VDD") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 -10.16 90) (length 2.54) (name "GND") (number "14") (effects (font (size 1.27 1.27))))
+        (pin input line (at -10.16 5.08 0) (length 2.54) (name "SCK") (number "2") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -10.16 2.54 0) (length 2.54) (name "SDI/SDA") (number "3") (effects (font (size 1.27 1.27))))
+        (pin output line (at -10.16 0 0) (length 2.54) (name "SDO") (number "4") (effects (font (size 1.27 1.27))))
+        (pin input line (at -10.16 -2.54 0) (length 2.54) (name "CS") (number "5") (effects (font (size 1.27 1.27))))
+        (pin output line (at -10.16 -5.08 0) (length 2.54) (name "INT1") (number "6") (effects (font (size 1.27 1.27))))))
+
+    (symbol "Driver_Motor:DRV8872"
+      (pin_numbers hide) (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "DRV8872DDA" (at 0 -2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_SO:HSOP-8-1EP_3.9x4.9mm_P1.27mm_EP2.41x3.81mm" (at 0 -5.08 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "DRV8872_0_1"
+        (rectangle (start -7.62 7.62) (end 7.62 -7.62) (stroke (width 0.254)) (fill (type background))))
+      (symbol "DRV8872_1_1"
+        (pin power_in line (at 0 10.16 270) (length 2.54) (name "VM") (number "6") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 -10.16 90) (length 2.54) (name "GND") (number "7") (effects (font (size 1.27 1.27))))
+        (pin input line (at -10.16 5.08 0) (length 2.54) (name "IN1") (number "1") (effects (font (size 1.27 1.27))))
+        (pin input line (at -10.16 2.54 0) (length 2.54) (name "IN2") (number "2") (effects (font (size 1.27 1.27))))
+        (pin output line (at 10.16 5.08 180) (length 2.54) (name "OUT1") (number "3") (effects (font (size 1.27 1.27))))
+        (pin output line (at 10.16 2.54 180) (length 2.54) (name "OUT2") (number "4") (effects (font (size 1.27 1.27))))))
+
+    (symbol "Sensor_Temperature:TMP117"
+      (pin_numbers hide) (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "TMP117" (at 0 -2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_SON:TI_SON-6_1.5x1.5mm_P0.5mm" (at 0 -5.08 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "TMP117_0_1"
+        (rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254)) (fill (type background))))
+      (symbol "TMP117_1_1"
+        (pin power_in line (at 0 7.62 270) (length 2.54) (name "VDD") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 -7.62 90) (length 2.54) (name "GND") (number "2") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -7.62 0 0) (length 2.54) (name "SDA") (number "3") (effects (font (size 1.27 1.27))))
+        (pin input line (at -7.62 2.54 0) (length 2.54) (name "SCL") (number "4") (effects (font (size 1.27 1.27))))))
+
+    (symbol "Amplifier_Operational:AD8542"
+      (pin_numbers hide) (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "AD8542" (at 0 -2.54 0) (effects (font (size 1.27 1.27))))
+      (symbol "AD8542_0_1"
+        (polyline (pts (xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)) (stroke (width 0.254)) (fill (type background))))
+      (symbol "AD8542_1_1"
+        (pin input line (at -7.62 2.54 0) (length 2.54) (name "+") (number "1") (effects (font (size 1.27 1.27))))
+        (pin input line (at -7.62 -2.54 0) (length 2.54) (name "-") (number "2") (effects (font (size 1.27 1.27))))
+        (pin output line (at 7.62 0 180) (length 2.54) (name "OUT") (number "3") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 7.62 270) (length 2.54) (name "V+") (number "4") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 -7.62 90) (length 2.54) (name "V-") (number "5") (effects (font (size 1.27 1.27))))))
+
+    (symbol "Memory_Flash:W25Q128JVSIQ"
+      (pin_numbers hide) (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "W25Q128JVSIQ" (at 0 -2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 0 -5.08 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "W25Q128JVSIQ_0_1"
+        (rectangle (start -7.62 7.62) (end 7.62 -7.62) (stroke (width 0.254)) (fill (type background))))
+      (symbol "W25Q128JVSIQ_1_1"
+        (pin power_in line (at 0 10.16 270) (length 2.54) (name "VCC") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 -10.16 90) (length 2.54) (name "GND") (number "8") (effects (font (size 1.27 1.27))))
+        (pin input line (at -10.16 5.08 0) (length 2.54) (name "CS") (number "2") (effects (font (size 1.27 1.27))))
+        (pin input line (at -10.16 2.54 0) (length 2.54) (name "CLK") (number "3") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -10.16 0 0) (length 2.54) (name "DO") (number "4") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -10.16 -2.54 0) (length 2.54) (name "DI") (number "5") (effects (font (size 1.27 1.27))))))
+
+    (symbol "Sensor_Motion:7BB-27-4"
+      (pin_numbers hide) (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "PIEZO" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "7BB-27-4" (at 0 -2.54 0) (effects (font (size 1.27 1.27))))
+      (symbol "7BB-27-4_0_1"
+        (arc (start -3.81 0) (mid -1.905 1.905) (end 0 0) (stroke (width 0.254)) (fill (type none)))
+        (arc (start 0 0) (mid 1.905 -1.905) (end 3.81 0) (stroke (width 0.254)) (fill (type none))))
+      (symbol "7BB-27-4_1_1"
+        (pin output line (at -7.62 0 0) (length 3.81) (name "SIG") (number "1") (effects (font (size 1.27 1.27))))
+        (pin passive line (at 7.62 0 180) (length 3.81) (name "GND") (number "2") (effects (font (size 1.27 1.27))))))
+
+    (symbol "Device:L"
+      (pin_numbers hide) (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "L" (at 0 1.27 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "L" (at 0 -1.27 0) (effects (font (size 1.27 1.27))))
+      (symbol "L_0_1"
+        (arc (start -2.54 0) (mid -1.27 1.27) (end 0 0) (stroke (width 0.254)) (fill (type none)))
+        (arc (start 0 0) (mid 1.27 1.27) (end 2.54 0) (stroke (width 0.254)) (fill (type none))))
+      (symbol "L_1_1"
+        (pin input line (at -5.08 0 0) (length 2.54) (name "1") (number "1") (effects (font (size 1.27 1.27))))
+        (pin input line (at 5.08 0 180) (length 2.54) (name "2") (number "2") (effects (font (size 1.27 1.27))))))
+
+    (symbol "Device:R"
+      (pin_numbers hide) (pin_names (offset 0))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 0 1.27 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "R" (at 0 -1.27 0) (effects (font (size 1.27 1.27))))
+      (symbol "R_0_1"
+        (rectangle (start -2.54 -1.016) (end 2.54 1.016) (stroke (width 0.254)) (fill (type none))))
+      (symbol "R_1_1"
+        (pin input line (at -5.08 0 0) (length 2.54) (name "1") (number "1") (effects (font (size 1.27 1.27))))
+        (pin input line (at 5.08 0 180) (length 2.54) (name "2") (number "2") (effects (font (size 1.27 1.27))))))
+
+    (symbol "Device:C"
+      (pin_numbers hide) (pin_names (offset 0))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 0 1.27 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "C" (at 0 -1.27 0) (effects (font (size 1.27 1.27))))
+      (symbol "C_0_1"
+        (polyline (pts (xy -2.54 0) (xy -0.508 0)) (stroke (width 0.254)) (fill (type none)))
+        (polyline (pts (xy 0.508 0) (xy 2.54 0)) (stroke (width 0.254)) (fill (type none)))
+        (polyline (pts (xy -0.508 -1.016) (xy -0.508 1.016)) (stroke (width 0.254)) (fill (type none)))
+        (polyline (pts (xy 0.508 -1.016) (xy 0.508 1.016)) (stroke (width 0.254)) (fill (type none))))
+      (symbol "C_1_1"
+        (pin input line (at -5.08 0 0) (length 2.54) (name "1") (number "1") (effects (font (size 1.27 1.27))))
+        (pin input line (at 5.08 0 180) (length 2.54) (name "2") (number "2") (effects (font (size 1.27 1.27)))))))
+
+  (symbol_instances
+    (path "/a1b2c3d4-0001-0001-0001-000000000010"
+      (reference "U1") (value "STM32G431RBTx") (unit 1))
+    (path "/a1b2c3d4-0001-0001-0001-000000000020"
+      (reference "U2") (value "SX1262IMLTRT") (unit 1))
+    (path "/a1b2c3d4-0001-0001-0001-000000000030"
+      (reference "U3") (value "DRV8872DDA") (unit 1))
+    (path "/a1b2c3d4-0001-0001-0001-000000000040"
+      (reference "U4") (value "ICM-42688-P") (unit 1))
+    (path "/a1b2c3d4-0001-0001-0001-000000000050"
+      (reference "U5") (value "TMP117") (unit 1))
+    (path "/a1b2c3d4-0001-0001-0001-000000000060"
+      (reference "U6") (value "AD8542") (unit 1))
+    (path "/a1b2c3d4-0001-0001-0001-000000000070"
+      (reference "U7") (value "BQ25570") (unit 1))
+    (path "/a1b2c3d4-0001-0001-0001-000000000080"
+      (reference "U8") (value "MAX17055") (unit 1))
+    (path "/a1b2c3d4-0001-0001-0001-000000000090"
+      (reference "U9") (value "TPS61175") (unit 1))
+    (path "/a1b2c3d4-0001-0001-0001-0000000000a0"
+      (reference "U10") (value "W25Q128JVSIQ") (unit 1))
+    (path "/a1b2c3d4-0001-0001-0001-0000000000b0"
+      (reference "PIEZO1") (value "7BB-27-4") (unit 1))
+    (path "/a1b2c3d4-0001-0001-0001-0000000000c0"
+      (reference "L1") (value "32T_magcoil") (unit 1))
+    (path "/a1b2c3d4-0001-0001-0001-0000000000d0"
+      (reference "R1") (value "10R_0.1%") (unit 1))
+    (path "/a1b2c3d4-0001-0001-0001-0000000000e0"
+      (reference "C1") (value "100nF") (unit 1))
+    (path "/a1b2c3d4-0001-0001-0001-0000000000f0"
+      (reference "C2") (value "10uF") (unit 1)))
+
+  (schematic_instances
+    (path "/a1b2c3d4-0001-0001-0001-000000000100"
+      (reference "U1") (value "STM32G431RBTx")
+      (at (drawing) (transform (xy 50 50) (rot 0)))
+      (net_connections
+        (net "VDD" (pin "1"))
+        (net "GND" (pin "17"))
+        (net "VDDA" (pin "5"))
+        (net "/MAG_VCOIL" (pin "8"))
+        (net "/MAG_VSHUNT" (pin "9"))
+        (net "/AE_ADC" (pin "11"))
+        (net "/LORA_NSS" (pin "12"))
+        (net "/LORA_SCK" (pin "13"))
+        (net "/LORA_MISO" (pin "14"))
+        (net "/LORA_MOSI" (pin "15"))
+        (net "/MAG_DRV_P" (pin "23"))
+        (net "/MAG_DRV_N" (pin "24"))
+        (net "/MAG_BOOST_EN" (pin "25"))
+        (net "/ACC_INT1" (pin "26"))
+        (net "/AE_COMP" (pin "27"))
+        (net "/AE_AMP_EN" (pin "28"))
+        (net "/I2C_SCL" (pin "42"))
+        (net "/I2C_SDA" (pin "43"))
+        (net "/LORA_RST" (pin "21"))
+        (net "/LORA_BUSY" (pin "22"))
+        (net "/LORA_DIO1" (pin "33"))
+        (net "/FLASH_CS" (pin "34"))
+        (net "/FLASH_SCK" (pin "35"))
+        (net "/FLASH_MISO" (pin "36"))
+        (net "/FLASH_MOSI" (pin "36"))))
+    (path "/a1b2c3d4-0001-0001-0001-000000000200"
+      (reference "U2") (value "SX1262IMLTRT")
+      (net_connections
+        (net "VDD" (pin "10"))
+        (net "GND" (pin "1"))
+        (net "/LORA_NSS" (pin "2"))
+        (net "/LORA_SCK" (pin "3"))
+        (net "/LORA_MISO" (pin "4"))
+        (net "/LORA_MOSI" (pin "5"))
+        (net "/LORA_DIO1" (pin "6"))
+        (net "/LORA_BUSY" (pin "7"))
+        (net "/LORA_RST" (pin "9"))
+        (net "ANT_RF" (pin "21"))))
+    (path "/a1b2c3d4-0001-0001-0001-000000000300"
+      (reference "U3") (value "DRV8872DDA")
+      (net_connections
+        (net "+24V" (pin "6"))
+        (net "GND" (pin "7"))
+        (net "/MAG_DRV_P" (pin "1"))
+        (net "/MAG_DRV_N" (pin "2"))
+        (net "COIL_P" (pin "3"))
+        (net "COIL_N" (pin "4"))))
+    (path "/a1b2c3d4-0001-0001-0001-000000000400"
+      (reference "U4") (value "ICM-42688-P")
+      (net_connections
+        (net "VDD" (pin "1"))
+        (net "GND" (pin "14"))
+        (net "/ACC_SCK" (pin "2"))
+        (net "/ACC_MOSI" (pin "3"))
+        (net "/ACC_MISO" (pin "4"))
+        (net "/ACC_CS" (pin "5"))
+        (net "/ACC_INT1" (pin "6"))))
+    (path "/a1b2c3d4-0001-0001-0001-000000000500"
+      (reference "U5") (value "TMP117")
+      (net_connections
+        (net "VDD" (pin "1"))
+        (net "GND" (pin "2"))
+        (net "/I2C_SDA" (pin "3"))
+        (net "/I2C_SCL" (pin "4"))))
+    (path "/a1b2c3d4-0001-0001-0001-000000000600"
+      (reference "U6") (value "AD8542")
+      (net_connections
+        (net "VDD" (pin "4"))
+        (net "GND" (pin "5"))
+        (net "AE_RAW" (pin "1"))
+        (net "AE_FB" (pin "2"))
+        (net "/AE_ADC" (pin "3"))))
+    (path "/a1b2c3d4-0001-0001-0001-000000000700"
+      (reference "U7") (value "BQ25570")
+      (net_connections
+        (net "SOLAR+" (pin "1"))
+        (net "GND" (pin "2"))
+        (net "VBAT" (pin "3"))
+        (net "+3V3" (pin "4"))))
+    (path "/a1b2c3d4-0001-0001-0001-000000000800"
+      (reference "U8") (value "MAX17055")
+      (net_connections
+        (net "VDD" (pin "1"))
+        (net "GND" (pin "2"))
+        (net "/I2C_SDA" (pin "3"))
+        (net "/I2C_SCL" (pin "4"))
+        (net "VBAT" (pin "5"))))
+    (path "/a1b2c3d4-0001-0001-0001-000000000900"
+      (reference "U9") (value "TPS61175")
+      (net_connections
+        (net "+3V3" (pin "1"))
+        (net "GND" (pin "2"))
+        (net "+24V" (pin "3"))
+        (net "/MAG_BOOST_EN" (pin "4"))))
+    (path "/a1b2c3d4-0001-0001-0001-000000000a00"
+      (reference "U10") (value "W25Q128JVSIQ")
+      (net_connections
+        (net "VDD" (pin "1"))
+        (net "GND" (pin "8"))
+        (net "/FLASH_CS" (pin "2"))
+        (net "/FLASH_SCK" (pin "3"))
+        (net "/FLASH_MISO" (pin "4"))
+        (net "/FLASH_MOSI" (pin "5"))))
+    (path "/a1b2c3d4-0001-0001-0001-000000000b00"
+      (reference "PIEZO1") (value "7BB-27-4")
+      (net_connections
+        (net "AE_RAW" (pin "1"))
+        (net "GND" (pin "2"))))
+    (path "/a1b2c3d4-0001-0001-0001-000000000c00"
+      (reference "L1") (value "32T_magcoil")
+      (net_connections
+        (net "COIL_P" (pin "1"))
+        (net "COIL_N" (pin "2"))))
+    (path "/a1b2c3d4-0001-0001-0001-000000000d00"
+      (reference "R1") (value "10R_0.1%")
+      (net_connections
+        (net "COIL_N" (pin "1"))
+        (net "GND" (pin "2")))))
+)
