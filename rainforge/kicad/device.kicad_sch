@@ -1,0 +1,378 @@
+(kicad_sch
+  (version 20240108)
+  (generator "kicad")
+  (generator_version "8.0")
+  (uuid "rainforge-sch-0001")
+  (paper "A2")
+  (title_block
+    (title "RainForge — Piezoelectric Raindrop Energy Harvester & Disdrometer")
+    (date "2026-07-03")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "Copyright (C) 2026 jayis1")
+    (comment 3 "License: CERN-OHL-S v2")
+  )
+
+  ;; ============================================================
+  ;; Sheet instances
+  ;; ============================================================
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+
+  ;; ============================================================
+  ;; Power nets
+  ;; ============================================================
+  (net 0 "")
+  (net 1 "+5V")
+  (net 2 "+3V3")
+  (net 3 "GND")
+  (net 4 "VBAT_SCAP")
+  (net 5 "V_HARV")
+  (net 6 "V_SENSE")
+  (net 7 "VDDA")
+
+  ;; ============================================================
+  ;; U1 — ESP32-C3FH4 main MCU (RISC-V, 160 MHz, 4 MB flash)
+  ;; ============================================================
+  (symbol (lib_id "MCU_ESP32:ESP32-C3FH4") (at 120 80) (uuid "u1-mcu")
+    (property "Reference" "U1" (at 120 40))
+    (property "Value"  "ESP32-C3FH4" (at 120 48))
+    (property "Footprint" "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.7x3.7mm")
+    (property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-c3_datasheet_en.pdf")
+    (property "Author" "jayis1")
+    (pin "VDD"      (id 0)  (at 60  90)  (length 5)  (name "VDD")       (type "power_in"))
+    (pin "VDDA"     (id 1)  (at 60  95)  (length 5)  (name "VDDA")      (type "power_in"))
+    (pin "GND"      (id 2)  (at 60  100) (length 5)  (name "GND")       (type "power_in"))
+    (pin "XTAL_32K" (id 3)  (at 60  105) (length 5)  (name "XTAL_32K")  (type "input"))
+    (pin "GPIO0/PEAK"  (id 4)  (at 60  115) (length 5)  (name "GPIO0")  (type "bidirectional"))
+    (pin "GPIO1/VLOW"  (id 5)  (at 60  120) (length 5)  (name "GPIO1")  (type "bidirectional"))
+    (pin "GPIO3/VOK"   (id 6)  (at 180 120) (length 5)  (name "GPIO3")  (type "bidirectional"))
+    (pin "GPIO4/SCK2"  (id 7)  (at 180 115) (length 5)  (name "GPIO4")  (type "bidirectional"))
+    (pin "GPIO5/MISO2" (id 8)  (at 180 110) (length 5)  (name "GPIO5")  (type "bidirectional"))
+    (pin "GPIO6/MOSI2" (id 9)  (at 180 105) (length 5)  (name "GPIO6")  (type "bidirectional"))
+    (pin "GPIO7/CS_FRAM"(id 10) (at 180 100) (length 5)  (name "GPIO7") (type "bidirectional"))
+    (pin "GPIO8/SCL"   (id 11) (at 180 95)  (length 5)  (name "GPIO8")  (type "bidirectional"))
+    (pin "GPIO9/SDA"   (id 12) (at 180 90)  (length 5)  (name "GPIO9")  (type "bidirectional"))
+    (pin "GPIO10/CS_ADC"(id 13) (at 180 85) (length 5)  (name "GPIO10") (type "bidirectional"))
+    (pin "GPIO11/DRDY" (id 14) (at 180 80)  (length 5)  (name "GPIO11") (type "bidirectional"))
+    (pin "GPIO12/SYNC" (id 15) (at 180 75)  (length 5)  (name "GPIO12") (type "bidirectional"))
+    (pin "GPIO13/PWREN"(id 16) (at 180 70)  (length 5)  (name "GPIO13") (type "bidirectional"))
+    (pin "GPIO14/ANT"  (id 17) (at 180 65)  (length 5)  (name "GPIO14") (type "bidirectional"))
+    (pin "GPIO15/NRST_L"(id 18) (at 180 60)  (length 5)  (name "GPIO15") (type "bidirectional"))
+    (pin "GPIO16/DIO1" (id 19) (at 60  55)  (length 5)  (name "GPIO16") (type "bidirectional"))
+    (pin "GPIO17/BUSY" (id 20) (at 60  50)  (length 5)  (name "GPIO17") (type "bidirectional"))
+    (pin "GPIO18/SCK_L"(id 21) (at 60  45)  (length 5)  (name "GPIO18") (type "bidirectional"))
+    (pin "GPIO19/MISO_L"(id 22) (at 60  85) (length 5)  (name "GPIO19") (type "bidirectional"))
+    (pin "GPIO20/MOSI_L"(id 23) (at 60  75) (length 5)  (name "GPIO20") (type "bidirectional"))
+    (pin "GPIO21/CS_L" (id 24) (at 60  65)  (length 5)  (name "GPIO21") (type "bidirectional"))
+  )
+
+  ;; ============================================================
+  ;; U2 — SX1262 LoRa transceiver (868 MHz)
+  ;; ============================================================
+  (symbol (lib_id "RF_Module:Semtech_SX1262") (at 240 80) (uuid "u2-lora")
+    (property "Reference" "U2" (at 240 55))
+    (property "Value"  "SX1262" (at 240 60))
+    (property "Footprint" "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm")
+    (property "Datasheet" "https://www.semtech.com/products/wireless-rf/lora-connect/sx1262")
+    (property "Author" "jayis1")
+    (pin "VDD_IN"  (id 0) (at 220 95) (length 4) (name "VDD_IN")  (type "power_in"))
+    (pin "GND"     (id 1) (at 220 100)(length 4) (name "GND")     (type "power_in"))
+    (pin "SCK"     (id 2) (at 260 95) (length 4) (name "SCK")     (type "input"))
+    (pin "MISO"    (id 3) (at 260 90) (length 4) (name "MISO")    (type "output"))
+    (pin "MOSI"    (id 4) (at 260 85) (length 4) (name "MOSI")    (type "input"))
+    (pin "NSS"     (id 5) (at 260 80) (length 4) (name "NSS")     (type "input"))
+    (pin "BUSY"    (id 6) (at 260 75) (length 4) (name "BUSY")    (type "output"))
+    (pin "DIO1"    (id 7) (at 260 70) (length 4) (name "DIO1")    (type "bidirectional"))
+    (pin "NRST"    (id 8) (at 260 65) (length 4) (name "NRST")    (type "input"))
+    (pin "DIO2"    (id 9) (at 220 85) (length 4) (name "DIO2/RF_SW") (type "bidirectional"))
+    (pin "DIO3"    (id 10)(at 220 80) (length 4) (name "DIO3/TCXO")  (type "bidirectional"))
+    (pin "RFI_P"   (id 11)(at 240 110)(length 4) (name "RFI_P")   (type "input"))
+    (pin "RFI_N"   (id 12)(at 250 110)(length 4) (name "RFI_N")   (type "input"))
+  )
+
+  ;; ============================================================
+  ;; U3 — ADS131M04 4-channel 24-bit delta-sigma ADC
+  ;; ============================================================
+  (symbol (lib_id "Analog_ADC:ADS131M04") (at 60 170) (uuid "u3-adc")
+    (property "Reference" "U3" (at 60 150))
+    (property "Value"  "ADS131M04" (at 60 156))
+    (property "Footprint" "Package_DFN_QFN:TSSOP-16_4.4x5mm_P0.65mm")
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/ads131m04.pdf")
+    (property "Author" "jayis1")
+    (pin "VDD"   (id 0) (at 40 180) (length 4) (name "VDD")    (type "power_in"))
+    (pin "GND"   (id 1) (at 40 190) (length 4) (name "GND")    (type "power_in"))
+    (pin "SCLK"  (id 2) (at 80 180) (length 4) (name "SCLK")   (type "input"))
+    (pin "DOUT"  (id 3) (at 80 175) (length 4) (name "DOUT")   (type "output"))
+    (pin "DIN"   (id 4) (at 80 170) (length 4) (name "DIN")    (type "input"))
+    (pin "CS"    (id 5) (at 80 165) (length 4) (name "CS")     (type "input"))
+    (pin "DRDY"  (id 6) (at 80 160) (length 4) (name "DRDY")   (type "output"))
+    (pin "SYNC"  (id 7) (at 80 155) (length 4) (name "SYNC/RESET") (type "input"))
+    (pin "IN0P"  (id 8) (at 40 165) (length 4) (name "AIN0P")  (type "input"))
+    (pin "IN0N"  (id 9) (at 40 160) (length 4) (name "AIN0N")  (type "input"))
+    (pin "IN1P"  (id 10)(at 40 155) (length 4) (name "AIN1P")  (type "input"))
+    (pin "IN1N"  (id 11)(at 40 150) (length 4) (name "AIN1N")  (type "input"))
+  )
+
+  ;; ============================================================
+  ;; U4 — SE1010 piezo/TEG MPPT energy harvester
+  ;; ============================================================
+  (symbol (lib_id "Power_Management:ePeas_SE1010") (at 160 170) (uuid "u4-harv")
+    (property "Reference" "U4" (at 160 150))
+    (property "Value"  "SE1010" (at 160 156))
+    (property "Footprint" "Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.4mm")
+    (property "Datasheet" "https://epeas.com/se1010-datasheet")
+    (property "Author" "jayis1")
+    (pin "VIN+"   (id 0) (at 140 180) (length 4) (name "VIN+")  (type "power_in"))
+    (pin "VIN-"   (id 1) (at 140 190) (length 4) (name "VIN-")  (type "power_in"))
+    (pin "VSTORE" (id 2) (at 180 180) (length 4) (name "VSTORE")(type "power_out"))
+    (pin "GND"    (id 3) (at 180 190) (length 4) (name "GND")   (type "power_in"))
+    (pin "VOK"    (id 4) (at 180 170) (length 4) (name "VOK")   (type "output"))
+    (pin "VLOW"   (id 5) (at 180 165) (length 4) (name "VLOW")  (type "output"))
+  )
+
+  ;; ============================================================
+  ;; U5 — LTC3588-1 piezo energy harvesting rectifier
+  ;; ============================================================
+  (symbol (lib_id "Power_Management:LTC3588-1") (at 240 170) (uuid "u5-rect")
+    (property "Reference" "U5" (at 240 150))
+    (property "Value"  "LTC3588-1" (at 240 156))
+    (property "Footprint" "Package_DFN_QFN:DFN-10-1EP_3x3mm_P0.5mm")
+    (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/35881fc.pdf")
+    (property "Author" "jayis1")
+    (pin "PZ1"    (id 0) (at 220 180) (length 4) (name "PZ1")   (type "input"))
+    (pin "PZ2"    (id 1) (at 220 190) (length 4) (name "PZ2")   (type "input"))
+    (pin "VIN"    (id 2) (at 220 170) (length 4) (name "VIN")   (type "power_in"))
+    (pin "VOUT"   (id 3) (at 260 180) (length 4) (name "VOUT")  (type "power_out"))
+    (pin "GND"    (id 4) (at 260 190) (length 4) (name "GND")   (type "power_in"))
+  )
+
+  ;; ============================================================
+  ;; U6 — LTC5500-1 RF peak detector (envelope for coarse energy bin)
+  ;; ============================================================
+  (symbol (lib_id "Sensor:LTC5500-1") (at 320 170) (uuid "u6-peak")
+    (property "Reference" "U6" (at 320 150))
+    (property "Value"  "LTC5500-1" (at 320 156))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6")
+    (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/55001fb.pdf")
+    (property "Author" "jayis1")
+    (pin "VIN"   (id 0) (at 300 180) (length 4) (name "VIN")  (type "input"))
+    (pin "GND"   (id 1) (at 300 190) (length 4) (name "GND")  (type "power_in"))
+    (pin "VOUT"  (id 2) (at 340 180) (length 4) (name "VOUT") (type "output"))
+    (pin "VCC"   (id 3) (at 340 190) (length 4) (name "VCC")  (type "power_in"))
+  )
+
+  ;; ============================================================
+  ;; U7/U8 — AD8656 dual precision chopper op-amps (charge amplifiers)
+  ;; ============================================================
+  (symbol (lib_id "Amplifier_Operational:AD8656") (at 60 250) (uuid "u7-opamp")
+    (property "Reference" "U7" (at 60 240))
+    (property "Value"  "AD8656" (at 60 244))
+    (property "Footprint" "Package_SO:MSOP-8_3x3mm_P0.65mm")
+    (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/AD8655_8656.pdf")
+    (property "Author" "jayis1")
+    (pin "V+"  (id 0) (at 40 260) (length 4) (name "V+")  (type "power_in"))
+    (pin "V-"  (id 1) (at 80 260) (length 4) (name "V-")  (type "power_in"))
+    (pin "OUTA"(id 2) (at 80 250) (length 4) (name "OUTA")(type "output"))
+    (pin "-INA"(id 3) (at 40 245) (length 4) (name "-INA")(type "input"))
+    (pin "+INA"(id 4) (at 40 255) (length 4) (name "+INA")(type "input"))
+  )
+
+  (symbol (lib_id "Amplifier_Operational:AD8656") (at 160 250) (uuid "u8-opamp")
+    (property "Reference" "U8" (at 160 240))
+    (property "Value"  "AD8656" (at 160 244))
+    (property "Footprint" "Package_SO:MSOP-8_3x3mm_P0.65mm")
+    (property "Author" "jayis1")
+    (pin "V+"  (id 0) (at 140 260) (length 4) (name "V+")  (type "power_in"))
+    (pin "V-"  (id 1) (at 180 260) (length 4) (name "V-")  (type "power_in"))
+    (pin "OUTA"(id 2) (at 180 250) (length 4) (name "OUTA")(type "output"))
+    (pin "-INA"(id 3) (at 140 245) (length 4) (name "-INA")(type "input"))
+    (pin "+INA"(id 4) (at 140 255) (length 4) (name "+INA")(type "input"))
+  )
+
+  ;; ============================================================
+  ;; U9 — CY15B104Q 4 Mbit FRAM
+  ;; ============================================================
+  (symbol (lib_id "Memory_NVRAM:Cypress_CY15B104Q") (at 240 250) (uuid "u9-fram")
+    (property "Reference" "U9" (at 240 240))
+    (property "Value"  "CY15B104Q" (at 240 244))
+    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+    (property "Datasheet" "https://www.infineon.com/dgdl/Infineon-CY15B104Q_4-Mbit_%284096-Kbit%29_SERIAL_F-RAM_Datasheet-v08_00-EN.pdf")
+    (property "Author" "jayis1")
+    (pin "CS"   (id 0) (at 220 260) (length 4) (name "CS")  (type "input"))
+    (pin "SCK"  (id 1) (at 220 255) (length 4) (name "SCK") (type "input"))
+    (pin "SI"   (id 2) (at 220 250) (length 4) (name "SI")  (type "input"))
+    (pin "SO"   (id 3) (at 260 250) (length 4) (name "SO")  (type "output"))
+    (pin "VDD"  (id 4) (at 260 260) (length 4) (name "VDD") (type "power_in"))
+    (pin "GND"  (id 5) (at 260 265) (length 4) (name "GND") (type "power_in"))
+  )
+
+  ;; ============================================================
+  ;; U10 — SHT45 temperature/humidity sensor
+  ;; ============================================================
+  (symbol (lib_id "Sensor_Humidity:Sensirion_SHT45") (at 60 330) (uuid "u10-sht")
+    (property "Reference" "U10" (at 60 320))
+    (property "Value"  "SHT45" (at 60 324))
+    (property "Footprint" "Sensor:Sensirion_DFN-4-1EP_1.5x1.5mm_P0.5mm")
+    (property "Datasheet" "https://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/2.5_sensirion_datasheets/Sensirion_Humidity_Sensors_SHT4x_Datasheet.pdf")
+    (property "Author" "jayis1")
+    (pin "VDD" (id 0) (at 50 340) (length 3) (name "VDD") (type "power_in"))
+    (pin "GND" (id 1) (at 70 340) (length 3) (name "GND") (type "power_in"))
+    (pin "SCL" (id 2) (at 50 325) (length 3) (name "SCL") (type "input"))
+    (pin "SDA" (id 3) (at 70 325) (length 3) (name "SDA") (type "bidirectional"))
+  )
+
+  ;; ============================================================
+  ;; U11 — BMP390 barometric pressure sensor
+  ;; ============================================================
+  (symbol (lib_id "Sensor_Pressure:BMP390") (at 120 330) (uuid "u11-bmp")
+    (property "Reference" "U11" (at 120 320))
+    (property "Value"  "BMP390" (at 120 324))
+    (property "Footprint" "Package_LGA:Bosch_LGA-10_2.5x2.5mm_P0.6mm")
+    (property "Datasheet" "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp390-ds002.pdf")
+    (property "Author" "jayis1")
+    (pin "VDDIO"(id 0) (at 110 340) (length 3) (name "VDDIO") (type "power_in"))
+    (pin "GND"  (id 1) (at 130 340) (length 3) (name "GND")   (type "power_in"))
+    (pin "SCL"  (id 2) (at 110 325) (length 3) (name "SCL")   (type "input"))
+    (pin "SDA"  (id 3) (at 130 325) (length 3) (name "SDA")   (type "bidirectional"))
+  )
+
+  ;; ============================================================
+  ;; U12 — TSL2591 ambient light sensor
+  ;; ============================================================
+  (symbol (lib_id "Sensor_Optical:TSL2591") (at 180 330) (uuid "u12-tsl")
+    (property "Reference" "U12" (at 180 320))
+    (property "Value"  "TSL2591" (at 180 324))
+    (property "Footprint" "Sensor_Optical:TSL2591_Package")
+    (property "Datasheet" "https://www.mouser.com/datasheet/2/588/TSL2591_Datasheet-2810414.pdf")
+    (property "Author" "jayis1")
+    (pin "VDD" (id 0) (at 170 340) (length 3) (name "VDD") (type "power_in"))
+    (pin "GND" (id 1) (at 190 340) (length 3) (name "GND") (type "power_in"))
+    (pin "SCL" (id 2) (at 170 325) (length 3) (name "SCL") (type "input"))
+    (pin "SDA" (id 3) (at 190 325) (length 3) (name "SDA") (type "bidirectional"))
+    (pin "INT" (id 4) (at 180 315) (length 3) (name "INT") (type "output"))
+  )
+
+  ;; ============================================================
+  ;; C1, C2 — 22 F 5.5 V supercapacitors (series-stacked)
+  ;; ============================================================
+  (symbol (lib_id "Device:Supercap") (at 280 250) (uuid "c1-scap")
+    (property "Reference" "C1" (at 280 240))
+    (property "Value"  "22F_5.5V" (at 280 244))
+    (property "Footprint" "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm")
+    (property "Author" "jayis1")
+    (pin "+" (id 0) (at 270 260) (length 3) (name "+") (type "passive"))
+    (pin "-" (id 1) (at 290 260) (length 3) (name "-") (type "passive"))
+  )
+
+  (symbol (lib_id "Device:Supercap") (at 280 290) (uuid "c2-scap")
+    (property "Reference" "C2" (at 280 280))
+    (property "Value"  "22F_5.5V" (at 280 284))
+    (property "Footprint" "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm")
+    (property "Author" "jayis1")
+    (pin "+" (id 0) (at 270 300) (length 3) (name "+") (type "passive"))
+    (pin "-" (id 1) (at 290 300) (length 3) (name "-") (type "passive"))
+  )
+
+  ;; ============================================================
+  ;; P1-P4 — PVDF piezoelectric cantilever transducers
+  ;; ============================================================
+  (symbol (lib_id "Device:Piezo") (at 40 380) (uuid "p1-piezo")
+    (property "Reference" "P1" (at 40 370))
+    (property "Value"  "PVDF_25x40mm" (at 40 374))
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical")
+    (property "Author" "jayis1")
+    (pin "1" (id 0) (at 30 390) (length 4) (name "+") (type "passive"))
+    (pin "2" (id 1) (at 50 390) (length 4) (name "-") (type "passive"))
+  )
+
+  (symbol (lib_id "Device:Piezo") (at 100 380) (uuid "p2-piezo")
+    (property "Reference" "P2" (at 100 370))
+    (property "Value"  "PVDF_25x40mm" (at 100 374))
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical")
+    (property "Author" "jayis1")
+    (pin "1" (id 0) (at 90 390) (length 4) (name "+") (type "passive"))
+    (pin "2" (id 1) (at 110 390) (length 4) (name "-") (type "passive"))
+  )
+
+  (symbol (lib_id "Device:Piezo") (at 160 380) (uuid "p3-piezo")
+    (property "Reference" "P3" (at 160 370))
+    (property "Value"  "PVDF_25x40mm" (at 160 374))
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical")
+    (property "Author" "jayis1")
+    (pin "1" (id 0) (at 150 390) (length 4) (name "+") (type "passive"))
+    (pin "2" (id 1) (at 170 390) (length 4) (name "-") (type "passive"))
+  )
+
+  (symbol (lib_id "Device:Piezo") (at 220 380) (uuid "p4-piezo")
+    (property "Reference" "P4" (at 220 370))
+    (property "Value"  "PVDF_25x40mm" (at 220 374))
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical")
+    (property "Author" "jayis1")
+    (pin "1" (id 0) (at 210 390) (length 4) (name "+") (type "passive"))
+    (pin "2" (id 1) (at 230 390) (length 4) (name "-") (type "passive"))
+  )
+
+  ;; ============================================================
+  ;; ANT1 — 868 MHz PCB trace antenna
+  ;; ============================================================
+  (symbol (lib_id "Device:Antenna") (at 300 380) (uuid "ant1")
+    (property "Reference" "ANT1" (at 300 370))
+    (property "Value"  "868MHz_Trace" (at 300 374))
+    (property "Footprint" "RF_Antenna:PCB_Trace_868MHz")
+    (property "Author" "jayis1")
+    (pin "1" (id 0) (at 300 390) (length 4) (name "RF") (type "passive"))
+  )
+
+  ;; ============================================================
+  ;; X1 — 32.768 kHz RTC crystal
+  ;; ============================================================
+  (symbol (lib_id "Device:Crystal") (at 280 330) (uuid "x1-xtal")
+    (property "Reference" "X1" (at 280 320))
+    (property "Value"  "32.768kHz" (at 280 324))
+    (property "Footprint" "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm")
+    (property "Author" "jayis1")
+    (pin "1" (id 0) (at 270 340) (length 4) (name "1") (type "passive"))
+    (pin "2" (id 1) (at 290 340) (length 4) (name "2") (type "passive"))
+  )
+
+  ;; ============================================================
+  ;; Net labels / wires (representative subset)
+  ;; ============================================================
+  (wire (pts (xy 60 90)  (xy 55 90))    (net 2))   ; +3V3
+  (wire (pts (xy 60 100) (xy 55 100))   (net 3))   ; GND
+  (wire (pts (xy 180 120)(xy 190 120))  (net 8))   ; GPIO0/PEAK → LTC5500 IRQ
+  (wire (pts (xy 180 115)(xy 190 115))  (net 9))   ; GPIO1/VLOW ← SE1010
+  (wire (pts (xy 180 110)(xy 185 110))  (net 10))  ; GPIO4/SCK2 → ADC + FRAM
+  (wire (pts (xy 80 180) (xy 95 180))   (net 10))  ; ADC SCLK
+  (wire (pts (xy 80 175) (xy 95 175))   (net 11))  ; ADC DOUT → GPIO5/MISO
+  (wire (pts (xy 180 105)(xy 190 105))  (net 11))  ; GPIO5/MISO
+  (wire (pts (xy 180 100)(xy 190 100))  (net 12))  ; GPIO7/CS_FRAM
+  (wire (pts (xy 180 95) (xy 190 95))   (net 13))  ; GPIO8/SCL → sensors
+  (wire (pts (xy 180 90) (xy 190 90))   (net 14))  ; GPIO9/SDA → sensors
+  (wire (pts (xy 180 85) (xy 190 85))   (net 15))  ; GPIO10/CS_ADC
+  (wire (pts (xy 180 80) (xy 190 80))   (net 16))  ; GPIO11/DRDY ← ADC
+  (wire (pts (xy 260 95) (xy 265 95))   (net 17))  ; LoRa SCK → GPIO18
+  (wire (pts (xy 260 90) (xy 265 90))   (net 18))  ; LoRa MISO → GPIO19
+  (wire (pts (xy 260 85) (xy 265 85))   (net 19))  ; LoRa MOSI → GPIO20
+  (wire (pts (xy 260 80) (xy 265 80))   (net 20))  ; LoRa NSS → GPIO21
+  (wire (pts (xy 260 75) (xy 265 75))   (net 21))  ; LoRa BUSY → GPIO17
+  (wire (pts (xy 260 70) (xy 265 70))   (net 22))  ; LoRa DIO1 → GPIO16
+  (wire (pts (xy 260 65) (xy 265 65))   (net 23))  ; LoRa NRST → GPIO15
+  (wire (pts (xy 180 170)(xy 190 170))  (net 24))  ; SE1010 VOK → GPIO3
+  (wire (pts (xy 180 180)(xy 190 180))  (net 4))   ; VSTORE → supercap+
+  (wire (pts (xy 270 260)(xy 270 290))  (net 4))   ; supercap series stack
+  (wire (pts (xy 340 180)(xy 350 180))  (net 8))   ; LTC5500 VOUT → peak IRQ
+
+  (global_label "+3V3" (shape input)   (at 55 90)  (effects (font (size 1.2 1.2))))
+  (global_label "GND"  (shape input)   (at 55 100) (effects (font (size 1.2 1.2))))
+  (global_label "VBAT_SCAP" (shape input)(at 190 180)(effects (font (size 1.2 1.2))))
+  (global_label "V_HARV" (shape input) (at 220 170)(effects (font (size 1.2 1.2))))
+
+  (text "RainForge — Piezoelectric Raindrop Energy Harvester & Disdrometer\nAuthor: jayis1 — Copyright (C) 2026 jayis1\nLicense: CERN-OHL-S v2"
+        (at 120 20) (effects (font (size 2 2) italic)))
+
+  (instances (project "rainforge" (path "/rainforge-sch-0001")))
+)

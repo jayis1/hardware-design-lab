@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "RainForge",
+    "slug": "rainforge-app",
+    "version": "1.0.0",
+    "author": "jayis1",
+    "description": "RainForge companion — precipitation microphysics & energy harvesting monitor. Author: jayis1",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0a1628"
+    },
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.jayis1.rainforge" },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0a1628"
+      },
+      "package": "com.jayis1.rainforge"
+    },
+    "plugins": ["expo-ble-peripheral"],
+    "extra": { "eas": { "projectId": "rainforge-jayis1" } }
+  }
+}

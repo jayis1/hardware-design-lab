@@ -1,0 +1,39 @@
+{
+  "board": {
+    "3d": { "rf-ant-868": { "name": "MIFA_868MHz", "source": "mifa.step" } },
+    "design": {
+      "last_author": "jayis1",
+      "layer_presets": [],
+      "layer_display": "show_all",
+      "rules": {
+        "min_track_width": 0.15,
+        "min_clearance": 0.15,
+        "min_via_diameter": 0.30
+      },
+      "drc_exclusions": [],
+      "meta": { "filename": "device.kicad_pcb", "version": 1 },
+      "setup": {
+        "stackup_thickness": 1.6,
+        "copper_finish": "ENIG",
+        "copper_layers": 4,
+        "board_thickness": 1.6
+      }
+    },
+    "layers": [
+      { "name": "F.Cu",  "type": "copper", "id": 0  },
+      { "name": "In1.Cu","type": "copper", "id": 1  },
+      { "name": "In2.Cu","type": "copper", "id": 2  },
+      { "name": "B.Cu",  "type": "copper", "id": 31 },
+      { "name": "F.SilkS","type": "silk",  "id": 6  },
+      { "name": "B.SilkS","type": "silk",  "id": 7  },
+      { "name": "Edge.Cuts","type": "edge","id": 13 }
+    ],
+    "pad_to_mask_clearance": 0.0
+  },
+  "copyright": "Copyright (C) 2026 jayis1 — CERN-OHL-S v2",
+  "meta": {
+    "filename": "device.kicad_pro",
+    "version": 1,
+    "author": "jayis1"
+  }
+}
