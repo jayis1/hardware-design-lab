@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "GlyphFlow",
+    "slug": "glyphflow",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#0a0a12"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jayis1.glyphflow",
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "GlyphFlow uses Bluetooth to connect to your air-handwriting wristband."
+      }
+    },
+    "android": {
+      "package": "com.jayis1.glyphflow",
+      "permissions": [
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
+    },
+    "author": "jayis1",
+    "license": "MIT"
+  }
+}
