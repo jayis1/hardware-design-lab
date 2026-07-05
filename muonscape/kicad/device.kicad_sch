@@ -1,0 +1,547 @@
+(kicad_sch
+  (version 20211123)
+  (generator "muonscape-sch-gen")
+  (generator_version "1.0")
+  (uuid "00000000-0000-0000-0000-000000000001")
+  (paper "A2")
+  (title_block
+    (title "MûonScape — Portable Cosmic-Ray Muon Tomography Imager")
+    (date "2026-07-05")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "Copyright (c) 2026 jayis1")
+    (comment 3 "License: CERN-OHL-S v2")
+    (comment 4 "3-layer SiPM hodoscope + iCE40 + STM32H723")
+  )
+
+  ; ---- Net definitions ----
+  (net 0 "")
+  (net 1 "GND")
+  (net 2 "VCC_3V3")
+  (net 3 "VCC_5V")
+  (net 4 "VCC_1V2")
+  (net 5 "VCC_15V7")
+  (net 6 "VBATT_26V4")
+  (net 7 "VCC_SIPM_BIAS")
+  (net 8 "SPI1_SCK")
+  (net 9 "SPI1_MISO")
+  (net 10 "SPI1_MOSI")
+  (net 11 "FPGA_CRESET")
+  (net 12 "FPGA_CDONE")
+  (net 13 "FPGA_IRQ")
+  (net 14 "FPGA_HOLD")
+  (net 15 "I2C1_SCL")
+  (net 16 "I2C1_SDA")
+  (net 17 "USART2_TX")
+  (net 18 "USART2_RX")
+  (net 19 "GPS_PPS")
+  (net 20 "WIFI_CS")
+  (net 21 "WIFI_IRQ")
+  (net 22 "WIFI_RESET")
+  (net 23 "SPI3_SCK")
+  (net 24 "SPI3_MISO")
+  (net 25 "SPI3_MOSI")
+  (net 26 "SD_SDIO_CK")
+  (net 27 "SD_SDIO_CMD")
+  (net 28 "SD_SDIO_D0")
+  (net 29 "SD_SDIO_D1")
+  (net 30 "SD_SDIO_D2")
+  (net 31 "SD_SDIO_D3")
+  (net 32 "SD_DETECT")
+  (net 33 "LED_STATUS")
+  (net 34 "LED_FAULT")
+  (net 35 "LED_GPS")
+  (net 36 "LED_WIFI")
+  (net 37 "BTN_USER")
+  (net 38 "FMC_D0")
+  (net 39 "FMC_D1")
+  (net 40 "FMC_D2")
+  (net 41 "FMC_D3")
+  (net 42 "FMC_D4")
+  (net 43 "FMC_D5")
+  (net 44 "FMC_D6")
+  (net 45 "FMC_D7")
+  (net 46 "FMC_D8")
+  (net 47 "FMC_D9")
+  (net 48 "FMC_D10")
+  (net 49 "FMC_D11")
+  (net 50 "FMC_D12")
+  (net 51 "FMC_D13")
+  (net 52 "FMC_D14")
+  (net 53 "FMC_D15")
+  (net 54 "FMC_A0")
+  (net 55 "FMC_A1")
+  (net 56 "FMC_A2")
+  (net 57 "FMC_A3")
+  (net 58 "FMC_A4")
+  (net 59 "FMC_A5")
+  (net 60 "FMC_A6")
+  (net 61 "FMC_A7")
+  (net 62 "FMC_A8")
+  (net 63 "FMC_A9")
+  (net 64 "FMC_A10")
+  (net 65 "FMC_A11")
+  (net 66 "FMC_A12")
+  (net 67 "FMC_A13")
+  (net 68 "FMC_A14")
+  (net 69 "FMC_A15")
+  (net 70 "FMC_NE1")
+  (net 71 "FMC_NWE")
+  (net 72 "FMC_NOE")
+  (net 73 "FMC_NBL0")
+  (net 74 "FMC_NBL1")
+  (net 75 "FMC_NADV")
+  (net 76 "TIM8_CH1_PWM")
+  (net 77 "ADC_SOLAR_V")
+  (net 78 "ADC_USB_V")
+  (net 79 "ADC_BATT_V")
+  (net 80 "ADC_BATT_I")
+  (net 81 "USB_VBUS")
+  (net 82 "SIPM_DAC_SCL")
+  (net 83 "SIPM_DAC_SDA")
+  (net 84 "ASIC_IRQ_0")
+  (net 85 "ASIC_IRQ_1")
+  (net 86 "ASIC_IRQ_2")
+  (net 87 "LVDS_HIT_0+")
+  (net 88 "LVDS_HIT_0-")
+  (net 89 "LVDS_HIT_1+")
+  (net 90 "LVDS_HIT_1-")
+  (net 91 "LVDS_HIT_2+")
+  (net 92 "LVDS_HIT_2-")
+  (net 93 "LVDS_CLK+")
+  (net 94 "LVDS_CLK-")
+  (net 95 "RS485_DE")
+  (net 96 "RS485_A")
+  (net 97 "RS485_B")
+  (net 98 "EXTI_GPS_PPS")
+
+  ; ---- Symbol library ----
+  (lib_symbols
+    (symbol "MuonScape:STM32H723VIT6"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "STM32H723VIT6" (at 0 -5 0))
+      (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 0 0 0))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h723.pdf" (at 0 0 0))
+      (property "Description" "MCU ARM Cortex-M7 550MHz 1MB Flash LQFP-100" (at 0 0 0))
+      (property "ki_keywords" "MCU Cortex-M7 STM32H723" (at 0 0 0))
+    )
+    (symbol "MuonScape:iCE40-UP5K-SG48"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "iCE40-UP5K-SG48" (at 0 -5 0))
+      (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm" (at 0 0 0))
+      (property "Datasheet" "https://www.latticesemi.com/-/media/LatticeSemi/Documents/DataSheets/iCE/iCE40-UltraPlusFamilyDataSheet.pdf" (at 0 0 0))
+      (property "Description" "FPGA iCE40 UltraPlus 5.3K LUT 48-QFN" (at 0 0 0))
+    )
+    (symbol "MuonScape:MICROFC-SMA"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "D" (at 0 0 0))
+      (property "Value" "MICROFC-SMA" (at 0 -5 0))
+      (property "Footprint" "MuonScape:SiPM_SMA" (at 0 0 0))
+      (property "Datasheet" "https://www.onsemi.com/pub/Collateral/MICROC-SMA-D.PDF" (at 0 0 0))
+      (property "Description" "Silicon Photomultiplier 6x6mm 35um 192ch" (at 0 0 0))
+    )
+    (symbol "MuonScape:NUS32toA"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "NUS32toA" (at 0 -5 0))
+      (property "Footprint" "Package_QFP:TQFP-128_14x14mm_P0.4mm" (at 0 0 0))
+      (property "Datasheet" "internal" (at 0 0 0))
+      (property "Description" "64-ch SiPM readout ASIC + TDC" (at 0 0 0))
+    )
+    (symbol "MuonScape:ATWINC1500-MR210PB"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "ATWINC1500-MR210PB" (at 0 -5 0))
+      (property "Footprint" "MuonScape:ATWINC1500_Module" (at 0 0 0))
+      (property "Datasheet" "https://www.microchip.com/wwwproducts/en/ATWINC1500" (at 0 0 0))
+      (property "Description" "Wi-Fi Network Controller SPI Module" (at 0 0 0))
+    )
+    (symbol "MuonScape:NEO-M9N"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "NEO-M9N" (at 0 -5 0))
+      (property "Footprint" "MuonScape:NEO-M9N" (at 0 0 0))
+      (property "Datasheet" "https://www.u-blox.com/en/product/neo-m9n" (at 0 0 0))
+      (property "Description" "GNSS receiver module, u-blox M9" (at 0 0 0))
+    )
+    (symbol "MuonScape:AD5689"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "AD5689" (at 0 -5 0))
+      (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" (at 0 0 0))
+      (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/AD5689.pdf" (at 0 0 0))
+      (property "Description" "Dual 16-bit I2C DAC for SiPM bias" (at 0 0 0))
+    )
+    (symbol "MuonScape:BQ76952"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "BQ76952" (at 0 -5 0))
+      (property "Footprint" "Package_QFP:TQFP-48_7x7mm_P0.5mm" (at 0 0 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq76952.pdf" (at 0 0 0))
+      (property "Description" "6-15s Battery Monitor + Protector" (at 0 0 0))
+    )
+    (symbol "MuonScape:BQ24650"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "BQ24650" (at 0 -5 0))
+      (property "Footprint" "Package_SO:VSSOP-10_3x3mm_P0.5mm" (at 0 0 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq24650.pdf" (at 0 0 0))
+      (property "Description" "Synchronous Switch-Mode Battery Charger MPPT" (at 0 0 0))
+    )
+    (symbol "MuonScape:IS66WV4M16BLL"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "IS66WV4M16BLL-55BLI" (at 0 -5 0))
+      (property "Footprint" "Package_SO:TSOP-II-44_10.16x18.41mm_P0.8mm" (at 0 0 0))
+      (property "Datasheet" "https://www.issi.com/US/products/pSRAM/pSRAM.html" (at 0 0 0))
+      (property "Description" "8 MB pSRAM 55ns 16-bit FMC" (at 0 0 0))
+    )
+    (symbol "Device:R"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 0 0 0))
+      (property "Value" "R" (at 0 0 0))
+      (property "Footprint" "" (at 0 0 0))
+    )
+    (symbol "Device:C"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 0 0 0))
+      (property "Value" "C" (at 0 0 0))
+      (property "Footprint" "" (at 0 0 0))
+    )
+    (symbol "Device:L"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "L" (at 0 0 0))
+      (property "Value" "L" (at 0 0 0))
+      (property "Footprint" "" (at 0 0 0))
+    )
+    (symbol "power:GND"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 0 0))
+      (property "Value" "GND" (at 0 0 0))
+    )
+    (symbol "power:+3V3"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 0 0))
+      (property "Value" "+3V3" (at 0 0 0))
+    )
+    (symbol "power:+5V"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 0 0))
+      (property "Value" "+5V" (at 0 0 0))
+    )
+    (symbol "power:+1V2"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 0 0))
+      (property "Value" "+1V2" (at 0 0 0))
+    )
+  )
+
+  ; ---- Sheet title ----
+  (sheet (at 20 20) (size 260 180)
+    (property "Sheetname" "MûonScape Main")
+    (property "Sheetfile" "device.kicad_sch")
+  )
+
+  ; ---- Components ----
+  ; U1: STM32H723 host MCU
+  (symbol (lib_id "MuonScape:STM32H723VIT6") (at 100 100 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U1" (at 100 70 0))
+    (property "Value" "STM32H723VIT6" (at 100 75 0))
+    (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 100 100 0))
+    (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h723.pdf" (at 100 100 0))
+    (property "Description" "MCU Cortex-M7 550MHz 1MB Flash LQFP-100" (at 100 100 0))
+    (property "Author" "jayis1" (at 100 100 0))
+    (pin "VDD"    (in_bom yes) (on_board yes)  (at 80 90 0)  (length 5)  (name "VDD")    (type power_in))
+    (pin "VSS"    (in_bom yes) (on_board yes)  (at 80 95 0)  (length 5)  (name "VSS")    (type power_in))
+    (pin "PA5"    (in_bom yes) (on_board yes)  (at 120 90 0) (length 5)  (name "SPI1_SCK") (type bidirectional))
+    (pin "PA6"    (in_bom yes) (on_board yes)  (at 120 95 0) (length 5)  (name "SPI1_MISO")(type bidirectional))
+    (pin "PA7"    (in_bom yes) (on_board yes)  (at 120 100 0)(length 5)  (name "SPI1_MOSI")(type bidirectional))
+    (pin "PB2"    (in_bom yes) (on_board yes)  (at 120 105 0)(length 5)  (name "FPGA_CRESET")(type output))
+    (pin "PB8"    (in_bom yes) (on_board yes)  (at 120 110 0)(length 5)  (name "I2C1_SCL")(type bidirectional))
+    (pin "PB9"    (in_bom yes) (on_board yes)  (at 120 115 0)(length 5)  (name "I2C1_SDA")(type bidirectional))
+    (pin "PD8"    (in_bom yes) (on_board yes)  (at 80 105 0) (length 5)  (name "FPGA_CDONE")(type input))
+    (pin "PB10"   (in_bom yes) (on_board yes)  (at 80 110 0) (length 5)  (name "FPGA_IRQ")(type input))
+    (pin "PC13"   (in_bom yes) (on_board yes)  (at 80 115 0) (length 5)  (name "BTN_USER")(type input))
+  )
+
+  ; U2: iCE40-UP5K FPGA front-end
+  (symbol (lib_id "MuonScape:iCE40-UP5K-SG48") (at 200 100 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U2" (at 200 70 0))
+    (property "Value" "iCE40-UP5K-SG48" (at 200 75 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm" (at 200 100 0))
+    (property "Author" "jayis1" (at 200 100 0))
+    (pin "VCC"    (in_bom yes) (on_board yes)  (at 180 90 0) (length 5) (name "VCC_1V2") (type power_in))
+    (pin "VCCIO"  (in_bom yes) (on_board yes)  (at 180 95 0) (length 5) (name "VCC_3V3") (type power_in))
+    (pin "GND"    (in_bom yes) (on_board yes)  (at 180 100 0)(length 5) (name "GND") (type power_in))
+    (pin "SPI_SCK"(in_bom yes) (on_board yes)  (at 220 90 0) (length 5) (name "SPI_SCK") (type input))
+    (pin "SPI_MISO"(in_bom yes)(on_board yes)  (at 220 95 0) (length 5) (name "SPI_MISO")(type output))
+    (pin "SPI_MOSI"(in_bom yes)(on_board yes)  (at 220 100 0)(length 5) (name "SPI_MOSI")(type input))
+    (pin "CRESET" (in_bom yes) (on_board yes)  (at 220 105 0)(length 5) (name "CRESET") (type input))
+    (pin "CDONE"  (in_bom yes) (on_board yes)  (at 220 110 0)(length 5) (name "CDONE")  (type output))
+    (pin "IRQ"    (in_bom yes) (on_board yes)  (at 220 115 0)(length 5) (name "IRQ")   (type output))
+    (pin "HIT_0+" (in_bom yes) (on_board yes)  (at 180 110 0)(length 5) (name "LVDS_HIT_0+") (type input))
+    (pin "HIT_0-" (in_bom yes) (on_board yes)  (at 180 115 0)(length 5) (name "LVDS_HIT_0-") (type input))
+  )
+
+  ; U3: SiPM bias DAC AD5689
+  (symbol (lib_id "MuonScape:AD5689") (at 100 160 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U3" (at 100 140 0))
+    (property "Value" "AD5689" (at 100 145 0))
+    (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" (at 100 160 0))
+    (property "Author" "jayis1" (at 100 160 0))
+    (pin "VDD"   (in_bom yes) (on_board yes)  (at 80 155 0) (length 5) (name "VDD") (type power_in))
+    (pin "GND"   (in_bom yes) (on_board yes)  (at 80 160 0) (length 5) (name "GND") (type power_in))
+    (pin "SCL"   (in_bom yes) (on_board yes)  (at 120 155 0)(length 5) (name "SCL") (type input))
+    (pin "SDA"   (in_bom yes) (on_board yes)  (at 120 160 0)(length 5) (name "SDA") (type bidirectional))
+    (pin "VOUTA" (in_bom yes) (on_board yes)  (at 120 165 0)(length 5) (name "VOUTA_SIPM_BIAS") (type output))
+  )
+
+  ; U4: NEO-M9N GPS
+  (symbol (lib_id "MuonScape:NEO-M9N") (at 200 160 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U4" (at 200 140 0))
+    (property "Value" "NEO-M9N" (at 200 145 0))
+    (property "Footprint" "MuonScape:NEO-M9N" (at 200 160 0))
+    (property "Author" "jayis1" (at 200 160 0))
+    (pin "VCC"  (in_bom yes) (on_board yes)  (at 180 155 0)(length 5) (name "VCC_3V3") (type power_in))
+    (pin "GND"  (in_bom yes) (on_board yes)  (at 180 160 0)(length 5) (name "GND") (type power_in))
+    (pin "TX"   (in_bom yes) (on_board yes)  (at 220 155 0)(length 5) (name "USART2_TX") (type output))
+    (pin "RX"   (in_bom yes) (on_board yes)  (at 220 160 0)(length 5) (name "USART2_RX") (type input))
+    (pin "PPS"  (in_bom yes) (on_board yes)  (at 220 165 0)(length 5) (name "GPS_PPS") (type output))
+  )
+
+  ; U5: ATWINC1500 Wi-Fi
+  (symbol (lib_id "MuonScape:ATWINC1500-MR210PB") (at 280 100 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U5" (at 280 70 0))
+    (property "Value" "ATWINC1500-MR210PB" (at 280 75 0))
+    (property "Footprint" "MuonScape:ATWINC1500_Module" (at 280 100 0))
+    (property "Author" "jayis1" (at 280 100 0))
+    (pin "VCC"  (in_bom yes) (on_board yes)  (at 260 90 0) (length 5) (name "VCC_3V3") (type power_in))
+    (pin "GND"  (in_bom yes) (on_board yes)  (at 260 95 0) (length 5) (name "GND") (type power_in))
+    (pin "SCK"  (in_bom yes) (on_board yes)  (at 300 90 0) (length 5) (name "SPI3_SCK") (type input))
+    (pin "MISO" (in_bom yes) (on_board yes)  (at 300 95 0) (length 5) (name "SPI3_MISO")(type output))
+    (pin "MOSI" (in_bom yes) (on_board yes)  (at 300 100 0)(length 5) (name "SPI3_MOSI")(type input))
+    (pin "CS"   (in_bom yes) (on_board yes)  (at 300 105 0)(length 5) (name "WIFI_CS") (type input))
+    (pin "IRQ"  (in_bom yes) (on_board yes)  (at 300 110 0)(length 5) (name "WIFI_IRQ")(type output))
+    (pin "RST"  (in_bom yes) (on_board yes)  (at 300 115 0)(length 5) (name "WIFI_RESET")(type input))
+  )
+
+  ; U6: BQ76952 battery monitor
+  (symbol (lib_id "MuonScape:BQ76952") (at 280 160 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U6" (at 280 140 0))
+    (property "Value" "BQ76952" (at 280 145 0))
+    (property "Footprint" "Package_QFP:TQFP-48_7x7mm_P0.5mm" (at 280 160 0))
+    (property "Author" "jayis1" (at 280 160 0))
+    (pin "VCC"  (in_bom yes) (on_board yes)  (at 260 155 0)(length 5) (name "VCC_3V3") (type power_in))
+    (pin "GND"  (in_bom yes) (on_board yes)  (at 260 160 0)(length 5) (name "GND") (type power_in))
+    (pin "SCL"  (in_bom yes) (on_board yes)  (at 300 155 0)(length 5) (name "I2C1_SCL") (type input))
+    (pin "SDA"  (in_bom yes) (on_board yes)  (at 300 160 0)(length 5) (name "I2C1_SDA") (type bidirectional))
+    (pin "ALERT"(in_bom yes) (on_board yes)  (at 300 165 0)(length 5) (name "ALERT") (type output))
+  )
+
+  ; U7: BQ24650 charger
+  (symbol (lib_id "MuonScape:BQ24650") (at 350 160 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U7" (at 350 140 0))
+    (property "Value" "BQ24650" (at 350 145 0))
+    (property "Footprint" "Package_SO:VSSOP-10_3x3mm_P0.5mm" (at 350 160 0))
+    (property "Author" "jayis1" (at 350 160 0))
+    (pin "VCC"  (in_bom yes) (on_board yes)  (at 330 155 0)(length 5) (name "VBATT_26V4") (type power_in))
+    (pin "GND"  (in_bom yes) (on_board yes)  (at 330 160 0)(length 5) (name "GND") (type power_in))
+    (pin "MPPT" (in_bom yes) (on_board yes)  (at 370 155 0)(length 5) (name "MPPT_SET") (type input))
+    (pin "PWM"  (in_bom yes) (on_board yes)  (at 370 160 0)(length 5) (name "TIM8_CH1_PWM") (type input))
+  )
+
+  ; U8: 8 MB pSRAM
+  (symbol (lib_id "MuonScape:IS66WV4M16BLL") (at 350 100 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U8" (at 350 70 0))
+    (property "Value" "IS66WV4M16BLL-55BLI" (at 350 75 0))
+    (property "Footprint" "Package_SO:TSOP-II-44_10.16x18.41mm_P0.8mm" (at 350 100 0))
+    (property "Author" "jayis1" (at 350 100 0))
+    (pin "VCC"  (in_bom yes) (on_board yes)  (at 330 90 0) (length 5) (name "VCC_3V3") (type power_in))
+    (pin "GND"  (in_bom yes) (on_board yes)  (at 330 95 0) (length 5) (name "GND") (type power_in))
+    (pin "D0"   (in_bom yes) (on_board yes)  (at 370 90 0) (length 5) (name "FMC_D0") (type bidirectional))
+    (pin "D15"  (in_bom yes) (on_board yes)  (at 370 95 0) (length 5) (name "FMC_D15")(type bidirectional))
+    (pin "A0"   (in_bom yes) (on_board yes)  (at 370 100 0)(length 5) (name "FMC_A0") (type input))
+    (pin "A19"  (in_bom yes) (on_board yes)  (at 370 105 0)(length 5) (name "FMC_A19")(type input))
+    (pin "NWE"  (in_bom yes) (on_board yes)  (at 370 110 0)(length 5) (name "FMC_NWE")(type input))
+    (pin "NOE"  (in_bom yes) (on_board yes)  (at 370 115 0)(length 5) (name "FMC_NOE")(type input))
+  )
+
+  ; NUS32toA ASICs (3x, one per layer)
+  (symbol (lib_id "MuonScape:NUS32toA") (at 100 220 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U9" (at 100 200 0))
+    (property "Value" "NUS32toA" (at 100 205 0))
+    (property "Footprint" "Package_QFP:TQFP-128_14x14mm_P0.4mm" (at 100 220 0))
+    (property "Author" "jayis1" (at 100 220 0))
+    (pin "VDD"  (in_bom yes) (on_board yes)  (at 80 215 0)(length 5) (name "VDD_3V3") (type power_in))
+    (pin "GND"  (in_bom yes) (on_board yes)  (at 80 220 0)(length 5) (name "GND") (type power_in))
+    (pin "SIPM_0"(in_bom yes)(on_board yes)  (at 120 210 0)(length 5) (name "SIPM_CH0") (type input))
+    (pin "SIPM_63"(in_bom yes)(on_board yes)(at 120 215 0)(length 5) (name "SIPM_CH63")(type input))
+    (pin "LVDS_0+"(in_bom yes)(on_board yes)(at 120 220 0)(length 5) (name "LVDS_HIT_0+")(type output))
+    (pin "LVDS_0-"(in_bom yes)(on_board yes)(at 120 225 0)(length 5) (name "LVDS_HIT_0-")(type output))
+    (pin "SCL"  (in_bom yes) (on_board yes)  (at 80 210 0)(length 5) (name "I2C1_SCL") (type input))
+    (pin "SDA"  (in_bom yes) (on_board yes)  (at 80 205 0)(length 5) (name "I2C1_SDA") (type bidirectional))
+  )
+
+  ; D1..D192: SiPM array (representative single component shown)
+  (symbol (lib_id "MuonScape:MICROFC-SMA") (at 200 220 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D1" (at 200 200 0))
+    (property "Value" "MICROFC-SMA" (at 200 205 0))
+    (property "Footprint" "MuonScape:SiPM_SMA" (at 200 220 0))
+    (property "Author" "jayis1" (at 200 220 0))
+    (pin "ANODE" (in_bom yes) (on_board yes)  (at 180 215 0)(length 5) (name "ANODE_SIPM_BIAS") (type passive))
+    (pin "CATHODE"(in_bom yes)(on_board yes)  (at 220 215 0)(length 5) (name "CATHODE_TO_ASIC") (type passive))
+  )
+
+  ; Decoupling capacitors (representative)
+  (symbol (lib_id "Device:C") (at 60 240 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C1" (at 65 235 0))
+    (property "Value" "100nF" (at 65 245 0))
+    (property "Author" "jayis1" (at 60 240 0))
+    (pin "1" (in_bom yes) (on_board yes) (at 50 240 0) (length 5) (name "1") (type passive))
+    (pin "2" (in_bom yes) (on_board yes) (at 70 240 0) (length 5) (name "2") (type passive))
+  )
+
+  ; Pull-up resistors on I2C
+  (symbol (lib_id "Device:R") (at 80 240 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R1" (at 85 235 0))
+    (property "Value" "4k7" (at 85 245 0))
+    (property "Author" "jayis1" (at 80 240 0))
+    (pin "1" (in_bom yes) (on_board yes) (at 70 240 0) (length 5) (name "1") (type passive))
+    (pin "2" (in_bom yes) (on_board yes) (at 90 240 0) (length 5) (name "2") (type passive))
+  )
+
+  ; Boost inductor for SiPM bias
+  (symbol (lib_id "Device:L") (at 120 240 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "L1" (at 125 235 0))
+    (property "Value" "22uH" (at 125 245 0))
+    (property "Author" "jayis1" (at 120 240 0))
+    (pin "1" (in_bom yes) (on_board yes) (at 110 240 0) (length 5) (name "1") (type passive))
+    (pin "2" (in_bom yes) (on_board yes) (at 130 240 0) (length 5) (name "2") (type passive))
+  )
+
+  ; ---- Power flags ----
+  (symbol (lib_id "power:+3V3") (at 50 100 0) (unit 1)
+    (in_bom yes) (on_board yes) (property "Author" "jayis1" (at 50 100 0))
+  )
+  (symbol (lib_id "power:GND") (at 50 110 0) (unit 1)
+    (in_bom yes) (on_board yes) (property "Author" "jayis1" (at 50 110 0))
+  )
+  (symbol (lib_id "power:+1V2") (at 50 120 0) (unit 1)
+    (in_bom yes) (on_board yes) (property "Author" "jayis1" (at 50 120 0))
+  )
+
+  ; ---- Wires / net connections ----
+  ; SPI1 between STM32 and FPGA
+  (wire (pts (xy 120 90) (xy 220 90))  (net 8))   ; SCK
+  (wire (pts (xy 120 95) (xy 220 95))  (net 9))   ; MISO
+  (wire (pts (xy 120 100)(xy 220 100))(net 10))  ; MOSI
+  (wire (pts (xy 120 105)(xy 220 105))(net 11))  ; CRESET
+  (wire (pts (xy 80 105) (xy 220 110))(net 12))  ; CDONE
+  (wire (pts (xy 80 110) (xy 220 115))(net 13))  ; IRQ
+
+  ; I2C1 to all peripherals
+  (wire (pts (xy 120 110)(xy 300 155))(net 15))  ; SCL
+  (wire (pts (xy 120 115)(xy 300 160))(net 16))  ; SDA
+
+  ; SiPM bias DAC VOUTA to SiPM anodes
+  (wire (pts (xy 120 165)(xy 180 215))(net 7))   ; VOUTA -> SiPM bias rail
+
+  ; SiPM cathode to ASIC input
+  (wire (pts (xy 220 215)(xy 120 210))(net 84))
+
+  ; ASIC LVDS to FPGA
+  (wire (pts (xy 120 220)(xy 180 110))(net 87)) ; HIT_0+
+  (wire (pts (xy 120 225)(xy 180 115))(net 88)) ; HIT_0-
+
+  ; GPS UART
+  (wire (pts (xy 220 155)(xy 80 75))  (net 17))  ; TX (routed around)
+  (wire (pts (xy 220 160)(xy 80 80))  (net 18))  ; RX
+  (wire (pts (xy 220 165)(xy 80 120))(net 19))  ; PPS -> EXTI
+
+  ; Wi-Fi SPI3
+  (wire (pts (xy 300 90) (xy 350 90)) (net 23))  ; SCK
+  (wire (pts (xy 300 95) (xy 350 95)) (net 24))  ; MISO
+  (wire (pts (xy 300 100)(xy 350 100))(net 25))  ; MOSI
+
+  ; FMC to pSRAM
+  (wire (pts (xy 370 90) (xy 80 90))  (net 38))  ; D0
+  (wire (pts (xy 370 95) (xy 80 95))  (net 53))  ; D15
+  (wire (pts (xy 370 100)(xy 80 100))(net 54))  ; A0
+  (wire (pts (xy 370 110)(xy 80 110))(net 71))  ; NWE
+  (wire (pts (xy 370 115)(xy 80 115))(net 72))  ; NOE
+
+  ; Charger PWM
+  (wire (pts (xy 370 160)(xy 80 250))(net 76))  ; TIM8_CH1
+
+  ; ---- Power rails ----
+  (wire (pts (xy 50 100)(xy 80 90))  (net 2))   ; +3V3
+  (wire (pts (xy 50 110)(xy 80 95))  (net 1))   ; GND
+  (wire (pts (xy 50 120)(xy 180 90)) (net 4))   ; +1V2
+
+  ; ---- Labels ----
+  (label "SPI1_SCK"   (at 170 90 0))
+  (label "SPI1_MISO"  (at 170 95 0))
+  (label "SPI1_MOSI"  (at 170 100 0))
+  (label "I2C1_SCL"   (at 250 155 0))
+  (label "I2C1_SDA"   (at 250 160 0))
+  (label "GPS_PPS"    (at 150 165 0))
+  (label "FMC_D0"     (at 250 90 0))
+  (label "FMC_NWE"    (at 250 110 0))
+  (label "VCC_15V7"   (at 150 165 0))
+  (label "LVDS_HIT_0+" (at 150 220 0))
+
+  ; ---- Junctions ----
+  (junction (at 170 90))
+  (junction (at 170 95))
+  (junction (at 170 100))
+  (junction (at 250 155))
+  (junction (at 250 160))
+
+  ; ---- Text annotations ----
+  (text "MûonScape Top-Level Schematic" (at 150 30 0)
+    (effects (font (size 5 5) bold) (justify center)))
+  (text "Author: jayis1 — Copyright (c) 2026 jayis1 — CERN-OHL-S v2"
+    (at 150 38 0) (effects (font (size 2 2)) (justify center)))
+  (text "192 SiPM channels across 3 layers, sub-ns coincidence in iCE40,"
+    (at 150 45 0) (effects (font (size 1.8 1.8)) (justify center)))
+  (text "FBP reconstruction on STM32H723, 8 MB pSRAM volume buffer."
+    (at 150 50 0) (effects (font (size 1.8 1.8)) (justify center)))
+  (text "Note: 192 SiPM + 3 NUS32toA + support components shown"
+    (at 150 55 0) (effects (font (size 1.6 1.6)) (justify center)))
+  (text "representatively. Full hierarchical sheets cover each layer."
+    (at 150 60 0) (effects (font (size 1.6 1.6)) (justify center)))
+
+  ; ---- Hierarchical sheet pointers ----
+  (sheet (at 280 220) (size 40 20)
+    (property "Sheetname" "Detector_Layer_A")
+    (property "Sheetfile" "layer_a.kicad_sch")
+  )
+  (sheet (at 280 250) (size 40 20)
+    (property "Sheetname" "Detector_Layer_B")
+    (property "Sheetfile" "layer_b.kicad_sch")
+  )
+  (sheet (at 280 280) (size 40 20)
+    (property "Sheetname" "Detector_Layer_C")
+    (property "Sheetfile" "layer_c.kicad_sch")
+  )
+  (sheet (at 280 310) (size 40 20)
+    (property "Sheetname" "Power_Management")
+    (property "Sheetfile" "power.kicad_sch")
+  )
+)

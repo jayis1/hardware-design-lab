@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "MûonScape",
+    "slug": "muonscape",
+    "author": "jayis1",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "description": "Companion app for the MûonScape portable cosmic-ray muon tomography imager. Control acquisitions, view real-time muon track rates, and explore 3-D density reconstructions of structures imaged from outside.",
+    "icon": "./assets/icon.png",
+    "splash": { "image": "./assets/splash.png", "resizeMode": "contain", "backgroundColor": "#0a0e27" },
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.jayis1.muonscape" },
+    "android": { "package": "com.jayis1.muonscape", "adaptiveIcon": { "foregroundImage": "./assets/adaptive-icon.png", "backgroundColor": "#0a0e27" } },
+    "extra": { "eas": { "projectId": "muonscape-jayis1" } },
+    "owner": "jayis1"
+  }
+}
