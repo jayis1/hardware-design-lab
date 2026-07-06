@@ -1,0 +1,554 @@
+(kicad_sch
+  (version 20240108)
+  (generator "kicad-symbol-editor")
+  (generator_version "8.0")
+  (uuid "11111111-2222-3333-4444-555555555555")
+  (paper "A2")
+  (title_block
+    (title "TactiScript — Wearable Fingertip Haptic Display Ring")
+    (date "2026-07-06")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "Copyright (C) 2026 jayis1")
+    (comment 3 "License: CERN-OHL-S v2")
+  )
+
+  ;; ================================================================
+  ;; General Settings
+  ;; ================================================================
+  (lib_symbols)
+
+  ;; ================================================================
+  ;; Sheet Instances
+  ;; ================================================================
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+
+  ;; ================================================================
+  ;; Symbol Instances — Components
+  ;; ================================================================
+
+  ;; ----------------------------------------------------------------
+  ;; U1: nRF5340 QFAA (APP core MCU)
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "MCU_Nordic:nRF5340_QFAA") (at 127 67.31) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000001-0001-0001-0001-000000000001")
+    (property "Reference" "U1" (at 109 35.31 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "nRF5340_QFAA" (at 127 35.31 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_DFN_QFN:QFN-94-1EP_7x7mm_P0.4mm_EP2.9x2.9mm" (at 127 67.31 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "https://docs.nordicsemi.com/bundle/ps_nrf5340" (at 127 67.31 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Description" "Dual Cortex-M33, BLE 5.0, Thread, 1MB Flash, 512KB RAM"
+      (at 127 67.31 0) (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Manufacturer" "Nordic Semiconductor" (at 127 67.31 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 127 67.31 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  ;; ----------------------------------------------------------------
+  ;; U2-U7: DRV2700 Piezo Driver ICs (6 × dual-channel)
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "Driver_Haptic:TI_DRV2700") (at 50.8 90.17) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000002-0002-0002-0002-000000000002")
+    (property "Reference" "U2" (at 45.8 80.17 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "DRV2700" (at 50.8 80.17 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" (at 50.8 90.17 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/drv2700.pdf" (at 50.8 90.17 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Description" "Dual-channel piezo haptic driver, 110V boost" (at 50.8 90.17 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 50.8 90.17 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  (symbol (lib_id "Driver_Haptic:TI_DRV2700") (at 66.04 90.17) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000002-0002-0002-0002-000000000003")
+    (property "Reference" "U3" (at 61.04 80.17 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "DRV2700" (at 66.04 80.17 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" (at 66.04 90.17 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 66.04 90.17 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  (symbol (lib_id "Driver_Haptic:TI_DRV2700") (at 81.28 90.17) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000002-0002-0002-0002-000000000004")
+    (property "Reference" "U4" (at 76.28 80.17 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "DRV2700" (at 81.28 80.17 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" (at 81.28 90.17 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 81.28 90.17 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  (symbol (lib_id "Driver_Haptic:TI_DRV2700") (at 96.52 90.17) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000002-0002-0002-0002-000000000005")
+    (property "Reference" "U5" (at 91.52 80.17 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "DRV2700" (at 96.52 80.17 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" (at 96.52 90.17 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 96.52 90.17 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  (symbol (lib_id "Driver_Haptic:TI_DRV2700") (at 111.76 90.17) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000002-0002-0002-0002-000000000006")
+    (property "Reference" "U6" (at 106.76 80.17 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "DRV2700" (at 111.76 80.17 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" (at 111.76 90.17 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 111.76 90.17 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  (symbol (lib_id "Driver_Haptic:TI_DRV2700") (at 127 90.17) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000002-0002-0002-0002-000000000007")
+    (property "Reference" "U7" (at 122 80.17 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "DRV2700" (at 127 80.17 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" (at 127 90.17 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 127 90.17 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ----------------------------------------------------------------
+  ;; U8: ICM-42688-P IMU
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "Sensor_Motion:TDK_ICM-42688-P") (at 170.18 50.8) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000008-0008-0008-0008-000000000008")
+    (property "Reference" "U8" (at 165.18 40.8 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "ICM-42688-P" (at 170.18 40.8 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Sensor_Motion:TDK_ICM-42688-P_14-LGA" (at 170.18 50.8 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "https://invensense.tdk.com/products/datasheets/ICM-42688-P" (at 170.18 50.8 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Description" "6-axis IMU, accel + gyro, 32kHz ODR, SPI" (at 170.18 50.8 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 170.18 50.8 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ----------------------------------------------------------------
+  ;; U9: SSD1316 OLED 0.49" 64x32
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "Display:SSD1316_OLED_64x32") (at 50.8 50.8) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000009-0009-0009-0009-000000000009")
+    (property "Reference" "U9" (at 45.8 40.8 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "SSD1316" (at 50.8 40.8 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Display:OLED_0.49inch_64x32_I2C" (at 50.8 50.8 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "https://www.displaymodule.com/products/ssd1316" (at 50.8 50.8 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Description" "0.49 inch monochrome OLED, 64x32, I2C" (at 50.8 50.8 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 50.8 50.8 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ----------------------------------------------------------------
+  ;; U10: nPM1300 PMIC
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "Power_Management:Nordic_nPM1300") (at 200.66 60.96) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000010-0010-0010-0010-000000000010")
+    (property "Reference" "U10" (at 195.66 45.96 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "nPM1300" (at 200.66 45.96 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_DFN_QFN:QFN-46-1EP_6x6mm_P0.4mm_EP3.7x3.7mm" (at 200.66 60.96 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "https://docs.nordicsemi.com/bundle/ps_npm1300" (at 200.66 60.96 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Description" "PMIC with fuel gauge, USB charger, Qi support" (at 200.66 60.96 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 200.66 60.96 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ----------------------------------------------------------------
+  ;; Q1-Q24: PZT Bimorph Micro-Cantilever Actuators (24 elements)
+  ;; Represented as a single hierarchical block for clarity.
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "Device:PZT_Bimorph") (at 88.9 130.81) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000011-0011-0011-0011-000000000011")
+    (property "Reference" "Q1-Q24" (at 83.9 120.81 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "PZT_4x6_Array" (at 88.9 120.81 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "TactiScript:PZT_Bimorph_4x6_Array" (at 88.9 130.81 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Description" "24-element PZT bimorph micro-cantilever array, 120um deflection @ 120V"
+      (at 88.9 130.81 0) (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 88.9 130.81 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ----------------------------------------------------------------
+  ;; L1: Qi Wireless Charging Receiver Coil
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "Device:L") (at 200.66 30.48) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000012-0012-0012-0012-000000000012")
+    (property "Reference" "L1" (at 198.66 25.48 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "Qi_RX_Coil" (at 200.66 25.48 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "TactiScript:Qi_RX_Coil_15mm" (at 200.66 30.48 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Description" "Qi 1.3 wireless charging receiver coil, 15mm" (at 200.66 30.48 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 200.66 30.48 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ----------------------------------------------------------------
+  ;; BAT1: 120 mAh LiPo Battery
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "Device:Battery") (at 220.98 60.96) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000013-0013-0013-0013-000000000013")
+    (property "Reference" "BAT1" (at 215.98 50.96 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "120mAh_LiPo" (at 220.98 50.96 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Battery:BatteryHolder_BSH-12-1" (at 220.98 60.96 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Description" "120 mAh 3.7V LiPo, custom ring-shaped pouch" (at 220.98 60.96 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 220.98 60.96 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ----------------------------------------------------------------
+  ;; LRA: Linear Resonant Actuator (whole-ring vibration)
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "Device:LRA") (at 30.48 110.49) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000014-0014-0014-0014-000000000014")
+    (property "Reference" "M1" (at 25.48 100.49 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "LRA_170Hz" (at 30.48 100.49 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "TactiScript:LRA_8mm" (at 30.48 110.49 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Description" "Linear resonant actuator, 170 Hz, 8mm diameter" (at 30.48 110.49 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 30.48 110.49 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ----------------------------------------------------------------
+  ;; J1: USB-C Connector
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "Connector:USB_C_Plug") (at 220.98 30.48) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000015-0015-0015-0015-000000000015")
+    (property "Reference" "J1" (at 215.98 20.48 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "USB-C_2.0" (at 220.98 20.48 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4105" (at 220.98 30.48 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Description" "USB-C 2.0 receptacle for charging + debug" (at 220.98 30.48 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 220.98 30.48 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ----------------------------------------------------------------
+  ;; Crystal Y1: 32 MHz HFXO
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "Device:Crystal_GND24") (at 147.32 40.64) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000016-0016-0016-0016-000000000016")
+    (property "Reference" "Y1" (at 142.32 30.64 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "32MHz_16pF" (at 147.32 30.64 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm" (at 147.32 40.64 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Description" "32 MHz HFXO crystal, 16 pF load, 3.2x2.5mm" (at 147.32 40.64 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 147.32 40.64 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ----------------------------------------------------------------
+  ;; Crystal Y2: 32.768 kHz LFXO
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "Device:Crystal_GND2") (at 147.32 50.8) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000017-0017-0017-0017-000000000017")
+    (property "Reference" "Y2" (at 142.32 45.8 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "32.768kHz_12pF" (at 147.32 45.8 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm" (at 147.32 50.8 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Description" "32.768 kHz LFXO crystal, 12 pF, 3.2x1.5mm" (at 147.32 50.8 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 147.32 50.8 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ----------------------------------------------------------------
+  ;; Decoupling capacitors (representative subset)
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "Device:C") (at 110 25.4) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000018-0018-0018-0018-000000000018")
+    (property "Reference" "C1" (at 107 20.4 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "100nF" (at 110 20.4 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 110 25.4 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 110 25.4 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  (symbol (lib_id "Device:C") (at 118 25.4) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000019-0019-0019-0019-000000000019")
+    (property "Reference" "C2" (at 115 20.4 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "1uF" (at 118 20.4 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 118 25.4 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 118 25.4 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  (symbol (lib_id "Device:C") (at 30.48 90.17) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000020-0020-0020-0020-000000000020")
+    (property "Reference" "C3" (at 27.48 85.17 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "4.7uF_120V" (at 30.48 85.17 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 30.48 90.17 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Description" "HV bypass cap for DRV2700 boost output" (at 30.48 90.17 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 30.48 90.17 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ----------------------------------------------------------------
+  ;; Pull-up resistors for I2C
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "Device:R") (at 38.1 35.56) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000021-0021-0021-0021-000000000021")
+    (property "Reference" "R1" (at 33.1 30.56 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "4.7k" (at 38.1 30.56 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 38.1 35.56 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 38.1 35.56 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  (symbol (lib_id "Device:R") (at 45.72 35.56) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000022-0022-0022-0022-000000000022")
+    (property "Reference" "R2" (at 40.72 30.56 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "4.7k" (at 45.72 30.56 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 45.72 35.56 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 45.72 35.56 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ----------------------------------------------------------------
+  ;; LED indicators (red + green)
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "Device:LED") (at 200.66 88.9) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000023-0023-0023-0023-000000000023")
+    (property "Reference" "D1" (at 195.66 83.9 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "LED_Red" (at 200.66 83.9 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 200.66 88.9 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 200.66 88.9 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  (symbol (lib_id "Device:LED") (at 213.36 88.9) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000024-0024-0024-0024-000000000024")
+    (property "Reference" "D2" (at 208.36 83.9 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "LED_Green" (at 213.36 83.9 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 213.36 88.9 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 213.36 88.9 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ----------------------------------------------------------------
+  ;; Antenna: NFC + BLE
+  ;; ----------------------------------------------------------------
+  (symbol (lib_id "Device:Antenna") (at 162.56 30.48) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a0000025-0025-0025-0025-000000000025")
+    (property "Reference" "AE1" (at 157.56 25.48 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "BLE_NFC_Antenna" (at 162.56 25.48 0) (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "TactiScript:BLE_NFC_Antenna" (at 162.56 30.48 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Description" "Integrated PCB trace antenna for BLE + NFC-A" (at 162.56 30.48 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1" (at 162.56 30.48 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ================================================================
+  ;; Wires / Nets
+  ;; ================================================================
+
+  ;; Power nets: VBAT, VCC (3.3V), GND, HV120V
+  (wire (pts (xy 200.66 35.56) (xy 200.66 40.64))
+    (uuid "b0000001-0001-0001-0001-000000000001"))
+
+  (wire (pts (xy 220.98 55.88) (xy 220.98 50.8))
+    (uuid "b0000002-0002-0002-0002-000000000002"))
+
+  ;; SPI0 bus: SCK, MOSI, CS — from U1 to DRV2700 chain
+  (wire (pts (xy 127 60.96) (xy 127 76.2))
+    (uuid "b0000003-0003-0003-0003-000000000003"))
+  (wire (pts (xy 50.8 76.2) (xy 127 76.2))
+    (uuid "b0000004-0004-0004-0004-000000000004"))
+
+  ;; SPI1 bus: from U1 to IMU U8
+  (wire (pts (xy 127 55.88) (xy 170.18 55.88))
+    (uuid "b0000005-0005-0005-0005-000000000005"))
+
+  ;; I2C bus: from U1 to OLED U9 + PMIC U10
+  (wire (pts (xy 127 50.8) (xy 50.8 50.8))
+    (uuid "b0000006-0006-0006-0006-000000000006"))
+  (wire (pts (xy 127 53.34) (xy 200.66 53.34))
+    (uuid "b0000007-0007-0007-0007-000000000007"))
+
+  ;; HV output: from DRV2700 chain to PZT array
+  (wire (pts (xy 88.9 110.49) (xy 88.9 125.73))
+    (uuid "b0000008-0008-0008-0008-000000000008"))
+
+  ;; IMU interrupt line
+  (wire (pts (xy 170.18 58.42) (xy 127 58.42))
+    (uuid "b0000009-0009-0009-0009-000000000009"))
+
+  ;; ================================================================
+  ;; Net labels
+  ;; ================================================================
+  (net_label "VBAT" (at 220.98 50.8 0)
+    (uuid "c0000001-0001-0001-0001-000000000001"))
+  (net_label "GND" (at 35.56 95.25 0)
+    (uuid "c0000002-0002-0002-0002-000000000002"))
+  (net_label "VCC_3V3" (at 210.82 40.64 0)
+    (uuid "c0000003-0003-0003-0003-000000000003"))
+  (net_label "HV120V" (at 88.9 110.49 0)
+    (uuid "c0000004-0004-0004-0004-000000000004"))
+  (net_label "SPI0_SCK" (at 127 76.2 90)
+    (uuid "c0000005-0005-0005-0005-000000000005"))
+  (net_label "SPI0_MOSI" (at 124.46 76.2 90)
+    (uuid "c0000006-0006-0006-0006-000000000006"))
+  (net_label "SPI0_CS_DRV" (at 121.92 76.2 90)
+    (uuid "c0000007-0007-0007-0007-000000000007"))
+  (net_label "SPI1_SCK" (at 170.18 55.88 0)
+    (uuid "c0000008-0008-0008-0008-000000000008"))
+  (net_label "SPI1_MOSI" (at 170.18 53.34 0)
+    (uuid "c0000009-0009-0009-0009-000000000009"))
+  (net_label "SPI1_CS_IMU" (at 170.18 50.8 0)
+    (uuid "c0000010-0010-0010-0010-000000000010"))
+  (net_label "I2C_SCL" (at 50.8 50.8 0)
+    (uuid "c0000011-0011-0011-0011-000000000011"))
+  (net_label "I2C_SDA" (at 200.66 53.34 0)
+    (uuid "c0000012-0012-0012-0012-000000000012"))
+  (net_label "IMU_INT1" (at 170.18 58.42 0)
+    (uuid "c0000013-0013-0013-0013-000000000013"))
+  (net_label "HV_BOOST_EN" (at 38.1 110.49 90)
+    (uuid "c0000014-0014-0014-0014-000000000014"))
+  (net_label "LRA_EN" (at 30.48 100.33 90)
+    (uuid "c0000015-0015-0015-0015-000000000015"))
+  (net_label "LED_R" (at 200.66 83.82 90)
+    (uuid "c0000016-0016-0016-0016-000000000016"))
+  (net_label "LED_G" (at 213.36 83.82 90)
+    (uuid "c0000017-0017-0017-0017-000000000017"))
+
+  ;; ================================================================
+  ;; Text annotations
+  ;; ================================================================
+  (text "TactiScript Schematic\nAuthor: jayis1\nCopyright (C) 2026 jayis1\nLicense: CERN-OHL-S v2"
+    (at 30 130 0) (effects (font (size 2 2))) (uuid "d0000001"))
+
+  (text "HV Section: 120V boost + PZT array drive\nKeep >2mm clearance from LV nets"
+    (at 88.9 115 0) (effects (font (size 1.5 1.5))) (uuid "d0000002"))
+
+  (text "Actuator Array: 24x PZT bimorph\nelements arranged 4x6"
+    (at 88.9 140 0) (effects (font (size 1.5 1.5))) (uuid "d0000003"))
+
+)
