@@ -1,0 +1,320 @@
+(kicad_sch
+  (version 20240108)
+  (generator "kicad-symbol-editor")
+  (generator_version "8.0")
+  (uuid "11111111-1111-1111-1111-111111111111")
+  (paper "A3")
+  (title_block
+    (title "Occlusograph — Smart Intraoral Occlusal Force & Bruxism Mapping Sensor")
+    (date "2026-07-10")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: CERN-OHL-S v2")
+    (comment 3 "Sheet 1 of 1 — System schematic")
+  )
+
+  (lib_symbols
+    (symbol "nRF5340-QFAA"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "nRF5340-QFAA" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm" (at 0 0))
+      (property "Datasheet" "https://www.nordicsemi.com/Products/nRF5340")
+      (property "Description" "Dual-core Cortex-M33 BLE SoC")
+      (property "Manufacturer" "Nordic Semiconductor")
+      (property "MPN" "nRF5340-QFAA-R")
+      (property "Author" "jayis1")
+      (symbol_names
+        (symbol "nRF5340-QFAA_0_1"
+          (rectangle (start -15.24 17.78) (end 15.24 -17.78) (stroke (width 0.254)) (fill (type background)))
+          (pin power_in line (at -17.78 15.24 0) (length 2.54) (name "VDD") (number "1") (effects (font (size 1.27 1.27))))
+          (pin power_in line (at -17.78 12.7 0) (length 2.54) (name "VDDA") (number "2") (effects (font (size 1.27 1.27))))
+          (pin output line (at -17.78 10.16 0) (length 2.54) (name "LED_STATUS") (number "3") (effects (font (size 1.27 1.27))))
+          (pin output line (at -17.78 7.62 0) (length 2.54) (name "PIEZO_MUX_S0") (number "4") (effects (font (size 1.27 1.27))))
+          (pin output line (at -17.78 5.08 0) (length 2.54) (name "PIEZO_MUX_S1") (number "5") (effects (font (size 1.27 1.27))))
+          (pin output line (at -17.78 2.54 0) (length 2.54) (name "PIEZO_RESET") (number "6") (effects (font (size 1.27 1.27))))
+          (pin input line (at -17.78 0 0) (length 2.54) (name "IMU_INT") (number "7") (effects (font (size 1.27 1.27))))
+          (pin input line (at -17.78 -2.54 0) (length 2.54) (name "TMP_INT") (number "8") (effects (font (size 1.27 1.27))))
+          (pin output line (at -17.78 -5.08 0) (length 2.54) (name "CHG_EN") (number "9") (effects (font (size 1.27 1.27))))
+          (pin input line (at -17.78 -7.62 0) (length 2.54) (name "CHG_NIRQ") (number "10") (effects (font (size 1.27 1.27))))
+          (pin output line (at -17.78 -10.16 0) (length 2.54) (name "CAP_MUX_A0") (number "11") (effects (font (size 1.27 1.27))))
+          (pin output line (at -17.78 -12.7 0) (length 2.54) (name "CAP_MUX_A1") (number "12") (effects (font (size 1.27 1.27))))
+          (pin output line (at -17.78 -15.24 0) (length 2.54) (name "CAP_MUX_A2") (number "13") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at 17.78 15.24 180) (length 2.54) (name "QSPI_CS") (number "15") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at 17.78 12.7 180) (length 2.54) (name "QSPI_D0") (number "16") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at 17.78 10.16 180) (length 2.54) (name "QSPI_SCK") (number "17") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at 17.78 7.62 180) (length 2.54) (name "QSPI_D1") (number "18") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at 17.78 5.08 180) (length 2.54) (name "QSPI_D2") (number "19") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at 17.78 2.54 180) (length 2.54) (name "QSPI_D3") (number "20") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at 17.78 0 180) (length 2.54) (name "I2C1_SCL") (number "21") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at 17.78 -2.54 180) (length 2.54) (name "I2C1_SDA") (number "22") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at 17.78 -5.08 180) (length 2.54) (name "I2C0_SCL") (number "23") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at 17.78 -7.62 180) (length 2.54) (name "I2C0_SDA") (number "24") (effects (font (size 1.27 1.27))))
+          (pin input line (at 17.78 -10.16 180) (length 2.54) (name "SAADC0") (number "25") (effects (font (size 1.27 1.27))))
+          (pin input line (at 17.78 -12.7 180) (length 2.54) (name "SAADC1") (number "26") (effects (font (size 1.27 1.27))))
+          (pin power_in line (at 0 -20.32 90) (length 2.54) (name "GND") (number "44") (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+
+    (symbol "AD8603"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "AD8603" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 0))
+      (property "Datasheet" "https://www.analog.com/AD8603")
+      (property "Description" "Precision zero-drift CMOS op-amp")
+      (property "Manufacturer" "Analog Devices")
+      (property "MPN" "AD8603AUJZ-REEL7")
+      (property "Author" "jayis1")
+      (symbol_names
+        (symbol "AD8603_0_1"
+          (rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254)) (fill (type background)))
+          (pin input line (at -7.62 2.54 0) (length 2.54) (name "IN-") (number "1") (effects (font (size 1.27 1.27))))
+          (pin power_in line (at -7.62 0 0) (length 2.54) (name "GND") (number "2") (effects (font (size 1.27 1.27))))
+          (pin output line (at 7.62 -2.54 180) (length 2.54) (name "OUT") (number "3") (effects (font (size 1.27 1.27))))
+          (pin input line (at 7.62 2.54 180) (length 2.54) (name "IN+") (number "4") (effects (font (size 1.27 1.27))))
+          (pin power_in line (at 0 7.62 270) (length 2.54) (name "VDDA") (number "5") (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+
+    (symbol "AD7746"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "AD7746" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 0 0))
+      (property "Datasheet" "https://www.analog.com/AD7746")
+      (property "Description" "24-bit Capacitance-to-Digital Converter")
+      (property "Manufacturer" "Analog Devices")
+      (property "MPN" "AD7746ARZ")
+      (property "Author" "jayis1")
+      (symbol_names
+        (symbol "AD7746_0_1"
+          (rectangle (start -7.62 7.62) (end 7.62 -7.62) (stroke (width 0.254)) (fill (type background)))
+          (pin bidirectional line (at -10.16 5.08 0) (length 2.54) (name "SCL") (number "1") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at -10.16 2.54 0) (length 2.54) (name "SDA") (number "2") (effects (font (size 1.27 1.27))))
+          (pin power_in line (at -10.16 -2.54 0) (length 2.54) (name "GND") (number "3") (effects (font (size 1.27 1.27))))
+          (pin power_in line (at -10.16 -5.08 0) (length 2.54) (name "VDD") (number "4") (effects (font (size 1.27 1.27))))
+          (pin input line (at 10.16 5.08 180) (length 2.54) (name "CIN1") (number "5") (effects (font (size 1.27 1.27))))
+          (pin input line (at 10.16 2.54 180) (length 2.54) (name "CIN2") (number "6") (effects (font (size 1.27 1.27))))
+          (pin power_in line (at 10.16 -2.54 180) (length 2.54) (name "GND") (number "7") (effects (font (size 1.27 1.27))))
+          (pin power_in line (at 10.16 -5.08 180) (length 2.54) (name "VDD") (number "8") (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+
+    (symbol "ICM-42688-P"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "ICM-42688-P" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.5mm" (at 0 0))
+      (property "Datasheet" "https://invensense.tdk.com/ICM-42688-P")
+      (property "Description" "6-axis IMU (accel+gyro)")
+      (property "Manufacturer" "TDK InvenSense")
+      (property "MPN" "ICM-42688-P")
+      (property "Author" "jayis1")
+      (symbol_names
+        (symbol "ICM-42688-P_0_1"
+          (rectangle (start -7.62 7.62) (end 7.62 -7.62) (stroke (width 0.254)) (fill (type background)))
+          (pin bidirectional line (at -10.16 5.08 0) (length 2.54) (name "SDA") (number "2") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at -10.16 2.54 0) (length 2.54) (name "SCL") (number "3") (effects (font (size 1.27 1.27))))
+          (pin output line (at -10.16 0 0) (length 2.54) (name "INT") (number "4") (effects (font (size 1.27 1.27))))
+          (pin power_in line (at 10.16 5.08 180) (length 2.54) (name "VDD") (number "5") (effects (font (size 1.27 1.27))))
+          (pin power_in line (at 10.16 -5.08 180) (length 2.54) (name "GND") (number "6") (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+
+    (symbol "TMP117"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "TMP117" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-563" (at 0 0))
+      (property "Datasheet" "https://www.ti.com/TMP117")
+      (property "Description" "High-accuracy digital temperature sensor")
+      (property "Manufacturer" "Texas Instruments")
+      (property "MPN" "TMP117AIDRV")
+      (property "Author" "jayis1")
+      (symbol_names
+        (symbol "TMP117_0_1"
+          (rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254)) (fill (type background)))
+          (pin power_in line (at -7.62 2.54 0) (length 2.54) (name "VDD") (number "1") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at -7.62 0 0) (length 2.54) (name "SCL") (number "2") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at -7.62 -2.54 0) (length 2.54) (name "SDA") (number "3") (effects (font (size 1.27 1.27))))
+          (pin output line (at 7.62 -2.54 180) (length 2.54) (name "INT") (number "4") (effects (font (size 1.27 1.27))))
+          (pin power_in line (at 7.62 2.54 180) (length 2.54) (name "GND") (number "5") (effects (font (size 1.27 1.27))))
+          (pin power_in line (at 7.62 0 180) (length 2.54) (name "VDD") (number "6") (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+
+    (symbol "W25R128"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "W25R128" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_DFN_QFN:DFN-8-1EP_2x2mm_P0.5mm" (at 0 0))
+      (property "Datasheet" "https://www.winbond.com/W25R128")
+      (property "Description" "16 MB QSPI NOR flash")
+      (property "Manufacturer" "Winbond")
+      (property "MPN" "W25R128WEIG")
+      (property "Author" "jayis1")
+      (symbol_names
+        (symbol "W25R128_0_1"
+          (rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254)) (fill (type background)))
+          (pin input line (at -7.62 2.54 0) (length 2.54) (name "CS") (number "1") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at -7.62 0 0) (length 2.54) (name "IO3") (number "2") (effects (font (size 1.27 1.27))))
+          (pin power_in line (at -7.62 -2.54 0) (length 2.54) (name "GND") (number "3") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at 7.62 2.54 180) (length 2.54) (name "IO0") (number "5") (effects (font (size 1.27 1.27))))
+          (pin input line (at 7.62 0 180) (length 2.54) (name "SCK") (number "6") (effects (font (size 1.27 1.27))))
+          (pin bidirectional line (at 7.62 -2.54 180) (length 2.54) (name "IO1") (number "7") (effects (font (size 1.27 1.27))))
+          (pin power_in line (at 0 7.62 270) (length 2.54) (name "VDD") (number "8") (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+
+    (symbol "PVDF-Piezo"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "PZ" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "PVDF-TrFE" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Sensor:PVDF_Piezo_1.8mm" (at 0 0))
+      (property "Description" "PVDF piezoelectric pressure element")
+      (property "Author" "jayis1")
+      (symbol_names
+        (symbol "PVDF-Piezo_0_1"
+          (circle (center 0 0) (radius 2.54) (stroke (width 0.254)) (fill (type none)))
+          (pin output line (at -5.08 0 0) (length 2.54) (name "SIG") (number "1") (effects (font (size 1.27 1.27))))
+          (pin passive line (at 5.08 0 180) (length 2.54) (name "GND") (number "2") (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+
+    (symbol "LED"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "D" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "LED" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "LED_SMD:LED_0201_0603Metric" (at 0 0))
+      (property "Author" "jayis1")
+      (symbol_names
+        (symbol "LED_0_1"
+          (pin input line (at -5.08 0 0) (length 2.54) (name "A") (number "1") (effects (font (size 1.27 1.27))))
+          (pin passive line (at 5.08 0 180) (length 2.54) (name "K") (number "2") (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+
+    (symbol "C"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "C" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Capacitor_SMD:C_0201_0603Metric" (at 0 0))
+      (property "Author" "jayis1")
+      (symbol_names
+        (symbol "C_0_1"
+          (pin passive line (at -3.81 0 0) (length 1.27) (name "1") (number "1") (effects (font (size 1.27 1.27))))
+          (pin passive line (at 3.81 0 180) (length 1.27) (name "2") (number "2") (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+
+    (symbol "L"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "L" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "L" (at 0 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Inductor_SMD:L_Custom_2x2mm" (at 0 0))
+      (property "Author" "jayis1")
+      (symbol_names
+        (symbol "L_0_1"
+          (pin passive line (at -5.08 0 0) (length 2.54) (name "1") (number "1") (effects (font (size 1.27 1.27))))
+          (pin passive line (at 5.08 0 180) (length 2.54) (name "2") (number "2") (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+  )
+
+  (symbol_instances
+    (path "/00000000-0000-0000-0000-000000000001"
+      (reference "U1") (unit 1) (value "nRF5340-QFAA")
+      (footprint "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm"))
+    (path "/00000000-0000-0000-0000-000000000002"
+      (reference "U2") (unit 1) (value "AD8603")
+      (footprint "Package_TO_SOT_SMD:SOT-23-5"))
+    (path "/00000000-0000-0000-0000-000000000003"
+      (reference "U3") (unit 1) (value "AD8603")
+      (footprint "Package_TO_SOT_SMD:SOT-23-5"))
+    (path "/00000000-0000-0000-0000-000000000004"
+      (reference "U4") (unit 1) (value "AD7746")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"))
+    (path "/00000000-0000-0000-0000-000000000005"
+      (reference "U5") (unit 1) (value "ICM-42688-P")
+      (footprint "Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.5mm"))
+    (path "/00000000-0000-0000-0000-000000000006"
+      (reference "U6") (unit 1) (value "TMP117")
+      (footprint "Package_TO_SOT_SMD:SOT-563"))
+    (path "/00000000-0000-0000-0000-000000000007"
+      (reference "U7") (unit 1) (value "W25R128")
+      (footprint "Package_DFN_QFN:DFN-8-1EP_2x2mm_P0.5mm"))
+    (path "/00000000-0000-0000-0000-000000000008"
+      (reference "D1") (unit 1) (value "LED-Red-0201")
+      (footprint "LED_SMD:LED_0201_0603Metric"))
+    (path "/00000000-0000-0000-0000-000000000009"
+      (reference "C1") (unit 1) (value "100nF")
+      (footprint "Capacitor_SMD:C_0201_0603Metric"))
+    (path "/00000000-0000-0000-0000-000000000010"
+      (reference "C2") (unit 1) (value "1uF")
+      (footprint "Capacitor_SMD:C_0201_0603Metric"))
+    (path "/00000000-0000-0000-0000-000000000011"
+      (reference "PZ1") (unit 1) (value "PVDF-TrFE")
+      (footprint "Sensor:PVDF_Piezo_1.8mm"))
+    (path "/00000000-0000-0000-0000-000000000012"
+      (reference "L1") (unit 1) (value "NFC_Coil_13.56M")
+      (footprint "Inductor_SMD:L_Custom_2x2mm"))
+  )
+
+  (junction (at 25.4 20.32) (diameter 0) (color "#000000"))
+  (wire (pts (xy 25.4 20.32) (xy 30.48 20.32)) (stroke (width 0.254)))
+  (wire (pts (xy 25.4 22.86) (xy 30.48 22.86)) (stroke (width 0.254)))
+  (wire (pts (xy 25.4 25.4) (xy 30.48 25.4)) (stroke (width 0.254)))
+  (wire (pts (xy 25.4 27.94) (xy 30.48 27.94)) (stroke (width 0.254)))
+  (wire (pts (xy 25.4 30.48) (xy 30.48 30.48)) (stroke (width 0.254)))
+  (wire (pts (xy 25.4 33.02) (xy 30.48 33.02)) (stroke (width 0.254)))
+  (wire (pts (xy 25.4 35.56) (xy 30.48 35.56)) (stroke (width 0.254)))
+  (wire (pts (xy 25.4 38.1) (xy 30.48 38.1)) (stroke (width 0.254)))
+  (wire (pts (xy 25.4 40.64) (xy 30.48 40.64)) (stroke (width 0.254)))
+  (wire (pts (xy 25.4 43.18) (xy 30.48 43.18)) (stroke (width 0.254)))
+  (wire (pts (xy 25.4 45.72) (xy 30.48 45.72)) (stroke (width 0.254)))
+  (wire (pts (xy 25.4 48.26) (xy 30.48 48.26)) (stroke (width 0.254)))
+  (wire (pts (xy 25.4 50.8) (xy 30.48 50.8)) (stroke (width 0.254)))
+  (wire (pts (xy 25.4 53.34) (xy 30.48 53.34)) (stroke (width 0.254)))
+  (wire (pts (xy 25.4 55.88) (xy 30.48 55.88)) (stroke (width 0.254)))
+  (wire (pts (xy 25.4 58.42) (xy 30.48 58.42)) (stroke (width 0.254)))
+
+  (sheet (at 60.96 15.24) (size 20.32 50.8)
+    (stroke (width 0.254))
+    (fill (type none))
+    (property "Sheetname" "Sensor_Array" (at 60.96 13.46) (effects (font (size 1.27 1.27))))
+    (property "Sheetfile" "sensor_array.kicad_sch" (at 60.96 67.06) (effects (font (size 1.27 1.27))))
+  )
+
+  (text "Occlusograph — System Schematic\nAuthor: jayis1\nLicense: CERN-OHL-S v2"
+    (at 15.24 5.08) (effects (font (size 2.54 2.54))) (tstamp "text_1"))
+
+  (label "VDD" (at 25.4 20.32) (effects (font (size 1.27 1.27))))
+  (label "VDDA" (at 25.4 22.86) (effects (font (size 1.27 1.27))))
+  (label "GND" (at 25.4 25.4) (effects (font (size 1.27 1.27))))
+  (label "I2C0_SCL" (at 25.4 30.48) (effects (font (size 1.27 1.27))))
+  (label "I2C0_SDA" (at 25.4 33.02) (effects (font (size 1.27 1.27))))
+  (label "I2C1_SCL" (at 25.4 35.56) (effects (font (size 1.27 1.27))))
+  (label "I2C1_SDA" (at 25.4 38.1) (effects (font (size 1.27 1.27))))
+  (label "QSPI" (at 25.4 40.64) (effects (font (size 1.27 1.27))))
+  (label "SAADC[0..15]" (at 25.4 43.18) (effects (font (size 1.27 1.27))))
+  (label "PIEZO_MUX" (at 25.4 45.72) (effects (font (size 1.27 1.27))))
+  (label "CAP_MUX" (at 25.4 48.26) (effects (font (size 1.27 1.27))))
+  (label "VBAT_SENSE" (at 25.4 50.8) (effects (font (size 1.27 1.27))))
+  (label "NFC_FIELD" (at 25.4 53.34) (effects (font (size 1.27 1.27))))
+  (label "CHG_CTRL" (at 25.4 55.88) (effects (font (size 1.27 1.27))))
+  (label "LED_STATUS" (at 25.4 58.42) (effects (font (size 1.27 1.27))))
+
+  (netclass_flag (net 1 "VDD") (net 2 "GND") (net 3 "VDDA") (net 4 "VBAT"))
+)

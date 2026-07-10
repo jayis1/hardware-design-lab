@@ -1,0 +1,189 @@
+{
+  "board": {
+    "3dpassports": [],
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.0,
+        "copper_text_size_v": 1.0,
+        "copper_text_thickness": 0.15,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.15,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15
+      },
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
+      "rules": {
+        "min_clearance": 0.08,
+        "min_track_width": 0.06,
+        "min_via_diameter": 0.2,
+        "min_via_drill": 0.1,
+        "min_microvia_diameter": 0.2,
+        "min_microvia_drill": 0.1
+      },
+      "track_widths": [0.06, 0.08, 0.1, 0.12, 0.15, 0.2],
+      "via_dimensions": [
+        { "diameter": 0.2, "drill": 0.1 },
+        { "diameter": 0.3, "drill": 0.15 }
+      ]
+    },
+    "ipc2581": {
+      "dist": "",
+      "distpn": "",
+      "internal_id": "",
+      "mfg": "",
+      "mpn": ""
+    },
+    "layer_presets": [],
+    "viewports": []
+  },
+  "boards": [
+    {
+      "3dpassports": [],
+      "design_settings": {
+        "defaults": {
+          "board_outline_line_width": 0.1,
+          "copper_line_width": 0.2
+        },
+        "rules": {
+          "min_clearance": 0.08,
+          "min_track_width": 0.06
+        }
+      },
+      "layers": [
+        "F.Cu", "In1.Cu", "In2.Cu", "B.Cu",
+        "F.Adhes", "B.Adhes", "F.Paste", "B.Paste",
+        "F.SilkS", "B.SilkS", "F.Mask", "B.Mask",
+        "Dwgs.User", "Cmts.User", "Eco1.User", "Eco2.User",
+        "Edge.Cuts", "Margin", "F.CrtYd", "B.CrtYd", "F.Fab", "B.Fab"
+      ],
+      "board_thickness": 0.4,
+      "name": "occlusograph",
+      "padstacks": [],
+      "rules": {
+        "min_clearance": 0.08,
+        "min_track_width": 0.06
+      }
+    }
+  ],
+  "libraries": {
+    "pinned_footprints": [],
+    "pinned_symbols": []
+  },
+  "meta": {
+    "filename": "device.kicad_pro",
+    "version": 3
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "bus_width": 12,
+        "clearance": 0.08,
+        "diff_pair_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "gap": 0.1,
+        "track_width": 0.08,
+        "via_diameter": 0.2,
+        "via_drill": 0.1,
+        "name": "Default",
+        "nets": []
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "gap": 0.1,
+        "track_width": 0.15,
+        "via_diameter": 0.3,
+        "via_drill": 0.15,
+        "name": "Power",
+        "nets": ["VDD", "GND", "VDDA", "VBAT"]
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "gap": 0.1,
+        "track_width": 0.1,
+        "via_diameter": 0.2,
+        "via_drill": 0.1,
+        "name": "Signal",
+        "nets": []
+      }
+    ],
+    "meta": {
+      "version": 1
+    }
+  },
+  "pcbnew": {
+    "last_paths": {
+      "gencad": "",
+      "idf": "",
+      "netlist": "",
+      "plot": "",
+      "pos_files": "",
+      "specctra_dsn": "",
+      "step": "",
+      "svg": "",
+      "vrml": ""
+    }
+  },
+  "schematic": {
+    "annotate": "1",
+    "bom_export_filename": "occlusograph_bom.csv",
+    "bom_fmt_presets": [],
+    "bom_settings": {
+      "exclude_dnp": false,
+      "fields": ["Reference", "Value", "Footprint", "Description", "Manufacturer", "MPN"],
+      "filter": "",
+      "group_symbols": true,
+      "name": "Occlusograph BOM",
+      "sort_field": "Reference",
+      "units": "mm"
+    },
+    "connection_grid_size": 50.0,
+    "drawing": {
+      "default_line_thickness": 6.0,
+      "default_text_size": 50.0,
+      "field_names": [],
+      "intersheets_ref_own_page": false,
+      "intersheets_ref_prefix": "",
+      "intersheets_ref_short": false,
+      "intersheets_ref_show": false,
+      "intersheets_ref_suffix": "",
+      "junction_size": 40.0,
+      "label_size": 50.0,
+      "pin_symbol_size": 25.0,
+      "text_offset_ratio": 0.3
+    },
+    "legacy_lib_dir": "",
+    "legacy_lib_list": [],
+    "meta": {
+      "version": 1
+    },
+    "net_format_name": "",
+    "page_layout_descr_file": "",
+    "plot_directory": "",
+    "spice_current_sheet_as_root": false,
+    "spice_external_command": "",
+    "spice_model_current_sheet_as_root": true,
+    "spice_save_all_currents": false,
+    "subpart_first_id": 1,
+    "subpart_id_separator": "",
+    "transform_format": ""
+  },
+  "sheets": [
+    ["device.kicad_sch", "Occlusograph"]
+  ],
+  "text_variables": {
+    "AUTHOR": "jayis1",
+    "PROJECT": "Occlusograph",
+    "VERSION": "1.0.0",
+    "LICENSE": "CERN-OHL-S v2"
+  }
+}
