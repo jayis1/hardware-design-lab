@@ -1,0 +1,532 @@
+(kicad_sch
+  (version 20240108)
+  (generator "kicad_symbol_editor")
+  (generator_version "8.0")
+  (uuid "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d")
+  (paper "A2")
+  (title_block
+    (title "HivePulse — Acoustic Beehive Health Monitor")
+    (date "2026-07-13")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "Copyright (c) 2026 jayis1")
+    (comment 3 "License: CERN-OHL-S v2")
+    (comment 4 "MCU: STM32H733VGT6 / Audio: CS42448 / LoRa: SX1262 / BLE: CC2640R2F")
+  )
+
+  ; ============================================================================
+  ; LIBRARIES
+  ; ============================================================================
+  (lib_symbols
+    ; ---- STM32H733 MCU ----
+    (symbol "MCU_STM32:STM32H733VGT6"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U" (at -25.4 35.56 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "STM32H733VGT6" (at 5.08 35.56 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at -25.4 -38.1 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h733.pdf" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "STM32H733VGT6_0_1"
+        (rectangle (start -26.67 34.29) (end 26.67 -36.83) (stroke (width 0.1524) (type default)) (fill (type background)))
+        (pin power_in line (at -22.86 36.83 270) (length 2.54) (name "VBAT") (number "1") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -29.21 -2.54 0) (length 2.54) (name "PC13") (number "2") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -29.21 -5.08 0) (length 2.54) (name "PC14-OSC32_IN") (number "3") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -29.21 -7.62 0) (length 2.54) (name "PC15-OSC32_OUT") (number "4") (effects (font (size 1.27 1.27))))
+        (pin input line (at -29.21 12.7 0) (length 2.54) (name "PH0-OSC_IN") (number "5") (effects (font (size 1.27 1.27))))
+        (pin input line (at -29.21 10.16 0) (length 2.54) (name "PH1-OSC_OUT") (number "6") (effects (font (size 1.27 1.27))))
+        (pin input line (at 0 -39.37 90) (length 2.54) (name "NRST") (number "7") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 36.83 270) (length 2.54) (name "VSS") (number "8") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 2.54 36.83 270) (length 2.54) (name "VDD") (number "9") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -29.21 20.32 0) (length 2.54) (name "PA0") (number "10") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -29.21 17.78 0) (length 2.54) (name "PA1") (number "11") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -29.21 15.24 0) (length 2.54) (name "PA2") (number "12") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -29.21 22.86 0) (length 2.54) (name "PA3") (number "13") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -29.21 25.4 0) (length 2.54) (name "PA4") (number "14") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -29.21 27.94 0) (length 2.54) (name "PA5") (number "15") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -29.21 30.48 0) (length 2.54) (name "PA6") (number "16") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -29.21 33.02 0) (length 2.54) (name "PA7") (number "17") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ---- CS42448 Audio Codec ----
+    (symbol "Audio:CS42448"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U" (at -15.24 25.4 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "CS42448" (at 2.54 25.4 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_QFP:TQFP-48_7x7mm_P0.5mm" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://statics.cirrus.com/pubs/proDatasheet/CS42448_F2.pdf" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "CS42448_0_1"
+        (rectangle (start -16.51 24.13) (end 16.51 -24.13) (stroke (width 0.1524) (type default)) (fill (type background)))
+        (pin input line (at 19.05 21.59 180) (length 2.54) (name "SDIN1") (number "1") (effects (font (size 1.27 1.27))))
+        (pin input line (at 19.05 19.05 180) (length 2.54) (name "SDIN2") (number "2") (effects (font (size 1.27 1.27))))
+        (pin input line (at 19.05 16.51 180) (length 2.54) (name "SDIN3") (number "3") (effects (font (size 1.27 1.27))))
+        (pin input line (at 19.05 13.97 180) (length 2.54) (name "SDIN4") (number "4") (effects (font (size 1.27 1.27))))
+        (pin output line (at 19.05 -7.62 180) (length 2.54) (name "SDOUT") (number "5") (effects (font (size 1.27 1.27))))
+        (pin input line (at 19.05 7.62 180) (length 2.54) (name "SCLK") (number "6") (effects (font (size 1.27 1.27))))
+        (pin input line (at 19.05 5.08 180) (length 2.54) (name "LRCK") (number "7") (effects (font (size 1.27 1.27))))
+        (pin input line (at 19.05 10.16 180) (length 2.54) (name "MCLK") (number "8") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 -13.97 0) (length 2.54) (name "SCL") (number "9") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -19.05 -16.51 0) (length 2.54) (name "SDA") (number "10") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 -20.32 0) (length 2.54) (name "RST") (number "11") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 -26.67 90) (length 2.54) (name "DGND") (number "12") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 26.67 270) (length 2.54) (name "VD") (number "13") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 2.54 -26.67 90) (length 2.54) (name "AGND") (number "14") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 2.54 26.67 270) (length 2.54) (name "VA") (number "15") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 21.59 0) (length 2.54) (name "AIN1+") (number "16") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 19.05 0) (length 2.54) (name "AIN1-") (number "17") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 16.51 0) (length 2.54) (name "AIN2+") (number "18") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 13.97 0) (length 2.54) (name "AIN2-") (number "19") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 11.43 0) (length 2.54) (name "AIN3+") (number "20") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 8.89 0) (length 2.54) (name "AIN3-") (number "21") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 6.35 0) (length 2.54) (name "AIN4+") (number "22") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 3.81 0) (length 2.54) (name "AIN4-") (number "23") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ---- SX1262 LoRa Radio ----
+    (symbol "RF_Module:SX1262IMLTRT"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U" (at -12.7 20.32 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "SX1262" (at 2.54 20.32 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://www.semtech.com/products/wireless-rf/lora-connect/sx1262" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "SX1262IMLTRT_0_1"
+        (rectangle (start -13.97 19.05) (end 13.97 -19.05) (stroke (width 0.1524) (type default)) (fill (type background)))
+        (pin bidirectional line (at 16.51 16.51 180) (length 2.54) (name "MOSI") (number "1") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 16.51 13.97 180) (length 2.54) (name "MISO") (number "2") (effects (font (size 1.27 1.27))))
+        (pin input line (at 16.51 11.43 180) (length 2.54) (name "SCK") (number "3") (effects (font (size 1.27 1.27))))
+        (pin input line (at 16.51 8.89 180) (length 2.54) (name "NSS") (number "4") (effects (font (size 1.27 1.27))))
+        (pin output line (at 16.51 -5.08 180) (length 2.54) (name "BUSY") (number "5") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 16.51 -7.62 180) (length 2.54) (name "DIO1") (number "6") (effects (font (size 1.27 1.27))))
+        (pin input line (at -16.51 5.08 0) (length 2.54) (name "NRST") (number "7") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -5.08 -21.59 90) (length 2.54) (name "GND") (number "8") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -5.08 21.59 270) (length 2.54) (name "VDD") (number "9") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -16.51 -5.08 0) (length 2.54) (name "RFI_N") (number "10") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -16.51 -7.62 0) (length 2.54) (name "RFI_P") (number "11") (effects (font (size 1.27 1.27))))
+        (pin output line (at -16.51 -12.7 0) (length 2.54) (name "RFO") (number "12") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -16.51 12.7 0) (length 2.54) (name "VR_PA") (number "13") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -16.51 16.51 0) (length 2.54) (name "XTA") (number "14") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -16.51 19.05 0) (length 2.54) (name "XTB") (number "15") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ---- CC2640R2F BLE ----
+    (symbol "RF_Module:CC2640R2F"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U" (at -10.16 15.24 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "CC2640R2F" (at 2.54 15.24 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.45x3.45mm" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "CC2640R2F_0_1"
+        (rectangle (start -11.43 13.97) (end 11.43 -13.97) (stroke (width 0.1524) (type default)) (fill (type background)))
+        (pin bidirectional line (at 13.97 11.43 180) (length 2.54) (name "UART_TX") (number "1") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 13.97 8.89 180) (length 2.54) (name "UART_RX") (number "2") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 13.97 6.35 180) (length 2.54) (name "UART_RTS") (number "3") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 13.97 3.81 180) (length 2.54) (name "UART_CTS") (number "4") (effects (font (size 1.27 1.27))))
+        (pin input line (at -13.97 8.89 0) (length 2.54) (name "nRESET") (number "5") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -13.97 -5.08 0) (length 2.54) (name "RF_P") (number "6") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -13.97 -7.62 0) (length 2.54) (name "RF_N") (number "7") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 -16.51 90) (length 2.54) (name "GND") (number "8") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 16.51 270) (length 2.54) (name "VDDS") (number "9") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ---- DS18B20 Temperature Sensor ----
+    (symbol "Sensor_Temperature:DS18B20"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U" (at -5.08 5.08 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "DS18B20" (at 3.81 5.08 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline" (at 0 -7.62 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "DS18B20_0_1"
+        (rectangle (start -6.35 3.81) (end 6.35 -5.08) (stroke (width 0.1524) (type default)) (fill (type background)))
+        (pin power_in line (at -8.89 2.54 0) (length 2.54) (name "VDD") (number "1") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 8.89 2.54 180) (length 2.54) (name "DQ") (number "2") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -8.89 -2.54 0) (length 2.54) (name "GND") (number "3") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ---- HX711 Load Cell ADC ----
+    (symbol "Sensor:HX711")
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U" (at -7.62 10.16 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "HX711" (at 2.54 10.16 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "HX711_0_1"
+        (rectangle (start -8.89 8.89) (end 8.89 -8.89) (stroke (width 0.1524) (type default)) (fill (type background)))
+        (pin input line (at -11.43 6.35 0) (length 2.54) (name "E+IN") (number "1") (effects (font (size 1.27 1.27))))
+        (pin input line (at -11.43 3.81 0) (length 2.54) (name "E-IN") (number "2") (effects (font (size 1.27 1.27))))
+        (pin input line (at -11.43 1.27 0) (length 2.54) (name "A+IN") (number "3") (effects (font (size 1.27 1.27))))
+        (pin input line (at -11.43 -1.27 0) (length 2.54) (name "A-IN") (number "4") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 11.43 6.35 180) (length 2.54) (name "VDD") (number "15") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 11.43 -6.35 180) (length 2.54) (name "GND") (number "16") (effects (font (size 1.27 1.27))))
+        (pin input line (at 11.43 1.27 180) (length 2.54) (name "SCK") (number "11") (effects (font (size 1.27 1.27))))
+        (pin output line (at 11.43 3.81 180) (length 2.54) (name "DOUT") (number "12") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ---- SHT45 Humidity Sensor ----
+    (symbol "Sensor_Humidity:SHT45"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U" (at -5.08 5.08 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "SHT45" (at 2.54 5.08 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Sensor:Sensirion_DFN-4-1EP_3x3mm_P1.25mm_EP1.5x2.2mm" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "SHT45_0_1"
+        (rectangle (start -6.35 3.81) (end 6.35 -3.81) (stroke (width 0.1524) (type default)) (fill (type background)))
+        (pin power_in line (at -8.89 2.54 0) (length 2.54) (name "VDD") (number "1") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 8.89 2.54 180) (length 2.54) (name "SCL") (number "2") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 8.89 0 180) (length 2.54) (name "SDA") (number "3") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -8.89 -2.54 0) (length 2.54) (name "GND") (number "4") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ---- SCD41 CO2 Sensor ----
+    (symbol "Sensor:SCD41")
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U" (at -5.08 6.35 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "SCD41" (at 2.54 6.35 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Sensor:Sensirion_SCD41" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "SCD41_0_1"
+        (rectangle (start -6.35 5.08) (end 6.35 -5.08) (stroke (width 0.1524) (type default)) (fill (type background)))
+        (pin power_in line (at -8.89 3.81 0) (length 2.54) (name "VDD") (number "1") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 8.89 3.81 180) (length 2.54) (name "SCL") (number "2") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 8.89 1.27 180) (length 2.54) (name "SDA") (number "3") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -8.89 -3.81 0) (length 2.54) (name "GND") (number "4") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ---- LSM6DSO32X IMU ----
+    (symbol "Sensor_Motion:LSM6DSO32X"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U" (at -7.62 10.16 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "LSM6DSO32X" (at 3.81 10.16 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_LGA:ST_LGA-14_2.5x3mm_P0.5mm" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "LSM6DSO32X_0_1"
+        (rectangle (start -8.89 8.89) (end 8.89 -8.89) (stroke (width 0.1524) (type default)) (fill (type background)))
+        (pin input line (at 11.43 6.35 180) (length 2.54) (name "SCL/SPC") (number "1") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 11.43 3.81 180) (length 2.54) (name "SDA/SDI") (number "2") (effects (font (size 1.27 1.27))))
+        (pin output line (at 11.43 1.27 180) (length 2.54) (name "SDO") (number "3") (effects (font (size 1.27 1.27))))
+        (pin input line (at 11.43 -1.27 180) (length 2.54) (name "CS") (number "4") (effects (font (size 1.27 1.27))))
+        (pin output line (at -11.43 3.81 0) (length 2.54) (name "INT1") (number "5") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -11.43 -3.81 0) (length 2.54) (name "GND") (number "6") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -11.43 6.35 0) (length 2.54) (name "VDD") (number "7") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ---- BQ25895 Solar Charger ----
+    (symbol "Power_Management:BQ25895")
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U" (at -10.16 15.24 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "BQ25895" (at 2.54 15.24 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_DFN_QFN:VQFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "BQ25895_0_1"
+        (rectangle (start -11.43 13.97) (end 11.43 -13.97) (stroke (width 0.1524) (type default)) (fill (type background)))
+        (pin power_in line (at -13.97 11.43 0) (length 2.54) (name "VBUS") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -13.97 -11.43 0) (length 2.54) (name "GND") (number "2") (effects (font (size 1.27 1.27))))
+        (pin power_out line (at 13.97 11.43 180) (length 2.54) (name "VSYS") (number "3") (effects (font (size 1.27 1.27))))
+        (pin power_out line (at 13.97 6.35 180) (length 2.54) (name "BAT") (number "4") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -13.97 6.35 0) (length 2.54) (name "SCL") (number "5") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -13.97 3.81 0) (length 2.54) (name "SDA") (number "6") (effects (font (size 1.27 1.27))))
+        (pin output line (at -13.97 -5.08 0) (length 2.54) (name "INT") (number "7") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ---- Microphone (AOM-5024L) ----
+    (symbol "Device:Microphone"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "MK" (at -3.81 3.81 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "AOM-5024L" (at 3.81 3.81 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Device:CUI_AOM-5024L" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "Microphone_0_1"
+        (circle (center 0 0) (radius 2.54) (stroke (width 0.1524) (type default)) (fill (type none)))
+        (pin output line (at 5.08 0 180) (length 2.54) (name "OUT") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -5.08 2.54 0) (length 2.54) (name "VDD") (number "2") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -5.08 -2.54 0) (length 2.54) (name "GND") (number "3") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ---- Passive components ----
+    (symbol "Device:C" (pin_numbers hide) (pin_names (offset 0.254) hide) (exclude_from_sim no) (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 0.635 2.54 0) (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Value" "C" (at 0.635 -2.54 0) (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "C_0_1" (polyline (pts (xy -2.032 -0.762) (xy 2.032 -0.762)) (stroke (width 0.508) (type default)) (fill (type none)))
+                         (polyline (pts (xy -2.032 0.762) (xy 2.032 0.762)) (stroke (width 0.508) (type default)) (fill (type none))))
+      (symbol "C_1_1" (pin passive line (at 0 3.81 270) (length 2.794) (name "~") (number "1") (effects (font (size 1.27 1.27))))
+                      (pin passive line (at 0 -3.81 90) (length 2.794) (name "~") (number "2") (effects (font (size 1.27 1.27)))))
+    )
+
+    (symbol "Device:R" (pin_numbers hide) (pin_names (offset 0) hide) (exclude_from_sim no) (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 2.032 0 0) (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Value" "R" (at 0 0 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "R_0_1" (rectangle (start -1.016 -2.54) (end 1.016 2.54) (stroke (width 0.254) (type default)) (fill (type none))))
+      (symbol "R_1_1" (pin passive line (at 0 3.81 270) (length 1.27) (name "~") (number "1") (effects (font (size 1.27 1.27))))
+                      (pin passive line (at 0 -3.81 90) (length 1.27) (name "~") (number "2") (effects (font (size 1.27 1.27)))))
+    )
+
+    (symbol "power:GND" (power) (exclude_from_sim no) (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -6.35 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Value" "GND" (at 0 -3.81 0) (effects (font (size 1.27 1.27))))
+      (symbol "GND_0_1" (polyline (pts (xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)) (stroke (width 0) (type default)) (fill (type none))))
+      (symbol "GND_1_1" (pin power_in line (at 0 0 315) (length 0) (name "~") (number "1") (effects (font (size 1.27 1.27)))))
+    )
+
+    (symbol "power:+3V3" (power) (exclude_from_sim no) (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -3.81 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Value" "+3V3" (at 0 3.556 0) (effects (font (size 1.27 1.27))))
+      (symbol "+3V3_0_1" (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (stroke (width 0) (type default)) (fill (type none)))
+                         (polyline (pts (xy 0 2.54) (xy 0.762 1.27)) (stroke (width 0) (type default)) (fill (type none))))
+      (symbol "+3V3_1_1" (pin power_in line (at 0 0 90) (length 0) (name "~") (number "1") (effects (font (size 1.27 1.27)))))
+    )
+
+    (symbol "power:+5V" (power) (exclude_from_sim no) (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -3.81 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Value" "+5V" (at 0 3.556 0) (effects (font (size 1.27 1.27))))
+      (symbol "+5V_0_1" (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (stroke (width 0) (type default)) (fill (type none)))
+                        (polyline (pts (xy 0 2.54) (xy 0.762 1.27)) (stroke (width 0) (type default)) (fill (type none))))
+      (symbol "+5V_1_1" (pin power_in line (at 0 0 90) (length 0) (name "~") (number "1") (effects (font (size 1.27 1.27)))))
+    )
+  )
+
+  ; ============================================================================
+  ; COMPONENT INSTANCES
+  ; ============================================================================
+  (symbol_instances
+    ; ---- Main MCU ----
+    (path "/00000001"
+      (reference "U1") (value "STM32H733VGT6") (footprint "Package_QFP:LQFP-100_14x14mm_P0.5mm")
+      (uuid "b0000001-0000-0000-0000-000000000001")
+      (property "MPN" "STM32H733VGT6") (property "Manufacturer" "STMicroelectronics")
+      (property "Author" "jayis1")
+      (pin "1" (function "power_in")) (pin "7" (function "input"))
+    )
+    ; ---- Audio Codec ----
+    (path "/00000002"
+      (reference "U2") (value "CS42448") (footprint "Package_QFP:TQFP-48_7x7mm_P0.5mm")
+      (uuid "b00000001-0000-0000-0000-000000000002")
+      (property "MPN" "CS42448") (property "Manufacturer" "Cirrus Logic")
+      (property "Author" "jayis1")
+    )
+    ; ---- LoRa Radio ----
+    (path "/00000003"
+      (reference "U3") (value "SX1262IMLTRT") (footprint "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm")
+      (uuid "b00000001-0000-0000-0000-000000000003")
+      (property "MPN" "SX1262IMLTRT") (property "Manufacturer" "Semtech")
+      (property "Author" "jayis1")
+    )
+    ; ---- BLE Co-processor ----
+    (path "/00000004"
+      (reference "U4") (value "CC2640R2F") (footprint "Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm")
+      (uuid "b00000001-0000-0000-0000-000000000004")
+      (property "MPN" "CC2640R2F") (property "Manufacturer" "Texas Instruments")
+      (property "Author" "jayis1")
+    )
+    ; ---- Load Cell ADC ----
+    (path "/00000005"
+      (reference "U5") (value "HX711") (footprint "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm")
+      (uuid "b00000001-0000-0000-0000-000000000005")
+      (property "MPN" "HX711") (property "Manufacturer" "Avia Semiconductor")
+      (property "Author" "jayis1")
+    )
+    ; ---- Solar Charger ----
+    (path "/00000006"
+      (reference "U6") (value "BQ25895") (footprint "Package_DFN_QFN:VQFN-24-1EP_4x4mm_P0.5mm")
+      (uuid "b00000001-0000-0000-0000-000000000006")
+      (property "MPN" "BQ25895RTWR") (property "Manufacturer" "Texas Instruments")
+      (property "Author" "jayis1")
+    )
+    ; ---- IMU ----
+    (path "/00000007"
+      (reference "U7") (value "LSM6DSO32X") (footprint "Package_LGA:ST_LGA-14_2.5x3mm_P0.5mm")
+      (uuid "b00000001-0000-0000-0000-000000000007")
+      (property "MPN" "LSM6DSO32X") (property "Manufacturer" "STMicroelectronics")
+      (property "Author" "jayis1")
+    )
+    ; ---- Humidity Sensor ----
+    (path "/00000008"
+      (reference "U8") (value "SHT45") (footprint "Sensor:Sensirion_DFN-4-1EP_3x3mm_P1.25mm")
+      (uuid "b00000001-0000-0000-0000-000000000008")
+      (property "MPN" "SHT45-AD1F") (property "Manufacturer" "Sensirion")
+      (property "Author" "jayis1")
+    )
+    ; ---- CO2 Sensor ----
+    (path "/00000009"
+      (reference "U9") (value "SCD41") (footprint "Sensor:Sensirion_SCD41")
+      (uuid "b00000001-0000-0000-0000-000000000009")
+      (property "MPN" "SCD41") (property "Manufacturer" "Sensirion")
+      (property "Author" "jayis1")
+    )
+    ; ---- Temperature Sensors (8×) ----
+    (path "/0000000a" (reference "U10") (value "DS18B20") (uuid "b00000001-0000-0000-0000-000000000010") (property "Author" "jayis1"))
+    (path "/0000000b" (reference "U11") (value "DS18B20") (uuid "b00000001-0000-0000-0000-000000000011") (property "Author" "jayis1"))
+    (path "/0000000c" (reference "U12") (value "DS18B20") (uuid "b00000001-0000-0000-0000-000000000012") (property "Author" "jayis1"))
+    (path "/0000000d" (reference "U13") (value "DS18B20") (uuid "b00000001-0000-0000-0000-000000000013") (property "Author" "jayis1"))
+    (path "/0000000e" (reference "U14") (value "DS18B20") (uuid "b00000001-0000-0000-0000-000000000014") (property "Author" "jayis1"))
+    (path "/0000000f" (reference "U15") (value "DS18B20") (uuid "b00000001-0000-0000-0000-000000000015") (property "Author" "jayis1"))
+    (path "/00000010" (reference "U16") (value "DS18B20") (uuid "b00000001-0000-0000-0000-000000000016") (property "Author" "jayis1"))
+    (path "/00000011" (reference "U17") (value "DS18B20") (uuid "b00000001-0000-0000-0000-000000000017") (property "Author" "jayis1"))
+    ; ---- Microphones (4×) ----
+    (path "/00000012" (reference "MK1") (value "AOM-5024L-HD-R") (uuid "b00000001-0000-0000-0000-000000000018") (property "Author" "jayis1"))
+    (path "/00000013" (reference "MK2") (value "AOM-5024L-HD-R") (uuid "b00000001-0000-0000-0000-000000000019") (property "Author" "jayis1"))
+    (path "/00000014" (reference "MK3") (value "AOM-5024L-HD-R") (uuid "b00000001-0000-0000-0000-000000000020") (property "Author" "jayis1"))
+    (path "/00000015" (reference "MK4") (value "AOM-5024L-HD-R") (uuid "b00000001-0000-0000-0000-000000000021") (property "Author" "jayis1"))
+    ; ---- Decoupling Capacitors ----
+    (path "/00000020" (reference "C1") (value "100nF") (uuid "b00000001-0000-0000-0000-000000000030") (property "Author" "jayis1"))
+    (path "/00000021" (reference "C2") (value "100nF") (uuid "b00000001-0000-0000-0000-000000000031") (property "Author" "jayis1"))
+    (path "/00000022" (reference "C3") (value "10uF") (uuid "b00000001-0000-0000-0000-000000000032") (property "Author" "jayis1"))
+    (path "/00000023" (reference "C4") (value "10uF") (uuid "b00000001-0000-0000-0000-000000000033") (property "Author" "jayis1"))
+    (path "/00000024" (reference "C5") (value "4.7uF") (uuid "b00000001-0000-0000-0000-000000000034") (property "Author" "jayis1"))
+    (path "/00000025" (reference "C6") (value "100nF") (uuid "b00000001-0000-0000-0000-000000000035") (property "Author" "jayis1"))
+    (path "/00000026" (reference "C7") (value "100nF") (uuid "b00000001-0000-0000-0000-000000000036") (property "Author" "jayis1"))
+    (path "/00000027" (reference "C8") (value "22pF") (uuid "b00000001-0000-0000-0000-000000000037") (property "Author" "jayis1"))
+    (path "/00000028" (reference "C9") (value "22pF") (uuid "b00000001-0000-0000-0000-000000000038") (property "Author" "jayis1"))
+    (path "/00000029" (reference "C10") (value "10uF") (uuid "b00000001-0000-0000-0000-000000000039") (property "Author" "jayis1"))
+    ; ---- Resistors ----
+    (path "/00000030" (reference "R1") (value "4k7") (uuid "b00000001-0000-0000-0000-000000000040") (property "Author" "jayis1"))
+    (path "/00000031" (reference "R2") (value "4k7") (uuid "b00000001-0000-0000-0000-000000000041") (property "Author" "jayis1"))
+    (path "/00000032" (reference "R3") (value "10k") (uuid "b00000001-0000-0000-0000-000000000042") (property "Author" "jayis1"))
+    (path "/00000033" (reference "R4") (value "10k") (uuid "b00000001-0000-0000-0000-000000000043") (property "Author" "jayis1"))
+    (path "/00000034" (reference "R5") (value "4k7") (uuid "b00000001-0000-0000-0000-000000000044") (property "Author" "jayis1"))
+    (path "/00000035" (reference "R6") (value "100R") (uuid "b00000001-0000-0000-0000-000000000045") (property "Author" "jayis1"))
+  )
+
+  ; ============================================================================
+  ; NETS (key connections)
+  ; ============================================================================
+  (nets
+    (net "GND" (type power))
+    (net "+3V3" (type power))
+    (net "+5V" (type power))
+    (net "VDD_SOLAR" (type power))
+    (net "VDD_BATT" (type power))
+    (net "I2S2_WS" (type signal))
+    (net "I2S2_SCK" (type signal))
+    (net "I2S2_SDO" (type signal))
+    (net "I2S2_SDI" (type signal))
+    (net "I2S2_MCLK" (type signal))
+    (net "LORA_NSS" (type signal))
+    (net "LORA_SCK" (type signal))
+    (net "LORA_MISO" (type signal))
+    (net "LORA_MOSI" (type signal))
+    (net "LORA_BUSY" (type signal))
+    (net "LORA_DIO1" (type signal))
+    (net "LORA_NRST" (type signal))
+    (net "BLE_TX" (type signal))
+    (net "BLE_RX" (type signal))
+    (net "BLE_RTS" (type signal))
+    (net "BLE_CTS" (type signal))
+    (net "ONEWIRE" (type signal))
+    (net "I2C1_SCL" (type signal))
+    (net "I2C1_SDA" (type signal))
+    (net "I2C2_SCL" (type signal))
+    (net "I2C2_SDA" (type signal))
+    (net "HX711_SCK" (type signal))
+    (net "HX711_DOUT" (type signal))
+    (net "IMU_CS" (type signal))
+    (net "IMU_SCK" (type signal))
+    (net "IMU_MISO" (type signal))
+    (net "IMU_MOSI" (type signal))
+    (net "BEE_COUNTER[0..15]" (type bus))
+    (net "ADC_SOLAR_V" (type signal))
+    (net "ADC_BATT_V" (type signal))
+    (net "MIC1_OUT" (type signal))
+    (net "MIC2_OUT" (type signal))
+    (net "MIC3_OUT" (type signal))
+    (net "MIC4_OUT" (type signal))
+  )
+
+  ; ============================================================================
+  ; CONNECTIONS (wire netlist)
+  ; ============================================================================
+  (wires
+    ; MCU to Codec I2S connections
+    (wire (pts (xy 153.67 52.07) (xy 170.18 52.07)) (net "I2S2_SCK") (uuid "w0000001"))
+    (wire (pts (xy 153.67 54.61) (xy 170.18 54.61)) (net "I2S2_WS") (uuid "w0000002"))
+    (wire (pts (xy 153.67 57.15) (xy 170.18 57.15)) (net "I2S2_SDI") (uuid "w0000003"))
+    (wire (pts (xy 153.67 59.69) (xy 170.18 59.69)) (net "I2S2_SDO") (uuid "w0000004"))
+    (wire (pts (xy 153.67 62.23) (xy 170.18 62.23)) (net "I2S2_MCLK") (uuid "w0000005"))
+
+    ; MCU to LoRa SPI connections
+    (wire (pts (xy 153.67 77.47) (xy 170.18 77.47)) (net "LORA_NSS") (uuid "w0000006"))
+    (wire (pts (xy 153.67 80.01) (xy 170.18 80.01)) (net "LORA_SCK") (uuid "w0000007"))
+    (wire (pts (xy 153.67 82.55) (xy 170.18 82.55)) (net "LORA_MISO") (uuid "w0000008"))
+    (wire (pts (xy 153.67 85.09) (xy 170.18 85.09)) (net "LORA_MOSI") (uuid "w0000009"))
+
+    ; MCU to BLE UART
+    (wire (pts (xy 153.67 102.87) (xy 170.18 102.87)) (net "BLE_TX") (uuid "w0000010"))
+    (wire (pts (xy 153.67 105.41) (xy 170.18 105.41)) (net "BLE_RX") (uuid "w0000011"))
+
+    ; I2C bus (SHT45, SCD41, BQ25895)
+    (wire (pts (xy 153.67 115.57) (xy 170.18 115.57)) (net "I2C1_SCL") (uuid "w0000012"))
+    (wire (pts (xy 153.67 118.11) (xy 170.18 118.11)) (net "I2C1_SDA") (uuid "w0000013"))
+
+    ; 1-Wire bus (DS18B20 chain)
+    (wire (pts (xy 153.67 128.27) (xy 170.18 128.27)) (net "ONEWIRE") (uuid "w0000014"))
+
+    ; HX711
+    (wire (pts (xy 153.67 135.89) (xy 170.18 135.89)) (net "HX711_SCK") (uuid "w0000015"))
+    (wire (pts (xy 153.67 138.43) (xy 170.18 138.43)) (net "HX711_DOUT") (uuid "w0000016"))
+
+    ; Power nets
+    (wire (pts (xy 50.8 30.48) (xy 68.58 30.48)) (net "VDD_SOLAR") (uuid "w0000017"))
+    (wire (pts (xy 50.8 35.56) (xy 68.58 35.56)) (net "VDD_BATT") (uuid "w0000018"))
+    (wire (pts (xy 80.01 30.48) (xy 96.52 30.48)) (net "+5V") (uuid "w0000019"))
+    (wire (pts (xy 80.01 35.56) (xy 96.52 35.56)) (net "+3V3") (uuid "w0000020"))
+
+    ; Microphone outputs to codec
+    (wire (pts (xy 200.66 52.07) (xy 218.44 52.07)) (net "MIC1_OUT") (uuid "w0000021"))
+    (wire (pts (xy 200.66 57.15) (xy 218.44 57.15)) (net "MIC2_OUT") (uuid "w0000022"))
+    (wire (pts (xy 200.66 62.23) (xy 218.44 62.23)) (net "MIC3_OUT") (uuid "w0000023"))
+    (wire (pts (xy 200.66 67.31) (xy 218.44 67.31)) (net "MIC4_OUT") (uuid "w0000024"))
+  )
+
+  ; ============================================================================
+  ; POWER SYMBOLS
+  ; ============================================================================
+  (power_symbols
+    (path "/pwr00001" (reference "#PWR01") (value "GND") (uuid "p0000001") (property "Author" "jayis1"))
+    (path "/pwr00002" (reference "#PWR02") (value "+3V3") (uuid "p0000002") (property "Author" "jayis1"))
+    (path "/pwr00003" (reference "#PWR03") (value "+5V") (uuid "p0000003") (property "Author" "jayis1"))
+    (path "/pwr00004" (reference "#PWR04") (value "GND") (uuid "p0000004") (property "Author" "jayis1"))
+    (path "/pwr00005" (reference "#PWR05") (value "+3V3") (uuid "p0000005") (property "Author" "jayis1"))
+  )
+
+  ; ============================================================================
+  ; SHEET METADATA
+  ; ============================================================================
+  (sheet_instances
+    (path "/" (page "1") (property "Author" "jayis1") (property "Title" "HivePulse Schematic"))
+  )
+)
