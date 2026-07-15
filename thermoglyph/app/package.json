@@ -1,0 +1,35 @@
+{
+  "name": "thermoglyph-app",
+  "version": "1.0.0",
+  "description": "ThermoGlyph companion app — wearable thermal-tactile display control",
+  "author": "jayis1",
+  "license": "MIT",
+  "main": "App.tsx",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.5.0",
+    "@react-navigation/native": "^6.1.0",
+    "expo": "~50.0.0",
+    "expo-status-bar": "~1.11.1",
+    "react": "18.2.0",
+    "react-native": "0.73.4",
+    "react-native-ble-plx": "^3.0.0",
+    "react-native-safe-area-context": "4.8.2",
+    "react-native-screens": "~3.29.0",
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@types/react": "~18.2.45",
+    "@types/react-native": "~0.73.0",
+    "typescript": "^5.3.0"
+  },
+  "private": true,
+  "copyright": "Copyright (c) 2026 jayis1"
+}
