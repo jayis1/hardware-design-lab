@@ -1,0 +1,136 @@
+{
+  "board": {
+    "3dviewports": [],
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.0492125039,
+        "copper_line_width": 0.0196850394,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "other_line_width": 0.0625,
+        "silk_line_width": 0.015,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15
+      },
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
+      "meta": { "version": 2 },
+      "rule_severities": {
+        "annular_width": "error",
+        "clearance": "error",
+        "copper_edge_clearance": "error",
+        "courtyards_overlap": "error",
+        "diff_pair_gap_out_of_range": "error",
+        "diff_pair_width_out_of_range": "error",
+        "connection_width": "warning",
+        "hole_clearance": "error",
+        "hole_near_copper": "error",
+        "holes_to_holes": "error",
+        "length_out_of_range": "error",
+        "lib_footprint_issues": "ignore",
+        "lib_footprint_mismatch": "ignore",
+        "malformed_courtyard": "error",
+        "microvia_drill_out_of_range": "error",
+        "min_clearance": "error",
+        "min_connection": "warning",
+        "min_hole_clearance": "error",
+        "min_hole_to_hole": "error",
+        "min_silk_clearance": "warning",
+        "min_track": "error",
+        "min_via": "error",
+        "min_via_annular_width": "error",
+        "min_via_diameter": "error",
+        "silk_over_copper": "warning",
+        "silk_overlap": "warning",
+        "skew_out_of_range": "error",
+        "text_height": "warning",
+        "text_thickness": "warning",
+        "through_hole_pad_without_hole": "error",
+        "too_many_vias": "error",
+        "track_dangling": "warning",
+        "track_width": "error",
+        "unconnected_items": "error",
+        "via_dangling": "error"
+      },
+      "rules": {
+        "allow_blind_buried_vias": false,
+        "allow_microvias": false,
+        "max_error": 0.0005,
+        "min_clearance": 0.15,
+        "min_track": 0.127,
+        "min_via_diameter": 0.3,
+        "min_via_drill": 0.15,
+        "min_hole_to_hole": 0.25,
+        "solder_mask_margin": 0.05
+      },
+      "teardrop_parameters": [
+        { "td_allow_use_two_tracks": true, "td_curve_segcount": 0, "td_curve_smoothness": 0.0, "td_height_ratio": 1.0, "td_length_ratio": 16.0, "td_maxheight": 1.0, "td_maxlen": 0.5, "td_target_object": 1, "td_width_to_size_filter_ratio": 0.9 }
+      ],
+      "track_widths": [0.0, 0.127, 0.15, 0.2, 0.25, 0.3, 0.5, 0.8],
+      "via_dimensions": [
+        { "diameter": 0.0, "drill": 0.0 },
+        { "diameter": 0.5, "drill": 0.25 }
+      ],
+      "zones_allow_external_fillets": false
+    },
+    "ipc2581": { "dist": "", "distpn": "", "internal_id": "", "mfg": "", "mpn": "" },
+    "layer_presets": [],
+    "viewports": []
+  },
+  "boards": [ "stridophone.kicad_pcb" ],
+  "meta": { "filename": "stridophone.kicad_pro", "version": 2 },
+  "nets": [],
+  "pcbnew": {
+    "last_paths": { "gencad": "", "idf": "", "netlist": "", "specctra_dsn": "", "step": "", "vrml": "" },
+    "page_layout_descr_file": ""
+  },
+  "schematic": {
+    "annotate_start_num": 0,
+    "drawing": {
+      "default_line_thickness": 6.0,
+      "default_text_size": 50.0,
+      "field_names": [],
+      "intersheets_ref_own_page": false,
+      "intersheets_ref_prefix": "",
+      "intersheets_ref_short": false,
+      "intersheets_ref_show": false,
+      "intersheets_ref_suffix": "",
+      "junction_size": 40.0,
+      "label_size": 50.0,
+      "pin_symbol_size": 25.0,
+      "pin_text_size": 40.0,
+      "pin_spacing": 100.0,
+      "text_offset_ratio": 0.3
+    },
+    "legacy_default_lib": "",
+    "meta": { "version": 1 },
+    "net_format_name": "",
+    "ngspice": {
+      "fix_include_paths": true,
+      "meta": { "version": 0 },
+      "noerc": [],
+      "plot_dir": "",
+      "sim_mode": 1,
+      "use_csymbols": false
+    },
+    "page_layout_descr_file": "",
+    "plot_directory": "",
+    "spice_adjust_include_statements": true,
+    "spice_current_sheet_as_root": true,
+    "spice_external_command": "spice \"%I\"",
+    "spice_sheet_current_root": "",
+    "subpart_first_id": 65,
+    "subpart_id_separator": 0
+  },
+  "sheets": [ [ "stridophone.kicad_sch", "Stridophone" ] ],
+  "title_block": {
+    "company": "jayis1",
+    "comment": "Bioacoustic insect pest detector & classifier",
+    "date": "2026-07-17",
+    "rev": "1.0.0",
+    "title": "Stridophone",
+    "t_date": "2026-07-17"
+  }
+}

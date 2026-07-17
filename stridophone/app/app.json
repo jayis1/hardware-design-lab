@@ -1,0 +1,36 @@
+/**
+ * app.json — Expo configuration for the Stridophone companion app.
+ *
+ * Author : jayis1
+ * License: MIT
+ */
+{
+  "expo": {
+    "name": "Stridophone",
+    "slug": "stridophone-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0f0f17"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jayis1.stridophone",
+      "infoPlist": {
+        "NSLocalNetworkUsageDescription": "Stridophone needs local network access to talk to your device.",
+        "NSBonjourServices": ["_stridophone._tcp"]
+      }
+    },
+    "android": {
+      "package": "com.jayis1.stridophone",
+      "adaptiveIcon": { "foregroundImage": "./assets/adaptive-icon.png", "backgroundColor": "#0f0f17" }
+    },
+    "author": "jayis1",
+    "license": "MIT",
+    "plugins": ["expo-secure-store"]
+  }
+}
