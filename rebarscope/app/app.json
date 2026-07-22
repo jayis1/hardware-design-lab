@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "RebarScope",
+    "slug": "rebarscope-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "author": "jayis1",
+    "description": "Companion app for RebarScope — Concrete Corrosion NDT Scanner. Author: jayis1",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1a1a2e"
+    },
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.jayis1.rebarscope" },
+    "android": {
+      "package": "com.jayis1.rebarscope",
+      "permissions": [
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.CAMERA"
+      ]
+    },
+    "plugins": ["expo-camera", "expo-location"],
+    "extra": {
+      "eas": { "projectId": "rebarscope-jayis1" }
+    }
+  }
+}
