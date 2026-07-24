@@ -1,0 +1,365 @@
+(kicad_sch
+  (version 20211106)
+  (generator "jayis1 AlloyScan Schematic")
+  (uuid "alloyscan-sch-001")
+  (paper "A2")
+  (title_block
+    (title "AlloyScan — Multi-Frequency Eddy Current Alloy Identifier")
+    (date "2026-07-24")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "Open-source handheld metal alloy scanner")
+    (comment 3 "License: CERN-OHL-S v2")
+  )
+
+  (lib_symbols
+    ; Symbol library definitions (simplified)
+    (symbol "MCU_ST_STM32G474CEU6"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08) (effects (font (size 1.27 1.27))))
+      (property "Value" "STM32G474CEU6" (at 0 -5.08) (effects (font (size 1.27 1.27))))
+      (symbol "MCU_ST_STM32G474CEU6_0_1"
+        (rectangle (start -12.7 -2.54) (end 12.7 2.54)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+        (pin power_in line (at -15.24 0 0) (length 2.54) (name "VDD") (number "1"))
+        (pin power_in line (at -15.24 -2.54 0) (length 2.54) (name "VSS") (number "2"))
+        (pin bidirectional line (at 15.24 2.54 180) (length 2.54) (name "PA2/DAC1") (number "14"))
+        (pin bidirectional line (at 15.24 0 180) (length 2.54) (name "PB3/SPI1_SCK") (number "39"))
+        (pin bidirectional line (at 15.24 -2.54 180) (length 2.54) (name "PB5/SPI1_MISO") (number "41"))
+        (pin bidirectional line (at 15.24 -5.08 180) (length 2.54) (name "PB4/SPI1_CS") (number "40"))
+        (pin bidirectional line (at 10.16 5.08 270) (length 2.54) (name "PB13/SPI2_SCK") (number "47"))
+        (pin bidirectional line (at 7.62 5.08 270) (length 2.54) (name "PB15/SPI2_MOSI") (number "49"))
+        (pin bidirectional line (at 5.08 5.08 270) (length 2.54) (name "PB12/SPI2_CS") (number "46"))
+        (pin bidirectional line (at -10.16 5.08 270) (length 2.54) (name "PC10/SPI3_SCK") (number "63"))
+        (pin bidirectional line (at -7.62 5.08 270) (length 2.54) (name "PC11/SPI3_MISO") (number "64"))
+        (pin bidirectional line (at -5.08 5.08 270) (length 2.54) (name "PC12/SPI3_MOSI") (number "65"))
+      )
+    )
+
+    (symbol "Amplifier_Operational:THS3091"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 3.81) (effects (font (size 1.27 1.27))))
+      (property "Value" "THS3091D" (at 0 -3.81) (effects (font (size 1.27 1.27))))
+      (symbol "Amplifier_Operational:THS3091_0_1"
+        (polyline (pts (xy -5.08 2.54) (xy -5.08 -2.54) (xy 5.08 0) (xy -5.08 2.54))
+          (stroke (width 0.254)) (fill (type background)))
+        (pin input line (at -7.62 1.27 0) (length 2.54) (name "+") (number "3"))
+        (pin input line (at -7.62 -1.27 0) (length 2.54) (name "-") (number "2"))
+        (pin output line (at 7.62 0 180) (length 2.54) (name "~") (number "6"))
+        (pin power_in line (at 0 5.08 270) (length 2.54) (name "V+") (number "8"))
+        (pin power_in line (at 0 -5.08 90) (length 2.54) (name "V-") (number "4"))
+      )
+    )
+
+    (symbol "Amplifier_Instrumentation:AD8429"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08) (effects (font (size 1.27 1.27))))
+      (property "Value" "AD8429ARZ" (at 0 -5.08) (effects (font (size 1.27 1.27))))
+      (symbol "Amplifier_Instrumentation:AD8429_0_1"
+        (polyline (pts (xy -7.62 3.81) (xy -7.62 -3.81) (xy 7.62 0) (xy -7.62 3.81))
+          (stroke (width 0.254)) (fill (type background)))
+        (pin input line (at -10.16 2.54 0) (length 2.54) (name "+IN") (number "3"))
+        (pin input line (at -10.16 -2.54 0) (length 2.54) (name "-IN") (number "2"))
+        (pin output line (at 10.16 0 180) (length 2.54) (name "OUT") (number "6"))
+        (pin passive line (at 0 5.08 270) (length 2.54) (name "RG") (number "1"))
+        (pin passive line (at -2.54 5.08 270) (length 2.54) (name "RG") (number "8"))
+        (pin power_in line (at 2.54 -5.08 90) (length 2.54) (name "V-") (number "4"))
+        (pin power_in line (at 2.54 5.08 270) (length 2.54) (name "V+") (number "7"))
+      )
+    )
+
+    (symbol "Analog_ADC:ADS8866"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08) (effects (font (size 1.27 1.27))))
+      (property "Value" "ADS8866IDRCR" (at 0 -5.08) (effects (font (size 1.27 1.27))))
+      (symbol "Analog_ADC:ADS8866_0_1"
+        (rectangle (start -7.62 3.81) (end 7.62 -3.81)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin input line (at -10.16 2.54 0) (length 2.54) (name "AIN") (number "2"))
+        (pin input line (at 10.16 2.54 180) (length 2.54) (name "SCLK") (number "3"))
+        (pin output line (at 10.16 0 180) (length 2.54) (name "DOUT") (number "4"))
+        (pin input line (at 10.16 -2.54 180) (length 2.54) (name "CS") (number "5"))
+        (pin power_in line (at -10.16 -2.54 0) (length 2.54) (name "VDD") (number "8"))
+        (pin power_in line (at -10.16 0 0) (length 2.54) (name "GND") (number "7"))
+      )
+    )
+
+    (symbol "Memory_Flash:W25Q128"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 5.08) (effects (font (size 1.27 1.27))))
+      (property "Value" "W25Q128JVSIQ" (at 0 -5.08) (effects (font (size 1.27 1.27))))
+      (symbol "Memory_Flash:W25Q128_0_1"
+        (rectangle (start -7.62 3.81) (end 7.62 -3.81)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin input line (at 10.16 2.54 180) (length 2.54) (name "CS") (number "1"))
+        (pin input line (at 10.16 0 180) (length 2.54) (name "SCLK") (number "6"))
+        (pin input line (at 10.16 -2.54 180) (length 2.54) (name "MOSI") (number "5"))
+        (pin output line (at -10.16 -2.54 0) (length 2.54) (name "MISO") (number "2"))
+        (pin power_in line (at -10.16 2.54 0) (length 2.54) (name "VCC") (number "8"))
+        (pin power_in line (at -10.16 0 0) (length 2.54) (name "GND") (number "4"))
+      )
+    )
+
+    (symbol "RF_Module:BMD-300"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 7.62) (effects (font (size 1.27 1.27))))
+      (property "Value" "BMD-300" (at 0 -7.62) (effects (font (size 1.27 1.27))))
+      (symbol "RF_Module:BMD-300_0_1"
+        (rectangle (start -10.16 6.35) (end 10.16 -6.35)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin bidirectional line (at 12.7 5.08 180) (length 2.54) (name "TX") (number "9"))
+        (pin bidirectional line (at 12.7 2.54 180) (length 2.54) (name "RX") (number "10"))
+        (pin power_in line (at -12.7 5.08 0) (length 2.54) (name "VDD") (number "1"))
+        (pin power_in line (at -12.7 -5.08 0) (length 2.54) (name "GND") (number "2"))
+      )
+    )
+
+    (symbol "Sensor_Distance:VL53L0X"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 3.81) (effects (font (size 1.27 1.27))))
+      (property "Value" "VL53L0X" (at 0 -3.81) (effects (font (size 1.27 1.27))))
+      (symbol "Sensor_Distance:VL53L0X_0_1"
+        (rectangle (start -5.08 2.54) (end 5.08 -2.54)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin bidirectional line (at 7.62 1.27 180) (length 2.54) (name "SDA") (number "1"))
+        (pin input line (at 7.62 -1.27 180) (length 2.54) (name "SCL") (number "2"))
+        (pin power_in line (at -7.62 1.27 0) (length 2.54) (name "VDD") (number "3"))
+        (pin power_in line (at -7.62 -1.27 0) (length 2.54) (name "GND") (number "4"))
+      )
+    )
+
+    (symbol "Device:R"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 0 1.27) (effects (font (size 1.27 1.27))))
+      (property "Value" "R" (at 0 -1.27) (effects (font (size 1.27 1.27))))
+      (symbol "Device:R_0_1"
+        (rectangle (start -2.54 0.508) (end 2.54 -0.508)
+          (stroke (width 0.254)) (fill (type none)))
+        (pin passive line (at -5.08 0 0) (length 2.54) (name "~") (number "1"))
+        (pin passive line (at 5.08 0 180) (length 2.54) (name "~") (number "2"))
+      )
+    )
+
+    (symbol "Device:C"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 0 1.27) (effects (font (size 1.27 1.27))))
+      (property "Value" "C" (at 0 -1.27) (effects (font (size 1.27 1.27))))
+      (symbol "Device:C_0_1"
+        (polyline (pts (xy -2.54 0.508) (xy 2.54 0.508))
+          (stroke (width 0.254)) (fill (type none)))
+        (polyline (pts (xy -2.54 -0.508) (xy 2.54 -0.508))
+          (stroke (width 0.254)) (fill (type none)))
+        (pin passive line (at 0 3.81 270) (length 2.54) (name "~") (number "1"))
+        (pin passive line (at 0 -3.81 90) (length 2.54) (name "~") (number "2"))
+      )
+    )
+
+    (symbol "Device:L"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "L" (at 0 1.27) (effects (font (size 1.27 1.27))))
+      (property "Value" "L" (at 0 -1.27) (effects (font (size 1.27 1.27))))
+      (symbol "Device:L_0_1"
+        (arc (start -3.81 0) (mid -2.54 1.27) (end -1.27 0)
+          (stroke (width 0.254)) (fill (type none)))
+        (arc (start -1.27 0) (mid 0 1.27) (end 1.27 0)
+          (stroke (width 0.254)) (fill (type none)))
+        (arc (start 1.27 0) (mid 2.54 1.27) (end 3.81 0)
+          (stroke (width 0.254)) (fill (type none)))
+        (pin passive line (at -6.35 0 0) (length 2.54) (name "1") (number "1"))
+        (pin passive line (at 6.35 0 180) (length 2.54) (name "2") (number "2"))
+      )
+    )
+
+    (symbol "Connector:USB_C_Receptacle"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 2.54) (effects (font (size 1.27 1.27))))
+      (property "Value" "USB-C" (at 0 -2.54) (effects (font (size 1.27 1.27))))
+      (symbol "Connector:USB_C_Receptacle_0_1"
+        (rectangle (start -5.08 1.27) (end 5.08 -1.27)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin power_out line (at 7.62 0 180) (length 2.54) (name "VBUS") (number "A4"))
+        (pin power_in line (at -7.62 0 0) (length 2.54) (name "GND") (number "B12"))
+      )
+    )
+
+    (symbol "power:GND"
+      (in_bom no) (on_board no)
+      (property "Reference" "#PWR" (at 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Value" "GND" (at 0 -2.54) (effects (font (size 1.27 1.27))))
+      (symbol "power:GND_0_1"
+        (polyline (pts (xy -1.27 0) (xy 1.27 0) (xy 0 -1.27) (xy -1.27 0))
+          (stroke (width 0.254)) (fill (type outline)))
+      )
+    )
+
+    (symbol "power:+3V3"
+      (in_bom no) (on_board no)
+      (property "Reference" "#PWR" (at 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Value" "+3V3" (at 0 2.54) (effects (font (size 1.27 1.27))))
+      (symbol "power:+3V3_0_1"
+        (polyline (pts (xy 0 0) (xy 0 2.54))
+          (stroke (width 0.254)) (fill (type none)))
+      )
+    )
+
+    (symbol "power:+5V"
+      (in_bom no) (on_board no)
+      (property "Reference" "#PWR" (at 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Value" "+5V" (at 0 2.54) (effects (font (size 1.27 1.27))))
+      (symbol "power:+5V_0_1"
+        (polyline (pts (xy 0 0) (xy 0 2.54))
+          (stroke (width 0.254)) (fill (type none)))
+      )
+    )
+
+    (symbol "power:-5V"
+      (in_bom no) (on_board no)
+      (property "Reference" "#PWR" (at 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Value" "-5V" (at 0 -2.54) (effects (font (size 1.27 1.27))))
+      (symbol "power:-5V_0_1"
+        (polyline (pts (xy 0 0) (xy 0 -2.54))
+          (stroke (width 0.254)) (fill (type none)))
+      )
+    )
+  )
+
+  ; ---- Sheet instances ----
+  (sheet (at 30 20) (size 40 40)
+    (stroke (width 0.254) (type solid))
+    (fill (type none))
+    (property "Sheetname" "MCU & Digital")
+    (property "Sheetfile" "mcu.sch")
+  )
+
+  (sheet (at 80 20) (size 40 40)
+    (stroke (width 0.254) (type solid))
+    (fill (type none))
+    (property "Sheetname" "Analog Front-End")
+    (property "Sheetfile" "analog.sch")
+  )
+
+  (sheet (at 30 70) (size 40 40)
+    (stroke (width 0.254) (type solid))
+    (fill (type none))
+    (property "Sheetname" "Power & Charging")
+    (property "Sheetfile" "power.sch")
+  )
+
+  (sheet (at 80 70) (size 40 40)
+    (stroke (width 0.254) (type solid))
+    (fill (type none))
+    (property "Sheetname" "Probe Head")
+    (property "Sheetfile" "probe.sch")
+  )
+
+  ; ---- Component instances ----
+
+  (symbol (lib_id "MCU_ST_STM32G474CEU6") (at 50 40 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U1") (property "Value" "STM32G474CEU6")
+    (property "MPN" "STM32G474CEU6") (property "Manufacturer" "STMicroelectronics")
+    (property "Author" "jayis1")
+  )
+
+  (symbol (lib_id "Amplifier_Operational:THS3091") (at 100 40 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U2") (property "Value" "THS3091D")
+    (property "Author" "jayis1")
+  )
+
+  (symbol (lib_id "Amplifier_Instrumentation:AD8429") (at 100 55 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U3") (property "Value" "AD8429ARZ")
+    (property "Author" "jayis1")
+  )
+
+  (symbol (lib_id "Analog_ADC:ADS8866") (at 100 70 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U4") (property "Value" "ADS8866IDRCR")
+    (property "Author" "jayis1")
+  )
+
+  (symbol (lib_id "Memory_Flash:W25Q128") (at 50 70 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U7") (property "Value" "W25Q128JVSIQ")
+    (property "Author" "jayis1")
+  )
+
+  (symbol (lib_id "RF_Module:BMD-300") (at 50 90 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U6") (property "Value" "BMD-300")
+    (property "Author" "jayis1")
+  )
+
+  (symbol (lib_id "Sensor_Distance:VL53L0X") (at 100 90 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U8") (property "Value" "VL53L0X")
+    (property "Author" "jayis1")
+  )
+
+  ; ---- Net connections (simplified netlist) ----
+
+  ; DAC output -> THS3091 input -> Excitation coil
+  (net (code 1) (name "/DAC_OUT") (wire (pts (xy 62.23 40) (xy 92.71 40))))
+  ; THS3091 output -> Excitation coil
+  (net (code 2) (name "/COIL_EXC") (wire (pts (xy 107.95 40) (xy 115 40))))
+  ; Sense coil -> AD8429 input
+  (net (code 3) (name "/COIL_SENSE") (wire (pts (xy 85 55) (xy 92.71 55))))
+  ; AD8429 output -> ADS8866 input
+  (net (code 4) (name "/ADC_IN") (wire (pts (xy 110 55) (xy 92.71 70))))
+  ; SPI1: ADC interface
+  (net (code 5) (name "/SPI1_SCK") (wire (pts (xy 62.23 35) (xy 107.95 67.31))))
+  (net (code 6) (name "/SPI1_MISO") (wire (pts (xy 62.23 33) (xy 107.95 70))))
+  (net (code 7) (name "/SPI1_CS") (wire (pts (xy 62.23 30) (xy 107.95 72.39))))
+  ; I2C3: VL53L0X
+  (net (code 8) (name "/I2C3_SCL") (wire (pts (xy 62.23 88) (xy 107.31 88))))
+  (net (code 9) (name "/I2C3_SDA") (wire (pts (xy 62.23 90) (xy 107.31 90))))
+  ; USART2: BLE
+  (net (code 10) (name "/USART2_TX") (wire (pts (xy 62.23 92) (xy 62.73 92))))
+  (net (code 11) (name "/USART2_RX") (wire (pts (xy 62.23 94) (xy 62.73 94))))
+  ; SPI3: Flash
+  (net (code 12) (name "/SPI3_SCK") (wire (pts (xy 40 70) (xy 40 70))))
+  (net (code 13) (name "/SPI3_MISO") (wire (pts (xy 40 72) (xy 40 72))))
+  (net (code 14) (name "/SPI3_MOSI") (wire (pts (xy 40 74) (xy 40 74))))
+  (net (code 15) (name "/SPI3_CS") (wire (pts (xy 40 76) (xy 40 76))))
+  ; Power nets
+  (net (code 16) (name "GND") (wire (pts (xy 35 50) (xy 35 50))))
+  (net (code 17) (name "+3V3") (wire (pts (xy 35 45) (xy 35 45))))
+  (net (code 18) (name "+5V") (wire (pts (xy 105 50) (xy 105 50))))
+  (net (code 19) (name "-5V") (wire (pts (xy 105 45) (xy 105 45))))
+
+  ; ---- Power symbols ----
+  (symbol (lib_id "power:GND") (at 35 55 0) (in_bom no) (on_board no)
+    (property "Reference" "#PWR01"))
+  (symbol (lib_id "power:+3V3") (at 35 35 0) (in_bom no) (on_board no)
+    (property "Reference" "#PWR02"))
+  (symbol (lib_id "power:+5V") (at 105 35 0) (in_bom no) (on_board no)
+    (property "Reference" "#PWR03"))
+  (symbol (lib_id "power:-5V") (at 105 50 0) (in_bom no) (on_board no)
+    (property "Reference" "#PWR04"))
+
+  ; ---- Decoupling capacitors ----
+  (symbol (lib_id "Device:C") (at 40 35 0) (in_bom yes) (on_board yes)
+    (property "Reference" "C1") (property "Value" "100nF") (property "Author" "jayis1"))
+  (symbol (lib_id "Device:C") (at 45 35 0) (in_bom yes) (on_board yes)
+    (property "Reference" "C2") (property "Value" "100nF") (property "Author" "jayis1"))
+  (symbol (lib_id "Device:C") (at 50 35 0) (in_bom yes) (on_board yes)
+    (property "Reference" "C3") (property "Value" "10uF") (property "Author" "jayis1"))
+
+  ; ---- Pull-up resistors for I2C ----
+  (symbol (lib_id "Device:R") (at 65 85 270) (in_bom yes) (on_board yes)
+    (property "Reference" "R3") (property "Value" "4k7") (property "Author" "jayis1"))
+  (symbol (lib_id "Device:R") (at 67 87 270) (in_bom yes) (on_board yes)
+    (property "Reference" "R4") (property "Value" "4k7") (property "Author" "jayis1"))
+
+  ; ---- USB-C connector ----
+  (symbol (lib_id "Connector:USB_C_Receptacle") (at 20 100 0) (in_bom yes) (on_board yes)
+    (property "Reference" "J1") (property "Value" "USB-C") (property "Author" "jayis1"))
+
+  ; ---- Battery divider ----
+  (symbol (lib_id "Device:R") (at 60 100 90) (in_bom yes) (on_board yes)
+    (property "Reference" "R5") (property "Value" "100k") (property "Author" "jayis1"))
+  (symbol (lib_id "Device:R") (at 60 105 90) (in_bom yes) (on_board yes)
+    (property "Reference" "R6") (property "Value" "100k") (property "Author" "jayis1"))
+)

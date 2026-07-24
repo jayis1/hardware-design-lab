@@ -1,0 +1,175 @@
+{
+  "board": {
+    "3dviewports": [],
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.15,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15
+      },
+      "drc_exclusions": [],
+      "meta": {
+        "version": 2
+      },
+      "rule_severities": {
+        "connection_width": "warning",
+        "copper_edge_clearance": "error",
+        "courtyards_overlap": "error",
+        "diff_pair_gap_out_of_range": "error",
+        "diff_pair_hole_to_hole": "error",
+        "diff_pair_mismatched_length": "error",
+        "diff_pair_mismatched_width": "error",
+        "diff_pair_uncoupled_length": "error",
+        "drill_out_of_range": "error",
+        "duplicate_footprints": "warning",
+        "extra_footprint": "warning",
+        "footprint": "error",
+        "footprint_symbol_mismatch": "warning",
+        "hole_clearance": "error",
+        "hole_near_copper": "error",
+        "invalid_outline": "error",
+        "isolated_copper": "warning",
+        "item_on_disabled_layer": "error",
+        "items_not_allowed": "error",
+        "length_out_of_range": "error",
+        "lib_footprint_issues": "warning",
+        "lib_footprint_mismatch": "warning",
+        "malformed_courtyard": "error",
+        "microvia_drill_out_of_range": "error",
+        "mirrored_text_on_front_layer": "warning",
+        "missing_courtyard": "warning",
+        "missing_footprint": "error",
+        "net_connection": "warning",
+        "net_not_connected": "warning",
+        "no_board_outline": "error",
+        "pad_overlap": "warning",
+        "plated_hole_out_of_range": "error",
+        "silk_edge_clearance": "warning",
+        "silk_overlap": "warning",
+        "skew_out_of_range": "error",
+        "text_height_out_of_range": "warning",
+        "text_thickness_out_of_range": "warning",
+        "through_hole_pad_without_hole": "error",
+        "unconnected_items": "error",
+        "via_dangling": "warning",
+        "via_hole_with_no_copper": "error",
+        "via_out_of_range": "error"
+      },
+      "rules": {
+        "min_clearance": 0.15,
+        "min_track_width": 0.127,
+        "min_via_diameter": 0.3,
+        "min_via_drill": 0.15,
+        "min_microvia_diameter": 0.2,
+        "min_microvia_drill": 0.1,
+        "min_hole_to_hole": 0.2,
+        "min_silk_clearance": 0.0,
+        "min_hole_clearance": 0.2,
+        "min_copper_edge_clearance": 0.2
+      },
+      "track_widths": [0.127, 0.15, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.8, 1.0],
+      "via_dimensions": [
+        {"diameter": 0.3, "drill": 0.15},
+        {"diameter": 0.4, "drill": 0.2},
+        {"diameter": 0.6, "drill": 0.3}
+      ]
+    },
+    "ipc2581": {
+      "dist": "",
+      "distpn": "",
+      "internal_id": "",
+      "mfg": "",
+      "mpn": ""
+    },
+    "layer_presets": [],
+    "viewports": []
+  },
+  "boards": ["device.kicad_pcb"],
+  "cvpcb": {
+    "equipped_files": []
+  },
+  "libraries": {
+    "pinned_footprint_libs": [],
+    "pinned_symbol_libs": []
+  },
+  "meta": {
+    "filename": "device.kicad_pro",
+    "version": 2
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.2,
+        "diff_pair_width": 0.2,
+        "diff_pair_via_gap": 0.2,
+        "diff_pair_via_width": 0.3,
+        "track_width": 0.127,
+        "via_diameter": 0.3,
+        "via_drill": 0.15,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "Default",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.3,
+        "diff_pair_gap": 0.2,
+        "diff_pair_width": 0.2,
+        "track_width": 0.4,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "name": "Power",
+        "pcb_color": "rgba(255, 0, 0, 0.5)",
+        "schematic_color": "rgba(255, 0, 0, 0.5)",
+        "nets": ["GND", "+3V3", "+5V", "-5V", "VBAT", "VDD"]
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "track_width": 0.2,
+        "via_diameter": 0.3,
+        "via_drill": 0.15,
+        "name": "Analog",
+        "pcb_color": "rgba(0, 255, 0, 0.5)",
+        "schematic_color": "rgba(0, 255, 0, 0.5)",
+        "nets": ["/DAC_OUT", "/ADC_IN", "/COIL_EXC", "/COIL_SENSE"]
+      }
+    ],
+    "meta": {
+      "version": 3
+    }
+  },
+  "pcb": {
+    "last_pcb": "device.kicad_pcb"
+  },
+  "project": {
+    "name": "AlloyScan",
+    "author": "jayis1",
+    "company": "jayis1",
+    "date": "2026-07-24",
+    "revision": "1.0",
+    "license": "CERN-OHL-S v2"
+  },
+  "schematic": {
+    "last_schematic": "device.kicad_sch"
+  },
+  "sheets": [
+    ["device.kicad_sch", ""],
+    ["mcu.sch", "MCU & Digital"],
+    ["analog.sch", "Analog Front-End"],
+    ["power.sch", "Power & Charging"],
+    ["probe.sch", "Probe Head"]
+  ],
+  "text_variables": []
+}

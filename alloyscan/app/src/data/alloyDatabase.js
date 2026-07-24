@@ -1,0 +1,73 @@
+/**
+ * alloyDatabase.js — Alloy reference data for the companion app
+ *
+ * Author: jayis1
+ * Copyright (c) 2026 jayis1. All rights reserved.
+ * SPDX-License-Identifier: MIT
+ *
+ * Mirror of the firmware alloy_database. Used for the Database browser
+ * and for displaying scan result details in the app.
+ */
+
+export const alloyDatabase = [
+  { name: '1018 CS',    family: 'Carbon Steel',  conductivity_iacs: 10.0, permeability_rel: 200, density_gcm3: 7.87, applications: 'Shafts, plates, structural', feature: [0.85,0.12,0.78,0.15,0.72,0.18,0.65,0.20] },
+  { name: '1045 CS',    family: 'Carbon Steel',  conductivity_iacs: 9.0,  permeability_rel: 150, density_gcm3: 7.85, applications: 'Gears, axles, shafts', feature: [0.82,0.14,0.75,0.17,0.68,0.20,0.60,0.22] },
+  { name: '12L14',      family: 'Carbon Steel',  conductivity_iacs: 11.0, permeability_rel: 100, density_gcm3: 7.87, applications: 'Free-machining parts, fittings', feature: [0.80,0.13,0.73,0.16,0.66,0.19,0.58,0.21] },
+  { name: 'A36',        family: 'Carbon Steel',  conductivity_iacs: 10.5, permeability_rel: 180, density_gcm3: 7.85, applications: 'Structural steel, beams, plates', feature: [0.84,0.12,0.77,0.15,0.71,0.18,0.64,0.20] },
+  { name: '8620',       family: 'Carbon Steel',  conductivity_iacs: 9.5,  permeability_rel: 120, density_gcm3: 7.85, applications: 'Case-hardened gears, shafts', feature: [0.81,0.13,0.74,0.16,0.67,0.19,0.59,0.21] },
+  { name: '1008',       family: 'Carbon Steel',  conductivity_iacs: 11.5, permeability_rel: 250, density_gcm3: 7.87, applications: 'Sheet metal, wire, tubing', feature: [0.86,0.11,0.79,0.14,0.73,0.17,0.66,0.19] },
+  { name: '4140',       family: 'Alloy Steel',   conductivity_iacs: 8.0,  permeability_rel: 80,  density_gcm3: 7.85, applications: 'Bolts, crankshafts, tooling', feature: [0.78,0.16,0.71,0.19,0.64,0.22,0.56,0.24] },
+  { name: '4340',       family: 'Alloy Steel',   conductivity_iacs: 7.5,  permeability_rel: 75,  density_gcm3: 7.85, applications: 'Aerospace, landing gear, shafts', feature: [0.77,0.17,0.70,0.20,0.63,0.23,0.55,0.25] },
+  { name: '4150',       family: 'Alloy Steel',   conductivity_iacs: 7.0,  permeability_rel: 70,  density_gcm3: 7.85, applications: 'High-stress tooling', feature: [0.76,0.18,0.69,0.21,0.62,0.24,0.54,0.26] },
+  { name: '5160',       family: 'Alloy Steel',   conductivity_iacs: 8.5,  permeability_rel: 90,  density_gcm3: 7.85, applications: 'Springs, knife blades', feature: [0.79,0.15,0.72,0.18,0.65,0.21,0.57,0.23] },
+  { name: '304 SS',     family: 'SS Austenitic', conductivity_iacs: 2.5,  permeability_rel: 1.02, density_gcm3: 8.00, applications: 'Food equip, sinks, tubing', feature: [0.25,0.35,0.28,0.40,0.31,0.45,0.33,0.48] },
+  { name: '316 SS',     family: 'SS Austenitic', conductivity_iacs: 2.3,  permeability_rel: 1.02, density_gcm3: 8.00, applications: 'Marine, chemical, medical', feature: [0.23,0.34,0.26,0.39,0.29,0.44,0.31,0.47] },
+  { name: '304L SS',    family: 'SS Austenitic', conductivity_iacs: 2.7,  permeability_rel: 1.02, density_gcm3: 8.00, applications: 'Welded structures, low-carbon', feature: [0.26,0.36,0.29,0.41,0.32,0.46,0.34,0.49] },
+  { name: '316L SS',    family: 'SS Austenitic', conductivity_iacs: 2.4,  permeability_rel: 1.02, density_gcm3: 8.00, applications: 'Welded medical, marine', feature: [0.24,0.35,0.27,0.40,0.30,0.45,0.32,0.48] },
+  { name: '321 SS',     family: 'SS Austenitic', conductivity_iacs: 2.4,  permeability_rel: 1.02, density_gcm3: 8.00, applications: 'High-temp exhaust, aerospace', feature: [0.24,0.34,0.27,0.39,0.30,0.44,0.32,0.47] },
+  { name: '904L SS',    family: 'SS Austenitic', conductivity_iacs: 2.1,  permeability_rel: 1.02, density_gcm3: 8.00, applications: 'Chemical processing, seawater', feature: [0.22,0.33,0.25,0.38,0.28,0.43,0.30,0.46] },
+  { name: '301 SS',     family: 'SS Austenitic', conductivity_iacs: 2.6,  permeability_rel: 1.02, density_gcm3: 8.00, applications: 'Springs, trim, automotive', feature: [0.26,0.36,0.29,0.41,0.32,0.46,0.34,0.49] },
+  { name: '302 SS',     family: 'SS Austenitic', conductivity_iacs: 2.5,  permeability_rel: 1.02, density_gcm3: 8.00, applications: 'General-purpose stainless', feature: [0.25,0.35,0.28,0.40,0.31,0.45,0.33,0.48] },
+  { name: '410 SS',     family: 'SS Ferritic',  conductivity_iacs: 3.0,  permeability_rel: 500, density_gcm3: 7.80, applications: 'Cutlery, valves, pump shafts', feature: [0.75,0.18,0.68,0.21,0.61,0.24,0.53,0.26] },
+  { name: '420 SS',     family: 'SS Ferritic',  conductivity_iacs: 2.8,  permeability_rel: 400, density_gcm3: 7.80, applications: 'Knife blades, surgical tools', feature: [0.73,0.19,0.66,0.22,0.59,0.25,0.51,0.27] },
+  { name: '430 SS',     family: 'SS Ferritic',  conductivity_iacs: 3.5,  permeability_rel: 300, density_gcm3: 7.80, applications: 'Appliance trim, automotive trim', feature: [0.76,0.17,0.69,0.20,0.62,0.23,0.54,0.25] },
+  { name: '440C SS',    family: 'SS Ferritic',  conductivity_iacs: 2.5,  permeability_rel: 350, density_gcm3: 7.80, applications: 'Bearings, knife blades, valves', feature: [0.72,0.20,0.65,0.23,0.58,0.26,0.50,0.28] },
+  { name: '17-4 PH',    family: 'SS Ferritic',  conductivity_iacs: 2.9,  permeability_rel: 100, density_gcm3: 7.80, applications: 'Aerospace, turbine, medical', feature: [0.70,0.22,0.63,0.25,0.56,0.28,0.48,0.30] },
+  { name: '2205',       family: 'SS Duplex',    conductivity_iacs: 2.0,  permeability_rel: 3.5, density_gcm3: 7.80, applications: 'Chemical, oil & gas, seawater', feature: [0.30,0.32,0.33,0.37,0.36,0.42,0.38,0.45] },
+  { name: '2507',       family: 'SS Duplex',    conductivity_iacs: 1.8,  permeability_rel: 3.0, density_gcm3: 7.80, applications: 'Severe chemical, subsea', feature: [0.28,0.31,0.31,0.36,0.34,0.41,0.36,0.44] },
+  { name: '1100 Al',    family: 'Aluminum',     conductivity_iacs: 59.0, permeability_rel: 1.00, density_gcm3: 2.71, applications: 'Sheet metal, foil, electrical', feature: [0.55,0.65,0.60,0.70,0.65,0.75,0.68,0.78] },
+  { name: '3003 Al',    family: 'Aluminum',     conductivity_iacs: 46.0, permeability_rel: 1.00, density_gcm3: 2.73, applications: 'Heat exchangers, cookware', feature: [0.48,0.58,0.53,0.63,0.58,0.68,0.61,0.71] },
+  { name: '5052 Al',    family: 'Aluminum',     conductivity_iacs: 35.0, permeability_rel: 1.00, density_gcm3: 2.68, applications: 'Marine, fuel tanks, sheet', feature: [0.42,0.52,0.47,0.57,0.52,0.62,0.55,0.65] },
+  { name: '5083 Al',    family: 'Aluminum',     conductivity_iacs: 29.0, permeability_rel: 1.00, density_gcm3: 2.66, applications: 'Marine, pressure vessels', feature: [0.38,0.48,0.43,0.53,0.48,0.58,0.51,0.61] },
+  { name: '6061 Al',    family: 'Aluminum',     conductivity_iacs: 43.0, permeability_rel: 1.00, density_gcm3: 2.70, applications: 'Structural, frames, aerospace', feature: [0.46,0.56,0.51,0.61,0.56,0.66,0.59,0.69] },
+  { name: '6063 Al',    family: 'Aluminum',     conductivity_iacs: 50.0, permeability_rel: 1.00, density_gcm3: 2.70, applications: 'Extrusions, window frames', feature: [0.50,0.60,0.55,0.65,0.60,0.70,0.63,0.73] },
+  { name: '7075 Al',    family: 'Aluminum',     conductivity_iacs: 33.0, permeability_rel: 1.00, density_gcm3: 2.81, applications: 'Aerospace, high-stress parts', feature: [0.41,0.51,0.46,0.56,0.51,0.61,0.54,0.64] },
+  { name: '2024 Al',    family: 'Aluminum',     conductivity_iacs: 30.0, permeability_rel: 1.00, density_gcm3: 2.78, applications: 'Aerospace, wing structures', feature: [0.39,0.49,0.44,0.54,0.49,0.59,0.52,0.62] },
+  { name: '356 Al',     family: 'Aluminum',     conductivity_iacs: 37.0, permeability_rel: 1.00, density_gcm3: 2.68, applications: 'Castings, engine blocks', feature: [0.43,0.53,0.48,0.58,0.53,0.63,0.56,0.66] },
+  { name: 'A380 Al',    family: 'Aluminum',     conductivity_iacs: 27.0, permeability_rel: 1.00, density_gcm3: 2.74, applications: 'Die castings, housings', feature: [0.37,0.47,0.42,0.52,0.47,0.57,0.50,0.60] },
+  { name: 'C11000 Cu',  family: 'Copper',       conductivity_iacs: 101,  permeability_rel: 1.00, density_gcm3: 8.96, applications: 'Wire, bus bars, electrical', feature: [0.80,0.85,0.85,0.90,0.90,0.95,0.93,0.98] },
+  { name: 'C26000',     family: 'Copper',       conductivity_iacs: 28.0, permeability_rel: 1.00, density_gcm3: 8.53, applications: 'Cartridge cases, decorative', feature: [0.38,0.48,0.43,0.53,0.48,0.58,0.51,0.61] },
+  { name: 'C36000',     family: 'Copper',       conductivity_iacs: 26.0, permeability_rel: 1.00, density_gcm3: 8.50, applications: 'Screw machine parts, fittings', feature: [0.36,0.46,0.41,0.51,0.46,0.56,0.49,0.59] },
+  { name: 'C46400',     family: 'Copper',       conductivity_iacs: 22.0, permeability_rel: 1.00, density_gcm3: 8.41, applications: 'Marine hardware, valve stems', feature: [0.33,0.43,0.38,0.48,0.43,0.53,0.46,0.56] },
+  { name: 'C95400',     family: 'Copper',       conductivity_iacs: 9.0,  permeability_rel: 1.00, density_gcm3: 7.50, applications: 'Bearings, bushings, gears', feature: [0.20,0.30,0.23,0.33,0.26,0.36,0.29,0.39] },
+  { name: 'C17200',     family: 'Copper',       conductivity_iacs: 22.0, permeability_rel: 1.00, density_gcm3: 8.25, applications: 'Springs, contacts, instruments', feature: [0.33,0.43,0.38,0.48,0.43,0.53,0.46,0.56] },
+  { name: 'C51000',     family: 'Copper',       conductivity_iacs: 15.0, permeability_rel: 1.00, density_gcm3: 8.78, applications: 'Springs, electrical contacts', feature: [0.28,0.38,0.31,0.41,0.34,0.44,0.37,0.47] },
+  { name: 'CP Ti Gr1',  family: 'Titanium',     conductivity_iacs: 3.5,  permeability_rel: 1.00, density_gcm3: 4.51, applications: 'Medical implants, aerospace', feature: [0.18,0.28,0.21,0.31,0.24,0.34,0.27,0.37] },
+  { name: 'CP Ti Gr2',  family: 'Titanium',     conductivity_iacs: 3.0,  permeability_rel: 1.00, density_gcm3: 4.51, applications: 'Medical, chemical processing', feature: [0.16,0.26,0.19,0.29,0.22,0.32,0.25,0.35] },
+  { name: 'Ti-6Al-4V',  family: 'Titanium',     conductivity_iacs: 1.7,  permeability_rel: 1.00, density_gcm3: 4.43, applications: 'Aerospace, medical implants', feature: [0.12,0.22,0.15,0.25,0.18,0.28,0.21,0.31] },
+  { name: 'Ti Gr9',     family: 'Titanium',     conductivity_iacs: 2.5,  permeability_rel: 1.00, density_gcm3: 4.52, applications: 'Hydraulic tubing, aerospace', feature: [0.15,0.25,0.18,0.28,0.21,0.31,0.24,0.34] },
+  { name: 'Inconel625', family: 'Nickel',      conductivity_iacs: 1.3,  permeability_rel: 1.00, density_gcm3: 8.44, applications: 'Aerospace, chemical, nuclear', feature: [0.10,0.20,0.13,0.23,0.16,0.26,0.19,0.29] },
+  { name: 'Inconel718', family: 'Nickel',      conductivity_iacs: 1.4,  permeability_rel: 1.00, density_gcm3: 8.19, applications: 'Turbine blades, aerospace', feature: [0.11,0.21,0.14,0.24,0.17,0.27,0.20,0.30] },
+  { name: 'Monel 400',  family: 'Nickel',      conductivity_iacs: 3.5,  permeability_rel: 1.00, density_gcm3: 8.80, applications: 'Marine, chemical processing', feature: [0.18,0.28,0.21,0.31,0.24,0.34,0.27,0.37] },
+  { name: 'Hast C276',  family: 'Nickel',      conductivity_iacs: 1.2,  permeability_rel: 1.00, density_gcm3: 8.89, applications: 'Chemical, pollution control', feature: [0.09,0.19,0.12,0.22,0.15,0.25,0.18,0.28] },
+  { name: 'Nickel 200', family: 'Nickel',      conductivity_iacs: 18.0, permeability_rel: 100,  density_gcm3: 8.89, applications: 'Plating, chemical equipment', feature: [0.45,0.55,0.50,0.60,0.55,0.65,0.58,0.68] },
+  { name: 'Incoloy800', family: 'Nickel',      conductivity_iacs: 1.7,  permeability_rel: 1.00, density_gcm3: 8.02, applications: 'Heat exchangers, nuclear', feature: [0.12,0.22,0.15,0.25,0.18,0.28,0.21,0.31] },
+  { name: 'Zn Diecast', family: 'Zn/Mg/Other', conductivity_iacs: 27.0, permeability_rel: 1.00, density_gcm3: 7.10, applications: 'Die castings, hardware', feature: [0.37,0.47,0.42,0.52,0.47,0.57,0.50,0.60] },
+  { name: 'AZ31B Mg',   family: 'Zn/Mg/Other', conductivity_iacs: 18.0, permeability_rel: 1.00, density_gcm3: 1.77, applications: 'Aerospace, electronics housings', feature: [0.29,0.39,0.32,0.42,0.35,0.45,0.38,0.48] },
+  { name: 'AZ91D Mg',   family: 'Zn/Mg/Other', conductivity_iacs: 12.0, permeability_rel: 1.00, density_gcm3: 1.81, applications: 'Auto parts, die castings', feature: [0.23,0.33,0.26,0.36,0.29,0.39,0.32,0.42] },
+  { name: 'Lead',       family: 'Other',        conductivity_iacs: 8.0,  permeability_rel: 1.00, density_gcm3: 11.34, applications: 'Batteries, radiation shielding', feature: [0.19,0.29,0.22,0.32,0.25,0.35,0.28,0.38] },
+  { name: 'Sn Solder',  family: 'Other',        conductivity_iacs: 11.5, permeability_rel: 1.00, density_gcm3: 7.31, applications: 'Soldering, electronics', feature: [0.24,0.34,0.27,0.37,0.30,0.40,0.33,0.43] },
+  { name: 'Tungsten',   family: 'Other',        conductivity_iacs: 17.0, permeability_rel: 1.00, density_gcm3: 19.25, applications: 'Tooling, radiation shielding', feature: [0.28,0.38,0.31,0.41,0.34,0.44,0.37,0.47] },
+  { name: 'Silver',     family: 'Other',        conductivity_iacs: 105,  permeability_rel: 1.00, density_gcm3: 10.49, applications: 'Jewelry, contacts, electronics', feature: [0.82,0.87,0.87,0.92,0.92,0.97,0.95,1.00] },
+  { name: 'Gold',       family: 'Other',        conductivity_iacs: 73.0, permeability_rel: 1.00, density_gcm3: 19.32, applications: 'Jewelry, electronics, plating', feature: [0.70,0.75,0.75,0.80,0.80,0.85,0.83,0.88] },
+];
