@@ -1,0 +1,898 @@
+(kicad_sch
+  (version 20240108)
+  (generator "kicad")
+  (generator_version "8.0")
+  (uuid "a1b2c3d4-e5f6-7890-abcd-ef1234567890")
+  (paper "A3")
+
+  (title_block
+    (title "LithoCore — Li-Ion Cell Impedance Spectrometer")
+    (date "2026-07-27")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: CERN-OHL-S v2")
+    (comment 3 "STM32G474 + AD9833 DDS + ADS1256 ADC")
+  )
+
+  ;; ============================================================
+  ;; Sheet 1: MCU — STM32G474RET6
+  ;; ============================================================
+
+  (symbol "MCU_STM32G474RET6"
+    (lib_id "MCU_ST_STM32G4:STM32G474RET6")
+    (at 127 76.2 0)
+    (unit 1)
+    (instances
+      (project "lithocore"
+        (path "/a1b2c3d4"
+          (reference "U1")
+          (unit 1)
+        )
+      )
+    )
+    (property "Value" "STM32G474RET6"
+      (at 142.24 40.64 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_QFP:LQFP-64_10x10mm_P0.5mm"
+      (at 142.24 43.18 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Manufacturer" "STMicroelectronics"
+      (at 127 76.2 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Author" "jayis1"
+      (at 127 76.2 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  ;; MCU decoupling capacitors
+  (symbol "C_MCU_VDD1"
+    (lib_id "Device:C")
+    (at 101.6 55.88 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "C1") (unit 1)))
+    (property "Value" "100nF"
+      (at 104.14 55.88 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol "C_MCU_VDDA"
+    (lib_id "Device:C")
+    (at 101.6 66.04 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "C2") (unit 1)))
+    (property "Value" "1uF"
+      (at 104.14 66.04 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; TCXO 16.384 MHz
+  (symbol "Y1_TCXO"
+    (lib_id "Oscillator:TXC-7A")
+    (at 93.98 88.9 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "Y1") (unit 1)))
+    (property "Value" "16.384MHz TCXO"
+      (at 100.33 83.82 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm"
+      (at 93.98 88.9 0)
+      (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ============================================================
+  ;; Sheet 2: DDS — AD9833 Sine Wave Generator
+  ;; ============================================================
+
+  (symbol "U2_DDS"
+    (lib_id "Analog_DAC:AD9833")
+    (at 180.34 71.12 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "U2") (unit 1)))
+    (property "Value" "AD9833BRMZ"
+      (at 187.96 60.96 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_SO:MSOP-10_3x3mm_P0.5mm"
+      (at 180.34 71.12 0)
+      (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; DDS output coupling capacitor
+  (symbol "C_DDS_OUT"
+    (lib_id "Device:C")
+    (at 200.66 71.12 90)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "C3") (unit 1)))
+    (property "Value" "10uF"
+      (at 203.2 71.12 90)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; DDS decoupling
+  (symbol "C_DDS_VDD"
+    (lib_id "Device:C")
+    (at 167.64 66.04 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "C4") (unit 1)))
+    (property "Value" "100nF"
+      (at 170.18 66.04 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; ============================================================
+  ;; Sheet 3: ADC — ADS1256 24-bit
+  ;; ============================================================
+
+  (symbol "U3_ADC"
+    (lib_id "Analog_ADC:ADS1256")
+    (at 180.34 109.22 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "U3") (unit 1)))
+    (property "Value" "ADS1256IDBT"
+      (at 187.96 96.52 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_SO:SSOP-28_5.3x10.2mm_P0.65mm"
+      (at 180.34 109.22 0)
+      (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ADC Vref — 2.5V precision reference
+  (symbol "U_REF"
+    (lib_id "Reference_Voltage:REF192")
+    (at 160.02 127 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "U6") (unit 1)))
+    (property "Value" "ADR4525"
+      (at 165.1 121.92 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+      (at 160.02 127 0)
+      (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ADC decoupling
+  (symbol "C_ADC_VDD"
+    (lib_id "Device:C")
+    (at 165.1 101.6 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "C5") (unit 1)))
+    (property "Value" "100nF"
+      (at 167.64 101.6 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; ============================================================
+  ;; Sheet 4: Analog Front End — Op-amps (OPA2188)
+  ;; ============================================================
+
+  (symbol "U4A_OPA_VSENSE"
+    (lib_id "Amplifier_Operational:OPA2188")
+    (at 213.36 73.66 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "U4") (unit 1)))
+    (property "Value" "OPA2188UA"
+      (at 220.98 66.04 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+      (at 213.36 73.66 0)
+      (effects (font (size 1.27 1.27)) hide))
+  )
+
+  (symbol "U4B_OPA_ISENSE"
+    (lib_id "Amplifier_Operational:OPA2188")
+    (at 213.36 96.52 0)
+    (unit 2)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "U4") (unit 2)))
+    (property "Value" "OPA2188UA"
+      (at 220.98 88.9 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; AC coupling capacitors for V sense
+  (symbol "C_AC_VHI"
+    (lib_id "Device:C")
+    (at 200.66 68.58 90)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "C6") (unit 1)))
+    (property "Value" "1uF"
+      (at 203.2 68.58 90)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol "C_AC_VLO"
+    (lib_id "Device:C")
+    (at 200.66 78.74 90)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "C7") (unit 1)))
+    (property "Value" "1uF"
+      (at 203.2 78.74 90)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; High-pass filter for AC extraction
+  (symbol "R_HPF_V"
+    (lib_id "Device:R")
+    (at 208.28 63.5 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "R1") (unit 1)))
+    (property "Value" "1M"
+      (at 210.82 63.5 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; Current sense resistor
+  (symbol "R_SENSE"
+    (lib_id "Device:R")
+    (at 195.58 88.9 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "R2") (unit 1)))
+    (property "Value" "0.1R 0.1%"
+      (at 198.12 86.36 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+      (at 195.58 88.9 0)
+      (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; TIA feedback resistor
+  (symbol "R_TIA"
+    (lib_id "Device:R")
+    (at 208.28 91.44 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "R3") (unit 1)))
+    (property "Value" "1k"
+      (at 210.82 91.44 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; ============================================================
+  ;; Sheet 5: Safety — Over-voltage comparator + reverse protection
+  ;; ============================================================
+
+  (symbol "U6_OVP_COMP"
+    (lib_id "Comparator:TLV3201")
+    (at 88.9 127 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "U7") (unit 1)))
+    (property "Value" "TLV3201"
+      (at 96.52 119.38 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
+      (at 88.9 127 0)
+      (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; OVP threshold divider
+  (symbol "R_OVP_HI"
+    (lib_id "Device:R")
+    (at 76.2 119.38 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "R4") (unit 1)))
+    (property "Value" "100k 0.1%"
+      (at 78.74 119.38 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol "R_OVP_LO"
+    (lib_id "Device:R")
+    (at 76.2 127 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "R5") (unit 1)))
+    (property "Value" "33k 0.1%"
+      (at 78.74 127 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; Reverse polarity protection — LM74700
+  (symbol "U_REV_POL"
+    (lib_id "Power_Management:LM74700-Q1")
+    (at 50.8 78.74 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "U8") (unit 1)))
+    (property "Value" "LM74700-Q1"
+      (at 58.42 71.12 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
+      (at 50.8 78.74 0)
+      (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ============================================================
+  ;; Sheet 6: Power — Boost converter + load switch + supercap
+  ;; ============================================================
+
+  (symbol "U_BOOST"
+    (lib_id "Regulator_Switching:TPS61099")
+    (at 66.04 109.22 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "U9") (unit 1)))
+    (property "Value" "TPS61099"
+      (at 73.66 101.6 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_SMD:TSOT-23-6"
+      (at 66.04 109.22 0)
+      (effects (font (size 1.27 1.27)) hide))
+  )
+
+  (symbol "U_LOAD_SW"
+    (lib_id "Power_Management:TPL7407LA")
+    (at 91.44 109.22 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "U10") (unit 1)))
+    (property "Value" "TPL7407LA"
+      (at 99.06 104.14 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
+      (at 91.44 109.22 0)
+      (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; Supercapacitor
+  (symbol "C_SUPERCAP"
+    (lib_id "Device:CP")
+    (at 114.3 111.76 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "C8") (unit 1)))
+    (property "Value" "2.5F 5.5V"
+      (at 119.38 106.68 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm"
+      (at 114.3 111.76 0)
+      (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; Boost inductor
+  (symbol "L_BOOST"
+    (lib_id "Device:L")
+    (at 53.34 109.22 90)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "L1") (unit 1)))
+    (property "Value" "4.7uH"
+      (at 53.34 111.76 90)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; Coin cell holder
+  (symbol "BT1_COIN"
+    (lib_id "Device:Battery_Cell")
+    (at 38.1 109.22 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "BT1") (unit 1)))
+    (property "Value" "CR2477"
+      (at 38.1 104.14 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Battery:BatteryHolder_Keystone_3034_1x2477"
+      (at 38.1 109.22 0)
+      (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ============================================================
+  ;; Sheet 7: BLE — BL654 Module
+  ;; ============================================================
+
+  (symbol "U_BLE"
+    (lib_id "RF_Module:Nordic_BLE_BL654")
+    (at 45.72 45.72 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "U5") (unit 1)))
+    (property "Value" "BL654-SA"
+      (at 55.88 33.02 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "RF_Module:Nordic_BLE_BL654"
+      (at 45.72 45.72 0)
+      (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; BLE decoupling
+  (symbol "C_BLE_VDD"
+    (lib_id "Device:C")
+    (at 30.48 45.72 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "C9") (unit 1)))
+    (property "Value" "10uF"
+      (at 33.02 45.72 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; ============================================================
+  ;; Sheet 8: USB-C Connector
+  ;; ============================================================
+
+  (symbol "J_USB"
+    (lib_id "Connector:USB_C_Receptacle_USB2.0")
+    (at 35.56 165.1 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "P1") (unit 1)))
+    (property "Value" "USB-C 16-pin"
+      (at 45.72 149.86 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12"
+      (at 35.56 165.1 0)
+      (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; USB ESD protection
+  (symbol "U_USB_ESD"
+    (lib_id "Power_Protection:USBLC6-2SC6")
+    (at 60.96 165.1 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "U11") (unit 1)))
+    (property "Value" "USBLC6-2SC6"
+      (at 68.58 157.48 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
+      (at 60.96 165.1 0)
+      (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ============================================================
+  ;; Sheet 9: LEDs + Button + Pogo pins
+  ;; ============================================================
+
+  (symbol "LED1_STATUS"
+    (lib_id "LED:LED")
+    (at 241.3 45.72 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "D1") (unit 1)))
+    (property "Value" "White"
+      (at 246.38 45.72 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol "LED2_STATUS"
+    (lib_id "LED:LED")
+    (at 241.3 53.34 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "D2") (unit 1)))
+    (property "Value" "White"
+      (at 246.38 53.34 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol "LED3_STATUS"
+    (lib_id "LED:LED")
+    (at 241.3 60.96 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "D3") (unit 1)))
+    (property "Value" "White"
+      (at 246.38 60.96 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol "LED4_STATUS"
+    (lib_id "LED:LED")
+    (at 241.3 68.58 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "D4") (unit 1)))
+    (property "Value" "White"
+      (at 246.38 68.58 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol "LED5_GOOD"
+    (lib_id "LED:LED")
+    (at 241.3 81.28 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "D5") (unit 1)))
+    (property "Value" "Green"
+      (at 246.38 81.28 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol "LED6_BAD"
+    (lib_id "LED:LED")
+    (at 241.3 88.9 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "D6") (unit 1)))
+    (property "Value" "Red"
+      (at 246.38 88.9 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; LED current limiting resistors
+  (symbol "R_LED1"
+    (lib_id "Device:R")
+    (at 233.68 45.72 90)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "R6") (unit 1)))
+    (property "Value" "1k"
+      (at 233.68 43.18 90)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol "R_LED2"
+    (lib_id "Device:R")
+    (at 233.68 53.34 90)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "R7") (unit 1)))
+    (property "Value" "1k"
+      (at 233.68 50.8 90)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol "R_LED3"
+    (lib_id "Device:R")
+    (at 233.68 60.96 90)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "R8") (unit 1)))
+    (property "Value" "1k"
+      (at 233.68 58.42 90)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol "R_LED4"
+    (lib_id "Device:R")
+    (at 233.68 68.58 90)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "R9") (unit 1)))
+    (property "Value" "1k"
+      (at 233.68 66.04 90)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol "R_LED5"
+    (lib_id "Device:R")
+    (at 233.68 81.28 90)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "R10") (unit 1)))
+    (property "Value" "330"
+      (at 233.68 78.74 90)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol "R_LED6"
+    (lib_id "Device:R")
+    (at 233.68 88.9 90)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "R11") (unit 1)))
+    (property "Value" "330"
+      (at 233.68 86.36 90)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; User button
+  (symbol "SW1_BTN"
+    (lib_id "Switch:SW_Push")
+    (at 241.3 114.3 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "SW1") (unit 1)))
+    (property "Value" "User"
+      (at 246.38 114.3 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; Pogo pin probes
+  (symbol "J_POGO_POS"
+    (lib_id "Connector:TestPoint")
+    (at 231.14 127 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "J1") (unit 1)))
+    (property "Value" "Pogo+"
+      (at 233.68 124.46 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol "J_POGO_NEG"
+    (lib_id "Connector:TestPoint")
+    (at 231.14 134.62 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "J2") (unit 1)))
+    (property "Value" "Pogo-"
+      (at 233.68 132.08 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; NTC temperature sensor
+  (symbol "R_NTC"
+    (lib_id "Sensor:NTC")
+    (at 215.9 127 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "TH1") (unit 1)))
+    (property "Value" "10k NTC"
+      (at 220.98 127 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+  ;; ============================================================
+  ;; Net labels
+  ;; ============================================================
+
+  (net_label "VDD"
+    (at 38.1 96.52 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "GND"
+    (at 38.1 172.72 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "VDDA"
+    (at 101.6 71.12 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "SPI1_NCS_ADC"
+    (at 116.84 60.96 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "SPI1_SCK"
+    (at 116.84 63.5 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "SPI1_MISO"
+    (at 116.84 66.04 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "SPI1_MOSI"
+    (at 116.84 68.58 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "DDS_SCLK"
+    (at 172.72 66.04 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "DDS_SDATA"
+    (at 172.72 68.58 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "DDS_FSYNC"
+    (at 172.72 71.12 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "DDS_RESET"
+    (at 172.72 73.66 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "USART1_TX"
+    (at 30.48 43.18 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "USART1_RX"
+    (at 30.48 45.72 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "AN_VCELL"
+    (at 116.84 76.2 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "AN_ISENSE"
+    (at 116.84 78.74 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "AN_VAC_HI"
+    (at 116.84 81.28 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "AN_VAC_LO"
+    (at 116.84 83.82 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "DCIR_GATE"
+    (at 116.84 86.36 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "ANALOG_EN"
+    (at 116.84 91.44 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "ADS_DRDY"
+    (at 116.84 93.98 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "OVP_FAULT"
+    (at 76.2 132.08 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "VDD_3V3"
+    (at 38.1 99.06 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "SUPERCAP_5V5"
+    (at 119.38 109.22 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "CELL_POS"
+    (at 223.52 127 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "CELL_NEG"
+    (at 223.52 134.62 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "DDS_OUT"
+    (at 195.58 71.12 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "V_AC_DIFF"
+    (at 210.82 73.66 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "I_SENSE"
+    (at 208.28 96.52 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "USB_DM"
+    (at 45.72 162.56 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "USB_DP"
+    (at 45.72 165.1 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "LED_STATUS1"
+    (at 226.06 45.72 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "LED_STATUS2"
+    (at 226.06 53.34 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "LED_STATUS3"
+    (at 226.06 60.96 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "LED_STATUS4"
+    (at 226.06 68.58 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "LED_GOOD"
+    (at 226.06 81.28 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "LED_BAD"
+    (at 226.06 88.9 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "BTN_USER"
+    (at 233.68 114.3 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  (net_label "TCXO_OUT"
+    (at 106.68 88.9 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  ;; ============================================================
+  ;; Power flags
+  ;; ============================================================
+
+  (symbol "PWR_FLAG_VDD"
+    (lib_id "power:PWR_FLAG")
+    (at 30.48 96.52 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "#PWR01") (unit 1)))
+  )
+
+  (symbol "PWR_FLAG_GND"
+    (lib_id "power:PWR_FLAG")
+    (at 30.48 172.72 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "#PWR02") (unit 1)))
+  )
+
+  (symbol "PWR_FLAG_VDDA"
+    (lib_id "power:PWR_FLAG")
+    (at 93.98 66.04 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "#PWR03") (unit 1)))
+  )
+
+  (symbol "GND_SYMBOL"
+    (lib_id "power:GND")
+    (at 38.1 172.72 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "#PWR04") (unit 1)))
+  )
+
+  (symbol "VDD_SYMBOL"
+    (lib_id "power:+3V3")
+    (at 38.1 96.52 0)
+    (unit 1)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (reference "#PWR05") (unit 1)))
+  )
+
+  ;; ============================================================
+  ;; Sheet instances
+  ;; ============================================================
+
+  (sheet (at 20 20) (size 260 180)
+    (instances (project "lithocore")
+      (path "/a1b2c3d4" (page "1")))
+    (property "Sheetname" "LithoCore Main"
+      (at 22 23 0)
+      (effects (font (size 2 2) bold)))
+    (property "Sheetfile" "device.kicad_sch"
+      (at 22 27 0)
+      (effects (font (size 1.27 1.27))))
+  )
+
+)

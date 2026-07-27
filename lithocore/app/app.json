@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "LithoCore",
+    "slug": "lithocore",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#1a1a2e"
+    },
+    "author": "jayis1",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jayis1.lithocore",
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "LithoCore needs Bluetooth to connect to the impedance spectrometer device.",
+        "NSBluetoothPeripheralUsageDescription": "LithoCore needs Bluetooth to connect to the impedance spectrometer device."
+      }
+    },
+    "android": {
+      "package": "com.jayis1.lithocore",
+      "permissions": [
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
+    },
+    "plugins": [
+      [
+        "react-native-ble-plx",
+        {
+          "isBackgroundEnabled": false
+        }
+      ]
+    ]
+  }
+}
