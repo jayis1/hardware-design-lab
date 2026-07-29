@@ -1,0 +1,37 @@
+{
+  "expo": {
+    "name": "ChloroMap",
+    "slug": "chlormap-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0b3d0b"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "ChloroMap uses Bluetooth to connect to the leaf spectrometer device.",
+        "NSLocationWhenInUseUsageDescription": "ChloroMap uses location to geotag field measurements."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0b3d0b"
+      },
+      "permissions": [
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.BLUETOOTH_CONNECT"
+      ]
+    },
+    "author": "jayis1",
+    "description": "Companion app for ChloroMap — handheld leaf chlorophyll & nitrogen mapping spectrometer"
+  }
+}

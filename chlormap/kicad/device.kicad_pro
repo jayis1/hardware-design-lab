@@ -1,0 +1,171 @@
+{
+  "board": {
+    "3dviewports": [],
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.15,
+        "copper_line_width": 0.15,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.15,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15
+      },
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
+      "rules": {
+        "min_clearance": 0.15,
+        "min_track_width": 0.12,
+        "min_via_diameter": 0.3,
+        "min_via_drill": 0.15,
+        "min_microvia_diameter": 0.2,
+        "min_microvia_drill": 0.1,
+        "min_hole_to_hole": 0.2,
+        "min_silk_clearance": 0.1
+      },
+      "track_widths": [0.0, 0.12, 0.15, 0.2, 0.25, 0.3, 0.5, 0.8],
+      "via_dimensions": [
+        {"diameter": 0.3, "drill": 0.15},
+        {"diameter": 0.4, "drill": 0.2},
+        {"diameter": 0.6, "drill": 0.3}
+      ]
+    },
+    "ipc2581": {
+      "dist": "",
+      "distpn": "",
+      "internal_id": "",
+      "mfg": "",
+      "mpn": ""
+    },
+    "layer_presets": [],
+    "viewports": []
+  },
+  "boards": [],
+  "cvpcb": {
+    "equivalence_files": []
+  },
+  "libraries": {
+    "pinned_footprints_libs": [],
+    "pinned_symbols_libs": []
+  },
+  "meta": {
+    "filename": "device.kicad_pro",
+    "version": 1
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.2,
+        "diff_pair_width": 0.15,
+        "line_style": 0,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "Default",
+        "pcb_color": "rgba(0, 0, 0, 1.000)",
+        "schematic_color": "rgba(0, 0, 0, 1.000)",
+        "track_width": 0.15,
+        "via_diameter": 0.3,
+        "via_drill": 0.15,
+        "wire_width": 6.0
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.2,
+        "diff_pair_width": 0.15,
+        "line_style": 0,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "Power",
+        "pcb_color": "rgba(255, 0, 0, 1.000)",
+        "schematic_color": "rgba(255, 0, 0, 1.000)",
+        "track_width": 0.3,
+        "via_diameter": 0.4,
+        "via_drill": 0.2,
+        "wire_width": 6.0
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.15,
+        "diff_pair_width": 0.12,
+        "line_style": 0,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "Analog",
+        "pcb_color": "rgba(0, 100, 200, 1.000)",
+        "schematic_color": "rgba(0, 100, 200, 1.000)",
+        "track_width": 0.2,
+        "via_diameter": 0.3,
+        "via_drill": 0.15,
+        "wire_width": 6.0
+      }
+    ],
+    "meta": {"version": 1},
+    "net_colors": null,
+    "netclass_assignments": {
+      "V3R3": "Power",
+      "VBAT": "Power",
+      "VBUS": "Power",
+      "VDD": "Power",
+      "VANA": "Analog",
+      "GND": "Power",
+      "VLED": "Power",
+      "PD_VIDEO": "Analog"
+    },
+    "netclass_patterns": []
+  },
+  "pcbnew": {
+    "last_paths": {
+      "gencad": "",
+      "gerbview": "gerbers/",
+      "pcbnew": "device.kicad_pcb",
+      "plot": "gerbers/"
+    },
+    "page_settings": {
+      "dxf_export_font_list": [],
+      "layout": "A4",
+      "layers": [
+        {"color": 0, "id": 0, "name": "F.Cu", "visible": true},
+        {"color": 0, "id": 31, "name": "B.Cu", "visible": true}
+      ]
+    }
+  },
+  "schematic": {
+    "drawing": {
+      "default_bus_thickness": 12,
+      "default_junction_size": 0.5,
+      "default_line_thickness": 6,
+      "default_text_size": 50,
+      "default_wire_thickness": 6,
+      "field_names": [],
+      "intersheets_ref_own_page": false,
+      "intersheets_ref_show": false,
+      "intersheets_ref_verbose": false,
+      "label_size": 50,
+      "pin_symbol_size": 25,
+      "pin_text_size": 50,
+      "connection_grid_size": 50,
+      "text_entry_ratio": 0.75
+    },
+    "page_settings": {
+      "layout": "A2",
+      "layers": []
+    },
+    "meta": {"version": 1},
+    "template": ""
+  },
+  "sheets": [
+    ["11111111-2222-3333-4444-555555555555", "Root"]
+  ],
+  "text_variables": {
+    "AUTHOR": "jayis1",
+    "COPYRIGHT": "2026 jayis1",
+    "LICENSE": "CERN-OHL-S v2"
+  }
+}
