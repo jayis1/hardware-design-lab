@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "Synthand",
+    "slug": "synthand",
+    "version": "1.0.0",
+    "author": "jayis1",
+    "description": "Companion app for Synthand EMG+IMU data glove",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "backgroundColor": "#1a1a2e"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jayis1.synthand",
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "Synthand needs Bluetooth to connect to the data glove.",
+        "NSBluetoothPeripheralUsageDescription": "Synthand needs Bluetooth to connect to the data glove."
+      }
+    },
+    "android": {
+      "package": "com.jayis1.synthand",
+      "permissions": [
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
+    },
+    "plugins": []
+  }
+}

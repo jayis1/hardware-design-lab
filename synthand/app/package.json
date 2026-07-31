@@ -1,0 +1,33 @@
+{
+  "name": "synthand-app",
+  "version": "1.0.0",
+  "author": "jayis1",
+  "license": "MIT",
+  "description": "Companion app for Synthand EMG+IMU data glove",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.72.6",
+    "react-native-ble-plx": "^3.0.0",
+    "react-native-svg": "^13.14.0",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/bottom-tabs": "^6.5.10",
+    "react-native-screens": "^3.27.0",
+    "react-native-safe-area-context": "^4.7.4",
+    "react-native-sqlite-storage": "^6.0.1",
+    "@react-native-async-storage/async-storage": "^1.19.6"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-native": "^0.72.5",
+    "typescript": "^5.2.0",
+    "@babel/core": "^7.23.0",
+    "metro-react-native-babel-preset": "^0.77.0"
+  }
+}
