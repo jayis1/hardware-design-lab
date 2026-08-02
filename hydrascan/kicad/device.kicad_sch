@@ -1,0 +1,392 @@
+(kicad_sch
+  (version 20240108)
+  (generator "kicad_sym")
+  (uuid "11111111-2222-3333-4444-555555555555")
+  (paper "A3")
+  (title_block
+    (title "HydraScan — Pocket Liquid Fingerprinting Instrument")
+    (date "2026-08-02")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "CERN-OHL-S v2 / GPL-3.0 / MIT")
+  )
+
+  ; ============================================================================
+  ;  HydraScan top-level schematic
+  ;  Author: jayis1 — Copyright (C) 2026 jayis1
+  ;  Block-level representation: MCU + EIS SoC + LED mux + photodiodes + OLED
+  ;  + BLE + USB-C + charger + QSPI flash + sensor electrodes + cuvette.
+  ; ============================================================================
+
+  ; ---- Sheet label -------------------------------------------------------------
+  (symbol "logo_jayis1"
+    (pin_numbers (sym_num nat))
+    (pin_names (offset 1.016) (hide yes))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "LOGO" (at 0 0 0))
+    (property "Value" "jayis1" (at 0 -2 0)))
+
+  ; ============================================================================
+  ;  U1 — STM32H733VG main MCU
+  ; ============================================================================
+  (symbol (lib_id "MCU_ST_STM32H7:STM32H733VGTx") (at 120 80 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U1" (at 120 80 0))
+    (property "Value" "STM32H733VGTx" (at 120 84 0))
+    (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 120 88 0))
+    (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h733vg.pdf")
+    (property "Author" "jayis1")
+    (pin "VBAT"  (uuid "10000000-0000-0000-0000-000000000001"))
+    (pin "VDD"   (uuid "10000000-0000-0000-0000-000000000002"))
+    (pin "NRST"  (uuid "10000000-0000-0000-0000-000000000003"))
+    (pin "PA0"   (uuid "10000000-0000-0000-0000-000000000004"))
+    (pin "PA1"   (uuid "10000000-0000-0000-0000-000000000005"))
+    (pin "PA2"   (uuid "10000000-0000-0000-0000-000000000006"))
+    (pin "PA3"   (uuid "10000000-0000-0000-0000-000000000007"))
+    (pin "PA4"   (uuid "10000000-0000-0000-0000-000000000008"))
+    (pin "PA5"   (uuid "10000000-0000-0000-0000-000000000009"))
+    (pin "PA7"   (uuid "10000000-0000-0000-0000-00000000000a"))
+    (pin "PA9"   (uuid "10000000-0000-0000-0000-00000000000b"))
+    (pin "PA11"  (uuid "10000000-0000-0000-0000-00000000000c"))
+    (pin "PA12"  (uuid "10000000-0000-0000-0000-00000000000d"))
+    (pin "PB0"   (uuid "10000000-0000-0000-0000-00000000000e"))
+    (pin "PB1"   (uuid "10000000-0000-0000-0000-00000000000f"))
+    (pin "PB2"   (uuid "10000000-0000-0000-0000-000000000010"))
+    (pin "PB3"   (uuid "10000000-0000-0000-0000-000000000011"))
+    (pin "PB4"   (uuid "10000000-0000-0000-0000-000000000012"))
+    (pin "PB5"   (uuid "10000000-0000-0000-0000-000000000013"))
+    (pin "PB6"   (uuid "10000000-0000-0000-0000-000000000014"))
+    (pin "PB8"   (uuid "10000000-0000-0000-0000-000000000015"))
+    (pin "PB9"   (uuid "10000000-0000-0000-0000-000000000016"))
+    (pin "PB10"  (uuid "10000000-0000-0000-0000-000000000017"))
+    (pin "PB12"  (uuid "10000000-0000-0000-0000-000000000018"))
+    (pin "PB13"  (uuid "10000000-0000-0000-0000-000000000019"))
+    (pin "PB14"  (uuid "10000000-0000-0000-0000-00000000001a"))
+    (pin "PB15"  (uuid "10000000-0000-0000-0000-00000000001b"))
+    (pin "PC0"   (uuid "10000000-0000-0000-0000-00000000001c"))
+    (pin "PC10"  (uuid "10000000-0000-0000-0000-00000000001d"))
+    (pin "PC12"  (uuid "10000000-0000-0000-0000-00000000001e"))
+    (pin "PC13"  (uuid "10000000-0000-0000-0000-00000000001f"))
+    (pin "PD11"  (uuid "10000000-0000-0000-0000-000000000020"))
+    (pin "PD12"  (uuid "10000000-0000-0000-0000-000000000021"))
+    (pin "PD13"  (uuid "10000000-0000-0000-0000-000000000022"))
+    (pin "PD14"  (uuid "10000000-0000-0000-0000-000000000023"))
+    (pin "PE3"   (uuid "10000000-0000-0000-0000-000000000024"))
+    (pin "PE4"   (uuid "10000000-0000-0000-0000-000000000025"))
+    (pin "PE5"   (uuid "10000000-0000-0000-0000-000000000026"))
+  )
+
+  ; ============================================================================
+  ;  U2 — AD5940BCCZ impedance-analyzer SoC
+  ; ============================================================================
+  (symbol (lib_id "Analog:AD5940") (at 200 80 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U2" (at 200 80 0))
+    (property "Value" "AD5940BCCZ" (at 200 84 0))
+    (property "Footprint" "Package_SO:SSOP-28_5.3x10.2mm_P0.65mm" (at 200 88 0))
+    (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/AD5940.pdf")
+    (property "Author" "jayis1")
+    (pin "CS"    (uuid "20000000-0000-0000-0000-000000000001"))
+    (pin "SCK"   (uuid "20000000-0000-0000-0000-000000000002"))
+    (pin "MOSI"  (uuid "20000000-0000-0000-0000-000000000003"))
+    (pin "MISO"  (uuid "20000000-0000-0000-0000-000000000004"))
+    (pin "IRQ"   (uuid "20000000-0000-0000-0000-000000000005"))
+    (pin "RST"   (uuid "20000000-0000-0000-0000-000000000006"))
+    (pin "RC0"   (uuid "20000000-0000-0000-0000-000000000007"))
+    (pin "RC1"   (uuid "20000000-0000-0000-0000-000000000008"))
+    (pin "SE0"   (uuid "20000000-0000-0000-0000-000000000009"))
+    (pin "SE1"   (uuid "20000000-0000-0000-0000-00000000000a"))
+    (pin "RE0"   (uuid "20000000-0000-0000-0000-00000000000b"))
+    (pin "RE1"   (uuid "20000000-0000-0000-0000-00000000000c"))
+    (pin "AVDD"  (uuid "20000000-0000-0000-0000-00000000000d"))
+    (pin "DGND"  (uuid "20000000-0000-0000-0000-00000000000e"))
+  )
+
+  ; ============================================================================
+  ;  U3 — OPT101 sample photodiode + transimpedance amplifier
+  ; ============================================================================
+  (symbol (lib_id "Sensor_Optical:OPT101") (at 200 140 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U3" (at 200 140 0))
+    (property "Value" "OPT101" (at 200 144 0))
+    (property "Footprint" "Package_DIP:DIP-8_W7.62mm" (at 200 148 0))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/opt101.pdf")
+    (property "Author" "jayis1")
+    (pin "V+"  (uuid "30000000-0000-0000-0000-000000000001"))
+    (pin "VOUT"(uuid "30000000-0000-0000-0000-000000000002"))
+    (pin "GND" (uuid "30000000-0000-0000-0000-000000000003"))
+  )
+
+  ; ============================================================================
+  ;  U4 — OPT101 reference photodiode (beamsplitter tap)
+  ; ============================================================================
+  (symbol (lib_id "Sensor_Optical:OPT101") (at 200 165 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U4" (at 200 165 0))
+    (property "Value" "OPT101" (at 200 169 0))
+    (property "Footprint" "Package_DIP:DIP-8_W7.62mm" (at 200 173 0))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/opt101.pdf")
+    (property "Author" "jayis1")
+    (pin "V+"  (uuid "40000000-0000-0000-0000-000000000001"))
+    (pin "VOUT"(uuid "40000000-0000-0000-0000-000000000002"))
+    (pin "GND" (uuid "40000000-0000-0000-0000-000000000003"))
+  )
+
+  ; ============================================================================
+  ;  U5 — 74HC595 LED select shift register
+  ; ============================================================================
+  (symbol (lib_id "74xx:74HC595") (at 60 140 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U5" (at 60 140 0))
+    (property "Value" "74HC595" (at 60 144 0))
+    (property "Footprint" "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" (at 60 148 0))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74hc595.pdf")
+    (pin "SER"  (uuid "50000000-0000-0000-0000-000000000001"))
+    (pin "SRCLK"(uuid "50000000-0000-0000-0000-000000000002"))
+    (pin "RCLK" (uuid "50000000-0000-0000-0000-000000000003"))
+    (pin "SRCLR"(uuid "50000000-0000-0000-0000-000000000004"))
+    (pin "OE_N" (uuid "50000000-0000-0000-0000-000000000005"))
+    (pin "Q0"   (uuid "50000000-0000-0000-0000-000000000006"))
+    (pin "Q1"   (uuid "50000000-0000-0000-0000-000000000007"))
+    (pin "Q2"   (uuid "50000000-0000-0000-0000-000000000008"))
+    (pin "Q3"   (uuid "50000000-0000-0000-0000-000000000009"))
+    (pin "Q4"   (uuid "50000000-0000-0000-0000-00000000000a"))
+    (pin "Q5"   (uuid "50000000-0000-0000-0000-00000000000b"))
+    (pin "Q6"   (uuid "50000000-0000-0000-0000-00000000000c"))
+    (pin "Q7"   (uuid "50000000-0000-0000-0000-00000000000d"))
+  )
+
+  ; ============================================================================
+  ;  U6 — AL8805 constant-current LED driver (one per anode rail)
+  ; ============================================================================
+  (symbol (lib_id "Driver_LED:AL8805") (at 60 175 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U6" (at 60 175 0))
+    (property "Value" "AL8805" (at 60 179 0))
+    (property "Footprint" "Package_SO:MSOP-8_3x3mm_P0.65mm" (at 60 183 0))
+    (property "Datasheet" "https://www.diodes.com/assets/Datasheets/AL8805.pdf")
+    (pin "VIN" (uuid "60000000-0000-0000-0000-000000000001"))
+    (pin "SET" (uuid "60000000-0000-0000-0000-000000000002"))
+    (pin "SW"  (uuid "60000000-0000-0000-0000-000000000003"))
+    (pin "GND" (uuid "60000000-0000-0000-0000-000000000004"))
+  )
+
+  ; ============================================================================
+  ;  U7 — TMP117 temperature sensor
+  ; ============================================================================
+  (symbol (lib_id "Sensor_Temperature:TMP117") (at 250 60 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U7" (at 250 60 0))
+    (property "Value" "TMP117" (at 250 64 0))
+    (property "Footprint" "Package_SON:SON-6_1.5x1.5mm_P0.5mm" (at 250 68 0))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tmp117.pdf")
+    (property "Author" "jayis1")
+    (pin "SDA" (uuid "70000000-0000-0000-0000-000000000001"))
+    (pin "SCL" (uuid "70000000-0000-0000-0000-000000000002"))
+    (pin "V+"  (uuid "70000000-0000-0000-0000-000000000003"))
+    (pin "GND" (uuid "70000000-0000-0000-0000-000000000004"))
+  )
+
+  ; ============================================================================
+  ;  U8 — BQ25895 USB-C charger + power-path manager
+  ; ============================================================================
+  (symbol (lib_id "Power_Management:BQ25895") (at 250 110 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U8" (at 250 110 0))
+    (property "Value" "BQ25895" (at 250 114 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.7x2.7mm" (at 250 118 0))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq25895.pdf")
+    (property "Author" "jayis1")
+    (pin "VBUS" (uuid "80000000-0000-0000-0000-000000000001"))
+    (pin "SYS"  (uuid "80000000-0000-0000-0000-000000000002"))
+    (pin "BAT"  (uuid "80000000-0000-0000-0000-000000000003"))
+    (pin "SDA"  (uuid "80000000-0000-0000-0000-000000000004"))
+    (pin "SCL"  (uuid "80000000-0000-0000-0000-000000000005"))
+    (pin "INT"  (uuid "80000000-0000-0000-0000-000000000006"))
+    (pin "OTG"  (uuid "80000000-0000-0000-0000-000000000007"))
+  )
+
+  ; ============================================================================
+  ;  U9 — ANNA-B112 BLE 5.2 module
+  ; ============================================================================
+  (symbol (lib_id "RF_Module:ANNA-B112") (at 320 80 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U9" (at 320 80 0))
+    (property "Value" "ANNA-B112" (at 320 84 0))
+    (property "Footprint" "RF_Module:ANNA-B112" (at 320 88 0))
+    (property "Datasheet" "https://www.u-blox.com/docs/UBX-18045431")
+    (property "Author" "jayis1")
+    (pin "TX"  (uuid "90000000-0000-0000-0000-000000000001"))
+    (pin "RX"  (uuid "90000000-0000-0000-0000-000000000002"))
+    (pin "CTS" (uuid "90000000-0000-0000-0000-000000000003"))
+    (pin "RTS" (uuid "90000000-0000-0000-0000-000000000004"))
+    (pin "EN"  (uuid "90000000-0000-0000-0000-000000000005"))
+    (pin "VCC" (uuid "90000000-0000-0000-0000-000000000006"))
+  )
+
+  ; ============================================================================
+  ;  U10 — W25Q64JV QSPI flash (library + log storage)
+  ; ============================================================================
+  (symbol (lib_id "Memory_Flash:W25Q64JVxxIQ") (at 320 140 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U10" (at 320 140 0))
+    (property "Value" "W25Q64JVxxIQ" (at 320 144 0))
+    (property "Footprint" "Package_SO:SOIC-8_5.27x5.27mm_P1.27mm" (at 320 148 0))
+    (property "Datasheet" "https://www.winbond.com/resource-files/w25q64jv%20revh%2005182017.pdf")
+    (property "Author" "jayis1")
+    (pin "CS"  (uuid "a0000000-0000-0000-0000-000000000001"))
+    (pin "CLK" (uuid "a0000000-0000-0000-0000-000000000002"))
+    (pin "IO0" (uuid "a0000000-0000-0000-0000-000000000003"))
+    (pin "IO1" (uuid "a0000000-0000-0000-0000-000000000004"))
+    (pin "IO2" (uuid "a0000000-0000-0000-0000-000000000005"))
+    (pin "IO3" (uuid "a0000000-0000-0000-0000-000000000006"))
+    (pin "VCC" (uuid "a0000000-0000-0000-0000-000000000007"))
+    (pin "GND" (uuid "a0000000-0000-0000-0000-000000000008"))
+  )
+
+  ; ============================================================================
+  ;  DISP1 — 0.96" SSD1306 OLED (128×64, SPI)
+  ; ============================================================================
+  (symbol (lib_id "Display:SSD1306") (at 120 175 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "DISP1" (at 120 175 0))
+    (property "Value" "SSD1306_128x64" (at 120 179 0))
+    (property "Footprint" "Display:SSD1306_0.96in_SPI" (at 120 183 0))
+    (pin "VCC" (uuid "b0000000-0000-0000-0000-000000000001"))
+    (pin "GND" (uuid "b0000000-0000-0000-0000-000000000002"))
+    (pin "SCK" (uuid "b0000000-0000-0000-0000-000000000003"))
+    (pin "MOSI"(uuid "b0000000-0000-0000-0000-000000000004"))
+    (pin "DC"  (uuid "b0000000-0000-0000-0000-000000000005"))
+    (pin "CS"  (uuid "b0000000-0000-0000-0000-000000000006"))
+    (pin "RST" (uuid "b0000000-0000-0000-0000-000000000007"))
+  )
+
+  ; ============================================================================
+  ;  J1 — USB-C 2.0 receptacle
+  ; ============================================================================
+  (symbol (lib_id "Connector:USB_C_Receptacle_USB2.0") (at 30 60 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J1" (at 30 60 0))
+    (property "Value" "USB-C" (at 30 64 0))
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12" (at 30 68 0))
+    (pin "VBUS" (uuid "c0000000-0000-0000-0000-000000000001"))
+    (pin "D+"   (uuid "c0000000-0000-0000-0000-000000000002"))
+    (pin "D-"   (uuid "c0000000-0000-0000-0000-000000000003"))
+    (pin "GND"  (uuid "c0000000-0000-0000-0000-000000000004"))
+    (pin "CC1"  (uuid "c0000000-0000-0000-0000-000000000005"))
+    (pin "CC2"  (uuid "c0000000-0000-0000-0000-000000000006"))
+  )
+
+  ; ============================================================================
+  ;  D1..D8 — 8-wavelength LED stack
+  ; ============================================================================
+  (symbol (lib_id "Device:LED") (at 90 200 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D1" (at 90 200 0))
+    (property "Value" "LED_255nm_UVC" (at 90 204 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 90 208 0))
+    (pin "A" (uuid "d0000000-0000-0000-0000-000000000001"))
+    (pin "K" (uuid "d0000000-0000-0000-0000-000000000002"))
+  )
+  (symbol (lib_id "Device:LED") (at 90 215 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D2" (at 90 215 0))
+    (property "Value" "LED_280nm_UVC" (at 90 219 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 90 223 0))
+  )
+  (symbol (lib_id "Device:LED") (at 90 230 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D3" (at 90 230 0))
+    (property "Value" "LED_365nm_UVA" (at 90 234 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 90 238 0))
+  )
+  (symbol (lib_id "Device:LED") (at 90 245 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D4" (at 90 245 0))
+    (property "Value" "LED_470nm_BLUE" (at 90 249 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 90 253 0))
+  )
+  (symbol (lib_id "Device:LED") (at 105 200 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D5" (at 105 200 0))
+    (property "Value" "LED_590nm_AMBER" (at 105 204 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 105 208 0))
+  )
+  (symbol (lib_id "Device:LED") (at 105 215 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D6" (at 105 215 0))
+    (property "Value" "LED_660nm_RED" (at 105 219 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 105 223 0))
+  )
+  (symbol (lib_id "Device:LED") (at 105 230 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D7" (at 105 230 0))
+    (property "Value" "LED_850nm_NIR" (at 105 234 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 105 238 0))
+  )
+  (symbol (lib_id "Device:LED") (at 105 245 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D8" (at 105 245 0))
+    (property "Value" "LED_940nm_NIR" (at 105 249 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 105 253 0))
+  )
+
+  ; ============================================================================
+  ;  BT1 — Li-Po battery 600 mAh
+  ; ============================================================================
+  (symbol (lib_id "Device:Battery_Cell") (at 30 175 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "BT1" (at 30 175 0))
+    (property "Value" "LiPo_600mAh_3.7V" (at 30 179 0))
+    (property "Footprint" "Battery:BatteryHolder_Keystone_1042_18650" (at 30 183 0))
+    (pin "+" (uuid "e0000000-0000-0000-0000-000000000001"))
+    (pin "-" (uuid "e0000000-0000-0000-0000-000000000002"))
+  )
+
+  ; ============================================================================
+  ;  E1 — interdigitated 4-wire stainless-steel electrode (off-board)
+  ; ============================================================================
+  (symbol (lib_id "Connector:Conn_01x04_Pin") (at 200 200 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "E1" (at 200 200 0))
+    (property "Value" "IDE_4wire_316L" (at 200 204 0))
+    (property "Footprint" "Connector_PinHeader_1.27mm:PinHeader_1x04_P1.27mm_Vertical" (at 200 208 0))
+    (property "Author" "jayis1")
+    (pin "RC0" (uuid "f0000000-0000-0000-0000-000000000001"))
+    (pin "RC1" (uuid "f0000000-0000-0000-0000-000000000002"))
+    (pin "SE0" (uuid "f0000000-0000-0000-0000-000000000003"))
+    (pin "SE1" (uuid "f0000000-0000-0000-0000-000000000004"))
+  )
+
+  ; ============================================================================
+  ;  Power nets & labels
+  ; ============================================================================
+  (net "VCC"     (uuid "11111111-0000-0000-0000-000000000001"))
+  (net "GND"     (uuid "11111111-0000-0000-0000-000000000002"))
+  (net "VSYS"    (uuid "11111111-0000-0000-0000-000000000003"))
+  (net "VBAT"    (uuid "11111111-0000-0000-0000-000000000004"))
+  (net "VDD_LED" (uuid "11111111-0000-0000-0000-000000000005"))
+  (net "VBUS"    (uuid "11111111-0000-0000-0000-000000000006"))
+
+  ; ---- Net connections (wires) -------------------------------------
+  (wire (pts (xy 30 60) (xy 30 110)) (uuid "w-1"))
+  (wire (pts (xy 30 175) (xy 30 200)) (uuid "w-2"))
+  (wire (pts (xy 120 80) (xy 200 80)) (uuid "w-3"))   ; SPI2 to AD5940
+  (wire (pts (xy 120 140) (xy 200 140)) (uuid "w-4")) ; photodiode sample
+  (wire (pts (xy 200 80) (xy 320 80)) (uuid "w-5"))  ; UART4 to BLE
+  (wire (pts (xy 60 140) (xy 120 140)) (uuid "w-6"))  ; 74HC595 to MCU
+  (wire (pts (xy 200 110) (xy 250 110)) (uuid "w-7")) ; charger
+
+  ; ---- Power port symbols -------------------------------------------
+  (symbol (lib_id "power:GND") (at 30 210 0)
+    (in_bom yes) (on_board yes) (property "Reference" "#PWR01" (at 30 210 0)))
+  (symbol (lib_id "power:+3V3") (at 30 50 0)
+    (in_bom yes) (on_board yes) (property "Reference" "#PWR02" (at 30 50 0)))
+  (symbol (lib_id "power:+5V") (at 250 90 0)
+    (in_bom yes) (on_board yes) (property "Reference" "#PWR03" (at 250 90 0)))
+
+  (sheet_instances
+    (path "/" (page "1")))
+)

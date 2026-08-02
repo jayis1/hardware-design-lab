@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "HydraScan",
+    "slug": "hydrascan",
+    "version": "1.0.0",
+    "author": "jayis1",
+    "description": "Companion app for the HydraScan pocket liquid fingerprinting instrument.",
+    "privacy": "public",
+    "platforms": ["ios", "android"],
+    "sdkVersion": "50.0.0",
+    "ios": { "bundleIdentifier": "com.jayis1.hydrascan" },
+    "android": { "package": "com.jayis1.hydrascan" },
+    "dependencies": ["react-native-ble-plx", "react-navigation", "@react-navigation/native"]
+  }
+}
