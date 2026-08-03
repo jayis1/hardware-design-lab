@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "Inkwell",
+    "description": "Companion app for the Inkwell smart fountain pen — capture handwriting on any paper.",
+    "slug": "inkwell",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "backgroundColor": "#1a1a2e"
+    },
+    "author": "jayis1",
+    "license": "MIT",
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.jayis1.inkwell" },
+    "android": { "package": "com.jayis1.inkwell", "permissions": [
+      "android.permission.BLUETOOTH",
+      "android.permission.BLUETOOTH_ADMIN",
+      "android.permission.BLUETOOTH_SCAN",
+      "android.permission.BLUETOOTH_CONNECT",
+      "android.permission.ACCESS_FINE_LOCATION"
+    ] },
+    "plugins": [],
+    "info": { "author": "jayis1", "copyright": "© 2026 jayis1" }
+  }
+}

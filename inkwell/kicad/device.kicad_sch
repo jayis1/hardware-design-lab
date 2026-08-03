@@ -1,0 +1,447 @@
+(kicad_sch
+  (version 20240108)
+  (generator "kicad_sym")
+  (uuid "2b8e1a00-0001-4000-8000-000000000001")
+  (paper "A3")
+  (title_block
+    (title "Inkwell — Open-Source Smart Fountain Pen")
+    (date "2026-08-03")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1 — Copyright (C) 2026 jayis1")
+    (comment 2 "CERN-OHL-S v2 / GPL-3.0 / MIT")
+    (comment 3 "MCU + 9-axis IMU + nib pressure + optical flow + BLE + USB-C")
+  )
+
+  ; ============================================================================
+  ;  Inkwell top-level schematic
+  ;  Author: jayis1 — Copyright (C) 2026 jayis1
+  ;  4-layer rigid-flex pen PCB. Rigid section behind the grip carries the
+  ;  nRF52833, BMI270, BMM150, W25Q64 flash, MAX17048, MCP73831. A flex tail
+  ;  runs forward to the nib head PCB with the HX711 + strain gauge and the
+  ;  PMW3360 optical flow.
+  ; ============================================================================
+
+  (symbol "logo_jayis1"
+    (pin_numbers (sym_num nat))
+    (pin_names (offset 1.016) (hide yes))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "LOGO" (at 0 0 0))
+    (property "Value" "jayis1" (at 0 -2 0)))
+
+  ; ============================================================================
+  ;  U1 — nRF52833 QFAA main MCU + BLE radio
+  ; ============================================================================
+  (symbol (lib_id "MCU_Nordic:nRF52833-QFAA") (at 120 80 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U1" (at 120 80 0))
+    (property "Value" "nRF52833-QFAA" (at 120 84 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm_EP4.6x4.6mm" (at 120 88 0))
+    (property "Datasheet" "https://www.nordicsemi.com/Products/nRF52833" (at 120 90 0))
+    (property "Author" "jayis1")
+    (pin "VDD"      (uuid "21000000-0000-0000-0000-000000000001"))
+    (pin "VDDH"     (uuid "21000000-0000-0000-0000-000000000002"))
+    (pin "VSS"      (uuid "21000000-0000-0000-0000-000000000003"))
+    (pin "DEC1"     (uuid "21000000-0000-0000-0000-000000000004"))
+    (pin "DEC2"     (uuid "21000000-0000-0000-0000-000000000005"))
+    (pin "DEC3"     (uuid "21000000-0000-0000-0000-000000000006"))
+    (pin "P0.00/XL1" (uuid "21000000-0000-0000-0000-000000000007"))
+    (pin "P0.01/XL2" (uuid "21000000-0000-0000-0000-000000000008"))
+    (pin "P0.02/AIN0" (uuid "21000000-0000-0000-0000-000000000009"))
+    (pin "P0.03/AIN1" (uuid "21000000-0000-0000-0000-00000000000a"))
+    (pin "P0.04"    (uuid "21000000-0000-0000-0000-00000000000b"))
+    (pin "P0.05"    (uuid "21000000-0000-0000-0000-00000000000c"))
+    (pin "P0.06"    (uuid "21000000-0000-0000-0000-00000000000d"))
+    (pin "P0.07"    (uuid "21000000-0000-0000-0000-00000000000e"))
+    (pin "P0.08"    (uuid "21000000-0000-0000-0000-00000000000f"))
+    (pin "P0.09/NFC1" (uuid "21000000-0000-0000-0000-000000000010"))
+    (pin "P0.10/NFC2" (uuid "21000000-0000-0000-0000-000000000011"))
+    (pin "P0.11"    (uuid "21000000-0000-0000-0000-000000000012"))
+    (pin "P0.12"    (uuid "21000000-0000-0000-0000-000000000013"))
+    (pin "P0.13"    (uuid "21000000-0000-0000-0000-000000000014"))
+    (pin "P0.14"    (uuid "21000000-0000-0000-0000-000000000015"))
+    (pin "P0.15"    (uuid "21000000-0000-0000-0000-000000000016"))
+    (pin "P0.16"    (uuid "21000000-0000-0000-0000-000000000017"))
+    (pin "P0.17"    (uuid "21000000-0000-0000-0000-000000000018"))
+    (pin "P0.18"    (uuid "21000000-0000-0000-0000-000000000019"))
+    (pin "P0.19"    (uuid "21000000-0000-0000-0000-00000000001a"))
+    (pin "P0.20"    (uuid "21000000-0000-0000-0000-00000000001b"))
+    (pin "P0.21"    (uuid "21000000-0000-0000-0000-00000000001c"))
+    (pin "P0.22"    (uuid "21000000-0000-0000-0000-00000000001d"))
+    (pin "P0.23"    (uuid "21000000-0000-0000-0000-00000000001e"))
+    (pin "P0.24"    (uuid "21000000-0000-0000-0000-00000000001f"))
+    (pin "P0.25"    (uuid "21000000-0000-0000-0000-000000000020"))
+    (pin "P0.26/SCL" (uuid "21000000-0000-0000-0000-000000000021"))
+    (pin "P0.27/SDA" (uuid "21000000-0000-0000-0000-000000000022"))
+    (pin "P0.28"    (uuid "21000000-0000-0000-0000-000000000023"))
+    (pin "P0.29"    (uuid "21000000-0000-0000-0000-000000000024"))
+    (pin "P0.30"    (uuid "21000000-0000-0000-0000-000000000025"))
+    (pin "P0.31"    (uuid "21000000-0000-0000-0000-000000000026"))
+    (pin "P1.00"    (uuid "21000000-0000-0000-0000-000000000027"))
+    (pin "P1.01"    (uuid "21000000-0000-0000-0000-000000000028"))
+    (pin "P1.02/D-" (uuid "21000000-0000-0000-0000-000000000029"))
+    (pin "P1.03/D+" (uuid "21000000-0000-0000-0000-00000000002a"))
+    (pin "P1.04"    (uuid "21000000-0000-0000-0000-00000000002b"))
+    (pin "P1.05"    (uuid "21000000-0000-0000-0000-00000000002c"))
+    (pin "P1.06"    (uuid "21000000-0000-0000-0000-00000000002d"))
+    (pin "ANT"      (uuid "21000000-0000-0000-0000-00000000002e"))
+    (pin "XC1"      (uuid "21000000-0000-0000-0000-00000000002f"))
+    (pin "XC2"      (uuid "21000000-0000-0000-0000-000000000030")))
+
+  ; ============================================================================
+  ;  U2 — BMI270 accelerometer + gyroscope (SPI0)
+  ; ============================================================================
+  (symbol (lib_id "Sensor_Motion:BMI270") (at 220 60 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U2" (at 220 60 0))
+    (property "Value" "BMI270" (at 220 64 0))
+    (property "Footprint" "Package_LGA:LGA-14_2.5x3mm_P0.5mm" (at 220 68 0))
+    (property "Datasheet" "https://www.bosch-sensortec.com/products/motion-sensors/bmi270/" (at 220 70 0))
+    (property "Author" "jayis1")
+    (pin "VDD"   (uuid "22000000-0000-0000-0000-000000000001"))
+    (pin "VDDIO" (uuid "22000000-0000-0000-0000-000000000002"))
+    (pin "GND"   (uuid "22000000-0000-0000-0000-000000000003"))
+    (pin "SCL/SCLK" (uuid "22000000-0000-0000-0000-000000000004"))
+    (pin "SDA/SDI"  (uuid "22000000-0000-0000-0000-000000000005"))
+    (pin "SDO"      (uuid "22000000-0000-0000-0000-000000000006"))
+    (pin "CSB"      (uuid "22000000-0000-0000-0000-000000000007"))
+    (pin "INT1"     (uuid "22000000-0000-0000-0000-000000000008"))
+    (pin "INT2"     (uuid "22000000-0000-0000-0000-000000000009")))
+
+  ; ============================================================================
+  ;  U3 — BMM150 magnetometer (SPI0 shared)
+  ; ============================================================================
+  (symbol (lib_id "Sensor_Magnetic:BMM150") (at 220 100 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U3" (at 220 100 0))
+    (property "Value" "BMM150" (at 220 104 0))
+    (property "Footprint" "Package_LGA:LGA-12_2x2mm_P0.5mm" (at 220 108 0))
+    (property "Datasheet" "https://www.bosch-sensortec.com/products/motion-sensors/bmm150/" (at 220 110 0))
+    (property "Author" "jayis1")
+    (pin "VDD"   (uuid "23000000-0000-0000-0000-000000000001"))
+    (pin "GND"   (uuid "23000000-0000-0000-0000-000000000002"))
+    (pin "CSB"   (uuid "23000000-0000-0000-0000-000000000003"))
+    (pin "SDI"   (uuid "23000000-0000-0000-0000-000000000004"))
+    (pin "SCK"   (uuid "23000000-0000-0000-0000-000000000005"))
+    (pin "SDO"   (uuid "23000000-0000-0000-0000-000000000006"))
+    (pin "INT"   (uuid "23000000-0000-0000-0000-000000000007")))
+
+  ; ============================================================================
+  ;  U4 — PMW3360 optical flow (SPI1)
+  ; ============================================================================
+  (symbol (lib_id "Sensor_Optical:PMW3360") (at 300 80 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U4" (at 300 80 0))
+    (property "Value" "PMW3360" (at 300 84 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" (at 300 88 0))
+    (property "Datasheet" "https://www.pixart.com/products-detail/49/PMW3360DM-T2QU" (at 300 90 0))
+    (property "Author" "jayis1")
+    (pin "VDD"   (uuid "24000000-0000-0000-0000-000000000001"))
+    (pin "GND"   (uuid "24000000-0000-0000-0000-000000000002"))
+    (pin "SCLK"  (uuid "24000000-0000-0000-0000-000000000003"))
+    (pin "MOSI"  (uuid "24000000-0000-0000-0000-000000000004"))
+    (pin "MISO"  (uuid "24000000-0000-0000-0000-000000000005"))
+    (pin "NCS"   (uuid "24000000-0000-0000-0000-000000000006"))
+    (pin "MOTION" (uuid "24000000-0000-0000-0000-000000000007"))
+    (pin "LED_A" (uuid "24000000-0000-0000-0000-000000000008"))
+    (pin "LED_K" (uuid "24000000-0000-0000-0000-000000000009")))
+
+  ; ============================================================================
+  ;  U5 — W25Q64JVSIQ 8 MB SPI NOR flash (SPI2)
+  ; ============================================================================
+  (symbol (lib_id "Memory_Flash:W25Q64JVxSI") (at 380 60 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U5" (at 380 60 0))
+    (property "Value" "W25Q64JVSIQ" (at 380 64 0))
+    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 380 68 0))
+    (property "Datasheet" "https://www.winbond.com/resource-files/w25q64jv%20revj%2003272018%20plus.pdf" (at 380 70 0))
+    (property "Author" "jayis1")
+    (pin "CS#"   (uuid "25000000-0000-0000-0000-000000000001"))
+    (pin "DO"    (uuid "25000000-0000-0000-0000-000000000002"))
+    (pin "WP#"   (uuid "25000000-0000-0000-0000-000000000003"))
+    (pin "GND"   (uuid "25000000-0000-0000-0000-000000000004"))
+    (pin "DI"    (uuid "25000000-0000-0000-0000-000000000005"))
+    (pin "CLK"   (uuid "25000000-0000-0000-0000-000000000006"))
+    (pin "HOLD#" (uuid "25000000-0000-0000-0000-000000000007"))
+    (pin "VCC"   (uuid "25000000-0000-0000-0000-000000000008")))
+
+  ; ============================================================================
+  ;  U6 — HX711 24-bit strain-gauge ADC (on the nib head PCB)
+  ; ============================================================================
+  (symbol (lib_id "Sensor:HX711") (at 300 140 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U6" (at 300 140 0))
+    (property "Value" "HX711" (at 300 144 0))
+    (property "Footprint" "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" (at 300 148 0))
+    (property "Datasheet" "https://en.wikipedia.org/wiki/HX711" (at 300 150 0))
+    (property "Author" "jayis1")
+    (pin "VSUP"   (uuid "26000000-0000-0000-0000-000000000001"))
+    (pin "BASE"   (uuid "26000000-0000-0000-0000-000000000002"))
+    (pin "AVDD"   (uuid "26000000-0000-0000-0000-000000000003"))
+    (pin "DOUT"   (uuid "26000000-0000-0000-0000-000000000004"))
+    (pin "PD_SCK" (uuid "26000000-0000-0000-0000-000000000005"))
+    (pin "XIN"    (uuid "26000000-0000-0000-0000-000000000006"))
+    (pin "AGND"   (uuid "26000000-0000-0000-0000-000000000007"))
+    (pin "RATE"   (uuid "26000000-0000-0000-0000-000000000008"))
+    (pin "VFB"    (uuid "26000000-0000-0000-0000-000000000009"))
+    (pin "VDD"    (uuid "26000000-0000-0000-0000-00000000000a")))
+
+  ; ============================================================================
+  ;  U7 — MAX17048 fuel gauge (I²C / TWI0)
+  ; ============================================================================
+  (symbol (lib_id "Sensor_Voltage:MAX17048") (at 460 100 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U7" (at 460 100 0))
+    (property "Value" "MAX17048" (at 460 104 0))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-8" (at 460 108 0))
+    (property "Datasheet" "https://www.analog.com/en/products/max17048.html" (at 460 110 0))
+    (property "Author" "jayis1")
+    (pin "VDD"  (uuid "27000000-0000-0000-0000-000000000001"))
+    (pin "GND"  (uuid "27000000-0000-0000-0000-000000000002"))
+    (pin "SCL"  (uuid "27000000-0000-0000-0000-000000000003"))
+    (pin "SDA"  (uuid "27000000-0000-0000-0000-000000000004"))
+    (pin "ALRT" (uuid "27000000-0000-0000-0000-000000000005"))
+    (pin "CELLP" (uuid "27000000-0000-0000-0000-000000000006"))
+    (pin "CELLN" (uuid "27000000-0000-0000-0000-000000000007")))
+
+  ; ============================================================================
+  ;  U8 — MCP73831 LiPo charger (USB-C VBUS)
+  ; ============================================================================
+  (symbol (lib_id "Battery_Management:MCP73831-2ACI") (at 460 60 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U8" (at 460 60 0))
+    (property "Value" "MCP73831T-2ACI" (at 460 64 0))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 460 68 0))
+    (property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/MCP73831-Family-Data-Sheet-20002084H.pdf" (at 460 70 0))
+    (property "Author" "jayis1")
+    (pin "VDD"  (uuid "28000000-0000-0000-0000-000000000001"))
+    (pin "STAT" (uuid "28000000-0000-0000-0000-000000000002"))
+    (pin "VBAT" (uuid "28000000-0000-0000-0000-000000000003"))
+    (pin "PROG" (uuid "28000000-0000-0000-0000-000000000004"))
+    (pin "VSS"  (uuid "28000000-0000-0000-0000-000000000005")))
+
+  ; ============================================================================
+  ;  U9 — TPS7A4001 1.8 V LDO for IMU rails
+  ; ============================================================================
+  (symbol (lib_id "Regulator_Linear:TPS7A4001") (at 380 100 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U9" (at 380 100 0))
+    (property "Value" "TPS7A4001" (at 380 104 0))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 380 108 0))
+    (property "Datasheet" "https://www.ti.com/product/TPS7A4001" (at 380 110 0))
+    (property "Author" "jayis1")
+    (pin "IN"   (uuid "29000000-0000-0000-0000-000000000001"))
+    (pin "OUT"  (uuid "29000000-0000-0000-0000-000000000002"))
+    (pin "GND"  (uuid "29000000-0000-0000-0000-000000000003"))
+    (pin "EN"   (uuid "29000000-0000-0000-0000-000000000004"))
+    (pin "NR/FB" (uuid "29000000-0000-0000-0000-000000000005")))
+
+  ; ============================================================================
+  ;  J1 — USB-C 2.0 receptacle (charge + CDC + DFU)
+  ; ============================================================================
+  (symbol (lib_id "Connector:USB_C_Receptacle_USB2.0") (at 540 60 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J1" (at 540 60 0))
+    (property "Value" "USB-C 2.0" (at 540 64 0))
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12" (at 540 68 0))
+    (property "Datasheet" "https://www.usb.org/documents?search=usb+c" (at 540 70 0))
+    (property "Author" "jayis1")
+    (pin "VBUS" (uuid "2A000000-0000-0000-0000-000000000001"))
+    (pin "CC1"  (uuid "2A000000-0000-0000-0000-000000000002"))
+    (pin "CC2"  (uuid "2A000000-0000-0000-0000-000000000003"))
+    (pin "D+"   (uuid "2A000000-0000-0000-0000-000000000004"))
+    (pin "D-"   (uuid "2A000000-0000-0000-0000-000000000005"))
+    (pin "GND"  (uuid "2A000000-0000-0000-0000-000000000006"))
+    (pin "SHEILD" (uuid "2A000000-0000-0000-0000-000000000007")))
+
+  ; ============================================================================
+  ;  SG1 — 350 Ω full-bridge strain gauge on the nib feed
+  ; ============================================================================
+  (symbol (lib_id "Sensor:Strain_Gauge_350ohm") (at 300 180 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "SG1" (at 300 180 0))
+    (property "Value" "350Ω Full Bridge" (at 300 184 0))
+    (property "Footprint" "Sensor:StrainGauge_5mm" (at 300 188 0))
+    (property "Author" "jayis1")
+    (pin "E+" (uuid "2B000000-0000-0000-0000-000000000001"))
+    (pin "E-" (uuid "2B000000-0000-0000-0000-000000000002"))
+    (pin "S+" (uuid "2B000000-0000-0000-0000-000000000003"))
+    (pin "S-" (uuid "2B000000-0000-0000-0000-000000000004")))
+
+  ; ============================================================================
+  ;  ANT1 — 2.4 GHz chip antenna + pi matching network
+  ; ============================================================================
+  (symbol (lib_id "Device:Antenna") (at 60 60 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "AE1" (at 60 60 0))
+    (property "Value" "2.4GHz Chip" (at 60 64 0))
+    (property "Footprint" "RF_Antenna:Texas_SWRA117D_2.4GHz" (at 60 68 0))
+    (property "Author" "jayis1")
+    (pin "RF" (uuid "2C000000-0000-0000-0000-000000000001")))
+
+  (symbol (lib_id "Device:L") (at 80 100 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "L1" (at 80 100 0))
+    (property "Value" "3.9nH" (at 80 104 0))
+    (property "Footprint" "Inductor_SMD:L_0402_1005Metric" (at 80 108 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "2C000000-0000-0000-0000-000000000002"))
+    (pin "2" (uuid "2C000000-0000-0000-0000-000000000003")))
+
+  (symbol (lib_id "Device:C") (at 100 100 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C1" (at 100 100 0))
+    (property "Value" "0.8pF" (at 100 104 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 100 108 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "2C000000-0000-0000-0000-000000000004"))
+    (pin "2" (uuid "2C000000-0000-0000-0000-000000000005")))
+
+  ; ============================================================================
+  ;  Crystal Y1 — 32.768 kHz LFCLK
+  ; ============================================================================
+  (symbol (lib_id "Device:Crystal") (at 60 140 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "Y1" (at 60 140 0))
+    (property "Value" "32.768kHz" (at 60 144 0))
+    (property "Footprint" "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm" (at 60 148 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "2D000000-0000-0000-0000-000000000001"))
+    (pin "2" (uuid "2D000000-0000-0000-0000-000000000002")))
+
+  ; ============================================================================
+  ;  BT1 — 120 mAh cylindrical LiPo
+  ; ============================================================================
+  (symbol (lib_id "Device:Battery_Cell") (at 540 140 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "BT1" (at 540 140 0))
+    (property "Value" "120mAh LiPo" (at 540 144 0))
+    (property "Footprint" "Battery:BatteryHolder_Keystone_103" (at 540 148 0))
+    (property "Author" "jayis1")
+    (pin "+" (uuid "2E000000-0000-0000-0000-000000000001"))
+    (pin "-" (uuid "2E000000-0000-0000-0000-000000000002")))
+
+  ; ============================================================================
+  ;  Decoupling capacitors (subset — one per power pin of each IC)
+  ; ============================================================================
+  (symbol (lib_id "Device:C") (at 140 30 0) (in_bom yes) (on_board yes)
+    (property "Reference" "C2" (at 140 30 0))
+    (property "Value" "100nF" (at 140 34 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 140 38 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "2F000000-0000-0000-0000-000000000001"))
+    (pin "2" (uuid "2F000000-0000-0000-0000-000000000002")))
+
+  (symbol (lib_id "Device:C") (at 160 30 0) (in_bom yes) (on_board yes)
+    (property "Reference" "C3" (at 160 30 0))
+    (property "Value" "1µF" (at 160 34 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 160 38 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "2F000000-0000-0000-0000-000000000003"))
+    (pin "2" (uuid "2F000000-0000-0000-0000-000000000004")))
+
+  (symbol (lib_id "Device:C") (at 180 30 0) (in_bom yes) (on_board yes)
+    (property "Reference" "C4" (at 180 30 0))
+    (property "Value" "4.7µF" (at 180 34 0))
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 180 38 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "2F000000-0000-0000-0000-000000000005"))
+    (pin "2" (uuid "2F000000-0000-0000-0000-000000000006")))
+
+  ; ============================================================================
+  ;  Power-rail labels
+  ; ============================================================================
+  (global_label "VBUS"   (shape input)   (at 500 40 0) (effects (font (size 1.27 1.27))))
+  (global_label "VBAT"   (shape input)   (at 500 80 0) (effects (font (size 1.27 1.27))))
+  (global_label "VDD_3V3" (shape input)  (at 120 20 0) (effects (font (size 1.27 1.27))))
+  (global_label "VDD_1V8" (shape input) (at 220 40 0) (effects (font (size 1.27 1.27))))
+  (global_label "GND"    (shape input)   (at 60 200 0) (effects (font (size 1.27 1.27))))
+
+  ; ============================================================================
+  ;  SPI bus labels
+  ; ============================================================================
+  (global_label "SPI0_SCK"  (shape input) (at 200 50 0))
+  (global_label "SPI0_MOSI" (shape input) (at 200 54 0))
+  (global_label "SPI0_MISO" (shape input) (at 200 58 0))
+  (global_label "BMI_CS"    (shape input) (at 200 62 0))
+  (global_label "BMM_CS"    (shape input) (at 200 66 0))
+  (global_label "SPI1_SCK"  (shape input) (at 280 70 0))
+  (global_label "SPI1_MOSI" (shape input) (at 280 74 0))
+  (global_label "SPI1_MISO" (shape input) (at 280 78 0))
+  (global_label "PMW_CS"    (shape input) (at 280 82 0))
+  (global_label "SPI2_SCK"  (shape input) (at 360 50 0))
+  (global_label "SPI2_MOSI" (shape input) (at 360 54 0))
+  (global_label "SPI2_MISO" (shape input) (at 360 58 0))
+  (global_label "FL_CS"     (shape input) (at 360 62 0))
+
+  ; ============================================================================
+  ;  I²C bus labels (TWI0 to MAX17048)
+  ; ============================================================================
+  (global_label "TWI_SCL" (shape input) (at 440 90 0))
+  (global_label "TWI_SDA" (shape input) (at 440 94 0))
+
+  ; ============================================================================
+  ;  HX711 GPIO labels
+  ; ============================================================================
+  (global_label "HX_SCK"  (shape input) (at 280 130 0))
+  (global_label "HX_DOUT" (shape input) (at 280 134 0))
+
+  ; ============================================================================
+  ;  Interrupt / control labels
+  ; ============================================================================
+  (global_label "BMI_INT1"  (shape input) (at 200 70 0))
+  (global_label "PMW_MOTION" (shape input) (at 280 86 0))
+  (global_label "CHG_STAT"   (shape input) (at 440 60 0))
+  (global_label "LED"        (shape input) (at 100 90 0))
+  (global_label "BUTTON"     (shape input) (at 100 94 0))
+  (global_label "USB_D+"     (shape input) (at 520 50 0))
+  (global_label "USB_D-"     (shape input) (at 520 54 0))
+
+  ; ============================================================================
+  ;  Net ties (wire connections — representative subset)
+  ; ============================================================================
+  (wire (pts (xy 60 60) (xy 80 60))               ; AE1 -> L1
+        (uuid "30000000-0000-0000-0000-000000000001"))
+  (wire (pts (xy 80 100) (xy 100 100))             ; L1 -> C1 match
+        (uuid "30000000-0000-0000-0000-000000000002"))
+  (wire (pts (xy 100 100) (xy 120 100))            ; C1 -> U1 ANT
+        (uuid "30000000-0000-0000-0000-000000000003"))
+  (wire (pts (xy 120 80) (xy 200 50))              ; U1 -> SPI0_SCK
+        (uuid "30000000-0000-0000-0000-000000000004"))
+  (wire (pts (xy 200 50) (xy 220 50))              ; SPI0_SCK -> U2 SCK
+        (uuid "30000000-0000-0000-0000-000000000005"))
+  (wire (pts (xy 220 60) (xy 300 80))              ; U2 INT1 -> MCU (via label)
+        (uuid "30000000-0000-0000-0000-000000000006"))
+  (wire (pts (xy 300 140) (xy 300 180))            ; U6 DOUT -> SG1 sense (via flex)
+        (uuid "30000000-0000-0000-0000-000000000007"))
+  (wire (pts (xy 540 60) (xy 540 40))              ; J1 VBUS -> VBUS rail
+        (uuid "30000000-0000-0000-0000-000000000008"))
+  (wire (pts (xy 540 140) (xy 460 80))             ; BT1+ -> U8 VBAT (via net)
+        (uuid "30000000-0000-0000-0000-000000000009"))
+  (wire (pts (xy 460 60) (xy 500 40))              ; U8 VDD -> VBUS
+        (uuid "30000000-0000-0000-0000-00000000000a"))
+
+  ; ============================================================================
+  ;  Junction dots at net intersections (representative)
+  ; ============================================================================
+  (junction (at 80 100) (uuid "31000000-0000-0000-0000-000000000001"))
+  (junction (at 200 50) (uuid "31000000-0000-0000-0000-000000000002"))
+  (junction (at 540 60) (uuid "31000000-0000-0000-0000-000000000003"))
+
+  ; ============================================================================
+  ;  No-connect markers on unused pins (subset)
+  ; ============================================================================
+  (no_connect (at 130 88) (uuid "32000000-0000-0000-0000-000000000001"))
+
+  ; ============================================================================
+  ;  Text notes
+  ; ============================================================================
+  (text "Inkwell smart pen — 4-layer rigid-flex. Rigid: MCU+BLE+IMU+flash. Flex: to nib head (HX711+SG+PMW3360)."
+        (at 60 20 0) (effects (font (size 1.5 1.5))))
+  (text "Author: jayis1 — Copyright (C) 2026 jayis1 — CERN-OHL-S v2"
+        (at 60 12 0) (effects (font (size 1.2 1.2))))
+
+  (sheet_instances
+    (path "/" (page "1")))
+)

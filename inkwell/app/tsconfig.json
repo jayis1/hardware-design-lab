@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": ["es2020", "dom"],
+    "jsx": "react-native",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": { "*": ["node_modules/*"] },
+    "types": ["node", "react-native", "react"]
+  },
+  "include": ["App.tsx", "index.ts", "src/**/*"],
+  "exclude": ["node_modules"]
+}
