@@ -1,0 +1,666 @@
+(kicad_sch
+  (version 20240108)
+  (generator "kicad_sym")
+  (uuid "f5b00000-0001-4000-8000-000000000001")
+  (paper "A3")
+  (title_block
+    (title "FrostSentinel — Radiative Frost Prediction & Ice-Nucleation Detection Mesh")
+    (date "2026-08-05")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1 — Copyright (C) 2026 jayis1")
+    (comment 2 "CERN-OHL-S v2 / GPL-3.0 / MIT")
+    (comment 3 "MCU + sky-IR + psychrometer + leaf wetness + AE + LoRa mesh + BLE + solar")
+  )
+
+  ; ============================================================================
+  ;  FrostSentinel top-level schematic
+  ;  Author: jayis1 — Copyright (C) 2026 jayis1
+  ;  4-layer PCB, 95×62 mm. Sensor head cabled 30 cm above canopy.
+  ;  Main MCU: STM32U575ZIT6. LoRa: SX1262. BLE: CC2642R.
+  ;  Sensors: MLX90632 (sky IR), 2× PT100 (psychrometer), capacitive leaf
+  ;  wetness + PZT AE, SHT45, BMP390, DS18B20.
+  ;  Power: SPV1050 solar MPPT + LiFePO₄ 18650 + TPS62740 buck.
+  ; ============================================================================
+  (symbol "logo_jayis1"
+    (pin_numbers (sym_num nat))
+    (pin_names (offset 1.016) (hide yes))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "LOGO" (at 0 0 0))
+    (property "Value" "jayis1" (at 0 -2 0)))
+
+  ; ============================================================================
+  ;  U1 — STM32U575ZIT6 main MCU (Cortex-M33, 160 MHz, 2 MB Flash)
+  ; ============================================================================
+  (symbol (lib_id "MCU_ST_STM32U5:STM32U575ZIT6") (at 120 80 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U1" (at 120 80 0))
+    (property "Value" "STM32U575ZIT6" (at 120 84 0))
+    (property "Footprint" "Package_QFP:LQFP-64_10x10mm_P0.5mm" (at 120 88 0))
+    (property "Datasheet" "https://www.st.com/en/microcontrollers-microprocessors/stm32u575zi.html" (at 120 90 0))
+    (property "Author" "jayis1")
+    (pin "VBAT"     (uuid "11000000-0000-0000-0000-000000000001"))
+    (pin "VDD"      (uuid "11000000-0000-0000-0000-000000000002"))
+    (pin "VSS"      (uuid "11000000-0000-0000-0000-000000000003"))
+    (pin "VDDSMPS"  (uuid "11000000-0000-0000-0000-000000000004"))
+    (pin "VSSSMPS"  (uuid "11000000-0000-0000-0000-000000000005"))
+    (pin "PH0/OSC_IN"  (uuid "11000000-0000-0000-0000-000000000006"))
+    (pin "PH1/OSC_OUT" (uuid "11000000-0000-0000-0000-000000000007"))
+    (pin "NRST"     (uuid "11000000-0000-0000-0000-000000000008"))
+    (pin "PA0/ADC1_IN0"  (uuid "11000000-0000-0000-0000-000000000009"))
+    (pin "PA1/ADC1_IN1"  (uuid "11000000-0000-0000-0000-00000000000a"))
+    (pin "PA2/USART2_TX" (uuid "11000000-0000-0000-0000-00000000000b"))
+    (pin "PA3/USART2_RX" (uuid "11000000-0000-0000-0000-00000000000c"))
+    (pin "PA5/SPI1_SCK"  (uuid "11000000-0000-0000-0000-00000000000d"))
+    (pin "PA6/SPI1_MISO" (uuid "11000000-0000-0000-0000-00000000000e"))
+    (pin "PA7/SPI1_MOSI" (uuid "11000000-0000-0000-0000-00000000000f"))
+    (pin "PA8/ADC1_IN7"  (uuid "11000000-0000-0000-0000-000000000010"))
+    (pin "PB0/SPI1_CS0"   (uuid "11000000-0000-0000-0000-000000000011"))
+    (pin "PB1/SPI1_CS1"   (uuid "11000000-0000-0000-0000-000000000012"))
+    (pin "PB4/TIM3_CH1"   (uuid "11000000-0000-0000-0000-000000000013"))
+    (pin "PB5/FAN_EN"     (uuid "11000000-0000-0000-0000-000000000014"))
+    (pin "PB6/I2C1_SCL"   (uuid "11000000-0000-0000-0000-000000000015"))
+    (pin "PB7/I2C1_SDA"   (uuid "11000000-0000-0000-0000-000000000016"))
+    (pin "PB8/BLE_RST_N"  (uuid "11000000-0000-0000-0000-000000000017"))
+    (pin "PB12/1WIRE"     (uuid "11000000-0000-0000-0000-000000000018"))
+    (pin "PC13/SX1262_DIO1" (uuid "11000000-0000-0000-0000-000000000019"))
+    (pin "PC14/SX1262_BUSY" (uuid "11000000-0000-0000-0000-00000000001a"))
+    (pin "PC15/SX1262_NRST"(uuid "11000000-0000-0000-0000-00000000001b"))
+    (pin "BOOT0"    (uuid "11000000-0000-0000-0000-00000000001c")))
+
+  ; ============================================================================
+  ;  U2 — MLX90632 sky infrared thermopile (I²C, 0x3B)
+  ; ============================================================================
+  (symbol (lib_id "Sensor_Temperature:MLX90632") (at 240 60 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U2" (at 240 60 0))
+    (property "Value" "MLX90632" (at 240 64 0))
+    (property "Footprint" "Sensor_Melexis:MLX90632" (at 240 68 0))
+    (property "Datasheet" "https://www.melexis.com/en/product/MLX90632/" (at 240 70 0))
+    (property "Author" "jayis1")
+    (pin "VDD"  (uuid "12000000-0000-0000-0000-000000000001"))
+    (pin "GND"  (uuid "12000000-0000-0000-0000-000000000002"))
+    (pin "SCL"  (uuid "12000000-0000-0000-0000-000000000003"))
+    (pin "SDA"  (uuid "12000000-0000-0000-0000-000000000004"))
+    (pin "INT"  (uuid "12000000-0000-0000-0000-000000000005")))
+
+  ; ============================================================================
+  ;  U3, U4 — PT100 class-A 4-wire RTDs (dry-bulb and wet-bulb)
+  ; ============================================================================
+  (symbol (lib_id "Sensor_Temperature:PT100_4wire") (at 320 60 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U3" (at 320 60 0))
+    (property "Value" "PT100_class_A" (at 320 64 0))
+    (property "Footprint" "Sensor:RTD_PT100_4wire" (at 320 68 0))
+    (property "Datasheet" "IEC 60751 Class A" (at 320 70 0))
+    (property "Author" "jayis1")
+    (pin "I+"  (uuid "13000000-0000-0000-0000-000000000001"))
+    (pin "I-"  (uuid "13000000-0000-0000-0000-000000000002"))
+    (pin "V+"  (uuid "13000000-0000-0000-0000-000000000003"))
+    (pin "V-"  (uuid "13000000-0000-0000-0000-000000000004")))
+
+  (symbol (lib_id "Sensor_Temperature:PT100_4wire") (at 320 100 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U4" (at 320 100 0))
+    (property "Value" "PT100_class_A_wet" (at 320 104 0))
+    (property "Footprint" "Sensor:RTD_PT100_4wire_wick" (at 320 108 0))
+    (property "Datasheet" "IEC 60751 Class A — wick-wrapped" (at 320 110 0))
+    (property "Author" "jayis1")
+    (pin "I+"  (uuid "14000000-0000-0000-0000-000000000001"))
+    (pin "I-"  (uuid "14000000-0000-0000-0000-000000000002"))
+    (pin "V+"  (uuid "14000000-0000-0000-0000-000000000003"))
+    (pin "V-"  (uuid "14000000-0000-0000-0000-000000000004")))
+
+  ; ============================================================================
+  ;  U5 — Sunon 25 mm micro fan for forced-ventilation psychrometer
+  ; ============================================================================
+  (symbol (lib_id "Motor:Fan_DC_2pin") (at 380 60 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "M1" (at 380 60 0))
+    (property "Value" "Sunon_25mm_0.4W" (at 380 64 0))
+    (property "Footprint" "Motor:Fan_25mm" (at 380 68 0))
+    (property "Datasheet" "Sunon MC25101V2-000U-A99" (at 380 70 0))
+    (property "Author" "jayis1")
+    (pin "+"  (uuid "15000000-0000-0000-0000-000000000001"))
+    (pin "-"  (uuid "15000000-0000-0000-0000-000000000002")))
+
+  ; ============================================================================
+  ;  U6 — DRV8838 fan motor driver (H-bridge, single channel)
+  ; ============================================================================
+  (symbol (lib_id "Driver_Motor:DRV8838") (at 440 60 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U6" (at 440 60 0))
+    (property "Value" "DRV8838" (at 440 64 0))
+    (property "Footprint" "Package_SON:WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm" (at 440 68 0))
+    (property "Datasheet" "https://www.ti.com/product/DRV8838" (at 440 70 0))
+    (property "Author" "jayis1")
+    (pin "VM"   (uuid "16000000-0000-0000-0000-000000000001"))
+    (pin "VINT" (uuid "16000000-0000-0000-0000-000000000002"))
+    (pin "IN1"  (uuid "16000000-0000-0000-0000-000000000003"))
+    (pin "OUT1" (uuid "16000000-0000-0000-0000-000000000004"))
+    (pin "OUT2" (uuid "16000000-0000-0000-0000-000000000005"))
+    (pin "GND"  (uuid "16000000-0000-0000-0000-000000000006")))
+
+  ; ============================================================================
+  ;  U7 — NE555 timer (leaf wetness C-to-frequency oscillator)
+  ; ============================================================================
+  (symbol (lib_id "Timer:NE555") (at 240 120 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U7" (at 240 120 0))
+    (property "Value" "NE555" (at 240 124 0))
+    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 240 128 0))
+    (property "Datasheet" "http://www.ti.com/lit/ds/symlink/ne555.pdf" (at 240 130 0))
+    (property "Author" "jayis1")
+    (pin "GND"  (uuid "17000000-0000-0000-0000-000000000001"))
+    (pin "TRIG" (uuid "17000000-0000-0000-0000-000000000002"))
+    (pin "OUT"  (uuid "17000000-0000-0000-0000-000000000003"))
+    (pin "RST"  (uuid "17000000-0000-0000-0000-000000000004"))
+    (pin "CTRL" (uuid "17000000-0000-0000-0000-000000000005"))
+    (pin "THR"  (uuid "17000000-0000-0000-0000-000000000006"))
+    (pin "DIS"  (uuid "17000000-0000-0000-0000-000000000007"))
+    (pin "VCC"  (uuid "17000000-0000-0000-0000-000000000008")))
+
+  ; ============================================================================
+  ;  U8 — Murata 7BB-35-3 PZT acoustic emission diaphragm
+  ; ============================================================================
+  (symbol (lib_id "Sensor:Piezo_AE_7BB-35-3") (at 240 170 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U8" (at 240 170 0))
+    (property "Value" "7BB-35-3" (at 240 174 0))
+    (property "Footprint" "Sensor:Piezo_35mm" (at 240 178 0))
+    (property "Datasheet" "Murata 7BB-35-3" (at 240 180 0))
+    (property "Author" "jayis1")
+    (pin "+"  (uuid "18000000-0000-0000-0000-000000000001"))
+    (pin "-"  (uuid "18000000-0000-0000-0000-000000000002")))
+
+  ; ============================================================================
+  ;  U9 — OPA2376 low-noise op-amp (AE signal conditioning, 60 dB gain)
+  ; ============================================================================
+  (symbol (lib_id "Amplifier_Operational:OPA2376") (at 320 170 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U9" (at 320 170 0))
+    (property "Value" "OPA2376" (at 320 174 0))
+    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 320 178 0))
+    (property "Datasheet" "https://www.ti.com/product/OPA2376" (at 320 180 0))
+    (property "Author" "jayis1")
+    (pin "V+"   (uuid "19000000-0000-0000-0000-000000000001"))
+    (pin "V-"   (uuid "19000000-0000-0000-0000-000000000002"))
+    (pin "IN+"  (uuid "19000000-0000-0000-0000-000000000003"))
+    (pin "IN-"  (uuid "19000000-0000-0000-0000-000000000004"))
+    (pin "OUT"  (uuid "19000000-0000-0000-0000-000000000005")))
+
+  ; ============================================================================
+  ;  U10 — SHT45 air temperature & humidity sensor (I²C, 0x44)
+  ; ============================================================================
+  (symbol (lib_id "Sensor_Humidity:SHT45") (at 380 120 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U10" (at 380 120 0))
+    (property "Value" "SHT45" (at 380 124 0))
+    (property "Footprint" "Sensor_Sensirium:SHT4x" (at 380 128 0))
+    (property "Datasheet" "https://sensirion.com/products/SHT45" (at 380 130 0))
+    (property "Author" "jayis1")
+    (pin "VDD"  (uuid "1a000000-0000-0000-0000-000000000001"))
+    (pin "GND"  (uuid "1a000000-0000-0000-0000-000000000002"))
+    (pin "SCL"  (uuid "1a000000-0000-0000-0000-000000000003"))
+    (pin "SDA"  (uuid "1a000000-0000-0000-0000-000000000004")))
+
+  ; ============================================================================
+  ;  U11 — BMP390 barometric pressure sensor (I²C, 0x77)
+  ; ============================================================================
+  (symbol (lib_id "Sensor_Pressure:BMP390") (at 380 160 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U11" (at 380 160 0))
+    (property "Value" "BMP390" (at 380 164 0))
+    (property "Footprint" "Sensor_Bosch:BMP390" (at 380 168 0))
+    (property "Datasheet" "https://www.bosch-sensortec.com/products/environmental-sensors/pressure-sensors/bmp390/" (at 380 170 0))
+    (property "Author" "jayis1")
+    (pin "VDDIO" (uuid "1b000000-0000-0000-0000-000000000001"))
+    (pin "VDD"   (uuid "1b000000-0000-0000-0000-000000000002"))
+    (pin "GND"   (uuid "1b000000-0000-0000-0000-000000000003"))
+    (pin "SCL"   (uuid "1b000000-0000-0000-0000-000000000004"))
+    (pin "SDA"   (uuid "1b000000-0000-0000-0000-000000000005"))
+    (pin "INT"   (uuid "1b000000-0000-0000-0000-000000000006")))
+
+  ; ============================================================================
+  ;  U12 — DS18B20 leaf-surface temperature (1-wire, PB12)
+  ; ============================================================================
+  (symbol (lib_id "Sensor_Temperature:DS18B20") (at 440 120 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U12" (at 440 120 0))
+    (property "Value" "DS18B20" (at 440 124 0))
+    (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline" (at 440 128 0))
+    (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/DS18B20.pdf" (at 440 130 0))
+    (property "Author" "jayis1")
+    (pin "VDD"  (uuid "1c000000-0000-0000-0000-000000000001"))
+    (pin "DQ"   (uuid "1c000000-0000-0000-0000-000000000002"))
+    (pin "GND"  (uuid "1c000000-0000-0000-0000-000000000003")))
+
+  ; ============================================================================
+  ;  U13 — SX1262 LoRa radio (SPI, CS on PB1)
+  ; ============================================================================
+  (symbol (lib_id "RF_Module:Semtech_SX1262") (at 520 80 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U13" (at 520 80 0))
+    (property "Value" "SX1262" (at 520 84 0))
+    (property "Footprint" "RF_Module:Semtech_SX1262" (at 520 88 0))
+    (property "Datasheet" "https://www.semtech.com/products/wireless-rf/lora-connect/sx1262" (at 520 90 0))
+    (property "Author" "jayis1")
+    (pin "VDD"   (uuid "1d000000-0000-0000-0000-000000000001"))
+    (pin "GND"   (uuid "1d000000-0000-0000-0000-000000000002"))
+    (pin "SCK"   (uuid "1d000000-0000-0000-0000-000000000003"))
+    (pin "MISO"  (uuid "1d000000-0000-0000-0000-000000000004"))
+    (pin "MOSI"  (uuid "1d000000-0000-0000-0000-000000000005"))
+    (pin "NSS"   (uuid "1d000000-0000-0000-0000-000000000006"))
+    (pin "DIO1"  (uuid "1d000000-0000-0000-0000-000000000007"))
+    (pin "BUSY"  (uuid "1d000000-0000-0000-0000-000000000008"))
+    (pin "NRST"  (uuid "1d000000-0000-0000-0000-000000000009"))
+    (pin "RFI"   (uuid "1d000000-0000-0000-0000-00000000000a"))
+    (pin "RFO"   (uuid "1d000000-0000-0000-0000-00000000000b"))
+    (pin "ANT"   (uuid "1d000000-0000-0000-0000-00000000000c")))
+
+  ; ============================================================================
+  ;  U14 — CC2642R BLE 5.2 controller (UART to MCU, USART2)
+  ; ============================================================================
+  (symbol (lib_id "RF_Bluetooth:TI_CC2642R") (at 520 160 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U14" (at 520 160 0))
+    (property "Value" "CC2642R1F" (at 520 164 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm" (at 520 168 0))
+    (property "Datasheet" "https://www.ti.com/product/CC2642R" (at 520 170 0))
+    (property "Author" "jayis1")
+    (pin "VDD"   (uuid "1e000000-0000-0000-0000-000000000001"))
+    (pin "GND"   (uuid "1e000000-0000-0000-0000-000000000002"))
+    (pin "UART_TX"  (uuid "1e000000-0000-0000-0000-000000000003"))
+    (pin "UART_RX"  (uuid "1e000000-0000-0000-0000-000000000004"))
+    (pin "RESET_N"  (uuid "1e000000-0000-0000-0000-000000000005"))
+    (pin "RF_P"  (uuid "1e000000-0000-0000-0000-000000000006"))
+    (pin "RF_N"  (uuid "1e000000-0000-0000-0000-000000000007"))
+    (pin "ANT"   (uuid "1e000000-0000-0000-0000-000000000008")))
+
+  ; ============================================================================
+  ;  U15 — W25Q80 8 Mbit SPI flash (journal storage, CS on PB0)
+  ; ============================================================================
+  (symbol (lib_id "Memory_Flash:W25Q80") (at 640 80 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U15" (at 640 80 0))
+    (property "Value" "W25Q80DV" (at 640 84 0))
+    (property "Footprint" "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm" (at 640 88 0))
+    (property "Datasheet" "https://www.winbond.com/resource-files/W25Q80DV.pdf" (at 640 90 0))
+    (property "Author" "jayis1")
+    (pin "CS"   (uuid "1f000000-0000-0000-0000-000000000001"))
+    (pin "DO"   (uuid "1f000000-0000-0000-0000-000000000002"))
+    (pin "WP"   (uuid "1f000000-0000-0000-0000-000000000003"))
+    (pin "GND"  (uuid "1f000000-0000-0000-0000-000000000004"))
+    (pin "DI"   (uuid "1f000000-0000-0000-0000-000000000005"))
+    (pin "CLK"  (uuid "1f000000-0000-0000-0000-000000000006"))
+    (pin "HOLD" (uuid "1f000000-0000-0000-0000-000000000007"))
+    (pin "VCC"  (uuid "1f000000-0000-0000-0000-000000000008")))
+
+  ; ============================================================================
+  ;  U16 — RV-3028-C7 RTC (I²C, 0x32)
+  ; ============================================================================
+  (symbol (lib_id "Timer_RTC:RV-3028-C7") (at 640 140 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U16" (at 640 140 0))
+    (property "Value" "RV-3028-C7" (at 640 144 0))
+    (property "Footprint" "Package_CSTCR:RV-3028-C7" (at 640 148 0))
+    (property "Datasheet" "https://www.microcrystal.com/en/products/rtc/rv-3028-c7/" (at 640 150 0))
+    (property "Author" "jayis1")
+    (pin "VDD"   (uuid "20000000-0000-0000-0000-000000000001"))
+    (pin "GND"   (uuid "20000000-0000-0000-0000-000000000002"))
+    (pin "SCL"   (uuid "20000000-0000-0000-0000-000000000003"))
+    (pin "SDA"   (uuid "20000000-0000-0000-0000-000000000004"))
+    (pin "INT"   (uuid "20000000-0000-0000-0000-000000000005"))
+    (pin "CLKOUT" (uuid "20000000-0000-0000-0000-000000000006"))
+    (pin "VBAT"  (uuid "20000000-0000-0000-0000-000000000007")))
+
+  ; ============================================================================
+  ;  U17 — SPV1050 solar MPPT buck-boost charger
+  ; ============================================================================
+  (symbol (lib_id "Power_Management:SPV1050") (at 640 200 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U17" (at 640 200 0))
+    (property "Value" "SPV1050" (at 640 204 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-16-1EP_4x4mm_P0.65mm_EP2.5x2.5mm" (at 640 208 0))
+    (property "Datasheet" "https://www.st.com/en/power-management-ics/spv1050.html" (at 640 210 0))
+    (property "Author" "jayis1")
+    (pin "VIN"    (uuid "21000000-0000-0000-0000-000000000001"))
+    (pin "VBAT"   (uuid "21000000-0000-0000-0000-000000000002"))
+    (pin "VSTORE" (uuid "21000000-0000-0000-0000-000000000003"))
+    (pin "VSYS"   (uuid "21000000-0000-0000-0000-000000000004"))
+    (pin "GND"    (uuid "21000000-0000-0000-0000-000000000005"))
+    (pin "MPPT"   (uuid "21000000-0000-0000-0000-000000000006")))
+
+  ; ============================================================================
+  ;  U18 — TPS62740 3.3V step-down converter (360 nA Iq)
+  ; ============================================================================
+  (symbol (lib_id "Regulator_Switching:TPS62740") (at 740 60 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U18" (at 740 60 0))
+    (property "Value" "TPS62740" (at 740 64 0))
+    (property "Footprint" "Package_SON:WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm" (at 740 68 0))
+    (property "Datasheet" "https://www.ti.com/product/TPS62740" (at 740 70 0))
+    (property "Author" "jayis1")
+    (pin "VIN"   (uuid "22000000-0000-0000-0000-000000000001"))
+    (pin "GND"   (uuid "22000000-0000-0000-0000-000000000002"))
+    (pin "SW"    (uuid "22000000-0000-0000-0000-000000000003"))
+    (pin "VOUT"  (uuid "22000000-0000-0000-0000-000000000004"))
+    (pin "FB"    (uuid "22000000-0000-0000-0000-000000000005"))
+    (pin "EN"    (uuid "22000000-0000-0000-0000-000000000006")))
+
+  ; ============================================================================
+  ;  U19 — LC709203F battery fuel gauge (I²C, 0x0B)
+  ; ============================================================================
+  (symbol (lib_id "Sensor_Voltage:LC709203F") (at 740 140 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U19" (at 740 140 0))
+    (property "Value" "LC709203F" (at 740 144 0))
+    (property "Footprint" "Package_SON:WSON-8-1EP_2x3mm_P0.5mm_EP0.6x2.3mm" (at 740 148 0))
+    (property "Datasheet" "https://www.onsemi.com/product/LC709203F" (at 740 150 0))
+    (property "Author" "jayis1")
+    (pin "VDD"   (uuid "23000000-0000-0000-0000-000000000001"))
+    (pin "GND"   (uuid "23000000-0000-0000-0000-000000000002"))
+    (pin "SCL"   (uuid "23000000-0000-0000-0000-000000000003"))
+    (pin "SDA"   (uuid "23000000-0000-0000-0000-000000000004"))
+    (pin "BAT+"  (uuid "23000000-0000-0000-0000-000000000005"))
+    (pin "BAT-"  (uuid "23000000-0000-0000-0000-000000000006")))
+
+  ; ============================================================================
+  ;  AE1, AE2 — Antenna matching network for SX1262 (915 MHz)
+  ; ============================================================================
+  (symbol (lib_id "Device:L") (at 580 40 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "L1" (at 580 40 0))
+    (property "Value" "22nH" (at 580 42 0))
+    (property "Footprint" "Inductor_SMD:L_0402_1005Metric" (at 580 44 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "24000000-0000-0000-0000-000000000001"))
+    (pin "2" (uuid "24000000-0000-0000-0000-000000000002")))
+
+  (symbol (lib_id "Device:C") (at 600 50 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C1" (at 600 50 0))
+    (property "Value" "5.1pF" (at 600 52 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 600 54 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "25000000-0000-0000-0000-000000000001"))
+    (pin "2" (uuid "25000000-0000-0000-0000-000000000002")))
+
+  ; ============================================================================
+  ;  AE_ANT — PCB loop antenna for SX1262
+  ; ============================================================================
+  (symbol (lib_id "Device:Antenna") (at 620 30 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "AE1" (at 620 30 0))
+    (property "Value" "PCB_Loop_915MHz" (at 620 34 0))
+    (property "Footprint" "RF_Antenna:PCB_Loop_915MHz" (at 620 38 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "26000000-0000-0000-0000-000000000001")))
+
+  ; ============================================================================
+  ;  ANT_BLE — PCB antenna for CC2642R (2.4 GHz)
+  ; ============================================================================
+  (symbol (lib_id "Device:Antenna") (at 620 120 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "AE2" (at 620 120 0))
+    (property "Value" "PCB_Meander_2.4GHz" (at 620 124 0))
+    (property "Footprint" "RF_Antenna:PCB_Meander_2.4GHz" (at 620 128 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "27000000-0000-0000-0000-000000000001")))
+
+  ; ============================================================================
+  ;  J1 — USB-C connector (power + DFU/debug)
+  ; ============================================================================
+  (symbol (lib_id "Connector:USB_C_Plug") (at 820 60 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J1" (at 820 60 0))
+    (property "Value" "USB-C_2.0" (at 820 64 0))
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4105" (at 820 68 0))
+    (property "Datasheet" "GCT USB4105" (at 820 70 0))
+    (property "Author" "jayis1")
+    (pin "VBUS" (uuid "28000000-0000-0000-0000-000000000001"))
+    (pin "GND"  (uuid "28000000-0000-0000-0000-000000000002"))
+    (pin "D+"   (uuid "28000000-0000-0000-0000-000000000003"))
+    (pin "D-"   (uuid "28000000-0000-0000-0000-000000000004"))
+    (pin "CC1"  (uuid "28000000-0000-0000-0000-000000000005"))
+    (pin "CC2"  (uuid "28000000-0000-0000-0000-000000000006")))
+
+  ; ============================================================================
+  ;  BT1 — LiFePO4 18650 battery holder
+  ; ============================================================================
+  (symbol (lib_id "Device:Battery_Cell") (at 820 140 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "BT1" (at 820 140 0))
+    (property "Value" "LiFePO4_18650_1500mAh" (at 820 144 0))
+    (property "Footprint" "Battery:BatteryHolder_Keystone_1042_18650" (at 820 148 0))
+    (property "Author" "jayis1")
+    (pin "+" (uuid "29000000-0000-0000-0000-000000000001"))
+    (pin "-" (uuid "29000000-0000-0000-0000-000000000002")))
+
+  ; ============================================================================
+  ;  SOLAR1, SOLAR2 — 1.5W solar panel inputs
+  ; ============================================================================
+  (symbol (lib_id "Connector_Generic:Conn_01x02") (at 820 200 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J2" (at 820 200 0))
+    (property "Value" "Solar_1.5W" (at 820 204 0))
+    (property "Footprint" "Connector_JST:JST_PH_S2B-PH-K_1x02_P2.00mm" (at 820 208 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "2a000000-0000-0000-0000-000000000001"))
+    (pin "2" (uuid "2a000000-0000-0000-0000-000000000002")))
+
+  ; ============================================================================
+  ;  R_REF — 1 kΩ 0.1% reference resistor for RTD excitation
+  ; ============================================================================
+  (symbol (lib_id "Device:R") (at 360 80 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R1" (at 360 80 0))
+    (property "Value" "1k_0.1%" (at 360 82 0))
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 360 84 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "2b000000-0000-0000-0000-000000000001"))
+    (pin "2" (uuid "2b000000-0000-0000-0000-000000000002")))
+
+  ; ============================================================================
+  ;  R_PULLUP — 4.7k I²C pullups (SCL/SDA)
+  ; ============================================================================
+  (symbol (lib_id "Device:R") (at 180 40 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R2" (at 180 40 0))
+    (property "Value" "4.7k" (at 180 42 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 180 44 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "2c000000-0000-0000-0000-000000000001"))
+    (pin "2" (uuid "2c000000-0000-0000-0000-000000000002")))
+
+  (symbol (lib_id "Device:R") (at 190 40 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R3" (at 190 40 0))
+    (property "Value" "4.7k" (at 190 42 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 190 44 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "2d000000-0000-0000-0000-000000000001"))
+    (pin "2" (uuid "2d000000-0000-0000-0000-000000000002")))
+
+  ; ============================================================================
+  ;  R_1WIRE — 4.7k pullup for DS18B20 1-wire bus
+  ; ============================================================================
+  (symbol (lib_id "Device:R") (at 460 100 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R4" (at 460 100 0))
+    (property "Value" "4.7k" (at 460 102 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 460 104 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "2e000000-0000-0000-0000-000000000001"))
+    (pin "2" (uuid "2e000000-0000-0000-0000-000000000002")))
+
+  ; ============================================================================
+  ;  C_BYPASS — Decoupling capacitors (one per active IC, representative)
+  ; ============================================================================
+  (symbol (lib_id "Device:C") (at 60 40 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C2" (at 60 40 0))
+    (property "Value" "100nF" (at 60 42 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 60 44 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "2f000000-0000-0000-0000-000000000001"))
+    (pin "2" (uuid "2f000000-0000-0000-0000-000000000002")))
+
+  (symbol (lib_id "Device:C") (at 70 40 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C3" (at 70 40 0))
+    (property "Value" "10µF" (at 70 42 0))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 70 44 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "30000000-0000-0000-0000-000000000001"))
+    (pin "2" (uuid "30000000-0000-0000-0000-000000000002")))
+
+  (symbol (lib_id "Device:C") (at 80 40 0)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C4" (at 80 40 0))
+    (property "Value" "4.7µF" (at 80 42 0))
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 80 44 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid "31000000-0000-0000-0000-000000000001"))
+    (pin "2" (uuid "31000000-0000-0000-0000-000000000002")))
+
+  ; ============================================================================
+  ;  Net labels — power and signal
+  ; ============================================================================
+  (global_label "VDD_3V3" (shape input) (at 40 30 0))
+  (global_label "GND"     (shape input) (at 40 34 0))
+  (global_label "VBAT"    (shape input) (at 820 136 0))
+  (global_label "VSYS"    (shape input) (at 700 200 0))
+  (global_label "VSOLAR"  (shape input) (at 820 196 0))
+  (global_label "VBUS"    (shape input) (at 820 56 0))
+
+  ; I²C bus
+  (global_label "I2C1_SCL" (shape input) (at 180 80 0))
+  (global_label "I2C1_SDA" (shape input) (at 190 80 0))
+
+  ; SPI bus (shared: SX1262 + W25Q80)
+  (global_label "SPI1_SCK"  (shape input) (at 200 80 0))
+  (global_label "SPI1_MISO" (shape input) (at 200 84 0))
+  (global_label "SPI1_MOSI" (shape input) (at 200 88 0))
+  (global_label "FLASH_CS"  (shape input) (at 200 92 0))
+  (global_label "SX1262_CS" (shape input) (at 200 96 0))
+
+  ; USART (BLE)
+  (global_label "BLE_TX" (shape input) (at 200 100 0))
+  (global_label "BLE_RX" (shape input) (at 200 104 0))
+  (global_label "BLE_RST_N" (shape input) (at 200 108 0))
+
+  ; ADC (RTDs + AE)
+  (global_label "ADC_DRY_RTD" (shape input) (at 200 112 0))
+  (global_label "ADC_WET_RTD" (shape input) (at 200 116 0))
+  (global_label "ADC_AE"      (shape input) (at 200 120 0))
+  (global_label "ADC_REF_R"   (shape input) (at 200 124 0))
+
+  ; 1-wire (DS18B20)
+  (global_label "1WIRE_DQ" (shape input) (at 200 128 0))
+
+  ; Timer (leaf wetness frequency)
+  (global_label "TIM3_CH1" (shape input) (at 200 132 0))
+
+  ; LoRa control
+  (global_label "SX1262_DIO1" (shape input) (at 200 136 0))
+  (global_label "SX1262_BUSY" (shape input) (at 200 140 0))
+  (global_label "SX1262_NRST" (shape input) (at 200 144 0))
+
+  ; Fan control
+  (global_label "FAN_EN" (shape input) (at 200 148 0))
+
+  ; RTC
+  (global_label "RTC_INT"   (shape input) (at 200 152 0))
+  (global_label "RTC_CLKOUT" (shape input) (at 200 156 0))
+
+  ; Antenna nets
+  (global_label "RF_915"  (shape input) (at 580 50 0))
+  (global_label "RF_2400" (shape input) (at 580 120 0))
+
+  ; ============================================================================
+  ;  Wire connections (representative subset of the netlist)
+  ; ============================================================================
+  (wire (pts (xy 120 80) (xy 180 80))               ; U1 PB6 -> I2C1_SCL
+        (uuid "30000000-0000-0000-0000-000000000001"))
+  (wire (pts (xy 180 80) (xy 240 60))               ; I2C1_SCL -> U2 SCL
+        (uuid "30000000-0000-0000-0000-000000000002"))
+  (wire (pts (xy 190 80) (xy 240 64))               ; I2C1_SDA -> U2 SDA
+        (uuid "30000000-0000-0000-0000-000000000003"))
+  (wire (pts (xy 200 80) (xy 520 80))               ; SPI1_SCK -> U13 SCK
+        (uuid "30000000-0000-0000-0000-000000000004"))
+  (wire (pts (xy 200 84) (xy 520 84))               ; SPI1_MISO -> U13 MISO
+        (uuid "30000000-0000-0000-0000-000000000005"))
+  (wire (pts (xy 200 88) (xy 520 88))               ; SPI1_MOSI -> U13 MOSI
+        (uuid "30000000-0000-0000-0000-000000000006"))
+  (wire (pts (xy 200 92) (xy 640 80))               ; FLASH_CS -> U15 CS
+        (uuid "30000000-0000-0000-0000-000000000007"))
+  (wire (pts (xy 200 96) (xy 520 96))               ; SX1262_CS -> U13 NSS
+        (uuid "30000000-0000-0000-0000-000000000008"))
+  (wire (pts (xy 200 100) (xy 520 160))             ; BLE_TX -> U14 UART_RX
+        (uuid "30000000-0000-0000-0000-000000000009"))
+  (wire (pts (xy 200 104) (xy 520 164))             ; BLE_RX -> U14 UART_TX
+        (uuid "30000000-0000-0000-0000-00000000000a"))
+  (wire (pts (xy 200 112) (xy 320 60))              ; ADC_DRY -> U3 I+
+        (uuid "30000000-0000-0000-0000-00000000000b"))
+  (wire (pts (xy 200 116) (xy 320 100))             ; ADC_WET -> U4 I+
+        (uuid "30000000-0000-0000-0000-00000000000c"))
+  (wire (pts (xy 200 120) (xy 320 170))             ; ADC_AE -> U9 OUT
+        (uuid "30000000-0000-0000-0000-00000000000d"))
+  (wire (pts (xy 200 128) (xy 440 120))             ; 1WIRE_DQ -> U12 DQ
+        (uuid "30000000-0000-0000-0000-00000000000e"))
+  (wire (pts (xy 200 132) (xy 240 120))             ; TIM3_CH1 -> U7 OUT
+        (uuid "30000000-0000-0000-0000-00000000000f"))
+  (wire (pts (xy 200 136) (xy 520 100))             ; DIO1 -> U13 DIO1
+        (uuid "30000000-0000-0000-0000-000000000010"))
+  (wire (pts (xy 200 148) (xy 440 60))              ; FAN_EN -> U6 IN1
+        (uuid "30000000-0000-0000-0000-000000000011"))
+  (wire (pts (xy 520 40) (xy 580 40))               ; U13 ANT -> L1
+        (uuid "30000000-0000-0000-0000-000000000012"))
+  (wire (pts (xy 580 40) (xy 600 40))               ; L1 -> C1 -> AE1
+        (uuid "30000000-0000-0000-0000-000000000013"))
+  (wire (pts (xy 600 40) (xy 620 30))               ; C1 -> AE1
+        (uuid "30000000-0000-0000-0000-000000000014"))
+  (wire (pts (xy 520 120) (xy 620 120))             ; U14 ANT -> AE2
+        (uuid "30000000-0000-0000-0000-000000000015"))
+  (wire (pts (xy 240 170) (xy 320 170))             ; U8 PZT -> U9 IN+
+        (uuid "30000000-0000-0000-0000-000000000016"))
+  (wire (pts (xy 360 80) (xy 320 80))               ; R1 ref -> RTD excitation
+        (uuid "30000000-0000-0000-0000-000000000017"))
+  (wire (pts (xy 440 60) (xy 380 60))               ; U6 OUT -> M1 fan
+        (uuid "30000000-0000-0000-0000-000000000018"))
+  (wire (pts (xy 640 200) (xy 820 200))             ; U17 VIN -> J2 solar
+        (uuid "30000000-0000-0000-0000-000000000019"))
+  (wire (pts (xy 740 60) (xy 700 60))               ; U18 VIN <- VSYS
+        (uuid "30000000-0000-0000-0000-00000000001a"))
+  (wire (pts (xy 820 140) (xy 740 140))             ; BT1 -> U19 BAT+
+        (uuid "30000000-0000-0000-0000-00000000001b"))
+
+  ; ============================================================================
+  ;  Junction dots at net intersections
+  ; ============================================================================
+  (junction (at 180 80) (uuid "31000000-0000-0000-0000-000000000001"))
+  (junction (at 200 80) (uuid "31000000-0000-0000-0000-000000000002"))
+  (junction (at 520 80) (uuid "31000000-0000-0000-0000-000000000003"))
+  (junction (at 580 40) (uuid "31000000-0000-0000-0000-000000000004"))
+
+  ; ============================================================================
+  ;  No-connect markers on unused pins
+  ; ============================================================================
+  (no_connect (at 240 68) (uuid "32000000-0000-0000-0000-000000000001"))
+  (no_connect (at 520 88) (uuid "32000000-0000-0000-0000-000000000002"))
+
+  ; ============================================================================
+  ;  Text notes
+  ; ============================================================================
+  (text "FrostSentinel — 4-layer PCB, 95×62 mm. Solar+LiFePO4 powered."
+        (at 60 20 0) (effects (font (size 1.5 1.5))))
+  (text "Sky IR + psychrometer + leaf wetness + AE + LoRa mesh + BLE"
+        (at 60 14 0) (effects (font (size 1.3 1.3))))
+  (text "Author: jayis1 — Copyright (C) 2026 jayis1 — CERN-OHL-S v2"
+        (at 60 8 0) (effects (font (size 1.2 1.2))))
+
+  (sheet_instances
+    (path "/" (page "1")))
+)

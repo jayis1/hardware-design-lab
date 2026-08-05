@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "FrostSentinel",
+    "slug": "frostsentinel",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "backgroundColor": "#0d1b2a",
+      "resizeMode": "contain",
+      "image": "./assets/splash.png"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jayis1.frostsentinel",
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "FrostSentinel uses BLE to connect to frost prediction sensor nodes.",
+        "NSLocationWhenInUseUsageDescription": "Used for mesh node mapping and field positioning."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0d1b2a",
+        "foregroundImage": "./assets/adaptive-icon.png"
+      },
+      "package": "com.jayis1.frostsentinel",
+      "permissions": [
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
+    },
+    "author": "jayis1",
+    "description": "Companion app for FrostSentinel — radiative frost prediction & ice-nucleation detection mesh",
+    "license": "MIT"
+  }
+}
