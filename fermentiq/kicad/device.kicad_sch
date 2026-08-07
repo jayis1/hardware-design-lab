@@ -1,0 +1,709 @@
+(kicad_sch
+  (version 20231120)
+  (generator "eeschema")
+  (generator_version "8.0")
+  (uuid "a1b2c3d4-e5f6-4789-abcd-ef1234567890")
+  (paper "A3")
+
+  (title_block
+    (title "FermenTiq — Smart Multi-Modal Fermentation Bioreactor Monitor")
+    (date "2026-08-07")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "GPL-3.0 — Copyright (c) 2026 jayis1")
+    (comment 3 "ESP32-S3 + AD5933 + NDIR CO2 + ISFET pH + RTD + Acoustic")
+  )
+
+  (lib_symbols
+    ; ==================================================================
+    ; ESP32-S3-WROOM-1 Module
+    ; ==================================================================
+    (symbol "ESP32-S3-WROOM-1"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -20.32 25.4 0))
+      (property "Value" "ESP32-S3-WROOM-1-N16R8" (at -10.16 22.86 0))
+      (property "Footprint" "RF_Module:ESP32-WROOM-32" (at -20.32 -25.4 0))
+      (property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf")
+      (property "Description" "ESP32-S3 WiFi+BLE module, 16MB Flash, 8MB PSRAM")
+      (symbol "ESP32-S3-WROOM-1_0_1"
+        (rectangle (start -21.59 24.13) (end 21.59 -24.13)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "ESP32-S3-WROOM-1_1_1"
+        ; Power pins
+        (pin power_in line (at -10.16 27.94 270) (length 3.81)
+          (name "3V3") (number "2") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -7.62 27.94 270) (length 3.81)
+          (name "3V3") (number "3") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 10.16 27.94 270) (length 3.81)
+          (name "EN") (number "9") (effects (font (size 1.27 1.27))))
+        ; GND pins
+        (pin power_in line (at -10.16 -27.94 90) (length 3.81)
+          (name "GND") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -7.62 -27.94 90) (length 3.81)
+          (name "GND") (number "40") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -5.08 -27.94 90) (length 3.81)
+          (name "GND") (number "41") (effects (font (size 1.27 1.27))))
+        ; GPIO pins
+        (pin bidirectional line (at -25.4 17.78 0) (length 3.81)
+          (name "GPIO0") (number "27") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -25.4 15.24 0) (length 3.81)
+          (name "GPIO1/ADC1_CH0") (number "4") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -25.4 12.7 0) (length 3.81)
+          (name "GPIO2") (number "5") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -25.4 10.16 0) (length 3.81)
+          (name "GPIO4/I2S_WS") (number "10") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -25.4 7.62 0) (length 3.81)
+          (name "GPIO5/I2S_SCK") (number "11") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -25.4 5.08 0) (length 3.81)
+          (name "GPIO6/I2S_SD") (number "12") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -25.4 2.54 0) (length 3.81)
+          (name "GPIO8/SDA") (number "15") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -25.4 0 0) (length 3.81)
+          (name "GPIO9/SCL") (number "16") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -25.4 -2.54 0) (length 3.81)
+          (name "GPIO10/RTD_CS") (number "18") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -25.4 -5.08 0) (length 3.81)
+          (name "GPIO11/MOSI") (number "19") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -25.4 -7.62 0) (length 3.81)
+          (name "GPIO12/SCLK") (number "20") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -25.4 -10.16 0) (length 3.81)
+          (name "GPIO13/MISO") (number "21") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -25.4 -12.7 0) (length 3.81)
+          (name "GPIO14/SD_CS") (number "22") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -25.4 -15.24 0) (length 3.81)
+          (name "GPIO17/UART_TX") (number "26") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -25.4 -17.78 0) (length 3.81)
+          (name "GPIO18/UART_RX") (number "28") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 25.4 17.78 180) (length 3.81)
+          (name "GPIO20/VBUS") (number "30") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 25.4 15.24 180) (length 3.81)
+          (name "GPIO21/CHG_STAT") (number "32") (effects (font (size 1.27 1.27))))
+        ; UART0 (USB-CDC)
+        (pin bidirectional line (at 25.4 10.16 180) (length 3.81)
+          (name "TXD0") (number "37") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 25.4 7.62 180) (length 3.81)
+          (name "RXD0") (number "38") (effects (font (size 1.27 1.27))))
+        ; USB
+        (pin bidirectional line (at 25.4 2.54 180) (length 3.81)
+          (name "D-") (number "34") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 25.4 0 180) (length 3.81)
+          (name "D+") (number "33") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ==================================================================
+    ; AD5933 Impedance Analyzer
+    ; ==================================================================
+    (symbol "AD5933YRSZ"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -15.24 12.7 0))
+      (property "Value" "AD5933YRSZ" (at -7.62 10.16 0))
+      (property "Footprint" "Package_SO:SSOP-16_5.3x6.2mm_P0.65mm" (at -15.24 -12.7 0))
+      (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/AD5933.pdf")
+      (property "Description" "1 MHz Impedance-to-Digital Converter")
+      (symbol "AD5933YRSZ_0_1"
+        (rectangle (start -15.24 11.43) (end 15.24 -11.43)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "AD5933YRSZ_1_1"
+        (pin power_in line (at -5.08 15.24 270) (length 3.81)
+          (name "AVDD") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -5.08 -15.24 90) (length 3.81)
+          (name "AGND") (number "2") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 5.08 15.24 270) (length 3.81)
+          (name "DVDD") (number "8") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 5.08 -15.24 90) (length 3.81)
+          (name "DGND") (number "9") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 5.08 0) (length 3.81)
+          (name "MCLK") (number "3") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 19.05 5.08 180) (length 3.81)
+          (name "VIN") (number "4") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 19.05 2.54 180) (length 3.81)
+          (name "VOUT") (number "5") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 19.05 0 180) (length 3.81)
+          (name "RFB") (number "6") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 0 0) (length 3.81)
+          (name "SCL") (number "14") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -19.05 -2.54 0) (length 3.81)
+          (name "SDA") (number "13") (effects (font (size 1.27 1.27))))
+        (pin output line (at 19.05 -5.08 180) (length 3.81)
+          (name "IRQ") (number "7") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ==================================================================
+    ; ADG715 8:1 Analog Switch
+    ; ==================================================================
+    (symbol "ADG715"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -12.7 11.43 0))
+      (property "Value" "ADG715" (at -5.08 8.89 0))
+      (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" (at -12.7 -11.43 0))
+      (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/ADG714_715.pdf")
+      (property "Description" "CMOS 8-channel analog switch, I2C controlled")
+      (symbol "ADG715_0_1"
+        (rectangle (start -12.7 10.16) (end 12.7 -10.16)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "ADG715_1_1"
+        (pin power_in line (at -5.08 13.97 270) (length 3.81)
+          (name "VDD") (number "16") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -5.08 -13.97 90) (length 3.81)
+          (name "GND") (number "8") (effects (font (size 1.27 1.27))))
+        (pin input line (at -16.51 5.08 0) (length 3.81)
+          (name "SCL") (number "14") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -16.51 2.54 0) (length 3.81)
+          (name "SDA") (number "13") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 16.51 7.62 180) (length 3.81)
+          (name "S1") (number "1") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 16.51 5.08 180) (length 3.81)
+          (name "S2") (number "2") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 16.51 2.54 180) (length 3.81)
+          (name "S3") (number "3") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 16.51 0 180) (length 3.81)
+          (name "S4") (number "4") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 16.51 -2.54 180) (length 3.81)
+          (name "S5") (number "5") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 16.51 -5.08 180) (length 3.81)
+          (name "S6") (number "6") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 16.51 -7.62 180) (length 3.81)
+          (name "D") (number "7") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ==================================================================
+    ; Senseair S8 NDIR CO2 Sensor
+    ; ==================================================================
+    (symbol "Senseair_S8"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -10.16 8.89 0))
+      (property "Value" "S8_0053" (at -2.54 6.35 0))
+      (property "Footprint" "fermentiq:Senseair_S8_LP8" (at -10.16 -8.89 0))
+      (property "Datasheet" "https://senseair.com/products/ndir-co2-sensors/s8/")
+      (property "Description" "NDIR CO2 sensor, 400-10000 ppm, UART")
+      (symbol "Senseair_S8_0_1"
+        (rectangle (start -10.16 7.62) (end 10.16 -7.62)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "Senseair_S8_1_1"
+        (pin power_in line (at -5.08 11.43 270) (length 3.81)
+          (name "VCC_5V") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -5.08 -11.43 90) (length 3.81)
+          (name "GND") (number "2") (effects (font (size 1.27 1.27))))
+        (pin input line (at -13.97 2.54 0) (length 3.81)
+          (name "RXD") (number "3") (effects (font (size 1.27 1.27))))
+        (pin output line (at -13.97 0 0) (length 3.81)
+          (name "TXD") (number "4") (effects (font (size 1.27 1.27))))
+        (pin output line (at 13.97 0 180) (length 3.81)
+          (name "BC_CAL") (number "5") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ==================================================================
+    ; LMP91200 ISFET/PH Front-End
+    ; ==================================================================
+    (symbol "LMP91200"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -15.24 12.7 0))
+      (property "Value" "LMP91200MT" (at -5.08 10.16 0))
+      (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" (at -15.24 -12.7 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/lmp91200.pdf")
+      (property "Description" "ISFET/pH sensor analog front-end")
+      (symbol "LMP91200_0_1"
+        (rectangle (start -15.24 11.43) (end 15.24 -11.43)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "LMP91200_1_1"
+        (pin power_in line (at -5.08 15.24 270) (length 3.81)
+          (name "VDD") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -5.08 -15.24 90) (length 3.81)
+          (name "GND") (number "2") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 5.08 0) (length 3.81)
+          (name "SCL") (number "3") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -19.05 2.54 0) (length 3.81)
+          (name "SDA") (number "4") (effects (font (size 1.27 1.27))))
+        (pin input line (at 19.05 5.08 180) (length 3.81)
+          (name "PH_PROBE+") (number "5") (effects (font (size 1.27 1.27))))
+        (pin input line (at 19.05 2.54 180) (length 3.81)
+          (name "PH_PROBE-") (number "6") (effects (font (size 1.27 1.27))))
+        (pin output line (at 19.05 -2.54 180) (length 3.81)
+          (name "VOUT") (number "7") (effects (font (size 1.27 1.27))))
+        (pin input line (at 19.05 -5.08 180) (length 3.81)
+          (name "TEMP") (number "8") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ==================================================================
+    ; MAX31865 RTD-to-Digital Converter
+    ; ==================================================================
+    (symbol "MAX31865"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -15.24 13.97 0))
+      (property "Value" "MAX31865AAP+" (at -5.08 11.43 0))
+      (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" (at -15.24 -13.97 0))
+      (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX31865.pdf")
+      (property "Description" "PT100/PT1000 RTD-to-Digital Converter, SPI")
+      (symbol "MAX31865_0_1"
+        (rectangle (start -15.24 12.7) (end 15.24 -12.7)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "MAX31865_1_1"
+        (pin power_in line (at -5.08 16.51 270) (length 3.81)
+          (name "VDD") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -5.08 -16.51 90) (length 3.81)
+          (name "GND") (number "2") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 7.62 0) (length 3.81)
+          (name "CS") (number "3") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 5.08 0) (length 3.81)
+          (name "SCLK") (number "4") (effects (font (size 1.27 1.27))))
+        (pin input line (at -19.05 2.54 0) (length 3.81)
+          (name "SDI/MOSI") (number "5") (effects (font (size 1.27 1.27))))
+        (pin output line (at -19.05 0 0) (length 3.81)
+          (name "SDO/MISO") (number "6") (effects (font (size 1.27 1.27))))
+        (pin input line (at 19.05 7.62 180) (length 3.81)
+          (name "RTDIN+") (number "10") (effects (font (size 1.27 1.27))))
+        (pin input line (at 19.05 5.08 180) (length 3.81)
+          (name "RTDIN-") (number "11") (effects (font (size 1.27 1.27))))
+        (pin output line (at 19.05 2.54 180) (length 3.81)
+          (name "BIAS") (number "13") (effects (font (size 1.27 1.27))))
+        (pin output line (at 19.05 0 180) (length 3.81)
+          (name "FORCE2") (number "14") (effects (font (size 1.27 1.27))))
+        (pin input line (at 19.05 -2.54 180) (length 3.81)
+          (name "REFIN+") (number "15") (effects (font (size 1.27 1.27))))
+        (pin input line (at 19.05 -5.08 180) (length 3.81)
+          (name "REFIN-") (number "16") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ==================================================================
+    ; SHT41 Temperature & Humidity Sensor
+    ; ==================================================================
+    (symbol "SHT41"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -10.16 7.62 0))
+      (property "Value" "SHT41-AD1B-R2" (at -2.54 5.08 0))
+      (property "Footprint" "Sensor:Sensirion_DFN-4-1EP_3x3mm_P1.25mm_EP1.5x2.2mm" (at -10.16 -7.62 0))
+      (property "Datasheet" "https://sensirion.com/media/documents/71AE6527/63C5F1A9/Datasheet_SHT4x.pdf")
+      (property "Description" "Digital temperature & humidity sensor, I2C")
+      (symbol "SHT41_0_1"
+        (rectangle (start -10.16 6.35) (end 10.16 -6.35)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "SHT41_1_1"
+        (pin power_in line (at -5.08 10.16 270) (length 3.81)
+          (name "VDD") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -5.08 -10.16 90) (length 3.81)
+          (name "VSS") (number "2") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -13.97 2.54 0) (length 3.81)
+          (name "SDA") (number "3") (effects (font (size 1.27 1.27))))
+        (pin input line (at -13.97 0 0) (length 3.81)
+          (name "SCL") (number "4") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ==================================================================
+    ; TP4056 Li-ion Charger
+    ; ==================================================================
+    (symbol "TP4056"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -12.7 11.43 0))
+      (property "Value" "TP4056" (at -5.08 8.89 0))
+      (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at -12.7 -11.43 0))
+      (property "Datasheet" "https://datasheet.lcsc.com/lcsc/1811141544_Nanjing-Micro-One-Elec-ME-TP4056_C16581.pdf")
+      (property "Description" "Linear Li-ion battery charger, 1A")
+      (symbol "TP4056_0_1"
+        (rectangle (start -12.7 10.16) (end 12.7 -10.16)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "TP4056_1_1"
+        (pin power_in line (at -16.51 5.08 0) (length 3.81)
+          (name "VCC") (number "4") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -16.51 -5.08 0) (length 3.81)
+          (name "GND") (number "3") (effects (font (size 1.27 1.27))))
+        (pin output line (at 16.51 5.08 180) (length 3.81)
+          (name "BAT+") (number "5") (effects (font (size 1.27 1.27))))
+        (pin output line (at 16.51 2.54 180) (length 3.81)
+          (name "STDBY") (number "6") (effects (font (size 1.27 1.27))))
+        (pin output line (at 16.51 0 180) (length 3.81)
+          (name "CHRG") (number "7") (effects (font (size 1.27 1.27))))
+        (pin input line (at 16.51 -5.08 180) (length 3.81)
+          (name "PROG") (number "8") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ==================================================================
+    ; MAX17048 Fuel Gauge
+    ; ==================================================================
+    (symbol "MAX17048"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -10.16 8.89 0))
+      (property "Value" "MAX17048G+T10" (at -2.54 6.35 0))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-8" (at -10.16 -8.89 0))
+      (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17048-MAX17049.pdf")
+      (property "Description" "1-cell Li+ fuel gauge, I2C")
+      (symbol "MAX17048_0_1"
+        (rectangle (start -10.16 7.62) (end 10.16 -7.62)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "MAX17048_1_1"
+        (pin power_in line (at -5.08 11.43 270) (length 3.81)
+          (name "VDD") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -5.08 -11.43 90) (length 3.81)
+          (name "GND") (number "2") (effects (font (size 1.27 1.27))))
+        (pin input line (at -13.97 2.54 0) (length 3.81)
+          (name "SCL") (number "3") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at -13.97 0 0) (length 3.81)
+          (name "SDA") (number "4") (effects (font (size 1.27 1.27))))
+        (pin input line (at 13.97 2.54 180) (length 3.81)
+          (name "CELL+") (number "5") (effects (font (size 1.27 1.27))))
+        (pin input line (at 13.97 0 180) (length 3.81)
+          (name "CELL-") (number "6") (effects (font (size 1.27 1.27))))
+        (pin output line (at 13.97 -2.54 180) (length 3.81)
+          (name "ALRT") (number "7") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ==================================================================
+    ; SPH-0645LM4H-B I2S MEMS Microphone
+    ; ==================================================================
+    (symbol "SPH-0645LM4H"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "MIC" (at -10.16 7.62 0))
+      (property "Value" "SPH-0645LM4H-B" (at -2.54 5.08 0))
+      (property "Footprint" "fermentiq:SPH-0645LM4H" (at -10.16 -7.62 0))
+      (property "Datasheet" "https://cdn-shop.adafruit.com/product-files/3421/c3421_-_datasheet.pdf")
+      (property "Description" "I2S MEMS microphone, bottom port")
+      (symbol "SPH-0645LM4H_0_1"
+        (rectangle (start -10.16 6.35) (end 10.16 -6.35)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "SPH-0645LM4H_1_1"
+        (pin power_in line (at -5.08 10.16 270) (length 3.81)
+          (name "VDD") (number "1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -5.08 -10.16 90) (length 3.81)
+          (name "GND") (number "2") (effects (font (size 1.27 1.27))))
+        (pin output line (at 13.97 2.54 180) (length 3.81)
+          (name "DATA") (number "3") (effects (font (size 1.27 1.27))))
+        (pin input line (at -13.97 2.54 0) (length 3.81)
+          (name "BCLK") (number "4") (effects (font (size 1.27 1.27))))
+        (pin input line (at -13.97 0 0) (length 3.81)
+          (name "LRCLK") (number "5") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ==================================================================
+    ; AMS1117-3.3 LDO Regulator
+    ; ==================================================================
+    (symbol "AMS1117-3.3"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -10.16 7.62 0))
+      (property "Value" "AMS1117-3.3" (at -2.54 5.08 0))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2" (at -10.16 -7.62 0))
+      (property "Datasheet" "https://datasheet.lcsc.com/lcsc/1811141544_AMS-AMS1117-3-3_C6186.pdf")
+      (property "Description" "1A LDO, 3.3V output")
+      (symbol "AMS1117-3.3_0_1"
+        (rectangle (start -10.16 6.35) (end 10.16 -6.35)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "AMS1117-3.3_1_1"
+        (pin power_in line (at -13.97 2.54 0) (length 3.81)
+          (name "VIN") (number "3") (effects (font (size 1.27 1.27))))
+        (pin power_out line (at 13.97 2.54 180) (length 3.81)
+          (name "VOUT") (number "2") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at 0 -10.16 90) (length 3.81)
+          (name "GND") (number "1") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ==================================================================
+    ; USB-C Connector
+    ; ==================================================================
+    (symbol "USB-C_16Pin"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at -12.7 15.24 0))
+      (property "Value" "USB-C_16P" (at -5.08 12.7 0))
+      (property "Footprint" "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12" (at -12.7 -15.24 0))
+      (property "Datasheet" "https://www.usb.org/sites/default/files/docs/usb_type-c.zip")
+      (property "Description" "USB-C 16-pin receptacle")
+      (symbol "USB-C_16Pin_0_1"
+        (rectangle (start -12.7 13.97) (end 12.7 -13.97)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "USB-C_16Pin_1_1"
+        (pin power_in line (at -16.51 10.16 0) (length 3.81)
+          (name "VBUS") (number "A4") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -16.51 7.62 0) (length 3.81)
+          (name "VBUS") (number "B9") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -16.51 -10.16 0) (length 3.81)
+          (name "GND") (number "A1") (effects (font (size 1.27 1.27))))
+        (pin power_in line (at -16.51 -7.62 0) (length 3.81)
+          (name "GND") (number "B12") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 16.51 5.08 180) (length 3.81)
+          (name "D+") (number "A6") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 16.51 2.54 180) (length 3.81)
+          (name "D-") (number "A7") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 16.51 -5.08 180) (length 3.81)
+          (name "CC1") (number "A5") (effects (font (size 1.27 1.27))))
+        (pin bidirectional line (at 16.51 -7.62 180) (length 3.81)
+          (name "CC2") (number "B5") (effects (font (size 1.27 1.27))))
+      )
+    )
+
+    ; ==================================================================
+    ; Passive components (resistor, capacitor)
+    ; ==================================================================
+    (symbol "R"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 2.54 0 90))
+      (property "Value" "R" (at 0 0 90))
+      (property "Footprint" "" (at 0 0 0))
+      (symbol "R_0_1"
+        (rectangle (start -1.016 -2.54) (end 1.016 2.54)
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (pin passive line (at 0 3.81 270) (length 1.27)
+          (name "~") (number "1") (effects (font (size 1.27 1.27))))
+        (pin passive line (at 0 -3.81 90) (length 1.27)
+          (name "~") (number "2") (effects (font (size 1.27 1.27))))
+      )
+    )
+    (symbol "C"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 2.54 0 90))
+      (property "Value" "C" (at 0 0 90))
+      (property "Footprint" "" (at 0 0 0))
+      (symbol "C_0_1"
+        (polyline (pts (xy -2.54 0) (xy -0.508 0))
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (polyline (pts (xy 0.508 0) (xy 2.54 0))
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (polyline (pts (xy -0.508 -2.032) (xy -0.508 2.032)
+                     (xy 0.508 2.032) (xy 0.508 -2.032))
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (pin passive line (at -3.81 0 0) (length 1.27)
+          (name "~") (number "1") (effects (font (size 1.27 1.27))))
+        (pin passive line (at 3.81 0 180) (length 1.27)
+          (name "~") (number "2") (effects (font (size 1.27 1.27))))
+      )
+    )
+  )
+
+  ; ====================================================================
+  ; Component Instances
+  ; ====================================================================
+
+  ; --- MCU ---
+  (symbol (lib_id "ESP32-S3-WROOM-1") (at 120 70 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U1" (at 100 50 0))
+    (property "Value" "ESP32-S3-WROOM-1-N16R8" (at 110 48 0))
+    (property "Footprint" "RF_Module:ESP32-WROOM-32" (at 120 70 0))
+    (property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf")
+  )
+
+  ; --- Impedance Analyzer ---
+  (symbol (lib_id "AD5933YRSZ") (at 50 130 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U2" (at 38 118 0))
+    (property "Value" "AD5933YRSZ" (at 43 116 0))
+  )
+
+  ; --- Analog Switch ---
+  (symbol (lib_id "ADG715") (at 50 165 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U3" (at 38 155 0))
+    (property "Value" "ADG715" (at 45 153 0))
+  )
+
+  ; --- NDIR CO2 ---
+  (symbol (lib_id "Senseair_S8") (at 200 130 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U4" (at 190 122 0))
+    (property "Value" "S8_0053" (at 197 120 0))
+  )
+
+  ; --- ISFET pH Front-End ---
+  (symbol (lib_id "LMP91200") (at 200 165 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U5" (at 186 154 0))
+    (property "Value" "LMP91200MT" (at 195 152 0))
+  )
+
+  ; --- RTD Bridge ---
+  (symbol (lib_id "MAX31865") (at 200 200 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U6" (at 186 188 0))
+    (property "Value" "MAX31865AAP+" (at 195 186 0))
+  )
+
+  ; --- Ambient Temp/RH ---
+  (symbol (lib_id "SHT41") (at 50 200 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U7" (at 40 192 0))
+    (property "Value" "SHT41-AD1B-R2" (at 47 190 0))
+  )
+
+  ; --- Charger ---
+  (symbol (lib_id "TP4056") (at 200 60 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U8" (at 188 50 0))
+    (property "Value" "TP4056" (at 195 48 0))
+  )
+
+  ; --- Fuel Gauge ---
+  (symbol (lib_id "MAX17048") (at 50 60 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U9" (at 40 52 0))
+    (property "Value" "MAX17048G+T10" (at 47 50 0))
+  )
+
+  ; --- MEMS Microphone ---
+  (symbol (lib_id "SPH-0645LM4H") (at 50 95 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "MIC1" (at 40 87 0))
+    (property "Value" "SPH-0645LM4H-B" (at 47 85 0))
+  )
+
+  ; --- LDO ---
+  (symbol (lib_id "AMS1117-3.3") (at 200 30 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U10" (at 188 22 0))
+    (property "Value" "AMS1117-3.3" (at 195 20 0))
+  )
+
+  ; --- USB-C ---
+  (symbol (lib_id "USB-C_16Pin") (at 200 100 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J1" (at 188 86 0))
+    (property "Value" "USB-C_16P" (at 195 84 0))
+  )
+
+  ; --- Passive components ---
+  (symbol (lib_id "R") (at 80 35 0) (unit 1)
+    (property "Reference" "R1") (property "Value" "10k"))
+  (symbol (lib_id "R") (at 85 35 0) (unit 1)
+    (property "Reference" "R2") (property "Value" "10k"))
+  (symbol (lib_id "R") (at 90 35 0) (unit 1)
+    (property "Reference" "R3") (property "Value" "4.7k"))
+  (symbol (lib_id "R") (at 95 35 0) (unit 1)
+    (property "Reference" "R4") (property "Value" "4.7k"))
+  (symbol (lib_id "R") (at 100 35 0) (unit 1)
+    (property "Reference" "R5") (property "Value" "430R"))
+  (symbol (lib_id "R") (at 105 35 0) (unit 1)
+    (property "Reference" "R6") (property "Value" "1.2k"))
+  (symbol (lib_id "C") (at 80 45 0) (unit 1)
+    (property "Reference" "C1") (property "Value" "10uF"))
+  (symbol (lib_id "C") (at 85 45 0) (unit 1)
+    (property "Reference" "C2") (property "Value" "100nF"))
+  (symbol (lib_id "C") (at 90 45 0) (unit 1)
+    (property "Reference" "C3") (property "Value" "10uF"))
+  (symbol (lib_id "C") (at 95 45 0) (unit 1)
+    (property "Reference" "C4") (property "Value" "100nF"))
+  (symbol (lib_id "C") (at 100 45 0) (unit 1)
+    (property "Reference" "C5") (property "Value" "1uF"))
+  (symbol (lib_id "C") (at 105 45 0) (unit 1)
+    (property "Reference" "C6") (property "Value" "100nF"))
+
+  ; ====================================================================
+  ; Net labels (logical connections)
+  ; ====================================================================
+  (global_label "3V3" (shape input) (at 120 55 0))
+  (global_label "GND" (shape input) (at 120 100 0))
+  (global_label "5V_USB" (shape input) (at 200 45 0))
+  (global_label "VBAT" (shape input) (at 200 70 0))
+
+  ; I2C bus
+  (global_label "I2C_SCL" (shape input) (at 95 65 0))
+  (global_label "I2C_SDA" (shape bidirectional) (at 95 68 0))
+
+  ; SPI bus
+  (global_label "SPI_MOSI" (shape input) (at 95 72 0))
+  (global_label "SPI_MISO" (shape output) (at 95 75 0))
+  (global_label "SPI_SCLK" (shape input) (at 95 78 0))
+  (global_label "RTD_CS" (shape input) (at 95 82 0))
+
+  ; UART
+  (global_label "CO2_TX" (shape output) (at 95 50 0))
+  (global_label "CO2_RX" (shape input) (at 95 53 0))
+
+  ; I2S
+  (global_label "I2S_WS" (shape input) (at 95 58 0))
+  (global_label "I2S_SCK" (shape input) (at 95 61 0))
+  (global_label "I2S_SD" (shape input) (at 95 64 0))
+
+  ; ADC
+  (global_label "PH_ADC" (shape input) (at 95 88 0))
+
+  ; Probe electrodes
+  (global_label "E_I+" (shape bidirectional) (at 60 130 0))
+  (global_label "E_I-" (shape bidirectional) (at 60 133 0))
+  (global_label "E_V+" (shape bidirectional) (at 60 136 0))
+  (global_label "E_V-" (shape bidirectional) (at 60 139 0))
+
+  ; Power
+  (global_label "CHG_STAT" (shape output) (at 95 92 0))
+  (global_label "VBUS_DET" (shape output) (at 95 95 0))
+
+  ; ====================================================================
+  ; Wires (net connections — representative)
+  ; ====================================================================
+  (wire (pts (xy 95 65) (xy 100 70)) (stroke (width 0.254)))
+  (wire (pts (xy 95 68) (xy 100 73)) (stroke (width 0.254)))
+  (wire (pts (xy 95 72) (xy 100 76)) (stroke (width 0.254)))
+  (wire (pts (xy 95 75) (xy 100 79)) (stroke (width 0.254)))
+  (wire (pts (xy 95 78) (xy 100 82)) (stroke (width 0.254)))
+  (wire (pts (xy 95 82) (xy 100 86)) (stroke (width 0.254)))
+
+  ; I2C pull-ups
+  (wire (pts (xy 80 32) (xy 80 30)) (stroke (width 0.254)))
+  (wire (pts (xy 85 32) (xy 85 30)) (stroke (width 0.254)))
+  (wire (pts (xy 80 30) (xy 85 30)) (stroke (width 0.254)))
+  (wire (pts (xy 82.5 30) (xy 82.5 25)) (stroke (width 0.254)))
+
+  ; AD5933 VOUT → ADG715 (excitation path)
+  (wire (pts (xy 65 132) (xy 66 170)) (stroke (width 0.254)))
+  (wire (pts (xy 65 128) (xy 70 130)) (stroke (width 0.254)))
+
+  ; ====================================================================
+  ; Net class definitions
+  ; ====================================================================
+  (net_class "Default"
+    (clearance 0.2) (trace_width 0.25)
+    (via_dia 0.6) (via_drill 0.3)
+    (name "Default")
+  )
+  (net_class "Power"
+    (clearance 0.3) (trace_width 0.5)
+    (via_dia 0.8) (via_drill 0.4)
+    (name "Power")
+  )
+  (net_class "Analog"
+    (clearance 0.2) (trace_width 0.3)
+    (via_dia 0.6) (via_drill 0.3)
+    (name "Analog")
+  )
+
+  ; ====================================================================
+  ; Sheet instances
+  ; ====================================================================
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+)
