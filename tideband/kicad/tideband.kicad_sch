@@ -1,0 +1,712 @@
+(kicad_sch
+  (version 20240108)
+  (generator "kicad_symbol_editor")
+  (generator_version "8.0")
+  (uuid "a1b2c3d4-e5f6-7890-abcd-ef1234567890")
+  (paper "A2")
+  (title_block
+    (title "TideBand — Wrist-Worn Hydrographic Current Profiler")
+    (date "2026-08-10")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "Copyright © 2026 jayis1. All rights reserved.")
+    (comment 3 "License: GPL-2.0")
+    (comment 4 "STM32H733 + Doppler Velocimeter + IMU + Pressure")
+  )
+
+  ; ============ LIBRARY SYMBOLS ============
+  (lib_symbols
+    ; ---- STM32H733VGT6 (100-pin LQFP) ----
+    (symbol "MCU_ST_STM32H7:STM32H733VGT6"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U1" (at -25 35 0))
+      (property "Value" "STM32H733VGT6" (at 5 -35 0))
+      (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 0 0 0))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h733.pdf")
+      (property "Manufacturer" "ST")
+      (property "Author" "jayis1")
+    )
+    ; ---- ICM-42688-P (6-axis IMU, 14-pin LGA) ----
+    (symbol "Sensor_Motion:ICM-42688-P"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U2" (at -10 12 0))
+      (property "Value" "ICM-42688-P" (at 0 -12 0))
+      (property "Footprint" "Package_LGA:TFQFN-14_2x2mm_P0.4mm")
+      (property "Datasheet" "https://invensense.tdk.com/wp-content/uploads/2022/03/DS-00034743_v1.7.pdf")
+    )
+    ; ---- MMC5983MA (3-axis magnetometer, 8-pin SOIC) ----
+    (symbol "Sensor_Magnetic:MMC5983MA"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U3" (at -8 8 0))
+      (property "Value" "MMC5983MA" (at 0 -8 0))
+      (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (property "Datasheet" "https://www.memsic.com/wp-content/uploads/2021/12/MMC5983MA-Datasheet.pdf")
+    )
+    ; ---- MS5837-30BA (pressure sensor) ----
+    (symbol "Sensor_Pressure:MS5837-30BA"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U4" (at -6 6 0))
+      (property "Value" "MS5837-30BA" (at 0 -6 0))
+      (property "Footprint" "Sensor:MS5837-30BA")
+      (property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocId=Data+Sheet")
+    )
+    ; ---- W25N02G (2Gbit SPI NAND flash, 8-pin WSON) ----
+    (symbol "Memory_Flash:W25N02GVZEIG"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U5" (at -10 10 0))
+      (property "Value" "W25N02GVZEIG" (at 0 -10 0))
+      (property "Footprint" "Package_SO:WSON-8_6x5mm_P1.27mm")
+      (property "Datasheet" "https://www.winbond.com/resource-files/W25N02GV%20Rev.%20G%2004182019.pdf")
+    )
+    ; ---- nRF52840 BLE module (BMD-340) ----
+    (symbol "RF_Module:Ublox_BMD-340-A"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U6" (at -15 20 0))
+      (property "Value" "BMD-340-A" (at 0 -20 0))
+      (property "Footprint" "RF_Module:Ublox_BMD-340")
+      (property "Datasheet" "https://www.u-blox.com/en/product/bmd-340")
+    )
+    ; ---- AD8333 (quadrature demodulator) ----
+    (symbol "Analog:AD8333"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U7" (at -12 15 0))
+      (property "Value" "AD8333" (at 0 -15 0))
+      (property "Footprint" "Package_CSP:LFCSP-24_4x4mm_P0.5mm")
+      (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/AD8333.pdf")
+    )
+    ; ---- AD9629 (12-bit 20MSPS ADC) ----
+    (symbol "Analog_ADC:AD9629BCPZ-20"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U8" (at -10 12 0))
+      (property "Value" "AD9629BCPZ-20" (at 0 -12 0))
+      (property "Footprint" "Package_CSP:LFCSP-20_4x4mm_P0.5mm")
+      (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/AD9629.pdf")
+    )
+    ; ---- TPS63020 (buck-boost regulator) ----
+    (symbol "Regulator_Switching:TPS63020"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U9" (at -8 10 0))
+      (property "Value" "TPS63020" (at 0 -10 0))
+      (property "Footprint" "Package_DFN_QFN:VQFN-14-1EP_3x3mm_P0.5mm")
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps63020.pdf")
+    )
+    ; ---- MAX17055 (fuel gauge) ----
+    (symbol "Sensor_Current:MAX17055"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U10" (at -8 8 0))
+      (property "Value" "MAX17055" (at 0 -8 0))
+      (property "Footprint" "Package_DFN_QFN:TQFN-14-1EP_3x3mm_P0.5mm")
+      (property "Datasheet" "https://datasheets.maximintegrated.com/en/ds/MAX17055.pdf")
+    )
+    ; ---- PCF8523 (RTC) ----
+    (symbol "Timer_RTC:PCF8523"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U11" (at -8 8 0))
+      (property "Value" "PCF8523" (at 0 -8 0))
+      (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (property "Datasheet" "https://www.nxp.com/docs/en/data-sheet/PCF8523.pdf")
+    )
+    ; ---- Sharp LS013B7DH03 (LCD) ----
+    (symbol "Display:LS013B7DH03"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "LCD1" (at -8 10 0))
+      (property "Value" "LS013B7DH03" (at 0 -10 0))
+      (property "Footprint" "Display:Sharp_LS013B7DH03")
+      (property "Datasheet" "https://www.sharpsde.com/fileadmin/products/Displays/2016_SDE_PDF_Spec_Sheets/LS013B7DH03.pdf")
+    )
+    ; ---- PZT-5H Transducer ----
+    (symbol "Device:PZT-5H_Transducer"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "TX1" (at -5 5 0))
+      (property "Value" "PZT-5H-1MHz" (at 0 -5 0))
+      (property "Footprint" "Crystal:PZT-5H_10mm")
+    )
+    ; ---- LM48611 (audio amp for TX drive) ----
+    (symbol "Amplifier_Audio:LM48611"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U12" (at -8 8 0))
+      (property "Value" "LM48611" (at 0 -8 0))
+      (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+    )
+    ; ---- AD8331 (VGA for RX preamp) ----
+    (symbol "Amplifier:AD8331"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U13" (at -10 10 0))
+      (property "Value" "AD8331" (at 0 -10 0))
+      (property "Footprint" "Package_CSP:LFCSP-24_5x5mm_P0.5mm")
+    )
+    ; ---- AP2142 (load switch) ----
+    (symbol "Power:AP2142"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U14" (at -5 5 0))
+      (property "Value" "AP2142" (at 0 -5 0))
+      (property "Footprint" "Package_SO:SOT-23-6")
+    )
+    ; ---- Passive components ----
+    (symbol "Device:R"
+      (pin_numbers (hide yes)) (pin_names (offset 0))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 2 0 0))
+      (property "Value" "R" (at 2 0 0))
+    )
+    (symbol "Device:C"
+      (pin_numbers (hide yes)) (pin_names (offset 0))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 2 0 0))
+      (property "Value" "C" (at 2 0 0))
+    )
+    (symbol "Device:L"
+      (pin_numbers (hide yes)) (pin_names (offset 0))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "L" (at 2 0 0))
+      (property "Value" "L" (at 2 0 0))
+    )
+    (symbol "Device:Crystal"
+      (pin_numbers (hide yes)) (pin_names (offset 0))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "Y" (at 0 0 0))
+      (property "Value" "Crystal" (at 0 0 0))
+    )
+  )
+
+  ; ============ COMPONENT INSTANCES ============
+
+  ; ---- U1: STM32H733VGT6 ----
+  (symbol (lib_id "MCU_ST_STM32H7:STM32H733VGT6") (at 100 80 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U1") (property "Value" "STM32H733VGT6")
+    (property "Manufacturer" "ST") (property "MPN" "STM32H733VGT6")
+    (property "Author" "jayis1")
+    (pin "1" (uuid "p001"))   ; VBAT
+    (pin "8" (uuid "p008"))   ; PA0/TIM2_CH1 (Haptic PWM)
+    (pin "9" (uuid "p009"))   ; PA1 (Haptic EN)
+    (pin "14" (uuid "p014"))  ; PA4 (ADC CS)
+    (pin "17" (uuid "p017"))  ; PA8/TIM1_CH1 (Doppler TX)
+    (pin "18" (uuid "p018"))  ; PA9/USART1_TX (BLE TX)
+    (pin "19" (uuid "p019"))  ; PA10/USART1_RX (BLE RX)
+    (pin "22" (uuid "p022"))  ; PA12 (TX EN / BLE RTS)
+    (pin "30" (uuid "p030"))  ; PB0 (LED)
+    (pin "34" (uuid "p034"))  ; PB3/SPI1_SCK (ADC SCK)
+    (pin "35" (uuid "p035"))  ; PB4/SPI1_MISO (ADC MISO)
+    (pin "36" (uuid "p036"))  ; PB5/SPI1_MOSI (ADC MOSI)
+    (pin "41" (uuid "p041"))  ; PB6/I2C1_SCL (Pressure/RTC/Fuel)
+    (pin "42" (uuid "p042"))  ; PB7/I2C1_SDA
+    (pin "45" (uuid "p045"))  ; PB10/I2C2_SCL (Magnetometer)
+    (pin "46" (uuid "p046"))  ; PB11/I2C2_SDA
+    (pin "56" (uuid "p056"))  ; PC4 (ADC BUSY)
+    (pin "57" (uuid "p057"))  ; PC5 (BLE RESET)
+    (pin "61" (uuid "p061"))  ; PD0/OSC_IN (HSE)
+    (pin "62" (uuid "p062"))  ; PD1/OSC_OUT (HSE)
+    (pin "66" (uuid "p066"))  ; PD2 (LCD CS)
+    (pin "67" (uuid "p067"))  ; PD3 (LCD DISP)
+    (pin "68" (uuid "p068"))  ; PD4 (LCD EXTMODE)
+    (pin "69" (uuid "p069"))  ; PD5 (NAND BUSY)
+    (pin "70" (uuid "p070"))  ; PD6 (NAND CS)
+    (pin "71" (uuid "p071"))  ; PD7 (NAND WP)
+    (pin "76" (uuid "p076"))  ; PE2/SPI4_SCK (IMU/LCD/NAND SCK)
+    (pin "77" (uuid "p077"))  ; PE3 (IMU INT)
+    (pin "78" (uuid "p078"))  ; PE4 (IMU CS)
+    (pin "79" (uuid "p079"))  ; PE5/SPI4_MISO
+    (pin "80" (uuid "p080"))  ; PE6/SPI4_MOSI
+    (pin "81" (uuid "p081"))  ; PC7 (BLE INT)
+  )
+
+  ; ---- U2: ICM-42688-P IMU ----
+  (symbol (lib_id "Sensor_Motion:ICM-42688-P") (at 180 40 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U2") (property "Value" "ICM-42688-P")
+    (property "Manufacturer" "TDK InvenSense") (property "MPN" "ICM-42688-P")
+    (property "Author" "jayis1")
+    (pin "1" (uuid "imu_p01"))  ; VDDIO
+    (pin "2" (uuid "imu_p02"))  ; INT1
+    (pin "3" (uuid "imu_p03"))  ; GND
+    (pin "4" (uuid "imu_p04"))  ; RESV
+    (pin "5" (uuid "imu_p05"))  ; CLKIN
+    (pin "6" (uuid "imu_p06"))  ; AUX_DA
+    (pin "7" (uuid "imu_p07"))  ; AUX_SCL
+    (pin "8" (uuid "imu_p08"))  ; INT2
+    (pin "9" (uuid "imu_p09"))  ; VDD
+    (pin "10" (uuid "imu_p10")) ; GND
+    (pin "11" (uuid "imu_p11")) ; AP_SDO/MISO
+    (pin "12" (uuid "imu_p12")) ; CS
+    (pin "13" (uuid "imu_p13")) ; SCLK
+    (pin "14" (uuid "imu_p14")) ; SDI/MOSI
+  )
+
+  ; ---- U3: MMC5983MA Magnetometer ----
+  (symbol (lib_id "Sensor_Magnetic:MMC5983MA") (at 180 65 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U3") (property "Value" "MMC5983MA")
+    (property "Manufacturer" "Memsic") (property "MPN" "MMC5983MA-TR")
+    (property "Author" "jayis1")
+    (pin "1" (uuid "mag_p01"))  ; VDD
+    (pin "2" (uuid "mag_p02"))  ; GND
+    (pin "3" (uuid "mag_p03"))  ; SCL
+    (pin "4" (uuid "mag_p04"))  ; SDA
+    (pin "5" (uuid "mag_p05"))  ; INT
+    (pin "6" (uuid "mag_p06"))  ; SET
+    (pin "7" (uuid "mag_p07"))  ; RESET
+    (pin "8" (uuid "mag_p08"))  ; VDDIO
+  )
+
+  ; ---- U4: MS5837-30BA Pressure Sensor ----
+  (symbol (lib_id "Sensor_Pressure:MS5837-30BA") (at 180 90 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U4") (property "Value" "MS5837-30BA")
+    (property "Manufacturer" "TE Connectivity") (property "MPN" "MS5837-30BA")
+    (property "Author" "jayis1")
+    (pin "1" (uuid "prs_p01"))  ; GND
+    (pin "2" (uuid "prs_p02"))  ; VDD
+    (pin "3" (uuid "prs_p03"))  ; SCL
+    (pin "4" (uuid "prs_p04"))  ; SDA
+  )
+
+  ; ---- U5: W25N02G NAND Flash ----
+  (symbol (lib_id "Memory_Flash:W25N02GVZEIG") (at 240 40 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U5") (property "Value" "W25N02GVZEIG")
+    (property "Manufacturer" "Winbond") (property "MPN" "W25N02GVZEIG")
+    (property "Author" "jayis1")
+    (pin "1" (uuid "nand_p01"))  ; /CS
+    (pin "2" (uuid "nand_p02"))  ; /WP
+    (pin "3" (uuid "nand_p03"))  ; /HOLD or /RESET
+    (pin "4" (uuid "nand_p04"))  ; VSS
+    (pin "5" (uuid "nand_p05"))  ; SI/IO0
+    (pin "6" (uuid "nand_p06"))  ; SO/IO1
+    (pin "7" (uuid "nand_p07"))  ; /WP/IO2
+    (pin "8" (uuid "nand_p08"))  ; VCC
+  )
+
+  ; ---- U6: nRF52840 BLE Module ----
+  (symbol (lib_id "RF_Module:Ublox_BMD-340-A") (at 240 80 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U6") (property "Value" "BMD-340-A")
+    (property "Manufacturer" "U-blox") (property "MPN" "BMD-340-A-R")
+    (property "Author" "jayis1")
+    (pin "1" (uuid "ble_p01"))  ; VDD
+    (pin "2" (uuid "ble_p02"))  ; GND
+    (pin "3" (uuid "ble_p03"))  ; UART_TX
+    (pin "4" (uuid "ble_p04"))  ; UART_RX
+    (pin "5" (uuid "ble_p05"))  ; UART_CTS
+    (pin "6" (uuid "ble_p06"))  ; UART_RTS
+    (pin "7" (uuid "ble_p07"))  ; RESET
+    (pin "8" (uuid "ble_p08"))  ; INT/SWO
+  )
+
+  ; ---- U7: AD8333 Quadrature Demodulator ----
+  (symbol (lib_id "Analog:AD8333") (at 50 140 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U7") (property "Value" "AD8333")
+    (property "Manufacturer" "Analog Devices") (property "MPN" "AD8333ACPZ")
+    (property "Author" "jayis1")
+    (pin "1" (uuid "dem_p01"))  ; LOIP (1 MHz ref in)
+    (pin "2" (uuid "dem_p02"))  ; LON
+    (pin "3" (uuid "dem_p03"))  ; RFSW
+    (pin "4" (uuid "dem_p04"))  ; MODE
+    (pin "5" (uuid "dem_p05"))  ; MCLK
+    (pin "6" (uuid "dem_p06"))  ; SS
+    (pin "7" (uuid "dem_p07"))  ; SCLK
+    (pin "8" (uuid "dem_p08"))  ; SDIO
+    (pin "9" (uuid "dem_p09"))  ; IVPH1 (I output ch1)
+    (pin "10" (uuid "dem_p10")) ; IVNH1
+    (pin "11" (uuid "dem_p11")) ; QVPH1 (Q output ch1)
+    (pin "12" (uuid "dem_p12")) ; QVNH1
+    (pin "13" (uuid "dem_p13")) ; IVPH2
+    (pin "14" (uuid "dem_p14")) ; QVPH2
+    (pin "15" (uuid "dem_p15")) ; IVPH3
+    (pin "16" (uuid "dem_p16")) ; QVPH3
+    (pin "17" (uuid "dem_p17")) ; VREF
+    (pin "18" (uuid "dem_p18")) ; AVDD
+    (pin "19" (uuid "dem_p19")) ; AGND
+    (pin "20" (uuid "dem_p20")) ; DVDD
+    (pin "21" (uuid "dem_p21")) ; DGND
+    (pin "22" (uuid "dem_p22")) ; COMM
+    (pin "23" (uuid "dem_p23")) ; COMM2
+    (pin "24" (uuid "dem_p24")) ; BIAS
+  )
+
+  ; ---- U8: AD9629 ADC ----
+  (symbol (lib_id "Analog_ADC:AD9629BCPZ-20") (at 50 180 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U8") (property "Value" "AD9629BCPZ-20")
+    (property "Manufacturer" "Analog Devices") (property "MPN" "AD9629BCPZ-20")
+    (property "Author" "jayis1")
+    (pin "1" (uuid "adc_p01"))  ; D0 (SPI SCK)
+    (pin "2" (uuid "adc_p02"))  ; D1 (SPI MOSI)
+    (pin "3" (uuid "adc_p03"))  ; D2
+    (pin "4" (uuid "adc_p04"))  ; D3
+    (pin "5" (uuid "adc_p05"))  ; SCLK
+    (pin "6" (uuid "adc_p06"))  ; SDATA
+    (pin "7" (uuid "adc_p07"))  ; CSB
+    (pin "8" (uuid "adc_p08"))  ; D4
+    (pin "9" (uuid "adc_p09"))  ; D5
+    (pin "10" (uuid "adc_p10")) ; D6 (SPI MISO)
+    (pin "11" (uuid "adc_p11")) ; D7
+    (pin "12" (uuid "adc_p12")) ; D8 (BUSY/DCO)
+    (pin "13" (uuid "adc_p13")) ; D9
+    (pin "14" (uuid "adc_p14")) ; DCLK+
+    (pin "15" (uuid "adc_p15")) ; DCLK-
+    (pin "16" (uuid "adc_p16")) ; VDD
+    (pin "17" (uuid "adc_p17")) ; GND
+    (pin "18" (uuid "adc_p18")) ; VIN+
+    (pin "19" (uuid "adc_p19")) ; VIN-
+    (pin "20" (uuid "adc_p20")) ; REF
+  )
+
+  ; ---- U9: TPS63020 Buck-Boost ----
+  (symbol (lib_id "Regulator_Switching:TPS63020") (at 150 150 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U9") (property "Value" "TPS63020")
+    (property "Manufacturer" "TI") (property "MPN" "TPS63020DSJR")
+    (property "Author" "jayis1")
+    (pin "1" (uuid "reg_p01"))  ; VINA
+    (pin "2" (uuid "reg_p02"))  ; EN
+    (pin "3" (uuid "reg_p03"))  ; PSYNC
+    (pin "4" (uuid "reg_p04"))  ; VIN1
+    (pin "5" (uuid "reg_p05"))  ; VIN2
+    (pin "6" (uuid "reg_p06"))  ; VINDCDC
+    (pin "7" (uuid "reg_p07"))  ; GND
+    (pin "8" (uuid "reg_p08"))  ; L2
+    (pin "9" (uuid "reg_p09"))  ; VOUT
+    (pin "10" (uuid "reg_p10")) ; VOUT
+    (pin "11" (uuid "reg_p11")) ; FB
+    (pin "12" (uuid "reg_p12")) ; VAUX
+    (pin "13" (uuid "reg_p13")) ; PGND
+    (pin "14" (uuid "reg_p14")) ; L1
+    (pin "15" (uuid "reg_p15")) ; PGND (EP)
+  )
+
+  ; ---- U10: MAX17055 Fuel Gauge ----
+  (symbol (lib_id "Sensor_Current:MAX17055") (at 180 110 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U10") (property "Value" "MAX17055")
+    (property "Manufacturer" "Maxim") (property "MPN" "MAX17055XTIW00+T")
+    (property "Author" "jayis1")
+    (pin "1" (uuid "fg_p01"))   ; CELLP
+    (pin "2" (uuid "fg_p02"))   ; CELN
+    (pin "3" (uuid "fg_p03"))   ; SDA
+    (pin "4" (uuid "fg_p04"))   ; SCL
+    (pin "5" (uuid "fg_p05"))   ; GND
+    (pin "6" (uuid "fg_p06"))   ; VDD
+    (pin "7" (uuid "fg_p07"))   ; INT
+    (pin "8" (uuid "fg_p08"))   ; ALRT
+  )
+
+  ; ---- U11: PCF8523 RTC ----
+  (symbol (lib_id "Timer_RTC:PCF8523") (at 180 130 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U11") (property "Value" "PCF8523")
+    (property "Manufacturer" "NXP") (property "MPN" "PCF8523T/1,118")
+    (property "Author" "jayis1")
+    (pin "1" (uuid "rtc_p01"))  ; OSCI
+    (pin "2" (uuid "rtc_p02"))  ; OSCO
+    (pin "3" (uuid "rtc_p03"))  ; VSS
+    (pin "4" (uuid "rtc_p04"))  ; VDD
+    (pin "5" (uuid "rtc_p05"))  ; SDA
+    (pin "6" (uuid "rtc_p06"))  ; SCL
+    (pin "7" (uuid "rtc_p07"))  ; INT1
+    (pin "8" (uuid "rtc_p08"))  ; VBAT
+  )
+
+  ; ---- LCD1: Sharp LS013B7DH03 ----
+  (symbol (lib_id "Display:LS013B7DH03") (at 240 120 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "LCD1") (property "Value" "LS013B7DH03")
+    (property "Manufacturer" "Sharp") (property "MPN" "LS013B7DH03")
+    (property "Author" "jayis1")
+    (pin "1" (uuid "lcd_p01"))  ; VDD
+    (pin "2" (uuid "lcd_p02"))  ; VSS
+    (pin "3" (uuid "lcd_p03"))  ; SCLK
+    (pin "4" (uuid "lcd_p04"))  ; SI (MOSI)
+    (pin "5" (uuid "lcd_p05"))  ; SCS (CS)
+    (pin "6" (uuid "lcd_p06"))  ; EXTIN
+    (pin "7" (uuid "lcd_p07"))  ; EXTCOMIN
+    (pin "8" (uuid "lcd_p08"))  ; DISP
+  )
+
+  ; ---- TX1: PZT-5H Transducer (center TX) ----
+  (symbol (lib_id "Device:PZT-5H_Transducer") (at 50 50 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "TX1") (property "Value" "PZT-5H-1MHz")
+    (property "Manufacturer" "Custom") (property "Author" "jayis1")
+    (pin "1" (uuid "tx_p01"))   ; +
+    (pin "2" (uuid "tx_p02"))   ; -
+  )
+
+  ; ---- RX1-RX3: PZT-5H Receiver Transducers ----
+  (symbol (lib_id "Device:PZT-5H_Transducer") (at 50 65 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "RX1") (property "Value" "PZT-5H-1MHz")
+    (property "Author" "jayis1")
+    (pin "1" (uuid "rx1_p01")) (pin "2" (uuid "rx1_p02"))
+  )
+  (symbol (lib_id "Device:PZT-5H_Transducer") (at 50 75 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "RX2") (property "Value" "PZT-5H-1MHz")
+    (property "Author" "jayis1")
+    (pin "1" (uuid "rx2_p01")) (pin "2" (uuid "rx2_p02"))
+  )
+  (symbol (lib_id "Device:PZT-5H_Transducer") (at 50 85 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "RX3") (property "Value" "PZT-5H-1MHz")
+    (property "Author" "jayis1")
+    (pin "1" (uuid "rx3_p01")) (pin "2" (uuid "rx3_p02"))
+  )
+
+  ; ---- U12: LM48611 Audio Amp (TX driver) ----
+  (symbol (lib_id "Amplifier_Audio:LM48611") (at 80 50 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U12") (property "Value" "LM48611")
+    (property "Manufacturer" "TI") (property "Author" "jayis1")
+    (pin "1" (uuid "amp_p01"))  ; IN
+    (pin "2" (uuid "amp_p02"))  ; BYPASS
+    (pin "3" (uuid "amp_p03"))  ; SHDN
+    (pin "4" (uuid "amp_p04"))  ; VDD
+    (pin "5" (uuid "amp_p05"))  ; VOUT+
+    (pin "6" (uuid "amp_p06"))  ; VOUT-
+    (pin "7" (uuid "amp_p07"))  ; GND
+    (pin "8" (uuid "amp_p08"))  ; MUTE
+  )
+
+  ; ---- U13: AD8331 VGA (RX preamp) ----
+  (symbol (lib_id "Amplifier:AD8331") (at 80 75 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U13") (property "Value" "AD8331")
+    (property "Manufacturer" "Analog Devices") (property "Author" "jayis1")
+    (pin "1" (uuid "vga_p01"))  ; VIN
+    (pin "2" (uuid "vga_p02"))  ; GAIN
+    (pin "3" (uuid "vga_p03"))  ; VOUT
+    (pin "4" (uuid "vga_p04"))  ; VDD
+    (pin "5" (uuid "vga_p05"))  ; GND
+  )
+
+  ; ---- Passive components: decoupling caps, pull-ups, etc. ----
+  (symbol (lib_id "Device:C") (at 160 30 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C1") (property "Value" "100nF")
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Device:C") (at 165 30 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C2") (property "Value" "10uF")
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Device:C") (at 170 30 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C3") (property "Value" "100nF")
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Device:C") (at 175 30 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C4") (property "Value" "4.7uF")
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Device:C") (at 160 40 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C5") (property "Value" "10uF")
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Device:C") (at 165 40 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C6") (property "Value" "22uH")
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Device:R") (at 160 50 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R1") (property "Value" "10K")
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Device:R") (at 165 50 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R2") (property "Value" "4.7K")
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Device:R") (at 170 50 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R3") (property "Value" "100K")
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Device:R") (at 175 50 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R4") (property "Value" "5mR")
+    (property "Author" "jayis1")  ; Current sense resistor for fuel gauge
+  )
+  (symbol (lib_id "Device:Crystal") (at 140 60 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "Y1") (property "Value" "8MHz")
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Device:L") (at 150 140 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "L1") (property "Value" "2.2uH")
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Device:L") (at 155 140 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "L2") (property "Value" "2.2uH")
+    (property "Author" "jayis1")
+  )
+
+  ; ============ WIRES / NETS ============
+
+  ; ---- Power nets ----
+  ; VBAT (3.7V from battery) → TPS63020 input
+  (wire (pts (xy 140 145) (xy 145 145)) (uuid "w001"))
+  ; TPS63020 output (3.3V) → system VDD
+  (wire (pts (xy 155 145) (xy 165 145)) (uuid "w002"))
+
+  ; ---- 3.3V power rail ----
+  (net "3V3" (uuid "net_3v3"))
+  ; ---- GND ----
+  (net "GND" (uuid "net_gnd"))
+  ; ---- VBAT ----
+  (net "VBAT" (uuid "net_vbat"))
+
+  ; ---- I2C1 bus (Pressure, RTC, Fuel gauge) ----
+  (net "I2C1_SCL" (uuid "net_i2c1_scl"))
+  (net "I2C1_SDA" (uuid "net_i2c1_sda"))
+  ; Pull-ups on I2C1
+  (wire (pts (xy 160 50) (xy 160 55)) (uuid "w010"))
+  (wire (pts (xy 165 50) (xy 165 55)) (uuid "w011"))
+
+  ; ---- I2C2 bus (Magnetometer) ----
+  (net "I2C2_SCL" (uuid "net_i2c2_scl"))
+  (net "I2C2_SDA" (uuid "net_i2c2_sda"))
+
+  ; ---- SPI1 (Doppler ADC) ----
+  (net "SPI1_SCK" (uuid "net_spi1_sck"))
+  (net "SPI1_MISO" (uuid "net_spi1_miso"))
+  (net "SPI1_MOSI" (uuid "net_spi1_mosi"))
+  (net "ADC_CS" (uuid "net_adc_cs"))
+  (net "ADC_BUSY" (uuid "net_adc_busy"))
+
+  ; ---- SPI4 (IMU, NAND, LCD — shared bus with separate CS) ----
+  (net "SPI4_SCK" (uuid "net_spi4_sck"))
+  (net "SPI4_MISO" (uuid "net_spi4_miso"))
+  (net "SPI4_MOSI" (uuid "net_spi4_mosi"))
+  (net "IMU_CS" (uuid "net_imu_cs"))
+  (net "NAND_CS" (uuid "net_nand_cs"))
+  (net "LCD_CS" (uuid "net_lcd_cs"))
+  (net "NAND_BUSY" (uuid "net_nand_busy"))
+  (net "NAND_WP" (uuid "net_nand_wp"))
+  (net "IMU_INT" (uuid "net_imu_int"))
+
+  ; ---- USART1 (BLE module) ----
+  (net "BLE_TX" (uuid "net_ble_tx"))
+  (net "BLE_RX" (uuid "net_ble_rx"))
+  (net "BLE_CTS" (uuid "net_ble_cts"))
+  (net "BLE_RTS" (uuid "net_ble_rts"))
+  (net "BLE_RESET" (uuid "net_ble_reset"))
+  (net "BLE_INT" (uuid "net_ble_int"))
+
+  ; ---- Doppler analog signals ----
+  (net "DOPPLER_TX" (uuid "net_doppler_tx"))
+  (net "DOPPLER_TX_EN" (uuid "net_doppler_tx_en"))
+  (net "RX1_SIGNAL" (uuid "net_rx1_sig"))
+  (net "RX2_SIGNAL" (uuid "net_rx2_sig"))
+  (net "RX3_SIGNAL" (uuid "net_rx3_sig"))
+  (net "I_CH1" (uuid "net_i_ch1"))
+  (net "Q_CH1" (uuid "net_q_ch1"))
+  (net "I_CH2" (uuid "net_i_ch2"))
+  (net "Q_CH2" (uuid "net_q_ch2"))
+  (net "I_CH3" (uuid "net_i_ch3"))
+  (net "Q_CH3" (uuid "net_q_ch3"))
+  (net "LO_REF" (uuid "net_lo_ref"))
+
+  ; ---- Haptic ----
+  (net "HAPTIC_PWM" (uuid "net_haptic_pwm"))
+  (net "HAPTIC_EN" (uuid "net_haptic_en"))
+
+  ; ---- Display control ----
+  (net "LCD_DISP" (uuid "net_lcd_disp"))
+  (net "LCD_EXTMODE" (uuid "net_lcd_extmode"))
+
+  ; ---- HSE crystal ----
+  (net "HSE_IN" (uuid "net_hse_in"))
+  (net "HSE_OUT" (uuid "net_hse_out"))
+
+  ; ---- LED ----
+  (net "LED" (uuid "net_led"))
+
+  ; ---- RTC backup battery ----
+  (net "VBAT_RTC" (uuid "net_vbat_rtc"))
+
+  ; ============ NET LABELS ============
+  ; Each label connects to the corresponding net
+  (global_label "3V3" (shape input) (at 165 145 0) (effects (font (size 1.27 1.27))))
+  (global_label "GND" (shape input) (at 140 160 0) (effects (font (size 1.27 1.27))))
+  (global_label "VBAT" (shape input) (at 140 145 0) (effects (font (size 1.27 1.27))))
+
+  (label "I2C1_SCL" (at 120 100 0) (effects (font (size 1.27 1.27))))
+  (label "I2C1_SDA" (at 120 105 0) (effects (font (size 1.27 1.27))))
+  (label "I2C2_SCL" (at 120 110 0) (effects (font (size 1.27 1.27))))
+  (label "I2C2_SDA" (at 120 115 0) (effects (font (size 1.27 1.27))))
+  (label "SPI1_SCK" (at 120 120 0) (effects (font (size 1.27 1.27))))
+  (label "SPI1_MISO" (at 120 125 0) (effects (font (size 1.27 1.27))))
+  (label "SPI1_MOSI" (at 120 130 0) (effects (font (size 1.27 1.27))))
+  (label "SPI4_SCK" (at 120 135 0) (effects (font (size 1.27 1.27))))
+  (label "SPI4_MISO" (at 120 140 0) (effects (font (size 1.27 1.27))))
+  (label "SPI4_MOSI" (at 120 145 0) (effects (font (size 1.27 1.27))))
+  (label "BLE_TX" (at 120 150 0) (effects (font (size 1.27 1.27))))
+  (label "BLE_RX" (at 120 155 0) (effects (font (size 1.27 1.27))))
+  (label "DOPPLER_TX" (at 60 50 0) (effects (font (size 1.27 1.27))))
+  (label "HAPTIC_PWM" (at 120 160 0) (effects (font (size 1.27 1.27))))
+
+  ; ============ JUNCTIONS ============
+  (junction (at 160 50) (uuid "j001"))
+  (junction (at 165 50) (uuid "j002"))
+
+  ; ============ NO-CONNECTION FLAGS ============
+  ; (Mark unused pins with NC flag)
+
+  ; ============ TEXT NOTES ============
+  (text "TideBand Schematic — jayis1 © 2026"
+    (at 50 20 0) (effects (font (size 2.5 2.5) bold)))
+  (text "Power: 2× 18650 → TPS63020 → 3.3V"
+    (at 50 165 0) (effects (font (size 1.5 1.5))))
+  (text "Doppler: 1MHz TX + 3× RX → AD8333 → AD9629 → SPI1"
+    (at 50 200 0) (effects (font (size 1.5 1.5))))
+  (text "Sensors: ICM-42688 (SPI4) + MMC5983 (I2C2) + MS5837 (I2C1)"
+    (at 50 205 0) (effects (font (size 1.5 1.5))))
+  (text "Storage: W25N02G 256MB NAND (SPI4) + PCF8523 RTC (I2C1)"
+    (at 50 210 0) (effects (font (size 1.5 1.5))))
+  (text "Comms: BMD-340 BLE 5.0 (UART1)"
+    (at 50 215 0) (effects (font (size 1.5 1.5))))
+  (text "Display: Sharp LS013B7DH03 128×128 (SPI4)"
+    (at 50 220 0) (effects (font (size 1.5 1.5))))
+
+  ; ============ SHEET INSTANCES ============
+  (sheet_instances
+    (path "/" (page "1/1"))
+  )
+  (symbol_instances
+    (path "/p001" (reference "U1") (unit 1))
+    (path "/p002" (reference "U2") (unit 1))
+    (path "/p003" (reference "U3") (unit 1))
+    (path "/p004" (reference "U4") (unit 1))
+    (path "/p005" (reference "U5") (unit 1))
+    (path "/p006" (reference "U6") (unit 1))
+    (path "/p007" (reference "U7") (unit 1))
+    (path "/p008" (reference "U8") (unit 1))
+    (path "/p009" (reference "U9") (unit 1))
+    (path "/p010" (reference "U10") (unit 1))
+    (path "/p011" (reference "U11") (unit 1))
+  )
+)
