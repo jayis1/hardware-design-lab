@@ -1,0 +1,381 @@
+(kicad_pcb
+  (version 20240108)
+  (generator "kicad_pcb_editor")
+  (generator_version "8.0")
+  (uuid "c3d4e5f6-a7b8-9012-cdef-a23456789012")
+  (general (thickness 1.6) (legacy_teardrops no))
+  (paper "A4")
+
+  (title_block
+    (title "GrainGuard — In-Silo Grain Condition Probe PCB")
+    (date "2026-08-12")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "Copyright (C) 2026 jayis1. All rights reserved.")
+    (comment 3 "License: CERN-OHL-S v2")
+    (comment 4 "38mm diameter circular probe PCB, 4-layer")
+  )
+
+  ; ============ LAYERS ============
+  (layers
+    (0 "F.Cu" signal "Top copper — components")
+    (1 "In1.Cu" signal "Inner 1 — GND plane")
+    (2 "In2.Cu" signal "Inner 2 — 3V3 plane")
+    (31 "B.Cu" signal "Bottom copper — DS18B20 sensors + piezo")
+    (32 "B.Adhes" user "Bottom adhesive")
+    (33 "F.Adhes" user "Top adhesive")
+    (34 "B.Paste" user "Bottom solder paste")
+    (35 "F.Paste" user "Top solder paste")
+    (36 "B.SilkS" user "Bottom silkscreen")
+    (37 "F.SilkS" user "Top silkscreen")
+    (38 "B.Mask" user "Bottom solder mask")
+    (39 "F.Mask" user "Top solder mask")
+    (40 "Dwgs.User" user "User drawings")
+    (41 "Cmts.User" user "User comments")
+    (42 "Eco1.User" user)
+    (43 "Eco2.User" user)
+    (44 "Edge.Cuts" user "Board outline (38mm circle)")
+    (45 "Margin" user)
+    (46 "B.Fab" user "Bottom fabrication")
+    (47 "F.Fab" user "Top fabrication")
+  )
+
+  ; ============ SETUP ============
+  (setup
+    (pad_to_mask_clearance 0.05)
+    (pcbplotparams
+      (layerselection 0x00010fc_ffffffff)
+      (plot_on_all_layers_selection 0x0000000_00000000)
+      (subtract_solder_mask_silver no)
+      (min_thickness 0.025)
+      (max_thickness 1.8)
+    )
+    (net_settings
+      (classes
+        (net_class "Default"
+          (clearance 0.2) (trace_width 0.25) (via_dia 0.6) (via_drill 0.3)
+          (diff_pair_width 0.2) (diff_pair_gap 0.25)
+        )
+        (net_class "Power"
+          (clearance 0.3) (trace_width 0.5) (via_dia 0.8) (via_drill 0.4)
+        )
+        (net_class "RF"
+          (clearance 0.3) (trace_width 0.3) (via_dia 0.6) (via_drill 0.3)
+        )
+      )
+    )
+  )
+
+  ; ============ NETS ============
+  (net 0 "")
+  (net 1 "GND" (class "Power"))
+  (net 2 "+3V3" (class "Power"))
+  (net 3 "VBAT" (class "Power"))
+  (net 4 "I2C_SDA")
+  (net 5 "I2C_SCL")
+  (net 6 "ONEWIRE_DQ")
+  (net 7 "SPI_SCK")
+  (net 8 "SPI_MISO")
+  (net 9 "SPI_MOSI")
+  (net 10 "SPI_CS_FLASH")
+  (net 11 "LORA_NSS")
+  (net 12 "LORA_BUSY")
+  (net 13 "LORA_DIO1")
+  (net 14 "LORA_RESET")
+  (net 15 "AE_ENVELOPE")
+  (net 16 "AE_RAW")
+  (net 17 "AE_MODE")
+  (net 18 "AE_PGA_GAIN")
+  (net 19 "RF_ANT" (class "RF"))
+  (net 20 "LED")
+  (net 21 "NFC_IRQ")
+  (net 22 "NFC_DISABLE")
+  (net 23 "TEMP_SUPPLY_EN")
+  (net 24 "CO2_SUPPLY_EN")
+  (net 25 "AE_SUPPLY_EN")
+  (net 26 "BAT_DIV")
+  (net 27 "SUPER_CAP")
+  (net 28 "BUZZER")
+  (net 29 "CO2_RESET")
+  (net 30 "I2C_SDA_2")
+
+  ; ============ BOARD OUTLINE (38mm diameter circle) ============
+  (gr_arc (start 152.4 76.2) (mid 152.4 57.2) (end 133.4 76.2)
+    (stroke (width 0.15)) (layer "Edge.Cuts"))
+  (gr_arc (start 133.4 76.2) (mid 133.4 95.2) (end 152.4 76.2)
+    (stroke (width 0.15)) (layer "Edge.Cuts"))
+
+  ; Board outline: circle centered at (142.9, 76.2) with radius 19mm
+  ; Simplified representation using arc segments
+  (gr_line (start 123.9 76.2) (end 161.9 76.2)
+    (stroke (width 0.15)) (layer "Dwgs.User"))
+  (gr_line (start 142.9 57.2) (end 142.9 95.2)
+    (stroke (width 0.15)) (layer "Dwgs.User"))
+
+  ; ============ FOOTPRINTS ============
+
+  ; ---- U1: STM32WL55JCI6 (QFN-32, center of board) ----
+  (footprint "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.45x3.45mm"
+    (layer "F.Cu")
+    (at 142.9 76.2)
+    (property "Reference" "U1" (at 0 -4 0))
+    (property "Value" "STM32WL55JCI6" (at 0 4 0))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -2.2 -1.5) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))
+    (pad "2" smd rect (at -2.2 -1.0) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 4))
+    (pad "3" smd rect (at -2.2 -0.5) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 5))
+    (pad "4" smd rect (at -2.2 0) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 10))
+    (pad "5" smd rect (at -2.2 0.5) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 7))
+    (pad "6" smd rect (at -2.2 1.0) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 8))
+    (pad "7" smd rect (at -2.2 1.5) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 9))
+    (pad "8" smd rect (at -1.5 2.2 90) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 6))
+    (pad "9" smd rect (at -1.0 2.2 90) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 18))
+    (pad "10" smd rect (at -0.5 2.2 90) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 17))
+    (pad "11" smd rect (at 0 2.2 90) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 21))
+    (pad "12" smd rect (at 0.5 2.2 90) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 22))
+    (pad "13" smd rect (at 1.0 2.2 90) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "14" smd rect (at 1.5 2.2 90) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 20))
+    (pad "15" smd rect (at 2.2 1.5 180) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "16" smd rect (at 2.2 1.0 180) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 15))
+    (pad "17" smd rect (at 2.2 0.5 180) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 16))
+    (pad "18" smd rect (at 2.2 0 180) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 26))
+    (pad "19" smd rect (at 2.2 -0.5 180) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 11))
+    (pad "20" smd rect (at 2.2 -1.0 180) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 14))
+    (pad "21" smd rect (at 2.2 -1.5 180) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 13))
+    (pad "22" smd rect (at 1.5 -2.2 270) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 22))
+    (pad "23" smd rect (at 1.0 -2.2 270) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 29))
+    (pad "24" smd rect (at 0.5 -2.2 270) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 27))
+    (pad "25" smd rect (at 0 -2.2 270) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 28))
+    (pad "26" smd rect (at -0.5 -2.2 270) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 23))
+    (pad "27" smd rect (at -1.0 -2.2 270) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 24))
+    (pad "28" smd rect (at -1.5 -2.2 270) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 25))
+    (pad "29" smd rect (at -2.2 -1.5 0) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 12))
+    (pad "30" smd rect (at -2.2 -1.0 0) (size 0.25 0.75) (layers "F.Cu" "F.Paste" "F.Mask") (net 19))
+    (pad "EP" smd rect (at 0 0) (size 3.45 3.45) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+  )
+
+  ; ---- U2: SCD41 (top left area) ----
+  (footprint "Sensor:Sensirion_SCD4x"
+    (layer "F.Cu")
+    (at 130 65)
+    (property "Reference" "U2" (at 0 -5 0))
+    (property "Value" "SCD41" (at 0 5 0))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -1.9 -1.3) (size 0.4 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))
+    (pad "2" smd rect (at -0.65 -1.3) (size 0.4 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 24))
+    (pad "3" smd rect (at 0.65 -1.3) (size 0.4 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 4))
+    (pad "4" smd rect (at 1.9 -1.3) (size 0.4 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 5))
+    (pad "5" smd rect (at 1.9 1.3) (size 0.4 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))
+    (pad "6" smd rect (at 0.65 1.3) (size 0.4 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 29))
+    (pad "7" smd rect (at -0.65 1.3) (size 0.4 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+    (pad "8" smd rect (at -1.9 1.3) (size 0.4 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+  )
+
+  ; ---- U3: SHT45 (next to SCD41) ----
+  (footprint "Sensor:Sensirion_DFN-4_1.5x1.5mm_P0.5mm"
+    (layer "F.Cu")
+    (at 130 72)
+    (property "Reference" "U3" (at 0 -3 0))
+    (property "Value" "SHT45" (at 0 3 0))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.45 -0.35) (size 0.3 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))
+    (pad "2" smd rect (at 0.45 -0.35) (size 0.3 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (net 4))
+    (pad "3" smd rect (at 0.45 0.35) (size 0.3 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (net 5))
+    (pad "4" smd rect (at -0.45 0.35) (size 0.3 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+  )
+
+  ; ---- U4-U12: DS18B20 (arranged on bottom copper along probe length) ----
+  ; These are placed at 25mm intervals on the bottom layer
+  (footprint "Package_TO_SOT_THT:TO-92_Inline"
+    (layer "B.Cu")
+    (at 142.9 55)
+    (property "Reference" "U4" (at 0 -3 0))
+    (property "Value" "DS18B20" (at 0 3 0))
+    (property "Author" "jayis1")
+    (pad "1" thru_hole rect (at -1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+    (pad "2" thru_hole circle (at 0 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 6))
+    (pad "3" thru_hole circle (at 1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+  )
+  (footprint "Package_TO_SOT_THT:TO-92_Inline"
+    (layer "B.Cu") (at 142.9 63)
+    (property "Reference" "U5") (property "Value" "DS18B20") (property "Author" "jayis1")
+    (pad "1" thru_hole rect (at -1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+    (pad "2" thru_hole circle (at 0 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 6))
+    (pad "3" thru_hole circle (at 1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+  )
+  (footprint "Package_TO_SOT_THT:TO-92_Inline"
+    (layer "B.Cu") (at 142.9 71)
+    (property "Reference" "U6") (property "Value" "DS18B20") (property "Author" "jayis1")
+    (pad "1" thru_hole rect (at -1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+    (pad "2" thru_hole circle (at 0 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 6))
+    (pad "3" thru_hole circle (at 1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+  )
+  (footprint "Package_TO_SOT_THT:TO-92_Inline"
+    (layer "B.Cu") (at 142.9 79)
+    (property "Reference" "U7") (property "Value" "DS18B20") (property "Author" "jayis1")
+    (pad "1" thru_hole rect (at -1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+    (pad "2" thru_hole circle (at 0 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 6))
+    (pad "3" thru_hole circle (at 1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+  )
+  (footprint "Package_TO_SOT_THT:TO-92_Inline"
+    (layer "B.Cu") (at 142.9 87)
+    (property "Reference" "U8") (property "Value" "DS18B20") (property "Author" "jayis1")
+    (pad "1" thru_hole rect (at -1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+    (pad "2" thru_hole circle (at 0 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 6))
+    (pad "3" thru_hole circle (at 1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+  )
+  (footprint "Package_TO_SOT_THT:TO-92_Inline"
+    (layer "B.Cu") (at 142.9 95)
+    (property "Reference" "U9") (property "Value" "DS18B20") (property "Author" "jayis1")
+    (pad "1" thru_hole rect (at -1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+    (pad "2" thru_hole circle (at 0 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 6))
+    (pad "3" thru_hole circle (at 1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+  )
+  (footprint "Package_TO_SOT_THT:TO-92_Inline"
+    (layer "B.Cu") (at 142.9 103)
+    (property "Reference" "U10") (property "Value" "DS18B20") (property "Author" "jayis1")
+    (pad "1" thru_hole rect (at -1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+    (pad "2" thru_hole circle (at 0 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 6))
+    (pad "3" thru_hole circle (at 1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+  )
+  (footprint "Package_TO_SOT_THT:TO-92_Inline"
+    (layer "B.Cu") (at 142.9 111)
+    (property "Reference" "U11") (property "Value" "DS18B20") (property "Author" "jayis1")
+    (pad "1" thru_hole rect (at -1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+    (pad "2" thru_hole circle (at 0 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 6))
+    (pad "3" thru_hole circle (at 1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+  )
+  (footprint "Package_TO_SOT_THT:TO-92_Inline"
+    (layer "B.Cu") (at 142.9 119)
+    (property "Reference" "U12") (property "Value" "DS18B20") (property "Author" "jayis1")
+    (pad "1" thru_hole rect (at -1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+    (pad "2" thru_hole circle (at 0 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 6))
+    (pad "3" thru_hole circle (at 1.27 0) (size 1.0 1.0) (drill 0.6) (layers "*.Cu" "*.Mask") (net 1))
+  )
+
+  ; ---- U14: OPA2376 charge amplifier (SOIC-8) ----
+  (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+    (layer "F.Cu") (at 155 65)
+    (property "Reference" "U14") (property "Value" "OPA2376") (property "Author" "jayis1")
+    (pad "1" smd rect (at -2.7 -1.905) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at -2.7 -0.635) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 15))
+    (pad "3" smd rect (at -2.7 0.635) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+    (pad "4" smd rect (at -2.7 1.905) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+    (pad "5" smd rect (at 2.7 1.905) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "6" smd rect (at 2.7 0.635) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 16))
+    (pad "7" smd rect (at 2.7 -0.635) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))
+    (pad "8" smd rect (at 2.7 -1.905) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U15: ADL5511 envelope detector (MSOP-10) ----
+  (footprint "Package_SO:MSOP-10_3x3mm_P0.5mm"
+    (layer "F.Cu") (at 155 75)
+    (property "Reference" "U15") (property "Value" "ADL5511") (property "Author" "jayis1")
+    (pad "1" smd rect (at -1.5 -1.0) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))
+    (pad "2" smd rect (at -1.5 -0.5) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 15))
+    (pad "3" smd rect (at -1.5 0) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+    (pad "4" smd rect (at -1.5 0.5) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+    (pad "5" smd rect (at -1.5 1.0) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "6" smd rect (at 1.5 1.0) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+    (pad "7" smd rect (at 1.5 0.5) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+    (pad "8" smd rect (at 1.5 0) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 15))
+    (pad "9" smd rect (at 1.5 -0.5) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))
+    (pad "10" smd rect (at 1.5 -1.0) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))
+  )
+
+  ; ---- U16: TPS7A02 LDO (SOT-23) ----
+  (footprint "Package_TO_SOT_SMD:SOT-23"
+    (layer "F.Cu") (at 135 88)
+    (property "Reference" "U16") (property "Value" "TPS7A02") (property "Author" "jayis1")
+    (pad "1" smd rect (at -1.0 -0.85) (size 0.6 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 3))
+    (pad "2" smd rect (at -1.0 0.85) (size 0.6 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+    (pad "3" smd rect (at 1.0 0) (size 0.6 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))
+  )
+
+  ; ---- U18: W25R80 SPI flash (SOIC-8) ----
+  (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+    (layer "F.Cu") (at 155 85)
+    (property "Reference" "U18") (property "Value" "W25R80") (property "Author" "jayis1")
+    (pad "1" smd rect (at -2.7 -1.905) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 10))
+    (pad "2" smd rect (at -2.7 -0.635) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 9))
+    (pad "3" smd rect (at -2.7 0.635) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+    (pad "4" smd rect (at -2.7 1.905) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+    (pad "5" smd rect (at 2.7 1.905) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 8))
+    (pad "6" smd rect (at 2.7 0.635) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 7))
+    (pad "7" smd rect (at 2.7 -0.635) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))
+    (pad "8" smd rect (at 2.7 -1.905) (size 1.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))
+  )
+
+  ; ---- U19: 24LC02 EEPROM (TSSOP-8) ----
+  (footprint "Package_SO:TSSOP-8_4.4x3mm_P0.65mm"
+    (layer "F.Cu") (at 135 95)
+    (property "Reference" "U19") (property "Value" "24LC02") (property "Author" "jayis1")
+    (pad "1" smd rect (at -1.5 -0.975) (size 0.5 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+    (pad "2" smd rect (at -1.5 -0.325) (size 0.5 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+    (pad "3" smd rect (at -1.5 0.325) (size 0.5 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+    (pad "4" smd rect (at -1.5 0.975) (size 0.5 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+    (pad "5" smd rect (at 1.5 0.975) (size 0.5 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (net 4))
+    (pad "6" smd rect (at 1.5 0.325) (size 0.5 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (net 5))
+    (pad "7" smd rect (at 1.5 -0.325) (size 0.5 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+    (pad "8" smd rect (at 1.5 -0.975) (size 0.5 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))
+  )
+
+  ; ---- AE1: Piezoelectric sensor (bottom layer) ----
+  (footprint "Sensor:Piezo_Disc_20mm"
+    (layer "B.Cu") (at 142.9 130)
+    (property "Reference" "AE1") (property "Value" "7BB-20-6L0") (property "Author" "jayis1")
+    (pad "1" smd rect (at 0 -5) (size 2 2) (layers "B.Cu" "B.Paste" "B.Mask") (net 15))
+    (pad "2" smd rect (at 0 5) (size 2 2) (layers "B.Cu" "B.Paste" "B.Mask") (net 1))
+  )
+
+  ; ---- BAT1: Battery holder ----
+  (footprint "Battery:BatteryHolder_Keystone_1042"
+    (layer "F.Cu") (at 142.9 140)
+    (property "Reference" "BAT1") (property "Value" "LSH-20") (property "Author" "jayis1")
+    (pad "1" thru_hole rect (at -5 0) (size 2 2) (drill 1.0) (layers "*.Cu" "*.Mask") (net 3))
+    (pad "2" thru_hole circle (at 5 0) (size 2 2) (drill 1.0) (layers "*.Cu" "*.Mask") (net 1))
+  )
+
+  ; ---- Y1: 32.768 kHz crystal ----
+  (footprint "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm"
+    (layer "F.Cu") (at 130 82)
+    (property "Reference" "Y1") (property "Value" "32.768kHz") (property "Author" "jayis1")
+    (pad "1" smd rect (at -1.25 0) (size 1.5 1.2) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 1.25 0) (size 1.5 1.2) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- Antenna: PCB trace antenna for 868 MHz ----
+  (footprint "RF_Antenna:PCB_Trace_Antenna_868MHz"
+    (layer "F.Cu") (at 155 55)
+    (property "Reference" "ANT1") (property "Value" "868MHz_LoRa") (property "Author" "jayis1")
+    (pad "1" smd rect (at 0 0) (size 1 1) (layers "F.Cu" "F.Paste" "F.Mask") (net 19))
+  )
+
+  ; ============ COPPER ZONES ============
+  (zone (net 1) (net_name "GND") (layer "In1.Cu") (tstamp 0)
+    (hatch full 0.5)
+    (connect_pads (clearance 0.3))
+    (fill (thermal_gap 0.3) (thermal_bridge_width 0.3))
+    (polygon
+      (pts (xy 123.9 57.2) (xy 161.9 57.2) (xy 161.9 95.2) (xy 123.9 95.2))
+    )
+  )
+  (zone (net 2) (net_name "+3V3") (layer "In2.Cu") (tstamp 1)
+    (hatch full 0.5)
+    (fill (thermal_gap 0.3) (thermal_bridge_width 0.3))
+    (polygon
+      (pts (xy 123.9 57.2) (xy 161.9 57.2) (xy 161.9 95.2) (xy 123.9 95.2))
+    )
+  )
+
+  ; ============ SILKSCREEN ============
+  (gr_text "GrainGuard v1.0\nAuthor: jayis1\n(C) 2026 jayis1\nCERN-OHL-S v2"
+    (at 142.9 50) (layer "F.SilkS") (font (size 1.0 1.0)))
+
+  ; ============ DIMENSIONS ============
+  (dimension (type orthogonal) (start 123.9 76.2) (end 161.9 76.2)
+    (height -10) (layer "Dwgs.User") (font (size 1 1)))
+  (dimension (type orthogonal) (start 142.9 57.2) (end 142.9 95.2)
+    (height -10) (layer "Dwgs.User") (font (size 1 1)))
+)

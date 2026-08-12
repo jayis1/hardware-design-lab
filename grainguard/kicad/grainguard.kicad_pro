@@ -1,0 +1,157 @@
+{
+  "board": {
+    "3d_viewports": [],
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.15,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15
+      },
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
+      "rules": {
+        "min_clearance": 0.2,
+        "min_track_width": 0.2,
+        "min_via_diameter": 0.6,
+        "min_via_drill": 0.3
+      }
+    },
+    "layer_presets": [],
+    "viewports": []
+  },
+  "boards": [],
+  "cvpcb": {
+    "equivalence_files": []
+  },
+  "libraries": {
+    "pinned_footprint_libs": [],
+    "pinned_symbol_libs": []
+  },
+  "meta": {
+    "filename": "grainguard.kicad_pro",
+    "version": 2
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_drill": 0.1,
+        "microvia_diameter": 0.3,
+        "name": "Default",
+        "pcb_color": "rgba(0, 0, 0, 1.0)",
+        "schematic_color": "rgba(0, 0, 0, 1.0)",
+        "track_width": 0.25,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6.0
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.3,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "name": "Power",
+        "track_width": 0.5,
+        "via_diameter": 0.8,
+        "via_drill": 0.4
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.3,
+        "name": "RF",
+        "track_width": 0.3,
+        "via_diameter": 0.6,
+        "via_drill": 0.3
+      }
+    ],
+    "meta": {
+      "version": 1
+    }
+  },
+  "pcb_new": {
+    "last_paths": {
+      "gencad": "",
+      "idf": "",
+      "specctra_dsn": "",
+      "step": "",
+      "vrml": ""
+    },
+    "page_layout_descr_file": ""
+  },
+  "schematic": {
+    "annotate_start_num": 1001,
+    "bom_export_filename": "grainguard_bom.csv",
+    "bom_fmt_presets": [],
+    "bom_fmt_settings": {
+      "delimiter": ",",
+      "field_delimiter": "\"",
+      "fields_ordered": [
+        "Reference",
+        "Value",
+        "Footprint",
+        "Author"
+      ],
+      "filter_string": "",
+      "group_fields": [
+        "Value",
+        "Footprint"
+      ],
+      "name": "Default",
+      "sort_field": "Reference"
+    },
+    "connection_grid_size": 50.0,
+    "drawing": {
+      "default_line_thickness": 6.0,
+      "default_text_size": 50.0,
+      "field_names": [],
+      "intersheets_ref_own_page": false,
+      "intersheets_ref_prefix": "",
+      "intersheets_ref_short": false,
+      "intersheets_ref_show": false,
+      "intersheets_ref_suffix": "",
+      "junction_size": 40.0,
+      "label_size": 50.0,
+      "pin_symbol_size": 25.0,
+      "text_offset_ratio": 0.3
+    },
+    "legacy_lib_dir": "",
+    "legacy_lib_list": [],
+    "meta": {
+      "version": 1
+    },
+    "net_format_name": "",
+    "page_layout_descr_file": "",
+    "plot_directory": "",
+    "spice_current_sheet_as_root": false,
+    "spice_external_command": "spice_exe",
+    "spice_model_current_sheet_as_root": true,
+    "spice_save_all_currents": false,
+    "subpart_first_id": 65,
+    "subpart_id_separator": 0
+  },
+  "sheets": [
+    [
+      "b2c3d4e5-f6a7-8901-bcde-fa2345678901",
+      "Root"
+    ]
+  ],
+  "text_variables": {
+    "AUTHOR": "jayis1",
+    "COPYRIGHT": "Copyright (C) 2026 jayis1. All rights reserved.",
+    "LICENSE": "CERN-OHL-S v2 (hardware), GPL-2.0 (firmware), MIT (app)",
+    "DEVICE": "GrainGuard In-Silo Grain Condition Probe",
+    "DATE": "2026-08-12",
+    "REV": "1.0"
+  }
+}

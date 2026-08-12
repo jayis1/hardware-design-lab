@@ -1,0 +1,403 @@
+(kicad_sch
+  (version 20240108)
+  (generator "kicad_symbol_editor")
+  (generator_version "8.0")
+  (uuid "b2c3d4e5-f6a7-8901-bcde-fa2345678901")
+  (paper "A2")
+  (title_block
+    (title "GrainGuard — In-Silo Grain Condition Probe")
+    (date "2026-08-12")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "Copyright (C) 2026 jayis1. All rights reserved.")
+    (comment 3 "License: CERN-OHL-S v2 (hardware), GPL-2.0 (firmware), MIT (app)")
+    (comment 4 "STM32WL55JC + SCD41 + DS18B20×9 + SHT45 + Acoustic AFE")
+  )
+
+  ; ============ LIBRARY SYMBOLS ============
+  (lib_symbols
+    ; ---- STM32WL55JCI6 (QFN-32) ----
+    (symbol "MCU_ST_STM32WL:STM32WL55JCI6"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U1" (at -20 25 0))
+      (property "Value" "STM32WL55JCI6" (at 0 -25 0))
+      (property "Footprint" "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.45x3.45mm" (at 0 0 0))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32wl55.pdf")
+      (property "Manufacturer" "ST")
+      (property "Author" "jayis1")
+    )
+    ; ---- SCD41 CO2 sensor ----
+    (symbol "Sensor:Sensirion_SCD41"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U2" (at -10 8 0))
+      (property "Value" "SCD41" (at 0 -8 0))
+      (property "Footprint" "Sensor:Sensirion_SCD4x" (at 0 0 0))
+      (property "Datasheet" "https://sensirion.com/resource/datasheet/scd41")
+      (property "Manufacturer" "Sensirion")
+      (property "Author" "jayis1")
+      (pin "VDD" (at -5 10 0) (length 2))
+      (pin "GND" (at -5 -10 0) (length 2))
+      (pin "SCL" (at 5 5 90) (length 2))
+      (pin "SDA" (at 5 0 90) (length 2))
+    )
+    ; ---- SHT45 humidity sensor ----
+    (symbol "Sensor:Sensirion_SHT45"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U3" (at -8 6 0))
+      (property "Value" "SHT45" (at 0 -6 0))
+      (property "Footprint" "Sensor:Sensirion_DFN-4_1.5x1.5mm_P0.5mm" (at 0 0 0))
+      (property "Datasheet" "https://sensirion.com/resource/datasheet/sht45")
+      (property "Author" "jayis1")
+      (pin "VDD" (at -5 7 0) (length 2))
+      (pin "GND" (at -5 -7 0) (length 2))
+      (pin "SCL" (at 5 3 90) (length 2))
+      (pin "SDA" (at 5 -1 90) (length 2))
+    )
+    ; ---- DS18B20 temperature sensor ----
+    (symbol "Sensor_Temperature:DS18B20"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -6 5 0))
+      (property "Value" "DS18B20" (at 0 -5 0))
+      (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline" (at 0 0 0))
+      (property "Datasheet" "https://datasheets.maximintegrated.com/en/ds/DS18B20.pdf")
+      (property "Author" "jayis1")
+      (pin "VDD" (at -5 6 0) (length 2))
+      (pin "GND" (at -5 -6 0) (length 2))
+      (pin "DQ" (at 5 0 90) (length 2))
+    )
+    ; ---- OPA2380 op-amp (AE band-pass) ----
+    (symbol "Amplifier:OPA2380"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U13" (at -5 6 0))
+      (property "Value" "OPA2380" (at 0 -6 0))
+      (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 0 0 0))
+      (property "Author" "jayis1")
+      (pin "V+" (at -3 7 0) (length 2))
+      (pin "V-" (at -3 -7 0) (length 2))
+      (pin "IN+" (at 5 2 90) (length 2))
+      (pin "IN-" (at 5 -2 90) (length 2))
+      (pin "OUT" (at 8 0 180) (length 2))
+    )
+    ; ---- OPA2376 charge amp ----
+    (symbol "Amplifier:OPA2376"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U14" (at -5 6 0))
+      (property "Value" "OPA2376" (at 0 -6 0))
+      (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 0 0 0))
+      (property "Author" "jayis1")
+      (pin "V+" (at -3 7 0) (length 2))
+      (pin "V-" (at -3 -7 0) (length 2))
+      (pin "IN+" (at 5 2 90) (length 2))
+      (pin "IN-" (at 5 -2 90) (length 2))
+      (pin "OUT" (at 8 0 180) (length 2))
+    )
+    ; ---- ADL5511 envelope detector ----
+    (symbol "Analog:ADL5511"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U15" (at -5 8 0))
+      (property "Value" "ADL5511" (at 0 -8 0))
+      (property "Footprint" "Package_SO:MSOP-10_3x3mm_P0.5mm" (at 0 0 0))
+      (property "Author" "jayis1")
+      (pin "VPOS" (at -3 9 0) (length 2))
+      (pin "GND" (at -3 -9 0) (length 2))
+      (pin "RFIN" (at 5 4 90) (length 2))
+      (pin "VENV" (at 8 -2 180) (length 2))
+    )
+    ; ---- TPS7A02 LDO ----
+    (symbol "Regulator:TPS7A02"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U16" (at -5 5 0))
+      (property "Value" "TPS7A02" (at 0 -5 0))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 0 0 0))
+      (property "Author" "jayis1")
+      (pin "IN" (at -5 3 0) (length 2))
+      (pin "GND" (at -5 -3 0) (length 2))
+      (pin "OUT" (at 7 0 180) (length 2))
+    )
+    ; ---- W25R80 SPI flash ----
+    (symbol "Memory:W25R80"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U18" (at -5 7 0))
+      (property "Value" "W25R80" (at 0 -7 0))
+      (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 0 0 0))
+      (property "Author" "jayis1")
+      (pin "VCC" (at -3 8 0) (length 2))
+      (pin "GND" (at -3 -8 0) (length 2))
+      (pin "CS" (at 5 4 90) (length 2))
+      (pin "SCK" (at 5 1 90) (length 2))
+      (pin "MISO" (at 5 -2 90) (length 2))
+      (pin "MOSI" (at 5 -5 90) (length 2))
+    )
+    ; ---- 24LC02 EEPROM ----
+    (symbol "Memory:24LC02"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U19" (at -5 5 0))
+      (property "Value" "24LC02" (at 0 -5 0))
+      (property "Footprint" "Package_SO:TSSOP-8" (at 0 0 0))
+      (property "Author" "jayis1")
+      (pin "VCC" (at -3 5 0) (length 2))
+      (pin "GND" (at -3 -5 0) (length 2))
+      (pin "SCL" (at 5 2 90) (length 2))
+      (pin "SDA" (at 5 -1 90) (length 2))
+    )
+    ; ---- ST25DV NFC tag ----
+    (symbol "RF:ST25DV"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U20" (at -5 7 0))
+      (property "Value" "ST25DV" (at 0 -7 0))
+      (property "Footprint" "Package_SO:UFDFPN-12_3x3mm_P0.5mm" (at 0 0 0))
+      (property "Author" "jayis1")
+      (pin "VCC" (at -3 8 0) (length 2))
+      (pin "GND" (at -3 -8 0) (length 2))
+      (pin "SDA" (at 5 4 90) (length 2))
+      (pin "SCL" (at 5 1 90) (length 2))
+      (pin "LPD" (at 5 -2 90) (length 2))
+      (pin "IRQ" (at 5 -5 90) (length 2))
+    )
+    ; ---- Piezoelectric AE sensor ----
+    (symbol "Sensor:Piezo_7BB-20-6L0"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "AE1" (at -3 4 0))
+      (property "Value" "7BB-20-6L0" (at 0 -4 0))
+      (property "Footprint" "Sensor:Piezo_Disc_20mm" (at 0 0 0))
+      (property "Author" "jayis1")
+      (pin "+" (at 5 2 90) (length 2))
+      (pin "-" (at 5 -2 90) (length 2))
+    )
+    ; ---- Battery holder (D-cell) ----
+    (symbol "Device:Battery_Cell"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "BAT1" (at -3 4 0))
+      (property "Value" "LSH-20" (at 0 -4 0))
+      (property "Footprint" "Battery:BatteryHolder_Keystone_1042_1x18650" (at 0 0 0))
+      (property "Author" "jayis1")
+      (pin "+" (at 3 2 0) (length 2))
+      (pin "-" (at 3 -2 0) (length 2))
+    )
+  )
+
+  ; ============ COMPONENT INSTANCES ============
+
+  ; ---- U1: STM32WL55JC main MCU ----
+  (symbol (lib_id "MCU_ST_STM32WL:STM32WL55JCI6") (at 127 76 0)
+    (property "Reference" "U1" (at 127 50 0))
+    (property "Value" "STM32WL55JCI6" (at 127 102 0))
+    (property "Author" "jayis1")
+  )
+
+  ; ---- U2: SCD41 CO2 sensor ----
+  (symbol (lib_id "Sensor:Sensirion_SCD41") (at 40 30 0)
+    (property "Reference" "U2" (at 40 22 0))
+    (property "Value" "SCD41" (at 40 38 0))
+    (property "Author" "jayis1")
+  )
+
+  ; ---- U3: SHT45 humidity sensor ----
+  (symbol (lib_id "Sensor:Sensirion_SHT45") (at 40 50 0)
+    (property "Reference" "U3" (at 40 44 0))
+    (property "Value" "SHT45" (at 40 56 0))
+    (property "Author" "jayis1")
+  )
+
+  ; ---- U4-U12: DS18B20 temperature sensors (9 zones) ----
+  (symbol (lib_id "Sensor_Temperature:DS18B20") (at 200 30 0)
+    (property "Reference" "U4" (at 200 24 0))
+    (property "Value" "DS18B20" (at 200 36 0))
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Sensor_Temperature:DS18B20") (at 200 45 0)
+    (property "Reference" "U5" (at 200 39 0))
+    (property "Value" "DS18B20" (at 200 51 0))
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Sensor_Temperature:DS18B20") (at 200 60 0)
+    (property "Reference" "U6" (at 200 54 0))
+    (property "Value" "DS18B20" (at 200 66 0))
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Sensor_Temperature:DS18B20") (at 200 75 0)
+    (property "Reference" "U7" (at 200 69 0))
+    (property "Value" "DS18B20" (at 200 81 0))
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Sensor_Temperature:DS18B20") (at 200 90 0)
+    (property "Reference" "U8" (at 200 84 0))
+    (property "Value" "DS18B20" (at 200 96 0))
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Sensor_Temperature:DS18B20") (at 200 105 0)
+    (property "Reference" "U9" (at 200 99 0))
+    (property "Value" "DS18B20" (at 200 111 0))
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Sensor_Temperature:DS18B20") (at 200 120 0)
+    (property "Reference" "U10" (at 200 114 0))
+    (property "Value" "DS18B20" (at 200 126 0))
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Sensor_Temperature:DS18B20") (at 200 135 0)
+    (property "Reference" "U11" (at 200 129 0))
+    (property "Value" "DS18B20" (at 200 141 0))
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Sensor_Temperature:DS18B20") (at 200 150 0)
+    (property "Reference" "U12" (at 200 144 0))
+    (property "Value" "DS18B20" (at 200 156 0))
+    (property "Author" "jayis1")
+  )
+
+  ; ---- U13: OPA2380 band-pass filter (×2) ----
+  (symbol (lib_id "Amplifier:OPA2380") (at 80 170 0)
+    (property "Reference" "U13A" (at 80 164 0))
+    (property "Value" "OPA2380" (at 80 176 0))
+    (property "Author" "jayis1")
+  )
+  (symbol (lib_id "Amplifier:OPA2380") (at 100 170 0)
+    (property "Reference" "U13B" (at 100 164 0))
+    (property "Value" "OPA2380" (at 100 176 0))
+    (property "Author" "jayis1")
+  )
+
+  ; ---- U14: OPA2376 charge amplifier ----
+  (symbol (lib_id "Amplifier:OPA2376") (at 60 170 0)
+    (property "Reference" "U14" (at 60 164 0))
+    (property "Value" "OPA2376" (at 60 176 0))
+    (property "Author" "jayis1")
+  )
+
+  ; ---- U15: ADL5511 envelope detector ----
+  (symbol (lib_id "Analog:ADL5511") (at 120 170 0)
+    (property "Reference" "U15" (at 120 162 0))
+    (property "Value" "ADL5511" (at 120 178 0))
+    (property "Author" "jayis1")
+  )
+
+  ; ---- U16: TPS7A02 3.3V LDO ----
+  (symbol (lib_id "Regulator:TPS7A02") (at 250 30 0)
+    (property "Reference" "U16" (at 250 25 0))
+    (property "Value" "TPS7A02" (at 250 35 0))
+    (property "Author" "jayis1")
+  )
+
+  ; ---- U18: W25R80 SPI flash ----
+  (symbol (lib_id "Memory:W25R80") (at 250 55 0)
+    (property "Reference" "U18" (at 250 48 0))
+    (property "Value" "W25R80" (at 250 62 0))
+    (property "Author" "jayis1")
+  )
+
+  ; ---- U19: 24LC02 EEPROM ----
+  (symbol (lib_id "Memory:24LC02") (at 250 80 0)
+    (property "Reference" "U19" (at 250 75 0))
+    (property "Value" "24LC02" (at 250 85 0))
+    (property "Author" "jayis1")
+  )
+
+  ; ---- U20: ST25DV NFC tag ----
+  (symbol (lib_id "RF:ST25DV") (at 250 105 0)
+    (property "Reference" "U20" (at 250 98 0))
+    (property "Value" "ST25DV" (at 250 112 0))
+    (property "Author" "jayis1")
+  )
+
+  ; ---- AE1: Piezoelectric sensor ----
+  (symbol (lib_id "Sensor:Piezo_7BB-20-6L0") (at 40 170 0)
+    (property "Reference" "AE1" (at 40 166 0))
+    (property "Value" "7BB-20-6L0" (at 40 174 0))
+    (property "Author" "jayis1")
+  )
+
+  ; ---- BAT1: LSH-20 D-cell ----
+  (symbol (lib_id "Device:Battery_Cell") (at 250 130 0)
+    (property "Reference" "BAT1" (at 250 126 0))
+    (property "Value" "LSH-20" (at 250 134 0))
+    (property "Author" "jayis1")
+  )
+
+  ; ============ NET CONNECTIONS ============
+
+  ; I2C bus: SDA (PA0) and SCL (PA1) connect to SCD41, SHT45, EEPROM, NFC
+  (wire (pts (xy 45 30) (xy 55 30)) (stroke (width 0.254)))
+  (wire (pts (xy 45 50) (xy 55 50)) (stroke (width 0.254)))
+  (wire (pts (xy 255 80) (xy 265 80)) (stroke (width 0.254)))
+  (wire (pts (xy 255 105) (xy 265 105)) (stroke (width 0.254)))
+  (net "I2C_SDA" (joined (via (at 55 30)) (via (at 55 50)) (via (at 265 80)) (via (at 265 105))))
+  (net "I2C_SCL" (joined (via (at 55 35)) (via (at 55 55)) (via (at 265 82)) (via (at 265 107))))
+
+  ; 1-Wire bus: PA8 connects to all 9 DS18B20 DQ pins
+  (wire (pts (xy 205 30) (xy 215 30)) (stroke (width 0.254)))
+  (wire (pts (xy 205 45) (xy 215 45)) (stroke (width 0.254)))
+  (wire (pts (xy 205 60) (xy 215 60)) (stroke (width 0.254)))
+  (wire (pts (xy 205 75) (xy 215 75)) (stroke (width 0.254)))
+  (wire (pts (xy 205 90) (xy 215 90)) (stroke (width 0.254)))
+  (wire (pts (xy 205 105) (xy 215 105)) (stroke (width 0.254)))
+  (wire (pts (xy 205 120) (xy 215 120)) (stroke (width 0.254)))
+  (wire (pts (xy 205 135) (xy 215 135)) (stroke (width 0.254)))
+  (wire (pts (xy 205 150) (xy 215 150)) (stroke (width 0.254)))
+  (net "ONEWIRE_DQ" (joined (via (at 215 30)) (via (at 215 45)) (via (at 215 60))
+                          (via (at 215 75)) (via (at 215 90)) (via (at 215 105))
+                          (via (at 215 120)) (via (at 215 135)) (via (at 215 150))))
+
+  ; Acoustic signal chain: AE1 -> U14 (charge amp) -> U13A -> U13B -> U15 -> MCU ADC
+  (wire (pts (xy 45 172) (xy 55 172)) (stroke (width 0.254)))
+  (wire (pts (xy 68 170) (xy 75 170)) (stroke (width 0.254)))
+  (wire (pts (xy 88 170) (xy 95 170)) (stroke (width 0.254)))
+  (wire (pts (xy 108 170) (xy 115 170)) (stroke (width 0.254)))
+  (wire (pts (xy 128 168) (xy 140 168)) (stroke (width 0.254)))
+  (net "AE_ENVELOPE" (joined (via (at 140 168))))
+
+  ; SPI bus: SCK (PA5), MISO (PA6), MOSI (PA7), CS_FLASH (PA4)
+  (wire (pts (xy 255 56) (xy 265 56)) (stroke (width 0.254)))
+  (wire (pts (xy 255 53) (xy 265 53)) (stroke (width 0.254)))
+  (wire (pts (xy 255 50) (xy 265 50)) (stroke (width 0.254)))
+  (wire (pts (xy 255 47) (xy 265 47)) (stroke (width 0.254)))
+  (net "SPI_SCK" (joined (via (at 265 56))))
+  (net "SPI_MISO" (joined (via (at 265 53))))
+  (net "SPI_MOSI" (joined (via (at 265 50))))
+  (net "SPI_CS_FLASH" (joined (via (at 265 47))))
+
+  ; Power: 3.3V and GND nets
+  (net "+3V3" (joined (via (at 253 33))))
+  (net "GND" (joined (via (at 253 37))))
+
+  ; Battery: 3.6V from BAT1 to LDO input
+  (wire (pts (xy 253 132) (xy 245 132)) (stroke (width 0.254)))
+  (wire (pts (xy 253 128) (xy 245 128)) (stroke (width 0.254)))
+  (net "VBAT" (joined (via (at 245 130))))
+
+  ; ---- Antenna connection ----
+  (net "RF_ANT" (joined (via (at 130 105))))
+
+  ; ============ NOTES ============
+  (text "GrainGuard In-Silo Grain Condition Probe\n"
+        "Author: jayis1\n"
+        "Copyright (C) 2026 jayis1. All rights reserved.\n"
+        "License: CERN-OHL-S v2\n"
+        "\n"
+        "STM32WL55JC + SCD41 CO2 + 9×DS18B20 temp + SHT45 RH\n"
+        "+ Acoustic AFE (piezo + OPA2376 + OPA2380×2 + ADL5511)\n"
+        "+ W25R80 flash + 24LC02 EEPROM + ST25DV NFC\n"
+        "Power: 3.6V LiSOCl2 D-cell (Saft LSH-20)"
+        (at 30 200 0) (font (size 1.5 1.5)))
+
+  (text "I2C bus: SCD41(0x62) + SHT45(0x44) + 24LC02(0x50) + ST25DV(0x53)"
+        (at 40 15 0) (font (size 1.27 1.27)))
+  (text "1-Wire bus: 9× DS18B20 (parasitic power, strong pull-up via PC0 MOSFET)"
+        (at 200 20 0) (font (size 1.27 1.27)))
+  (text "Acoustic chain: AE1 piezo -> OPA2376 charge amp -> OPA2380 BPF (20-80kHz) ×2 -> ADL5511 envelope -> MCU ADC (PB0)"
+        (at 40 160 0) (font (size 1.27 1.27)))
+)
