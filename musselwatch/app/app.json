@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "MusselWatch",
+    "slug": "musselwatch",
+    "author": "jayis1",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "description": "Companion app for the MusselWatch bivalve valvometric biosensor network — monitor freshwater mussel shell-gape activity as an early-warning system for water contamination.",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "backgroundColor": "#0a4d6e"
+    },
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.jayis1.musselwatch" },
+    "android": {
+      "package": "com.jayis1.musselwatch",
+      "adaptiveIcon": { "backgroundColor": "#0a4d6e" }
+    },
+    "extra": {
+      "author": "jayis1",
+      "gatewayUrl": "https://musselwatch.jayis1.dev/api"
+    }
+  }
+}
