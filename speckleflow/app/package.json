@@ -1,0 +1,44 @@
+{
+  "name": "speckleflow-app",
+  "version": "1.0.0",
+  "description": "SpeckleFlow — Portable LSCI Blood-Flow Imager companion app",
+  "author": "jayis1",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "build:android": "cd android && ./gradlew assembleRelease",
+    "clean": "react-native clean"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.73.4",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/bottom-tabs": "^6.5.11",
+    "react-native-ble-manager": "^11.0.0",
+    "react-native-vector-icons": "^10.0.3",
+    "react-native-webview": "^13.6.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "metro-react-native-babel-preset": "^0.77.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jayis1/hardware-design-lab",
+    "directory": "speckleflow/app"
+  },
+  "keywords": [
+    "lsci",
+    "speckle",
+    "perfusion",
+    "blood-flow",
+    "medical",
+    "imaging",
+    "ble",
+    "hardware"
+  ]
+}
