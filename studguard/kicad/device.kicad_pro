@@ -1,0 +1,16 @@
+(kicad_pro
+  (version 1)
+  (generator "jayis1")
+  (project "StudGuard")
+  (title_block
+    (title "StudGuard")
+    (company "jayis1")
+    (rev "A")
+    (date "2026-08-23")
+    (comment 1 "Hidden leak localization tile")
+    (comment 2 "Author: jayis1")
+  )
+  (page "A4")
+  (schematic "device.kicad_sch")
+  (pcb "device.kicad_pcb")
+)
