@@ -1,0 +1,29 @@
+{
+  "board": {
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.2,
+        "copper_text_size_v": 1.2,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.12,
+        "track_width": 0.2,
+        "via_size": 0.6
+      }
+    }
+  },
+  "meta": {
+    "filename": "device.kicad_pro",
+    "author": "jayis1",
+    "project_name": "SplintSense"
+  },
+  "schematic": {
+    "legacy_lib_dir": "",
+    "meta": {
+      "author": "jayis1",
+      "company": "jayis1",
+      "title": "SplintSense Smart Orthopedic Recovery Liner"
+    }
+  }
+}
