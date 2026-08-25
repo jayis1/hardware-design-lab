@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "filename": "device.kicad_pro",
+    "author": "jayis1",
+    "copyright": "Copyright (c) 2026 jayis1",
+    "title": "DryerFlow Guardian"
+  },
+  "board": {
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "courtyard_line_width": 0.05,
+        "dimension_precision": 4,
+        "edge_clearance": 0.2,
+        "silk_line_width": 0.12,
+        "track_width": 0.25,
+        "via_diameter": 0.8,
+        "via_drill": 0.4
+      }
+    }
+  },
+  "schematic": {
+    "legacy_lib_dir": "",
+    "drawing": {
+      "label_size_ratio": 0.375,
+      "pin_symbol_size": 1.0,
+      "text_offset_ratio": 0.15
+    }
+  }
+}
