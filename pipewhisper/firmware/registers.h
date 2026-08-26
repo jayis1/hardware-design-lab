@@ -1,0 +1,36 @@
+/*
+ * PipeWhisper register map
+ * Author: jayis1
+ * Copyright (C) 2026 jayis1. All rights reserved.
+ */
+#ifndef PIPEWHISPER_REGISTERS_H
+#define PIPEWHISPER_REGISTERS_H
+
+#define REG_PWR_STATUS           0x0001
+#define REG_PWR_BATTERY_MV       0x0002
+#define REG_PWR_BATTERY_PERCENT  0x0003
+#define REG_ACOUSTIC_RMS_X100    0x0010
+#define REG_ACOUSTIC_HZ          0x0011
+#define REG_ACOUSTIC_IMP_X100    0x0012
+#define REG_ACOUSTIC_CHATTER     0x0013
+#define REG_FLOW_LPM_X100        0x0020
+#define REG_FLOW_DRIP_X100       0x0021
+#define REG_FLOW_STEADY_X100     0x0022
+#define REG_FLOW_DRIFT_X100      0x0023
+#define REG_PRESSURE_HAMMER_X100 0x0030
+#define REG_PRESSURE_IMPULSES    0x0031
+#define REG_PRESSURE_RING_MS     0x0032
+#define REG_PRESSURE_BURST_X100  0x0033
+#define REG_ENV_SURFACE_X100     0x0040
+#define REG_ENV_AMBIENT_X100     0x0041
+#define REG_ENV_HUMIDITY_X100    0x0042
+#define REG_ENV_DEW_X100         0x0043
+#define REG_ENV_FREEZE_X100      0x0044
+#define REG_INFER_LEAK_X100      0x0050
+#define REG_INFER_FREEZE_X100    0x0051
+#define REG_INFER_INSTALL_X100   0x0052
+#define REG_INFER_PRIORITY_X100  0x0053
+#define REG_INFER_HEALTH_X100    0x0054
+#define REG_ALERT_LEVEL          0x0055
+
+#endif
