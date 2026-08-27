@@ -1,0 +1,23 @@
+(kicad_pro
+  (version 1)
+  (generator "Hermes Agent")
+  (generator_version "gpt-5.4")
+  (project
+    (title "SealBeat")
+    (company "jayis1")
+    (rev "1.0")
+    (date "2026-08-27")
+    (comment "Author: jayis1")
+  )
+  (libraries
+    (pinned_symbol_libs
+      "Device"
+      "Sensor_Temperature"
+      "Sensor_Motion"
+      "Sensor_Audio"
+      "RF_Module"
+      "Battery_Management"
+      "Power_Management"
+    )
+  )
+)
