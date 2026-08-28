@@ -1,0 +1,42 @@
+{
+  "board": {
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.25,
+        "silk_line_width": 0.12,
+        "text_size": [1.0, 1.0],
+        "via_diameter": 0.6,
+        "via_drill": 0.3
+      }
+    }
+  },
+  "meta": {
+    "author": "jayis1",
+    "copyright": "Copyright (C) 2026 jayis1. All rights reserved.",
+    "description": "VentLattice KiCad project"
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "name": "Default",
+        "track_width": 0.25,
+        "clearance": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3
+      },
+      {
+        "name": "Power",
+        "track_width": 0.5,
+        "clearance": 0.25,
+        "via_diameter": 0.7,
+        "via_drill": 0.35
+      }
+    ]
+  },
+  "project": {
+    "name": "VentLattice",
+    "company": "jayis1",
+    "title": "VentLattice — Register Airflow Intelligence Module"
+  }
+}

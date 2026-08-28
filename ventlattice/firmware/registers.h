@@ -1,0 +1,38 @@
+/*
+ * VentLattice virtual register map
+ * Author: jayis1
+ * Copyright (C) 2026 jayis1. All rights reserved.
+ */
+#ifndef VENTLATTICE_REGISTERS_H
+#define VENTLATTICE_REGISTERS_H
+
+#define REG_PWR_STATUS             0x0001
+#define REG_PWR_BATTERY_MV         0x0002
+#define REG_PWR_BATTERY_PERCENT    0x0003
+#define REG_AIRFLOW_CFM_X10        0x0100
+#define REG_AIRFLOW_VELOCITY_X100  0x0101
+#define REG_AIRFLOW_BLOCK_X100     0x0102
+#define REG_AIRFLOW_STABLE_X100    0x0103
+#define REG_AIRFLOW_DELTA_PA       0x0104
+#define REG_PRESSURE_RIPPLE_X100   0x0200
+#define REG_PRESSURE_FILTER_X100   0x0201
+#define REG_PRESSURE_RESTRICT_X100 0x0202
+#define REG_PRESSURE_TURB_X100     0x0203
+#define REG_ENV_SUPPLY_X100        0x0300
+#define REG_ENV_ROOM_X100          0x0301
+#define REG_ENV_HUMIDITY_X100      0x0302
+#define REG_ENV_VOC_X10            0x0303
+#define REG_ENV_DEW_MARGIN_X100    0x0304
+#define REG_ENV_LIGHT_LUX          0x0305
+#define REG_OCCUPANCY_CONF_X100    0x0400
+#define REG_OCCUPANCY_DWELL_X10    0x0401
+#define REG_OCCUPANCY_ALIGN_X100   0x0402
+#define REG_INFER_SERVICE_X100     0x0500
+#define REG_INFER_WASTE_X100       0x0501
+#define REG_INFER_STALE_X100       0x0502
+#define REG_INFER_MAINT_X100       0x0503
+#define REG_INFER_COND_X100        0x0504
+#define REG_INFER_INSTALL_X100     0x0505
+#define REG_ALERT_LEVEL            0x05FF
+
+#endif
