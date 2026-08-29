@@ -1,0 +1,13 @@
+(kicad_pro
+  (version 1)
+  (generator "jayis1")
+  (project "DrainVeil")
+  (author "jayis1")
+  (meta (title "DrainVeil") (company "jayis1") (copyright "Copyright (C) 2026 jayis1"))
+  (boards
+    (board "device.kicad_pcb")
+  )
+  (schematics
+    (schematic "device.kicad_sch")
+  )
+)
