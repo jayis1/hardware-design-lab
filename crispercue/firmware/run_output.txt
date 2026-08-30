@@ -1,0 +1,100 @@
+CrisperCue firmware by jayis1
+Firmware version: 1.0.0 | profile=climacteric-fruit
+
+cycle=00 temp= 4.3C produce= 5.1C door=sealed gas=stable-bin co2=  860 eth=0.240 hum=87.0 mass= 890.0g use=steady-draw color=0.58 mold=0.03 fresh= 92.0 stage=fresh alert=none
+cycle=01 temp= 5.0C produce= 5.8C door=sealed gas=stable-bin co2=  904 eth=0.276 hum=86.3 mass= 885.2g use=steady-draw color=0.57 mold=0.20 fresh= 85.3 stage=fresh alert=none
+cycle=02 temp= 5.2C produce= 6.0C door=normal-use gas=stable-bin co2=  944 eth=0.292 hum=86.2 mass= 868.3g use=steady-draw color=0.56 mold=0.21 fresh= 81.5 stage=ready-now alert=none
+cycle=03 temp= 5.4C produce= 6.2C door=normal-use gas=stable-bin co2=  909 eth=0.306 hum=86.0 mass= 863.3g use=steady-draw color=0.56 mold=0.20 fresh= 81.3 stage=ready-now alert=none
+cycle=04 temp= 5.5C produce= 6.2C door=normal-use gas=stable-bin co2=  941 eth=0.318 hum=85.9 mass= 858.3g use=steady-draw color=0.55 mold=0.21 fresh= 80.8 stage=ready-now alert=none
+cycle=05 temp= 5.2C produce= 5.9C door=sealed gas=stable-bin co2=  932 eth=0.323 hum=86.7 mass= 853.3g use=steady-draw color=0.54 mold=0.21 fresh= 80.1 stage=ready-now alert=none
+cycle=06 temp= 5.1C produce= 5.7C door=sealed gas=stable-bin co2=  884 eth=0.330 hum=86.6 mass= 848.3g use=steady-draw color=0.52 mold=0.20 fresh= 79.4 stage=ready-now alert=none
+cycle=07 temp= 4.9C produce= 5.5C door=sealed gas=stable-bin co2=  906 eth=0.336 hum=86.4 mass= 843.3g use=steady-draw color=0.51 mold=0.20 fresh= 78.3 stage=ready-now alert=none
+cycle=08 temp= 4.6C produce= 5.3C door=normal-use gas=stable-bin co2=  931 eth=0.343 hum=86.1 mass= 838.2g use=steady-draw color=0.49 mold=0.21 fresh= 78.1 stage=ready-now alert=none
+cycle=09 temp= 4.4C produce= 5.1C door=normal-use gas=stable-bin co2=  885 eth=0.351 hum=85.9 mass= 801.1g use=actively-used color=0.47 mold=0.20 fresh= 71.0 stage=ready-now alert=caution
+cycle=10 temp= 4.0C produce= 4.7C door=sealed gas=stable-bin co2=  876 eth=0.355 hum=86.6 mass= 796.0g use=steady-draw color=0.45 mold=0.20 fresh= 72.4 stage=ready-now alert=none
+cycle=11 temp= 3.9C produce= 4.7C door=sealed gas=stable-bin co2=  907 eth=0.365 hum=86.4 mass= 790.9g use=steady-draw color=0.43 mold=0.20 fresh= 71.1 stage=ready-now alert=none
+cycle=12 temp= 4.0C produce= 4.8C door=sealed gas=stable-bin co2=  869 eth=0.377 hum=86.1 mass= 785.7g use=steady-draw color=0.41 mold=0.19 fresh= 71.1 stage=ready-now alert=none
+cycle=13 temp= 4.1C produce= 4.9C door=normal-use gas=stable-bin co2=  907 eth=0.392 hum=85.9 mass= 780.4g use=steady-draw color=0.39 mold=0.20 fresh= 69.7 stage=ready-now alert=caution
+cycle=14 temp= 4.4C produce= 5.2C door=normal-use gas=stable-bin co2=  948 eth=0.408 hum=85.7 mass= 775.1g use=steady-draw color=0.37 mold=0.21 fresh= 66.9 stage=ready-now alert=caution
+cycle=15 temp= 4.5C produce= 5.3C door=sealed gas=stable-bin co2=  883 eth=0.420 hum=86.5 mass= 769.8g use=steady-draw color=0.35 mold=0.20 fresh= 67.5 stage=ready-now alert=caution
+cycle=16 temp= 4.8C produce= 5.6C door=sealed gas=stable-bin co2=  926 eth=0.438 hum=86.4 mass= 882.4g use=restocked color=0.34 mold=0.21 fresh= 64.5 stage=ready-now alert=caution
+cycle=17 temp= 5.1C produce= 5.9C door=sealed gas=stable-bin co2=  967 eth=0.454 hum=86.2 mass= 877.0g use=steady-draw color=0.33 mold=0.21 fresh= 80.5 stage=ready-now alert=none
+cycle=18 temp= 5.3C produce= 6.0C door=normal-use gas=stable-bin co2=  933 eth=0.469 hum=86.1 mass= 851.5g use=actively-used color=0.32 mold=0.21 fresh= 75.9 stage=ready-now alert=none
+cycle=19 temp= 5.5C produce= 6.1C door=normal-use gas=stable-bin co2= 1058 eth=0.681 hum=85.9 mass= 845.2g use=steady-draw color=0.39 mold=0.23 fresh= 69.3 stage=ready-now alert=warning
+cycle=20 temp= 5.2C produce= 5.9C door=sealed gas=stable-bin co2= 1053 eth=0.687 hum=86.8 mass= 839.0g use=steady-draw color=0.38 mold=0.23 fresh= 69.3 stage=ready-now alert=warning
+cycle=21 temp= 5.1C produce= 5.8C door=sealed gas=stable-bin co2= 1010 eth=0.696 hum=86.6 mass= 832.8g use=steady-draw color=0.38 mold=0.22 fresh= 69.5 stage=ready-now alert=warning
+cycle=22 temp= 5.0C produce= 5.6C door=sealed gas=ripening-spike co2= 1039 eth=0.705 hum=86.4 mass= 826.5g use=steady-draw color=0.38 mold=0.23 fresh= 67.4 stage=ready-now alert=warning
+cycle=23 temp= 4.7C produce= 5.4C door=normal-use gas=ripening-spike co2= 1067 eth=0.712 hum=86.1 mass= 808.2g use=actively-used color=0.37 mold=0.23 fresh= 63.0 stage=ready-now alert=warning
+cycle=24 temp= 4.5C produce= 5.3C door=normal-use gas=ripening-spike co2= 1021 eth=0.719 hum=85.8 mass= 801.8g use=steady-draw color=0.37 mold=0.22 fresh= 61.7 stage=use-soon alert=warning
+cycle=25 temp= 4.5C produce= 5.4C door=sealed gas=ripening-spike co2= 1030 eth=0.733 hum=86.6 mass= 795.4g use=steady-draw color=0.36 mold=0.23 fresh= 63.4 stage=ready-now alert=warning
+cycle=26 temp= 4.4C produce= 5.3C door=sealed gas=ripening-spike co2= 1060 eth=0.742 hum=86.3 mass= 789.0g use=steady-draw color=0.35 mold=0.23 fresh= 60.6 stage=use-soon alert=warning
+cycle=27 temp= 4.4C produce= 5.3C door=normal-use gas=ripening-spike co2= 1021 eth=0.754 hum=86.0 mass= 762.5g use=actively-used color=0.33 mold=0.22 fresh= 54.6 stage=use-soon alert=warning
+cycle=28 temp= 4.5C produce= 5.4C door=normal-use gas=ripening-spike co2= 1057 eth=0.767 hum=85.7 mass= 756.0g use=steady-draw color=0.32 mold=0.23 fresh= 51.8 stage=use-soon alert=warning
+cycle=29 temp= 4.8C produce= 5.7C door=normal-use gas=ripening-spike co2= 1096 eth=0.782 hum=83.9 mass= 749.2g use=steady-draw color=0.30 mold=0.24 fresh= 47.5 stage=use-soon alert=warning
+cycle=30 temp= 4.8C produce= 5.7C door=sealed gas=ripening-spike co2= 1029 eth=0.794 hum=84.7 mass= 730.5g use=actively-used color=0.28 mold=0.23 fresh= 52.9 stage=use-soon alert=warning
+cycle=31 temp= 5.2C produce= 6.0C door=normal-use gas=ripening-spike co2= 1079 eth=0.811 hum=84.2 mass= 723.7g use=steady-draw color=0.26 mold=0.24 fresh= 49.8 stage=use-soon alert=warning
+cycle=32 temp= 5.5C produce= 6.3C door=normal-use gas=ripening-spike co2= 1119 eth=0.827 hum=84.0 mass= 716.8g use=steady-draw color=0.24 mold=0.24 fresh= 47.0 stage=use-soon alert=warning
+cycle=33 temp= 5.7C produce= 6.5C door=normal-use gas=ripening-spike co2= 1084 eth=0.842 hum=83.9 mass= 709.9g use=steady-draw color=0.22 mold=0.24 fresh= 45.6 stage=use-soon alert=warning
+cycle=34 temp= 5.8C produce= 6.6C door=busy-kitchen gas=ripening-spike co2= 1118 eth=0.855 hum=83.8 mass= 702.9g use=steady-draw color=0.20 mold=0.24 fresh= 41.8 stage=use-soon alert=warning
+cycle=35 temp= 5.7C produce= 6.4C door=sealed gas=ripening-spike co2= 1116 eth=0.863 hum=84.7 mass= 695.9g use=steady-draw color=0.18 mold=0.24 fresh= 44.7 stage=use-soon alert=warning
+cycle=36 temp= 5.6C produce= 6.4C door=sealed gas=ripening-spike co2= 1075 eth=0.873 hum=84.5 mass= 668.9g use=actively-used color=0.16 mold=0.24 fresh= 42.2 stage=use-soon alert=warning
+
+BLE status packet (147 bytes):
+{"device":"CrisperCue","author":"jayis1","cycle":36,"freshness":42.2,"spoilage":0.63,"ethylene":0.873,"co2":1075,"mass_g":668.9,"stage":"use-soon"}
+
+BLE report packet (307 bytes):
+{"report":{"cycle":36,"alert":3,"reason":"ripening gases accumulating faster than purge fan can clear","ventilation":1.00,"value_usd":1.69,"last_event":"reason=ripening gases accumulating faster than purge fan can clear stage=ready-now ethylene=0.681 co2=1058 mass=845.2 mold=0.23","last_code":"INVENTORY"}}
+
+Register snapshot for CrisperCue by jayis1
+  REG_PWR_STATUS           [0x0001] = 0
+  REG_PWR_BATTERY_MV       [0x0002] = 4070
+  REG_PWR_BATTERY_PERCENT  [0x0003] = 82
+  REG_PWR_CURRENT_MA       [0x0004] = 14
+  REG_GAS_CO2_X10          [0x0010] = 10753
+  REG_GAS_ETHYLENE_X100    [0x0011] = 87
+  REG_GAS_VOC_X10          [0x0012] = 434
+  REG_GAS_OXYGEN_X100      [0x0013] = 1840
+  REG_GAS_HUMIDITY_X100    [0x0014] = 8455
+  REG_GAS_PURGE_X100       [0x0015] = 71
+  REG_MASS_TRAY_G          [0x0020] = 669
+  REG_MASS_LOSS_G_X10      [0x0021] = 70
+  REG_MASS_MOISTURE_X100   [0x0022] = 2484
+  REG_MASS_USAGE_X100      [0x0023] = 100
+  REG_OPT_COLOR_X100       [0x0030] = 16
+  REG_OPT_CHLORO_X100      [0x0031] = 2
+  REG_OPT_BRUISE_X100      [0x0032] = 16
+  REG_OPT_MOLD_X100        [0x0033] = 24
+  REG_OPT_GLOSS_X100       [0x0034] = 30
+  REG_TH_AIR_C_X100        [0x0040] = 559
+  REG_TH_PRODUCE_C_X100    [0x0041] = 637
+  REG_TH_DEW_MARGIN_X100   [0x0042] = 154
+  REG_TH_COMPRESSOR_X100   [0x0043] = 128
+  REG_TH_OPEN_MIN_X10      [0x0044] = 39
+  REG_INFER_FRESHNESS_X100 [0x0050] = 4216
+  REG_INFER_SPOILAGE_X100  [0x0051] = 63
+  REG_INFER_RECIPE_X100    [0x0052] = 79
+  REG_INFER_VENT_X100      [0x0053] = 100
+  REG_INFER_VALUE_CENTS    [0x0054] = 169
+  REG_ALERT_LEVEL          [0x0055] = 3
+
+Summary for CrisperCue by jayis1
+  Samples captured: 37
+  Events logged: 3
+  Average freshness: 66.20
+  Peak ethylene ppm: 0.873
+  Lowest tray mass: 668.9 g
+  Event[00] cycle=09 level=2 code=INVENTORY detail=reason=quality drop detected; suggest recipe rescue or dehydration control stage=ready-now ethylene=0.351 co2=885 mass=801.1 mo
+  Event[01] cycle=13 level=2 code=DEHYDRATE detail=reason=quality drop detected; suggest recipe rescue or dehydration control stage=ready-now ethylene=0.392 co2=907 mass=780.4 mo
+  Event[02] cycle=19 level=3 code=INVENTORY detail=reason=ripening gases accumulating faster than purge fan can clear stage=ready-now ethylene=0.681 co2=1058 mass=845.2 mold=0.23
+
+Final assessment
+  Device: CrisperCue
+  Author: jayis1
+  Freshness score: 42.2
+  Spoilage risk: 0.63
+  Recipe urgency: 0.79
+  Ventilation demand: 1.00
+  Shopper value left: $1.69
+  Stage: use-soon
+  Primary reason: ripening gases accumulating faster than purge fan can clear
+  Suggested action: Move produce to the front of the meal plan and open the active purge louver.

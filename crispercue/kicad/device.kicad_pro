@@ -1,0 +1,19 @@
+{
+  "board": {
+    "title": "CrisperCue",
+    "author": "jayis1",
+    "description": "Produce freshness intelligence tray hardware project by jayis1",
+    "version": "1.0.0"
+  },
+  "cvpcb": {
+    "equivalence_files": []
+  },
+  "libraries": {
+    "pinned_footprint_libs": [],
+    "pinned_symbol_libs": []
+  },
+  "meta": {
+    "created_by": "jayis1",
+    "tool": "KiCad 8"
+  }
+}
