@@ -1,0 +1,10 @@
+{
+  "name": "cordcanary-companion",
+  "version": "1.0.0",
+  "description": "CordCanary companion web app by jayis1",
+  "author": "jayis1",
+  "license": "UNLICENSED",
+  "scripts": {
+    "check": "node --check protocol.js && node --check app.js"
+  }
+}

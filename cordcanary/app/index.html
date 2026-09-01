@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="jayis1" />
+  <title>CordCanary Companion</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- CordCanary companion app by jayis1 -->
+  <div class="shell">
+    <header class="hero">
+      <div>
+        <h1>CordCanary</h1>
+        <p>Extension-cord and outlet health companion by jayis1</p>
+      </div>
+      <div class="hero-badges">
+        <span id="badge-state" class="badge badge-green">Nominal</span>
+        <span id="badge-risk" class="badge">Risk 0.08</span>
+      </div>
+    </header>
+
+    <nav id="tabs" class="tabs"></nav>
+
+    <main>
+      <section class="panel metrics" id="summary-grid"></section>
+      <section class="panel" id="screen-title"></section>
+      <section class="panel" id="screen-content"></section>
+    </main>
+  </div>
+
+  <script src="protocol.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
