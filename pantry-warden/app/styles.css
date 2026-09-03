@@ -1,0 +1,139 @@
+/* Pantry Warden companion styles
+ * Author: jayis1
+ */
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: #0f1720;
+  color: #e8eef5;
+}
+.hero, .tabs, main, footer {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px 20px;
+}
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #7dd3a9;
+  font-size: 12px;
+}
+.subtitle {
+  color: #b8c7d8;
+  max-width: 720px;
+}
+button {
+  background: #1d9b62;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.tab {
+  background: #223141;
+}
+.tab.active {
+  background: #2fbd7b;
+}
+.screen {
+  display: none;
+}
+.screen.active {
+  display: block;
+}
+.grid.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.metric, .panel {
+  background: #182431;
+  border: 1px solid #243545;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+.metric h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: #a7bdd1;
+}
+.metric strong {
+  font-size: 28px;
+}
+.bar {
+  margin-top: 8px;
+  width: 100%;
+  height: 14px;
+  background: #0c141c;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #ef4444, #facc15, #22c55e);
+}
+.zone-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.zone {
+  min-height: 120px;
+  border-radius: 12px;
+  padding: 12px;
+  background: #101922;
+  border: 1px solid #274055;
+}
+.zone.warn {
+  border-color: #f59e0b;
+}
+.zone.alert {
+  border-color: #ef4444;
+}
+.history-list, #interpretationList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+.history-list li, #interpretationList li {
+  background: #101922;
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid #233242;
+}
+.form-panel label {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+input[type="range"] {
+  width: 100%;
+}
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #b2f1cc;
+}
+footer {
+  color: #8ba2b8;
+  font-size: 13px;
+  padding-bottom: 30px;
+}

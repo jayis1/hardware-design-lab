@@ -1,0 +1,10 @@
+{
+  "name": "pantry-warden-companion",
+  "version": "1.0.0",
+  "private": true,
+  "author": "jayis1",
+  "description": "Local-first companion dashboard for Pantry Warden by jayis1",
+  "scripts": {
+    "lint:js": "node --check app.js && node --check protocol.js"
+  }
+}

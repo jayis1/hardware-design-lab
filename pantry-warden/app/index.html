@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="jayis1" />
+  <title>Pantry Warden Companion</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Pantry Warden · Author: jayis1</p>
+      <h1>Pantry Warden Companion Dashboard</h1>
+      <p class="subtitle">Shelf health, spoilage confidence, pest watch, and calibration tools in one local-first interface.</p>
+    </div>
+    <button id="refreshButton">Simulate next frame</button>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-screen="overview">Overview</button>
+    <button class="tab" data-screen="shelfmap">Shelf Map</button>
+    <button class="tab" data-screen="history">Event History</button>
+    <button class="tab" data-screen="calibration">Calibration Lab</button>
+  </nav>
+
+  <main>
+    <section id="overview" class="screen active">
+      <div class="grid metrics" id="metricGrid"></div>
+      <div class="panel">
+        <h2>Recommended action</h2>
+        <p id="actionText"></p>
+        <div class="bar-wrap">
+          <label>Shelf health</label>
+          <div class="bar"><span id="healthBar"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="shelfmap" class="screen">
+      <div class="panel">
+        <h2>Shelf zone model</h2>
+        <div id="zoneGrid" class="zone-grid"></div>
+      </div>
+      <div class="panel">
+        <h2>Interpretation</h2>
+        <ul id="interpretationList"></ul>
+      </div>
+    </section>
+
+    <section id="history" class="screen">
+      <div class="panel">
+        <h2>Recent events</h2>
+        <ul id="historyList" class="history-list"></ul>
+      </div>
+    </section>
+
+    <section id="calibration" class="screen">
+      <div class="panel form-panel">
+        <h2>Scenario controls</h2>
+        <label>VOC index <input id="vocInput" type="range" min="6" max="80" value="18" /></label>
+        <label>Moisture strip % <input id="moistInput" type="range" min="8" max="88" value="18" /></label>
+        <label>Wingbeat score <input id="wingInput" type="range" min="0" max="100" value="10" /></label>
+        <label>Mass kg <input id="massInput" type="range" min="3" max="12" value="6.4" step="0.1" /></label>
+        <button id="applyScenarioButton">Apply scenario</button>
+      </div>
+      <div class="panel">
+        <h2>Exported telemetry frame</h2>
+        <pre id="frameDump"></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Designed by jayis1. Pantry Warden companion app prototype.</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
