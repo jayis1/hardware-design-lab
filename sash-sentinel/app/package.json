@@ -1,0 +1,12 @@
+{
+  "name": "sash-sentinel-console",
+  "version": "1.0.0",
+  "description": "Companion web console for the Sash Sentinel device by jayis1.",
+  "author": "jayis1",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "check": "node --check app.js && node --check protocol.js",
+    "serve": "python3 -m http.server 4173"
+  }
+}

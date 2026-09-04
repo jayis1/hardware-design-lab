@@ -1,0 +1,26 @@
+{
+  "board": {
+    "design_settings": {
+      "rules": {
+        "min_clearance": 0.2,
+        "min_track_width": 0.2,
+        "min_via_diameter": 0.45
+      }
+    }
+  },
+  "meta": {
+    "author": "jayis1",
+    "copyright": "Copyright (C) 2026 jayis1. All rights reserved.",
+    "device": "Sash Sentinel"
+  },
+  "pcbnew": {
+    "last_paths": {
+      "gencad": "./",
+      "netlist": "./"
+    }
+  },
+  "schematic": {
+    "legacy_lib_dir": "",
+    "spice_adjust_passive_values": false
+  }
+}

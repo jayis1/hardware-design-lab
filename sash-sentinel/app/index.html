@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- Author: jayis1 | Copyright (C) 2026 jayis1. All rights reserved. -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="jayis1" />
+    <title>Sash Sentinel Console</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Sash Sentinel • Author: jayis1</p>
+          <h1>Window envelope diagnostics</h1>
+          <p class="lede">Load a telemetry frame, review risk scores, and simulate maintenance commands.</p>
+        </div>
+        <button id="load-demo">Load demo frame</button>
+      </header>
+
+      <section class="grid two-up">
+        <article class="panel">
+          <h2>Telemetry Input</h2>
+          <textarea id="telemetry-input" spellcheck="false"></textarea>
+          <div class="button-row">
+            <button id="parse-frame">Parse frame</button>
+            <button id="copy-command">Copy ping command</button>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2>Install Checklist</h2>
+          <ul id="checklist"></ul>
+          <div class="button-row">
+            <button id="toggle-units">Toggle °C / °F</button>
+            <button id="reset-state">Reset</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="grid cards" id="risk-cards"></section>
+
+      <section class="grid two-up">
+        <article class="panel">
+          <h2>Maintenance Recommendation</h2>
+          <p id="summary"></p>
+          <p id="action"></p>
+        </article>
+
+        <article class="panel">
+          <h2>Command Console</h2>
+          <label for="command-input">Command</label>
+          <input id="command-input" type="text" value="get:profile" />
+          <button id="run-command">Run</button>
+          <pre id="command-output"></pre>
+        </article>
+      </section>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

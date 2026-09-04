@@ -1,0 +1,93 @@
+/* sash-sentinel/app/styles.css
+ * Author: jayis1
+ * Copyright (C) 2026 jayis1. All rights reserved.
+ */
+
+:root {
+  color-scheme: dark;
+  --bg: #09111b;
+  --panel: #132131;
+  --panel-2: #183149;
+  --line: #274760;
+  --text: #edf7ff;
+  --muted: #8fb0c7;
+  --good: #2fd67d;
+  --warn: #ffbc42;
+  --bad: #ff5d73;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: linear-gradient(180deg, #061019, #0f1a29);
+  color: var(--text);
+}
+.shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+.hero, .panel, .risk-card {
+  background: rgba(19, 33, 49, 0.96);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+}
+.hero {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 20px;
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.lede { color: var(--muted); max-width: 62ch; }
+.grid {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.two-up { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.cards { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.panel { padding: 20px; }
+textarea, input, pre {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  padding: 12px;
+}
+textarea { min-height: 220px; resize: vertical; }
+pre { min-height: 96px; white-space: pre-wrap; }
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 700;
+  background: #4ec2ff;
+  color: #072034;
+  cursor: pointer;
+}
+.button-row {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.risk-card {
+  padding: 18px;
+}
+.risk-card .label { color: var(--muted); font-size: 0.82rem; }
+.risk-card .value { font-size: 2rem; font-weight: 800; margin: 6px 0; }
+.risk-card.good { outline: 2px solid rgba(47,214,125,0.18); }
+.risk-card.warn { outline: 2px solid rgba(255,188,66,0.18); }
+.risk-card.bad { outline: 2px solid rgba(255,93,115,0.22); }
+li { margin-bottom: 10px; color: var(--muted); }
