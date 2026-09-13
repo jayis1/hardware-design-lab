@@ -1,0 +1,13 @@
+{
+  "name": "hingescribe-companion",
+  "version": "1.0.0",
+  "description": "Local-first HingeScribe companion PWA",
+  "author": "jayis1",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "check": "node --check app.js && node --check protocol.js && npm test",
+    "start": "node server.js"
+  }
+}
