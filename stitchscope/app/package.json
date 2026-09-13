@@ -1,0 +1,11 @@
+{
+  "name": "stitchscope-app",
+  "version": "1.0.0",
+  "private": true,
+  "author": "jayis1",
+  "copyright": "Copyright (C) 2026 jayis1",
+  "scripts": {
+    "check": "node --check app.js && node --check protocol.js && node --check sw.js",
+    "serve": "npx --yes serve ."
+  }
+}

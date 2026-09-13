@@ -1,0 +1,11 @@
+{
+  "name": "StitchScope",
+  "short_name": "StitchScope",
+  "description": "Local stitch quality monitor by jayis1",
+  "author": "jayis1",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#19d3ae",
+  "icons": []
+}
