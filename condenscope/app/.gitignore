@@ -1,0 +1,7 @@
+# CondenScope application generated files
+# Author: jayis1
+node_modules/
+.expo/
+dist/
+web-build/
+npm-debug.log*
