@@ -1,0 +1,13 @@
+{
+  "name": "loommapper-companion",
+  "version": "1.0.0",
+  "description": "Local-first LoomMapper harness topology and flex-fault companion",
+  "author": "jayis1",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/*.test.js",
+    "check": "node --check app.js && node --check protocol.js && node --check server.js && npm test"
+  }
+}

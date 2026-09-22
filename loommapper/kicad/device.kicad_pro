@@ -1,0 +1,12 @@
+{
+  "board": {},
+  "boards": [],
+  "cvpcb": {},
+  "erc": {},
+  "libraries": {},
+  "meta": {"filename": "device.kicad_pro", "version": 1, "author": "jayis1", "device": "LoomMapper"},
+  "net_settings": {"classes": [{"name": "Default", "clearance": 0.2, "track_width": 0.25, "via_diameter": 0.6, "via_drill": 0.3}, {"name": "Analog", "clearance": 0.25, "track_width": 0.3, "via_diameter": 0.7, "via_drill": 0.35}]},
+  "pcbnew": {},
+  "schematic": {},
+  "text_variables": {"AUTHOR": "jayis1", "LICENSE": "CERN-OHL-S-2.0"}
+}
