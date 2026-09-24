@@ -1,0 +1,13 @@
+{
+  "name": "flangeprint-companion",
+  "version": "1.0.0",
+  "description": "Offline FlangePrint field companion by jayis1",
+  "author": "jayis1",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/protocol.test.js",
+    "check": "node --check app.js && node --check protocol.js && node --check server.js && npm test"
+  }
+}
