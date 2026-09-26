@@ -1,0 +1,12 @@
+<!doctype html>
+<!-- CasterEcho companion interface. Author: jayis1. Copyright (c) 2026 jayis1. MIT. -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10221f"><title>CasterEcho</title><link rel="stylesheet" href="styles.css"></head>
+<body><header><div><p class="eyebrow">caster condition intelligence</p><h1>CasterEcho</h1></div><button id="connect">Connect sensor</button></header>
+<main>
+<section class="hero"><div><span id="status" class="pill">Demo data</span><h2 id="health">92</h2><p>Wheel health score</p></div><div class="wheel"><div id="wheel-fill"></div></div></section>
+<section class="metrics" aria-label="Latest rolling pass"><article><span>Vibration</span><strong id="rms">0.08 g</strong><small>RMS</small></article><article><span>Drag index</span><strong id="drag">0.12</strong><small>lower is better</small></article><article><span>Bearing</span><strong id="temp">31.4 °C</strong><small>temperature</small></article><article><span>Speed</span><strong id="speed">1.1 m/s</strong><small>mean</small></article></section>
+<section class="panel"><div class="panel-head"><div><p class="eyebrow">diagnostic evidence</p><h3>Rolling signature</h3></div><select id="range" aria-label="History range"><option value="12">12 passes</option><option value="24">24 passes</option></select></div><canvas id="chart" width="900" height="240" aria-label="Vibration and drag trend"></canvas><div id="findings" class="findings"></div></section>
+<section class="panel controls"><div><p class="eyebrow">commissioning</p><h3>Wheel setup</h3><p>Measure one wheel revolution on the tread. CasterEcho uses this to separate speed changes from wheel-order defects.</p></div><label>Circumference (mm)<input id="circumference" type="number" min="150" max="1000" value="393"></label><button id="save-wheel">Save wheel</button><button id="calibrate" class="secondary">Accept healthy baseline</button></section>
+<section class="panel"><div class="panel-head"><div><p class="eyebrow">service queue</p><h3>Recent passes</h3></div><button id="export" class="secondary">Export CSV</button></div><div class="table-wrap"><table><thead><tr><th>Pass</th><th>Health</th><th>Evidence</th><th>Action</th></tr></thead><tbody id="history"></tbody></table></div></section>
+</main><footer>Designed and authored by jayis1 · Data remains local to this browser and paired sensor.</footer>
+<script src="protocol.js"></script><script src="app.js"></script></body></html>
