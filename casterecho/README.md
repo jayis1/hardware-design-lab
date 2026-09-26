@@ -1,7 +1,7 @@
 # CasterEcho
 
-Author and creator: **jayis1**  
-Copyright (c) 2026 jayis1  
+Author and creator: **jayis1**
+Copyright (c) 2026 jayis1
 License: MIT
 
 ## Purpose and overview
