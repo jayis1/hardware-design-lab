@@ -1,0 +1,1 @@
+{"name":"quadralign-app","version":"1.0.0","private":true,"author":"jayis1","license":"MIT","scripts":{"typecheck":"tsc --noEmit"},"dependencies":{"@types/react":"latest","@types/react-native":"latest","react":"latest","react-native":"latest","typescript":"latest"},"devDependencies":{}}
