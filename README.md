@@ -1,5 +1,7 @@
 # Hardware Design Lab
 
+Author: jayis1
+
 Full-cycle, open-source hardware device designs — from concept to KiCad schematics to production firmware to companion mobile apps. Every device is fully open: schematics, board layouts, C/Python firmware, and React Native apps. Each device lives in its own subfolder with complete deliverables.
 
 ## What's Inside Every Device
@@ -31,6 +33,7 @@ Every device follows the same rigorous 4-phase process:
 | 1 | [`eag-7000/`](eag-7000/) — Edge AI Gateway | ✅ Docs complete, KiCad/firmware/app pending | i.MX8MP + Hailo-8 NPU, 30 TOPS, fanless industrial, 2×2.5GbE, CAN-FD |
 | 2 | [`chronos-rtk/`](chronos-rtk/) — Dual-Frequency RTK GNSS Receiver | ✅ Complete | ZED-F9P + STM32L4 + LoRa mesh, cm-level positioning, 868/915 MHz ISM |
 | 3 | [`vortex-sdr/`](vortex-sdr/) — Portable SDR Spectrum Analyzer | ✅ Complete | STM32H743 + iCE40UP5K FPGA + ADF4351 PLL, 100kHz–6GHz, dual-FFT waterfall |
+| 4 | [`web-slack-ledger/`](web-slack-ledger/) — WebSlack Ledger | Build-tested prototype; physical validation pending | Two-encoder differential travel and reversal ledger for slow hand-fed strip fixtures |
 
 ---
 
