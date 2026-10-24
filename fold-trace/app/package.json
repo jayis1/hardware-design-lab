@@ -1,0 +1,1 @@
+{"name":"fold-trace","version":"1.0.0","private":true,"author":"jayis1","license":"MIT","type":"module","scripts":{"test":"node --test ../tests/*.test.mjs"},"description":"Dependency-free Web Serial folding jig dashboard"}

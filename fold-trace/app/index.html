@@ -1,0 +1,18 @@
+<!doctype html>
+<!-- Author: jayis1. SPDX-License-Identifier: MIT -->
+<html lang="en"><head><meta charset="utf-8"><meta name="author" content="jayis1">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>FoldTrace</title>
+<link rel="stylesheet" href="style.css"></head><body>
+<header><h1>FoldTrace</h1><p>Four folds, one inspectable sequence — by jayis1</p></header>
+<nav aria-label="Screens"><button data-screen="live">Live jig</button><button data-screen="history">History</button><button data-screen="setup">Connection and recipe</button></nav>
+<p id="connection" role="status">Disconnected — no live evidence</p>
+<section id="live"><h2>Live jig</h2><p id="summary">Waiting for telemetry</p><div id="stations"></div><p id="quality"></p></section>
+<section id="history" hidden><h2>Recent snapshots</h2><p>Bounded to 1,000 snapshots. These are status samples, not a lossless event log.</p><button id="export">Export CSV</button><p id="count">0 snapshots</p><pre id="recent"></pre></section>
+<section id="setup" hidden><h2>Connection and recipe</h2><button id="connect">Connect serial</button><button id="disconnect">Disconnect</button>
+<p>Chromium Web Serial, localhost or HTTPS, 115200 baud. Grant only the Nucleo port. No cloud or radio.</p>
+<p>Fixed firmware recipe: station 1 → 2 → 3 → 4; hold each at least 500 ms, release before next; cycle limit 30 seconds. All contacts open for one second rearms the jig.</p>
+<p>Station label prefix <input id="label" value="Fold" maxlength="24"><button id="save">Save local label</button></p>
+<label>Replay a synthetic C-generated trace (not physical evidence): <input id="replay" type="file" accept=".txt,.log"></label>
+<p>Replay disconnects live serial. Recipe thresholds cannot be changed here. Never use this instrument as a machine safety interlock.</p></section>
+<footer>Copyright 2026 jayis1. Software MIT. Hardware unvalidated on a physical jig.</footer>
+<script type="module" src="app.mjs"></script></body></html>
