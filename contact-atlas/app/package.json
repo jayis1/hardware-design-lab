@@ -1,0 +1,12 @@
+{
+  "name": "contact-atlas",
+  "version": "1.0.0",
+  "private": true,
+  "author": "jayis1",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "test": "node --test ../tests/*.test.mjs",
+    "check": "node --check app.mjs && node --check protocol.mjs"
+  }
+}

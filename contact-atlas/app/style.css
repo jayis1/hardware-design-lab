@@ -1,0 +1,7 @@
+/* Author: jayis1. SPDX-License-Identifier: MIT */
+body { font: 18px system-ui,sans-serif; max-width: 1100px; margin: 2rem auto; padding: 1rem; color: #edf3ff; background: #182331; }
+button,input { font: inherit; margin: .4rem; padding: .55rem; }
+button { cursor: pointer; } button:focus { outline: 3px solid #ffd56a; }
+pre { white-space: pre-wrap; padding: 1rem; background: #243849; }
+table { width: 100%; border-collapse: collapse; } th,td { padding: .6rem; border: 1px solid #7392a9; text-align: right; }
+#error { color: #ffb5b5; } #mode { color: #ffd56a; } label { display: block; }

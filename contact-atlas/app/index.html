@@ -1,0 +1,10 @@
+<!-- Author: jayis1. SPDX-License-Identifier: MIT -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta name="author" content="jayis1"><title>ContactAtlas</title><link rel="stylesheet" href="style.css"></head>
+<body><h1>ContactAtlas</h1><p>Creator: jayis1 · Detached, voltage-free switches only · Engineering prototype</p>
+<nav><button data-screen="live">Live contacts</button><button data-screen="map">Transition map</button><button data-screen="connection">Connection / export</button></nav>
+<p id="mode" role="status">DISCONNECTED — evidence is not live</p><p id="error" role="alert"></p>
+<section id="live"><h2>Live contacts</h2><pre id="status">No evidence received</pre><p>Masks are electrical signatures, not numbered shaft positions. Bit 0 is J3; bit 3 is J6.</p></section>
+<section id="map" hidden><h2>Observed transitions</h2><p>Transition windows include the final 200 ms qualification period. Multiple closed contacts do not automatically indicate an unsafe overlap.</p><table><thead><tr><th>From</th><th>To</th><th>Visits</th><th>Min ms</th><th>Max ms</th><th>Zero ms total</th><th>Multi ms total</th></tr></thead><tbody id="edges"></tbody></table><p id="counts"></p></section>
+<section id="connection" hidden><h2>Connection and evidence</h2><button id="connect">Connect serial</button><button id="disconnect">Disconnect / cancel</button><label>Replay synthetic log <input id="replay" type="file" accept=".log,.txt"></label><button id="export">Export event CSV</button><p>115200 baud, 8N1. Read-only device protocol; no commands. Replay is never live. Export before reconnecting: each connection clears the local history. Maximum replay size 1 MiB. History keeps the latest 1000 events.</p><p>The carrier shares USB ground and has no isolation or industrial-input protection. Never attach a powered circuit.</p></section>
+<script type="module" src="app.mjs"></script></body></html>
