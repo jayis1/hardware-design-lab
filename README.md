@@ -35,6 +35,7 @@ Every device follows the same rigorous 4-phase process:
 | 3 | [`vortex-sdr/`](vortex-sdr/) — Portable SDR Spectrum Analyzer | ✅ Complete | STM32H743 + iCE40UP5K FPGA + ADF4351 PLL, 100kHz–6GHz, dual-FFT waterfall |
 | 4 | [`web-slack-ledger/`](web-slack-ledger/) — WebSlack Ledger | Build-tested prototype; physical validation pending | Two-encoder differential travel and reversal ledger for slow hand-fed strip fixtures |
 | 5 | [`slip-window/`](slip-window/) — Slip Window | Build-tested prototype; physical validation pending | Slip-casting cradle residence, interrupted draining, longest drain segment, and mold-opening notebook |
+| 6 | [`stencil-orbit/`](stencil-orbit/) — Stencil Orbit | Build-tested prototype; physical validation pending | Manual screen-printing carousel station index, registration continuity and per-station tool-use notebook |
 
 ---
 
