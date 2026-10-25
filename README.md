@@ -36,6 +36,7 @@ Every device follows the same rigorous 4-phase process:
 | 4 | [`web-slack-ledger/`](web-slack-ledger/) — WebSlack Ledger | Build-tested prototype; physical validation pending | Two-encoder differential travel and reversal ledger for slow hand-fed strip fixtures |
 | 5 | [`slip-window/`](slip-window/) — Slip Window | Build-tested prototype; physical validation pending | Slip-casting cradle residence, interrupted draining, longest drain segment, and mold-opening notebook |
 | 6 | [`stencil-orbit/`](stencil-orbit/) — Stencil Orbit | Build-tested prototype; physical validation pending | Manual screen-printing carousel station index, registration continuity and per-station tool-use notebook |
+| 7 | [`crossover-track/`](crossover-track/) — Crossover Track | Build-tested prototype; physical validation pending | Four-contact cart trial recorder and guided ABBA lane-swap comparison separating cart and lane time contrasts |
 
 ---
 
