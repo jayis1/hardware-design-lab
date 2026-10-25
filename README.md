@@ -38,6 +38,7 @@ Every device follows the same rigorous 4-phase process:
 | 6 | [`stencil-orbit/`](stencil-orbit/) — Stencil Orbit | Build-tested prototype; physical validation pending | Manual screen-printing carousel station index, registration continuity and per-station tool-use notebook |
 | 7 | [`crossover-track/`](crossover-track/) — Crossover Track | Build-tested prototype; physical validation pending | Four-contact cart trial recorder and guided ABBA lane-swap comparison separating cart and lane time contrasts |
 | 8 | [`takeup-atlas/`](takeup-atlas/) — Takeup Atlas | Build-tested prototype; physical validation pending | Two-shaft reversal trials recording first output response, three-edge confirmation and rejected attempts in hand-operated mechanisms |
+| 9 | [`chord-window/`](chord-window/) — Chord Window | Build-tested prototype; physical validation pending | Four-switch chord press spread, shared hold and release timing before keyboard filtering, with local policy comparison |
 
 ---
 
