@@ -42,6 +42,7 @@ Every device follows the same rigorous 4-phase process:
 | 10 | [`detent-loop/`](detent-loop/) — Detent Loop | Build-tested prototype; physical calibration pending | Hand-operated sliding-catch force–travel loops with explicit zero, turnaround, signed work and local evidence export |
 | 11 | [`tilt-break/`](tilt-break/) — Tilt Break | Build-tested prototype; physical calibration pending | Manual incline home-departure resistance brackets and independently qualified downstream puck arrival |
 | 12 | [`pipette-path/`](pipette-path/) — Pipette Path | Build-tested prototype; physical training validation pending | Two-stop manual pipette plunger sequence recorder with operator-declared source immersion; not a volume calibrator |
+| 13 | [`flow-pause/`](flow-pause/) — Flow Pause | Build-tested prototype; physical validation pending | Declared-supply hopper discharge silence, intervention precedence and recovery notebook; not a blockage detector |
 
 ---
 
