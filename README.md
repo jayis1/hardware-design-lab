@@ -44,6 +44,7 @@ Every device follows the same rigorous 4-phase process:
 | 12 | [`pipette-path/`](pipette-path/) — Pipette Path | Build-tested prototype; physical training validation pending | Two-stop manual pipette plunger sequence recorder with operator-declared source immersion; not a volume calibrator |
 | 13 | [`flow-pause/`](flow-pause/) — Flow Pause | Build-tested prototype; physical validation pending | Declared-supply hopper discharge silence, intervention precedence and recovery notebook; not a blockage detector |
 | 14 | [`sieve-shuttle/`](sieve-shuttle/) — Sieve Shuttle | Build-tested prototype; physical validation pending | Four-zone manual sieving motion matrix, opposite-axis traversals, same-zone returns and longest directional runs; not separation efficiency |
+| 15 | [`bellows-phase/`](bellows-phase/) — Bellows Phase | Build-tested prototype; physical validation pending | Direction-conditioned inlet/outlet flap-position intervals across manual bellows strokes; not airflow or efficiency |
 
 ---
 
