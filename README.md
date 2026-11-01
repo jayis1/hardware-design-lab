@@ -49,6 +49,7 @@ Every device follows the same rigorous 4-phase process:
 | 17 | [`coupon-transit/`](coupon-transit/) — Coupon Transit | Build-tested prototype; physical validation pending | Two-holder rack-to-rack transfer durations, same-rack returns and interrupted-observation notebook; not specimen identity or treatment verification |
 | 18 | [`pattern-sled/`](pattern-sled/) — Pattern Sled | Build-tested prototype; physical validation pending | Three-track mechanical program-strip repeat comparator with a learned sixteen-word reference, per-position mismatches and terminal alignment-loss diagnostics |
 | 19 | [`kit-multiset/`](kit-multiset/) — Kit Multiset | Build-tested prototype; physical validation pending | Tray-delimited unordered 2:1:1 bin-paddle recipe declarations, conservative abandonment and local evidence export; not inspected part quantities |
+| 20 | [`shim-bracket/`](shim-bracket/) — Shim Bracket | Build-tested prototype; physical validation pending | Indexed feeler-gauge fit/refusal declarations with persistent monotonicity contradictions; not calibrated gap measurement |
 
 ---
 
