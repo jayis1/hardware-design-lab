@@ -50,6 +50,7 @@ Every device follows the same rigorous 4-phase process:
 | 18 | [`pattern-sled/`](pattern-sled/) — Pattern Sled | Build-tested prototype; physical validation pending | Three-track mechanical program-strip repeat comparator with a learned sixteen-word reference, per-position mismatches and terminal alignment-loss diagnostics |
 | 19 | [`kit-multiset/`](kit-multiset/) — Kit Multiset | Build-tested prototype; physical validation pending | Tray-delimited unordered 2:1:1 bin-paddle recipe declarations, conservative abandonment and local evidence export; not inspected part quantities |
 | 20 | [`shim-bracket/`](shim-bracket/) — Shim Bracket | Build-tested prototype; physical validation pending | Indexed feeler-gauge fit/refusal declarations with persistent monotonicity contradictions; not calibrated gap measurement |
+| 21 | [`catch-witness/`](catch-witness/) — Catch Witness | Build-tested prototype; physical validation pending | Settled-latch reopening notebook with expiring handle/tug associations and separate unseated, unexplained and aborted outcomes; not a retention-force gauge |
 
 ---
 
