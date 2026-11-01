@@ -51,6 +51,7 @@ Every device follows the same rigorous 4-phase process:
 | 19 | [`kit-multiset/`](kit-multiset/) — Kit Multiset | Build-tested prototype; physical validation pending | Tray-delimited unordered 2:1:1 bin-paddle recipe declarations, conservative abandonment and local evidence export; not inspected part quantities |
 | 20 | [`shim-bracket/`](shim-bracket/) — Shim Bracket | Build-tested prototype; physical validation pending | Indexed feeler-gauge fit/refusal declarations with persistent monotonicity contradictions; not calibrated gap measurement |
 | 21 | [`catch-witness/`](catch-witness/) — Catch Witness | Build-tested prototype; physical validation pending | Settled-latch reopening notebook with expiring handle/tug associations and separate unseated, unexplained and aborted outcomes; not a retention-force gauge |
+| 22 | [`beat-aperture/`](beat-aperture/) — Beat Aperture | Build-tested prototype; physical validation pending | Two-pendulum return apertures retaining zero, single and multiple comparison returns within each reference cycle; not continuous phase measurement |
 
 ---
 
