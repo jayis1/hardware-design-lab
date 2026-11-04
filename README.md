@@ -52,6 +52,7 @@ Every device follows the same rigorous 4-phase process:
 | 20 | [`shim-bracket/`](shim-bracket/) — Shim Bracket | Build-tested prototype; physical validation pending | Indexed feeler-gauge fit/refusal declarations with persistent monotonicity contradictions; not calibrated gap measurement |
 | 21 | [`catch-witness/`](catch-witness/) — Catch Witness | Build-tested prototype; physical validation pending | Settled-latch reopening notebook with expiring handle/tug associations and separate unseated, unexplained and aborted outcomes; not a retention-force gauge |
 | 22 | [`beat-aperture/`](beat-aperture/) — Beat Aperture | Build-tested prototype; physical validation pending | Two-pendulum return apertures retaining zero, single and multiple comparison returns within each reference cycle; not continuous phase measurement |
+| 23 | [`grip-lattice/`](grip-lattice/) — Grip Lattice | Build-tested prototype; physical validation pending | Footswitch-delimited three-zone dummy-handle contact combinations, segment lengths and explicit unknown intervals; not a force or ergonomic assessment instrument |
 
 ---
 
