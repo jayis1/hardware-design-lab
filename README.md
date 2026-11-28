@@ -56,7 +56,9 @@ Every device follows the same rigorous 4-phase process:
 
 ---
 
-New design: [Step Islands](step-islands/) — a four-contact configuration exploration fixture with single-change islands, bridge candidates and shortest candidate paths. Target build, software tests and electrical CAD checks passed; physical validation is pending. Author: jayis1.
+New design: [Code Margin](code-margin/) — a four-contact code-separation workbench with minimum-distance witnesses and explicit single-contact-error ambiguity. Target build, software tests and electrical CAD checks passed; physical validation is pending. Author: jayis1.
+
+Previous design: [Step Islands](step-islands/) — a four-contact configuration exploration fixture with single-change islands, bridge candidates and shortest candidate paths. Target build, software tests and electrical CAD checks passed; physical validation is pending. Author: jayis1.
 
 ## EAG-7000 — Edge AI Gateway
 
